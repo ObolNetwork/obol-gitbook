@@ -1,17 +1,21 @@
-> **ClusterLock**: `object`
+[**@obolnetwork/obol-sdk**](../index.md)
+
+***
+
+[@obolnetwork/obol-sdk](../index.md) / ClusterLock
+
+> **ClusterLock** = `object`
+
+Defined in: [types.ts:294](https://github.com/ObolNetwork/obol-sdk/blob/e7fc737767265d3063c4e96d045f725fadd20e1e/src/types.ts#L294)
 
 Cluster Details after DKG is complete
 
-## Type declaration
+## Properties
 
-| Name | Type | Description | Defined in |
+| Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| `cluster_definition` | [`ClusterDefinition`](../interfaces/ClusterDefinition.md) | The cluster definition. | types.ts:235 |
-| `distributed_validators` | [`DistributedValidator`](DistributedValidator.md)[] | The cluster distributed validators. | types.ts:238 |
-| `signature_aggregate` | `string` | The cluster bls signature aggregate. | types.ts:241 |
-| `lock_hash` | `string` | The hash of the cluster lock. | types.ts:244 |
-| `node_signatures`? | `string`[] | Node Signature for the lock hash by the node secp256k1 key. | types.ts:247 |
-
-## Defined in
-
-types.ts:233
+| <a id="cluster_definition"></a> `cluster_definition` | [`ClusterDefinition`](../interfaces/ClusterDefinition.md) | The cluster definition. | [types.ts:296](https://github.com/ObolNetwork/obol-sdk/blob/e7fc737767265d3063c4e96d045f725fadd20e1e/src/types.ts#L296) |
+| <a id="distributed_validators"></a> `distributed_validators` | [`DistributedValidator`](DistributedValidator.md)[] | The cluster distributed validators. | [types.ts:299](https://github.com/ObolNetwork/obol-sdk/blob/e7fc737767265d3063c4e96d045f725fadd20e1e/src/types.ts#L299) |
+| <a id="signature_aggregate"></a> `signature_aggregate` | `string` | The cluster bls signature aggregate. | [types.ts:302](https://github.com/ObolNetwork/obol-sdk/blob/e7fc737767265d3063c4e96d045f725fadd20e1e/src/types.ts#L302) |
+| <a id="lock_hash"></a> `lock_hash` | `string` | The hash of the cluster lock. | [types.ts:305](https://github.com/ObolNetwork/obol-sdk/blob/e7fc737767265d3063c4e96d045f725fadd20e1e/src/types.ts#L305) |
+| <a id="node_signatures"></a> `node_signatures?` | `string`[] | Node Signature for the lock hash by the node secp256k1 key. | [types.ts:308](https://github.com/ObolNetwork/obol-sdk/blob/e7fc737767265d3063c4e96d045f725fadd20e1e/src/types.ts#L308) |
