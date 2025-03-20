@@ -1,4 +1,12 @@
+[**@obolnetwork/obol-sdk**](../index.md)
+
+***
+
+[@obolnetwork/obol-sdk](../index.md) / validateClusterLock
+
 > **validateClusterLock**(`lock`): `Promise`\<`boolean`\>
+
+Defined in: [services.ts:13](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/services.ts#L13)
 
 Verifies Cluster Lock's validity.
 
@@ -20,7 +28,3 @@ on missing keys or values.
 
 An example of how to use validateClusterLock:
 [validateClusterLock](https://github.com/ObolNetwork/obol-sdk-examples/blob/main/TS-Example/index.ts#L127)
-
-## Defined in
-
-services.ts:13
