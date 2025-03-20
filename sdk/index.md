@@ -1,7 +1,7 @@
 **@obolnetwork/obol-sdk**
 
 <span className="theme-doc-version-badge badge badge--secondary">
-      <strong>SDK Version:</strong> v2.4.4
+      <strong>SDK Version:</strong> v2.4.5
 </span>
 
 ![Obol Logo](https://obol.org/obolnetwork.png)
