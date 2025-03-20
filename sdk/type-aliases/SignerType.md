@@ -6,6 +6,6 @@
 
 > **SignerType** = `Signer` \| `JsonRpcSigner`
 
-Defined in: [types.ts:348](https://github.com/ObolNetwork/obol-sdk/blob/df036c7bf14d70c2908019882b5bbd9b08a748fb/src/types.ts#L348)
+Defined in: [types.ts:335](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/types.ts#L335)
 
 Signer Types

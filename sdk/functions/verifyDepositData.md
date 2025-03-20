@@ -6,7 +6,7 @@
 
 > **verifyDepositData**(`distributedPublicKey`, `depositData`, `withdrawalAddress`, `forkVersion`, `compounding`?): `object`
 
-Defined in: [verification/common.ts:352](https://github.com/ObolNetwork/obol-sdk/blob/df036c7bf14d70c2908019882b5bbd9b08a748fb/src/verification/common.ts#L352)
+Defined in: [verification/common.ts:352](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/verification/common.ts#L352)
 
 Verify deposit data withdrawal credintials and signature
 
@@ -28,5 +28,5 @@ Verify deposit data withdrawal credintials and signature
 
 | Name | Type | Defined in |
 | ------ | ------ | ------ |
-| `isValidDepositData` | `boolean` | [verification/common.ts:358](https://github.com/ObolNetwork/obol-sdk/blob/df036c7bf14d70c2908019882b5bbd9b08a748fb/src/verification/common.ts#L358) |
-| `depositDataMsg` | `Uint8Array` | [verification/common.ts:358](https://github.com/ObolNetwork/obol-sdk/blob/df036c7bf14d70c2908019882b5bbd9b08a748fb/src/verification/common.ts#L358) |
+| `isValidDepositData` | `boolean` | [verification/common.ts:358](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/verification/common.ts#L358) |
+| `depositDataMsg` | `Uint8Array` | [verification/common.ts:358](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/verification/common.ts#L358) |

@@ -6,7 +6,7 @@
 
 > **validateClusterLock**(`lock`): `Promise`\<`boolean`\>
 
-Defined in: [services.ts:13](https://github.com/ObolNetwork/obol-sdk/blob/df036c7bf14d70c2908019882b5bbd9b08a748fb/src/services.ts#L13)
+Defined in: [services.ts:13](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/services.ts#L13)
 
 Verifies Cluster Lock's validity.
 

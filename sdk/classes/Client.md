@@ -4,7 +4,7 @@
 
 [@obolnetwork/obol-sdk](../index.md) / Client
 
-Defined in: [index.ts:61](https://github.com/ObolNetwork/obol-sdk/blob/df036c7bf14d70c2908019882b5bbd9b08a748fb/src/index.ts#L61)
+Defined in: [index.ts:63](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L63)
 
 Obol sdk Client can be used for creating, managing and activating distributed validators.
 
@@ -18,7 +18,7 @@ Obol sdk Client can be used for creating, managing and activating distributed va
 
 > **new Client**(`config`, `signer`?, `provider`?): `Client`
 
-Defined in: [index.ts:76](https://github.com/ObolNetwork/obol-sdk/blob/df036c7bf14d70c2908019882b5bbd9b08a748fb/src/index.ts#L76)
+Defined in: [index.ts:91](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L91)
 
 #### Parameters
 
@@ -43,13 +43,20 @@ An example of how to instantiate obol-sdk Client:
 
 `Base.constructor`
 
+## Properties
+
+| Property | Modifier | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ | ------ |
+| <a id="incentives"></a> `incentives` | `public` | [`Incentives`](Incentives.md) | The incentives module, responsible for managing Obol tokens distribution. | [index.ts:73](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L73) |
+| <a id="provider"></a> `provider` | `public` | `undefined` \| `null` \| [`ProviderType`](../type-aliases/ProviderType.md) | The blockchain provider, used to interact with the network. It can be null, undefined, or a valid provider instance and defaults to the Signer provider if Signer is passed. | [index.ts:79](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L79) |
+
 ## Methods
 
 ### acceptObolLatestTermsAndConditions()
 
 > **acceptObolLatestTermsAndConditions**(): `Promise`\<`string`\>
 
-Defined in: [index.ts:103](https://github.com/ObolNetwork/obol-sdk/blob/df036c7bf14d70c2908019882b5bbd9b08a748fb/src/index.ts#L103)
+Defined in: [index.ts:118](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L118)
 
 Accepts Obol terms and conditions to be able to create or update data.
 
@@ -72,7 +79,7 @@ An example of how to use acceptObolLatestTermsAndConditions:
 
 > **createObolRewardsSplit**(`rewardsSplitPayload`): `Promise`\<[`ClusterValidator`](../type-aliases/ClusterValidator.md)\>
 
-Defined in: [index.ts:158](https://github.com/ObolNetwork/obol-sdk/blob/df036c7bf14d70c2908019882b5bbd9b08a748fb/src/index.ts#L158)
+Defined in: [index.ts:173](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L173)
 
 Deploys OWR and Splitter Proxy.
 
@@ -102,7 +109,7 @@ and not pushed to version control.
 
 > **createObolTotalSplit**(`totalSplitPayload`): `Promise`\<[`ClusterValidator`](../type-aliases/ClusterValidator.md)\>
 
-Defined in: [index.ts:279](https://github.com/ObolNetwork/obol-sdk/blob/df036c7bf14d70c2908019882b5bbd9b08a748fb/src/index.ts#L279)
+Defined in: [index.ts:294](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L294)
 
 Deploys Splitter Proxy.
 
@@ -132,7 +139,7 @@ and not pushed to version control.
 
 > **getOWRTranches**(`owrAddress`): `Promise`\<[`OWRTranches`](../type-aliases/OWRTranches.md)\>
 
-Defined in: [index.ts:377](https://github.com/ObolNetwork/obol-sdk/blob/df036c7bf14d70c2908019882b5bbd9b08a748fb/src/index.ts#L377)
+Defined in: [index.ts:392](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L392)
 
 Read OWR Tranches.
 
@@ -159,7 +166,7 @@ and not pushed to version control.
 
 > **createClusterDefinition**(`newCluster`): `Promise`\<`string`\>
 
-Defined in: [index.ts:395](https://github.com/ObolNetwork/obol-sdk/blob/df036c7bf14d70c2908019882b5bbd9b08a748fb/src/index.ts#L395)
+Defined in: [index.ts:410](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L410)
 
 Creates a cluster definition which contains cluster configuration.
 
@@ -188,7 +195,7 @@ An example of how to use createClusterDefinition:
 
 > **acceptClusterDefinition**(`operatorPayload`, `configHash`): `Promise`\<[`ClusterDefinition`](../interfaces/ClusterDefinition.md)\>
 
-Defined in: [index.ts:460](https://github.com/ObolNetwork/obol-sdk/blob/df036c7bf14d70c2908019882b5bbd9b08a748fb/src/index.ts#L460)
+Defined in: [index.ts:475](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L475)
 
 Approves joining a cluster with specific configuration.
 
@@ -218,7 +225,7 @@ An example of how to use acceptClusterDefinition:
 
 > **getClusterDefinition**(`configHash`): `Promise`\<[`ClusterDefinition`](../interfaces/ClusterDefinition.md)\>
 
-Defined in: [index.ts:514](https://github.com/ObolNetwork/obol-sdk/blob/df036c7bf14d70c2908019882b5bbd9b08a748fb/src/index.ts#L514)
+Defined in: [index.ts:529](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L529)
 
 #### Parameters
 
@@ -245,7 +252,7 @@ An example of how to use getClusterDefinition:
 
 > **getClusterLock**(`configHash`): `Promise`\<[`ClusterLock`](../type-aliases/ClusterLock.md)\>
 
-Defined in: [index.ts:533](https://github.com/ObolNetwork/obol-sdk/blob/df036c7bf14d70c2908019882b5bbd9b08a748fb/src/index.ts#L533)
+Defined in: [index.ts:548](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L548)
 
 #### Parameters
 

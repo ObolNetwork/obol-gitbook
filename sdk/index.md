@@ -64,6 +64,7 @@ Thank you for contributing to Obol-SDK!
 
 ## Classes
 
+- [Incentives](classes/Incentives.md)
 - [Client](classes/Client.md)
 
 ## Interfaces
@@ -86,14 +87,9 @@ Thank you for contributing to Obol-SDK!
 - [DepositData](type-aliases/DepositData.md)
 - [DistributedValidator](type-aliases/DistributedValidator.md)
 - [ClusterLock](type-aliases/ClusterLock.md)
-- [Incentives](type-aliases/Incentives.md)
 - [ETH\_ADDRESS](type-aliases/ETH_ADDRESS.md)
 - [ProviderType](type-aliases/ProviderType.md)
 - [SignerType](type-aliases/SignerType.md)
-
-## Variables
-
-- [FORK\_NAMES](variables/FORK_NAMES.md)
 
 ## Functions
 
