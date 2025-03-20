@@ -4,7 +4,7 @@
 
 [@obolnetwork/obol-sdk](../index.md) / Client
 
-Defined in: [index.ts:63](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L63)
+Defined in: [index.ts:62](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/index.ts#L62)
 
 Obol sdk Client can be used for creating, managing and activating distributed validators.
 
@@ -18,7 +18,7 @@ Obol sdk Client can be used for creating, managing and activating distributed va
 
 > **new Client**(`config`, `signer`?, `provider`?): `Client`
 
-Defined in: [index.ts:91](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L91)
+Defined in: [index.ts:90](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/index.ts#L90)
 
 #### Parameters
 
@@ -47,8 +47,8 @@ An example of how to instantiate obol-sdk Client:
 
 | Property | Modifier | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ | ------ |
-| <a id="incentives"></a> `incentives` | `public` | [`Incentives`](Incentives.md) | The incentives module, responsible for managing Obol tokens distribution. | [index.ts:73](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L73) |
-| <a id="provider"></a> `provider` | `public` | `undefined` \| `null` \| [`ProviderType`](../type-aliases/ProviderType.md) | The blockchain provider, used to interact with the network. It can be null, undefined, or a valid provider instance and defaults to the Signer provider if Signer is passed. | [index.ts:79](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L79) |
+| <a id="incentives"></a> `incentives` | `public` | [`Incentives`](Incentives.md) | The incentives module, responsible for managing Obol tokens distribution. | [index.ts:72](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/index.ts#L72) |
+| <a id="provider"></a> `provider` | `public` | `undefined` \| `null` \| [`ProviderType`](../type-aliases/ProviderType.md) | The blockchain provider, used to interact with the network. It can be null, undefined, or a valid provider instance and defaults to the Signer provider if Signer is passed. | [index.ts:78](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/index.ts#L78) |
 
 ## Methods
 
@@ -56,7 +56,7 @@ An example of how to instantiate obol-sdk Client:
 
 > **acceptObolLatestTermsAndConditions**(): `Promise`\<`string`\>
 
-Defined in: [index.ts:118](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L118)
+Defined in: [index.ts:117](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/index.ts#L117)
 
 Accepts Obol terms and conditions to be able to create or update data.
 
@@ -79,7 +79,7 @@ An example of how to use acceptObolLatestTermsAndConditions:
 
 > **createObolRewardsSplit**(`rewardsSplitPayload`): `Promise`\<[`ClusterValidator`](../type-aliases/ClusterValidator.md)\>
 
-Defined in: [index.ts:173](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L173)
+Defined in: [index.ts:172](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/index.ts#L172)
 
 Deploys OWR and Splitter Proxy.
 
@@ -109,7 +109,7 @@ and not pushed to version control.
 
 > **createObolTotalSplit**(`totalSplitPayload`): `Promise`\<[`ClusterValidator`](../type-aliases/ClusterValidator.md)\>
 
-Defined in: [index.ts:294](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L294)
+Defined in: [index.ts:293](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/index.ts#L293)
 
 Deploys Splitter Proxy.
 
@@ -139,7 +139,7 @@ and not pushed to version control.
 
 > **getOWRTranches**(`owrAddress`): `Promise`\<[`OWRTranches`](../type-aliases/OWRTranches.md)\>
 
-Defined in: [index.ts:392](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L392)
+Defined in: [index.ts:391](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/index.ts#L391)
 
 Read OWR Tranches.
 
@@ -166,7 +166,7 @@ and not pushed to version control.
 
 > **createClusterDefinition**(`newCluster`): `Promise`\<`string`\>
 
-Defined in: [index.ts:410](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L410)
+Defined in: [index.ts:409](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/index.ts#L409)
 
 Creates a cluster definition which contains cluster configuration.
 
@@ -195,7 +195,7 @@ An example of how to use createClusterDefinition:
 
 > **acceptClusterDefinition**(`operatorPayload`, `configHash`): `Promise`\<[`ClusterDefinition`](../interfaces/ClusterDefinition.md)\>
 
-Defined in: [index.ts:475](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L475)
+Defined in: [index.ts:474](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/index.ts#L474)
 
 Approves joining a cluster with specific configuration.
 
@@ -225,7 +225,7 @@ An example of how to use acceptClusterDefinition:
 
 > **getClusterDefinition**(`configHash`): `Promise`\<[`ClusterDefinition`](../interfaces/ClusterDefinition.md)\>
 
-Defined in: [index.ts:529](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L529)
+Defined in: [index.ts:528](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/index.ts#L528)
 
 #### Parameters
 
@@ -252,7 +252,7 @@ An example of how to use getClusterDefinition:
 
 > **getClusterLock**(`configHash`): `Promise`\<[`ClusterLock`](../type-aliases/ClusterLock.md)\>
 
-Defined in: [index.ts:548](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/index.ts#L548)
+Defined in: [index.ts:547](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/index.ts#L547)
 
 #### Parameters
 

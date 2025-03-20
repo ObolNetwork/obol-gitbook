@@ -6,7 +6,7 @@
 
 > **SplitRecipient** = `object`
 
-Defined in: [types.ts:157](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/types.ts#L157)
+Defined in: [types.ts:156](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L156)
 
 Split Recipient Keys
 
@@ -14,5 +14,5 @@ Split Recipient Keys
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="account"></a> `account` | `string` | The split recipient address. | [types.ts:159](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/types.ts#L159) |
-| <a id="percentallocation"></a> `percentAllocation` | `number` | The recipient split. | [types.ts:162](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/types.ts#L162) |
+| <a id="account"></a> `account` | `string` | The split recipient address. | [types.ts:158](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L158) |
+| <a id="percentallocation"></a> `percentAllocation` | `number` | The recipient split. | [types.ts:161](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L161) |

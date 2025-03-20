@@ -6,7 +6,7 @@
 
 > **ClusterOperator** = `object`
 
-Defined in: [types.ts:46](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/types.ts#L46)
+Defined in: [types.ts:45](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L45)
 
 Node operator data
 
@@ -14,9 +14,9 @@ Node operator data
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="address"></a> `address` | `string` | The operator address. | [types.ts:48](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/types.ts#L48) |
-| <a id="enr"></a> `enr?` | `string` | The operator ethereum node record. | [types.ts:51](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/types.ts#L51) |
-| <a id="fork_version"></a> `fork_version?` | `string` | The cluster fork_version. | [types.ts:54](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/types.ts#L54) |
-| <a id="version"></a> `version?` | `string` | The cluster version. | [types.ts:57](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/types.ts#L57) |
-| <a id="enr_signature"></a> `enr_signature?` | `string` | The operator enr signature. | [types.ts:60](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/types.ts#L60) |
-| <a id="config_signature"></a> `config_signature?` | `string` | The operator configuration signature. | [types.ts:63](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/types.ts#L63) |
+| <a id="address"></a> `address` | `string` | The operator address. | [types.ts:47](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L47) |
+| <a id="enr"></a> `enr?` | `string` | The operator ethereum node record. | [types.ts:50](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L50) |
+| <a id="fork_version"></a> `fork_version?` | `string` | The cluster fork_version. | [types.ts:53](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L53) |
+| <a id="version"></a> `version?` | `string` | The cluster version. | [types.ts:56](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L56) |
+| <a id="enr_signature"></a> `enr_signature?` | `string` | The operator enr signature. | [types.ts:59](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L59) |
+| <a id="config_signature"></a> `config_signature?` | `string` | The operator configuration signature. | [types.ts:62](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L62) |

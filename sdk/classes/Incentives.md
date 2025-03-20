@@ -4,7 +4,7 @@
 
 [@obolnetwork/obol-sdk](../index.md) / Incentives
 
-Defined in: [incentives.ts:24](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/incentives.ts#L24)
+Defined in: [incentives.ts:24](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/incentives.ts#L24)
 
 **`Internal`**
 
@@ -23,12 +23,16 @@ await obolClient.incentives.claimIncentives(address);
 
 ### claimIncentives()
 
-> **claimIncentives**(`address`): `Promise`\<\{ `txHash`: `string`; \} \| \{ `alreadyClaimed`: `true`; \}\>
+> **claimIncentives**(`address`): `Promise`\<[`ClaimIncentivesResponse`](../type-aliases/ClaimIncentivesResponse.md)\>
 
-Defined in: [incentives.ts:61](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/incentives.ts#L61)
+Defined in: [incentives.ts:65](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/incentives.ts#L65)
 
-Claims obol incentives from a Merkle Distributor contract using just an address.
-The method automatically fetches incentives data and checks if already claimed.
+Claims Obol incentives from a Merkle Distributor contract using an address.
+
+This method automatically fetches incentive data and verifies whether the incentives have already been claimed.
+If `txHash` is `null`, it indicates that the incentives were already claimed.
+
+Note: This method is not yet enabled and will throw an error if called.
 
 #### Parameters
 
@@ -38,7 +42,7 @@ The method automatically fetches incentives data and checks if already claimed.
 
 #### Returns
 
-`Promise`\<\{ `txHash`: `string`; \} \| \{ `alreadyClaimed`: `true`; \}\>
+`Promise`\<[`ClaimIncentivesResponse`](../type-aliases/ClaimIncentivesResponse.md)\>
 
 The transaction hash or already claimed status
 
@@ -60,7 +64,7 @@ An example of how to use claimIncentives:
 
 > **isClaimed**(`contractAddress`, `index`): `Promise`\<`boolean`\>
 
-Defined in: [incentives.ts:122](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/incentives.ts#L122)
+Defined in: [incentives.ts:124](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/incentives.ts#L124)
 
 Read isClaimed.
 
@@ -86,7 +90,7 @@ An example of how to use isClaimed:
 
 > **getIncentivesByAddress**(`address`): `Promise`\<`Incentives`\>
 
-Defined in: [incentives.ts:142](https://github.com/ObolNetwork/obol-sdk/blob/920730d3a8bf5554dc69a4ed8703da68e999e989/src/incentives.ts#L142)
+Defined in: [incentives.ts:144](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/incentives.ts#L144)
 
 #### Parameters
 

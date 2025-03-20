@@ -90,6 +90,7 @@ Thank you for contributing to Obol-SDK!
 - [ETH\_ADDRESS](type-aliases/ETH_ADDRESS.md)
 - [ProviderType](type-aliases/ProviderType.md)
 - [SignerType](type-aliases/SignerType.md)
+- [ClaimIncentivesResponse](type-aliases/ClaimIncentivesResponse.md)
 
 ## Functions
 
