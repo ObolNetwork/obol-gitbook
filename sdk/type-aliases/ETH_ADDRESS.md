@@ -6,6 +6,6 @@
 
 > **ETH\_ADDRESS** = `string`
 
-Defined in: [types.ts:320](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L320)
+Defined in: [types.ts:321](https://github.com/ObolNetwork/obol-sdk/blob/02533ab878b3f13dbe6c0029828624f75ecbe185/src/types.ts#L321)
 
 String expected to be Ethereum Address

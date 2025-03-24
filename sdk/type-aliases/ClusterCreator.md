@@ -6,7 +6,7 @@
 
 > **ClusterCreator** = `object`
 
-Defined in: [types.ts:74](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L74)
+Defined in: [types.ts:75](https://github.com/ObolNetwork/obol-sdk/blob/02533ab878b3f13dbe6c0029828624f75ecbe185/src/types.ts#L75)
 
 Cluster creator data
 
@@ -14,5 +14,5 @@ Cluster creator data
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="address"></a> `address` | `string` | The creator address. | [types.ts:76](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L76) |
-| <a id="config_signature"></a> `config_signature?` | `string` | The cluster configuration signature. | [types.ts:78](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L78) |
+| <a id="address"></a> `address` | `string` | The creator address. | [types.ts:77](https://github.com/ObolNetwork/obol-sdk/blob/02533ab878b3f13dbe6c0029828624f75ecbe185/src/types.ts#L77) |
+| <a id="config_signature"></a> `config_signature?` | `string` | The cluster configuration signature. | [types.ts:79](https://github.com/ObolNetwork/obol-sdk/blob/02533ab878b3f13dbe6c0029828624f75ecbe185/src/types.ts#L79) |

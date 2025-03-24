@@ -4,7 +4,7 @@
 
 [@obolnetwork/obol-sdk](../index.md) / FORK\_MAPPING
 
-Defined in: [types.ts:13](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L13)
+Defined in: [types.ts:14](https://github.com/ObolNetwork/obol-sdk/blob/02533ab878b3f13dbe6c0029828624f75ecbe185/src/types.ts#L14)
 
 Permitted ChainID's
 
@@ -12,9 +12,9 @@ Permitted ChainID's
 
 | Enumeration Member | Value | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="0x00000000"></a> `0x00000000` | `1` | Mainnet. | [types.ts:15](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L15) |
-| <a id="0x00001020"></a> `0x00001020` | `5` | Goerli/Prater. | [types.ts:18](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L18) |
-| <a id="0x00000064"></a> `0x00000064` | `100` | Gnosis Chain. | [types.ts:21](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L21) |
-| <a id="0x01017000"></a> `0x01017000` | `17000` | Holesky. | [types.ts:24](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L24) |
-| <a id="0x90000069"></a> `0x90000069` | `11155111` | Sepolia. | [types.ts:27](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L27) |
-| <a id="0x10000910"></a> `0x10000910` | `560048` | Hoodi Chain. | [types.ts:30](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/types.ts#L30) |
+| <a id="0x00000000"></a> `0x00000000` | `1` | Mainnet. | [types.ts:16](https://github.com/ObolNetwork/obol-sdk/blob/02533ab878b3f13dbe6c0029828624f75ecbe185/src/types.ts#L16) |
+| <a id="0x00001020"></a> `0x00001020` | `5` | Goerli/Prater. | [types.ts:19](https://github.com/ObolNetwork/obol-sdk/blob/02533ab878b3f13dbe6c0029828624f75ecbe185/src/types.ts#L19) |
+| <a id="0x00000064"></a> `0x00000064` | `100` | Gnosis Chain. | [types.ts:22](https://github.com/ObolNetwork/obol-sdk/blob/02533ab878b3f13dbe6c0029828624f75ecbe185/src/types.ts#L22) |
+| <a id="0x01017000"></a> `0x01017000` | `17000` | Holesky. | [types.ts:25](https://github.com/ObolNetwork/obol-sdk/blob/02533ab878b3f13dbe6c0029828624f75ecbe185/src/types.ts#L25) |
+| <a id="0x90000069"></a> `0x90000069` | `11155111` | Sepolia. | [types.ts:28](https://github.com/ObolNetwork/obol-sdk/blob/02533ab878b3f13dbe6c0029828624f75ecbe185/src/types.ts#L28) |
+| <a id="0x10000910"></a> `0x10000910` | `560048` | Hoodi Chain. | [types.ts:31](https://github.com/ObolNetwork/obol-sdk/blob/02533ab878b3f13dbe6c0029828624f75ecbe185/src/types.ts#L31) |

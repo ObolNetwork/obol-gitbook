@@ -1,7 +1,7 @@
 **@obolnetwork/obol-sdk**
 
 <span className="theme-doc-version-badge badge badge--secondary">
-      <strong>SDK Version:</strong> v2.4.5
+      <strong>SDK Version:</strong> v2.4.6
 </span>
 
 ![Obol Logo](https://obol.org/obolnetwork.png)
@@ -25,7 +25,7 @@ If you're integrating this SDK with a **backend** (e.g., in Node.js), and you st
 
 ## ⚡️ Integration with Safe Wallet
 
-When integrating the Obol SDK with a **Safe Wallet**, you will need to provide the `RPC_MAINNET` or `RPC_HOLESKY` or `RPC_GNOSIS` or `RPC_SEPOLIA` environment variable, pointing to the correct network's RPC URL. This is required to interact with Safe kit.
+When integrating the Obol SDK with a **Safe Wallet**, you can either pass an RPC URL OR provide the `RPC_MAINNET` or `RPC_HOLESKY` or `RPC_GNOSIS` or `RPC_SEPOLIA` environment variable, pointing to the correct network's RPC URL. This is required to interact with Safe kit.
 
 ## Contributing
 
@@ -87,8 +87,10 @@ Thank you for contributing to Obol-SDK!
 - [DepositData](type-aliases/DepositData.md)
 - [DistributedValidator](type-aliases/DistributedValidator.md)
 - [ClusterLock](type-aliases/ClusterLock.md)
+- [ClaimableIncentives](type-aliases/ClaimableIncentives.md)
 - [ETH\_ADDRESS](type-aliases/ETH_ADDRESS.md)
 - [ProviderType](type-aliases/ProviderType.md)
+- [SafeRpcUrl](type-aliases/SafeRpcUrl.md)
 - [SignerType](type-aliases/SignerType.md)
 - [ClaimIncentivesResponse](type-aliases/ClaimIncentivesResponse.md)
 

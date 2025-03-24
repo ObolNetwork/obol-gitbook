@@ -4,7 +4,7 @@
 
 [@obolnetwork/obol-sdk](../index.md) / Incentives
 
-Defined in: [incentives.ts:24](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/incentives.ts#L24)
+Defined in: [incentives.ts:24](https://github.com/ObolNetwork/obol-sdk/blob/02533ab878b3f13dbe6c0029828624f75ecbe185/src/incentives.ts#L24)
 
 **`Internal`**
 
@@ -25,7 +25,7 @@ await obolClient.incentives.claimIncentives(address);
 
 > **claimIncentives**(`address`): `Promise`\<[`ClaimIncentivesResponse`](../type-aliases/ClaimIncentivesResponse.md)\>
 
-Defined in: [incentives.ts:65](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/incentives.ts#L65)
+Defined in: [incentives.ts:65](https://github.com/ObolNetwork/obol-sdk/blob/02533ab878b3f13dbe6c0029828624f75ecbe185/src/incentives.ts#L65)
 
 Claims Obol incentives from a Merkle Distributor contract using an address.
 
@@ -64,7 +64,7 @@ An example of how to use claimIncentives:
 
 > **isClaimed**(`contractAddress`, `index`): `Promise`\<`boolean`\>
 
-Defined in: [incentives.ts:124](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/incentives.ts#L124)
+Defined in: [incentives.ts:124](https://github.com/ObolNetwork/obol-sdk/blob/02533ab878b3f13dbe6c0029828624f75ecbe185/src/incentives.ts#L124)
 
 Read isClaimed.
 
@@ -88,9 +88,9 @@ An example of how to use isClaimed:
 
 ### getIncentivesByAddress()
 
-> **getIncentivesByAddress**(`address`): `Promise`\<`Incentives`\>
+> **getIncentivesByAddress**(`address`): `Promise`\<[`ClaimableIncentives`](../type-aliases/ClaimableIncentives.md)\>
 
-Defined in: [incentives.ts:144](https://github.com/ObolNetwork/obol-sdk/blob/719eeaf64437833b733de7c3e76fdb5a3bef243a/src/incentives.ts#L144)
+Defined in: [incentives.ts:143](https://github.com/ObolNetwork/obol-sdk/blob/02533ab878b3f13dbe6c0029828624f75ecbe185/src/incentives.ts#L143)
 
 #### Parameters
 
@@ -100,7 +100,7 @@ Defined in: [incentives.ts:144](https://github.com/ObolNetwork/obol-sdk/blob/719
 
 #### Returns
 
-`Promise`\<`Incentives`\>
+`Promise`\<[`ClaimableIncentives`](../type-aliases/ClaimableIncentives.md)\>
 
 The matched incentives from DB
 
