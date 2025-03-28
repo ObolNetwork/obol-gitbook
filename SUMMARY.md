@@ -8,7 +8,7 @@
   * [Obol vs Other DV Implementations](learn/intro/obol-vs-others.md)
   * [Obol Splits](learn/intro/obol-splits.md)
   * [DV Launchpad](learn/intro/launchpad.md)
-  * [Frequently Asked Questions](learn/intro/faq.md)
+  * [Frequently Asked Questions](learn/intro/faq.mdx)
 * [Charon](learn/charon/README.md)
   * [Introduction to Charon](learn/charon/intro.md)
   * [Distributed Key Generation](learn/charon/dkg.md)
