@@ -4,17 +4,17 @@ description: Some of the key terms in the field of Distributed Validator Technol
 
 # Obol vs Other DV Implementations
 
-This page outlines the unique features of Obol's DV implemenation, constrasting with other DV implementations. We built Obol’s DVT as a middleware to keep Ethereum secure, resilient, and composable. See also the blog article [Why We Built Charon as a Middleware](https://blog.obol.org/why-we-built-charon-as-a-middleware/).
+This page outlines the unique features of Obol's DV implementation, contrasting with other DV implementations. We built Obol’s DVT as a middleware to keep Ethereum secure, resilient, and composable. See also the blog article [Why We Built Charon as a Middleware](https://blog.obol.org/why-we-built-charon-as-a-middleware/).
 
 <figure><img src="../../.gitbook/assets/image (8) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## No private keys put on chain
 
-Obol's distributed key generation (DKG) event generates key shares for each node within the DV cluster. The entire validator key NEVER exists in one place. Keys are generated locally on the nodes, and can be backed up. The private keys of Obol DVs are NEVER uploaded to the internet or published on-chain.
+Obol's distributed key generation (DKG) event generates key shares for each node within the DV cluster. The entire validator key NEVER exists in one place. Keys are generated locally on the nodes and can be backed up. The private keys of Obol DVs are NEVER uploaded to the internet or published on-chain.
 
 An alternative approach to doing this is to split it into shares, encrypt each share with the public key of a node operator, and publish the encrypted private key on chain. The operators’ node key could then decrypt the validator private key. In our opinion, this is not secure. We believe that the safest approach is to avoid the existence of a singular private key, and certainly never to post any private key to a public blockchain network.
 
-## Cluster independance: Clusters can upgrade independently
+## Cluster independence: Clusters can upgrade independently
 
 In an Obol DV cluster, nodes use LibP2P to communicate directly with each other, and communications are end-to-end encrypted with TLS. Clusters are independent from one another, can run different versions of Charon, and don't need to upgrade together. This means that when a new version of Obol’s Charon is released, Obol DV clusters can upgrade on their own time, individually from other DV clusters. Charon will NEVER require a hard fork or simultaneous updates across clusters for any upgrades.
 
