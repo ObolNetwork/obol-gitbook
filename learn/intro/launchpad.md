@@ -22,7 +22,7 @@ For more information on running Charon in a UI friendly way through the DV Launc
 | ---------------- | -------------------------------------------------------------------------------- |
 | Mainnet          | [https://launchpad.obol.org](https://launchpad.obol.org)                         |
 | Gnosis Chain     | [https://gnosischain.launchpad.obol.org](https://gnosischain.launchpad.obol.org) |
-| Holesky          | h[ttps://holesky.launchpad.obol.org](ttps://holesky.launchpad.obol.org)          |
+| Holesky          | [https://holesky.launchpad.obol.org](https://holesky.launchpad.obol.org)          |
 | Sepolia          | [https://sepolia.launchpad.obol.org](https://sepolia.launchpad.obol.org)         |
 
 ## Operator Dashboard
