@@ -17,7 +17,7 @@ The following sections outline different contracts that can be composed to form 
 
 ### Withdrawal Recipients[​](https://docs.obol.org/learn/intro/obol-splits#withdrawal-recipients) <a href="#withdrawal-recipients" id="withdrawal-recipients"></a>
 
-Validators have two streams of revenue, the consensus layer rewards and the execution layer rewards. Withdrawal Recipients focus on the former, receiving the balance skimming from a validator with >32 ether in an ongoing manner, and receiving the principal of the validator upon exit.
+Validators have two streams of revenue: the consensus layer rewards and the execution layer rewards. Withdrawal Recipients focus on the former, receiving the balance skimming from a validator with >32 ether in an ongoing manner, and receiving the principal of the validator upon exit.
 
 #### Optimistic Withdrawal Recipient[​](https://docs.obol.org/learn/intro/obol-splits#optimistic-withdrawal-recipient) <a href="#optimistic-withdrawal-recipient" id="optimistic-withdrawal-recipient"></a>
 
@@ -36,7 +36,7 @@ This contract **assumes that any ether that has appeared in its address since it
 {% hint style="danger" %}
 Worst-case mass slashings can theoretically exceed 16 ether, if this were to occur, the returned principal would be misclassified as a reward, and distributed to the wrong address. This risk is the drawback that makes this contract variant 'optimistic'. If you intend to use this contract type, **it is important you fully understand and accept this risk**.
 
-The alternative is to use an splits.org [waterfall contract](https://docs.splits.org/core/waterfall), which won't allow the claiming of rewards until all principal ether has been returned, meaning validators need to be exited for operators to claim their CL rewards.
+The alternative is to use a splits.org [waterfall contract](https://docs.splits.org/core/waterfall), which won't allow the claiming of rewards until all principal ether has been returned, meaning validators need to be exited for operators to claim their CL rewards.
 {% endhint %}
 
 This contract fits both design goals and can be used with thousands of validators. It is safe to deploy an Optimistic Withdrawal Recipient with a principal higher than you actually end up using, though you should process the accrued rewards before exiting a validator or the reward recipients will be short-changed as that balance may be counted as principal instead of reward the next time the contract is updated. If you activate more validators than you specified in your contract deployment, you will record too much ether as reward and will overpay your reward address with ether that was principal ether, not earned ether. Current iterations of this contract are not designed for editing the amount of principal set.
@@ -58,7 +58,7 @@ A much awaited feature for proof of stake Ethereum is the ability to trigger the
 
 ### Split Contracts[​](https://docs.obol.org/learn/intro/obol-splits#split-contracts) <a href="#split-contracts" id="split-contracts"></a>
 
-A split, or splitter, is a set of contracts that can divide ether or an ERC20 across a number of addresses. Splits are often used in conjunction with withdrawal recipients. Execution Layer rewards for a DV are directed to a split address through the use of a `fee recipient` address. Splits can be either immutable, or mutable by way of an admin address capable of updating them.
+A split, or splitter, is a set of contracts that can divide ether or an ERC20 across a number of addresses. Splits are often used in conjunction with withdrawal recipients. Execution Layer rewards for a DV are directed to a split address through the use of a `fee recipient` address. Splits can be either immutable or mutable by way of an admin address capable of updating them.
 
 Further information about splits can be found on the splits.org team's [docs site](https://docs.splits.org/). The addresses of their deployments can be found [here](https://docs.splits.org/core/split#addresses).
 
@@ -72,7 +72,7 @@ A [SAFE](https://safe.global/) is a common method to administrate a mutable spli
 
 #### Immutable Split Controller[​](https://docs.obol.org/learn/intro/obol-splits#immutable-split-controller) <a href="#immutable-split-controller" id="immutable-split-controller"></a>
 
-This is a [contract](https://github.com/ObolNetwork/obol-splits/blob/main/src/controllers/ImmutableSplitController.sol) that updates one split configuration with another, exactly once. Only a permissioned address can trigger the change. This contract is suitable for changing a split at an unknown point in future to a configuration pre-defined at deployment.
+This is a [contract](https://github.com/ObolNetwork/obol-splits/blob/main/src/controllers/ImmutableSplitController.sol) that updates one split configuration with another, exactly once. Only a permissioned address can trigger the change. This contract is suitable for changing a split at an unknown point in the future to a configuration pre-defined at deployment.
 
 The Immutable Split Controller [factory contract](https://github.com/ObolNetwork/obol-splits/blob/main/src/controllers/ImmutableSplitControllerFactory.sol) can be found at the following addresses:
 
