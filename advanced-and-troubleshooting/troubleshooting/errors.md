@@ -70,6 +70,12 @@ Using 3rd party services like Infura's beacon node API has significant disadvant
 
 ## Charon Errors
 
+### `Can't connect to Beacon API`
+
+If you are running EL and CL outside Obol on the same machine, you might need to open ports in your firewall to allow connections incoming from the docker instance.
+In order to know the IP of the docker network, run:
+`docker network inspect <NETWORK ID>`
+
 ### `Attester failed in consensus component`
 
 The required number of operators defined in your cluster-lock file is
