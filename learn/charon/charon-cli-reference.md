@@ -236,7 +236,7 @@ Flags:
 
 ## The `exit` command
 
-A running Charon client will [aggregate and broadcast](../../run/running/quickstart-exit.mdx) signed exit messages it receives from its valdiator client immediately. These `exit` commands are instead used to _pre-sign_ exit messages for an active distributed validator, to save to disk, or to broadcast; once enough of the operators of the cluster have submitted their partial exit signatures. Fully signed exit messages give a user or protocol a guarantee that they can exit an active validator at any point in future without the further assistance of the cluster's operators. In future, [execution-layer initiated exits](https://eips.ethereum.org/EIPS/eip-7002) will provide an even stronger guarantee that a validator can be exited by the withdrawal address it belongs to.
+A running Charon client will [aggregate and broadcast](../../run/running/quickstart-exit.mdx) signed exit messages it receives from its validator client immediately. These `exit` commands are instead used to _pre-sign_ exit messages for an active distributed validator, to save to disk, or to broadcast; once enough of the operators of the cluster have submitted their partial exit signatures. Fully signed exit messages give a user or protocol a guarantee that they can exit an active validator at any point in future without the further assistance of the cluster's operators. In future, [execution-layer initiated exits](https://eips.ethereum.org/EIPS/eip-7002) will provide an even stronger guarantee that a validator can be exited by the withdrawal address it belongs to.
 
 ```markdown
 charon exit --help
@@ -579,7 +579,7 @@ Flags:
       --peers-lock-file string                        The path to the cluster lock file defining the distributed validator cluster.
       --peers-private-key-file string                 The path to the charon enr private key file. (default ".charon/charon-enr-private-key")
       --quiet                                         Do not print test results to stdout.
-      --test-cases strings                            List of comma separated names of tests to be exeucted. Available tests are: [DirectConn Ping PingMeasure PingLoad Libp2pTCPPortOpen PingMeasureRelay PingRelay Ping PingLoad Simulate500 Simulate1000 SimulateCustom PingMeasure Version Synced PeerCount Simulate1 Simulate10 Simulate100 Ping PingMeasure PingLoad Ping PingMeasure CreateBlock DiskWriteSpeed DiskReadSpeed AvailableMemory TotalMemory InternetLatency InternetDownloadSpeed InternetUploadSpeed DiskWriteIOPS DiskReadIOPS]
+      --test-cases strings                            List of comma separated names of tests to be executed. Available tests are: [DirectConn Ping PingMeasure PingLoad Libp2pTCPPortOpen PingMeasureRelay PingRelay Ping PingLoad Simulate500 Simulate1000 SimulateCustom PingMeasure Version Synced PeerCount Simulate1 Simulate10 Simulate100 Ping PingMeasure PingLoad Ping PingMeasure CreateBlock DiskWriteSpeed DiskReadSpeed AvailableMemory TotalMemory InternetLatency InternetDownloadSpeed InternetUploadSpeed DiskWriteIOPS DiskReadIOPS]
       --timeout duration                              Execution timeout for all tests. (default 1h0m0s)
       --validator-load-test-duration duration         Time to keep running the load tests in seconds. For each second a new continuous ping instance is spawned. (default 5s)
       --validator-validator-api-address string        Listening address (ip and port) for validator-facing traffic proxying the beacon-node API. (default "127.0.0.1:3600")
