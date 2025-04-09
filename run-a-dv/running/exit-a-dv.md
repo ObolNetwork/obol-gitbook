@@ -21,7 +21,7 @@ As per your preferences, choose the correct combination of -
 
 1. **Network** : Mainnet or Holesky
 2. **Exit Type** : Hosted (Charon) or Non-hosted (Validator client)
-3. **Validator Quanity**: Exit single or Exit all validators:&#x20;
+3. **Validator Quanity**: Exit single or Exit all validators:
 
 {% tabs %}
 {% tab title="Holesky" %}
@@ -29,7 +29,7 @@ As per your preferences, choose the correct combination of -
 {% tab title="Charon" %}
 Voluntary exit can be submitted directly through Charon. This approach is validator client agnostic as Charon abstracts validator client's native exit commands underneath.
 
-### Step 1: Submit partial exit <a href="#introduction" id="introduction"></a>
+#### Step 1: Submit partial exit <a href="#introduction" id="introduction"></a>
 
 {% tabs %}
 {% tab title="Single Validator" %}
@@ -59,8 +59,7 @@ docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon ex
 
 **Step 2: Monitor the Partial Exits' status**
 
-After a threshold of signed partial exits from node operators in the cluster is accumulated, a full (complete) exit can be created. For example, in the cluster below, only 2 out of 4 clusters have reached the threshold. Operators will have to wait for one more partial exit signature, either from operator 1 or 3 to create a full exit message.\
-
+After a threshold of signed partial exits from node operators in the cluster is accumulated, a full (complete) exit can be created. For example, in the cluster below, only 2 out of 4 clusters have reached the threshold. Operators will have to wait for one more partial exit signature, either from operator 1 or 3 to create a full exit message.\\
 
 <figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -192,30 +191,26 @@ docker exec -it charon-distributed-validator-node-teku-1 /opt/teku/bin/teku volu
 
 Consult the examples below and compare them to your validator's monitoring to verify that exits from each operator in the cluster are being received. This example is a cluster of 4 nodes with 2 validators and threshold of 3 nodes broadcasting exits are needed.
 
-1.  Operator 1 broadcasts an exit on validator client 1.  \
-    \
-
+1.  Operator 1 broadcasts an exit on validator client 1.\
+    \\
 
     <figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
-2.  Operator 2 broadcasts an exit on validator client 2.  \
-    \
-
+2.  Operator 2 broadcasts an exit on validator client 2.\
+    \\
 
     <figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
-3.  Operator 3 broadcasts an exit on validator client 3.  \
-    \
-
+3.  Operator 3 broadcasts an exit on validator client 3.\
+    \\
 
     <figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
-At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following: \
-
+At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following: \\
 
 <figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
@@ -263,23 +258,23 @@ cp -r /home/user/data/node0/ /home/user/data/wd/; \
 
 Consult the examples below and compare them to your validator's monitoring to verify that exits from each operator in the cluster are being received. This example is a cluster of 4 nodes with 2 validators and threshold of 3 nodes broadcasting exits are needed.
 
-1.  Operator 1 broadcasts an exit on validator client 1. &#x20;
+1.  Operator 1 broadcasts an exit on validator client 1.
 
     <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-01-7266f9324d942a47c7966bf2f036f167.png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="https://docs.obol.org/assets/images/DutyExit-01-cc29cb51c323e290f8ceec9c0256f574.png" alt=""><figcaption></figcaption></figure>
-2.  Operator 2 broadcasts an exit on validator client 2. &#x20;
+2.  Operator 2 broadcasts an exit on validator client 2.
 
     <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-02-9592e27d4d27ab70911856badffa662a.png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="https://docs.obol.org/assets/images/DutyExit-02-560e45e9e4064f1ca26a0386f8d7ec16.png" alt=""><figcaption></figcaption></figure>
-3.  Operator 3 broadcasts an exit on validator client 3. &#x20;
+3.  Operator 3 broadcasts an exit on validator client 3.
 
     <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-03-d2adbd3dec918750799fe3f07309bed3.png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="https://docs.obol.org/assets/images/DutyExit-03-12edb85f9744e0ff91264177f37fb753.png" alt=""><figcaption></figcaption></figure>
 
-At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:&#x20;
+At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
 <figure><img src="https://docs.obol.org/assets/images/ExitLogs-04a7bf322d265372eac30d3671bd916b.png" alt=""><figcaption></figcaption></figure>
 
@@ -294,29 +289,25 @@ Once a validator has broadcasted an exit message, it must continue to validate f
 Consult the examples below and compare them to your validator's monitoring to verify that exits from each operator in the cluster are being received. This example is a cluster of 4 nodes with 2 validators and threshold of 3 nodes broadcasting exits are needed.
 
 1.  Operator 1 broadcasts an exit on validator client 1.\
-    \
-
+    \\
 
     <figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
-2.  Operator 2 broadcasts an exit on validator client 2.  \
-    \
-
+2.  Operator 2 broadcasts an exit on validator client 2.\
+    \\
 
     <figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
-3.  Operator 3 broadcasts an exit on validator client 3.  \
-    \
-
+3.  Operator 3 broadcasts an exit on validator client 3.\
+    \\
 
     <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
-At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following: \
-
+At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following: \\
 
 <figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
@@ -363,26 +354,23 @@ docker exec -it charon-distributed-validator-node-lodestar-1 node /usr/app/packa
 
 Consult the examples below and compare them to your validator's monitoring to verify that exits from each operator in the cluster are being received. This example is a cluster of 4 nodes with 2 validators and threshold of 3 nodes broadcasting exits are needed.
 
-1.  Operator 1 broadcasts an exit on validator client 1.\
-
+1.  Operator 1 broadcasts an exit on validator client 1.\\
 
     <figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
-2.  Operator 2 broadcasts an exit on validator client 2.  \
-
+2.  Operator 2 broadcasts an exit on validator client 2. \\
 
     <figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
-3.  Operator 3 broadcasts an exit on validator client 3.  \
-
+3.  Operator 3 broadcasts an exit on validator client 3. \\
 
     <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
-At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:&#x20;
+At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
 <figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
@@ -445,26 +433,23 @@ done;'
 
 Consult the examples below and compare them to your validator's monitoring to verify that exits from each operator in the cluster are being received. This example is a cluster of 4 nodes with 2 validators and threshold of 3 nodes broadcasting exits are needed.
 
-1.  Operator 1 broadcasts an exit on validator client 1.\
-
+1.  Operator 1 broadcasts an exit on validator client 1.\\
 
     <figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
-2.  Operator 2 broadcasts an exit on validator client 2.  \
-
+2.  Operator 2 broadcasts an exit on validator client 2. \\
 
     <figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
-3.  Operator 3 broadcasts an exit on validator client 3.  \
-
+3.  Operator 3 broadcasts an exit on validator client 3. \\
 
     <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
-At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:&#x20;
+At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
 <figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
@@ -482,7 +467,7 @@ Once a validator has broadcasted an exit message, it must continue to validate f
 {% endtab %}
 
 {% tab title="DappNode" %}
-### Exit a distributed validator using DappNode
+#### Exit a distributed validator using DappNode
 
 1.  Navigate to the config tab of your Obol DappNode package. Click 'Packages', then click 'My Packages', and enter the Obol package. Go to the config tab. At the bottom right corner of the page, click on 'Show Advanced Editor'.
 
@@ -539,7 +524,7 @@ docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon ex
 
 After a threshold of signed partial exits from node operators in the cluster is accumulated, a full (complete) exit can be created. For example, in the cluster below, only 2 out of 4 clusters have reached the threshold. Operators will have to wait for one more partial exit signature, either from operator 1 or 3 to create a full exit message.
 
-<figure><img src="https://docs.obol.org/img/PartialExitsStatus.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/spaces_XeyaDcGpivHZJ18c2xxu_uploads_git-blob-9d5df062b767cf6cefe35e34437b25b1a0104f47_image (1).png" alt=""><figcaption></figcaption></figure>
 
 **Step 3: Broadcast the full exit**
 
@@ -669,23 +654,23 @@ docker exec -it charon-distributed-validator-node-teku-1 /opt/teku/bin/teku volu
 
 Consult the examples below and compare them to your validator's monitoring to verify that exits from each operator in the cluster are being received. This example is a cluster of 4 nodes with 2 validators and threshold of 3 nodes broadcasting exits are needed.
 
-1.  Operator 1 broadcasts an exit on validator client 1. &#x20;
+1.  Operator 1 broadcasts an exit on validator client 1.
 
     <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-01-7266f9324d942a47c7966bf2f036f167.png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="https://docs.obol.org/assets/images/DutyExit-01-cc29cb51c323e290f8ceec9c0256f574.png" alt=""><figcaption></figcaption></figure>
-2.  Operator 2 broadcasts an exit on validator client 2. &#x20;
+2.  Operator 2 broadcasts an exit on validator client 2.
 
     <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-02-9592e27d4d27ab70911856badffa662a.png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="https://docs.obol.org/assets/images/DutyExit-02-560e45e9e4064f1ca26a0386f8d7ec16.png" alt=""><figcaption></figcaption></figure>
-3.  Operator 3 broadcasts an exit on validator client 3. &#x20;
+3.  Operator 3 broadcasts an exit on validator client 3.
 
     <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-03-d2adbd3dec918750799fe3f07309bed3.png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="https://docs.obol.org/assets/images/DutyExit-03-12edb85f9744e0ff91264177f37fb753.png" alt=""><figcaption></figcaption></figure>
 
-At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:&#x20;
+At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
 <figure><img src="https://docs.obol.org/assets/images/ExitLogs-04a7bf322d265372eac30d3671bd916b.png" alt=""><figcaption></figcaption></figure>
 
@@ -735,23 +720,23 @@ cp -r /home/user/data/node0/ /home/user/data/wd/; \
 
 Consult the examples below and compare them to your validator's monitoring to verify that exits from each operator in the cluster are being received. This example is a cluster of 4 nodes with 2 validators and threshold of 3 nodes broadcasting exits are needed.
 
-1.  Operator 1 broadcasts an exit on validator client 1. &#x20;
+1.  Operator 1 broadcasts an exit on validator client 1.
 
     <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-01-7266f9324d942a47c7966bf2f036f167.png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="https://docs.obol.org/assets/images/DutyExit-01-cc29cb51c323e290f8ceec9c0256f574.png" alt=""><figcaption></figcaption></figure>
-2.  Operator 2 broadcasts an exit on validator client 2. &#x20;
+2.  Operator 2 broadcasts an exit on validator client 2.
 
     <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-02-9592e27d4d27ab70911856badffa662a.png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="https://docs.obol.org/assets/images/DutyExit-02-560e45e9e4064f1ca26a0386f8d7ec16.png" alt=""><figcaption></figcaption></figure>
-3.  Operator 3 broadcasts an exit on validator client 3. &#x20;
+3.  Operator 3 broadcasts an exit on validator client 3.
 
     <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-03-d2adbd3dec918750799fe3f07309bed3.png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="https://docs.obol.org/assets/images/DutyExit-03-12edb85f9744e0ff91264177f37fb753.png" alt=""><figcaption></figcaption></figure>
 
-At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:&#x20;
+At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
 <figure><img src="https://docs.obol.org/assets/images/ExitLogs-04a7bf322d265372eac30d3671bd916b.png" alt=""><figcaption></figcaption></figure>
 
@@ -798,23 +783,23 @@ docker exec -it charon-distributed-validator-node-lodestar-1 node /usr/app/packa
 
 Consult the examples below and compare them to your validator's monitoring to verify that exits from each operator in the cluster are being received. This example is a cluster of 4 nodes with 2 validators and threshold of 3 nodes broadcasting exits are needed.
 
-1.  Operator 1 broadcasts an exit on validator client 1. &#x20;
+1.  Operator 1 broadcasts an exit on validator client 1.
 
     <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-01-7266f9324d942a47c7966bf2f036f167.png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="https://docs.obol.org/assets/images/DutyExit-01-cc29cb51c323e290f8ceec9c0256f574.png" alt=""><figcaption></figcaption></figure>
-2.  Operator 2 broadcasts an exit on validator client 2. &#x20;
+2.  Operator 2 broadcasts an exit on validator client 2.
 
     <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-02-9592e27d4d27ab70911856badffa662a.png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="https://docs.obol.org/assets/images/DutyExit-02-560e45e9e4064f1ca26a0386f8d7ec16.png" alt=""><figcaption></figcaption></figure>
-3.  Operator 3 broadcasts an exit on validator client 3. &#x20;
+3.  Operator 3 broadcasts an exit on validator client 3.
 
     <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-03-d2adbd3dec918750799fe3f07309bed3.png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="https://docs.obol.org/assets/images/DutyExit-03-12edb85f9744e0ff91264177f37fb753.png" alt=""><figcaption></figcaption></figure>
 
-At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:&#x20;
+At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
 <figure><img src="https://docs.obol.org/assets/images/ExitLogs-04a7bf322d265372eac30d3671bd916b.png" alt=""><figcaption></figcaption></figure>
 
@@ -877,23 +862,23 @@ done;'
 
 Consult the examples below and compare them to your validator's monitoring to verify that exits from each operator in the cluster are being received. This example is a cluster of 4 nodes with 2 validators and threshold of 3 nodes broadcasting exits are needed.
 
-1.  Operator 1 broadcasts an exit on validator client 1. &#x20;
+1.  Operator 1 broadcasts an exit on validator client 1.
 
     <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-01-7266f9324d942a47c7966bf2f036f167.png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="https://docs.obol.org/assets/images/DutyExit-01-cc29cb51c323e290f8ceec9c0256f574.png" alt=""><figcaption></figcaption></figure>
-2.  Operator 2 broadcasts an exit on validator client 2. &#x20;
+2.  Operator 2 broadcasts an exit on validator client 2.
 
     <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-02-9592e27d4d27ab70911856badffa662a.png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="https://docs.obol.org/assets/images/DutyExit-02-560e45e9e4064f1ca26a0386f8d7ec16.png" alt=""><figcaption></figcaption></figure>
-3.  Operator 3 broadcasts an exit on validator client 3. &#x20;
+3.  Operator 3 broadcasts an exit on validator client 3.
 
     <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-03-d2adbd3dec918750799fe3f07309bed3.png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="https://docs.obol.org/assets/images/DutyExit-03-12edb85f9744e0ff91264177f37fb753.png" alt=""><figcaption></figcaption></figure>
 
-At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:&#x20;
+At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
 <figure><img src="https://docs.obol.org/assets/images/ExitLogs-04a7bf322d265372eac30d3671bd916b.png" alt=""><figcaption></figcaption></figure>
 
@@ -907,21 +892,15 @@ Currently voluntary exits through Prysm are not supported. This is because [Prys
 {% endtab %}
 
 {% tab title="DappNode" %}
-### Exit a distributed validator using DappNode
+#### Exit a distributed validator using DappNode
 
 1.  Navigate to the config tab of your Obol DappNode package. Click 'Packages', then click 'My Packages', and enter the Obol package. Go to the config tab. At the bottom right corner of the page, click on 'Show Advanced Editor'.
-
-
 
     <figure><img src="https://docs.obol.org/img/ConfigTabExit.png" alt=""><figcaption></figcaption></figure>
 2.  The advanced editor config page provides ENV configs for each validator. Scroll to the validator number you want to exit and type “true” in the column opposite SIGN\_EXIT.
 
-
-
     <figure><img src="https://docs.obol.org/img/TypeTrue.png" alt=""><figcaption></figcaption></figure>
 3.  Scroll to the bottom of the page and click the 'update' button for the changes to take effect.
-
-
 
     <figure><img src="https://docs.obol.org/img/ExitUpdate.png" alt=""><figcaption></figcaption></figure>
 4. Check your logs to confirm the exit process has started.
@@ -947,4 +926,3 @@ Up until this epoch (while "in the queue") your validator is expected to be onli
 {% endhint %}
 
 2. Withdrawable epoch - epoch at which your validator funds are eligible for a full withdrawal during the next validator sweep. This occurs 256 epochs after the exit epoch, which takes \~27.3 hours.
-
