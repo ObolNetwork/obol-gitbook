@@ -6,7 +6,7 @@ Prepared by: Zach Obront, Independent Security Researcher
 
 Date: Sept 18 to 22, 2023
 
-[PDF Version](https://github.com/ObolNetwork/obol-splits/blob/main/audit/Obol%20Audit%20Report.pdf)
+[PDF Version](https://github.com/ObolNetwork/obol-splits/blob/main/audit/2023%20-%20Obol%20Splits%20V1%20Audit%20-%20Zach%20Obront.pdf)
 
 ### About **Obol**[​](https://docs.obol.org/next/adv/security/smart_contract_audit#about-obol) <a href="#about-obol" id="about-obol"></a>
 

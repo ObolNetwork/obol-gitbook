@@ -26,6 +26,7 @@ The completed audits reports are linked [here](https://github.com/ObolNetwork/ob
 * A second [assessment of Charon](https://obol.tech/charon_quantstamp_assessment.pdf) by [QuantStamp](https://quantstamp.com/) resulting in version [`v0.19.1`](https://github.com/ObolNetwork/charon/releases/tag/v0.19.1).
 * A [solidity audit](../../adv/security/smart_contract_audit/) of the Obol Splits contracts by [Zach Obront](https://zachobront.com/).
 * A [penetration testing certificate](https://github.com/ObolNetwork/obol-security/blob/main/audits/Sayfer_2024-03_Penetration_Testing_CFD.pdf) of the Obol DV Launchpad by [Sayfer](https://sayfer.io/).
+* A second [solidity audit](https://github.com/ObolNetwork/obol-splits/blob/main/audit/2025%20-%20Obol%20Splits%20V2%20Audit%20-%20Nethermind.pdf) by [Nethermind](https://nethermind.io).
 
 ## Security focused documents
 
