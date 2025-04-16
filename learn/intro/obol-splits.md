@@ -13,7 +13,7 @@ Key Design Principles the Obol Smart Contract suite include are:
 - They do not require a token to function.
 - They are oracle-free. (Unless you intend to leverage a [swapper](https://docs.splits.org/core/swapper)).
 - They divide the reward ether from principal ether such that staking providers can be paid a percentage of the _reward_ they accrue for the principal provider rather than a percentage of _principal and reward_.
-- That rewards can be withdrawn in an ongoing manner without exiting the validator. (Some conditions apply)
+- That rewards can be withdrawn in an ongoing manner without exiting the validator. (Some conditions apply).
 
 ## Obol Validator Managers[​](https://docs.obol.org/learn/intro/obol-splits#withdrawal-recipients)
 
@@ -224,7 +224,7 @@ In this case, the OVM contract will not have recorded the deposit as principal t
 
 #### What is the principal threshold for?
 
-Determining if Ether returned from a validator is principal deposited or rewards accrued is difficult. Rather than introducing an off-chain proof system, or trusted oracle, Obol Splits adopt an assumption that a mass slashing so severe that the principal returned is less than 16 eth is very rare, and the outcome that would happen in that case is the rewards would be sent to the reward rather than principal address, an accepted risk. This however does impact reward claiming on very large 0x02 validators. A validator could have earned 20 ether in rewards, and if a request for withdrawal of 20 ether is processed, it would be subtracted from principal and disbursed to the principal recipient, and upon a full exit, the remaining eth beyond the principal would be sent to the rewards address. To avoid this, entities with the `WITHDRAWAL_ROLE` should withdraw increments less than the `principalThreshold` if they want it treated as reward, and more than principalThreshold if they want to process it as a direct exit.
+Determining if Ether returned from a validator is principal deposited or rewards accrued is difficult. Rather than introducing an off-chain proof system, or trusted oracle, Obol Splits adopt an assumption that a mass slashing so severe that the principal returned is less than 16 eth is very rare, and the outcome that would happen in that case is the rewards would be sent to the reward rather than principal address, an accepted risk. This however does impact reward claiming on very large 0x02 validators. A validator could have earned 20 ether in rewards, and if a request for withdrawal of 20 ether is processed, it would be subtracted from principal and disbursed to the principal recipient, and upon a full exit, the remaining eth beyond the principal would be sent to the rewards address. To avoid this, entities with the `WITHDRAWAL_ROLE` should withdraw increments less than the `principalThreshold` if they want it treated as reward, and more than `principalThreshold` if they want to process it as a direct exit.
 
 ### Can I change the percentages in a split?
 
@@ -248,7 +248,6 @@ No. Any address can trigger the contracts to distribute the withdrawn/skimmed et
 
 ### Are there any edge cases I should be aware of when using Obol Splits?
 
-The most important decision is to be aware of whether or not the Split contract you are using has been set up with editability
 The most important thing to be aware of is what address is the owner of the Obol Validator Manager, whether it has assigned any other addresses any roles, and whether or not the Split contract you are using has been set up with editability and by which address. If a splitter is editable, you should understand what the address that can edit the split does. Is the editor an EOA? Who controls that address? How secure is their seed phrase? Is it a smart contract? What can that contract do? Can the controller contract be upgraded? etc. Generally, the safest thing in Obol's perspective is to use a high threshold multi-sign like a SAFE as the `owner`/`controller`, or to renounce ownership and control entirely, and if in future you are unhappy with the configuration, that you exit the validator and create a fresh cluster with new settings that fit your needs.
 
 Another aspect to be aware of is how the splitting of principal from rewards works using the Optimistic Withdrawal Recipient contract. There are edge cases relating to not calling the contracts periodically or ahead of a withdrawal, activating more validators than the contract was configured for, and a worst case mass slashing on the network. Consult the documentation on the contract [here](../../learn/intro/obol-splits.md#optimistic-withdrawal-recipient), its audit [here](../../adv/security/smart_contract_audit.mdx), and follow up with the core team if you have further questions.
