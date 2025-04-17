@@ -15,7 +15,7 @@ We use the "Multiple Compose File" feature which provides a very powerful way to
 
 There are some additional compose files in [this repository](https://github.com/ObolNetwork/charon-distributed-validator-node/), `compose-debug.yml` and `docker-compose.override.yml.sample`, along-with the default `docker-compose.yml` file that you can use for this purpose.
 
-* `compose-debug.yml` contains some additional containers that developers can use for debugging, like `jaeger`. To achieve this, you can run:
+* `compose-debug.yml` contains some additional containers that developers can use for debugging, like `tempo`. To achieve this, you can run:
 
 ```shell
 docker compose -f docker-compose.yml -f compose-debug.yml up
