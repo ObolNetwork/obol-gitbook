@@ -203,8 +203,6 @@ Flags:
       --graffiti strings                      Comma-separated list or single graffiti string to include in block proposals. List maps to validator's public key in cluster lock. Appends "OB<CL_TYPE>" suffix to graffiti. Maximum 28 bytes per graffiti.
       --graffiti-disable-client-append        Disables appending "OB<CL_TYPE>" suffix to graffiti. Increases maximum bytes per graffiti to 32.
   -h, --help                                  Help for run
-      --jaeger-address string                 Listening address for jaeger tracing.
-      --jaeger-service string                 Service name used for jaeger tracing. (default "charon")
       --lock-file string                      The path to the cluster lock file defining the distributed validator cluster. If both cluster manifest and cluster lock files are provided, the cluster manifest file takes precedence. (default ".charon/cluster-lock.json")
       --log-color string                      Log color; auto, force, disable. (default "auto")
       --log-format string                     Log format; console, logfmt or json (default "console")
@@ -216,6 +214,8 @@ Flags:
       --monitoring-address string             Listening address (ip and port) for the monitoring API (prometheus). (default "127.0.0.1:3620")
       --nickname string                          Human friendly peer nickname. Maximum 32 characters.
       --no-verify                             Disables cluster definition and lock file verification.
+      --otlp-address string                   Listening address for OTLP gRPC tracing backend.
+      --otlp-service-name string              Service name used for OTLP gRPC tracing. (default "charon")
       --p2p-disable-reuseport                 Disables TCP port reuse for outgoing libp2p connections.
       --p2p-external-hostname string          The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
       --p2p-external-ip string                The IP address advertised by libp2p. This may be used to advertise an external IP.
