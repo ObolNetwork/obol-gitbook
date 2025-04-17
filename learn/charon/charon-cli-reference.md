@@ -200,8 +200,6 @@ Flags:
       --feature-set-disable strings           Comma-separated list of features to disable, overriding the default minimum feature set.
       --feature-set-enable strings            Comma-separated list of features to enable, overriding the default minimum feature set.
   -h, --help                                  Help for run
-      --jaeger-address string                 Listening address for jaeger tracing.
-      --jaeger-service string                 Service name used for jaeger tracing. (default "charon")
       --lock-file string                      The path to the cluster lock file defining the distributed validator cluster. If both cluster manifest and cluster lock files are provided, the cluster manifest file takes precedence. (default ".charon/cluster-lock.json")
       --log-color string                      Log color; auto, force, disable. (default "auto")
       --log-format string                     Log format; console, logfmt or json (default "console")
@@ -212,6 +210,8 @@ Flags:
       --manifest-file string                  The path to the cluster manifest file. If both cluster manifest and cluster lock files are provided, the cluster manifest file takes precedence. (default ".charon/cluster-manifest.pb")
       --monitoring-address string             Listening address (ip and port) for the monitoring API (prometheus). (default "127.0.0.1:3620")
       --no-verify                             Disables cluster definition and lock file verification.
+      --otlp-address string                   Listening address for OTLP gRPC tracing backend.
+      --otlp-service-name string              Service name used for OTLP gRPC tracing. (default "charon")
       --p2p-disable-reuseport                 Disables TCP port reuse for outgoing libp2p connections.
       --p2p-external-hostname string          The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
       --p2p-external-ip string                The IP address advertised by libp2p. This may be used to advertise an external IP.
