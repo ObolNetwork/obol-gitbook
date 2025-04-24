@@ -7,8 +7,7 @@ description: >-
 
 ## Securing VC to Charon communication
 
-To secure the communication between the Validator Client and Charon, you can enable the TLS protocol in Charon's HTTP server. This only affects [Beacon API](https://ethereum.github.io/beacon-APIs/) endpoints and not debug/metrics endpoints. As an operator of such the node, you need to have a TLS certificate and a private key that signed this certificate or CSR. Then you need to configure Charon to use them.
-
+To secure the communication between the Validator Client and Charon, you can enable the TLS protocol in Charon's HTTP server. This only affects [Beacon API](https://ethereum.github.io/beacon-APIs/) endpoints and not debug/metrics endpoints. As an operator of the node, you need to have a TLS certificate and a private key that signed this certificate or CSR. Then you need to configure Charon to use them.
 ## Usage example
 
 Suppose we don't have a TLS certificate and a key yet. We can create a self-signed certificate and a key using OpenSSL:
