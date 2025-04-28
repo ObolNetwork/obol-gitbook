@@ -11,8 +11,4 @@ The `--graffiti` flag accepts either:
 - A single string, which will be used by all validators, or
 - A comma-separated list of strings, allowing each validator to have a unique graffiti (one string per validator).
 
-When possible, Charon automatically appends a Obol signature (`OB`) and the specific consensus client type used  (`<CL_TYPE>`) to the end of the custom graffiti. This behavior can be disabled by setting the `--graffiti-disable-client-append` flag.
-
-{% hint style="info" %}
-The graffiti field in block proposals has a maximum size of 32 bytes..
-{% endhint %}
+Each graffiti has a maximum length of 28 bytes to leave room for a Charon to append a suffix containing the Obol signature, `OB`, and the specific consensus client type used, `<CL_TYPE>`. This behavior can be disabled by setting the `--graffiti-disable-client-append` flag which also increases the maximum graffit length to 32 bytes.
