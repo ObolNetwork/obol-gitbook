@@ -196,9 +196,12 @@ Flags:
       --beacon-node-timeout duration          Timeout for the HTTP requests Charon makes to the configured beacon nodes. (default 2s)
       --builder-api                           Enables the builder api. Will only produce builder blocks. Builder API must also be enabled on the validator client. Beacon node must be connected to a builder-relay to access the builder network.
       --debug-address string                  Listening address (ip and port) for the pprof and QBFT debug API. It is not enabled by default.
+      --fallback-beacon-node-endpoints strings   A list of beacon nodes to use if the primary list are offline or unhealthy.
       --feature-set string                    Minimum feature set to enable by default: alpha, beta, or stable. Warning: modify at own risk. (default "stable")
       --feature-set-disable strings           Comma-separated list of features to disable, overriding the default minimum feature set.
       --feature-set-enable strings            Comma-separated list of features to enable, overriding the default minimum feature set.
+      --graffiti strings                      Comma-separated list or single graffiti string to include in block proposals. List maps to validator's public key in cluster lock. Appends "OB<CL_TYPE>" suffix to graffiti. Maximum 28 bytes per graffiti.
+      --graffiti-disable-client-append        Disables appending "OB<CL_TYPE>" suffix to graffiti. Increases maximum bytes per graffiti to 32.
   -h, --help                                  Help for run
       --jaeger-address string                 Listening address for jaeger tracing.
       --jaeger-service string                 Service name used for jaeger tracing. (default "charon")
@@ -211,6 +214,7 @@ Flags:
       --loki-service string                   Service label sent with logs to Loki. (default "charon")
       --manifest-file string                  The path to the cluster manifest file. If both cluster manifest and cluster lock files are provided, the cluster manifest file takes precedence. (default ".charon/cluster-manifest.pb")
       --monitoring-address string             Listening address (ip and port) for the monitoring API (prometheus). (default "127.0.0.1:3620")
+      --nickname string                          Human friendly peer nickname. Maximum 32 characters.
       --no-verify                             Disables cluster definition and lock file verification.
       --p2p-disable-reuseport                 Disables TCP port reuse for outgoing libp2p connections.
       --p2p-external-hostname string          The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
