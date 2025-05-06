@@ -49,6 +49,7 @@ Below are listed types of Token House Proposals. Each has a two-week review peri
 |         Work agreements         |                     Formal arrangements between the Obol Association and contributors, teams, or organizations tasked with advancing specific initiatives or responsibilities within the ecosystem                    | Forum proposal + On-Chain Voting                        |
 | Veto on the Obol RAF operations | The veto mechanism serves as a safeguard against decisions or actions within the RAF operations that are misaligned with the mission of decentralization, transparency, or the collective interests of the community. | Forum proposal + On-Chain Voting                        |
 |        Protocol upgrades        |                                                           Scheduled changes to the on-chain smart contracts comprising the protocol or governance contracts.                                                          | Forum proposal + On-Chain Voting                        |
+|           SQUAD Goals           |                                  It reflects the aim of establishing shared, strategic, and community-driven objectives. Goals are set annually, with each cycle beginning in April.                                  | Forum proposal + On-Chain Voting                        |
 
 ### Weeks 1-2: Feedback and Review
 

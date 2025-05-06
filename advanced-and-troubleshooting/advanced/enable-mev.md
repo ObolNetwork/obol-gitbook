@@ -140,7 +140,7 @@ When your cluster is running, you should see if Charon is logging something like
 
 This indicates that your Charon node is successfully registering with the relay for a blinded block when the time comes.
 
-If you are using the [ultrasound relay](https://relay.ultrasound.money/), you can enter your cluster's distributed validator public key(s) into their website, to confirm they also see the validator as correctly registered.
+If you are using the [Ultrasound Relay](https://relay.ultrasound.money/), you can enter your cluster's distributed validator public key(s) into their website, to confirm they also see the validator as correctly registered. If you are using [Titan Relay](https://titanrelay.xyz), you can check their API by running `curl https://titanrelay.xyz/relay/v1/data/validator_registration?pubkey=0x123..456` with the public key of a validator in your cluster.
 
 You should check that your validator client's logs look healthy, and ensure that you haven't added a `fee-recipient` address that conflicts with what has been selected by your cluster in your `cluster-lock.json` file, as that may prevent your validator from producing a signature for the block when the opportunity arises. You should also confirm the same for all of the other peers in your cluster.
 

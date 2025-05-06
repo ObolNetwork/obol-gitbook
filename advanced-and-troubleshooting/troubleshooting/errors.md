@@ -24,7 +24,7 @@ docker compose logs
 
 `cd` to the directory where your private keys are located (ex: `cd /path/to/charon/enr/private/key`)
 
-Run `docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.2.0 enr`. This prints the ENR on your screen.
+Run `docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.4.0 enr`. This prints the ENR on your screen.
 
 ### What do I do if lose my `charon-enr-private-key`?
 
@@ -69,6 +69,12 @@ A good quality beacon node API is critical to validator performance. It is alway
 Using 3rd party services like Infura's beacon node API has significant disadvantages since the quality is often low. Requests often return 500s or timeout. This results in lots of warnings and errors and failed duties. Running a local beacon node is always preferred.
 
 ## Charon Errors
+
+### `Can't connect to Beacon API`
+
+If you are running EL and CL outside Obol on the same machine, you might need to open ports in your firewall to allow connections incoming from the docker instance.
+In order to know the IP of the docker network, run:
+`docker network inspect <NETWORK ID>`
 
 ### `Attester failed in consensus component`
 

@@ -10,20 +10,20 @@ Defined in: [services.ts:14](https://github.com/ObolNetwork/obol-sdk/blob/02533a
 
 Verifies Cluster Lock's validity.
 
-## Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `lock` | [`ClusterLock`](../type-aliases/ClusterLock.md) | cluster lock |
 | `safeRpcUrl`? | `string` | optional safeRpcUrl for safe wallet verification |
 
-## Returns
+### Returns
 
-`Promise`\<`boolean`\>
+`Promise`<`boolean`>
 
 boolean result to indicate if lock is valid
 
-## Throws
+### Throws
 
 on missing keys or values.
 
