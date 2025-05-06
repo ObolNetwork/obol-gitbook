@@ -184,7 +184,7 @@ As approved by [**OIP-2**](https://community.obol.org/t/oip-2-unlock-obol-token/
 
 <summary><strong>Can CoinList participants claim at TGE?</strong></summary>
 
-Yes, a portion of their tokens will unlock per the [**Coinlist terms**](https://coinlist.co/obol).
+Yes, a portion of their tokens will unlock on May 7th at 11AM UTC per the [**Coinlist terms**](https://coinlist.co/obol).
 
 </details>
 
