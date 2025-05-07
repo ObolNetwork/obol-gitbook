@@ -14,7 +14,7 @@ The official token contract address of the OBOL Token is [0x0B010000b7624eb9B3Df
 
 ## Official Uniswap Pool
 
-The official Uniswap Pool for the OBOL Token is [https://www.geckoterminal.com/eth/pools/0x786f63840c2c55362150aee8d342f72ac620ab32cfef7ab862e74652e28d41d1?utm\_source=embed](https://www.geckoterminal.com/eth/pools/0x786f63840c2c55362150aee8d342f72ac620ab32cfef7ab862e74652e28d41d1?utm_source=embed)
+The official Uniswap Pool for the OBOL Token is [https://app.uniswap.org/explore/pools/ethereum/0x57F52C9faa6D40c5163D76b8D7dD81ddB7c95434](https://app.uniswap.org/explore/pools/ethereum/0x57F52C9faa6D40c5163D76b8D7dD81ddB7c95434)
 
 ## Learn more about...&#x20;
 
