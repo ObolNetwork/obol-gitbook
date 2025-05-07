@@ -12,6 +12,10 @@ The OBOL Token is central to the governance and operation of the Obol Collective
 
 The official token contract address of the OBOL Token is [0x0B010000b7624eb9B3DfBC279673C76E9D29D5F7](https://etherscan.io/address/0x0B010000b7624eb9B3DfBC279673C76E9D29D5F7)
 
+## Official Uniswap Pool
+
+The official Uniswap Pool for the OBOL Token is [https://www.geckoterminal.com/eth/pools/0x786f63840c2c55362150aee8d342f72ac620ab32cfef7ab862e74652e28d41d1?utm\_source=embed](https://www.geckoterminal.com/eth/pools/0x786f63840c2c55362150aee8d342f72ac620ab32cfef7ab862e74652e28d41d1?utm_source=embed)
+
 ## Learn more about...&#x20;
 
 {% content-ref url="token-utility.md" %}
