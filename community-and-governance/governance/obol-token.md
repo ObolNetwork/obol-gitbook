@@ -24,6 +24,10 @@ As per[ OIP-1](https://community.obol.org/t/oip-1-building-and-enabling-staking-
 
 This staking program will be implemented in phases, allowing the community to gradually engage in and benefit from the system while reinforcing the decentralization of the Obol Collective. For the first six months, the total rewards will be 0.33% of the total supply, providing early participants with attractive rewards. After this period, the staking rewards may be adjusted based on governance proposals and market conditions. This structured rollout ensures a sustainable and rewarding staking experience while reinforcing the decentralization of the Obol Collective.
 
+Starting **Wednesday, May 7, 2025**, OBOL holders can begin staking their tokens to participate in Obol governance and help secure the network.
+
+To get started, simply visit [https://stake.obol.org](https://stake.obol.org) and follow the staking flow — no technical setup required. The interface will guide you through selecting your wallet, choosing the amount to stake, and submitting the transaction.
+
 ### **DeFi**
 
 Plans are in place to launch several DeFi avenues for the OBOL Token post-TGE, such as liquidity pools, lending protocols (e.g. Morpho) and restaking (e.g. Eigenlayer, Symbiotic).
@@ -238,3 +242,10 @@ Yes. More info will follow **post-TGE**.
 
 </details>
 
+<details>
+
+<summary><strong>Can I stake my OBOL tokens right after unlocking them?</strong></summary>
+
+Yes! Staking is live starting **May 7, 2025**. Once you’ve unlocked your tokens at [claim.obol.org](https://claim.obol.org), you can stake them directly by visiting [stake.obol.org](https://stake.obol.org) and following the on-screen steps. No separate setup is required.
+
+</details>
