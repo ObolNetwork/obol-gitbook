@@ -6,7 +6,7 @@
 
 #### Does Obol have a token?[​](https://docs.obol.org/learn/intro/faq#does-obol-have-a-token) <a href="#does-obol-have-a-token" id="does-obol-have-a-token"></a>
 
-Yes, please see the [token page](../../community-and-governance/governance/obol-token.md) for details about the OBOL Token and our [announcement](https://blog.obol.org/airdrop/) for details about the community airdrop that took place in January 2025. The official token contract address is 0x0B010000b7624eb9B3DfBC279673C76E9D29D5F7.
+Yes, please see the [token page](../../community-and-governance/obol-token/) for details about the OBOL Token and our [announcement](https://blog.obol.org/airdrop/) for details about the community airdrop that took place in January 2025. The official token contract address is 0x0B010000b7624eb9B3DfBC279673C76E9D29D5F7.
 
 #### Where can I learn more about Distributed Validators?[​](https://docs.obol.org/learn/intro/faq#where-can-i-learn-more-about-distributed-validators) <a href="#where-can-i-learn-more-about-distributed-validators" id="where-can-i-learn-more-about-distributed-validators"></a>
 
