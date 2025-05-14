@@ -2,11 +2,11 @@
 
 ## **Governance**
 
-OBOL Token holders delegate their voting power to delegates who participate in the Token House decision-making processes. This includes voting on proposals affecting the Obol Collective’s direction, upgrades, and funding allocations. Read more about the Token House [here](broken-reference).
+OBOL Token holders delegate their voting power to delegates who participate in the Token House decision-making processes. This includes voting on proposals affecting the Obol Collective’s direction, upgrades, and funding allocations. Read more about the Token House [here](../governance/token-house.md).
 
 ## **Obol Retroactive Funding (RAF)**
 
-Token holders delegate their voting power to Delegates, who vote on the projects eligible for retroactive funding. Read more about the Obol RAF [here](../governance/token-house.md).
+Token holders delegate their voting power to Delegates, who vote on the projects eligible for retroactive funding. Read more about the Obol RAF [here](../governance/raf.md).
 
 ## **OBOL Token Staking**
 
