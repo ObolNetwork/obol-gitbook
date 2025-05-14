@@ -6,7 +6,7 @@ OBOL Token holders delegate their voting power to delegates who participate in t
 
 ## **Obol Retroactive Funding (RAF)**
 
-Token holders delegate their voting power to Delegates, who vote on the projects eligible for retroactive funding. Read more about the Obol RAF [here](broken-reference).
+Token holders delegate their voting power to Delegates, who vote on the projects eligible for retroactive funding. Read more about the Obol RAF [here](../governance/token-house.md).
 
 ## **OBOL Token Staking**
 
