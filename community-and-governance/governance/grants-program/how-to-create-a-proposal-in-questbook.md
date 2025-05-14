@@ -63,7 +63,7 @@ You must attach a cost breakdown using the **template provided by the Obol Assoc
 
 Once your application is submitted on Questbook:
 
-* Go to the **Obol Grants Forum Thread** link here
+* Go to the [**Obol Grants Forum Thread**](https://community.obol.org/t/obol-grants-wave-1-submissions-thread/525)
 * Post a comment with:
   * Your project name
   * A short summary
