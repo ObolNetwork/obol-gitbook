@@ -24,8 +24,8 @@ To ensure proposals are aligned with these objectives, each track has a dedicate
   * [Establishing OBOL Token’s Role in DeFi & Governance](grant-track-for-establishing-obol-tokens-role-in-defi-and-governance.md)
   * [Strengthening the Collective: Operators & Community Growth](grant-track-for-strengthening-the-collective-operators-and-community-growth.md)
 
-> <mark style="color:red;">**Disclaimer:**</mark>\
-> All grant funding will be disbursed in OBOL tokens. The reference price used for budgeting purposes is **$0.25 per token** (as of May 14, 2025). For example, a $10,000 grant will correspond to approximately 33,333 OBOL.
+> <mark style="color:red;">**Funding Disclaimer:**</mark>\
+> The OBOL token amount will be calculated based on the USD value of your grant request using the market price of OBOL at the time your proposal is approved. That means the number of tokens may vary depending on the price at the time of approval.
 
 ## Wave #1 Timeline
 
