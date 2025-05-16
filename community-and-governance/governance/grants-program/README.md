@@ -1,8 +1,21 @@
 # Grants Program
 
+⚠️ _<mark style="color:red;">The grants program is currently operating in its pilot phase.</mark>_
+
+_Following community feedback on this pilot, we’re committing to:_
+
+* _Publishing an RFC-style post 2–3 weeks before each new wave_
+* _Involving delegates and external experts in future rounds via a grants committee_
+* _Extending this Pilot Wave application window to June 11 to give applicants more time_
+* _Maintaining limited scope and budget during the pilot to reduce risk and enable fast iteration_
+
+_These changes aim to strengthen community trust, increase transparency, and enable broader governance participation over time._
+
+***
+
 ## **Purpose**
 
-The Obol Grants Program aims to support projects that advance the strategic goals of the Obol Collective by providing milestone-based funding to builders, educators, and contributors working on public goods aligned with the Distributed Validator (DV) ecosystem.
+The Obol Grants Program (pilot)  aims to support projects that advance the strategic goals of the Obol Collective by providing milestone-based funding to builders, educators, and contributors working on public goods aligned with the Distributed Validator (DV) ecosystem.
 
 This program is specifically designed to address the execution of the strategic SQUAD Goals outlined in [OIP-3](https://community.obol.org/t/oip-3-obol-collective-2025-goals-proposal/) that require community involvement. Each grant proposal must clearly align with **one of the grant tracks**, which reflect these goals. The grant tracks help ensure that funds are directed toward work that directly contributes to the Obol Collective's mission.
 
@@ -27,9 +40,9 @@ To ensure proposals are aligned with these objectives, each track has a dedicate
 > <mark style="color:red;">**Funding Disclaimer:**</mark>\
 > The OBOL token amount will be calculated based on the USD value of your grant request using the market price of OBOL at the time your proposal is approved. That means the number of tokens may vary depending on the price at the time of approval.
 
-## Wave #1 Timeline
+## Pilot Wave Timeline
 
-<table data-header-hidden><thead><tr><th></th><th></th><th width="298.810791015625"></th></tr></thead><tbody><tr><td>Phase</td><td>Dates</td><td>Notes</td></tr><tr><td>Applications Open</td><td>May 14 – Mai 28</td><td>Anyone can apply during this period</td></tr><tr><td>Review &#x26; Approval</td><td>Mai 29 - June 11</td><td>Committee reviews proposals and approves based on milestone scope. <br>Publish recap of selected proposals and next steps</td></tr><tr><td>Pause &#x26; Monitoring </td><td>June 12 - July 9</td><td>Publish recap of selected proposals and next steps</td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th></th><th></th><th width="298.810791015625"></th></tr></thead><tbody><tr><td>Phase</td><td>Dates</td><td>Notes</td></tr><tr><td>Applications Open</td><td>May 14 – June 11</td><td>Anyone can apply during this period</td></tr><tr><td>Review &#x26; Approval</td><td>June 12 - June 25</td><td>Committee reviews proposals and approves based on milestone scope. <br>Publish recap of selected proposals and next steps</td></tr><tr><td>Pause &#x26; Monitoring </td><td>June 26 - July 23</td><td>Publish recap of selected proposals and next steps</td></tr></tbody></table>
 
 ## Platform
 
