@@ -37,6 +37,11 @@ An operator can be part of multiple clusters. Clusters, and cluster invites, are
 
 <figure><img src="../../.gitbook/assets/image (18) (1).png" alt=""><figcaption></figcaption></figure>
 
+> [!TIP]
+> If you created a cluster locally, and didn't use the `--publish` command at the time, you can manually publish it by running this command from the folder with the `cluster-lock.json` in it.
+>
+> `curl -X POST -H "Content-Type: application/json" -d @cluster-lock.json https://api.obol.tech/v1/lock`
+
 ## Use the Explorer
 
 Clicking "explore" on the top right of the launchpad brings you to the explorer view. It shows information about every DV cluster and operator being tracked by Obol. You can search for a cluster or operator by name, or filter based on badge or protocol type.
