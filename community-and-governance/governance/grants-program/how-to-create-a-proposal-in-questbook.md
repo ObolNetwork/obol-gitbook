@@ -12,7 +12,7 @@ Each grant wave follows a strict timeline. Grant requests must be submitted duri
 
 ### 2. Choose the Right Grant Track
 
-Your grant request must clearly align with **one of the four main grant tracks**, which are tied to the Obol Collective's SQUAD goals. Each track has its own page with:
+Your grant request must clearly align with **one of the three main grant tracks**, which are tied to the Obol Collective's SQUAD goals. Each track has its own page with:
 
 * Scope verification checklist
 * Expectations and contribution types
