@@ -78,3 +78,6 @@ The program will be managed via [Questbook](https://questbook.app), with future 
 * **AI-assisted review workflows** if shown to increase efficiency
 
 ## Transparency
+
+* The Obol Grants Program is currently hosted under Questbook's open-source plan
+* All activity will remain publicly accessible through Questbook
