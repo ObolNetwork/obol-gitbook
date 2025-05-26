@@ -1,14 +1,21 @@
-# validateClusterLock
+[**@obolnetwork/obol-sdk**](../index.md)
 
-> **validateClusterLock**(`lock`): `Promise`<`boolean`>
+***
+
+[@obolnetwork/obol-sdk](../index.md) / validateClusterLock
+
+> **validateClusterLock**(`lock`, `safeRpcUrl`?): `Promise`\<`boolean`\>
+
+Defined in: [services.ts:14](https://github.com/ObolNetwork/obol-sdk/blob/02533ab878b3f13dbe6c0029828624f75ecbe185/src/services.ts#L14)
 
 Verifies Cluster Lock's validity.
 
 ### Parameters
 
-| Parameter | Type                                            | Description  |
-| --------- | ----------------------------------------------- | ------------ |
-| `lock`    | [`ClusterLock`](../type-aliases/ClusterLock.md) | cluster lock |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `lock` | [`ClusterLock`](../type-aliases/ClusterLock.md) | cluster lock |
+| `safeRpcUrl`? | `string` | optional safeRpcUrl for safe wallet verification |
 
 ### Returns
 
@@ -20,8 +27,5 @@ boolean result to indicate if lock is valid
 
 on missing keys or values.
 
-An example of how to use validateClusterLock: [validateClusterLock](https://github.com/ObolNetwork/obol-sdk-examples/blob/main/TS-Example/index.ts#L127)
-
-### Defined in
-
-services.ts:13
+An example of how to use validateClusterLock:
+[validateClusterLock](https://github.com/ObolNetwork/obol-sdk-examples/blob/main/TS-Example/index.ts#L127)
