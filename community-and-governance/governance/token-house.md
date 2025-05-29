@@ -12,7 +12,7 @@ In the Token House, OBOL Token holders are responsible for submitting, deliberat
 * Proposals are reviewed and voted on in three-week cycles.
 
 {% hint style="info" %}
-<mark style="color:green;">You can subscribe to the public calendar</mark> [<mark style="color:green;">here</mark>](https://calendar.google.com/calendar/u/0?cid=Y183YzQ0ZmYwZjM5ODE4ZTcyODg2OTM2MmI4ZWEyMGNmMDdhMmZmMmZiMzMxYjE2MjMwYzg3ZjQxZGRiYjA4N2ViQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20\&ref=blog.obol.org) <mark style="color:green;">so you always know where the current cycle is at.</mark>&#x20;
+<mark style="color:green;">You can subscribe to the public calendar</mark> [<mark style="color:green;">here</mark>](https://calendar.google.com/calendar/u/0?cid=Y183YzQ0ZmYwZjM5ODE4ZTcyODg2OTM2MmI4ZWEyMGNmMDdhMmZmMmZiMzMxYjE2MjMwYzg3ZjQxZGRiYjA4N2ViQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20\&ref=blog.obol.org) <mark style="color:green;">so you always know where the current cycle stands.</mark>&#x20;
 {% endhint %}
 
 * In the first week, anyone may draft a proposal of any type based on [this template](https://community.obol.org/t/proposal-template/208) and post it on the [Forum](https://community.obol.org/) with \[Draft] in the title. Delegates, Obol Collective members, and the general public can provide feedback on proposals in the forum, which should be incorporated into the proposal using the author’s best judgment.
