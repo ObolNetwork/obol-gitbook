@@ -6,7 +6,7 @@ OBOL Token holders delegate their voting power to delegates who participate in t
 
 ## **Obol Retroactive Funding (RAF)**
 
-Token holders delegate their voting power to Delegates, who vote on the projects eligible for retroactive funding. Read more about the Obol RAF [here](../governance/raf.md).
+Token holders delegate their voting power to Delegates, who vote on the projects eligible for retroactive funding. Read more about the Obol RAF [here](../governance/raf/).
 
 ## **OBOL Token Staking**
 
@@ -14,9 +14,9 @@ As per[ OIP-1](https://community.obol.org/t/oip-1-building-and-enabling-staking-
 
 This staking program will be implemented in phases, allowing the community to gradually engage in and benefit from the system while reinforcing the decentralization of the Obol Collective. For the first six months, the total rewards will be 0.33% of the total supply, providing early participants with attractive rewards. After this period, the staking rewards may be adjusted based on governance proposals and market conditions. This structured rollout ensures a sustainable and rewarding staking experience while reinforcing the decentralization of the Obol Collective.
 
-Starting **Wednesday, May 7, 2025**, OBOL holders can begin staking their tokens to participate in Obol governance and help secure the network.
-
 To get started, simply visit [https://stake.obol.org](https://stake.obol.org) and follow the staking flow — no technical setup required. The interface will guide you through selecting your wallet, choosing the amount to stake, and submitting the transaction.
+
+**You will find more info about the OBOL token staking in the dedicated** [staking-and-stobol.md](staking-and-stobol.md "mention") **section.**&#x20;
 
 ## **DeFi**
 

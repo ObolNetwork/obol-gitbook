@@ -126,40 +126,7 @@ RAF1 tokens will be distributed **shortly after TGE**.
 
 <summary><strong>When will OBOL Token incentives be claimable?</strong></summary>
 
-Starting May 12, 2025
+Starting May 12, 2025, incentives will be distributed weekly
 
 </details>
 
-## **Token Utility**
-
-<details>
-
-<summary><strong>What is the utility of the OBOL Token?</strong></summary>
-
-See the top of the page
-
-</details>
-
-<details>
-
-<summary><strong>What is stOBOL?</strong></summary>
-
-A staked version of the OBOL Token that can be used in DeFi or with restaking platforms.
-
-</details>
-
-<details>
-
-<summary><strong>Can the OBOL or stOBOL Tokens be used in DeFi?</strong></summary>
-
-Yes. More info will follow **post-TGE**.
-
-</details>
-
-<details>
-
-<summary><strong>Are there incentives for providing DeFi liquidity with OBOL or stOBOL?</strong></summary>
-
-**Not at TGE**, but proposals for incentives can be submitted via governance.
-
-</details>
