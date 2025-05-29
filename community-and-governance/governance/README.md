@@ -24,7 +24,7 @@ These initiatives reinforce our belief that progressive decentralization, aligne
 ## Principles We Follow
 
 * **Decentralization is a means, not an end.** Governance exists to serve the network, not to complicate it.
-* **Stakeholders should govern what they understand.** [Validators and technical contributors guide protocol upgrades](#user-content-fn-1)[^1]; token holders lead incentive and treasury decisions.
+* **Stakeholders should govern what they understand.** Validators and technical contributors guide protocol upgrades; token holders lead incentive and treasury decisions.
 * **Social consensus is paramount.** On-chain votes matter, but upgrades only succeed through real-world coordination and adoption.
 * **Structures must evolve with the protocol.** Governance at genesis won’t look like governance at maturity. We are building toward that future in deliberate steps.
 
@@ -50,6 +50,3 @@ The Obol governance documentation is organized into the following sections:
 _These sections evolve as the governance process matures. For any feedback, ideas, or questions, we invite you to join the discussion on the_ [_Forum_](https://community.obol.org/) _or reach out via_ [_Discord_](https://discord.gg/obol)_._
 
 **Together, we are building governance for the long term.**
-
-[^1]: Might need to rephrase this as it conflicts with our docs in token house. Thoughts ?&#x20;
-
