@@ -10,11 +10,15 @@ In the Token House, OBOL Token holders are responsible for submitting, deliberat
 ## Overview of the Obol Token House
 
 * Proposals are reviewed and voted on in three-week cycles.
+
+{% hint style="info" %}
+<mark style="color:green;">You can subscribe to the public calendar</mark> [<mark style="color:green;">here</mark>](https://calendar.google.com/calendar/u/0?cid=Y183YzQ0ZmYwZjM5ODE4ZTcyODg2OTM2MmI4ZWEyMGNmMDdhMmZmMmZiMzMxYjE2MjMwYzg3ZjQxZGRiYjA4N2ViQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20\&ref=blog.obol.org) <mark style="color:green;">so you always know where the current cycle stands.</mark>
+{% endhint %}
+
 * In the first week, anyone may draft a proposal of any type based on [this template](https://community.obol.org/t/proposal-template/208) and post it on the [Forum](https://community.obol.org/) with \[Draft] in the title. Delegates, Obol Collective members, and the general public can provide feedback on proposals in the forum, which should be incorporated into the proposal using the author’s best judgment.
 * Once your proposal has been approved by four top-100 Delegates (by voting power), add a link to your proposal to the Voting Cycle Roundup forum thread by the last day of Week 2, and update the title from \[Draft] to \[Final]. The proposal then moves on to Week 3: Voting.
 * If your proposal is passed, the Obol Association will facilitate its administration, including distributing approved OBOL Tokens grants.
-*   If your proposal fails, you can make a new proposal in the next cycle, specifying how you have incorporated significant changes from your first proposal.\
-
+*   If your proposal fails, you can make a new proposal in the next cycle, specifying how you have incorporated significant changes from your first proposal.\\
 
     <figure><img src="../../.gitbook/assets/Token_house.png" alt=""><figcaption></figcaption></figure>
 
