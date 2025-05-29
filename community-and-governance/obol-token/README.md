@@ -22,8 +22,16 @@ The official Uniswap Pool for the OBOL Token is [https://app.uniswap.org/explore
 [token-utility.md](token-utility.md)
 {% endcontent-ref %}
 
+{% content-ref url="staking-and-stobol.md" %}
+[staking-and-stobol.md](staking-and-stobol.md)
+{% endcontent-ref %}
+
 {% content-ref url="token-distribution-and-liquidity.md" %}
 [token-distribution-and-liquidity.md](token-distribution-and-liquidity.md)
+{% endcontent-ref %}
+
+{% content-ref url="token-holders-faq.md" %}
+[token-holders-faq.md](token-holders-faq.md)
 {% endcontent-ref %}
 
 {% content-ref url="tge-faq.md" %}
