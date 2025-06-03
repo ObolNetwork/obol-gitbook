@@ -13,8 +13,7 @@ In the Token House, OBOL Token holders are responsible for submitting, deliberat
 * In the first week, anyone may draft a proposal of any type based on [this template](https://community.obol.org/t/proposal-template/208) and post it on the [Forum](https://community.obol.org/) with \[Draft] in the title. Delegates, Obol Collective members, and the general public can provide feedback on proposals in the forum, which should be incorporated into the proposal using the author’s best judgment.
 * Once your proposal has been approved by four top-100 Delegates (by voting power), add a link to your proposal to the Voting Cycle Roundup forum thread by the last day of Week 2, and update the title from \[Draft] to \[Final]. The proposal then moves on to Week 3: Voting.
 * If your proposal is passed, the Obol Association will facilitate its administration, including distributing approved OBOL Tokens grants.
-*   If your proposal fails, you can make a new proposal in the next cycle, specifying how you have incorporated significant changes from your first proposal.\
-
+*   If your proposal fails, you can make a new proposal in the next cycle, specifying how you have incorporated significant changes from your first proposal.\\
 
     <figure><img src="../../.gitbook/assets/Token_house.png" alt=""><figcaption></figcaption></figure>
 
@@ -81,7 +80,7 @@ After the 24 hours, Delegates (including OBOL Token holders who have self-delega
 
 A governance proposal is **approved** if it satisfies two requirements:
 
-* **Quorum:** A minimum number of OBOL Token votes measured as _a % of the total votable OBOL Token supply, as of the start of the voting period._ “Votable supply” is the total amount of OBOL Tokens that have been delegated (including to oneself) and, therefore, can participate in voting. The current definition for the OBOL Token House is 0.8% of minted supply.
+* **Quorum:** A minimum number of OBOL Token votes measured as _a % of the total votable OBOL Token supply, as of the start of the voting period._ “Votable supply” is the total amount of OBOL Tokens that have been delegated (including to oneself) and, therefore, can participate in voting. The current definition for the OBOL Token House is 0.84% of minted supply.
 * **Approval threshold:** The minimum _% of votes cast in support relative to the total number of votes._ The current definition for the OBOL Token House is 0.01% of minted supply.
 
 A snapshot is taken at the start of each voting period to determine each delegate’s voting power. Voting is hosted on the Obol Governance Portal.
