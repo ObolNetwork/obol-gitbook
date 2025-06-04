@@ -77,7 +77,7 @@ If a proposal author does not get explicit approval or wants more time for feedb
 
 ### Week 3: Publish a Proposal Onchain and Voting
 
-During Week 3, a top-100 delegate must publish the proposal on the [Obol Governance Platform](https://www.tally.xyz/gov/obol).\
+During Week 3, a wallet holding at least [30,000 OBOL in voting power](https://etherscan.io/address/0xcB1622185A0c62A80494bEde05Ba95ef29Fbf85c#readContract) must publish the proposal on the [Obol Governance Platform](https://www.tally.xyz/gov/obol).\
 After publication, there is a 24-hour voting delay, during which the proposal can be canceled if necessary. The voting delay is the amount of time between when a proposal is submitted and when it goes up for voting. The delay gives token holders time to delegate their voting power before the vote starts or buy more votes. Governor takes a snapshot of all the voting power at the start of voting. Read more [here](https://docs.tally.xyz/set-up-and-technical-documentation/deploying-daos/how-to-pick-governor-parameters#how-to-pick-the-voting-delay).
 
 \
