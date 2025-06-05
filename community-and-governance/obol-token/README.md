@@ -16,6 +16,10 @@ The official token contract address of the OBOL Token is [0x0B010000b7624eb9B3Df
 
 The official Uniswap Pool for the OBOL Token is [https://app.uniswap.org/explore/pools/ethereum/0x57F52C9faa6D40c5163D76b8D7dD81ddB7c95434](https://app.uniswap.org/explore/pools/ethereum/0x57F52C9faa6D40c5163D76b8D7dD81ddB7c95434)
 
+## Verified Contract Addresses <a href="#verified-contract-addresses" id="verified-contract-addresses"></a>
+
+The following smart contracts power OBOL staking, governance, and reward distribution on Ethereum mainnet.
+
 <details>
 
 <summary>Governor Contract</summary>
