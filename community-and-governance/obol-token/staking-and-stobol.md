@@ -57,11 +57,11 @@ Other strategies can be proposed via governance.
 
 ## Summary Flow
 
-_Design to come_
-
 1. OBOL is staked and stOBOL is minted to the staker’s address.
 2. While stOBOL remains with the same address, governance power is retained and delegated as usual.
 3. If stOBOL is transferred, governance power is removed and reassigned via the "Overwhelming Support" strategy. Other strategies can be proposed via governance.
+
+<figure><img src="../../.gitbook/assets/stOBOL_03.png" alt=""><figcaption></figcaption></figure>
 
 ## Additional Notes
 
