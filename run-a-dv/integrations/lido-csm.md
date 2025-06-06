@@ -65,7 +65,7 @@ Select `Split` for the contract type.
 Add the reward addresses of all cluster members. Choose whether the contract is immutable (reccommended option), whether to sponsor the maintainers of [splits.org](https://splits.org), and optionally whether to set a distribution bounty such that third parties could pay the gas costs of distributing the accrued rewards in exchange for a small fee.
 
 {% hint style="success" %}
-If your cluster would like to contribute a portion of its rewards to Obol’s '[1% for Decentralisation](https://blog.obol.org/1-percent-for-decentralisation/)' Retroactive Fund, thereby earning [Obol Contributions](https://obol.org/contributions) as part of Lido's [integration of CSM](https://research.lido.fi/t/integrate-csm-into-the-decentralized-validator-vault/8621) into the DV Vault, you must add [retroactivefunding.obol.eth](https://etherscan.io/address/0xDe5aE4De36c966747Ea7DF13BD9589642e2B1D0d) as a recipient of 0.1% of the splitter contract. This will contribute 0.1% of rewards **and your CSM bond** to Obol's RAF. Future versions of CSM integrations will enable contributing exactly 1% of accruing CSM rewards
+If your cluster would like to contribute a portion of its rewards to Obol protocol development, thereby earning [Obol Incentives](https://obol.org/incentives) as part of Lido's [integration of CSM](https://research.lido.fi/t/integrate-csm-into-the-decentralized-validator-vault/8621) into the DV Vault, you must add [protocoldevelopmentfee.obol.eth](https://etherscan.io/address/0xDe5aE4De36c966747Ea7DF13BD9589642e2B1D0d) as a recipient of 0.1% of the splitter contract. This will contribute 0.1% of rewards **and your CSM bond** to Obol protocol development. Future versions of CSM integrations will enable contributing exactly 1% of accruing CSM rewards
 {% endhint %}
 
 <figure><img src="../../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
@@ -213,8 +213,7 @@ The EA member clicks on the **Create Node Operator** button.
 * Expand the **Specify custom addresses** section.
   * Set the **Reward Address** field to the `Split` contract address and the **Manager Address** field to the `Safe` wallet address. (These were created previously in [part 1](lido-csm.md#part-1-creating-the-cluster-safe--splitter-contract))
   * Verify that the **Extended** box is outlined. This ensures that the `Safe` address has the ability to change the reward address if necessary.
-*   Check that the correct addresses are set and click the **Create Node Operator** button.\
-
+*   Check that the correct addresses are set and click the **Create Node Operator** button.\\
 
     <figure><img src="../../.gitbook/assets/image (49).png" alt=""><figcaption></figcaption></figure>
 
