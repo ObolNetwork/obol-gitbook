@@ -59,7 +59,7 @@ The performance requirements are different depending on the different tiers.
 * For the **Bronze Credential** , you will need to create and manage 50 validators for 4 weeks with a performance equal to or above the [average of the Liquid Staking Providers](https://grafana.monitoring.gcp.obol.tech/d/adgym07d8ak1sf/techne-credentials?orgId=6) (index composed of Lido, RocketPool, Coinbase Cloud, StakeWise and EtherFi). We will also take into account the individual performance of the operators (the exact requirements will be announced soon).
 * For the **Silver Credential,** you will need to create and manage 1 or more validators for 8 months on mainnet, with performance at near or above the network average. We will take into account the overall performance of the cluster as well as the individual performance of the operators.
 
-:::For Base + Bronze (testnet), if you require delegate hETH, we ask you to set the address 0x17E6F6270A101dc7687Cc9899889819EeAF8253f as the withdrawal recipient. We will not activate validators that have not done this. At the end of the wave, you will only be eligible for the Credentials after we receive the Holesky ETH back. :::
+{% hint style="info" %} For Base + Bronze (testnet), if you require delegate hETH, we ask you to set the address 0x17E6F6270A101dc7687Cc9899889819EeAF8253f as the withdrawal recipient. We will not activate validators that have not done this. At the end of the wave, you will only be eligible for the Credentials after we receive the Holesky ETH back. {% endhint %}
 
 ### Performance Monitoring
 
