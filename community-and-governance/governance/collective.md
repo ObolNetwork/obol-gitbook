@@ -47,6 +47,8 @@ The Obol Association, via its governance administrators, will facilitate adminis
 * Maintenance of the Governance & RAF Portal;
 * Other tasks that the Obol Association deems appropriate in connection with the above.
 
+The Association may also intervene operationally when necessary to uphold the integrity of the governance process — for instance, by removing improperly submitted proposals or enforcing community-agreed rules. When doing so, it will always act transparently and share justifications with the community.
+
 Approved governance proposals will be routed to the Obol Association for implementation. Upon receipt of an approved proposal or chosen RAF recipients, the Obol Association will determine whether the proposal is safe, consistent with the purposes of the Obol Collective, and capable of being implemented legally (including potential KYC requirements).
 
 * If it is, the Association will act diligently and in a commercially reasonable manner to consider the proposal for implementation.
