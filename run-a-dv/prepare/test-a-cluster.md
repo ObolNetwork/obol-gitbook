@@ -157,7 +157,7 @@ charon alpha test all \
 
 {% hint style="info" %}
 
-If you are running Charon using the [charon-distributed-validator-node repository](https://github.com/ObolNetwork/charon-distributed-validator-node/), services like the beacon node and validator client are hosted locally. To run the `beacon` node and `validator` client tests, you need to point them toward the correct Docker container which includes choosing the Docker container’s network. Check your docker networks with the command `docker network ls`. When you run the test command, specify the Docker network with `--network <name>`.
+If you are running Charon using the [charon-distributed-validator-node repository](https://github.com/ObolNetwork/charon-distributed-validator-node/), services like the beacon node and validator client are hosted locally. To run the `beacon` node and `validator` client tests, you need to point them toward the correct Docker container, this includes specifying the Docker container’s network. Check your docker networks with the command `docker network ls`. When you run the test command, specify the Docker network with `--network <name>`.
 
 Read more about docker networking [here](https://docs.docker.com/engine/network/).
 
