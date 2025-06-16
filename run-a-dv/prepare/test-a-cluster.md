@@ -2,6 +2,13 @@
 
 Charon test commands are designed to help you evaluate the performance and readiness of your candidate cluster. It allows you to test your connection to other Charon peers, the performance of your beacon node(s), the readiness of your validator client, the performance of the MEV relays you will be using and the infrastructure on which you will run the cluster. It prints a performance report to the standard output (which can be omitted with the `--quiet` flag) and a machine-readable JSON format of the report if the `--output-json` flag is set.
 
+
+{% hint style="success" %}
+
+Adding the `--publish` flag to the below commands, and running the command from the directory containing your `.charon` folder, will submit the test results to the [Obol API](../../api/what-is-this-api.md). Publishing your performance reports grows the staking node dataset, and allows Obol and Ethereum development teams to make data-driven choices regarding the required specs for validating Ethereum. We hope you will consider opting in.
+
+{% endhint %}
+
 {% tabs %}
 {% tab title="Executable" %}
 #### Test all
@@ -147,7 +154,14 @@ charon alpha test all \
 {% endtab %}
 
 {% tab title="Docker" %}
-If you are running Charon using the [charon-distributed-validator-node repository](https://github.com/ObolNetwork/charon-distributed-validator-node/), services like the beacon node and validator client are hosted locally. To run the beacon node and validator client tests, you need to point them toward the correct Docker container, and also include the Docker container’s network. Check your docker networks with `docker network ls`. When you run the test command, specify the Docker network with `--network <name>`. Read more about docker networking [here](https://docs.docker.com/engine/network/).
+
+{% hint style="info" %}
+
+If you are running Charon using the [charon-distributed-validator-node repository](https://github.com/ObolNetwork/charon-distributed-validator-node/), services like the beacon node and validator client are hosted locally. To run the `beacon` node and `validator` client tests, you need to point them toward the correct Docker container, this includes specifying the Docker container’s network. Check your docker networks with the command `docker network ls`. When you run the test command, specify the Docker network with `--network <name>`.
+
+Read more about docker networking [here](https://docs.docker.com/engine/network/).
+
+{% endhint %}
 
 #### Test all
 
@@ -430,6 +444,9 @@ Run tests towards MEV relays, to evaluate their effectiveness for a Distributed 
 At least 1 endpoint is required to be supplied to the `--endpoints` flag.
 
 {% tabs %}
+{% tab title="Executable" %}
+
+{% tabs %}
 {% tab title="Regular Test" %}
 **Pre-requisites**
 
@@ -437,7 +454,7 @@ At least 1 endpoint is required to be supplied to the `--endpoints` flag.
 
 **Example run**
 
-```
+```sh
 charon alpha test mev \
   --endpoints="https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,https://0x8b5d2e73e2a3a55c6c87b8b6eb92e0149a125c852751db1422fa951e42a09b82c142c3ea98d0d9930b056a3bc9896b8f@bloxroute.max-profit.blxrbdn.com,https://0xac6e77dfe25ecd6110b8e780608cce0dab71fdd5ebea22a16c0205200f2f8e2e3ad3b71d3499c54ad14d6c21b41a37ae@boost-relay.flashbots.net,https://0xa1559ace749633b997cb3fdacffb890aeebdb0f5a3b6aaa7eeeaf1a38af0a8fe88b9e4b1f61f236d2e64d95733327a62@relay.ultrasound.money,https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@regional.titanrelay.xyz,https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@global.titanrelay.xyz"
 ```
@@ -451,7 +468,7 @@ charon alpha test mev \
 
 **Example run**
 
-```
+```sh
 charon alpha test mev \
   --endpoints="https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,https://0x8b5d2e73e2a3a55c6c87b8b6eb92e0149a125c852751db1422fa951e42a09b82c142c3ea98d0d9930b056a3bc9896b8f@bloxroute.max-profit.blxrbdn.com,https://0xac6e77dfe25ecd6110b8e780608cce0dab71fdd5ebea22a16c0205200f2f8e2e3ad3b71d3499c54ad14d6c21b41a37ae@boost-relay.flashbots.net,https://0xa1559ace749633b997cb3fdacffb890aeebdb0f5a3b6aaa7eeeaf1a38af0a8fe88b9e4b1f61f236d2e64d95733327a62@relay.ultrasound.money,https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@regional.titanrelay.xyz,https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@global.titanrelay.xyz" \
   --load-test \
@@ -460,16 +477,70 @@ charon alpha test mev \
 {% endtab %}
 {% endtabs %}
 
+{% endtab %}
+{% tab title="Docker" %}
+
+{% tabs %}
+{% tab title="Regular Test" %}
+**Pre-requisites**
+
+* Running MEV relay(s) towards which tests will be executed.
+
+**Example run**
+
+```sh
+docker run obolnetwork/charon:v1.4.0 alpha test mev \
+  --endpoints="https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,https://0x8b5d2e73e2a3a55c6c87b8b6eb92e0149a125c852751db1422fa951e42a09b82c142c3ea98d0d9930b056a3bc9896b8f@bloxroute.max-profit.blxrbdn.com,https://0xac6e77dfe25ecd6110b8e780608cce0dab71fdd5ebea22a16c0205200f2f8e2e3ad3b71d3499c54ad14d6c21b41a37ae@boost-relay.flashbots.net,https://0xa1559ace749633b997cb3fdacffb890aeebdb0f5a3b6aaa7eeeaf1a38af0a8fe88b9e4b1f61f236d2e64d95733327a62@relay.ultrasound.money,https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@regional.titanrelay.xyz,https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@global.titanrelay.xyz"
+```
+{% endtab %}
+
+{% tab title="Load Test" %}
+**Pre-requisites**
+
+* Running MEV relay(s) towards which tests will be executed.
+* Running beacon node which will be used for fetching data required by the MEV relay for block creation, supplied to `--beacon-node-endpoint`. There is no restrictions on the node and a public one can be used.
+
+**Example run**
+
+```sh
+docker run obolnetwork/charon:v1.4.0 alpha test mev \
+  --endpoints="https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,https://0x8b5d2e73e2a3a55c6c87b8b6eb92e0149a125c852751db1422fa951e42a09b82c142c3ea98d0d9930b056a3bc9896b8f@bloxroute.max-profit.blxrbdn.com,https://0xac6e77dfe25ecd6110b8e780608cce0dab71fdd5ebea22a16c0205200f2f8e2e3ad3b71d3499c54ad14d6c21b41a37ae@boost-relay.flashbots.net,https://0xa1559ace749633b997cb3fdacffb890aeebdb0f5a3b6aaa7eeeaf1a38af0a8fe88b9e4b1f61f236d2e64d95733327a62@relay.ultrasound.money,https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@regional.titanrelay.xyz,https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@global.titanrelay.xyz" \
+  --load-test \
+  --beacon-node-endpoint="https://ethereum-beacon-api.publicnode.com"
+```
+{% endtab %}
+{% endtabs %}
+
+{% endtab %}
+{% endtabs %}
+
 ### Test machine and network performance
 
 Run tests of your machine and network, to evaluate their effectiveness for a Distributed Validator cluster. Distributed Validators need stable, low-latency, internet, a reasonable amount of RAM, and a highly performant disk drive for storage. This test aims to analyse these requirements to give an overview of the systems suitability.
 
+{% tabs %}
+{% tab title="Executable" %}
+
 #### Pre-requisites
 
-The storage tests require `fio` to be installed on your machine. Read more about `fio` [here](https://fio.readthedocs.io/en/latest/fio_doc.html).
+The executable storage tests require `fio` to be installed on your host machine. Read more about `fio` [here](https://fio.readthedocs.io/en/latest/fio_doc.html).
 
 #### Example run
 
 ```sh
 charon alpha test infra
 ```
+
+{% endtab %}
+
+{% tab title="Docker" %}
+
+#### Example run
+
+```sh
+docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.4.0 alpha test infra \
+        --disk-io-test-file-dir=/opt/charon/test
+```
+
+{% endtab %}
+{% endtabs %}
