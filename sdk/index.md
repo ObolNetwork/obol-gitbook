@@ -3,7 +3,7 @@ hide_title: true
 ---
 
 <span className="theme-doc-version-badge badge badge--secondary">
-      <strong>SDK Version:</strong> v2.1.0
+      <strong>SDK Version:</strong> v2.7.0
 </span>
 
 ![Obol Logo](https://obol.org/obolnetwork.png)
@@ -14,7 +14,7 @@ This repo contains the Obol Software Development Kit, for creating Distributed V
 
 ## Getting Started
 
-Checkout our [docs](https://docs.obol.org/advanced/quickstart-sdk), [examples](https://github.com/ObolNetwork/obol-sdk-examples/), and SDK [reference](https://obolnetwork.github.io/obol-sdk). Further guides and walkthroughs coming soon.
+Checkout our [docs](https://docs.obol.org/docs/advanced/quickstart-sdk), [examples](https://github.com/ObolNetwork/obol-sdk-examples/), and SDK [reference](https://obolnetwork.github.io/obol-sdk). Further guides and walkthroughs coming soon.
 
 ## Terms and Conditions
 To use obol-sdk and in order to be able to create a cluster definition or accept an invite to join a cluster, you must accept the [latest Obol terms and conditions](https://obol.org/terms.pdf) by calling acceptObolLatestTermsAndConditions.
@@ -24,6 +24,10 @@ If you're integrating this SDK with a **backend** (e.g., in Node.js), and you st
 
 - The private key is securely stored (e.g., in an `.env` file).
 - Never commit or push your `.env` file containing the private key to version control.
+
+## ⚡️ Integration with Safe Wallet
+
+When integrating the Obol SDK with a **Safe Wallet**, you can either pass an RPC URL OR provide the `RPC_MAINNET` or `RPC_HOLESKY` or `RPC_GNOSIS` or `RPC_SEPOLIA` environment variable, pointing to the correct network's RPC URL. This is required to interact with Safe kit.
 
 ## Contributing
 
@@ -62,12 +66,23 @@ Thank you for contributing to Obol-SDK!
 
 ## Classes
 
+- [Exit](classes/Exit.md)
+- [Incentives](classes/Incentives.md)
 - [Client](classes/Client.md)
 
 ## Interfaces
 
 - [ClusterDefinition](interfaces/ClusterDefinition.md)
 - [RewardsSplitPayload](interfaces/RewardsSplitPayload.md)
+- [ExitOperator](interfaces/ExitOperator.md)
+- [ExitClusterDefinition](interfaces/ExitClusterDefinition.md)
+- [ExitDistributedValidator](interfaces/ExitDistributedValidator.md)
+- [ExitClusterConfig](interfaces/ExitClusterConfig.md)
+- [ExitValidationMessage](interfaces/ExitValidationMessage.md)
+- [SignedExitValidationMessage](interfaces/SignedExitValidationMessage.md)
+- [ExitValidationBlob](interfaces/ExitValidationBlob.md)
+- [ExitValidationPayload](interfaces/ExitValidationPayload.md)
+- [ExistingExitValidationBlobData](interfaces/ExistingExitValidationBlobData.md)
 
 ## Type Aliases
 
@@ -78,13 +93,27 @@ Thank you for contributing to Obol-SDK!
 - [ClusterPayload](type-aliases/ClusterPayload.md)
 - [SplitRecipient](type-aliases/SplitRecipient.md)
 - [TotalSplitPayload](type-aliases/TotalSplitPayload.md)
+- [OWRTranches](type-aliases/OWRTranches.md)
 - [BuilderRegistrationMessage](type-aliases/BuilderRegistrationMessage.md)
 - [BuilderRegistration](type-aliases/BuilderRegistration.md)
 - [DepositData](type-aliases/DepositData.md)
 - [DistributedValidator](type-aliases/DistributedValidator.md)
 - [ClusterLock](type-aliases/ClusterLock.md)
+- [ClaimableIncentives](type-aliases/ClaimableIncentives.md)
 - [ETH\_ADDRESS](type-aliases/ETH_ADDRESS.md)
+- [ProviderType](type-aliases/ProviderType.md)
+- [SafeRpcUrl](type-aliases/SafeRpcUrl.md)
+- [SignerType](type-aliases/SignerType.md)
+- [ClaimIncentivesResponse](type-aliases/ClaimIncentivesResponse.md)
+- [HttpRequestFunc](type-aliases/HttpRequestFunc.md)
+
+## Variables
+
+- [CAPELLA\_FORK\_MAPPING](variables/CAPELLA_FORK_MAPPING.md)
 
 ## Functions
 
 - [validateClusterLock](functions/validateClusterLock.md)
+- [clusterConfigOrDefinitionHash](functions/clusterConfigOrDefinitionHash.md)
+- [clusterLockHash](functions/clusterLockHash.md)
+- [verifyDepositData](functions/verifyDepositData.md)

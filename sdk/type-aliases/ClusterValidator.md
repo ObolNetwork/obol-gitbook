@@ -1,14 +1,18 @@
-> **ClusterValidator**: `object`
+[**@obolnetwork/obol-sdk**](../index.md)
+
+***
+
+[@obolnetwork/obol-sdk](../index.md) / ClusterValidator
+
+> **ClusterValidator** = `object`
+
+Defined in: [types.ts:85](https://github.com/ObolNetwork/obol-sdk/blob/d77f4594233f658ddb52882926187420144e316d/src/types.ts#L85)
 
 Validator withdrawal configuration
 
-## Type declaration
+## Properties
 
-| Name | Type | Description | Defined in |
+| Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| `fee_recipient_address` | `string` | Address to receive MEV rewards (if enabled), block proposal and priority fees. | types.ts:62 |
-| `withdrawal_address` | `string` | Address to receive skimming rewards and validator principal at exit. | types.ts:65 |
-
-## Defined in
-
-types.ts:60
+| <a id="fee_recipient_address"></a> `fee_recipient_address` | `string` | Address to receive MEV rewards (if enabled), block proposal and priority fees. | [types.ts:87](https://github.com/ObolNetwork/obol-sdk/blob/d77f4594233f658ddb52882926187420144e316d/src/types.ts#L87) |
+| <a id="withdrawal_address"></a> `withdrawal_address` | `string` | Address to receive skimming rewards and validator principal at exit. | [types.ts:90](https://github.com/ObolNetwork/obol-sdk/blob/d77f4594233f658ddb52882926187420144e316d/src/types.ts#L90) |
