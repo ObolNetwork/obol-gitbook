@@ -6,7 +6,7 @@ description: >-
 
 # CLI Reference
 
-The following is a reference for Charon version [`v1.4.0`](https://github.com/ObolNetwork/charon/releases/tag/v1.4.0). Find the latest release on [our Github](https://github.com/ObolNetwork/charon/releases).
+The following is a reference for Charon version [`v1.5.0`](https://github.com/ObolNetwork/charon/releases/tag/v1.5.0). Find the latest release on [our Github](https://github.com/ObolNetwork/charon/releases).
 
 The following are the top-level commands available to use.
 
@@ -109,13 +109,14 @@ Flags:
       --publish-address string                 The URL to publish the lock file to. (default "https://api.obol.tech/v1")
       --split-existing-keys                    Split an existing validator's private key into a set of distributed validator private key shares. Does not re-create deposit data for this key.
       --split-keys-dir string                  Directory containing keys to split. Expects keys in keystore-*.json and passwords in keystore-*.txt. Requires --split-existing-keys.
-      --target-gas-limit uint                  Preferred target gas limit for transactions. (default 36000000)
+      --target-gas-limit uint                  Preferred target gas limit for transactions. (default 60000000)
       --testnet-chain-id uint                  Chain ID of the custom test network.
       --testnet-fork-version string            Genesis fork version of the custom test network (in hex).
       --testnet-genesis-timestamp int          Genesis timestamp of the custom test network.
       --testnet-name string                    Name of the custom test network.
       --threshold int                          Optional override of threshold required for signature reconstruction. Defaults to ceil(n*2/3) if zero. Warning, non-default values decrease security.
       --withdrawal-addresses strings           Comma separated list of Ethereum addresses to receive the returned stake and accrued rewards for each validator. Either provide a single withdrawal address or withdrawal addresses for each validator.
+      --zipped                                 Create a tar archive compressed with gzip of the cluster directory after creation.
 ```
 
 ### Creating the configuration for a DKG Ceremony
@@ -145,7 +146,7 @@ Flags:
       --output-dir string                      The folder to write the output cluster-definition.json file to. (default ".charon")
       --publish                                Creates an invitation to the DKG ceremony on the DV Launchpad. Terms and conditions apply.
       --publish-address string                 The URL to publish the cluster to. (default "https://api.obol.tech/v1")
-      --target-gas-limit uint                  Preferred target gas limit for transactions. (default 36000000)
+      --target-gas-limit uint                  Preferred target gas limit for transactions. (default 60000000)
   -t, --threshold int                          Optional override of threshold required for signature reconstruction. Defaults to ceil(n*2/3) if zero. Warning, non-default values decrease security.
       --withdrawal-addresses strings           Comma separated list of Ethereum addresses to receive the returned stake and accrued rewards for each validator. Either provide a single withdrawal address or withdrawal addresses for each validator.
 ```
@@ -253,6 +254,8 @@ Flags:
       --testnet-genesis-timestamp int            Genesis timestamp of the custom test network.
       --testnet-name string                      Name of the custom test network.
       --validator-api-address string             Listening address (ip and port) for validator-facing traffic proxying the beacon-node API. (default "127.0.0.1:3600")
+      --vc-tls-cert-file string                  The path to the TLS certificate file used by charon for the validator client API endpoint.
+      --vc-tls-key-file string                   The path to the TLS private key file associated with the provided TLS certificate.
 ```
 
 ## The `exit` command
@@ -300,7 +303,7 @@ Flags:
       --beacon-node-endpoints strings            Comma separated list of one or more beacon node endpoint URLs. [REQUIRED]
       --beacon-node-headers strings              Comma separated list of headers formatted as header=value
       --beacon-node-timeout duration             Timeout for beacon node HTTP calls. (default 30s)
-      --exit-epoch uint                          Exit epoch at which the validator will exit, must be the same across all the partial exits. (default 162304)
+      --exit-epoch uint                          Exit epoch at which the validator will exit, must be the same across all the partial exits. (default 194048)
       --fallback-beacon-node-endpoints strings   A list of beacon nodes to use if the primary list are offline or unhealthy.
   -h, --help                                     Help for sign
       --lock-file string                         The path to the cluster lock file defining the distributed validator cluster. (default ".charon/cluster-lock.json")
@@ -368,7 +371,7 @@ Flags:
       --beacon-node-endpoints strings            Comma separated list of one or more beacon node endpoint URLs. [REQUIRED]
       --beacon-node-headers strings              Comma separated list of headers formatted as header=value
       --beacon-node-timeout duration             Timeout for beacon node HTTP calls. (default 30s)
-      --exit-epoch uint                          Exit epoch at which the validator will exit, must be the same across all the partial exits. (default 162304)
+      --exit-epoch uint                          Exit epoch at which the validator will exit, must be the same across all the partial exits. (default 194048)
       --exit-from-dir string                     Retrieves a signed exit messages from a pre-prepared files in a directory instead of --publish-address.
       --exit-from-file string                    Retrieves a signed exit message from a pre-prepared file instead of --publish-address.
       --fallback-beacon-node-endpoints strings   A list of beacon nodes to use if the primary list are offline or unhealthy.
@@ -606,9 +609,9 @@ Flags:
       --peers-private-key-file string                 The path to the charon enr private key file. (default ".charon/charon-enr-private-key")
       --publish                                       Publish test result file to obol-api.
       --publish-address string                        The URL to publish the test result file to. (default "https://api.obol.tech/v1")
-      --publish-private-key-file string               The path to the charon enr private key file, used for signing the publish request. (default ".charon/charon-enr-private-key")
+      --publish-private-key-file string               The path to the charon enr private key file, used for signing the publish request. Temporary key will be generated if the file does not exist. (default ".charon/charon-enr-private-key")
       --quiet                                         Do not print test results to stdout.
-      --test-cases strings                            List of comma separated names of tests to be exeucted. Available tests are: [PingMeasure PingLoad DirectConn Ping Libp2pTCPPortOpen PingRelay PingMeasureRelay SimulateCustom Ping PingMeasure Synced PeerCount PingLoad Simulate1 Simulate10 Simulate100 Version Simulate500 Simulate1000 Ping PingMeasure PingLoad Ping PingMeasure CreateBlock DiskReadIOPS TotalMemory InternetDownloadSpeed DiskWriteSpeed DiskWriteIOPS DiskReadSpeed AvailableMemory InternetLatency InternetUploadSpeed]
+      --test-cases strings                            List of comma separated names of tests to be exeucted. Available tests are: [Ping PingMeasure PingLoad DirectConn Libp2pTCPPortOpen PingRelay PingMeasureRelay PeerCount PingLoad Simulate1 Simulate100 Simulate500 Ping Simulate10 Simulate1000 SimulateCustom PingMeasure Version Synced Ping PingMeasure PingLoad CreateBlock Ping PingMeasure TotalMemory InternetDownloadSpeed DiskReadSpeed InternetLatency InternetUploadSpeed DiskWriteSpeed DiskWriteIOPS DiskReadIOPS AvailableMemory]
       --timeout duration                              Execution timeout for all tests. (default 1h0m0s)
       --validator-load-test-duration duration         Time to keep running the load tests in seconds. For each second a new continuous ping instance is spawned. (default 5s)
       --validator-validator-api-address string        Listening address (ip and port) for validator-facing traffic proxying the beacon-node API. (default "127.0.0.1:3600")
@@ -631,13 +634,13 @@ Flags:
       --output-json string                 File path to which output can be written in JSON format.
       --publish                            Publish test result file to obol-api.
       --publish-address string             The URL to publish the test result file to. (default "https://api.obol.tech/v1")
-      --publish-private-key-file string    The path to the charon enr private key file, used for signing the publish request. (default ".charon/charon-enr-private-key")
+      --publish-private-key-file string    The path to the charon enr private key file, used for signing the publish request. Temporary key will be generated if the file does not exist. (default ".charon/charon-enr-private-key")
       --quiet                              Do not print test results to stdout.
       --simulation-custom int              Run custom simulation with the specified amount of validators.
       --simulation-duration-in-slots int   Time to keep running the simulation in slots. (default 32)
       --simulation-file-dir string         Time to keep running the simulation in slots. (default "./")
       --simulation-verbose                 Show results for each request and each validator.
-      --test-cases strings                 List of comma separated names of tests to be exeucted. Available tests are: [PingLoad Simulate1 Simulate500 Ping Synced PeerCount Simulate10 Simulate100 Simulate1000 SimulateCustom PingMeasure Version]
+      --test-cases strings                 List of comma separated names of tests to be exeucted. Available tests are: [Ping PingMeasure PeerCount Simulate100 Simulate500 Simulate1000 SimulateCustom Version Synced PingLoad Simulate1 Simulate10]
       --timeout duration                   Execution timeout for all tests. (default 1h0m0s)
 ```
 
@@ -659,9 +662,9 @@ Flags:
       --output-json string                      File path to which output can be written in JSON format.
       --publish                                 Publish test result file to obol-api.
       --publish-address string                  The URL to publish the test result file to. (default "https://api.obol.tech/v1")
-      --publish-private-key-file string         The path to the charon enr private key file, used for signing the publish request. (default ".charon/charon-enr-private-key")
+      --publish-private-key-file string         The path to the charon enr private key file, used for signing the publish request. Temporary key will be generated if the file does not exist. (default ".charon/charon-enr-private-key")
       --quiet                                   Do not print test results to stdout.
-      --test-cases strings                      List of comma separated names of tests to be exeucted. Available tests are: [DiskWriteIOPS DiskReadSpeed AvailableMemory TotalMemory InternetDownloadSpeed InternetUploadSpeed DiskWriteSpeed DiskReadIOPS InternetLatency]
+      --test-cases strings                      List of comma separated names of tests to be exeucted. Available tests are: [DiskWriteSpeed DiskWriteIOPS AvailableMemory TotalMemory InternetDownloadSpeed InternetUploadSpeed DiskReadSpeed DiskReadIOPS InternetLatency]
       --timeout duration                        Execution timeout for all tests. (default 1h0m0s)
 ```
 
@@ -683,7 +686,7 @@ Flags:
       --output-json string                File path to which output can be written in JSON format.
       --publish                           Publish test result file to obol-api.
       --publish-address string            The URL to publish the test result file to. (default "https://api.obol.tech/v1")
-      --publish-private-key-file string   The path to the charon enr private key file, used for signing the publish request. (default ".charon/charon-enr-private-key")
+      --publish-private-key-file string   The path to the charon enr private key file, used for signing the publish request. Temporary key will be generated if the file does not exist. (default ".charon/charon-enr-private-key")
       --quiet                             Do not print test results to stdout.
       --test-cases strings                List of comma separated names of tests to be exeucted. Available tests are: [Ping PingMeasure CreateBlock]
       --timeout duration                  Execution timeout for all tests. (default 1h0m0s)
@@ -719,9 +722,9 @@ Flags:
       --private-key-file string              The path to the charon enr private key file. (default ".charon/charon-enr-private-key")
       --publish                              Publish test result file to obol-api.
       --publish-address string               The URL to publish the test result file to. (default "https://api.obol.tech/v1")
-      --publish-private-key-file string      The path to the charon enr private key file, used for signing the publish request. (default ".charon/charon-enr-private-key")
+      --publish-private-key-file string      The path to the charon enr private key file, used for signing the publish request. Temporary key will be generated if the file does not exist. (default ".charon/charon-enr-private-key")
       --quiet                                Do not print test results to stdout.
-      --test-cases strings                   List of comma separated names of tests to be exeucted. Available tests are: [Ping PingMeasure PingLoad DirectConn Libp2pTCPPortOpen]
+      --test-cases strings                   List of comma separated names of tests to be exeucted. Available tests are: [DirectConn Ping PingMeasure PingLoad Libp2pTCPPortOpen]
       --timeout duration                     Execution timeout for all tests. (default 1h0m0s)
 ```
 
@@ -740,7 +743,7 @@ Flags:
       --output-json string                File path to which output can be written in JSON format.
       --publish                           Publish test result file to obol-api.
       --publish-address string            The URL to publish the test result file to. (default "https://api.obol.tech/v1")
-      --publish-private-key-file string   The path to the charon enr private key file, used for signing the publish request. (default ".charon/charon-enr-private-key")
+      --publish-private-key-file string   The path to the charon enr private key file, used for signing the publish request. Temporary key will be generated if the file does not exist. (default ".charon/charon-enr-private-key")
       --quiet                             Do not print test results to stdout.
       --test-cases strings                List of comma separated names of tests to be exeucted. Available tests are: [Ping PingMeasure PingLoad]
       --timeout duration                  Execution timeout for all tests. (default 1h0m0s)
