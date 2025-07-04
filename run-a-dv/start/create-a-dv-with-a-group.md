@@ -29,7 +29,7 @@ git clone https://github.com/ObolNetwork/charon-distributed-validator-node.git
 # Change directory
 cd charon-distributed-validator-node/
 # Use docker to create an ENR. Backup the file `.charon/charon-enr-private-key`.
-docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.5.0 create enr
+docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.5.1 create enr
 ```
 
 You should expect to see a console output like this:
@@ -151,7 +151,7 @@ Create an ENR using charon:
 
 ```sh
 # Use docker to create an ENR. Backup the file `.charon/charon-enr-private-key`.
-docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.5.0 create enr
+docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.5.1 create enr
 ```
 
 For Step 2 of the quickstart:
@@ -215,7 +215,7 @@ You will use the CLI to create the cluster definition file, which you will distr
 3.  Run the `charon create dkg` command that generates DKG cluster-definition.json file.
 
     ```sh
-    docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.5.0 create dkg 
+    docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.5.1 create dkg 
 
     --name="Quickstart" 
 
@@ -313,7 +313,7 @@ For the [DKG](https://docs.obol.org/next/learn/charon/dkg) to complete, all oper
 Once the creator gives you the `cluster-definition.json` file and you place it in a `.charon` subdirectory, run:
 
 ```sh
-docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.5.0 dkg --publish
+docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.5.1 dkg --publish
 ```
 
 and the DKG process should begin.
