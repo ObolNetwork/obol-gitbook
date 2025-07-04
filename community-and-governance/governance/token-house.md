@@ -101,7 +101,7 @@ If a proposal is submitted for a vote and does not pass, the proposal will not b
 3. Clearly identify what has changed in the new proposal.
 
 {% hint style="warning" %}
-If the same proposal fails to pass two consecutive times (i.e., it is rejected onchain twice in a row), it may not be reintroduced or submitted again for a minimum period of **10 governance cycles** — roughly equivalent to **7 months** (based on the current 3-week cycle length). This ensures that only well-formed, broadly supported proposals proceed and discourages repeated cycling of the same topic without meaningful revision or support.
+If the same proposal fails to pass two consecutive times (i.e., it is rejected onchain twice in a row), it may not be reintroduced or submitted again for a minimum period of 5 **governance cycles** — roughly equivalent to 3.5 **months** (based on the current 3-week cycle length). This ensures that only well-formed, broadly supported proposals proceed and discourages repeated cycling of the same topic without meaningful revision or support.
 {% endhint %}
 
 ### Timelock Delay
