@@ -18,12 +18,13 @@ For more information on running Charon in a UI friendly way through the DV Launc
 
 ## DV Launchpad Links
 
-| Ethereum Network | Launchpad                                                                        |
-| ---------------- | -------------------------------------------------------------------------------- |
-| Mainnet          | [https://launchpad.obol.org](https://launchpad.obol.org)                         |
-| Gnosis Chain     | [https://gnosischain.launchpad.obol.org](https://gnosischain.launchpad.obol.org) |
-| Holesky          | [https://holesky.launchpad.obol.org](https://holesky.launchpad.obol.org)          |
-| Sepolia          | [https://sepolia.launchpad.obol.org](https://sepolia.launchpad.obol.org)         |
+| Ethereum Network | Launchpad                              |
+|------------------|----------------------------------------|
+| Mainnet          | https://launchpad.obol.org             |
+| Gnosis Chain     | https://gnosischain.launchpad.obol.org |
+| Hoodi            | https://hoodi.launchpad.obol.org       |
+| Holesky          | https://holesky.launchpad.obol.org     |
+| Sepolia          | https://sepolia.launchpad.obol.org     |
 
 ## Operator Dashboard
 
