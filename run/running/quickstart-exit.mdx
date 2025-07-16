@@ -33,13 +33,13 @@ In this case, users cannot use launchpad to monitor exit status and will have to
 
 
 As per your preferences, choose the correct combination of - 
-1. **Network** : Mainnet or Holesky
+1. **Network** : Mainnet or Hoodi
 2. **Exit Type** : Hosted (Charon) or Non-hosted (Validator client)
 3. **Validator Quanity**: Exit single or Exit all validators
 
 
 <Tabs groupId="validator-clients">
-  <TabItem value="Holesky" label="Holesky">
+  <TabItem value="Hoodi" label="Hoodi">
     <Tabs groupId="charon-exits">
       <TabItem value="charon" label="Charon" default>
         Voluntary exit can be submitted directly through Charon. This approach is validator client agnostic as Charon abstracts validator client's native exit commands underneath.
@@ -55,7 +55,7 @@ As per your preferences, choose the correct combination of -
                 docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon exit sign \
                 --beacon-node-endpoints="http://lighthouse:5052" \
                 --validator-public-key="<VALIDATOR_PUBLIC_KEY>" \
-                --exit-epoch=256'
+                --exit-epoch=1'
                 ```
 
                 Replace `<VALIDATOR_PUBLIC_KEY>` with the validator's full pubkey (as visible in Ethereum).
@@ -70,7 +70,7 @@ As per your preferences, choose the correct combination of -
                 docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon exit sign \
                 --beacon-node-endpoints="http://lighthouse:5052" \
                 --all \
-                --exit-epoch=256'
+                --exit-epoch=1'
                 ```
 
             </TabItem>
@@ -175,8 +175,8 @@ As per your preferences, choose the correct combination of -
                 docker exec -it charon-distributed-validator-node-teku-1 /opt/teku/bin/teku voluntary-exit \
                 --beacon-node-api-endpoint="http://charon:3600/" \
                 --validator-public-keys=<PARTIAL_PUBLIC_KEY> \
-                --network=holesky \
-                --epoch=256 \
+                --network=hoodi \
+                --epoch=1 \
                 --confirmation-enabled=false
                 ```
 
@@ -193,8 +193,8 @@ As per your preferences, choose the correct combination of -
                 docker exec -it charon-distributed-validator-node-teku-1 /opt/teku/bin/teku voluntary-exit \
                 --beacon-node-api-endpoint="http://charon:3600/" \
                 --validator-keys="/opt/charon/validator_keys:/opt/charon/validator_keys" \
-                --network=holesky \
-                --epoch=256 \
+                --network=hoodi \
+                --epoch=1 \
                 --confirmation-enabled=false
                 ```
 
@@ -237,7 +237,7 @@ As per your preferences, choose the correct combination of -
                 cat /home/user/data/wd/node0/secrets/<PARTIAL_PUBLIC_KEY> | /home/user/nimbus_beacon_node deposits exit \ 
                     --rest-url=http://charon:3600/ \
                     --validator=/home/user/data/wd/node0/validators/<PARTIAL_PUBLIC_KEY>/keystore.json \
-                    --epoch=256 \
+                    --epoch=1 \
                     --data-dir=/home/user/data/wd/node0/;"
                 ```
 
@@ -257,7 +257,7 @@ As per your preferences, choose the correct combination of -
                 /home/user/nimbus_beacon_node deposits exit \ 
                     --rest-url=http://charon:3600/ \
                     --all \
-                    --epoch=256 \
+                    --epoch=1 \
                     --data-dir=/home/user/data/wd/node0/;"
                 ```
             </TabItem>
@@ -294,8 +294,8 @@ As per your preferences, choose the correct combination of -
                     docker exec -it charon-distributed-validator-node-lodestar-1 node /usr/app/packages/cli/bin/lodestar validator voluntary-exit \
                     --beaconNodes="http://charon:3600" \
                     --pubkeys=<PARTIAL_PUBLIC_KEY> \
-                    --network=holesky \
-                    --exitEpoch=256 \
+                    --network=hoodi \
+                    --exitEpoch=1 \
                     --dataDir=/opt/data \
                     --yes
                     ```
@@ -312,8 +312,8 @@ As per your preferences, choose the correct combination of -
                     ```shell  
                     docker exec -it charon-distributed-validator-node-lodestar-1 node /usr/app/packages/cli/bin/lodestar validator voluntary-exit \
                     --beaconNodes="http://charon:3600" \
-                    --network=holesky \
-                    --exitEpoch=256 \
+                    --network=hoodi \
+                    --exitEpoch=1 \
                     --dataDir=/opt/data \
                     --yes
                     ```
@@ -359,7 +359,7 @@ As per your preferences, choose the correct combination of -
                     lighthouse account validator exit \
                         --beacon-node http://charon:3600 \
                         --keystore /opt/charon/keys/$keystore.json \
-                        --network holesky \
+                        --network hoodi \
                         --password-file /opt/charon/keys/$keystore.txt \
                         --no-confirmation \
                         --no-wait;'
@@ -388,7 +388,7 @@ As per your preferences, choose the correct combination of -
                             lighthouse account validator exit \
                                 --beacon-node http://charon:3600 \
                                 --keystore /opt/charon/keys/$keystore.json \
-                                --network holesky \
+                                --network hoodi \
                                 --password-file /opt/charon/keys/$keystore.txt \
                                 --no-confirmation \
                                 --no-wait;

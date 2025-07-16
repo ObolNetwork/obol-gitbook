@@ -60,7 +60,7 @@ The private key shares can be created centrally and distributed securely to each
   ```shell
     docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.5.1 create cluster \
       --nodes=6 \
-      --network=holesky \
+      --network=hoodi \
       --num-validators=1 \
       --name="Quickstart Guide Cluster" \
       --cluster-dir="cluster" \
@@ -182,7 +182,7 @@ cluster
 ```
 
 :::info
-  Currently, the quickstart repo installs a node on the Holesky testnet. It is possible to choose a different network (another testnet, or mainnet) by overriding the `.env` file.
+  Currently, the quickstart repo installs a node on the Hoodi testnet. It is possible to choose a different network (another testnet, or mainnet) by overriding the `.env` file.
 
   `.env.sample` is a sample environment file that allows overriding default configuration defined in `docker-compose.yml`. Uncomment and set any variable to override its value.
 
@@ -190,7 +190,7 @@ cluster
 
   ```shell
   # Copy ".env.sample", renaming it ".env"
-  cp .env.sample.holesky .env
+  cp .env.sample.hoodi .env
   ```
 
 :::
