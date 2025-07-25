@@ -83,7 +83,7 @@ The following smart contracts power OBOL staking, governance, and reward distrib
 
 <details>
 
-<summary>Auto Delegate (Overwhelming Support Strategy)</summary>
+<summary>Auto Delegate Strategy</summary>
 
 * **Address:** [`0xCa28852B6Fc15EbD95b17c875D5Eb14b08579158`](https://etherscan.io/address/0xCa28852B6Fc15EbD95b17c875D5Eb14b08579158)
 * **Purpose:** Implements the “Overwhelming Support” auto-delegation strategy. This contract casts votes on behalf of un-delegated or transferred stOBOL when proposals receive strong community support. This mechanism uses tokens that would otherwise not be available in governance to ensure uncontroversial proposals will meet quorum.
@@ -96,7 +96,7 @@ The following smart contracts power OBOL staking, governance, and reward distrib
 
 </details>
 
-## Learn more about...&#x20;
+## Learn more about...
 
 {% content-ref url="token-utility.md" %}
 [token-utility.md](token-utility.md)

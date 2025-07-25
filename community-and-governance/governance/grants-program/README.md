@@ -1,21 +1,18 @@
 # Grants Program
 
-⚠️ _<mark style="color:red;">The grants program is currently operating in its pilot phase.</mark>_
+_<mark style="color:red;">⚠️ The grants program is currently</mark> <mark style="color:red;"></mark><mark style="color:red;">**paused**</mark><mark style="color:red;">, as the pilot phase has officially concluded.</mark>_
 
-_Following community feedback on this pilot, we’re committing to:_
+_We’ve funded a number of initial initiatives and plan to publish a full transparency report on these grants in the coming weeks._
 
-* _Publishing an RFC-style post 2–3 weeks before each new wave_
-* _Involving delegates and external experts in future rounds via a grants committee_
-* _Extending this Pilot Wave application window to June 11 to give applicants more time_
-* _Maintaining limited scope and budget during the pilot to reduce risk and enable fast iteration_
+_The program is expected to resume in **September 2025** under a new structure, reflecting key lessons from the pilot and offering clearer tracks for community events, protocol integrations, and milestone-based initiatives like the Staking Mastery Program._
 
-_These changes aim to strengthen community trust, increase transparency, and enable broader governance participation over time._
+_Stay tuned for the full relaunch and documentation updates soon._
 
 ***
 
 ## **Purpose**
 
-The Obol Grants Program (pilot)  aims to support projects that advance the strategic goals of the Obol Collective by providing milestone-based funding to builders, educators, and contributors working on public goods aligned with the Distributed Validator (DV) ecosystem.
+The Obol Grants Program (pilot) aims to support projects that advance the strategic goals of the Obol Collective by providing milestone-based funding to builders, educators, and contributors working on public goods aligned with the Distributed Validator (DV) ecosystem.
 
 This program is specifically designed to address the execution of the strategic SQUAD Goals outlined in [OIP-3](https://community.obol.org/t/oip-3-obol-collective-2025-goals-proposal/) that require community involvement. Each grant proposal must clearly align with **one of the grant tracks**, which reflect these goals. The grant tracks help ensure that funds are directed toward work that directly contributes to the Obol Collective's mission.
 
@@ -42,7 +39,7 @@ To ensure proposals are aligned with these objectives, each track has a dedicate
 
 ## Pilot Wave Timeline
 
-<table data-header-hidden><thead><tr><th></th><th></th><th width="298.810791015625"></th></tr></thead><tbody><tr><td>Phase</td><td>Dates</td><td>Notes</td></tr><tr><td>Applications Open</td><td>May 14 – June 11</td><td>Anyone can apply during this period</td></tr><tr><td>Review &#x26; Approval</td><td>June 12 - June 25</td><td>Committee reviews proposals and approves based on milestone scope. <br>Publish recap of selected proposals and next steps</td></tr><tr><td>Pause &#x26; Monitoring </td><td>June 26 - July 23</td><td>Publish recap of selected proposals and next steps</td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th></th><th></th><th width="298.810791015625"></th></tr></thead><tbody><tr><td>Phase</td><td>Dates</td><td>Notes</td></tr><tr><td>Applications Open</td><td>May 14 – June 11</td><td>Anyone can apply during this period</td></tr><tr><td>Review &#x26; Approval</td><td>June 12 - June 25</td><td>Committee reviews proposals and approves based on milestone scope.<br>Publish recap of selected proposals and next steps</td></tr><tr><td>Pause &#x26; Monitoring</td><td>June 26 - July 23</td><td>Publish recap of selected proposals and next steps</td></tr></tbody></table>
 
 ## Platform
 
@@ -64,8 +61,8 @@ The program will be managed via [Questbook](https://questbook.app), with future 
 ## Budget
 
 * All **funding will be disbursed on a milestone basis only** _(see above disclaimer)_
-* Future quarterly or annual grant budgets to be approved by DAO governance&#x20;
-* The first pilot wave (Wave #1) will not specify any max  budget.
+* Future quarterly or annual grant budgets to be approved by DAO governance
+* The first pilot wave (Wave #1) will not specify any max budget.
 
 ## Communication
 
