@@ -29,4 +29,4 @@ Visit read [the delegate guide](https://community.obol.org/t/delegate-guidelines
 
 Starting August 2025, active delegates will be eligible for compensation based on their participation and contributions. This is determined using the **Delegate Reputation Score (DRS):** a scoring system that evaluates each delegate’s voting, rationale, and forum activity. Only delegates with a score of **65 or higher** will qualify for rewards.
 
-For full details on DRS and how compensation works, see the [Delegate Reputation Score & Compensation page.](https://app.gitbook.com/o/lLbkJAnrBqjBjKugNPzM/s/ym0xLVqLq5ZCK1Q02khi/~/changes/6/community-and-governance/governance/token-house/delegate-reputation-score-and-compensation)
+For full details on DRS and how compensation works, see the [Delegate Reputation Score & Compensation page.](delegate-reputation-score-and-compensation.md)
