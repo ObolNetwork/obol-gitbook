@@ -1,15 +1,12 @@
 # Grants Program
 
-⚠️ _<mark style="color:red;">The grants program is currently operating in its pilot phase.</mark>_
+_<mark style="color:red;">⚠️ The grants program is currently</mark> <mark style="color:red;"></mark><mark style="color:red;">**paused**</mark><mark style="color:red;">, as the pilot phase has officially concluded.</mark>_
 
-_Following community feedback on this pilot, we’re committing to:_
+_We’ve funded a number of initial initiatives and plan to publish a full transparency report on these grants in the coming weeks._
 
-* _Publishing an RFC-style post 2–3 weeks before each new wave_
-* _Involving delegates and external experts in future rounds via a grants committee_
-* _Extending this Pilot Wave application window to June 11 to give applicants more time_
-* _Maintaining limited scope and budget during the pilot to reduce risk and enable fast iteration_
+_The program is expected to resume in **September 2025** under a new structure, reflecting key lessons from the pilot and offering clearer tracks for community events, protocol integrations, and milestone-based initiatives like the Staking Mastery Program._
 
-_These changes aim to strengthen community trust, increase transparency, and enable broader governance participation over time._
+_Stay tuned for the full relaunch and documentation updates soon._
 
 ***
 

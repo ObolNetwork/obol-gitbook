@@ -20,6 +20,13 @@ These tools or their uses may change over time as governance evolves. For exampl
 Please see the toolkit on the forum [here](https://community.obol.org/t/governance-toolkit/207).
 
 ## Delegates’ Role in the RAF
+
 The role of Delegates in the RAF is to allocate votes to projects that have made substantial positive impact on the Obol Collective’s Decentralized Operator Ecosystem. Vote allocation is proportional to the Delegates’ delegated power. To determine the funding amounts, the [quadratic funding](https://qf.gitcoin.co/) mechanism is used, to ensure a balanced and equitable distribution of influence.
 
 Visit read [the delegate guide](https://community.obol.org/t/delegate-guidelines-raf1/229) on the forum.
+
+## Delegate Compensation
+
+Starting August 2025, active delegates will be eligible for compensation based on their participation and contributions. This is determined using the **Delegate Reputation Score (DRS):** a scoring system that evaluates each delegate’s voting, rationale, and forum activity. Only delegates with a score of **65 or higher** will qualify for rewards.
+
+For full details on DRS and how compensation works, see the [Delegate Reputation Score & Compensation page.](broken-reference)
