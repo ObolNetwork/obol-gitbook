@@ -89,6 +89,6 @@ We are proud to help drive this standard forward and will continue sharing learn
 ## Resources
 
 * [Tally Delegate Portal](https://www.tally.xyz/gov/obol/delegates) – see live DRS scores, search delegates, and explore participation history
-* [Curia Dashboard](https://obol.curiahub.xyz/power) – DRS calculation details and complementary metrics
+* [Curia Dashboard](https://obol.curiahub.xyz/delegate) – DRS calculation details and complementary metrics
 * [Curia's Source of truth for scoring logic](https://www.notion.so/DRS-v1-Implementation-Spec-Public-20f5e0b4886180219fcbfb8a2531264f) – Broken down calculation of DRS
 * [OIP-4: Delegate Compensation & DRS Scoring](https://community.obol.org/t/oip-4-delegate-compensation-and-delegate-reputation-score-integration-for-stobol/522) – original governance proposal
