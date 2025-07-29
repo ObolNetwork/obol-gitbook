@@ -8,8 +8,6 @@ The Obol Collective is among the first DAOs to integrate this model, developed i
 
 ## What is the Delegate Reputation Score (DRS)?
 
-_All DRS components described on this page (including on-chain DRS calculations and live UI integrations by our partners) are set to go live on **Tuesday, July 29, 2025**._
-
 The Delegate Reputation Score is a reputation system. It gives each delegate a score from 0 to 100 based on their behavior across three core dimensions:
 
 * **Voting participation**
