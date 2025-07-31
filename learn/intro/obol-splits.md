@@ -178,8 +178,8 @@ The `ObolValidatorManager` contract is deployed via a [factory contract](https:/
 
 | Chain   | Address                                                                                                                       |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Mainnet | [](https://etherscan.io/address/)         |
-| Hoodi  | [0xb1E1f5e90f4190F78182A8d5cbed774893Dd1558](https://hoodi.etherscan.io/address/0xb1E1f5e90f4190F78182A8d5cbed774893Dd1558)  |
+| Mainnet | [0xdfe2d8b26806583cf03b3cb623b0752f8670e93e](https://etherscan.io/address/0xdfe2d8b26806583cf03b3cb623b0752f8670e93e)         |
+| Hoodi   | [0xb1E1f5e90f4190F78182A8d5cbed774893Dd1558](https://hoodi.etherscan.io/address/0xb1E1f5e90f4190F78182A8d5cbed774893Dd1558)   |
 | Holesky | [](https://holesky.etherscan.io/address/) |
 | Sepolia | [](https://sepolia.etherscan.io/address/) |
 
