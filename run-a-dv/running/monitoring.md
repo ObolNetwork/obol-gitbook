@@ -44,7 +44,7 @@ When alerts are triggered, they are routed to contact points according notificat
 2.  Click on `+ Add contact point`. It will show following page. Choose Discord in the `Integration` drop down.\
 
 
-    <figure><img src="../../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image-26.png" alt=""><figcaption></figcaption></figure>
 3. Give a descriptive name to the alert. Create a channel in Discord and copy its `webhook url`. Once done, click `Save contact point` to finish.
 4. When the alerts are fired, it will send without filling in the variables for cluster detail. For example, `cluster_hash` variable is missing here `cluster_hash = {{.cluster_hash}}`. This is done to save disk space. To find the details, use `docker compose -f docker-compose.yml -f compose-debug.yml up`. More description [**here**](../../advanced-and-troubleshooting/advanced/adv-docker-configs.md).
 

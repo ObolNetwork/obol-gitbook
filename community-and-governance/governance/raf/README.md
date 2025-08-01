@@ -18,7 +18,7 @@ Voting and funding distributions occur over a series of **Obol Retroactive Fund 
 
 Below is described the steps within each RAF round. Each step takes approximately one week.\\
 
-<figure><img src="../../../.gitbook/assets/image (53).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image-53.png" alt=""><figcaption></figcaption></figure>
 
 ### Step 1: Scoping
 
