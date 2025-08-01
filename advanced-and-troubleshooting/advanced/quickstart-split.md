@@ -64,7 +64,8 @@ docker run --rm -v $(pwd):/opt/charon obolnetwork/charon:${CHARON_VERSION} creat
    --split-existing-keys \
    --split-keys-dir=/opt/charon/split_keys \
    --nodes ${NODES} \
-   --network mainnet
+   --network mainnet \
+   --publish
 ```
 
 The above command will create `validator_keys` along with `cluster-lock.json` in `./cluster` for each node.

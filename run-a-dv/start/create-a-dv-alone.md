@@ -64,7 +64,8 @@ Run the below command to create the validator private key shares and cluster art
     --name="Quickstart Guide Cluster" \
     --cluster-dir="cluster" \
     --fee-recipient-addresses=0x000000000000000000000000000000000000dead \
-    --withdrawal-addresses=0x000000000000000000000000000000000000dead
+    --withdrawal-addresses=0x000000000000000000000000000000000000dead \
+    --publish
 ```
 
 {% hint style="success" %}
@@ -193,18 +194,3 @@ cp .env.sample.holesky .env
 {% endhint %}
 {% endtab %}
 {% endtabs %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
