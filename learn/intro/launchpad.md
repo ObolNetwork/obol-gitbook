@@ -10,7 +10,7 @@ The vast majority of users that created validators to date have used the [~~**Et
 
 To facilitate the generation of distributed validator keys amongst remote users with high trust, the Obol Network developed and maintains a website that enables a group of users to come together and create these threshold keys: **The DV Launchpad**.
 
-<figure><img src="../../.gitbook/assets/image (16) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image-16-1-1.png" alt=""><figcaption></figcaption></figure>
 
 ## Getting started
 
@@ -30,13 +30,13 @@ For more information on running Charon in a UI friendly way through the DV Launc
 
 Clicking on "dashboard" on the top-right of the launchpad brings you to the operator view, where you can view information about the DV operator corresponding to the wallet address currently connected to the launchpad. It is also possible to view information about another operator, by substituting another wallet address in the URL, or using the explorer, described below.
 
-<figure><img src="../../.gitbook/assets/image (17) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image-17-1.png" alt=""><figcaption></figcaption></figure>
 
 ## View a Cluster
 
 An operator can be part of multiple clusters. Clusters, and cluster invites, are shown on the operator page. Clicking on a cluster takes you to the cluster page. Here you can see the status of the cluster, the operators, and validators associated with the cluster.
 
-<figure><img src="../../.gitbook/assets/image (18) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image-18-1.png" alt=""><figcaption></figcaption></figure>
 
 > [!TIP]
 > If you created a cluster locally, and didn't use the `--publish` command at the time, you can manually publish it by running this command from the folder with the `cluster-lock.json` in it.
@@ -47,4 +47,4 @@ An operator can be part of multiple clusters. Clusters, and cluster invites, are
 
 Clicking "explore" on the top right of the launchpad brings you to the explorer view. It shows information about every DV cluster and operator being tracked by Obol. You can search for a cluster or operator by name, or filter based on badge or protocol type.
 
-<figure><img src="../../.gitbook/assets/image (19) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image-19-1.png" alt=""><figcaption></figcaption></figure>

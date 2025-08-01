@@ -5,7 +5,7 @@ description: Troubleshoot issues spotted by the test command
 
 # Test Commands
 
-This page aims to give guidance on the causes, and potential for troubleshooting or improvement, of failed tests or low test scores from the [Charon Test commands](../../run/prepare/test-command.mdx).
+This page aims to give guidance on the causes, and potential for troubleshooting or improvement, of failed tests or low test scores from the [Charon Test commands](../../run-a-dv/prepare/test-a-cluster.md).
 
 ## Peers
 

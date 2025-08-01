@@ -78,7 +78,7 @@ Our rewards calculation and distribution system is built for accuracy, transpare
 OBOL Tokens serve as the basis for ownership and governance of the Obol Collective.\
 Learn more on the OBOL Token page.
 
-<figure><img src="../../.gitbook/assets/image (57).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image-57.png" alt=""><figcaption></figcaption></figure>
 
 ***
 

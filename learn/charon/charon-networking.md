@@ -8,7 +8,7 @@ This document describes Charon's networking model which can be divided into two 
 
 ### Internal Validator Stack[​](https://docs.obol.org/learn/charon/networking#internal-validator-stack) <a href="#internal-validator-stack" id="internal-validator-stack"></a>
 
-<figure><img src="../../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image-22.png" alt=""><figcaption></figcaption></figure>
 
 Charon is a middleware DVT client and is therefore connected to an upstream beacon node and a downstream validator client is connected to it. Each operator should run the whole validator stack (all 4 client software types), either on the same machine or on different machines. The networking between the nodes should be private and not exposed to the public internet.
 
@@ -19,7 +19,7 @@ Related Charon configuration flags:
 
 ### External P2P Network[​](https://docs.obol.org/learn/charon/networking#external-p2p-network) <a href="#external-p2p-network" id="external-p2p-network"></a>
 
-<figure><img src="../../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image-23.png" alt=""><figcaption></figcaption></figure>
 
 The Charon clients in a DV cluster are connected to each other via a small p2p network consisting of only the clients in the cluster. Peer IP addresses are discovered via an external "relay" server. The p2p connections are over the public internet so the Charon p2p port must be publicly accessible. Charon leverages the popular [libp2p](https://libp2p.io/) protocol.
 
