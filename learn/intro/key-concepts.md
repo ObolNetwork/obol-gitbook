@@ -6,25 +6,25 @@ description: Some of the key terms in the field of Distributed Validator Technol
 
 This page outlines a number of the key concepts behind the various technologies that Obol is developing.
 
-## Distributed validator
+## Distributed validator {#distributed-validator}
 
-<figure><img src="../../.gitbook/assets/image (16) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (16) (1).png" alt="Diagram illustrating a distributed validator running across multiple nodes for fault tolerance"><figcaption></figcaption></figure>
 
 A distributed validator is an Ethereum proof-of-stake validator that runs on more than one node/machine. This functionality is possible with the use of **Distributed Validator Technology** (DVT).
 
 Distributed validator technology removes some of the single points of failure in validation. Should <33% of the participating nodes in a DV cluster go offline, the remaining active nodes can still come to consensus on what to sign and can produce valid signatures for their staking duties. This is known as Active/Active redundancy, a common pattern for minimizing downtime in mission critical systems.
 
-## Distributed Validator Node
+## Distributed Validator Node {#distributed-validator-node}
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt="Architecture diagram of a distributed validator node showing the client stack components"><figcaption></figcaption></figure>
 
 A distributed validator node is the set of clients an operator needs to configure and run to fulfil the duties of a Distributed Validator Operator. An operator may also run redundant execution and consensus clients, an execution payload relayer like [mev-boost](https://github.com/flashbots/mev-boost), or other monitoring or telemetry services on the same hardware to ensure optimal performance.
 
 In the above example, the stack includes Geth, Lighthouse, Charon and Teku.
 
-### Execution Client
+### Execution Client {#execution-client}
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt="Diagram of an execution client managing the Ethereum Virtual Machine and transaction pool"><figcaption></figcaption></figure>
 
 An execution client (formerly known as an Eth1 client) specializes in running the EVM and managing the transaction pool for the Ethereum network. These clients provide execution payloads to consensus clients for inclusion into blocks.
 
@@ -34,7 +34,7 @@ Examples of execution clients include:
 * [Nethermind](https://docs.nethermind.io/)
 * [Erigon](https://github.com/ledgerwatch/erigon)
 
-### Consensus Client
+### Consensus Client {#consensus-client}
 
 <figure><img src="../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -48,7 +48,7 @@ Examples of Consensus clients include:
 * [Nimbus](https://nimbus.guide/)
 * [Lodestar](https://github.com/ChainSafe/lodestar)
 
-### Distributed Validator Client
+### Distributed Validator Client {#distributed-validator-client}
 
 <figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -59,7 +59,7 @@ A distributed validator client intercepts the validator client ↔ consensus cli
 
 The only example of a distributed validator client built with a non-custodial middleware architecture to date is [Charon](../charon/intro/).
 
-### Validator Client
+### Validator Client {#validator-client}
 
 <figure><img src="../../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -73,7 +73,7 @@ Examples of validator clients include:
 * [Lighthouse](https://lighthouse-book.sigmaprime.io/api-vc.html)
 * [Vouch](https://www.attestant.io/posts/introducing-vouch/)
 
-## Distributed Validator Cluster
+## Distributed Validator Cluster {#distributed-validator-cluster}
 
 <figure><img src="../../.gitbook/assets/image (6) (1) (1).png" alt=""><figcaption></figcaption></figure>
 

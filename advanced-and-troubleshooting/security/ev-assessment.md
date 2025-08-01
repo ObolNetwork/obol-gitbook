@@ -202,7 +202,7 @@ Rather than using an NPM library to supply a factory address or JSON artifacts, 
 
 * **Harder to compromise:** as long as the user knows launchpad.obol.eth, it’s pretty difficult to trick them into deploying the wrong contracts.
 * **Easier to validate** for non-technical users: the Obol contract can be queried for deployment information via etherscan. For example:\
-  ![](<../../.gitbook/assets/image (50).png>)
+  ![Screenshot of Etherscan contract deployment information](../../.gitbook/assets/image%20(50).png)
 
 Note that in order for this to be successful, Obol needs to provide detailed steps for users to perform manual validation of their cluster setups. Users should be able to treat this as a “checklist:”
 
