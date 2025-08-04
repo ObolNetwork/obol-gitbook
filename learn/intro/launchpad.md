@@ -38,10 +38,11 @@ An operator can be part of multiple clusters. Clusters, and cluster invites, are
 
 <figure><img src="../../.gitbook/assets/image-18-1.png" alt=""><figcaption></figcaption></figure>
 
-> [!TIP]
-> If you created a cluster locally, and didn't use the `--publish` command at the time, you can manually publish it by running this command from the folder with the `cluster-lock.json` in it.
->
-> `curl -X POST -H "Content-Type: application/json" -d @cluster-lock.json https://api.obol.tech/v1/lock`
+{% hint style="info" %}
+If you created a cluster locally, and didn't use the `--publish` command at the time, you can manually publish it by running this command from the folder with the `cluster-lock.json` in it.
+
+`curl -X POST -H "Content-Type: application/json" -d @cluster-lock.json https://api.obol.tech/v1/lock`
+{% endhint %}
 
 ## Use the Explorer
 
