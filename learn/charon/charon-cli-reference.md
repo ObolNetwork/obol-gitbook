@@ -538,7 +538,7 @@ These commands are subject to breaking changes until they are moved outside of t
 
 ### Generate and add new validators to a cluster
 
-The `charon alpha add-validators` command allows you to generate new validators and add them to an existing cluster. This process is very similar to `charon dkg` ceremony that requires all node operators to participate, because under the hood it runs the same DKG protocol with additional actions and verifications.
+The `charon alpha add-validators` command allows you to generate new validators and add them to an existing cluster. This process is very similar to the `charon dkg` ceremony, which requires all node operators to participate, because under the hood it runs the same DKG protocol with additional actions and verifications.
 
 {% hint style="warning" %}
 It is not yet recommended to use this command for Mainnet clusters.
