@@ -51,7 +51,7 @@ At the end of this process, you should have a tree like this:
 Run the following docker command to split the keys (for mainnet):
 
 ```shell
-CHARON_VERSION=                # E.g. v1.5.1
+CHARON_VERSION=                # E.g. v1.5.2
 CLUSTER_NAME=                  # The name of the cluster you want to create.
 WITHDRAWAL_ADDRESS=            # The address you want to use for withdrawals (this is just for accuracy in your lock file, you can't change a withdrawal address for a validator that has already been deposited)
 FEE_RECIPIENT_ADDRESS=         # The address you want to use for block reward and MEV payments.
@@ -64,7 +64,8 @@ docker run --rm -v $(pwd):/opt/charon obolnetwork/charon:${CHARON_VERSION} creat
    --split-existing-keys \
    --split-keys-dir=/opt/charon/split_keys \
    --nodes ${NODES} \
-   --network mainnet
+   --network mainnet \
+   --publish
 ```
 
 The above command will create `validator_keys` along with `cluster-lock.json` in `./cluster` for each node.
