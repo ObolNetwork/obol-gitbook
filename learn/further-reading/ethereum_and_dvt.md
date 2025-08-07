@@ -26,7 +26,7 @@ If you haven’t yet heard, Distributed Validator Technology, or DVT, is the nex
 \
 &#xNAN;_**Vitalik's Ethereum Roadmap:**_
 
-<figure><img src="../../.gitbook/assets/image (84).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image-84.png" alt=""><figcaption></figcaption></figure>
 
 ### Deep Dive Into DVT and Charon’s Architecture
 
@@ -40,7 +40,7 @@ In our mission to help make Ethereum consensus more resilient and decentralised 
 
 [**Read More About The Performance Test Results Here**](https://blog.obol.tech/performance-testing-distributed-validators/)
 
-<figure><img src="../../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image-24.png" alt=""><figcaption></figcaption></figure>
 
 ### More Resources
 

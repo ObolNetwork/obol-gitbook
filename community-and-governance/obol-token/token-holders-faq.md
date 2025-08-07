@@ -26,7 +26,7 @@ Finally, both OBOL and stOBOL are being integrated into DeFi protocols, such as 
 
 <summary><strong>What is stOBOL?</strong></summary>
 
-stOBOL is the liquid staking token received when you stake OBOL. It earns staking rewards and can be used in DeFi. Holding stOBOL in your wallet preserves your governance power. More info in [staking-and-stobol.md](staking-and-stobol.md "mention")
+stOBOL is the liquid staking token received when you stake OBOL. It earns staking rewards and can be used in DeFi. Holding stOBOL in your wallet preserves your governance power. More info in [staking-and-stobol.md](staking-and-stobol.md)
 
 </details>
 

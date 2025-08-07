@@ -24,7 +24,7 @@ In the **Obol Retroactive Fund (RAF)**, OBOL Token Delegates are responsible for
 
 All OBOL holders and Delegates are expected to exercise their authority responsibly and follow the Delegate [Rules of Engagement](https://community.obol.org/t/delegates-rules-of-engagement/206) and the general [Code of Conduct](https://community.obol.org/t/code-of-conduct-for-discussion-forum/205) for the forum.
 
-<figure><img src="../../.gitbook/assets/image (51).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image-51.png" alt=""><figcaption></figcaption></figure>
 
 ## The Security Council
 
