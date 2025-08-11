@@ -77,6 +77,10 @@ The `owner` address, or any address with the `CONSOLIDATION_ROLE` can call the `
 All source and target validators must be active with a balance greater than 32 ether for the consolidation to succeed. The target validator must be an 0x02 type validator, 0x01 type validators can become 0x02 type through a self consolidation, where the public key is the `source` and `target`.
 {% endhint %}
 
+{% hint style="info" %}
+Because the consolidation process is an asynchronous operation handled by the system contract, it is impossible to account for the deposited principal amount from the source validators. As a result, the principal of the consolidating validators is treated as a reward by the target ObolValidatorManager. This edge case will be addressed in a future update to the ObolValidatorManager smart contract.
+{% endhint %}
+
 ```solidity
   /// Request validators consolidation with the EIP7251 system contract
   /// @dev all source validators will be consolidated into the target validator
