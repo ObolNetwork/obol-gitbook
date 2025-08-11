@@ -78,7 +78,7 @@ All source and target validators must be active with a balance greater than 32 e
 {% endhint %}
 
 {% hint style="info" %}
-Because the consolidation process is an asynchronous operation handled by the system contract, it is impossible to account for the deposited principal amount from the source validators. As a result, the principal of the consolidating validators is treated as a reward by the target ObolValidatorManager. This edge case will be addressed in a future update to the ObolValidatorManager smart contract.
+Because the consolidation process is an asynchronous operation handled by the system contract, it is impossible to account for the deposited principal amount from the source validators. As a result, the principal of the consolidated validators is treated as a reward by the target ObolValidatorManager. This edge case will be addressed in a future update to the ObolValidatorManager smart contract.
 {% endhint %}
 
 ```solidity
