@@ -4,7 +4,7 @@
 
 The total supply is capped at 500 million tokens. The full supply is not immediately circulating and tokens will unlock over the coming months and years.
 
-<figure><img src="../../.gitbook/assets/12_Supply.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/token-supply-distribution.png" alt=""><figcaption></figcaption></figure>
 
 ### **Ecosystem Treasury & Retroactive Funding (RAF) | 38.8%**
 
@@ -34,4 +34,4 @@ To ensure broad and fair token distribution, a portion of OBOL Tokens have been 
 
 Once the token becomes transferable, the community will be able to track the distribution schedule and observe how the circulating supply increases over time according to the structured unlock plan.
 
-<figure><img src="../../.gitbook/assets/13_UnlockSchedule.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/token-unlock-schedule.png" alt=""><figcaption></figcaption></figure>

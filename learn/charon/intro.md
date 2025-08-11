@@ -12,7 +12,7 @@ Charon is a GoLang-based, HTTP middleware built by Obol to enable any existing E
 
 Charon sits as a middleware between a normal validating client and its connected beacon node, intercepting and proxying API traffic. Multiple Charon clients are configured to communicate together to come to consensus on validator duties and behave as a single unified proof-of-stake validator together. The nodes form a cluster that is _byzantine-fault tolerant_ and continues to progress assuming a supermajority of working/honest nodes is met.
 
-<figure><img src="../../.gitbook/assets/image (20) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image-20-1.png" alt=""><figcaption></figcaption></figure>
 
 ## Charon Architecture
 
@@ -20,7 +20,7 @@ Charon is an Ethereum proof of stake distributed validator (DV) client. Like any
 
 Charon is designed as a generic event-driven workflow with different components coordinating to perform validation duties. All duties follow the same flow, the only difference being the signed data. The workflow can be divided into phases consisting of one or more components:
 
-<figure><img src="../../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image-21.png" alt=""><figcaption></figcaption></figure>
 
 ### Determine **when** duties need to be performed
 

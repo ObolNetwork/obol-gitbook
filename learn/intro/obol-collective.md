@@ -8,7 +8,7 @@ description: The Obol Collective
 
 The Obol Collective is the largest Decentralized Operator Ecosystem. We provides the technology, opportunities, and community to scale decentralized infrastructure networks. The list of Obol Collective participants includes 50+ staking protocols, client teams, software tools, education & community projects, professional node operators, home operators, and stakers, including names like EigenLayer, Lido, EtherFi, Figment, Bitcoin Suisse, Stakewise, Nethermind, Blockdaemon, Chorus One, DappNode, and many more. Learn more at [Obol.org](https://obol.org).
 
-<figure><img src="../../.gitbook/assets/DecentralizedOperatorEcosystem.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/decentralized-operator-ecosystem.png" alt="Diagram showing the Obol Decentralized Operator Ecosystem with various participants including staking protocols, client teams, operators, and community projects"><figcaption></figcaption></figure>
 
 ## Scaling Infrastructure Networks
 
@@ -22,7 +22,7 @@ DV Labs (originally “Obol Labs”) is one of the core research and software de
 
 ### The Obol Product Suite
 
-The [Obol Product Suite](https://obol.org/product-suite) empowers any node operator to run fault-tolerant, slashing-resistant distributed validators. Choose from [a suite of tools](../futher-reading/resources.md) to get distributed validators running on any type of hardware, with any combination of software clients.
+The [Obol Product Suite](https://obol.org/product-suite) empowers any node operator to run fault-tolerant, slashing-resistant distributed validators. Choose from [a suite of tools](../further-reading/resources.md) to get distributed validators running on any type of hardware, with any combination of software clients.
 
 * Foundation: [Charon](../charon/intro.md), a middleware client that enables validators to run in a fault-tolerant, distributed manner;
 * Configuration: The [Distributed Validator Launchpad](launchpad.md), a user interface for configuring Distributed Validators. The Obol [SDK](../../sdk/index.md) & [API](https://docs.obol.org/api), allowing Distributed Validator clusters to be configured and run at scale, for example within staking protocols.
