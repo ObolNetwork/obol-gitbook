@@ -552,7 +552,7 @@ Usage:
   charon alpha add-validators [flags]
 
 Flags:
-      --dst-dir string                         The destination empty charon folder for the new (combined) cluster data. (default ".charon-add-validators")
+      --data-dir string                        The source charon folder with existing cluster data (lock, validator_keys, etc.). (default ".charon")
       --execution-client-rpc-endpoint string   The address of the execution engine JSON-RPC API.
       --fee-recipient-addresses strings        Comma separated list of Ethereum addresses of the fee recipient for each validator. Either provide a single fee recipient address or fee recipient addresses for each validator.
   -h, --help                                   Help for add-validators
@@ -564,6 +564,7 @@ Flags:
       --log-output-path string                 Path in which to write on-disk logs.
       --no-verify                              Disables cluster definition and lock file verification.
       --num-validators int                     The number of new validators to generate and add to the existing cluster. (default 1)
+      --output-dir string                      The destination folder for the new (combined) cluster data. Must be empty. (default ".distributed_validator")
       --p2p-disable-reuseport                  Disables TCP port reuse for outgoing libp2p connections.
       --p2p-external-hostname string           The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
       --p2p-external-ip string                 The IP address advertised by libp2p. This may be used to advertise an external IP.
@@ -571,21 +572,10 @@ Flags:
       --p2p-tcp-address strings                Comma-separated list of listening TCP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --p2p-udp-address strings                Comma-separated list of listening UDP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --shutdown-delay duration                Graceful shutdown delay. (default 1s)
-      --src-dir string                         The source charon folder with existing cluster data (lock, validator_keys, etc.). (default ".charon")
       --timeout duration                       Timeout for the command, should be increased if the command times out. (default 1m0s)
-      --unverified                             When KeyManager is used, charon has no access to the existing validator keys. The flag allows to proceed, but resulting cluster-lock.json becomes unverifiable.
+      --unverified                             If charon has no access to the existing validator keys, this flag allows the addition to proceed, but skips hashing and signing the new cluster lock data. charon run must be started with --no-verify flag.
       --withdrawal-addresses strings           Comma separated list of Ethereum addresses to receive the returned stake and accrued rewards for each validator. Either provide a single withdrawal address or withdrawal addresses for each validator.
 ```
-
-Most flags for `charon alpha add-validators` are the same as those for the `charon dkg` command. The most important and required flags are: `--src-dir`, `--dst-dir`, `--num-validators`, `--unverified`, `--withdrawal-addresses`, and `--fee-recipient-addresses`.
-
-There are two typical use cases:
-
-1. If your source cluster keys are present as files in the `validator_keys` subdirectory, you can add new validators using the `--num-validators` flag. The destination folder will contain the updated cluster structure, including all partial keys, deposit data files, and a `cluster-lock.json` file that passes hash and signature verification. The ENR remains unchanged. The new cluster will have a new cluster hash and will appear as a new cluster for observability. Note that the new cluster will not appear in Launchpad, as the `--publish` flag is disabled for this command.
-
-2. If you use a KeyManager and do not have a `validator_keys` subdirectory, the command must use the same KeyManager software where the new keys will be added. In this case, you must specify the `--unverified` flag, which sets empty signatures in the `cluster-lock.json` file. As a result, you will need to use the `--no-verify` flag when running the cluster. This is because the lock signatures are derived from all partial validator signatures, which are not accessible by Charon in this scenario.
-
-After executing this command, you must stop your existing cluster (`--src-dir`) and the corresponding validator clients. Then, start the new cluster (`--dst-dir`) and allow the validator clients to load all keys (old and new). It is acceptable to update and restart all nodes sequentially, one by one.
 
 ### Test your candidate distributed validator cluster
 
