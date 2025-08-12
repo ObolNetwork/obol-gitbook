@@ -19,7 +19,7 @@ Currently supported clients are:
 | Execution layer | Consensus layer | Distributed validator | Validator client | MEV          |
 | --------------- | --------------- | --------------------- | ---------------- | ------------ |
 | Nethermind.     | Lighthouse      | Charon                | Lodestar         | MEV boost    |
-|                 | TBD             |                       | Nimbus           | Commit boost |
+|                 | Grandine        |                       | Nimbus           | Commit boost |
 
 For support between different combinations, refer to Charon's compatibility matrix, found under release notes for each release.
 
@@ -67,7 +67,7 @@ At this stage, your CDVN is set to easily swap components of its stack, but is r
 ### Swap Consensus layer
 
 > [!NOTE]
-> The code snippets under those steps are assuming you are swapping from Lighthouse CL to TBD CL and you.
+> The code snippets under those steps are assuming you are swapping from Lighthouse CL to Grandine CL and you.
 
 1. Stop the existing consensus layer client container.
 
@@ -79,12 +79,12 @@ At this stage, your CDVN is set to easily swap components of its stack, but is r
 docker compose down cl-lighthouse
 ```
 
-2. Update the `CL` environment variable in `.env` to a different supported consensus layer client (i.e.: `cl-TBD`). Supported CL clients are listed on top of this page.
+2. Update the `CL` environment variable in `.env` to a different supported consensus layer client (i.e.: `cl-grandine`). Supported CL clients are listed on top of this page.
 
 3. Start the new consensus layer client container.
 
 ```sh
-docker compose up cl-TBD -d
+docker compose up cl-grandine -d
 ```
 
 4. Restart Charon in order to update the CL client it's querying.
