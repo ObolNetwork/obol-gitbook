@@ -20,7 +20,11 @@ Currently supported client options are:
 | Nethermind.     | Lighthouse      | Charon                | Lodestar         | MEV boost    |
 |                 | Grandine        |                       | Nimbus           | Commit boost |
 
-For support between different combinations, refer to Charon's compatibility matrix, found under release notes for each release.
+For support between different combinations, refer to Charon's compatibility matrix, found in the [prepare section of the docs](../../run-a-dv/prepare/how_where_dvs.md) or under [release notes](https://github.com/ObolNetwork/charon/releases/) for each release.
+
+## Choosing clients in fresh cluster
+
+In order to choose which clients to use in a new cluster, simply change the `EL`, `CL`, `MEV` or `VC` variables in the `.env` file. The cluster will use the respective client for each component.
 
 ## Swapping clients in an already running cluster
 
@@ -155,6 +159,3 @@ docker compose down cl-lighthouse
 docker compose up cl-lighthouse -d
 ```
 
-## Choosing clients in fresh cluster
-
-In order to choose which clients to use in a new cluster, simply change the `EL`, `CL`, `MEV` or `VC` variables in the `.env` file. The cluster will use the respective client for each component.
