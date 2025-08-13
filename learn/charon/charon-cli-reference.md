@@ -564,7 +564,7 @@ Flags:
       --log-output-path string                 Path in which to write on-disk logs.
       --no-verify                              Disables cluster definition and lock file verification.
       --num-validators int                     The number of new validators to generate and add to the existing cluster. (default 1)
-      --output-dir string                      The destination folder for the new (combined) cluster data. Must be empty. (default ".distributed_validator")
+      --output-dir string                      The destination folder for the new (combined) cluster data. Must be empty. (default "distributed_validator")
       --p2p-disable-reuseport                  Disables TCP port reuse for outgoing libp2p connections.
       --p2p-external-hostname string           The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
       --p2p-external-ip string                 The IP address advertised by libp2p. This may be used to advertise an external IP.
