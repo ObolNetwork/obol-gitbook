@@ -13,7 +13,7 @@ If you are using CDVN, the default stack is:
 
 However, to achieve greater resilience through client diversity, it is preferred to run a variety of clients across your cluster, ideally ensuring no single EL/CL/VC runs on one third of the nodes or more. CDVN supports changing from the default clients. 
 
-Currently supported clients are:
+Currently supported client options are:
 
 | Execution layer | Consensus layer | Distributed validator | Validator client | MEV          |
 | --------------- | --------------- | --------------------- | ---------------- | ------------ |
