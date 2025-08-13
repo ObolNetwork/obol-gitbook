@@ -24,12 +24,12 @@ For support between different combinations, refer to Charon's compatibility matr
 
 ## Swapping clients in an already running cluster
 
-To achieve this, the currently existing `.env` file has to be replaced with the new `.env` file introduced in v1.6.
-
-1. Copy the new `.env.sample.<NETWORK>` file to `.env`. Make sure custom environment variables are not lost in the process.
-
 > [!IMPORTANT]
-> Some environment variables were renamed in order to be client-agnostic. If you have set those environment variables to custom values, after migrating to the multi client setup, use the new ones. They serve the same purpose.
+> For ([L](https://github.com/obolNetwork/lido-charon-distributed-validator-node))[CDVN](https://github.com/obolNetwork/charon-distributed-validator-node) users who created their `.env` file before the release of charon `v1.6.0`, there are breaking changes between then and the current multi-client `.env` file setup.
+>
+> The minimal addition to an older version of the `.env` file compatible with the current versions of the repos is to add `COMPOSE_PROFILES=el_nethermind,cl_lighthouse,dv_charon,vc_lodestar,mev_mevboost` to your existing `.env` file.
+>
+> Some environment variables were renamed in order to be client-agnostic. **If you had set these environment variables to custom values in your `.env`, you need to set the new variables to your custom values**. They serve the same purpose.
 >
 > | Old                           | New                              |
 > |-------------------------------|--------------------------------- |
@@ -49,7 +49,9 @@ To achieve this, the currently existing `.env` file has to be replaced with the 
 > | LODESTAR_PROMTAIL_MONITORED   | VC_LODESTAR_PROMTAIL_MONITORED   |
 > | MEV_BOOST_PROMTAIL_MONITORED  | MEV_MEV_BOOST_PROMTAIL_MONITORED |
 
-2. Stop the existing cluster that uses the old environment file.
+1. Copy the new `.env.sample.<NETWORK>` file to `.env`.
+2. Comment or uncomment your preferred Execution, Consensus, Validator, and MEV clients and save the file. 
+3. Stop the existing cluster that uses the old environment file.
 
 ```sh
 docker compose --profile "" down
