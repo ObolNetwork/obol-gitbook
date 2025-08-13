@@ -9,7 +9,7 @@ If you are using CDVN, the default stack is:
 
 | Execution layer | Consensus layer | Distributed validator | Validator client | MEV       |
 | --------------- | --------------- | --------------------- | ---------------- | --------- |
-| Geth            | Lighthouse      | Charon                | Lodestar         | MEV boost |
+| Nethermind            | Lighthouse      | Charon                | Lodestar         | MEV boost |
 
 However, the more users there are of CDVN, the more centralisation this creates.
 Since v1.6, CDVN provides the option for swapping clinets in the stack.
