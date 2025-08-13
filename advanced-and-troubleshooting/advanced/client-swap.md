@@ -63,7 +63,7 @@ docker compose --profile "" down
 docker compose up -d
 ```
 
-At this stage, your CDVN is set to easily swap components of its stack, but is running the same stack currently.
+Your node should start up with the new clients.
 
 ### Swap Consensus layer
 
