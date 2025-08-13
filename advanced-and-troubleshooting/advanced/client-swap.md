@@ -57,7 +57,7 @@ For support between different combinations, refer to Charon's compatibility matr
 docker compose --profile "" down
 ```
 
-3. Start the new cluster that will use the new environment file.
+3. Start the node again to pick up the changes to the `.env` file.
 
 ```sh
 docker compose up -d
