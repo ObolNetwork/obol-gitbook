@@ -11,7 +11,7 @@ If you are using CDVN, the default stack is:
 | --------------- | --------------- | --------------------- | ---------------- | --------- |
 | Nethermind            | Lighthouse      | Charon                | Lodestar         | MEV boost |
 
-However, to achieve greater resilience through client diversity, it is preferred to run a variety of clients across your cluster, ideally ensuring no single EL/CL/VC runs on one third of the nodes or more. CDVN supports changing from the default clients. 
+However, to achieve greater resilience through client diversity, it is preferred to run a variety of clients across your cluster, ideally ensuring no single EL/CL/VC runs on one third of the nodes or more. CDVN supports changing from the default clients.
 
 Currently supported client options are:
 
@@ -54,7 +54,7 @@ In order to choose which clients to use in a new cluster, simply leave uncomment
 > | MEV_BOOST_PROMTAIL_MONITORED  | MEV_MEV_BOOST_PROMTAIL_MONITORED |
 
 1. Copy the new `.env.sample.<NETWORK>` file to `.env`.
-2. Comment or uncomment your preferred Execution, Consensus, Validator, and MEV clients and save the file. 
+2. Comment or uncomment your preferred Execution, Consensus, Validator, and MEV clients and save the file.
 3. Stop the existing cluster that uses the old environment file.
 
 ```sh
