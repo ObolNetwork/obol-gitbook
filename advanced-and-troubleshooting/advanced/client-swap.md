@@ -17,14 +17,14 @@ Currently supported client options are:
 
 | Execution layer | Consensus layer | Distributed validator | Validator client | MEV          |
 | --------------- | --------------- | --------------------- | ---------------- | ------------ |
-| Nethermind.     | Lighthouse      | Charon                | Lodestar         | MEV boost    |
+| Nethermind      | Lighthouse      | Charon                | Lodestar         | MEV boost    |
 |                 | Grandine        |                       | Nimbus           | Commit boost |
 
 For support between different combinations, refer to Charon's compatibility matrix, found in the [prepare section of the docs](../../run-a-dv/prepare/how_where_dvs.md) or under [release notes](https://github.com/ObolNetwork/charon/releases/) for each release.
 
 ## Choosing clients in fresh cluster
 
-In order to choose which clients to use in a new cluster, simply change the `EL`, `CL`, `MEV` or `VC` variables in the `.env` file. The cluster will use the respective client for each component.
+In order to choose which clients to use in a new cluster, simply leave uncommented (only) the desired `EL`, `CL`, `MEV` or `VC` variables in the `.env` file. There must be only one client per component. The cluster will use the respective client for each component.
 
 ## Swapping clients in an already running cluster
 
@@ -84,7 +84,7 @@ Your node should start up with the new clients.
 docker compose down cl-lighthouse
 ```
 
-2. Update the `CL` environment variable in `.env` to a different supported consensus layer client (i.e.: `cl-grandine`). Supported CL clients are listed on top of this page.
+2. Comment out the currently set `CL` environment variable in `.env` (i.e.: `CL=cl-lighthouse` -> `#CL=cl-lighthouse`). Uncomment the desired CL (i.e.: `#CL=cl-grandine` -> `CL=cl-grandine`).
 
 3. Start the new consensus layer client container.
 
@@ -116,7 +116,7 @@ rm -rf ./data/lighthouse
 docker compose down vc-lodestar
 ```
 
-2. Update the `VC` environment variable to a different supported validator client (i.e.: `vc-nimbus`). Supported CL clients are listed on top of this page.
+2. Comment out the currently set `VC` environment variable in `.env` (i.e.: `VC=vc-lodestar` -> `#VC=vc-lodestar`). Uncomment the desired VC (i.e.: `#VC=vc-nimbus` -> `VC=vc-nimbus`).
 
 3. Start the new validator client container.
 
@@ -144,7 +144,7 @@ rm -rf ./data/lodestar
 docker compose down mev-mevboost
 ```
 
-2. Update the `MEV` environment variable to a different supported MEV client (i.e.: `mev-commitboost`). Supported MEV clients are listed on top of this page.
+2. Comment out the currently set `MEV` environment variable in `.env` (i.e.: `MEV=mev-mevboost` -> `#MEV=mev-mevboost`). Uncomment the desired MEV (i.e.: `#MEV=mev-commitboost` -> `MEV=mev-commitboost`).
 
 3. Start the new MEV client container.
 
@@ -158,4 +158,3 @@ docker compose up mev-commitboost -d
 docker compose down cl-lighthouse
 docker compose up cl-lighthouse -d
 ```
-
