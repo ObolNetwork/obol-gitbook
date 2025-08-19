@@ -9,7 +9,7 @@ If you are using CDVN, the default stack is:
 
 | Execution layer | Consensus layer | Distributed validator | Validator client | MEV       |
 | --------------- | --------------- | --------------------- | ---------------- | --------- |
-| Nethermind            | Lighthouse      | Charon                | Lodestar         | MEV boost |
+| Nethermind      | Lighthouse      | Charon                | Lodestar         | MEV boost |
 
 However, to achieve greater resilience through client diversity, it is preferred to run a variety of clients across your cluster, ideally ensuring no single EL/CL/VC runs on one third of the nodes or more. CDVN supports changing from the default clients.
 
@@ -19,6 +19,8 @@ Currently supported client options are:
 | --------------- | --------------- | --------------------- | ---------------- | ------------ |
 | Nethermind      | Lighthouse      | Charon                | Lodestar         | MEV boost    |
 |                 | Grandine        |                       | Nimbus           | Commit boost |
+|                 |                 |                       | Prysm            |              |
+|                 |                 |                       | Teku             |              |
 
 For support between different combinations, refer to Charon's compatibility matrix, found in the [prepare section of the docs](../../run-a-dv/prepare/how_where_dvs.md) or under [release notes](https://github.com/ObolNetwork/charon/releases/) for each release.
 
@@ -108,7 +110,7 @@ rm -rf ./data/lighthouse
 ### Swap Validator client
 
 > [!NOTE]
-> The code snippets under those steps are assuming you are swapping from Lodestar VC to Nimbus VC.
+> The code snippets under those steps are assuming you are swapping from Lodestar VC to Teku VC.
 
 1. Stop the existing validator client container.
 
@@ -116,12 +118,12 @@ rm -rf ./data/lighthouse
 docker compose down vc-lodestar
 ```
 
-2. Comment out the currently set `VC` environment variable in `.env` (i.e.: `VC=vc-lodestar` -> `#VC=vc-lodestar`). Uncomment the desired VC (i.e.: `#VC=vc-nimbus` -> `VC=vc-nimbus`).
+2. Comment out the currently set `VC` environment variable in `.env` (i.e.: `VC=vc-lodestar` -> `#VC=vc-lodestar`). Uncomment the desired VC (i.e.: `#VC=vc-teku` -> `VC=vc-teku`).
 
 3. Start the new validator client container.
 
 ```sh
-docker compose up vc-nimbus -d
+docker compose up vc-teku -d
 ```
 
 4. After the new validator client is started and you are assured the new setup is working, you can delete the previous VC's data in order to save resources
