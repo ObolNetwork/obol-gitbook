@@ -18,7 +18,7 @@ You can add validators to your cluster using the `charon alpha add-validators` c
 
 ## Adding Validators Process
 
-Run the following command to collectively generate and add 10 new validators with other node operators (similar to DKG):
+The below examples are for adding 10 validators. You can use them with any amount of validators you would like to add. Run the following command to collectively generate and add 10 new validators with other node operators (similar to DKG):
 
 ```bash
 # If you prefer running a pre-built charon binary
