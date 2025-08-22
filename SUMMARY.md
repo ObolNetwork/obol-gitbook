@@ -76,6 +76,7 @@
   * [The RAF](community-and-governance/governance/raf/README.md)
     * [RAF #1](community-and-governance/governance/raf/raf1-guide.md)
   * [Delegate Guide](community-and-governance/governance/delegate-guide.md)
+    * [Delegate Reputation Score & Compensation](community-and-governance/governance/delegate-guide/delegate-reputation-score-and-compensation.md)
   * [Grants Program](community-and-governance/governance/grants-program/README.md)
     * [How to create a proposal in Questbook?](community-and-governance/governance/grants-program/how-to-create-a-proposal-in-questbook.md)
     * [Grant Track for Boosting Obol DV Adoption](community-and-governance/governance/grants-program/grant-track-for-boosting-obol-dv-adoption.md)

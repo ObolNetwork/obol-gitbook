@@ -32,7 +32,7 @@ git clone https://github.com/ObolNetwork/charon-distributed-validator-node.git
 # Change directory
 cd charon-distributed-validator-node/
 # Use docker to create an ENR. Backup the file `.charon/charon-enr-private-key`.
-docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.4.0 create enr
+docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.5.2 create enr
 ```
 You should expect to see a console output like this:
 ```logs
@@ -75,9 +75,9 @@ With a fully synced Ethereum node now running on the DappNode, the below steps w
 <p>
   <ol>
     <li>
-      Before installing the package, make sure you are installing the correct one, this depends on which network your creator configures the cluster on, Holesky or Mainnet. You can find the link to both packages below:
+      Before installing the package, make sure you are installing the correct one, this depends on which network your creator configures the cluster on, Hoodi or Mainnet. You can find the link to both packages below:
       <ul>
-        <li><a href="http://my.dappnode/installer/dnp/holesky-obol.dnp.dappnode.eth" target="_blank">Holesky Repo</a></li>
+        <li><a href="http://my.dappnode/installer/dnp/hoodi-obol.dnp.dappnode.eth" target="_blank">Hoodi Repo</a></li>
         <li><a href="http://my.dappnode/installer/dnp/obol.dnp.dappnode.eth" target="_blank">Mainnet Repo</a></li>
       </ul>
     </li>
@@ -103,7 +103,7 @@ With a fully synced Ethereum node now running on the DappNode, the below steps w
       <img src="/img/PackageInstalling.png" alt="Package Installing" />
     </li>
     <li>
-      You should now be able to see the Holesky Obol package under the 'Packages' tab. Click on the package to see important details.
+      You should now be able to see the Hoodi Obol package under the 'Packages' tab. Click on the package to see important details.
       <img src="/img/PackagesTab.png" alt="Go to packages tab" />
     </li>
     <li>
@@ -160,7 +160,7 @@ Create an ENR using charon:
 
 ```shell
 # Use docker to create an ENR. Backup the file `.charon/charon-enr-private-key`.
-docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.4.0 create enr
+docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.5.2 create enr
 ```
 </TabItem>
 </Tabs>
@@ -312,7 +312,7 @@ For Step 2 of the quickstart:
               Run the <code>charon create dkg</code> command that generates DKG
               cluster-definition.json file.
               <pre>
-                docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.4.0 create dkg {'\n'}
+                docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.5.2 create dkg {'\n'}
                 --name="Quickstart" {'\n'}
                 --num-validators=1 {'\n'}
                 --fee-recipient-addresses="0x0000000000000000000000000000000000000000" {'\n'}
@@ -423,7 +423,7 @@ For the [DKG](../../learn/charon/dkg.md) to complete, all operators need to be r
 
   </TabItem>
   <TabItem value="CLI" label="CDVN">
-    Once the creator gives you the <code>cluster-definition.json</code> file and you place it in a <code>.charon</code> subdirectory, run: <pre>docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.4.0 dkg --publish</pre> and the DKG process should begin.
+    Once the creator gives you the <code>cluster-definition.json</code> file and you place it in a <code>.charon</code> subdirectory, run: <pre>docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.5.2 dkg --publish</pre> and the DKG process should begin.
   </TabItem>
   <TabItem value="DappnodeTab" label="Dappnode">
     Follow this step if you are signing through the DV Launchpad, importing the cluster definition URL into the DappNode package's config & then running the DKG inside the DappNode, followed by cluster run.<br/>
@@ -497,14 +497,14 @@ With the DKG ceremony over, the last phase before activation is to prepare your 
   <TabItem value="Docker" label="CDVN" default>
 
 :::info
-Currently, the [CDVN repo](https://github.com/ObolNetwork/charon-distributed-validator-node) has defaults for the Holesky testnet and for mainnet.
+Currently, the [CDVN repo](https://github.com/ObolNetwork/charon-distributed-validator-node) has defaults for the Hoodi testnet and for mainnet.
 
 Start by copying the appropriate `.env.sample.<NETWORK>` file to `.env`, and modifying values as needed.
 
 ```shell
-# To prepare the node for the Holesky test network
-# Copy ".env.sample.holesky", renaming it ".env"
-cp .env.sample.holesky .env
+# To prepare the node for the Hoodi test network
+# Copy ".env.sample.hoodi", renaming it ".env"
+cp .env.sample.hoodi .env
 
 
 # To prepare the node for the main Ethereum network
@@ -555,9 +555,9 @@ With Sedge installed, and the DKG complete, it’s time to deploy a Distributed 
 <p>
           <ol>
             <li>
-              The following command generates the artifacts required to deploy a distributed validator on the Holesky network, using Teku as the validator client, Prysm as the consensus client, and Geth as the execution client. For additional supported client combinations, <a href="https://github.com/NethermindEth/sedge?tab=readme-ov-file#supported-networks-and-clients" target="_blank">refer to the documentation here</a>.
+              The following command generates the artifacts required to deploy a distributed validator on the Hoodi network, using Teku as the validator client, Prysm as the consensus client, and Geth as the execution client. For additional supported client combinations, <a href="https://github.com/NethermindEth/sedge?tab=readme-ov-file#supported-networks-and-clients" target="_blank">refer to the documentation here</a>.
               ```shell
-              sedge generate full-node --validator=teku --consensus=prysm --execution=geth --network=holesky --distributed
+              sedge generate full-node --validator=teku --consensus=prysm --execution=geth --network=hoodi --distributed
               ```
               You should be shown a long list of configuration outputs with the following endings:
               ```shell
@@ -581,7 +581,7 @@ With Sedge installed, and the DKG complete, it’s time to deploy a Distributed 
 
 Use the following command to import keys from the directory where the `.charon` dir is located.
 ```shell
-sedge import-key --from ./ holesky teku
+sedge import-key --from ./ hoodi teku
 ```
 #### Sedge Run
 After confirming the configurations and ensuring all files are in place, use the `sedge run` command to deploy the DV docker containers. Sedge will then begin pulling all the required Docker images.

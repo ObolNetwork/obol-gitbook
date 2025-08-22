@@ -24,6 +24,10 @@ Split an existing Ethereum validator key into multiple key shares for use in an 
 
 ## Step 1. Prepare the existing keystore files
 
+{% hint style="info" %}
+Starting with Charon v1.6.0, you may not need to manually prepare the keystore files as described below. Charon can recursively search for keystore files in the specified directory and attempt to match the corresponding password files. The only case where this does not work is when you specify an exact list of withdrawal addresses; in that case, you must prepare the files manually and ensure the keystore indices match the order of the specified withdrawal addresses.
+{% endhint %}
+
 Create a folder to hold the encrypted keystores, along with the passwords to decrypt them.
 
 ```shell
@@ -51,7 +55,7 @@ At the end of this process, you should have a tree like this:
 Run the following docker command to split the keys (for mainnet):
 
 ```shell
-CHARON_VERSION=                # E.g. v1.4.0
+CHARON_VERSION=                # E.g. v1.5.2
 CLUSTER_NAME=                  # The name of the cluster you want to create.
 WITHDRAWAL_ADDRESS=            # The address you want to use for withdrawals (this is just for accuracy in your lock file, you can't change a withdrawal address for a validator that has already been deposited)
 FEE_RECIPIENT_ADDRESS=         # The address you want to use for block reward and MEV payments.
@@ -64,7 +68,8 @@ docker run --rm -v $(pwd):/opt/charon obolnetwork/charon:${CHARON_VERSION} creat
    --split-existing-keys \
    --split-keys-dir=/opt/charon/split_keys \
    --nodes ${NODES} \
-   --network mainnet
+   --network mainnet \
+   --publish
 ```
 
 The above command will create `validator_keys` along with `cluster-lock.json` in `./cluster` for each node.

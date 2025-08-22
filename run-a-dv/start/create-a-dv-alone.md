@@ -28,7 +28,7 @@ git clone https://github.com/ObolNetwork/charon-distributed-validator-cluster.gi
 cd charon-distributed-validator-cluster/
 
 # Run the command provided in the DV Launchpad "Create a cluster alone" flow
-docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon:v1.4.0 create cluster --definition-file=...
+docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon:v1.5.2 create cluster --definition-file=...
 
 ```
 
@@ -57,14 +57,15 @@ cd charon-distributed-validator-cluster/
 Run the below command to create the validator private key shares and cluster artifacts locally, replacing the example values for `nodes`, `network`, `num-validators`, `fee-recipient-addresses`, and `withdrawal-addresses`. Check the [Charon CLI reference](https://docs.obol.org/next/learn/charon/charon-cli-reference#create-a-full-cluster-locally) for additional, optional flags to set.
 
 ```sh
-  docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.4.0 create cluster \
+  docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.5.2 create cluster \
     --nodes=6 \
     --network=holesky \
     --num-validators=1 \
     --name="Quickstart Guide Cluster" \
     --cluster-dir="cluster" \
     --fee-recipient-addresses=0x000000000000000000000000000000000000dead \
-    --withdrawal-addresses=0x000000000000000000000000000000000000dead
+    --withdrawal-addresses=0x000000000000000000000000000000000000dead \
+    --publish
 ```
 
 {% hint style="success" %}
@@ -193,18 +194,3 @@ cp .env.sample.holesky .env
 {% endhint %}
 {% endtab %}
 {% endtabs %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

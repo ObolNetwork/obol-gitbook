@@ -48,7 +48,7 @@ const privateKey = ethers.Wallet.fromPhrase(mnemonic).privateKey;
 const wallet = new ethers.Wallet(privateKey);
 const signer = wallet.connect(null);
 
-// Instantiate the Obol Client for holesky
+// Instantiate the Obol Client for hoodi
 const obol = new Client({ chainId: 17000 }, signer);
 ```
 
@@ -75,7 +75,7 @@ const configHash = await obol.createClusterDefinition({
 });
 
 console.log(
-  `Direct the operators to https://holesky.launchpad.obol.org/dv?configHash=${configHash} to complete the key generation process`
+  `Direct the operators to https://hoodi.launchpad.obol.org/dv?configHash=${configHash} to complete the key generation process`
 );
 ```
 

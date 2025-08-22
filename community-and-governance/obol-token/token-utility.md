@@ -22,6 +22,18 @@ To get started, simply visit [https://stake.obol.org](https://stake.obol.org) an
 
 Plans are in place to launch several DeFi avenues for the OBOL Token post-TGE, such as liquidity pools, lending protocols (e.g. Morpho) and restaking (e.g. Eigenlayer, Symbiotic).
 
+### Pendle Integration for stOBOL
+
+_Note: The Pendle integration is not yet live. It is expected to go live in the first half of August 2025. This information is provided in advance for community awareness._
+
+stOBOL is supported on [Pendle Finance](https://app.pendle.finance), enabling users to access advanced yield strategies with their staked OBOL.&#x20;
+
+Through Pendle, users can isolate and trade the future yield of stOBOL by buying or selling its **Principal Tokens (PT)** and **Yield Tokens (YT)**.&#x20;
+
+This opens up new opportunities: holders can lock in fixed yield by purchasing PTs, speculate on rising yield by acquiring YTs, or passively earn through **liquidity provision**, which offers exposure to swap fees and additional PENDLE incentives. Importantly, Pendle pools are **permissionless**, and while the Obol Association has provided initial liquidity to bootstrap the market, anyone can contribute. \
+\
+For more details, refer to the [Pendle Academy](https://pendle.gitbook.io/pendle-academy) and [stOBOL pool on Pendle](https://app.pendle.finance/trade).
+
 ## **More Utility Coming Soon**
 
 Via Token House governance proposals in the [Governance Forum](https://community.obol.org/), the Obol community can add more functionality and utility to the OBOL Token.

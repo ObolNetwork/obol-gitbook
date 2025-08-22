@@ -6,7 +6,7 @@ description: >-
 
 # CLI Reference
 
-The following is a reference for Charon version [`v1.4.0`](https://github.com/ObolNetwork/charon/releases/tag/v1.4.0). Find the latest release on [our Github](https://github.com/ObolNetwork/charon/releases).
+The following is a reference for Charon version [`v1.5.2`](https://github.com/ObolNetwork/charon/releases/tag/v1.5.2). Find the latest release on [our Github](https://github.com/ObolNetwork/charon/releases).
 
 The following are the top-level commands available to use.
 
@@ -238,6 +238,7 @@ Flags:
       --p2p-external-ip string                   The IP address advertised by libp2p. This may be used to advertise an external IP.
       --p2p-relays strings                       Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://0.relay.obol.tech,https://2.relay.obol.dev,https://1.relay.obol.tech])
       --p2p-tcp-address strings                  Comma-separated list of listening TCP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
+      --p2p-udp-address strings                  Comma-separated list of listening UDP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --private-key-file string                  The path to the charon enr private key file. (default ".charon/charon-enr-private-key")
       --private-key-file-lock                    Enables private key locking to prevent multiple instances using the same key.
       --proc-directory string                    Directory to look into in order to detect other stack components running on the host.
@@ -528,6 +529,7 @@ Flags:
       --p2p-relay-loglevel string         Libp2p circuit relay log level. E.g., debug, info, warn, error.
       --p2p-relays strings                Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://0.relay.obol.tech,https://2.relay.obol.dev,https://1.relay.obol.tech])
       --p2p-tcp-address strings           Comma-separated list of listening TCP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
+      --p2p-udp-address strings           Comma-separated list of listening UDP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
 ```
 
 You can also consider adding [alternative public relays](../../advanced-and-troubleshooting/security/risks.md) to your cluster by specifying a list of `p2p-relays` in [`charon run`](charon-cli-reference.md#run-the-charon-middleware).

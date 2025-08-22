@@ -14,7 +14,7 @@ The Obol Collective is the largest Decentralized Operator Ecosystem. We provides
 
 Obol is focused on scaling consensus by providing permissionless access to Distributed Validators (DVs), which offer not only protection against client issues and key mismanagement, but also byzantine fault tolerance. We believe that distributed validators should and will make up a large portion of mainnet validator configurations, with the transition of the Ethereum community to DVs enabling a new trust paradigm.
 
-The Distributed Validator middleware client, Charon, boosts the security, resilience, and decentralisation of the Ethereum validator network by enabling “squad staking”. The Collective is fueled by Obol’s economic model, which directs retroactive funding to ecosystem projects via retroactive funding - a positive flywheel to accelerate adoption of DVs and scale infrastructure networks like Ethereum.
+The Distributed Validator middleware client, Charon, boosts the security, resilience, and decentralisation of the Ethereum validator network by enabling “squad staking”. The Collective is fueled by Obol’s economic model, which directs funding to ecosystem projects via retroactive funding - a positive flywheel to accelerate adoption of DVs and scale infrastructure networks like Ethereum.
 
 ## What is DV Labs?​
 

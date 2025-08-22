@@ -77,6 +77,10 @@ The `owner` address, or any address with the `CONSOLIDATION_ROLE` can call the `
 All source and target validators must be active with a balance greater than 32 ether for the consolidation to succeed. The target validator must be an 0x02 type validator, 0x01 type validators can become 0x02 type through a self consolidation, where the public key is the `source` and `target`.
 {% endhint %}
 
+{% hint style="info" %}
+Because the consolidation process is an asynchronous operation handled by the system contract, it is impossible to account for the deposited principal amount from the source validators. As a result, the principal of the consolidated validators is treated as a reward by the target ObolValidatorManager. This edge case will be addressed in a future update to the ObolValidatorManager smart contract.
+{% endhint %}
+
 ```solidity
   /// Request validators consolidation with the EIP7251 system contract
   /// @dev all source validators will be consolidated into the target validator
@@ -178,9 +182,9 @@ The `ObolValidatorManager` contract is deployed via a [factory contract](https:/
 
 | Chain   | Address                                                                                                                       |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Mainnet | [](https://etherscan.io/address/)         |
-| Hoodi  | [0xb1E1f5e90f4190F78182A8d5cbed774893Dd1558](https://hoodi.etherscan.io/address/0xb1E1f5e90f4190F78182A8d5cbed774893Dd1558)  |
-| Holesky | [](https://holesky.etherscan.io/address/) |
+| Mainnet | [0xdfe2d8b26806583cf03b3cb623b0752f8670e93e](https://etherscan.io/address/0xdfe2d8b26806583cf03b3cb623b0752f8670e93e)         |
+| Hoodi   | [0xb1E1f5e90f4190F78182A8d5cbed774893Dd1558](https://hoodi.etherscan.io/address/0xb1E1f5e90f4190F78182A8d5cbed774893Dd1558)   |
+| Holesky | [0x466bD4917e5e1662db1A549Bd828637E2CEDFEA9](https://holesky.etherscan.io/address/0x466bD4917e5e1662db1A549Bd828637E2CEDFEA9) |
 | Sepolia | [](https://sepolia.etherscan.io/address/) |
 
 ### Obol Lido Split Factory Deployment [**​**](https://docs.obol.org/learn/intro/obol-splits#ols-factory-deployment)
@@ -205,7 +209,6 @@ The `OptimisticWithdrawalRecipient` contract is deployed via a [factory contract
 | Holesky | [0x7fec4add6b5ee2b6c1cba232bc6db754794cb6df](https://holesky.etherscan.io/address/0x7fec4add6b5ee2b6c1cba232bc6db754794cb6df) |
 | Sepolia | [0xca78f8fda7ec13ae246e4d4cd38b9ce25a12e64a](https://sepolia.etherscan.io/address/0xca78f8fda7ec13ae246e4d4cd38b9ce25a12e64a) |
 | Hoodi   | [0x9ff0c649d0bf5fe7efa4d72e94bed7302ed5c8d7](https://hoodi.etherscan.io/address/0x9ff0c649d0bf5fe7efa4d72e94bed7302ed5c8d7)   |
-
 
 ## FAQ
 
