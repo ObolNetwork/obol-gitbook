@@ -16,7 +16,7 @@ This staking program will be implemented in phases, allowing the community to gr
 
 To get started, simply visit [https://stake.obol.org](https://stake.obol.org) and follow the staking flow — no technical setup required. The interface will guide you through selecting your wallet, choosing the amount to stake, and submitting the transaction.
 
-**You will find more info about the OBOL token staking in the dedicated** [staking-and-stobol.md](staking-and-stobol.md "mention") **section.**&#x20;
+**You will find more info about the OBOL token staking in the dedicated** [staking-and-stobol.md](staking-and-stobol.md) **section.**&#x20;
 
 ## **DeFi**
 

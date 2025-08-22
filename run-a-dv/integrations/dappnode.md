@@ -22,7 +22,7 @@ Yes, they need to clean up the Charon and validator volumes. However, instead of
 No, if `ENABLE_MEV_BOOST` is set to `true`, these flags will be added automatically.\
 
 
-<figure><img src="../../.gitbook/assets/image (90).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image-90.png" alt=""><figcaption></figcaption></figure>
 
 #### How can users running two clusters (e.g., one for EtherFi solo stakers and another for Techne) on the same Dappnode machine push monitoring data from both clusters to Obol?[​](https://docs.obol.org/next/run/integrations/Dappnode#how-can-users-running-two-clusters-eg-one-for-etherfi-solo-stakers-and-another-for-techne-on-the-same-dappnode-machine-push-monitoring-data-from-both-clusters-to-obol) <a href="#how-can-users-running-two-clusters-eg-one-for-etherfi-solo-stakers-and-another-for-techne-on-the-sam" id="how-can-users-running-two-clusters-eg-one-for-etherfi-solo-stakers-and-another-for-techne-on-the-sam"></a>
 

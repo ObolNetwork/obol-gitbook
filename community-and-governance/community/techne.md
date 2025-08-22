@@ -18,7 +18,7 @@ Drawing inspiration from the rich heritage of Ancient Greece, the name "Techne" 
 Each Obol Techne Credential is a verifiable, non-transferable NFT credential from Obol that proves your knowledge and experience operating Obol DVs. This on-chain attestation can then be used to showcase your experience, whether it’s to the Obol Core Team, other Obol community members, or the broader staking ecosystem. The credentials are defined in different tiers to ensure a progression path towards deeper expertise while offering an accessible entry point.\
 
 
-<figure><img src="../../.gitbook/assets/image (55).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image-55.png" alt=""><figcaption></figcaption></figure>
 
 ### Techne Credential Benefits
 

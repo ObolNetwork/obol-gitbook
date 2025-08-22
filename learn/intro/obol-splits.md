@@ -131,7 +131,7 @@ Be cautious when interacting with unknown ERC20 addresses, they may not behave a
 
 ## Optimistic Withdrawal Recipient[​](https://docs.obol.org/learn/intro/obol-splits#optimistic-withdrawal-recipient) <a href="#withdrawal-recipients" id="withdrawal-recipients"></a> <a href="#optimistic-withdrawal-recipient" id="optimistic-withdrawal-recipient"></a>
 
-<figure><img src="../../.gitbook/assets/image (15) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image-15-1-1.png" alt=""><figcaption></figcaption></figure>
 
 Optimistic Withdrawal Recipients (OWRs) **are the predecessor to Obol Validator Managers**. The primary addition with Validator Managers is the role-based control over validator withdrawals, exits and consolidations.
 
@@ -185,7 +185,6 @@ The `ObolValidatorManager` contract is deployed via a [factory contract](https:/
 | Mainnet | [0xdfe2d8b26806583cf03b3cb623b0752f8670e93e](https://etherscan.io/address/0xdfe2d8b26806583cf03b3cb623b0752f8670e93e)         |
 | Hoodi   | [0xb1E1f5e90f4190F78182A8d5cbed774893Dd1558](https://hoodi.etherscan.io/address/0xb1E1f5e90f4190F78182A8d5cbed774893Dd1558)   |
 | Holesky | [0x466bD4917e5e1662db1A549Bd828637E2CEDFEA9](https://holesky.etherscan.io/address/0x466bD4917e5e1662db1A549Bd828637E2CEDFEA9) |
-| Sepolia | [](https://sepolia.etherscan.io/address/) |
 
 ### Obol Lido Split Factory Deployment [**​**](https://docs.obol.org/learn/intro/obol-splits#ols-factory-deployment)
 
@@ -193,10 +192,8 @@ The `ObolLidoSplit` contract is deployed via a [factory contract](https://github
 
 | Chain   | Address                                                                                                                       |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Mainnet | [](https://etherscan.io/address/)         |
+| Mainnet | [0xa9d94139a310150ca1163b5e23f3e1dbb7d9e2a6](https://etherscan.io/address/0xa9d94139a310150ca1163b5e23f3e1dbb7d9e2a6) |
 | Hoodi  | [0xb633CD420aF83E8A5172e299104842b63dd97ab7](https://hoodi.etherscan.io/address/0xb633CD420aF83E8A5172e299104842b63dd97ab7)  |
-| Holesky | [](https://holesky.etherscan.io/address/) |
-| Sepolia | [](https://sepolia.etherscan.io/address/) |
 
 
 ### OWR Factory Deployment [**​**](https://docs.obol.org/learn/intro/obol-splits#owr-factory-deployment)
@@ -254,4 +251,4 @@ No. Any address can trigger the contracts to distribute the withdrawn/skimmed et
 
 The most important thing to be aware of is what address is the owner of the Obol Validator Manager, whether it has assigned any other addresses any roles, and whether or not the Split contract you are using has been set up with editability and by which address. If a splitter is editable, you should understand what the address that can edit the split does. Is the editor an EOA? Who controls that address? How secure is their seed phrase? Is it a smart contract? What can that contract do? Can the controller contract be upgraded? etc. Generally, the safest thing in Obol's perspective is to use a high threshold multi-sign like a SAFE as the `owner`/`controller`, or to renounce ownership and control entirely, and if in future you are unhappy with the configuration, that you exit the validator and create a fresh cluster with new settings that fit your needs.
 
-Another aspect to be aware of is how the splitting of principal from rewards works using the Optimistic Withdrawal Recipient contract. There are edge cases relating to not calling the contracts periodically or ahead of a withdrawal, activating more validators than the contract was configured for, and a worst case mass slashing on the network. Consult the documentation on the contract [here](../../learn/intro/obol-splits.md#optimistic-withdrawal-recipient), its audit [here](../../adv/security/smart_contract_audit.mdx), and follow up with the core team if you have further questions.
+Another aspect to be aware of is how the splitting of principal from rewards works using the Optimistic Withdrawal Recipient contract. There are edge cases relating to not calling the contracts periodically or ahead of a withdrawal, activating more validators than the contract was configured for, and a worst case mass slashing on the network. Consult the documentation on the contract [here](../../learn/intro/obol-splits.md#optimistic-withdrawal-recipient), its audit [here](../../advanced-and-troubleshooting/security/smart-contract-audit.md), and follow up with the core team if you have further questions.
