@@ -8,8 +8,7 @@ The method for claiming rewards depends on the Cluster's withdrawal configuratio
 
 ### Claim Status <a href="#claim-status" id="claim-status"></a>
 
-\
-
+\\
 
 | Withdrawal Configuration                                                | Subcategory Description                                                                   | Is supported on Launchpad? | Where to claim?                                                                                                                                                                                       |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23,7 +22,7 @@ The method for claiming rewards depends on the Cluster's withdrawal configuratio
 
 To understand how claims via Launchpad work, it is highly recommended to first understand how splits work. More details are available [**here**](https://docs.obol.org/next/learn/intro/obol-splits). The flowchart below summarizes how an operator and a non-operator can interact with split contracts to facilitate claims:
 
-<figure><img src="../../.gitbook/assets/image-56.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (56).png" alt=""><figcaption></figcaption></figure>
 
 1. All validator rewards are accumulated in the validator's withdrawal address, which is a split wallet.
 2. Claims can be triggered in two ways:
@@ -39,9 +38,9 @@ We are constantly improving the user experience. Below are some edge cases to av
 
 #### Case 1: The `Claimable` column doesn’t match the amount next to the `Claim All` button. <a href="#case-1-the-claimable-column-doesnt-match-the-amount-next-to-the-claim-all-button" id="case-1-the-claimable-column-doesnt-match-the-amount-next-to-the-claim-all-button"></a>
 
-<figure><img src="../../.gitbook/assets/image-87.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (87).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image-1-1-1-1-1.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 In this scenario, someone else (a splitter or non-splitter address) has already distributed rewards to the Split Main (e.g., 0.12 ETH). However, your validators (4 in this case) have earned an additional 0.2 ETH in rewards. Your total effective claimable balance is 0.032 ETH, which you can claim using the `Claim All` button.
 
@@ -51,7 +50,7 @@ Your total effective claimable amount will always be displayed next to the `Clai
 
 #### Case 2: You don’t see a `Claim All` button but instead see `Distribute All`.[​](https://docs.obol.org/next/run/running/claim-rewards#case-2-you-dont-see-a-claim-all-button-but-instead-see-distribute-all) <a href="#case-2-you-dont-see-a-claim-all-button-but-instead-see-distribute-all" id="case-2-you-dont-see-a-claim-all-button-but-instead-see-distribute-all"></a>
 
-<figure><img src="../../.gitbook/assets/image-88.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (88).png" alt=""><figcaption></figcaption></figure>
 
 This happens because the connected address is not listed in the split configuration. You may have used a different operator address from the one in the splitter configuration. You can:
 
@@ -62,6 +61,6 @@ Note: It costs the same gas to distribute rewards for one address as it does for
 
 #### Case 3: You just created a new cluster with no active validators or rewards, but it shows a `Claim All` amount. <a href="#case-3-you-just-created-a-new-cluster-with-no-active-validators-or-rewards-but-it-shows-a-claim-all" id="case-3-you-just-created-a-new-cluster-with-no-active-validators-or-rewards-but-it-shows-a-claim-all"></a>
 
-<figure><img src="../../.gitbook/assets/image-89.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (89).png" alt=""><figcaption></figcaption></figure>
 
 The amount shown here is from a previous case and is now sitting in the Split Main, ready to be claimed. Unfortunately, it is not possible to associate the Split Main balance of an address with a specific cluster. If you are part of multiple clusters, your Split Main balance will appear next to all `Claim All` buttons, regardless of the cluster. We are working on a fix to avoid this confusion.

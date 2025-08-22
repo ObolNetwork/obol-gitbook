@@ -61,7 +61,7 @@ docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon ex
 
 After a threshold of signed partial exits from node operators in the cluster is accumulated, a full (complete) exit can be created. For example, in the cluster below, only 2 out of 4 clusters have reached the threshold. Operators will have to wait for one more partial exit signature, either from operator 1 or 3 to create a full exit message.\\
 
-<figure><img src="../../.gitbook/assets/image-1.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 **Step 3: Broadcast the full exit**
 
@@ -194,25 +194,25 @@ Consult the examples below and compare them to your validator's monitoring to ve
 1.  Operator 1 broadcasts an exit on validator client 1.\
     \\
 
-    <figure><img src="../../.gitbook/assets/image-1-1.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image-2.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 2.  Operator 2 broadcasts an exit on validator client 2.\
     \\
 
-    <figure><img src="../../.gitbook/assets/image-4.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image-5.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 3.  Operator 3 broadcasts an exit on validator client 3.\
     \\
 
-    <figure><img src="../../.gitbook/assets/image-6.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image-7.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
 At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following: \\
 
-<figure><img src="../../.gitbook/assets/image-8.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="success" %}
 Once a validator has broadcasted an exit message, it must continue to validate for at least 27 hours or longer. Do not shut off your distributed validator nodes until your validator is fully exited.
@@ -291,25 +291,25 @@ Consult the examples below and compare them to your validator's monitoring to ve
 1.  Operator 1 broadcasts an exit on validator client 1.\
     \\
 
-    <figure><img src="../../.gitbook/assets/image-9.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image-10.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 2.  Operator 2 broadcasts an exit on validator client 2.\
     \\
 
-    <figure><img src="../../.gitbook/assets/image-11.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image-12.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 3.  Operator 3 broadcasts an exit on validator client 3.\
     \\
 
-    <figure><img src="../../.gitbook/assets/image-13.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image-14.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following: \\
 
-<figure><img src="../../.gitbook/assets/image-15.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="success" %}
 Once a validator has broadcasted an exit message, it must continue to validate for at least 27 hours or longer. Do not shut off your distributed validator nodes until your validator is fully exited.
@@ -356,23 +356,23 @@ Consult the examples below and compare them to your validator's monitoring to ve
 
 1.  Operator 1 broadcasts an exit on validator client 1.\\
 
-    <figure><img src="../../.gitbook/assets/image-9.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image-10.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 2.  Operator 2 broadcasts an exit on validator client 2. \\
 
-    <figure><img src="../../.gitbook/assets/image-11.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image-12.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 3.  Operator 3 broadcasts an exit on validator client 3. \\
 
-    <figure><img src="../../.gitbook/assets/image-13.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image-14.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
-<figure><img src="../../.gitbook/assets/image-15.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="success" %}
 Once a validator has broadcasted an exit message, it must continue to validate for at least 27 hours or longer. Do not shut off your distributed validator nodes until your validator is fully exited.
@@ -435,23 +435,23 @@ Consult the examples below and compare them to your validator's monitoring to ve
 
 1.  Operator 1 broadcasts an exit on validator client 1.\\
 
-    <figure><img src="../../.gitbook/assets/image-9.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image-10.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 2.  Operator 2 broadcasts an exit on validator client 2. \\
 
-    <figure><img src="../../.gitbook/assets/image-11.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image-12.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 3.  Operator 3 broadcasts an exit on validator client 3. \\
 
-    <figure><img src="../../.gitbook/assets/image-13.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image-14.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
-<figure><img src="../../.gitbook/assets/image-15.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="success" %}
 Once a validator has broadcasted an exit message, it must continue to validate for at least 27 hours or longer. Do not shut off your distributed validator nodes until your validator is fully exited.
@@ -471,13 +471,13 @@ Once a validator has broadcasted an exit message, it must continue to validate f
 
 1.  Navigate to the config tab of your Obol DappNode package. Click 'Packages', then click 'My Packages', and enter the Obol package. Go to the config tab. At the bottom right corner of the page, click on 'Show Advanced Editor'.
 
-    <figure><img src="../../.gitbook/assets/image-17.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 2.  The advanced editor config page provides ENV configs for each validator. Scroll to the validator number you want to exit and type “true” in the column opposite SIGN\_EXIT.
 
-    <figure><img src="../../.gitbook/assets/image-18.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
 3.  Scroll to the bottom of the page and click the 'update' button for the changes to take effect.
 
-    <figure><img src="../../.gitbook/assets/image-19.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
 4. Check your logs to confirm the exit process has started.
 
 {% hint style="success" %}

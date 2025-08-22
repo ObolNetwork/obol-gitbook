@@ -61,7 +61,7 @@ Other strategies can be proposed via governance.
 2. While stOBOL remains with the same address, governance power is retained and delegated as usual.
 3. If stOBOL is transferred, governance power is removed and reassigned via the current Auto-Delegate strategy (Overwhelming Support). Other strategies can be proposed via governance.
 
-<figure><img src="../../.gitbook/assets/stobol-staking-diagram.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/stOBOL_03 (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Additional Notes
 

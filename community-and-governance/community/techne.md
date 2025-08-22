@@ -15,10 +15,9 @@ Drawing inspiration from the rich heritage of Ancient Greece, the name "Techne" 
 
 ## Why Earn the Credential?
 
-Each Obol Techne Credential is a verifiable, non-transferable NFT credential from Obol that proves your knowledge and experience operating Obol DVs. This on-chain attestation can then be used to showcase your experience, whether it’s to the Obol Core Team, other Obol community members, or the broader staking ecosystem. The credentials are defined in different tiers to ensure a progression path towards deeper expertise while offering an accessible entry point.\
+Each Obol Techne Credential is a verifiable, non-transferable NFT credential from Obol that proves your knowledge and experience operating Obol DVs. This on-chain attestation can then be used to showcase your experience, whether it’s to the Obol Core Team, other Obol community members, or the broader staking ecosystem. The credentials are defined in different tiers to ensure a progression path towards deeper expertise while offering an accessible entry point.\\
 
-
-<figure><img src="../../.gitbook/assets/image-55.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (55).png" alt=""><figcaption></figcaption></figure>
 
 ### Techne Credential Benefits
 
@@ -59,7 +58,9 @@ The performance requirements are different depending on the different tiers.
 * For the **Bronze Credential** , you will need to create and manage 50 validators for 4 weeks with a performance equal to or above the [average of the Liquid Staking Providers](https://grafana.monitoring.gcp.obol.tech/d/adgym07d8ak1sf/techne-credentials?orgId=6) (index composed of Lido, RocketPool, Coinbase Cloud, StakeWise and EtherFi). We will also take into account the individual performance of the operators (the exact requirements will be announced soon).
 * For the **Silver Credential,** you will need to create and manage 1 or more validators for 8 months on mainnet, with performance at near or above the network average. We will take into account the overall performance of the cluster as well as the individual performance of the operators.
 
-{% hint style="info" %} For Base + Bronze (testnet), if you require delegate hETH, we ask you to set the address 0x17E6F6270A101dc7687Cc9899889819EeAF8253f as the withdrawal recipient. We will not activate validators that have not done this. At the end of the wave, you will only be eligible for the Credentials after we receive the Holesky ETH back. {% endhint %}
+{% hint style="info" %}
+For Base + Bronze (testnet), if you require delegate hETH, we ask you to set the address 0x17E6F6270A101dc7687Cc9899889819EeAF8253f as the withdrawal recipient. We will not activate validators that have not done this. At the end of the wave, you will only be eligible for the Credentials after we receive the Holesky ETH back.
+{% endhint %}
 
 ### Performance Monitoring
 

@@ -16,11 +16,11 @@
   * [Cluster Configuration](learn/charon/cluster-configuration.md)
   * [Charon Networking](learn/charon/charon-networking.md)
   * [CLI Reference](learn/charon/charon-cli-reference.md)
-* [Further Reading](learn/further-reading/README.md)
-  * [Ethereum and Its Relationship With DVT](learn/further-reading/ethereum_and_dvt.md)
-  * [Community Testing](learn/further-reading/testnet.md)
-  * [Peer Score](learn/further-reading/peer_score.md)
-  * [Useful Links](learn/further-reading/resources.md)
+* [Futher Reading](learn/futher-reading/README.md)
+  * [Ethereum and Its Relationship With DVT](learn/futher-reading/ethereum_and_dvt.md)
+  * [Community Testing](learn/futher-reading/testnet.md)
+  * [Peer Score](learn/futher-reading/peer_score.md)
+  * [Useful Links](learn/futher-reading/resources.md)
 
 ## Run a DV
 

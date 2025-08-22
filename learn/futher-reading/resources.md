@@ -28,9 +28,9 @@ The following is a curated list of the best internal and external resources for 
 
 ## Quickstart Guides
 
-* [Run a DV alone](../../run-a-dv/start/create-a-dv-alone.md)
-* [Run a DV as a group](../../run-a-dv/start/create-a-dv-with-a-group.md)
-* [Run a DV using the SDK](../../advanced-and-troubleshooting/advanced/create-a-dv-using-the-sdk.md)
+* [Run a DV alone](../../run/start/quickstart_alone.mdx)
+* [Run a DV as a group](../../run/start/quickstart_group.mdx)
+* [Run a DV using the SDK](../../adv/advanced/quickstart-sdk.mdx)
 
 ## Security and Best Practices
 
@@ -44,7 +44,7 @@ The following is a curated list of the best internal and external resources for 
 
 * A [review](../../advanced-and-troubleshooting/security/ev-assessment.md) of Obol Labs development processes by Ethereal Ventures
 * A [security assessment](https://github.com/ObolNetwork/obol-security/blob/f9d7b0ad0bb8897f74ccb34cd4bd83012ad1d2b5/audits/Sigma_Prime_Obol_Network_Charon_Security_Assessment_Report_v2_1.pdf) of Charon by [Sigma Prime](https://sigmaprime.io/).
-* A [solidity audit](../../advanced-and-troubleshooting/security/smart-contract-audit.md) of the Obol Splits contracts by [Zach Obront](https://zachobront.com/).
+* A [solidity audit](../../adv/security/smart_contract_audit.mdx) of the Obol Splits contracts by [Zach Obront](https://zachobront.com/).
 * [Charon Threat model](../../advanced-and-troubleshooting/security/threat_model.md)
 * [QuantStamp Charon audit Q4 2023](https://obol.tech/charon_quantstamp_assessment.pdf)
 

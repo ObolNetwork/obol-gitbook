@@ -42,10 +42,10 @@ To support transparent decision-making and empower active participation, here ar
 
 The Obol governance documentation is organized into the following sections:
 
-* [collective.md](collective.md) – framing the governance bodies, roles, and progressive decentralization pathway
-* [token-house.md](token-house.md) – the token-holder-based decision-making layer of the Collective
-* [raf](raf/) – information for delegates participating in the Retroactive Funding Program (RAF)
-* [grants-program](grants-program/) – the Obol funding mechanism for contributors and ecosystem support, led by the Obol Association
+* [collective.md](collective.md "mention") – framing the governance bodies, roles, and progressive decentralization pathway
+* [token-house.md](token-house.md "mention") – the token-holder-based decision-making layer of the Collective
+* [raf](raf/ "mention") – information for delegates participating in the Retroactive Funding Program (RAF)
+* [grants-program](grants-program/ "mention") – the Obol funding mechanism for contributors and ecosystem support, led by the Obol Association
 
 _These sections evolve as the governance process matures. For any feedback, ideas, or questions, we invite you to join the discussion on the_ [_Forum_](https://community.obol.org/) _or reach out via_ [_Discord_](https://discord.gg/obol)_._
 

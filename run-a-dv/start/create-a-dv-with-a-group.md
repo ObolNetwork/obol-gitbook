@@ -60,13 +60,13 @@ Before preparing the DappNode to take part in a Distributed Validator Cluster, y
 
 1.  Login to the DappNode Interface:
 
-    <figure><img src="../../.gitbook/assets/image-58.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (58).png" alt=""><figcaption></figcaption></figure>
 2.  Click on the 'Stakers' tab on the left side, select an execution client (e.g. Geth) & consensus client (e.g. Lodestar) & click 'Apply changes'. This will start the syncing process which can take a number of hours.
 
-    <figure><img src="../../.gitbook/assets/image-64.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (64).png" alt=""><figcaption></figcaption></figure>
 3.  Once the clients are finished syncing, it should reflect on your 'Dashboard' as shown below.
 
-    <figure><img src="../../.gitbook/assets/image-65.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (65).png" alt=""><figcaption></figcaption></figure>
 
 **Install the Obol DappNode package**[**​**](https://docs.obol.org/next/run/start/quickstart_group#install-the-obol-dappnode-package)
 
@@ -77,27 +77,27 @@ With a fully synced Ethereum node now running on the DappNode, the below steps w
    * [Mainnet Repo](http://my.dappnode/installer/dnp/obol.dnp.dappnode.eth)
 2.  Copy the latest IPFS hash from the release details dropdown.
 
-    <figure><img src="../../.gitbook/assets/image-66.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (66).png" alt=""><figcaption></figcaption></figure>
 3.  Go back to DappNode Dashboard > Dappstore, select the 'Public' tab, and accept the terms & conditions before proceeding.
 
-    <figure><img src="../../.gitbook/assets/image-68.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (68).png" alt=""><figcaption></figcaption></figure>
 4.  Paste the IPFS hash you copied from Github and click 'Search' (It may take a minute for the package to be found.) You will then be presented with the package installation page. Under the blue 'Install' button, click on 'Advanced Options' & toggle the button to 'Bypass only signed safe restriction'.
 
-    <figure><img src="../../.gitbook/assets/image-69.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (69).png" alt=""><figcaption></figcaption></figure>
 5.  Click 'Install' & in the config mode page > select new cluster & submit. (if you already have the config URL, you can select URL option.)
 
-    <figure><img src="../../.gitbook/assets/image-70.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (70).png" alt=""><figcaption></figcaption></figure>
 6.  Accept the terms & conditions and the install process will begin.
 
-    <figure><img src="../../.gitbook/assets/image-71.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (71).png" alt=""><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image-72.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (72).png" alt=""><figcaption></figcaption></figure>
 7.  You should now be able to see the Holesky Obol package under the 'Packages' tab. Click on the package to see important details.
 
-    <figure><img src="../../.gitbook/assets/image-73.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (73).png" alt=""><figcaption></figcaption></figure>
 8.  Under the 'Info' tab, you will be see pre-generated ENRs, along with information such as the status of all five distributed validator clusters, their docker volumes & other menu options.
 
-    <figure><img src="../../.gitbook/assets/image-74.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (74).png" alt=""><figcaption></figcaption></figure>
 9. Select any of the ENRs listed that are not already in use. This ENR will be used in the next step.
 
 For Step 2 of the quickstart:
@@ -180,10 +180,10 @@ The following are the steps for creating a cluster.
 1. Go to the [DV Launchpad](https://docs.obol.org/docs/dvl/intro#dv-launchpad-links)
 2.  Connect your wallet
 
-    <figure><img src="../../.gitbook/assets/image-75.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (75).png" alt=""><figcaption></figcaption></figure>
 3.  Select `Create a Cluster with a group` then `Get Started`.
 
-    <figure><img src="../../.gitbook/assets/image-76.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (76).png" alt=""><figcaption></figcaption></figure>
 4. Follow the flow and accept the advisories.
 5. Configure the Cluster
    1. Input the `Cluster Name` & `Cluster Size` (i.e. number of operators in the cluster). The threshold will update automatically, it shows the number of nodes that need to be functioning for the validator(s) to stay active.
@@ -198,7 +198,7 @@ The following are the steps for creating a cluster.
    3. Your `ENR`. Signing your ENR authorises the corresponding private key to act on your behalf in the cluster.
 8.  Share your cluster invite link with the operators. Following the link will show you a screen waiting for other operators to accept the configuration you created.
 
-    <figure><img src="../../.gitbook/assets/image-77.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (77).png" alt=""><figcaption></figcaption></figure>
 9. You can use the link to monitor how many of the operators have already signed their approval of the cluster configuration and submitted their ENR.
 
 Once every participating operator is ready, the next step is the distributed key generation amongst the operators.
@@ -254,14 +254,14 @@ Your cluster creator needs to configure the cluster, and send you an invite URL 
 1. Click on the DV launchpad link provided by the leader or creator. Make sure you recognise the domain and the person sending you the link, to ensure you are not being phished.
 2.  Connect your wallet using the Ethereum address provided to the leader.\\
 
-    <figure><img src="../../.gitbook/assets/image-81.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (81).png" alt=""><figcaption></figcaption></figure>
 3.  Review the operators addresses submitted and click `Get Started` to continue.\\
 
-    <figure><img src="../../.gitbook/assets/image-82.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (82).png" alt=""><figcaption></figcaption></figure>
 4. Review and accept the DV Launchpad terms & conditions and advisories.
 5.  Review the cluster configuration set by the creator and add your `ENR` that you generated in [step 1](https://docs.obol.org/next/run/start/quickstart_group#step-1-generate-an-enr).\\
 
-    <figure><img src="../../.gitbook/assets/image-83.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (83).png" alt=""><figcaption></figcaption></figure>
 6. Sign the two transactions with your wallet, these are:
    * The config hash. This is a hashed representation of all of the details for this cluster.
    * Your own `ENR` This signature authorises the key represented by this ENR to act on your behalf in the cluster.
@@ -297,10 +297,10 @@ For the [DKG](https://docs.obol.org/next/learn/charon/dkg) to complete, all oper
 
 1.  Once all operators successfully signed, your screen will automatically advance to the next step and look like this. Click `Continue`. (If you closed the tab, you can always go back to the invite link shared by the leader and connect your wallet.) \\
 
-    <figure><img src="../../.gitbook/assets/image-1-1-1.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 2.  Copy and run the `docker` command on the screen into your terminal. It will retrieve the remote cluster details and begin the DKG process. \\
 
-    <figure><img src="../../.gitbook/assets/image-2-1.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 3. Assuming the DKG is successful, a number of artefacts will be created in the `.charon` folder of the node. These include:
    * A `deposit-data.json` file. This contains the information needed to activate the validator on the Ethereum network.
    * A `cluster-lock.json` file. This contains the information needed by Charon to operate the distributed validator cluster with its peers.
@@ -320,27 +320,27 @@ and the DKG process should begin.
 {% tab title="DappNode" %}
 Follow this step if you are signing through the DV Launchpad, importing the cluster definition URL into the DappNode package's config & then running the DKG inside the DappNode, followed by cluster run.\\
 
-<figure><img src="../../.gitbook/assets/image-3-1.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 1.  After all operators have signed with their wallet and has provided an ENR from the DappNode info tab, the Launchpad will instruct operators to begin the DKG ceremony. Click continue & navigate to the 'Dappnode/Avado' tab where the cluster definition URL is presented.
 
-    <figure><img src="../../.gitbook/assets/image-4-1.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 2.  To run the Distributed Key Generation ceremony using a DappNode, you must paste the cluster definition URL into the Obol Package interface. Go to the 'Config' tab, select 'URL' from the dropdown menu, paste the cluster definition URL you retrieved from the launchpad, into the validator `cluster-*`field which matches the cluster you took the ENR from. Example: If you picked ENR1 for signing, then you should paste the URL into Cluster-1. Finally, click the 'Update' button at the bottom of the page.\\
 
-    <figure><img src="../../.gitbook/assets/image-6-1.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image-7-1.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image-8-1.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
 3.  After DappNode records the cluster definition URL, go back to the 'Info' tab and restart the Charon container.
 
-    <figure><img src="../../.gitbook/assets/image-9-1.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
 4.  The node is now ready and will attempt to complete the DKG. You can monitor the DKG progress via the 'Logs' tab of the package. Once all clients in the cluster can establish a connection with one another and they each complete a handshake (confirm everyone has a matching `cluster_definition_hash`), the key generation ceremony begins.
 
-    <figure><img src="../../.gitbook/assets/image-10-1.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (10) (1).png" alt=""><figcaption></figcaption></figure>
 5.  Example of DKG ceremony competed log.
 
-    <figure><img src="../../.gitbook/assets/image-11-1.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (11) (1).png" alt=""><figcaption></figcaption></figure>
 
 **Create a DV Node Backup**
 
@@ -348,15 +348,15 @@ It is important to back up all artefacts generated by the DKG ceremony, and your
 
 1.  Navigate to the backup tab inside the Obol package.
 
-    <figure><img src="../../.gitbook/assets/image-12-1.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
 2.  Click on the 'Backup now' button and it will open a new chrome window with a 'file save' option. Select the path where you want to save the Backup tar file.
 
-    <figure><img src="../../.gitbook/assets/image-13-1.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (13) (1).png" alt=""><figcaption></figcaption></figure>
 3.  Double click to extract the tar file. There will be folders for each charon node (max 5). Navigate to each node folder, and all artefacts related to each node will be present.\\
 
-    <figure><img src="../../.gitbook/assets/image-14-1.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (14) (1).png" alt=""><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image-15-1.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (15) (1).png" alt=""><figcaption></figcaption></figure>
 {% endtab %}
 
 {% tab title="Sedge" %}
@@ -377,8 +377,6 @@ Now that the DKG has been completed, all operators can start their nodes.
 ### Step 4: Start your Distributed Validator Node <a href="#step-4-start-your-distributed-validator-node" id="step-4-start-your-distributed-validator-node"></a>
 
 With the DKG ceremony over, the last phase before activation is to prepare your node for validating over the long term.
-
-
 
 The [CDVN repository](https://github.com/ObolNetwork/charon-distributed-validator-node) is configured to sync an execution layer client (`Nethermind`) and a consensus layer client (`Lighthouse`) using Docker Compose, further client combinations can be prepared using Sedge. You can also leverage alternative ways to run a node such as Ansible, Helm, or Kubernetes manifests.
 
@@ -410,7 +408,9 @@ In the same folder where you created your ENR in Step 1, and ran the DKG in Step
 docker compose up -d
 ````
 
-\{% hint style="warning" %\} Do not start this node until the DKG is complete, as the charon container will interfere with the charon instance attempting to take part in the DKG ceremony. \{% endhint %\}
+{% hint style="danger" %}
+Do not start this node until the DKG is complete, as the charon container will interfere with the charon instance attempting to take part in the DKG ceremony.&#x20;
+{% endhint %}
 
 If at any point you need to turn off your node, you can run:
 
@@ -430,9 +430,67 @@ In particular you should check:
 
 * That your Charon client can connect to the configured beacon client.
 * That your Charon client can connect to all peers directly.
-* That your validator client is connected to Charon, and has the private keys it needs loaded and accessible. Most components in the dashboard have some help text there to assist you in understanding your cluster performance. You might notice that there are logs indicating that a validator cannot be found and that APIs are returning 404. This is to be expected at this point, as the validator public keys listed in the lock file have not been deposited and acknowledged on the consensus layer yet (usually it takes \~16 hours after the deposit is made). \{% endtab %\}
+* That your validator client is connected to Charon, and has the private keys it needs loaded and accessible. Most components in the dashboard have some help text there to assist you in understanding your cluster performance. You might notice that there are logs indicating that a validator cannot be found and that APIs are returning 404. This is to be expected at this point, as the validator public keys listed in the lock file have not been deposited and acknowledged on the consensus layer yet (usually it takes \~16 hours after the deposit is made).&#x20;
 
-\{% tab title="Sedge" %\} To prepare a Distributed Validator node using sedge, we will use the `sedge generate` command to prepare a docker-compose file of our preferred clients, `sedge import-key` to import the artifacts created during the DKG ceremony, and `sedge run` to begin running the node.
+
+{% endtab %}
+
+{% tab title="Existing BN" %}
+{% hint style="danger" %}
+Using a remote beacon node will impact the performance of your Distributed Validator and should be used sparingly.
+{% endhint %}
+
+If you already have a beacon node running somewhere and you want to use that instead of running an EL (`nethermind`) & CL (`lighthouse`) as part of the example repo, you can disable these images. To do so, follow these steps:
+
+1. Copy the `docker-compose.override.yml.sample` file
+
+```
+
+sh
+cp -n docker-compose.override.yml.sample docker-compose.override.yml
+```
+
+2. Uncomment the `profiles: [disable]` section for both `nethermind` and `lighthouse`. The override file should now look like this
+
+```
+services:
+  nethermind:
+    # Disable nethermind
+    profiles: [disable]
+    # Bind nethermind internal ports to host ports
+    #ports:
+      #- 8545:8545 # JSON-RPC
+      #- 8551:8551 # AUTH-RPC
+      #- 6060:6060 # Metrics
+  lighthouse:
+    # Disable lighthouse
+    profiles: [disable]
+    # Bind lighthouse internal ports to host ports
+    #ports:
+      #- 5052:5052 # HTTP
+      #- 5054:5054 # Metrics
+...
+```
+
+3. Then, uncomment and set the `CHARON_BEACON_NODE_ENDPOINTS` variable in the `.env` file to your beacon node's URL
+
+```sh
+...
+# Connect to one or more external beacon nodes. Use a comma separated list excluding spaces.
+CHARON_BEACON_NODE_ENDPOINTS=<YOUR_REMOTE_BEACON_NODE_URL>
+...
+```
+
+4. Restart your docker compose
+
+```sh
+docker compose down
+docker compose up -d
+```
+{% endtab %}
+
+{% tab title="Sedge" %}
+To prepare a Distributed Validator node using sedge, we will use the `sedge generate` command to prepare a docker-compose file of our preferred clients, `sedge import-key` to import the artifacts created during the DKG ceremony, and `sedge run` to begin running the node.
 
 **Sedge generate**[**​**](https://docs.obol.org/next/run/start/quickstart_group#sedge-generate)
 
@@ -537,63 +595,19 @@ Once all docker images are pulled, sedge will create & start the containers to r
 
 Given time, the execution and consensus clients should complete syncing, and if a Distributed Validator has already been activated, the node should begin to validate.
 
-If you encounter issues with using Sedge as part of a DV cluster, consider consulting the [Sedge docs](https://docs.sedge.nethermind.io/) directly, or opening an [issue](https://github.com/NethermindEth/sedge/issues) or [pull request](https://github.com/NethermindEth/sedge/pulls) if appropriate. \{% endtab %\}
+If you encounter issues with using Sedge as part of a DV cluster, consider consulting the [Sedge docs](https://docs.sedge.nethermind.io/) directly, or opening an [issue](https://github.com/NethermindEth/sedge/issues) or [pull request](https://github.com/NethermindEth/sedge/pulls) if appropriate.&#x20;
+{% endtab %}
 
-\{% tab title="Ansible" %\} Use an ansible playbook to start your node. [See the repo here](https://github.com/ObolNetwork/obol-ansible) for further instructions. \{% endtab %\}
+{% tab title="Ansible" %}
+Use an Ansible playbook to start your node. [See the repo here](https://github.com/ObolNetwork/obol-ansible) for further instructions.&#x20;
+{% endtab %}
 
-\{% tab title="Helm" %\} Use a Helm to start your node. [See the repo here](https://github.com/ObolNetwork/helm-charts) for further instructions. \{% endtab %\}
+{% tab title="Helm" %}
+Use a Helm to start your node. [See the repo here](https://github.com/ObolNetwork/helm-charts) for further instructions.
+{% endtab %}
 
-\{% tab title="Kubernetes" %\} Use Kubernetes manifests to start your Charon client and validator client. These manifests expect an existing Beacon Node Endpoint to connect to. [See the repo here](https://github.com/ObolNetwork/charon-k8s-distributed-validator-node) for further instructions. \{% endtab %\} \{% endtabs %\} \{% endtab %\}
-
-\{% tab title="Existing Beacon Node" %\} \{% hint style="warning" %\} Using a remote beacon node will impact the performance of your Distributed Validator and should be used sparingly. \{% endhint %\}
-
-If you already have a beacon node running somewhere and you want to use that instead of running an EL (`nethermind`) & CL (`lighthouse`) as part of the example repo, you can disable these images. To do so, follow these steps:
-
-1. Copy the `docker-compose.override.yml.sample` file
-
-```
-
-sh
-cp -n docker-compose.override.yml.sample docker-compose.override.yml
-```
-
-2. Uncomment the `profiles: [disable]` section for both `nethermind` and `lighthouse`. The override file should now look like this
-
-```
-services:
-  nethermind:
-    # Disable nethermind
-    profiles: [disable]
-    # Bind nethermind internal ports to host ports
-    #ports:
-      #- 8545:8545 # JSON-RPC
-      #- 8551:8551 # AUTH-RPC
-      #- 6060:6060 # Metrics
-  lighthouse:
-    # Disable lighthouse
-    profiles: [disable]
-    # Bind lighthouse internal ports to host ports
-    #ports:
-      #- 5052:5052 # HTTP
-      #- 5054:5054 # Metrics
-...
-```
-
-3. Then, uncomment and set the `CHARON_BEACON_NODE_ENDPOINTS` variable in the `.env` file to your beacon node's URL
-
-```sh
-...
-# Connect to one or more external beacon nodes. Use a comma separated list excluding spaces.
-CHARON_BEACON_NODE_ENDPOINTS=<YOUR_REMOTE_BEACON_NODE_URL>
-...
-```
-
-4. Restart your docker compose
-
-```sh
-docker compose down
-docker compose up -d
-```
+{% tab title="K8s" %}
+Use Kubernetes manifests to start your Charon client and validator client. These manifests expect an existing Beacon Node Endpoint to connect to. [See the repo here](https://github.com/ObolNetwork/charon-k8s-distributed-validator-node) for further instructions.
 {% endtab %}
 {% endtabs %}
 
