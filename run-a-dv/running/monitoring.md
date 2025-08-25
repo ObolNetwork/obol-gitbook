@@ -41,8 +41,7 @@ The local Grafana server will have a few pre-built dashboards:
 When alerts are triggered, they are routed to contact points according notification policies. For this, contact points must be added. Grafana supports several kind of contact points like email, PagerDuty, Discord, Slack, Telegram etc. This document will teach how to add Discord channel as contact point.
 
 1. On left nav bar in Grafana console, under `Alerts` section, click on contact points.
-2.  Click on `+ Add contact point`. It will show following page. Choose Discord in the `Integration` drop down.\
-
+2.  Click on `+ Add contact point`. It will show following page. Choose Discord in the `Integration` drop down.\\
 
     <figure><img src="../../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>
 3. Give a descriptive name to the alert. Create a channel in Discord and copy its `webhook url`. Once done, click `Save contact point` to finish.

@@ -8,8 +8,7 @@ The method for claiming rewards depends on the Cluster's withdrawal configuratio
 
 ### Claim Status <a href="#claim-status" id="claim-status"></a>
 
-\
-
+\\
 
 | Withdrawal Configuration                                                | Subcategory Description                                                                   | Is supported on Launchpad? | Where to claim?                                                                                                                                                                                       |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

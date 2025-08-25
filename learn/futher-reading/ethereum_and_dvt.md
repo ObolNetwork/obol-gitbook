@@ -24,7 +24,7 @@ To grasp the current landscape of Ethereum's PoS development, we encourage you t
 
 If you haven’t yet heard, Distributed Validator Technology, or DVT, is the next big thing on The Merge section of the Ethereum roadmap. Learn more about this in our blog post: [What is DVT and How Does It Improve Staking on Ethereum?](https://blog.obol.tech/what-is-dvt-and-how-does-it-improve-staking-on-ethereum/)\
 \
-&#xNAN;_**Vitalik's Ethereum Roadmap:**_
+\&#xNAN;_**Vitalik's Ethereum Roadmap:**_
 
 <figure><img src="../../.gitbook/assets/image (84).png" alt=""><figcaption></figcaption></figure>
 

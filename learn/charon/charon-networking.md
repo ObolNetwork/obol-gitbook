@@ -68,8 +68,7 @@ Only the following three libp2p protocols are established between a Charon node 
 
 * [circuit-relay](https://docs.libp2p.io/concepts/nat/circuit-relay/): To establish relay e2e encrypted connections between two peers in a cluster.
 * [identify](https://docs.libp2p.io/concepts/fundamentals/protocols/#identify): Auto-detection of public IP addresses to share with other peers in the cluster.
-* [peerinfo](https://github.com/ObolNetwork/charon/blob/main/app/peerinfo/peerinfo.go): Exchanges basic application [metadata](https://github.com/ObolNetwork/charon/blob/main/app/peerinfo/peerinfopb/v1/peerinfo.proto) for improved operational metrics and observability.\
-
+* [peerinfo](https://github.com/ObolNetwork/charon/blob/main/app/peerinfo/peerinfo.go): Exchanges basic application [metadata](https://github.com/ObolNetwork/charon/blob/main/app/peerinfo/peerinfopb/v1/peerinfo.proto) for improved operational metrics and observability.\\
 
 All other Charon protocols are only established between nodes in the same cluster.
 

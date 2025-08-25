@@ -538,6 +538,47 @@ You can also consider adding [alternative public relays](../../advanced-and-trou
 
 These commands are subject to breaking changes until they are moved outside of the `alpha` subcommand in a future release.
 
+### Generate and add new validators to a cluster
+
+The `charon alpha add-validators` command allows you to generate new validators and add them to an existing cluster. This process is very similar to the `charon dkg` ceremony, which requires all node operators to participate, because under the hood it runs the same DKG protocol with additional actions and verifications.
+
+{% hint style="warning" %}
+It is not yet recommended to use this command for Mainnet clusters.
+{% endhint %}
+
+```markdown
+charon alpha add-validators --help
+Generates and appends new validator keys to an existing distributed validator cluster.
+
+Usage:
+  charon alpha add-validators [flags]
+
+Flags:
+      --data-dir string                        The source charon folder with existing cluster data (lock, validator_keys, etc.). (default ".charon")
+      --execution-client-rpc-endpoint string   The address of the execution engine JSON-RPC API.
+      --fee-recipient-addresses strings        Comma separated list of Ethereum addresses of the fee recipient for each validator. Either provide a single fee recipient address or fee recipient addresses for each validator.
+  -h, --help                                   Help for add-validators
+      --keymanager-address string              The keymanager URL to import validator keyshares.
+      --keymanager-auth-token string           Authentication bearer token to interact with keymanager API. Don't include the "Bearer" symbol, only include the api-token.
+      --log-color string                       Log color; auto, force, disable. (default "auto")
+      --log-format string                      Log format; console, logfmt or json (default "console")
+      --log-level string                       Log level; debug, info, warn or error (default "info")
+      --log-output-path string                 Path in which to write on-disk logs.
+      --no-verify                              Disables cluster definition and lock file verification.
+      --num-validators int                     The number of new validators to generate and add to the existing cluster. (default 1)
+      --output-dir string                      The destination folder for the new (combined) cluster data. Must be empty. (default "distributed_validator")
+      --p2p-disable-reuseport                  Disables TCP port reuse for outgoing libp2p connections.
+      --p2p-external-hostname string           The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
+      --p2p-external-ip string                 The IP address advertised by libp2p. This may be used to advertise an external IP.
+      --p2p-relays strings                     Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://0.relay.obol.tech,https://2.relay.obol.dev,https://1.relay.obol.tech])
+      --p2p-tcp-address strings                Comma-separated list of listening TCP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
+      --p2p-udp-address strings                Comma-separated list of listening UDP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
+      --shutdown-delay duration                Graceful shutdown delay. (default 1s)
+      --timeout duration                       Timeout for the command, should be increased if the command times out. (default 1m0s)
+      --unverified                             If charon has no access to the existing validator keys, this flag allows the addition to proceed, but skips hashing and signing the new cluster lock data. charon run must be started with --no-verify flag.
+      --withdrawal-addresses strings           Comma separated list of Ethereum addresses to receive the returned stake and accrued rewards for each validator. Either provide a single withdrawal address or withdrawal addresses for each validator.
+```
+
 ### Test your candidate distributed validator cluster
 
 Charon comes with a test suite for understanding the suitability and readiness of a given setup.
