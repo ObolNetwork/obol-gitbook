@@ -54,6 +54,7 @@
   * [Self-Host a Relay](advanced-and-troubleshooting/advanced/self-relay.md)
   * [Advanced Docker Configs](advanced-and-troubleshooting/advanced/adv-docker-configs.md)
   * [Beacon node authentication](advanced-and-troubleshooting/advanced/beacon-node-authentication.md)
+  * [Adding Validators](advanced-and-troubleshooting/advanced/add-validators.md)
   * [Custom Graffiti](advanced-and-troubleshooting/advanced/custom-graffiti.md)
   * [Enable TLS Protocol](advanced-and-troubleshooting/advanced/enable-tls-protocol.md)
   * [Fallback Beacon Node](advanced-and-troubleshooting/advanced/fallback-beacon-node.md)
