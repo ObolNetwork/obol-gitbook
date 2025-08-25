@@ -9,8 +9,7 @@ Information about the Staking Mastery Program can be found at https://squadstaki
 
 ## Achieving staking mastery
 
-The Staking Mastery program is a carefully curated cohort based program designed to empower and promote individuals who are passionate about advancing staking adoption through research, development and/or education.\
-
+The Staking Mastery program is a carefully curated cohort based program designed to empower and promote individuals who are passionate about advancing staking adoption through research, development and/or education.\\
 
 <figure><img src="../../.gitbook/assets/image (54).png" alt=""><figcaption></figcaption></figure>
 

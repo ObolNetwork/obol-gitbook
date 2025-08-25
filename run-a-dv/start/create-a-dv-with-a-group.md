@@ -378,8 +378,6 @@ Now that the DKG has been completed, all operators can start their nodes.
 
 With the DKG ceremony over, the last phase before activation is to prepare your node for validating over the long term.
 
-
-
 The [CDVN repository](https://github.com/ObolNetwork/charon-distributed-validator-node) is configured to sync an execution layer client (`Nethermind`) and a consensus layer client (`Lighthouse`) using Docker Compose, further client combinations can be prepared using Sedge. You can also leverage alternative ways to run a node such as Ansible, Helm, or Kubernetes manifests.
 
 {% tabs %}
@@ -410,7 +408,9 @@ In the same folder where you created your ENR in Step 1, and ran the DKG in Step
 docker compose up -d
 ````
 
-\{% hint style="warning" %\} Do not start this node until the DKG is complete, as the charon container will interfere with the charon instance attempting to take part in the DKG ceremony. \{% endhint %\}
+{% hint style="danger" %}
+Do not start this node until the DKG is complete, as the charon container will interfere with the charon instance attempting to take part in the DKG ceremony.&#x20;
+{% endhint %}
 
 If at any point you need to turn off your node, you can run:
 
@@ -430,9 +430,67 @@ In particular you should check:
 
 * That your Charon client can connect to the configured beacon client.
 * That your Charon client can connect to all peers directly.
-* That your validator client is connected to Charon, and has the private keys it needs loaded and accessible. Most components in the dashboard have some help text there to assist you in understanding your cluster performance. You might notice that there are logs indicating that a validator cannot be found and that APIs are returning 404. This is to be expected at this point, as the validator public keys listed in the lock file have not been deposited and acknowledged on the consensus layer yet (usually it takes \~16 hours after the deposit is made). \{% endtab %\}
+* That your validator client is connected to Charon, and has the private keys it needs loaded and accessible. Most components in the dashboard have some help text there to assist you in understanding your cluster performance. You might notice that there are logs indicating that a validator cannot be found and that APIs are returning 404. This is to be expected at this point, as the validator public keys listed in the lock file have not been deposited and acknowledged on the consensus layer yet (usually it takes \~16 hours after the deposit is made).&#x20;
 
-\{% tab title="Sedge" %\} To prepare a Distributed Validator node using sedge, we will use the `sedge generate` command to prepare a docker-compose file of our preferred clients, `sedge import-key` to import the artifacts created during the DKG ceremony, and `sedge run` to begin running the node.
+
+{% endtab %}
+
+{% tab title="Existing BN" %}
+{% hint style="danger" %}
+Using a remote beacon node will impact the performance of your Distributed Validator and should be used sparingly.
+{% endhint %}
+
+If you already have a beacon node running somewhere and you want to use that instead of running an EL (`nethermind`) & CL (`lighthouse`) as part of the example repo, you can disable these images. To do so, follow these steps:
+
+1. Copy the `docker-compose.override.yml.sample` file
+
+```
+
+sh
+cp -n docker-compose.override.yml.sample docker-compose.override.yml
+```
+
+2. Uncomment the `profiles: [disable]` section for both `nethermind` and `lighthouse`. The override file should now look like this
+
+```
+services:
+  nethermind:
+    # Disable nethermind
+    profiles: [disable]
+    # Bind nethermind internal ports to host ports
+    #ports:
+      #- 8545:8545 # JSON-RPC
+      #- 8551:8551 # AUTH-RPC
+      #- 6060:6060 # Metrics
+  lighthouse:
+    # Disable lighthouse
+    profiles: [disable]
+    # Bind lighthouse internal ports to host ports
+    #ports:
+      #- 5052:5052 # HTTP
+      #- 5054:5054 # Metrics
+...
+```
+
+3. Then, uncomment and set the `CHARON_BEACON_NODE_ENDPOINTS` variable in the `.env` file to your beacon node's URL
+
+```sh
+...
+# Connect to one or more external beacon nodes. Use a comma separated list excluding spaces.
+CHARON_BEACON_NODE_ENDPOINTS=<YOUR_REMOTE_BEACON_NODE_URL>
+...
+```
+
+4. Restart your docker compose
+
+```sh
+docker compose down
+docker compose up -d
+```
+{% endtab %}
+
+{% tab title="Sedge" %}
+To prepare a Distributed Validator node using sedge, we will use the `sedge generate` command to prepare a docker-compose file of our preferred clients, `sedge import-key` to import the artifacts created during the DKG ceremony, and `sedge run` to begin running the node.
 
 **Sedge generate**[**​**](https://docs.obol.org/next/run/start/quickstart_group#sedge-generate)
 
@@ -537,63 +595,19 @@ Once all docker images are pulled, sedge will create & start the containers to r
 
 Given time, the execution and consensus clients should complete syncing, and if a Distributed Validator has already been activated, the node should begin to validate.
 
-If you encounter issues with using Sedge as part of a DV cluster, consider consulting the [Sedge docs](https://docs.sedge.nethermind.io/) directly, or opening an [issue](https://github.com/NethermindEth/sedge/issues) or [pull request](https://github.com/NethermindEth/sedge/pulls) if appropriate. \{% endtab %\}
+If you encounter issues with using Sedge as part of a DV cluster, consider consulting the [Sedge docs](https://docs.sedge.nethermind.io/) directly, or opening an [issue](https://github.com/NethermindEth/sedge/issues) or [pull request](https://github.com/NethermindEth/sedge/pulls) if appropriate.&#x20;
+{% endtab %}
 
-\{% tab title="Ansible" %\} Use an ansible playbook to start your node. [See the repo here](https://github.com/ObolNetwork/obol-ansible) for further instructions. \{% endtab %\}
+{% tab title="Ansible" %}
+Use an Ansible playbook to start your node. [See the repo here](https://github.com/ObolNetwork/obol-ansible) for further instructions.&#x20;
+{% endtab %}
 
-\{% tab title="Helm" %\} Use a Helm to start your node. [See the repo here](https://github.com/ObolNetwork/helm-charts) for further instructions. \{% endtab %\}
+{% tab title="Helm" %}
+Use a Helm to start your node. [See the repo here](https://github.com/ObolNetwork/helm-charts) for further instructions.
+{% endtab %}
 
-\{% tab title="Kubernetes" %\} Use Kubernetes manifests to start your Charon client and validator client. These manifests expect an existing Beacon Node Endpoint to connect to. [See the repo here](https://github.com/ObolNetwork/charon-k8s-distributed-validator-node) for further instructions. \{% endtab %\} \{% endtabs %\} \{% endtab %\}
-
-\{% tab title="Existing Beacon Node" %\} \{% hint style="warning" %\} Using a remote beacon node will impact the performance of your Distributed Validator and should be used sparingly. \{% endhint %\}
-
-If you already have a beacon node running somewhere and you want to use that instead of running an EL (`nethermind`) & CL (`lighthouse`) as part of the example repo, you can disable these images. To do so, follow these steps:
-
-1. Copy the `docker-compose.override.yml.sample` file
-
-```
-
-sh
-cp -n docker-compose.override.yml.sample docker-compose.override.yml
-```
-
-2. Uncomment the `profiles: [disable]` section for both `nethermind` and `lighthouse`. The override file should now look like this
-
-```
-services:
-  nethermind:
-    # Disable nethermind
-    profiles: [disable]
-    # Bind nethermind internal ports to host ports
-    #ports:
-      #- 8545:8545 # JSON-RPC
-      #- 8551:8551 # AUTH-RPC
-      #- 6060:6060 # Metrics
-  lighthouse:
-    # Disable lighthouse
-    profiles: [disable]
-    # Bind lighthouse internal ports to host ports
-    #ports:
-      #- 5052:5052 # HTTP
-      #- 5054:5054 # Metrics
-...
-```
-
-3. Then, uncomment and set the `CHARON_BEACON_NODE_ENDPOINTS` variable in the `.env` file to your beacon node's URL
-
-```sh
-...
-# Connect to one or more external beacon nodes. Use a comma separated list excluding spaces.
-CHARON_BEACON_NODE_ENDPOINTS=<YOUR_REMOTE_BEACON_NODE_URL>
-...
-```
-
-4. Restart your docker compose
-
-```sh
-docker compose down
-docker compose up -d
-```
+{% tab title="K8s" %}
+Use Kubernetes manifests to start your Charon client and validator client. These manifests expect an existing Beacon Node Endpoint to connect to. [See the repo here](https://github.com/ObolNetwork/charon-k8s-distributed-validator-node) for further instructions.
 {% endtab %}
 {% endtabs %}
 

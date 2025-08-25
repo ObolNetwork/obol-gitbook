@@ -19,8 +19,7 @@ Yes, they need to clean up the Charon and validator volumes. However, instead of
 
 #### Does an operator need to use the `VALIDATOR_EXTRA_OPTS` to pass the `builderonly` or `builderalways` flag for Lodestar VC?[​](https://docs.obol.org/next/run/integrations/Dappnode#does-an-operator-need-to-use-the-validator_extra_opts-to-pass-the-builderonly-or-builderalways-flag-for-lodestar-vc) <a href="#does-an-operator-need-to-use-the-validator_extra_opts-to-pass-the-builderonly-or-builderalways-flag" id="does-an-operator-need-to-use-the-validator_extra_opts-to-pass-the-builderonly-or-builderalways-flag"></a>
 
-No, if `ENABLE_MEV_BOOST` is set to `true`, these flags will be added automatically.\
-
+No, if `ENABLE_MEV_BOOST` is set to `true`, these flags will be added automatically.\\
 
 <figure><img src="../../.gitbook/assets/image (90).png" alt=""><figcaption></figcaption></figure>
 

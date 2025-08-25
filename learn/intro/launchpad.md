@@ -19,7 +19,7 @@ For more information on running Charon in a UI friendly way through the DV Launc
 ## DV Launchpad Links
 
 | Ethereum Network | Launchpad                              |
-|------------------|----------------------------------------|
+| ---------------- | -------------------------------------- |
 | Mainnet          | https://launchpad.obol.org             |
 | Gnosis Chain     | https://gnosischain.launchpad.obol.org |
 | Hoodi            | https://hoodi.launchpad.obol.org       |
@@ -38,8 +38,7 @@ An operator can be part of multiple clusters. Clusters, and cluster invites, are
 
 <figure><img src="../../.gitbook/assets/image (18) (1).png" alt=""><figcaption></figcaption></figure>
 
-> [!TIP]
-> If you created a cluster locally, and didn't use the `--publish` command at the time, you can manually publish it by running this command from the folder with the `cluster-lock.json` in it.
+> \[!TIP] If you created a cluster locally, and didn't use the `--publish` command at the time, you can manually publish it by running this command from the folder with the `cluster-lock.json` in it.
 >
 > `curl -X POST -H "Content-Type: application/json" -d @cluster-lock.json https://api.obol.tech/v1/lock`
 
