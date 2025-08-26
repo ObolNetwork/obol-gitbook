@@ -25,9 +25,9 @@ Currently supported client options are:
 For support between different combinations, refer to Charon's compatibility matrix, found in the [prepare section of the docs](../../run-a-dv/prepare/how_where_dvs.md) or under [release notes](https://github.com/ObolNetwork/charon/releases/) for each release.
 
 > [!NOTE]
-> Mind that with mix of clients in the cluster, the available combinations between consensus layer clients and validator clients grows exponentially.
-> At Obol we do our best to test all possible scenarios, but we cannot yet give guarantee for each possible scenario's performance and compatibility.
-> Do run mix of clients in a cluster with caution, monitor your cluster and be ready to swap with another client.
+> As CDVN natively supports more clients, the number of possible combinations grows quickly.
+> We test extensively, but cannot guarantee the performance of all possible client combos.
+> If you run a mixed-client cluster, monitor performance and be ready to swap to another client if you observe issues.
 
 ## Choosing clients in fresh cluster
 
