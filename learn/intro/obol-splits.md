@@ -183,7 +183,7 @@ The `ObolValidatorManager` contract is deployed via a [factory contract](https:/
 | Mainnet | [0xdfe2d8b26806583cf03b3cb623b0752f8670e93e](https://etherscan.io/address/0xdfe2d8b26806583cf03b3cb623b0752f8670e93e)         |
 | Hoodi   | [0xb1E1f5e90f4190F78182A8d5cbed774893Dd1558](https://hoodi.etherscan.io/address/0xb1E1f5e90f4190F78182A8d5cbed774893Dd1558)   |
 | Holesky | [0x466bD4917e5e1662db1A549Bd828637E2CEDFEA9](https://holesky.etherscan.io/address/0x466bD4917e5e1662db1A549Bd828637E2CEDFEA9) |
-| Sepolia |                                                                                                                               |
+| Sepolia | [0x4Cdc690A9125Ec487aA625C54b64E162FE9b4E9C](https://sepolia.etherscan.io/address/0x4Cdc690A9125Ec487aA625C54b64E162FE9b4E9C) |
 
 ### Obol Lido Split Factory Deployment [**​**](https://docs.obol.org/learn/intro/obol-splits#ols-factory-deployment)
 
