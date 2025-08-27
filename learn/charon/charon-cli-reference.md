@@ -6,7 +6,7 @@ description: >-
 
 # CLI Reference
 
-The following is a reference for Charon version [`v1.5.2`](https://github.com/ObolNetwork/charon/releases/tag/v1.5.2). Find the latest release on [our Github](https://github.com/ObolNetwork/charon/releases).
+The following is a reference for Charon version [`v1.6.0`](https://github.com/ObolNetwork/charon/releases/tag/v1.6.0). Find the latest release on [our Github](https://github.com/ObolNetwork/charon/releases).
 
 The following are the top-level commands available to use.
 
@@ -109,13 +109,14 @@ Flags:
       --publish-address string                 The URL to publish the lock file to. (default "https://api.obol.tech/v1")
       --split-existing-keys                    Split an existing validator's private key into a set of distributed validator private key shares. Does not re-create deposit data for this key.
       --split-keys-dir string                  Directory containing keys to split. Expects keys in keystore-*.json and passwords in keystore-*.txt. Requires --split-existing-keys.
-      --target-gas-limit uint                  Preferred target gas limit for transactions. (default 36000000)
+      --target-gas-limit uint                  Preferred target gas limit for transactions. (default 60000000)
       --testnet-chain-id uint                  Chain ID of the custom test network.
       --testnet-fork-version string            Genesis fork version of the custom test network (in hex).
       --testnet-genesis-timestamp int          Genesis timestamp of the custom test network.
       --testnet-name string                    Name of the custom test network.
       --threshold int                          Optional override of threshold required for signature reconstruction. Defaults to ceil(n*2/3) if zero. Warning, non-default values decrease security.
       --withdrawal-addresses strings           Comma separated list of Ethereum addresses to receive the returned stake and accrued rewards for each validator. Either provide a single withdrawal address or withdrawal addresses for each validator.
+      --zipped                                 Create a tar archive compressed with gzip of the cluster directory after creation.
 ```
 
 ### Creating the configuration for a DKG Ceremony
@@ -145,7 +146,7 @@ Flags:
       --output-dir string                      The folder to write the output cluster-definition.json file to. (default ".charon")
       --publish                                Creates an invitation to the DKG ceremony on the DV Launchpad. Terms and conditions apply.
       --publish-address string                 The URL to publish the cluster to. (default "https://api.obol.tech/v1")
-      --target-gas-limit uint                  Preferred target gas limit for transactions. (default 36000000)
+      --target-gas-limit uint                  Preferred target gas limit for transactions. (default 60000000)
   -t, --threshold int                          Optional override of threshold required for signature reconstruction. Defaults to ceil(n*2/3) if zero. Warning, non-default values decrease security.
       --withdrawal-addresses strings           Comma separated list of Ethereum addresses to receive the returned stake and accrued rewards for each validator. Either provide a single withdrawal address or withdrawal addresses for each validator.
 ```
@@ -182,11 +183,13 @@ Flags:
       --p2p-external-ip string                 The IP address advertised by libp2p. This may be used to advertise an external IP.
       --p2p-relays strings                     Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://0.relay.obol.tech,https://2.relay.obol.dev,https://1.relay.obol.tech])
       --p2p-tcp-address strings                Comma-separated list of listening TCP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
+      --p2p-udp-address strings                Comma-separated list of listening UDP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --publish                                Publish the created cluster to a remote API.
       --publish-address string                 The URL to publish the cluster to. (default "https://api.obol.tech/v1")
       --publish-timeout duration               Timeout for publishing a cluster, consider increasing if the cluster contains more than 200 validators. (default 30s)
       --shutdown-delay duration                Graceful shutdown delay. (default 1s)
       --timeout duration                       Timeout for the DKG process, should be increased if DKG times out. (default 1m0s)
+      --zipped                                 Create a tar archive compressed with gzip of the target directory after creation.
 ```
 
 ## The `run` command
@@ -232,6 +235,7 @@ Flags:
       --nickname string                          Human friendly peer nickname. Maximum 32 characters.
       --no-verify                                Disables cluster definition and lock file verification.
       --otlp-address string                      Listening address for OTLP gRPC tracing backend.
+      --otlp-headers strings                     Comma separated list of headers formatted as header=value, to include in OTLP requests.
       --otlp-service-name string                 Service name used for OTLP gRPC tracing. (default "charon")
       --p2p-disable-reuseport                    Disables TCP port reuse for outgoing libp2p connections.
       --p2p-external-hostname string             The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
@@ -254,6 +258,8 @@ Flags:
       --testnet-genesis-timestamp int            Genesis timestamp of the custom test network.
       --testnet-name string                      Name of the custom test network.
       --validator-api-address string             Listening address (ip and port) for validator-facing traffic proxying the beacon-node API. (default "127.0.0.1:3600")
+      --vc-tls-cert-file string                  The path to the TLS certificate file used by charon for the validator client API endpoint.
+      --vc-tls-key-file string                   The path to the TLS private key file associated with the provided TLS certificate.
 ```
 
 ## The `exit` command
@@ -270,6 +276,7 @@ Usage:
 Available Commands:
   active-validator-list List all active validators
   broadcast             Submit partial exit message for a distributed validator
+  delete                Delete a signed exit message from the remote API
   fetch                 Fetch a signed exit message from the remote API
   sign                  Sign partial exit message for a distributed validator
 
@@ -301,7 +308,7 @@ Flags:
       --beacon-node-endpoints strings            Comma separated list of one or more beacon node endpoint URLs. [REQUIRED]
       --beacon-node-headers strings              Comma separated list of headers formatted as header=value
       --beacon-node-timeout duration             Timeout for beacon node HTTP calls. (default 30s)
-      --exit-epoch uint                          Exit epoch at which the validator will exit, must be the same across all the partial exits. (default 162304)
+      --exit-epoch uint                          Exit epoch at which the validator will exit, must be the same across all the partial exits. (default 194048)
       --fallback-beacon-node-endpoints strings   A list of beacon nodes to use if the primary list are offline or unhealthy.
   -h, --help                                     Help for sign
       --lock-file string                         The path to the cluster lock file defining the distributed validator cluster. (default ".charon/cluster-lock.json")
@@ -320,6 +327,36 @@ Flags:
       --validator-index uint                     Validator index of the validator to exit, the associated public key must be present in the cluster lock manifest. If --validator-public-key is also provided, validator existence won't be checked on the beacon chain.
       --validator-keys-dir string                Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
       --validator-public-key string              Public key of the validator to exit, must be present in the cluster lock manifest. If --validator-index is also provided, validator liveliness won't be checked on the beacon chain.
+```
+
+### Delete exit message
+
+Delete a previously signed exit message for a given validator from the remote API. The required flag is either `--validator-public-key` of the validator message you wish to delete or `--all` to delete all validators' exit message.
+
+```markdown
+charon exit delete --help
+Deletes a partially signed exit message for a given validator from the remote API.
+
+Usage:
+  charon exit delete [flags]
+
+Flags:
+      --all                                Exit all currently active validators in the cluster.
+  -h, --help                               Help for delete
+      --lock-file string                   The path to the cluster lock file defining the distributed validator cluster. (default ".charon/cluster-lock.json")
+      --log-color string                   Log color; auto, force, disable. (default "auto")
+      --log-format string                  Log format; console, logfmt or json (default "console")
+      --log-level string                   Log level; debug, info, warn or error (default "info")
+      --log-output-path string             Path in which to write on-disk logs.
+      --private-key-file string            The path to the charon enr private key file.  (default ".charon/charon-enr-private-key")
+      --publish-address string             The URL of the remote API. (default "https://api.obol.tech/v1")
+      --publish-timeout duration           Timeout for publishing a signed exit to the publish-address API. (default 5m0s)
+      --testnet-capella-hard-fork string   Capella hard fork version of the custom test network.
+      --testnet-chain-id uint              Chain ID of the custom test network.
+      --testnet-fork-version string        Genesis fork version of the custom test network (in hex).
+      --testnet-genesis-timestamp int      Genesis timestamp of the custom test network.
+      --testnet-name string                Name of the custom test network.
+      --validator-public-key string        Public key of the validator to exit, must be present in the cluster lock manifest. If --validator-index is also provided, validator liveliness won't be checked on the beacon chain.
 ```
 
 ### Download fully signed exit messages for cold storage
@@ -369,7 +406,7 @@ Flags:
       --beacon-node-endpoints strings            Comma separated list of one or more beacon node endpoint URLs. [REQUIRED]
       --beacon-node-headers strings              Comma separated list of headers formatted as header=value
       --beacon-node-timeout duration             Timeout for beacon node HTTP calls. (default 30s)
-      --exit-epoch uint                          Exit epoch at which the validator will exit, must be the same across all the partial exits. (default 162304)
+      --exit-epoch uint                          Exit epoch at which the validator will exit, must be the same across all the partial exits. (default 194048)
       --exit-from-dir string                     Retrieves a signed exit messages from a pre-prepared files in a directory instead of --publish-address.
       --exit-from-file string                    Retrieves a signed exit message from a pre-prepared file instead of --publish-address.
       --fallback-beacon-node-endpoints strings   A list of beacon nodes to use if the primary list are offline or unhealthy.
@@ -411,7 +448,7 @@ Usage:
   charon combine [flags]
 
 Flags:
-      --cluster-dir string                     Parent directory containing a number of .charon subdirectories from the required threshold of nodes in the cluster. (default ".charon/cluster")
+      --cluster-dir string                     Parent directory containing a number of .charon subdirectories from the required threshold of nodes in the cluster. (default "./")
       --execution-client-rpc-endpoint string   The address of the execution engine JSON-RPC API.
       --force                                  Overwrites private keys with the same name if present.
   -h, --help                                   Help for combine
