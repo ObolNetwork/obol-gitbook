@@ -6,7 +6,7 @@ description: >-
 # Adding Validators
 
 {% hint style="warning" %}
-This is an experimental feature available starting with charon v1.6 and should not be used in production (Mainnet) yet.
+This is an experimental feature available starting with Charon v1.6 and should not be used in production (Mainnet) yet.
 {% endhint %}
 
 You can add validators to your cluster using the `charon alpha add-validators` command. The example below is designed for the default configuration provided by this repository and assumes that the stack uses the Lodestar validator client.
@@ -18,7 +18,7 @@ You can add validators to your cluster using the `charon alpha add-validators` c
 
 ## Adding Validators Process
 
-The below examples are for adding 10 validators. You can use them with any amount of validators you would like to add. Run the following command to collectively generate and add 10 new validators with other node operators (similar to DKG):
+The examples below are for adding 10 validators. You can use them with any number of validators you would like to add. Run the following command to collectively generate and add 10 new validators with other node operators (similar to DKG):
 
 ```bash
 # If you prefer running a pre-built charon binary
@@ -54,7 +54,7 @@ mv output .charon
 docker compose up -d charon lodestar
 ```
 
-Lodestar's boot script (`lodestar/run.sh`) will automatically import all keys, removing any existing keys and cache. Charon will load the new `cluster-lock.json` and recognize all validators in the cluster.
+Lodestar's boot script (`lodestar/run.sh`) will automatically import all keys, removing any existing keys and cache. Charon will load the new `cluster-lock.json` and recognise all validators in the cluster.
 
 {% hint style="info" %}
 Steps 1–3 must be performed independently by all node operators, likely at different times. During this process, some nodes will use the old configuration and others the new one. Once the number of upgraded nodes reaches the BFT threshold, the newly added validators will begin participating in the cluster.

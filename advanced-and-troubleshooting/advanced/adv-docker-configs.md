@@ -11,9 +11,9 @@ description: >-
 This section is intended for _docker power users_, i.e.: for those who are familiar with working with `docker compose` and want to have more flexibility and power to change the default configuration.
 {% endhint %}
 
-We use the "Multiple Compose File" feature which provides a very powerful way to override any configuration in `docker-compose.yml` without needing to modify git-checked-in files since that results in conflicts when upgrading this repo. See [this](https://docs.docker.com/compose/extends/#multiple-compose-files) for more details.
+We use the "Multiple Compose File" feature which provides a very powerful way to override any configuration in `docker-compose.yml` without needing to modify version-controlled files since that results in conflicts when upgrading this repo. See [this](https://docs.docker.com/compose/extends/#multiple-compose-files) for more details.
 
-There are some additional compose files in [this repository](https://github.com/ObolNetwork/charon-distributed-validator-node/), `compose-debug.yml` and `docker-compose.override.yml.sample`, along-with the default `docker-compose.yml` file that you can use for this purpose.
+There are some additional compose files in [this repository](https://github.com/ObolNetwork/charon-distributed-validator-node/), `compose-debug.yml` and `docker-compose.override.yml.sample`, along with the default `docker-compose.yml` file that you can use for this purpose.
 
 * `compose-debug.yml` contains some additional containers that developers can use for debugging, like `tempo`. To achieve this, you can run:
 

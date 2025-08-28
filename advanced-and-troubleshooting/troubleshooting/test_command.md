@@ -36,7 +36,7 @@ Same causes as PingMeasure test apply here.
 
 #### PingRelay
 
-* Relay might be down or un-conctactable for other reasons.
+* Relay might be down or uncontactable for other reasons.
 
 #### PingMeasureRelay
 

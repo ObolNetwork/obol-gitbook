@@ -57,7 +57,7 @@
   * [Adding Validators](advanced-and-troubleshooting/advanced/add-validators.md)
   * [Custom Graffiti](advanced-and-troubleshooting/advanced/custom-graffiti.md)
   * [Enable TLS Protocol](advanced-and-troubleshooting/advanced/enable-tls-protocol.md)
-  * [Fallback Beacon Node](advanced-and-troubleshooting/advanced/fallback-beacon-node.md)
+  * [Fallback Beacon Nodes](advanced-and-troubleshooting/advanced/fallback-beacon-nodes.md)
   * [Nicknames](advanced-and-troubleshooting/advanced/nicknames.md)
 * [Troubleshooting](advanced-and-troubleshooting/troubleshooting/README.md)
   * [Errors & Resolutions](advanced-and-troubleshooting/troubleshooting/errors.md)
