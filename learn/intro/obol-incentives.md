@@ -1,5 +1,7 @@
 # OBOL Incentives
 
+## OBOL Incentives Program
+
 The **OBOL Incentives Program** is designed to be powerful and transparent, rewarding anyone OBOL tokens for staking on **Distributed Validators (DVs).**
 
 ### What is the OBOL Incentives Program?
