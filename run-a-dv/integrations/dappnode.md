@@ -1,6 +1,6 @@
 # DappNode
 
-For set-up, see quickstart guide:[​](https://docs.obol.org/next/run/integrations/Dappnode#for-setup-see-quickstart-guide)
+For setup, see quickstart guide:[​](https://docs.obol.org/next/run/integrations/Dappnode#for-setup-see-quickstart-guide)
 
 For set-up of a DV using DappNode, see the quickstart guide [Create a DV Alone](https://docs.obol.org/next/run/start/quickstart_alone), and select the appropriate tab for "DappNode".
 
