@@ -46,9 +46,9 @@ If you request to withdraw an amount that would leave a validator with less than
 {% endhint %}
 
 {% hint style="info" %}
-If you request to partially withdraw a validator's balance, the funds will be available in the OVM contract at the end of the exit queue. (Usually ~27 hours)
+If you request to partially withdraw a validator's balance, the funds will be available in the OVM contract at the end of the exit queue. (Usually \~27 hours)
 
-However, if you withdraw the full balance of the validator, triggering its complete exit, the Ether will be available to the OVM contract once the validator is through the exit queue, **and** the skimming process has completed. (Average of ~5 days) This could add a number of days to the wait for validator funds, and full exiting at an optimal moment could significantly shorten the duration.
+However, if you withdraw the full balance of the validator, triggering its complete exit, the Ether will be available to the OVM contract once the validator is through the exit queue, **and** the skimming process has completed. (Average of \~5 days) This could add a number of days to the wait for validator funds, and full exiting at an optimal moment could significantly shorten the duration.
 {% endhint %}
 
 ```solidity
