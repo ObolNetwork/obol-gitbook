@@ -35,7 +35,7 @@ An NVMe storage device is **highly recommended for optimal performance**, offeri
 
 Inadequate hardware (low-performance virtualized servers and/or slow HDD storage) has been observed to hinder performance, indicating the necessity of provisioning adequate resources. **CPU clock speed and Disk throughput+latency are the most important factors for running a performant validator.**
 
-Note that the Charon client itself takes less than 1GB of RAM and minimal CPU load. In order to optimize both performance and cost-effectiveness, it is recommended to prioritize physical over virtualized setups. Such configurations typically offer greater performance and minimize overhead associated with virtualization, contributing to improved efficiency and reliability.
+Note that the Charon client itself takes less than 1GB of RAM and minimal CPU load. In order to optimise both performance and cost-effectiveness, it is recommended to prioritise physical over virtualised setups. Such configurations typically offer greater performance and minimise overhead associated with virtualisation, contributing to improved efficiency and reliability.
 
 When constructing a DV cluster, it is important to be conscious of whether a cluster runs across cloud providers or stays within a single provider's private networking. This likely can impact the bandwidth and latency of the connections between nodes, as well as the egress costs of the cluster (Charon has a relatively low communication with its peers, averaging 10s of kb/s in large mainnet clusters). Ideally, bare metal machines in different locations within the same continent and with at least two providers, balances redundancy and performance.
 
@@ -43,7 +43,7 @@ When constructing a DV cluster, it is important to be conscious of whether a clu
 
 It is recommended to **keep peer ping latency below 235 milliseconds for all peers in a cluster**. Charon should report a consensus duration averaging under 1 second through its prometheus metric `core_consensus_duration_seconds_bucket` and associated grafana panel titled "Consensus Duration".
 
-In cases where latencies exceed these thresholds, efforts should be made to reduce the physical distance between nodes or optimize Internet Service Provider (ISP) settings accordingly. Ensure all nodes are connecting to one another directly rather than through a relay.
+In cases where latencies exceed these thresholds, efforts should be made to reduce the physical distance between nodes or optimise Internet Service Provider (ISP) settings accordingly. Ensure all nodes are connecting to one another directly rather than through a relay.
 
 For high-scale, performance deployments; inter-peer latency of < 25ms is optimal, along with an average consensus duration under 100ms.
 
