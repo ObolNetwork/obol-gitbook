@@ -1,9 +1,5 @@
 # OBOL Incentives
 
-## OBOL2. **Running Your Own DV Cluster**
-   * Use the [DV Launchpad](https://launchpad.obol.org) to create and manage your own DV cluster, e.g., using a [DappNode](https://dappnode.com/) or other hardware. Please note, you must opt into [1% for Decentralisation](https://blog.obol.org/1-percent-for-decentralisation/) to qualify for Obol Incentives.
-   * This method directly supports Ethereum's decentralisation while earning OBOL incentives.centives Program
-
 The **OBOL Incentives Program** is designed to be powerful and transparent, rewarding anyone OBOL tokens for staking on **Distributed Validators (DVs).**
 
 ### What is the OBOL Incentives Program?
