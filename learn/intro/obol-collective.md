@@ -6,13 +6,13 @@ description: The Obol Collective
 
 ## What is the Obol Collective?
 
-The Obol Collective is the largest Decentralized Operator Ecosystem. We provides the technology, opportunities, and community to scale decentralized infrastructure networks. The list of Obol Collective participants includes 50+ staking protocols, client teams, software tools, education & community projects, professional node operators, home operators, and stakers, including names like EigenLayer, Lido, EtherFi, Figment, Bitcoin Suisse, Stakewise, Nethermind, Blockdaemon, Chorus One, DappNode, and many more. Learn more at [Obol.org](https://obol.org).
+The Obol Collective is the largest Decentralised Operator Ecosystem. We provide the technology, opportunities, and community to scale decentralised infrastructure networks. The list of Obol Collective participants includes 50+ staking protocols, client teams, software tools, education & community projects, professional node operators, home operators, and stakers, including names like EigenLayer, Lido, EtherFi, Figment, Bitcoin Suisse, Stakewise, Nethermind, Blockdaemon, Chorus One, DappNode, and many more. Learn more at [Obol.org](https://obol.org).
 
 <figure><img src="../../.gitbook/assets/DecentralizedOperatorEcosystem.png" alt=""><figcaption></figcaption></figure>
 
 ## Scaling Infrastructure Networks
 
-Obol is focused on scaling consensus by providing permissionless access to Distributed Validators (DVs), which offer not only protection against client issues and key mismanagement, but also byzantine fault tolerance. We believe that distributed validators should and will make up a large portion of mainnet validator configurations, with the transition of the Ethereum community to DVs enabling a new trust paradigm.
+Obol is focused on scaling consensus by providing permissionless access to Distributed Validators (DVs), which offer not only protection against client issues and key mismanagement, but also Byzantine fault tolerance. We believe that distributed validators should and will make up a large portion of mainnet validator configurations, with the transition of the Ethereum community to DVs enabling a new trust paradigm.
 
 The Distributed Validator middleware client, Charon, boosts the security, resilience, and decentralisation of the Ethereum validator network by enabling “squad staking”. The Collective is fueled by Obol’s economic model, which directs funding to ecosystem projects via retroactive funding - a positive flywheel to accelerate adoption of DVs and scale infrastructure networks like Ethereum.
 

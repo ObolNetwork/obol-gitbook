@@ -1,5 +1,9 @@
 ---
-description: Some of the key terms in the field of Distributed Validator Technology
+# Obol vs Othe## Cluster independence: Clusters can upgrade independently
+
+In an Obol DV cluster, nodes use LibP2P to communicate directly with each other, and communications are end-to-end-encrypted with TLS. Clusters are independent from one another, can run different versions of Charon, and don't need to upgrade together. This means that when a new version of Obol's Charon is released, Obol DV clusters can upgrade on their own time, individually from other DV clusters. Charon will NEVER require a hard fork or simultaneous updates across clusters for any upgrades.V Implementations
+
+This page outlines the unique features of Obol's DV implementation, contrasting with other DV implementations. We built Obol's DVT as a middleware to keep Ethereum secure, resilient, and composable. See also the blog article [Why We Built Charon as a Middleware](https://blog.obol.org/why-we-built-charon-as-a-middleware/).cription: Some of the key terms in the field of Distributed Validator Technology
 ---
 
 # Obol vs Other DV Implementations

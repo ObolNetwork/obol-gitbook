@@ -6,15 +6,15 @@ description: A dapp to securely create Distributed Validators alone or with a gr
 
 In order to activate an Ethereum validator, 32 ETH must be deposited into the official deposit contract. Distributed validators are no different.
 
-The vast majority of users that created validators to date have used the [~~**Eth2**~~**&#x20;Staking Launchpad**](https://launchpad.ethereum.org/), a public good open source website built by the Ethereum Foundation alongside participants who later went on to found Obol. This tool has been wildly successful in the safe and educational creation of a significant number of validators on the Ethereum mainnet.
+The vast majority of users that created validators to date have used the [~~**Eth2**~~**&#x20;Staking Launchpad**](https://launchpad.ethereum.org/), a public good open-source website built by the Ethereum Foundation alongside participants who later went on to found Obol. This tool has been wildly successful in the safe and educational creation of a significant number of validators on the Ethereum mainnet.
 
-To facilitate the generation of distributed validator keys amongst remote users with high trust, the Obol Network developed and maintains a website that enables a group of users to come together and create these threshold keys: **The DV Launchpad**.
+To facilitate the generation of distributed validator keys amongst remote users with high-trust, the Obol Network developed and maintains a website that enables a group of users to come together and create these threshold keys: **The DV Launchpad**.
 
 <figure><img src="../../.gitbook/assets/image (16) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Getting started
 
-For more information on running Charon in a UI friendly way through the DV Launchpad, take a look at our [Quickstart Guides](../../run-a-dv/start/quickstart_overview.md).
+For more information on running Charon in a UI-friendly way through the DV Launchpad, take a look at our [Quickstart Guides](../../run-a-dv/start/quickstart_overview.md).
 
 ## DV Launchpad Links
 
@@ -44,6 +44,6 @@ An operator can be part of multiple clusters. Clusters, and cluster invites, are
 
 ## Use the Explorer
 
-Clicking "explore" on the top right of the launchpad brings you to the explorer view. It shows information about every DV cluster and operator being tracked by Obol. You can search for a cluster or operator by name, or filter based on badge or protocol type.
+Clicking "explore" on the top-right of the launchpad brings you to the explorer view. It shows information about every DV cluster and operator being tracked by Obol. You can search for a cluster or operator by name, or filter based on badge or protocol type.
 
 <figure><img src="../../.gitbook/assets/image (19) (1).png" alt=""><figcaption></figcaption></figure>
