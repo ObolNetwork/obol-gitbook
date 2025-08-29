@@ -12,7 +12,7 @@ This page outlines a number of the key concepts behind the various technologies 
 
 A distributed validator is an Ethereum proof-of-stake validator that runs on more than one node/machine. This functionality is possible with the use of **Distributed Validator Technology** (DVT).
 
-Distributed validator technology removes some of the single points of failure in validation. Should <33% of the participating nodes in a DV cluster go offline, the remaining active nodes can still come to consensus on what to sign and can produce valid signatures for their staking duties. This is known as Active/Active redundancy, a common pattern for minimizing downtime in mission critical systems.
+Distributed validator technology removes some of the single points of failure in validation. Should <33% of the participating nodes in a DV cluster go offline, the remaining active nodes can still come to consensus on what to sign and can produce valid signatures for their staking duties. This is known as Active/Active redundancy, a common pattern for minimising downtime in mission-critical systems.
 
 ## Distributed Validator Node
 
@@ -26,7 +26,7 @@ In the above example, the stack includes Geth, Lighthouse, Charon and Teku.
 
 <figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-An execution client (formerly known as an Eth1 client) specializes in running the EVM and managing the transaction pool for the Ethereum network. These clients provide execution payloads to consensus clients for inclusion into blocks.
+An execution client (formerly known as an Eth1 client) specialises in running the EVM and managing the transaction pool for the Ethereum network. These clients provide execution payloads to consensus clients for inclusion into blocks.
 
 Examples of execution clients include:
 
@@ -38,7 +38,7 @@ Examples of execution clients include:
 
 <figure><img src="../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-A consensus client's duty is to run the proof of stake consensus layer of Ethereum, often referred to as the beacon chain.
+A consensus client's duty is to run the proof-of-stake consensus layer of Ethereum, often referred to as the beacon chain.
 
 Examples of Consensus clients include:
 
@@ -83,7 +83,7 @@ A distributed validator cluster is a collection of distributed validator nodes c
 
 <figure><img src="../../.gitbook/assets/image (7) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-A distributed validator key is a group of BLS private keys, that together operate as a threshold key for participating in proof of stake consensus.
+A distributed validator key is a group of BLS private keys which together operate as a threshold key for participating in proof-of-stake consensus.
 
 ### Distributed Validator Key Share
 
@@ -91,7 +91,7 @@ One piece of the distributed validator private key.
 
 ### Distributed Validator Threshold
 
-The number of nodes in a cluster that needs to be online and honest for their distributed validators to be online is outlined in the following table.
+The number of nodes in a cluster that need to be online and honest for their distributed validators to be online is outlined in the following table.
 
 | Cluster Size | Threshold | Note                                          |
 | :----------: | :-------: | --------------------------------------------- |

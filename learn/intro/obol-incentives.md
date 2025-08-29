@@ -33,7 +33,7 @@ You can participate by:
 
 ### Is existing stake eligible?
 
-* If you are staking yourself directly on Obol DVs and/or Squad Staking, your stake is 100% eligible for rewards. Please note, you must opt into [1% for Decentralization](https://blog.obol.org/1-percent-for-decentralisation/) to qualify for Obol Incentives.
+* If you are staking yourself directly on Obol DVs and/or Squad Staking, your stake is 100% eligible for rewards. Please note, you must opt into [1% for Decentralisation](https://blog.obol.org/1-percent-for-decentralisation/) to qualify for Obol Incentives.
 * If you are staking with a partner protocol, it's best to review the details of that partner at Obol.org/incentives. Only ETH staked on Obol DVs with qualified partners qualify for Obol Incentives and not all partners are created equal.
 
 ***
@@ -97,7 +97,7 @@ Higher effectiveness & uptime = more incentives.
 
 ### Can I withdraw my staked ETH at any time?
 
-Yes, you can withdraw at anytime but you **stop accruing incentives** upon withdrawal.
+Yes, you can withdraw at any time but you **stop accruing incentives** upon withdrawal.
 
 * If you are staking with a partner, they may choose to set penalties for early withdrawals but this is not common.
 * If you are running your own distributed validator, there is no penalty for withdrawing or exiting.
