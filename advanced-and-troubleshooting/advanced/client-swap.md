@@ -1,6 +1,5 @@
 ---
-sidebar_position: 7
-description: Client swap
+description: Swap EL, CL, VC and MEV clients in the stack.
 ---
 
 # Client swap
