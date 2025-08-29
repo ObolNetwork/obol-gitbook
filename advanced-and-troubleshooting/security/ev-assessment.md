@@ -5,9 +5,9 @@ description: Software Development Security Assessment
 
 # Software Development at Obol
 
-When hardening a projects technical security, team member's operational security, and the security of the software development practices in use by the team are some of the most criticial areas to secure. Many hacks and compromises in the space to date have been a result of these attack vectors rather than exploits of the software itself.
+When hardening a project's technical security, team member's operational security, and the security of the software development practices in use by the team are some of the most critical areas to secure. Many hacks and compromises in the space to date have been a result of these attack vectors rather than exploits of the software itself.
 
-With this in mind, in January 2023 the Obol team retained the expertise of Ethereal Venture's security researcher Alex Wade; to interview key stakeholders and produce a report into the teams Software Development Lifecycle.
+With this in mind, in January 2023 the Obol team retained the expertise of Ethereal Venture's security researcher Alex Wade; to interview key stakeholders and produce a report into the team's Software Development Lifecycle.
 
 The below page is a result of the report that was produced. What is present here has had some sensitive information redacted, and contains responses to the recommendations made, detailing the actions the Obol team have taken to mitigate what has been highlighted.
 

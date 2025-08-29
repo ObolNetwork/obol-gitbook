@@ -28,7 +28,7 @@ An Ethereum distributed validator employs advanced signature primitives such tha
 
 If the subset of the available Charon nodes is lower than a given threshold, the cluster is not able to continue with its duties.
 
-Given the collaborative nature of a Distributed Validator cluster, every operator must prioritize the liveliness and well-being of the cluster. Charon, at the moment of writing this page cannot reward and penalize operators within a cluster independently.
+Given the collaborative nature of a Distributed Validator cluster, every operator must prioritise the liveness and well-being of the cluster. Charon, at the moment of writing this page cannot reward and penalise operators within a cluster independently.
 
 This implies that Charon’s threat model can’t quite be equated to that of a single validator client, since they work on a different - albeit similar - set of security concepts.
 
