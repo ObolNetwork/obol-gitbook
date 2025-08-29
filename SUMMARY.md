@@ -59,6 +59,7 @@
   * [Enable TLS Protocol](advanced-and-troubleshooting/advanced/enable-tls-protocol.md)
   * [Fallback Beacon Node](advanced-and-troubleshooting/advanced/fallback-beacon-node.md)
   * [Nicknames](advanced-and-troubleshooting/advanced/nicknames.md)
+  * [Client Swap](advanced-and-troubleshooting/advanced/client-swap.md)
 * [Troubleshooting](advanced-and-troubleshooting/troubleshooting/README.md)
   * [Errors & Resolutions](advanced-and-troubleshooting/troubleshooting/errors.md)
   * [Handling DKG Failure](advanced-and-troubleshooting/troubleshooting/dkg_failure.md)
