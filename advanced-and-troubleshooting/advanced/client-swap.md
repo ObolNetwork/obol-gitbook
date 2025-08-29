@@ -23,10 +23,11 @@ Currently supported client options are:
 
 For support between different combinations, refer to Charon's compatibility matrix, found in the [prepare section of the docs](../../run-a-dv/prepare/how_where_dvs.md) or under [release notes](https://github.com/ObolNetwork/charon/releases/) for each release.
 
-> [!NOTE]
-> As CDVN natively supports more clients, the number of possible combinations grows quickly.
-> We test extensively, but cannot guarantee the performance of all possible client combos.
-> If you run a mixed-client cluster, monitor performance and be ready to swap to another client if you observe issues.
+{% hint style="info" %}
+As CDVN natively supports more clients, the number of possible combinations grows quickly.
+We test extensively, but cannot guarantee the performance of all possible client combos.
+If you run a mixed-client cluster, monitor performance and be ready to swap to another client if you observe issues.
+{% endhint %}
 
 ## Choosing clients in fresh cluster
 
@@ -34,30 +35,30 @@ In order to choose which clients to use in a new cluster, simply leave uncomment
 
 ## Swapping clients in an already running cluster
 
-> [!IMPORTANT]
-> For ([L](https://github.com/obolNetwork/lido-charon-distributed-validator-node))[CDVN](https://github.com/obolNetwork/charon-distributed-validator-node) users who created their `.env` file before the release of charon `v1.6.0`, there are breaking changes between then and the current multi-client `.env` file setup.
->
-> The minimal addition to an older version of the `.env` file compatible with the current versions of the repos is to add `COMPOSE_PROFILES=el_nethermind,cl_lighthouse,dv_charon,vc_lodestar,mev_mevboost` to your existing `.env` file.
->
-> Some environment variables were renamed in order to be client-agnostic. **If you had set these environment variables to custom values in your `.env`, you need to set the new variables to your custom values**. They serve the same purpose.
->
-> | Old                           | New                              |
-> |-------------------------------|--------------------------------- |
-> | NETHERMIND_PORT_P2P           | EL_PORT_P2P                      |
-> | NETHERMIND_IP_HTTP            | EL_IP_HTTP                       |
-> | NETHERMIND_PORT_HTTP          | EL_PORT_HTTP                     |
-> | NETHERMIND_IP_ENGINE          | EL_IP_ENGINE                     |
-> | NETHERMIND_PORT_ENGINE        | EL_PORT_ENGINE                   |
-> | LIGHTHOUSE_PORT_P2P           | CL_PORT_P2P                      |
-> | LODESTAR_PORT_METRICS         | VC_PORT_METRICS                  |
-> | MEVBOOST_TIMEOUT_GETHEADER    | MEV_TIMEOUT_GETHEADER            |
-> | MEVBOOST_TIMEOUT_GETPAYLOAD   | MEV_TIMEOUT_GETPAYLOAD           |
-> | MEVBOOST_TIMEOUT_REGVAL       | MEV_TIMEOUT_REGVAL               |
-> | MEVBOOST_RELAYS               | MEV_RELAYS                       |
-> | NETHERMIND_PROMTAIL_MONITORED | EL_NETHERMIND_PROMTAIL_MONITORED |
-> | LIGHTHOUSE_PROMTAIL_MONITORED | CL_LIGHTHOUSE_PROMTAIL_MONITORED |
-> | LODESTAR_PROMTAIL_MONITORED   | VC_LODESTAR_PROMTAIL_MONITORED   |
-> | MEV_BOOST_PROMTAIL_MONITORED  | MEV_MEV_BOOST_PROMTAIL_MONITORED |
+{% hint style="warning" %}
+For ([L](https://github.com/obolNetwork/lido-charon-distributed-validator-node))[CDVN](https://github.com/obolNetwork/charon-distributed-validator-node) users who created their `.env` file before the release of charon `v1.6.0`, there are breaking changes between then and the current multi-client `.env` file setup.
+The minimal addition to an older version of the `.env` file compatible with the current versions of the repos is to add `COMPOSE_PROFILES=el_nethermind,cl_lighthouse,dv_charon,vc_lodestar,mev_mevboost` to your existing `.env` file.
+Some environment variables were renamed in order to be client-agnostic. **If you had set these environment variables to custom values in your `.env`, you need to set the new variables to your custom values**. They serve the same purpose.
+
+| Old                           | New                              |
+|-------------------------------|--------------------------------- |
+| NETHERMIND_PORT_P2P           | EL_PORT_P2P                      |
+| NETHERMIND_IP_HTTP            | EL_IP_HTTP                       |
+| NETHERMIND_PORT_HTTP          | EL_PORT_HTTP                     |
+| NETHERMIND_IP_ENGINE          | EL_IP_ENGINE                     |
+| NETHERMIND_PORT_ENGINE        | EL_PORT_ENGINE                   |
+| LIGHTHOUSE_PORT_P2P           | CL_PORT_P2P                      |
+| LODESTAR_PORT_METRICS         | VC_PORT_METRICS                  |
+| MEVBOOST_TIMEOUT_GETHEADER    | MEV_TIMEOUT_GETHEADER            |
+| MEVBOOST_TIMEOUT_GETPAYLOAD   | MEV_TIMEOUT_GETPAYLOAD           |
+| MEVBOOST_TIMEOUT_REGVAL       | MEV_TIMEOUT_REGVAL               |
+| MEVBOOST_RELAYS               | MEV_RELAYS                       |
+| NETHERMIND_PROMTAIL_MONITORED | EL_NETHERMIND_PROMTAIL_MONITORED |
+| LIGHTHOUSE_PROMTAIL_MONITORED | CL_LIGHTHOUSE_PROMTAIL_MONITORED |
+| LODESTAR_PROMTAIL_MONITORED   | VC_LODESTAR_PROMTAIL_MONITORED   |
+| MEV_BOOST_PROMTAIL_MONITORED  | MEV_MEV_BOOST_PROMTAIL_MONITORED |
+
+{% endhint %}
 
 1. Copy the new `.env.sample.<NETWORK>` file to `.env`.
 2. Comment or uncomment your preferred Execution, Consensus, Validator, and MEV clients and save the file.
@@ -77,22 +78,24 @@ Your node should start up with the new clients.
 
 ### Swap Consensus layer
 
-> [!NOTE]
-> The code snippets under those steps are assuming you are swapping from Lighthouse CL to Grandine CL and you.
+{% hint style="info" %}
+The code snippets under those steps are assuming you are swapping from Lighthouse CL to Grandine CL and you.
+{% endhint %}
 
 1. Stop the existing consensus layer client container.
 
-> [!TIP]
-> If you do not want to experience downtime while the new beacon node is syncing, you can set a fallback beacon node for Charon (`CHARON_FALLBACK_BEACON_NODE_ENDPOINTS` env variable) that will be used while the new BN is syncing.
-> Note that you need to restart Charon as well in order for it to take effect.
+{% hint style="info" %}
+If you do not want to experience downtime while the new beacon node is syncing, you can set a fallback beacon node for Charon (`CHARON_FALLBACK_BEACON_NODE_ENDPOINTS` env variable) that will be used while the new BN is syncing.
+Note that you need to restart Charon as well in order for it to take effect.
+{% endhint %}
 
 ```sh
 docker compose down cl-lighthouse
 ```
 
-2. Comment out the currently set `CL` environment variable in `.env` (i.e.: `CL=cl-lighthouse` -> `#CL=cl-lighthouse`). Uncomment the desired CL (i.e.: `#CL=cl-grandine` -> `CL=cl-grandine`).
+1. Comment out the currently set `CL` environment variable in `.env` (i.e.: `CL=cl-lighthouse` -> `#CL=cl-lighthouse`). Uncomment the desired CL (i.e.: `#CL=cl-grandine` -> `CL=cl-grandine`).
 
-3. Start the new consensus layer client container.
+2. Start the new consensus layer client container.
 
 ```sh
 docker compose up cl-grandine -d
@@ -113,8 +116,9 @@ rm -rf ./data/lighthouse
 
 ### Swap Validator client
 
-> [!NOTE]
-> The code snippets under those steps are assuming you are swapping from Lodestar VC to Teku VC.
+{% hint style="info" %}
+The code snippets under those steps are assuming you are swapping from Lodestar VC to Teku VC.
+{% endhint %}
 
 1. Stop the existing validator client container.
 
@@ -138,11 +142,13 @@ rm -rf ./data/lodestar
 
 ### SWAP MEV client
 
-> [!NOTE]
-> The code snippets under those steps are assuming you are swapping from MEV Boost to Commit Boost and you are using Lighthouse CL.
+{% hint style="info" %}
+The code snippets under those steps are assuming you are swapping from MEV Boost to Commit Boost and you are using Lighthouse CL.
+{% endhint %}
 
-> [!NOTE]
-> If switching to Commit Boost, you will need to copy a Commit Boost TOML config `commit-boost/config.toml.sample.<NETWORK>` to `commit-boost/config.toml`, as it does not support `.env` configurations yet. Make sure the configuration matches what you have had set for mev-boost, in terms of relays and timeouts.
+{% hint style="info" %}
+If switching to Commit Boost, you will need to copy a Commit Boost TOML config `commit-boost/config.toml.sample.<NETWORK>` to `commit-boost/config.toml`, as it does not support `.env` configurations yet. Make sure the configuration matches what you have had set for mev-boost, in terms of relays and timeouts.
+{% endhint %}
 
 1. Stop the existing MEV client container.
 
