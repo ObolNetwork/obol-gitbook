@@ -95,13 +95,18 @@ The number of nodes in a cluster that need to be online and honest for their dis
 
 | Cluster Size | Threshold | Note                                          |
 | :----------: | :-------: | --------------------------------------------- |
-|       4      |    3/4    | Minimum threshold                             |
+|       3      |    2/3    | Minimum to tolerate one offline node          |
+|       4      |    3/4    | Minimum to tolerate one **malicious** node    |
 |       5      |    4/5    |                                               |
 |       6      |    4/6    | Minimum to tolerate two offline nodes         |
 |       7      |    5/7    | Minimum to tolerate two **malicious** nodes   |
 |       8      |    6/8    |                                               |
 |       9      |    6/9    | Minimum to tolerate three offline nodes       |
 |      10      |    7/10   | Minimum to tolerate three **malicious** nodes |
+
+{% hint style="warning" %}
+Running the same Charon node in two places is considered a malicious (or byzantine) act, you should **take extra care not to run duplicate instances of a particular Charon peer if it is running in a three node setup**, which only tolerates one offline node, not a malicious one. Read more [here](../charon/cluster-configuration#cluster-size-and-resilience). 
+{% endhint %}
 
 ### Distributed Validator Key Generation Ceremony
 
