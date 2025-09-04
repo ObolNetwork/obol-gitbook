@@ -16,7 +16,7 @@
   * [Cluster Configuration](learn/charon/cluster-configuration.md)
   * [Charon Networking](learn/charon/charon-networking.md)
   * [CLI Reference](learn/charon/charon-cli-reference.md)
-* [Futher Reading](learn/futher-reading/README.md)
+* [Further Reading](learn/futher-reading/README.md)
   * [Ethereum and Its Relationship With DVT](learn/futher-reading/ethereum_and_dvt.md)
   * [Community Testing](learn/futher-reading/testnet.md)
   * [Peer Score](learn/futher-reading/peer_score.md)
