@@ -1,9 +1,9 @@
-{
+  {
   "label": "Introduction",
   "position": 1,
   "collapsed": true,
   "link": {
     "type": "doc",
-    "path": "learn/intro/index.md"
+    "id": "learn/intro/index.md"
   }
 }
