@@ -1,26 +1,27 @@
-> **validateClusterLock**(`lock`): `Promise`\<`boolean`\>
+# validateClusterLock
+
+> **validateClusterLock**(`lock`): `Promise`<`boolean`>
 
 Verifies Cluster Lock's validity.
 
-## Parameters
+### Parameters
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `lock` | [`ClusterLock`](../type-aliases/ClusterLock.md) | cluster lock |
+| Parameter | Type                                            | Description  |
+| --------- | ----------------------------------------------- | ------------ |
+| `lock`    | [`ClusterLock`](../type-aliases/ClusterLock.md) | cluster lock |
 
-## Returns
+### Returns
 
-`Promise`\<`boolean`\>
+`Promise`<`boolean`>
 
 boolean result to indicate if lock is valid
 
-## Throws
+### Throws
 
 on missing keys or values.
 
-An example of how to use validateClusterLock:
-[validateClusterLock](https://github.com/ObolNetwork/obol-sdk-examples/blob/main/TS-Example/index.ts#L127)
+An example of how to use validateClusterLock:[validateClusterLock](https://github.com/ObolNetwork/obol-sdk-examples/blob/main/TS-Example/index.ts#L127)
 
-## Defined in
+### Defined in
 
 services.ts:13

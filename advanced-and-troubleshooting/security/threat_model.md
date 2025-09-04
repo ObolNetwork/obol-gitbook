@@ -9,10 +9,10 @@ This page outlines a threat model for Charon, in the context of it being a Distr
 
 ## Actors
 
-- Node owner (NO)
-- Cluster node operators (CNO)
-- Rogue node operator (RNO)
-- Outside attacker (OA)
+* Node owner (NO)
+* Cluster node operators (CNO)
+* Rogue node operator (RNO)
+* Outside attacker (OA)
 
 ## General observations
 
@@ -52,7 +52,7 @@ A distributed validator cluster executes Ethereum validator duties by acting as 
 
 To do so, the cluster must have knowledge of the Ethereum validator’s private key.
 
-The design and implementation of Charon minimizes the chances of this by splitting the Ethereum validator private keys into parts, which are then assigned to each node operator.
+The design and implementation of Charon minimizes the chances of this by splitting the Ethereum validator private keys into parts, which are then assigned to each node operator.\
 A [distributed key generation](https://en.wikipedia.org/wiki/Distributed_key_generation) (DKG) process is used in order to evenly and safely create the private key shares without any central party having access to the full private key.
 
 The cryptography primitives employed in Charon can allow a threshold of the node operator’s private key shares to be reconstructed into the whole validator private key if needed.
@@ -117,9 +117,9 @@ Once a peer’s IP address has been discovered via the relay, a direct connectio
 
 A malicious relay owned by a OA could lead to:
 
-- Network topology discovery, facilitating the “outside attackers interactions with a cluster” scenario
-- Impeding node communication, potentially impacting the BFT consensus protocol liveness (not security) and distributed validator duties
-- DKG process disruption leading to frustration and potential abandonment by node operators: could lead to the usage of a standard Ethereum validator setup, which implies weaker security overall
+* Network topology discovery, facilitating the “outside attackers interactions with a cluster” scenario
+* Impeding node communication, potentially impacting the BFT consensus protocol liveness (not security) and distributed validator duties
+* DKG process disruption leading to frustration and potential abandonment by node operators: could lead to the usage of a standard Ethereum validator setup, which implies weaker security overall
 
 We note that BFT consensus liveness disruption can only happen if the number of nodes using the malicious relay for communication is equal to the byzantine nodes amount defined in the consensus parameters.
 
@@ -131,8 +131,8 @@ The likelihood of this scenario is medium: Charon nodes are configured with a de
 
 Charon operates with two runtime files:
 
-- A lock file used to address operator’s nodes, define the Ethereum validator public keys and the public key shares associated with it
-- A cluster definition file used to define the operator’s addresses and identities during the DKG process
+* A lock file used to address operator’s nodes, define the Ethereum validator public keys and the public key shares associated with it
+* A cluster definition file used to define the operator’s addresses and identities during the DKG process
 
 The lock file is signed and validated by all the nodes participating in the cluster: assuming good security practices on the node operator side, and no bugs in Charon or its dependencies’ implementations, this scenario is unlikely.
 

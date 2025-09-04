@@ -1,8 +1,10 @@
 # Table of contents
 
+* [Welcome](README.md)
+
 ## Learn
 
-* [Introduction](README.md)
+* [Introduction](<README (1).md>)
   * [Obol Collective](learn/intro/obol-collective.md)
   * [OBOL Incentives](learn/intro/obol-incentives.md)
   * [Key Staking Concepts](learn/intro/key-concepts.md)
@@ -81,7 +83,7 @@
     * [Grant Track for Boosting Obol DV Adoption](community-and-governance/governance/grants-program/grant-track-for-boosting-obol-dv-adoption.md)
     * [Grant Track for Strengthening the Collective: Operators & Community Growth](community-and-governance/governance/grants-program/grant-track-for-strengthening-the-collective-operators-and-community-growth.md)
     * [Grant Track for Establishing OBOL Token’s Role in DeFi & Governance](community-and-governance/governance/grants-program/grant-track-for-establishing-obol-tokens-role-in-defi-and-governance.md)
-    * [Grant Track for  Optimizing Decentralized Governance](community-and-governance/governance/grants-program/grant-track-for-optimizing-decentralized-governance.md)
+    * [Grant Track for Optimizing Decentralized Governance](community-and-governance/governance/grants-program/grant-track-for-optimizing-decentralized-governance.md)
 * [Community](community-and-governance/community/README.md)
   * [Staking Mastery Program](community-and-governance/community/staking-masters.md)
   * [Techne](community-and-governance/community/techne.md)
