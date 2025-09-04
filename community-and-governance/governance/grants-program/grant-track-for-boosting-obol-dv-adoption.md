@@ -21,7 +21,7 @@ This Grant Track hosts the following **Squad Goals** that represent Obol communi
 
 * Details: Integrate Obol DVs as the infrastructure layer of Liquid Staking & Restaking Protocols. Protocols represent about 37.5% of the Ethereum stake according to [Hildobby’s staking data](https://dune.com/hildobby/eth2-staking). Obol DVs currently [represent about 2%](https://obol.org/dashboard) of that stake. Example workstream: Collaborations with top protocols existing and new products (e.g., Lido v3, Etherfi eETH, Swell rswETH).
 * Success Metrics: Make Obol DVs 10% of the Protocols Stake share.
-* Exemples:&#x20;
+* Examples:
   * Integrate Obol DVs into a Liquid Staking or Restaking protocol
   * Build SDKs, APIs, or plugins that simplify DV integrations for protocols.
     * Deployment scripts, wrapper contracts, REST APIs, infra automation tools
@@ -32,8 +32,8 @@ This Grant Track hosts the following **Squad Goals** that represent Obol communi
 * Success Metrics:
   1. 20 new community squads
   2. 25,000 ETH running on Obol DVs.
-* Exemples:&#x20;
-  * Create launcher tooling or deployment guides to enable squads.&#x20;
+* Examples:
+  * Create launcher tooling or deployment guides to enable squads.
   * Run educational campaigns, community events, or node operator bootcamps
   * Build dashboards, docs, or user-facing UX that reduces DV friction.
 
@@ -49,7 +49,7 @@ Competitive grant requests include **3–5 milestones**, such as:
 * Target stake threshold hit (e.g., 1,000 ETH in DVs)
 * Community feedback, docs, or case studies
 
-> 💡 Milestones should include both technical outcomes and adoption-based KPIs.&#x20;
+> 💡 Milestones should include both technical outcomes and adoption-based KPIs.
 
 ## Security & Audit Requirements
 

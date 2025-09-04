@@ -26,5 +26,5 @@ The [Obol Product Suite](https://obol.org/product-suite) empowers any node opera
 
 * Foundation: [Charon](../charon/intro.md), a middleware client that enables validators to run in a fault-tolerant, distributed manner;
 * Configuration: The [Distributed Validator Launchpad](launchpad.md), a user interface for configuring Distributed Validators. The Obol [SDK](../../sdk/index.md) & [API](https://docs.obol.org/api), allowing Distributed Validator clusters to be configured and run at scale, for example within staking protocols.
-* Launchers: Obol [Charon Distributed Validator Node (CDVN)](../../run/start/quickstart_group.mdx)
+* Launchers: Obol's [Charon Distributed Validator Node (CDVN)](../../run/start/quickstart_group.mdx), Obol's Distributed Validator Pod.
 * Rewards: [Obol Splits](obol-splits.mdx), a set of solidity smart contracts for the distribution of rewards from Distributed Validators, amongst multiple node operations.
