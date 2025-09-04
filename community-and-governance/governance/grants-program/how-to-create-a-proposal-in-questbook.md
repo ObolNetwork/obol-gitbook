@@ -18,7 +18,7 @@ Your grant request must clearly align with **one of the three main grant tracks*
 * Expectations and contribution types
 * Evaluation criteria used during review
 
-_**On each grant track page, you will find the link to apply for that specific track on Questbook.**_&#x20;
+_**On each grant track page, you will find the link to apply for that specific track on Questbook.**_
 
 👉 Visit the grant track guides linked [here](./#structure).
 
@@ -44,7 +44,7 @@ _**On each grant track page, you will find the link to apply for that specific t
    * Milestones & timelines
    * Requested funding & deliverables per milestone
 
-Each section is pre-structured to guide you in providing the expected information.&#x20;
+Each section is pre-structured to guide you in providing the expected information.
 
 ***
 

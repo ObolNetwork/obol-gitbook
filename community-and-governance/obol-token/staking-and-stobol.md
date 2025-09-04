@@ -11,7 +11,7 @@ description: >-
 
 Staking allows OBOL token holders to participate in governance while earning rewards. When you stake OBOL, you receive a liquid staking token called stOBOL. This token is transferable, composable in DeFi, and earns staking rewards while maintaining governance power, as long as it remains in the same address that originally staked the OBOL Tokens. It represents a flexible and powerful tool to both support the network and engage in the broader ecosystem.
 
-stOBOL unlocks new opportunities for participation. It is yield-bearing, enables seamless governance engagement, and is expected to be increasingly integrated across DeFi platforms. If it is transferred elsewhere, direct delegation is removed and governance power is reassigned an Auto-Delegate, preventing governance attacks. The voting behaviour of the Auto-Delegate is determined by the active strategy.&#x20;
+stOBOL unlocks new opportunities for participation. It is yield-bearing, enables seamless governance engagement, and is expected to be increasingly integrated across DeFi platforms. If it is transferred elsewhere, direct delegation is removed and governance power is reassigned an Auto-Delegate, preventing governance attacks. The voting behaviour of the Auto-Delegate is determined by the active strategy.
 
 ### To Recap
 

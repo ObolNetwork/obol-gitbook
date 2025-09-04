@@ -96,7 +96,7 @@ The following smart contracts power OBOL staking, governance, and reward distrib
 
 </details>
 
-## Learn more about...&#x20;
+## Learn more about...
 
 {% content-ref url="token-utility.md" %}
 [token-utility.md](token-utility.md)

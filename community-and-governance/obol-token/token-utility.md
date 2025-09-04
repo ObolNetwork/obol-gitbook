@@ -16,7 +16,7 @@ This staking program will be implemented in phases, allowing the community to gr
 
 To get started, simply visit [https://stake.obol.org](https://stake.obol.org) and follow the staking flow — no technical setup required. The interface will guide you through selecting your wallet, choosing the amount to stake, and submitting the transaction.
 
-**You will find more info about the OBOL token staking in the dedicated** [staking-and-stobol.md](staking-and-stobol.md "mention") **section.**&#x20;
+**You will find more info about the OBOL token staking in the dedicated** [staking-and-stobol.md](staking-and-stobol.md "mention") **section.**
 
 ## **DeFi**
 
@@ -26,9 +26,9 @@ Plans are in place to launch several DeFi avenues for the OBOL Token post-TGE, s
 
 _Note: The Pendle integration is not yet live. It is expected to go live in the first half of August 2025. This information is provided in advance for community awareness._
 
-stOBOL is supported on [Pendle Finance](https://app.pendle.finance), enabling users to access advanced yield strategies with their staked OBOL.&#x20;
+stOBOL is supported on [Pendle Finance](https://app.pendle.finance), enabling users to access advanced yield strategies with their staked OBOL.
 
-Through Pendle, users can isolate and trade the future yield of stOBOL by buying or selling its **Principal Tokens (PT)** and **Yield Tokens (YT)**.&#x20;
+Through Pendle, users can isolate and trade the future yield of stOBOL by buying or selling its **Principal Tokens (PT)** and **Yield Tokens (YT)**.
 
 This opens up new opportunities: holders can lock in fixed yield by purchasing PTs, speculate on rising yield by acquiring YTs, or passively earn through **liquidity provision**, which offers exposure to swap fees and additional PENDLE incentives. Importantly, Pendle pools are **permissionless**, and while the Obol Association has provided initial liquidity to bootstrap the market, anyone can contribute. \
 \

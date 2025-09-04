@@ -388,28 +388,27 @@ Currently, the [CDVN repo](https://github.com/ObolNetwork/charon-distributed-val
 
 Start by copying the appropriate `.env.sample.<NETWORK>` file to `.env`, and modifying values as needed.
 
-````sh
+```sh
 # To prepare the node for the Holesky test network
 # Copy ".env.sample.holesky", renaming it ".env"
 cp .env.sample.holesky .env
 
-
 # To prepare the node for the main Ethereum network
 # Copy ".env.sample.mainnet", renaming it ".env"
 cp .env.sample.mainnet .env
-
+```
 
 In the same folder where you created your ENR in Step 1, and ran the DKG in Step 3, start your node in the DV cluster with docker compose.
 
-```shell
+```sh
 
 # To be run from the ./charon-distributed-validator-node folder
 # Spin up a Distributed Validator Node with a Validator Client
 docker compose up -d
-````
+```
 
 {% hint style="danger" %}
-Do not start this node until the DKG is complete, as the charon container will interfere with the charon instance attempting to take part in the DKG ceremony.&#x20;
+Do not start this node until the DKG is complete, as the charon container will interfere with the charon instance attempting to take part in the DKG ceremony.
 {% endhint %}
 
 If at any point you need to turn off your node, you can run:
@@ -430,8 +429,7 @@ In particular you should check:
 
 * That your Charon client can connect to the configured beacon client.
 * That your Charon client can connect to all peers directly.
-* That your validator client is connected to Charon, and has the private keys it needs loaded and accessible. Most components in the dashboard have some help text there to assist you in understanding your cluster performance. You might notice that there are logs indicating that a validator cannot be found and that APIs are returning 404. This is to be expected at this point, as the validator public keys listed in the lock file have not been deposited and acknowledged on the consensus layer yet (usually it takes \~16 hours after the deposit is made).&#x20;
-
+* That your validator client is connected to Charon, and has the private keys it needs loaded and accessible. Most components in the dashboard have some help text there to assist you in understanding your cluster performance. You might notice that there are logs indicating that a validator cannot be found and that APIs are returning 404. This is to be expected at this point, as the validator public keys listed in the lock file have not been deposited and acknowledged on the consensus layer yet (usually it takes \~16 hours after the deposit is made).
 
 {% endtab %}
 
@@ -595,11 +593,11 @@ Once all docker images are pulled, sedge will create & start the containers to r
 
 Given time, the execution and consensus clients should complete syncing, and if a Distributed Validator has already been activated, the node should begin to validate.
 
-If you encounter issues with using Sedge as part of a DV cluster, consider consulting the [Sedge docs](https://docs.sedge.nethermind.io/) directly, or opening an [issue](https://github.com/NethermindEth/sedge/issues) or [pull request](https://github.com/NethermindEth/sedge/pulls) if appropriate.&#x20;
+If you encounter issues with using Sedge as part of a DV cluster, consider consulting the [Sedge docs](https://docs.sedge.nethermind.io/) directly, or opening an [issue](https://github.com/NethermindEth/sedge/issues) or [pull request](https://github.com/NethermindEth/sedge/pulls) if appropriate.
 {% endtab %}
 
 {% tab title="Ansible" %}
-Use an Ansible playbook to start your node. [See the repo here](https://github.com/ObolNetwork/obol-ansible) for further instructions.&#x20;
+Use an Ansible playbook to start your node. [See the repo here](https://github.com/ObolNetwork/obol-ansible) for further instructions.
 {% endtab %}
 
 {% tab title="Helm" %}
