@@ -378,12 +378,10 @@ Now that the DKG has been completed, all operators can start their nodes.
 
 With the DKG ceremony over, the last phase before activation is to prepare your node for validating over the long term.
 
-
-
 The [CDVN repository](https://github.com/ObolNetwork/charon-distributed-validator-node) is configured to sync an execution layer client (`Nethermind`) and a consensus layer client (`Lighthouse`) using Docker Compose, further client combinations can be prepared using Sedge. You can also leverage alternative ways to run a node such as Ansible, Helm, or Kubernetes manifests.
 
-{% tabs %}
-{% tab title="CDVN" %}
+
+
 {% hint style="info" %}
 Currently, the [CDVN repo](https://github.com/ObolNetwork/charon-distributed-validator-node) has defaults for the Holesky testnet and for mainnet.
 {% endhint %}
@@ -594,11 +592,11 @@ CHARON_BEACON_NODE_ENDPOINTS=<YOUR_REMOTE_BEACON_NODE_URL>
 docker compose down
 docker compose up -d
 ```
-{% endtab %}
-{% endtabs %}
 
-{% hint style="success" %}
-In a Distributed Validator Cluster, it is important to have a low latency connection to your peers. Charon clients will use the NAT protocol to attempt to establish a direct connection to one another automatically. If this doesn't happen, you should port forward Charon's p2p port to the public internet to facilitate direct connections. The default port to expose is `:3610`. Read more about Charon's networking [here](https://docs.obol.org/next/learn/charon/networking).
-{% endhint %}
+\{% endtab %\} \{% endtabs %\}
+
+\{% hint style="success" %\} In a Distributed Validator Cluster, it is important to have a low latency connection to your peers. Charon clients will use the NAT protocol to attempt to establish a direct connection to one another automatically. If this doesn't happen, you should port forward Charon's p2p port to the public internet to facilitate direct connections. The default port to expose is \`
+
+:3610\`. Read more about Charon's networking [here](https://docs.obol.org/next/learn/charon/networking).
 
 If you have gotten to this stage, every node is up, synced and connected, congratulations. You can now move forward to [activating your validator](https://docs.obol.org/next/run/running/activate-dv) to begin staking.

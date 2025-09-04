@@ -1,8 +1,10 @@
 # Table of contents
 
+* [Welcome](README.md)
+
 ## Learn
 
-* [Introduction](README.md)
+* [Introduction](<README (1).md>)
   * [Obol Collective](learn/intro/obol-collective.md)
   * [OBOL Incentives](learn/intro/obol-incentives.md)
   * [Key Staking Concepts](learn/intro/key-concepts.md)
