@@ -3,9 +3,5 @@
   "position": 1,
   "collapsed": false,
   "collapsible": false,
-  "className": "menuSection",
-  "link": {
-    "type": "doc",
-    "id": "learn/README"
-  }
+  "className": "menuSection"
 }
