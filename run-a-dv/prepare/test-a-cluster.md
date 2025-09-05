@@ -17,7 +17,7 @@ Intended for running tests across all categories. Each flag should have a prefix
 
 {% tabs %}
 {% tab title="Regular Test" %}
-Regular tests intended for relatively fast run, without putting any major load on any tested system. Based on which stage you are with your cluster creation, some steps are easened.
+Regular tests intended for relatively fast run, without putting any major load on any tested system. Based on which stage you are with your cluster creation, some steps are eased.
 
 {% tabs %}
 {% tab title="Just starting" %}
@@ -78,7 +78,7 @@ charon alpha test all \
 {% endtab %}
 
 {% tab title="Load Test" %}
-Load tests intended for more time consuming run. Beacon nodes are put under heavy load. MEV relays are required to create real blocks. Based on which stage you are with your cluster creation, some steps are easened.
+Load tests intended for more time consuming run. Beacon nodes are put under heavy load. MEV relays are required to create real blocks. Based on which stage you are with your cluster creation, some steps are eased.
 
 {% tabs %}
 {% tab title="Just starting" %}
@@ -169,7 +169,7 @@ Intended for running tests across all categories. Each flag should have a prefix
 
 {% tabs %}
 {% tab title="Regular Test" %}
-Regular tests intended for relatively fast run, without putting any major load on any tested system. Based on which stage you are with your cluster creation, some steps are easened.
+Regular tests intended for relatively fast run, without putting any major load on any tested system. Based on which stage you are with your cluster creation, some steps are eased.
 
 {% tabs %}
 {% tab title="Just starting" %}
@@ -226,7 +226,7 @@ docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/ch
 ```sh
 docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.6.0 alpha test all \
   --peers-lock-file="/opt/charon/test/.charon/cluster-lock.json" \
-  --peers-private-key-file="/opt/charon/test/.charon/charon-enr-private-key"
+  --peers-private-key-file="/opt/charon/test/.charon/charon-enr-private-key" \
   --beacon-endpoints="https://ethereum-holesky-beacon-api.publicnode.com,https://ethereum-sepolia-beacon-api.publicnode.com" \
   --mev-endpoints="https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,https://0x8b5d2e73e2a3a55c6c87b8b6eb92e0149a125c852751db1422fa951e42a09b82c142c3ea98d0d9930b056a3bc9896b8f@bloxroute.max-profit.blxrbdn.com,https://0xac6e77dfe25ecd6110b8e780608cce0dab71fdd5ebea22a16c0205200f2f8e2e3ad3b71d3499c54ad14d6c21b41a37ae@boost-relay.flashbots.net,https://0xa1559ace749633b997cb3fdacffb890aeebdb0f5a3b6aaa7eeeaf1a38af0a8fe88b9e4b1f61f236d2e64d95733327a62@relay.ultrasound.money,https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@regional.titanrelay.xyz,https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@global.titanrelay.xyz" \
   --infra-disk-io-test-file-dir="/opt/charon/test"
@@ -236,7 +236,7 @@ docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/ch
 {% endtab %}
 
 {% tab title="Load Test" %}
-Load tests intended for more time consuming run. Beacon nodes are put under heavy load. MEV relays are required to create real blocks. Based on which stage you are with your cluster creation, some steps are easened.
+Load tests intended for more time consuming run. Beacon nodes are put under heavy load. MEV relays are required to create real blocks. Based on which stage you are with your cluster creation, some steps are eased.
 
 {% tabs %}
 {% tab title="Just starting" %}
@@ -336,7 +336,7 @@ To be able to establish direct connection, you have to ensure:
 
 If all points are satisfied by you and the other peers, you should be able to establish a direct TCP connection between each other. Note that a relay is still required, as it is used for peer discovery.
 
-Based on which stage you are with your cluster creation, some steps are easened.
+Based on which stage you are with your cluster creation, some steps are eased.
 
 {% tabs %}
 {% tab title="Just starting" %}

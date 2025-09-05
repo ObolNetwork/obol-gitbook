@@ -5,7 +5,7 @@ description: Errors & Resolutions
 
 # Errors & Resolutions
 
-All operators should try to restart their nodes and should check if they are on the latest stable version before attempting anything other configuration change. You can restart and update with the following commands:
+All operators should try to restart their nodes and should check if they are on the latest stable version before attempting any other configuration change. You can restart and update with the following commands:
 
 ```shell
 docker compose down
@@ -28,7 +28,7 @@ Run `docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.6.0 enr`. Thi
 
 ### What do I do if lose my `charon-enr-private-key`?
 
-For now, ENR rotation/replacement is not supported, it will be supported in a future release. Therefore, its advised to always keep a backup of your `charon-enr-private-key ` in a secure location (ex: cloud storage, USB Flash drive, etc.).
+For now, ENR rotation/replacement is not supported, it will be supported in a future release. Therefore, it's advised to always keep a backup of your `charon-enr-private-key ` in a secure location (ex: cloud storage, USB Flash drive, etc.).
 
 ### I can't find the keys anywhere
 The `charon-enr-private-key` is generated inside a hidden folder `.charon`. To view it, run `ls -al` in your terminal. This step may be a bit different for Windows.
@@ -48,7 +48,7 @@ This means that Lighthouse is still syncing which will throw a lot of errors dow
 This indicates there is something wrong with your Lighthouse beacon node. This might be because the request buffer is full as your node is never starting consensus since it never gets the duties.
 
 
-### Lighthouse gives the error `not enough time for a discovery seach`
+### Lighthouse gives the error `not enough time for a discovery search`
 
 This could be linked to a internet connection being too slow or relying on a slow third-party service such as Infura.
 
@@ -66,7 +66,7 @@ Either your clock server time is off, or you are talking to a remote beacon clie
 ### My beacon node API is flaky with lots of errors and timeouts
 
 A good quality beacon node API is critical to validator performance. It is always advised to run your own beacon node to ensure low latencies to boost validator performance.
-Using 3rd party services like Infura's beacon node API has significant disadvantages since the quality is often low. Requests often return 500s or timeout. This results in lots of warnings and errors and failed duties. Running a local beacon node is always preferred.
+Using 3rd-party services like Infura's beacon node API has significant disadvantages since the quality is often low. Requests often return 500s or timeout. This results in lots of warnings and errors and failed duties. Running a local beacon node is always preferred.
 
 ## Charon Errors
 
@@ -220,10 +220,10 @@ validators private key shares don't match the ENR private key. There may
 have been a mix-up during deployment, leading to a mismatching validator
 client key share index.
 
-For example:Imagine node N is Alice, and node M is Bob, the error would read:
-` mismatching validator client key share index, Bob`s key share submitted to Alice`s charon node `
-Bob`s private key share(s) are imported to a VC that is connected to
-Alice`s Charon node. This is a invalid setup/deployment. 
+For example: Imagine node N is Alice, and node M is Bob, the error would read:
+` mismatching validator client key share index, Bob's key share submitted to Alice's charon node `
+Bob's private key share(s) are imported to a VC that is connected to
+Alice's Charon node. This is an invalid setup/deployment. 
 Alice`s Charon node should only be connected to Alice`s VC.
 
 Check the partial public key shares of each node inside
@@ -234,7 +234,7 @@ cluster-lock.json and see that matches with the public key inside
 
 ### How to fix the Grafana dashboard?
 
-Sometimes, Grafana dashboard doesn't load any data first time around.
+Sometimes, Grafana dashboard doesn't load any data the first time.
 You can solve this by following the steps below:
 - Click the Wheel Icon > Datasources.
 - Click prometheus.
@@ -261,7 +261,7 @@ on Linux and WSL for Windows systems. In the interest of security, the
 charon docker image runs as a non-root user, and this user often does not
 have the permissions to write in the directory you have checked out the code
 to. This can be generally be fixed with some of the following:
-- Running docker commands with `sudo`, if you haven't [setup docker to be run as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/)
+- Running docker commands with `sudo`, if you haven't [set up docker to be run as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/)
 - Changing the permissions of the `.charon` folder with the commands:
   - `mkdir .charon` (if it doesn't already exist);
   - `sudo chmod -R 666 .charon`.

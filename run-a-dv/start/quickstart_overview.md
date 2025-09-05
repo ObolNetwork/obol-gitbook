@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Quickstart Overview
 
-The quickstart guides are aimed at developers and stakers looking to utilize Distributed Validators for solo or multi-operator staking. To contribute to this documentation, head over to our [Github repository](https://github.com/ObolNetwork/obol-docs) and file a pull request.
+The quickstart guides are aimed at developers and stakers looking to utilise Distributed Validators for solo or multi-operator staking. To contribute to this documentation, head over to our [Github repository](https://github.com/ObolNetwork/obol-docs) and file a pull request.
 
 There are two ways to set up a distributed validator and each comes with its own quickstart, within the "Getting Started" section:
 

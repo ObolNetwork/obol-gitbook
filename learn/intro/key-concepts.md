@@ -12,7 +12,7 @@ This page outlines a number of the key concepts behind the various technologies 
 
 A distributed validator is an Ethereum proof-of-stake validator that runs on more than one node/machine. This functionality is possible with the use of **Distributed Validator Technology** (DVT).
 
-Distributed validator technology removes some of the single points of failure in validation. Should <33% of the participating nodes in a DV cluster go offline, the remaining active nodes can still come to consensus on what to sign and can produce valid signatures for their staking duties. This is known as Active/Active redundancy, a common pattern for minimizing downtime in mission critical systems.
+Distributed validator technology removes some of the single points of failure in validation. Should <33% of the participating nodes in a DV cluster go offline, the remaining active nodes can still come to consensus on what to sign and can produce valid signatures for their staking duties. This is known as Active/Active redundancy, a common pattern for minimising downtime in mission-critical systems.
 
 ## Distributed Validator Node
 
@@ -26,7 +26,7 @@ In the above example, the stack includes Geth, Lighthouse, Charon and Teku.
 
 <figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-An execution client (formerly known as an Eth1 client) specializes in running the EVM and managing the transaction pool for the Ethereum network. These clients provide execution payloads to consensus clients for inclusion into blocks.
+An execution client (formerly known as an Eth1 client) specialises in running the EVM and managing the transaction pool for the Ethereum network. These clients provide execution payloads to consensus clients for inclusion into blocks.
 
 Examples of execution clients include:
 
@@ -38,7 +38,7 @@ Examples of execution clients include:
 
 <figure><img src="../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-A consensus client's duty is to run the proof of stake consensus layer of Ethereum, often referred to as the beacon chain.
+A consensus client's duty is to run the proof-of-stake consensus layer of Ethereum, often referred to as the beacon chain.
 
 Examples of Consensus clients include:
 
@@ -83,7 +83,7 @@ A distributed validator cluster is a collection of distributed validator nodes c
 
 <figure><img src="../../.gitbook/assets/image (7) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-A distributed validator key is a group of BLS private keys, that together operate as a threshold key for participating in proof of stake consensus.
+A distributed validator key is a group of BLS private keys which together operate as a threshold key for participating in proof-of-stake consensus.
 
 ### Distributed Validator Key Share
 
@@ -91,17 +91,22 @@ One piece of the distributed validator private key.
 
 ### Distributed Validator Threshold
 
-The number of nodes in a cluster that needs to be online and honest for their distributed validators to be online is outlined in the following table.
+The number of nodes in a cluster that need to be online and honest for their distributed validators to be online is outlined in the following table.
 
 | Cluster Size | Threshold | Note                                          |
 | :----------: | :-------: | --------------------------------------------- |
-|       4      |    3/4    | Minimum threshold                             |
+|       3      |    2/3    | Minimum to tolerate one offline node          |
+|       4      |    3/4    | Minimum to tolerate one **malicious** node    |
 |       5      |    4/5    |                                               |
 |       6      |    4/6    | Minimum to tolerate two offline nodes         |
 |       7      |    5/7    | Minimum to tolerate two **malicious** nodes   |
 |       8      |    6/8    |                                               |
 |       9      |    6/9    | Minimum to tolerate three offline nodes       |
 |      10      |    7/10   | Minimum to tolerate three **malicious** nodes |
+
+{% hint style="warning" %}
+Running the same Charon node in two places is considered a malicious (or byzantine) act, you should **take extra care not to run duplicate instances of a particular Charon peer if it is running in a three node setup**, which only tolerates one offline node, not a malicious one. Read more [here](../charon/cluster-configuration#cluster-size-and-resilience). 
+{% endhint %}
 
 ### Distributed Validator Key Generation Ceremony
 

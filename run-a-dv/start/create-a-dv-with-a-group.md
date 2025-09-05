@@ -95,7 +95,7 @@ With a fully synced Ethereum node now running on the DappNode, the below steps w
 7.  You should now be able to see the Holesky Obol package under the 'Packages' tab. Click on the package to see important details.
 
     <figure><img src="../../.gitbook/assets/image (73).png" alt=""><figcaption></figcaption></figure>
-8.  Under the 'Info' tab, you will be see pre-generated ENRs, along with information such as the status of all five distributed validator clusters, their docker volumes & other menu options.
+8.  Under the 'Info' tab, you will see pre-generated ENRs, along with information such as the status of all five distributed validator clusters, their docker volumes & other menu options.
 
     <figure><img src="../../.gitbook/assets/image (74).png" alt=""><figcaption></figcaption></figure>
 9. Select any of the ENRs listed that are not already in use. This ENR will be used in the next step.
@@ -376,7 +376,7 @@ Now that the DKG has been completed, all operators can start their nodes.
 
 ### Step 4: Start your Distributed Validator Node <a href="#step-4-start-your-distributed-validator-node" id="step-4-start-your-distributed-validator-node"></a>
 
-With the DKG ceremony over, the last phase before activation is to prepare your node for validating over the long term.
+With the DKG ceremony over, the last phase before activation is to prepare your node for validating over the long-term.
 
 The [CDVN repository](https://github.com/ObolNetwork/charon-distributed-validator-node) is configured to sync an execution layer client (`Nethermind`) and a consensus layer client (`Lighthouse`) using Docker Compose, further client combinations can be prepared using Sedge. You can also leverage alternative ways to run a node such as Ansible, Helm, or Kubernetes manifests.
 

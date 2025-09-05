@@ -17,7 +17,7 @@ The private key shares can be created centrally and distributed securely to each
 
 {% tabs %}
 {% tab title="Launchpad" %}
-Go to the the [DV Launchpad](https://docs.obol.org/docs/dvl/intro#dv-launchpad-links) and select `Create a distributed validator alone`. Follow the steps to configure your DV cluster. The Launchpad will give you a docker command to create your cluster.\
+Go to the [DV Launchpad](https://docs.obol.org/docs/dvl/intro#dv-launchpad-links) and select `Create a distributed validator alone`. Follow the steps to configure your DV cluster. The Launchpad will give you a docker command to create your cluster.\
 Before you run the command, clone the [CDVC repo](https://github.com/ObolNetwork/charon-distributed-validator-cluster.git) and `cd` into the directory.
 
 ```sh
@@ -185,7 +185,7 @@ Currently, the quickstart repo installs a node on the Holesky testnet. It is pos
 
 `.env.sample` is a sample environment file that allows overriding default configuration defined in `docker-compose.yml`. Uncomment and set any variable to override its value.
 
-Setup the desired inputs for the DV, including the network you wish to operate on. Check the [Charon CLI reference](https://docs.obol.org/next/learn/charon/charon-cli-reference) for additional optional flags to set. Once you have set the values you wish to use. Make a copy of this file called `.env`.
+Set up the desired inputs for the DV, including the network you wish to operate on. Check the [Charon CLI reference](https://docs.obol.org/next/learn/charon/charon-cli-reference) for additional optional flags to set. Once you have set the values you wish to use. Make a copy of this file called `.env`.
 
 ```sh
 # Copy ".env.sample", renaming it ".env"
