@@ -37,10 +37,11 @@ Obol Validator Managers implement standard Role-Based Access Control. The OVM ha
 * `SET_PRINCIPAL_ROLE`: Permits an address to change the recipient of the principal returned when validators exit, or a withdrawal above the principalThreshold is initiated. Also this permits an address to adjust the amount of principal stake being tracked by the contract.
 * `RECOVER_FUNDS_ROLE`: Permits an address to initiate `ERC20.transfer()` calls to arbitrary external addresses, with the intent to recover otherwise stuck tokens.
 * `SET_REWARD_ROLE`: Permits an address to change the recipient of the reward when `distributeFunds()` is called.
+* `DEPOSIT_ROLE`: Permits an address to call the `deposit()` function.
 
 ### Deposit
 
-Every validator managed by an Obol Validator Manager must be deposited through the `deposit()` method. This method has the same signature as the official Ethereum deposit contract, but internally it accounts for the principal amount being deposited for the future calculation of returns of principal vs rewards.
+Every validator managed by an Obol Validator Manager must be deposited through the `deposit()` method. This method has the same signature as the official Ethereum deposit contract, but internally it accounts for the principal amount being deposited for the future calculation of returns of principal vs rewards. Only the `owner` address, or any address with the `DEPOSIT_ROLE` can call this method.
 
 {% hint style="info" %}
 If a deposit was done directly to the official Ethereum deposit contract, the OVM will not have recorded the principal amount. To fix this, consider using `setAmountOfPrincipalStake()` to update the total principal amount of stake.
