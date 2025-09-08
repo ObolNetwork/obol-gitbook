@@ -190,10 +190,10 @@ The `ObolValidatorManager` contract is deployed via a [factory contract](https:/
 
 | Chain   | Address                                                                                                                       |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Mainnet | [0xdfe2d8b26806583cf03b3cb623b0752f8670e93e](https://etherscan.io/address/0xdfe2d8b26806583cf03b3cb623b0752f8670e93e)         |
-| Hoodi   | [0xb1E1f5e90f4190F78182A8d5cbed774893Dd1558](https://hoodi.etherscan.io/address/0xb1E1f5e90f4190F78182A8d5cbed774893Dd1558)   |
-| Holesky | [0x466bD4917e5e1662db1A549Bd828637E2CEDFEA9](https://holesky.etherscan.io/address/0x466bD4917e5e1662db1A549Bd828637E2CEDFEA9) |
-| Sepolia | [0x4Cdc690A9125Ec487aA625C54b64E162FE9b4E9C](https://sepolia.etherscan.io/address/0x4Cdc690A9125Ec487aA625C54b64E162FE9b4E9C) |
+| Mainnet | [0xA755669f314022ED2158e93867af5183E88370fe](https://etherscan.io/address/0xA755669f314022ED2158e93867af5183E88370fe)         |
+| Hoodi   | [0x885E7D97E3987BA57EF0d693C508d675e4Bf82FC](https://hoodi.etherscan.io/address/0x885E7D97E3987BA57EF0d693C508d675e4Bf82FC)   |
+| Holesky | [0x4B157b79277E44D12C234680ACE17Db028075EA5](https://holesky.etherscan.io/address/0x4B157b79277E44D12C234680ACE17Db028075EA5) |
+| Sepolia | [0xcf3c69401d1179a96305d785a49a5adfed2949a7](https://sepolia.etherscan.io/address/0xcf3c69401d1179a96305d785a49a5adfed2949a7) |
 
 ### Obol Lido Split Factory Deployment [**​**](https://docs.obol.org/learn/intro/obol-splits#ols-factory-deployment)
 
