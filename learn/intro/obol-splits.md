@@ -32,12 +32,12 @@ You create a new Validator Manager contract using the [factory](obol-splits.md#o
 
 Obol Validator Managers implement standard Role-Based Access Control. The OVM has the following roles that can be granted by the OVM owner, using the `grantRoles()` function.
 
-* `WITHDRAWAL_ROLE`: Permits an address to trigger a partial withdrawal, or full exit of all validators managed by this contract using [EIP7002](https://eips.ethereum.org/EIPS/eip-7002).
-* `CONSOLIDATION_ROLE`: Permits an address to initiate a consolidation between one or more source validators and a target validator, all managed by this contract. All source and target validators must be active with a balance greater than 32 ether.
-* `SET_PRINCIPAL_ROLE`: Permits an address to change the recipient of the principal returned when validators exit, or a withdrawal above the principalThreshold is initiated. Also this permits an address to adjust the amount of principal stake being tracked by the contract.
-* `RECOVER_FUNDS_ROLE`: Permits an address to initiate `ERC20.transfer()` calls to arbitrary external addresses, with the intent to recover otherwise stuck tokens.
-* `SET_REWARD_ROLE`: Permits an address to change the recipient of the reward when `distributeFunds()` is called.
 * `DEPOSIT_ROLE`: Permits an address to call the `deposit()` function.
+* `CONSOLIDATION_ROLE`: Permits an address to initiate a consolidation between one or more source validators and a target validator, all managed by this contract. All source and target validators must be active with a balance greater than 32 ether.
+* `WITHDRAWAL_ROLE`: Permits an address to trigger a partial withdrawal, or full exit of all validators managed by this contract using [EIP7002](https://eips.ethereum.org/EIPS/eip-7002).
+* `SET_PRINCIPAL_ROLE`: Permits an address to change the recipient of the principal returned when validators exit, or a withdrawal above the principalThreshold is initiated. Also this permits an address to adjust the amount of principal stake being tracked by the contract.
+* `SET_REWARD_ROLE`: Permits an address to change the recipient of the reward when `distributeFunds()` is called.
+* `RECOVER_FUNDS_ROLE`: Permits an address to initiate `ERC20.transfer()` calls to arbitrary external addresses, with the intent to recover otherwise stuck tokens.
 
 ### Deposit
 
