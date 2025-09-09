@@ -440,37 +440,13 @@ Using a remote beacon node will impact the performance of your Distributed Valid
 
 If you already have a beacon node running somewhere and you want to use that instead of running an EL (`nethermind`) & CL (`lighthouse`) as part of the example repo, you can disable these images. To do so, follow these steps:
 
-1. Copy the `docker-compose.override.yml.sample` file
+1. Stop your docker compose
 
+```sh
+docker compose down
 ```
 
-sh
-cp -n docker-compose.override.yml.sample docker-compose.override.yml
-```
-
-2. Uncomment the `profiles: [disable]` section for both `nethermind` and `lighthouse`. The override file should now look like this
-
-```
-services:
-  nethermind:
-    # Disable nethermind
-    profiles: [disable]
-    # Bind nethermind internal ports to host ports
-    #ports:
-      #- 8545:8545 # JSON-RPC
-      #- 8551:8551 # AUTH-RPC
-      #- 6060:6060 # Metrics
-  lighthouse:
-    # Disable lighthouse
-    profiles: [disable]
-    # Bind lighthouse internal ports to host ports
-    #ports:
-      #- 5052:5052 # HTTP
-      #- 5054:5054 # Metrics
-...
-```
-
-3. Then, uncomment and set the `CHARON_BEACON_NODE_ENDPOINTS` variable in the `.env` file to your beacon node's URL
+2. Uncomment and set the `CHARON_BEACON_NODE_ENDPOINTS` variable in the `.env` file to your beacon node's URL
 
 ```sh
 ...
@@ -479,12 +455,26 @@ CHARON_BEACON_NODE_ENDPOINTS=<YOUR_REMOTE_BEACON_NODE_URL>
 ...
 ```
 
-4. Restart your docker compose
+3. Uncomment `EL=el-none` and `CL=cl-none` variables in the `.env` file and comment `EL=el-nethermind` and `CL=cl-lighthouse` variables:
 
 ```sh
-docker compose down
+...
+#EL=el-nethermind
+...
+EL=el-none
+...
+#CL=cl-lighthouse
+...
+CL=cl-none
+...
+```
+
+4. Start your docker compose
+
+```sh
 docker compose up -d
 ```
+
 {% endtab %}
 
 {% tab title="Sedge" %}
