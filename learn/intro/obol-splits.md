@@ -24,28 +24,18 @@ An Obol Validator Manager (OVM) is a smart contract which manages the deposit, w
 You create a new Validator Manager contract using the [factory](obol-splits.md#obol-validator-manager-factory-deployment-​httpsdocsobolorglearnintroobol-splitsovm-factory-deployment) by calling the `ObolValidatorManagerFactory.createObolValidatorManager()` function, passing:
 
 * `owner` - The address that is the ultimate administrator of this Validator Manager deployment, it manages the assignment of roles for the contract, and **can call all privileged methods**. This address is best suited to being a multi-sig (such as a [SAFE](https://safe.global)) with a large number of signers, used only as a fallback, or it can be owned temporarily, fine-grained roles can be assigned to addresses, and then the [`renounceOwnership()`](https://github.com/vectorized/solady/blob/main/src/auth/Ownable.sol#L186) or [`transferOwnership()`](https://github.com/vectorized/solady/blob/main/src/auth/Ownable.sol#L174) methods can be called.
-* `principalRecipient` - This is the **address where the principal will be returned** to when validators exit or a withdrawal above the `principalThreshold` is made. This can be changed later by the `owner` or addresses with the `SET_PRINCIPAL_ROLE`.
-* `rewardRecipient` - This is the **address where the accrued ether reward will be sent** when `distributeFunds()` is called. Usually it is a [Pull Split](https://docs.splits.org/core/split-v2#how-it-works) from [splits.org](https://splits.org). This can be changed later by the `owner` or addresses with the `SET_REWARD_ROLE`.
-* `principalThreshold` - This is a configurable amount of Ether which dictates at what amount of value in the contract should we consider it to be principal being returned rather than reward accrued. The amount is immutable. A sensible default here is 16 ether (16000000000 gwei), the threshold used in Obol's earlier [Optimistic Withdrawal Recipients](obol-splits.md#optimistic-withdrawal-recipient​httpsdocsobolorglearnintroobol-splitsoptimistic-withdrawal-recipient-a-hrefwithdrawal-recipients-idwithdrawal-recipientsa-a-hrefoptimistic-withdrawal-recipient-idoptimistic-withdrawal-recipienta). Further detail in the [FAQ](obol-splits.md#faq) section.
+* `principalRecipient` - This is the **address where the principal will be returned** to when validators exit or a withdrawal above the principalThreshold is made. This can be changed later by the `owner` or addresses with the `SET_PRINCIPAL_ROLE`.
+* `rewardRecipient` - This is the **address where the accrued ether reward will be sent** when `distributeFunds()` is called. Usually it is a [Pull Split](https://docs.splits.org/core/split-v2#how-it-works) from [splits.org](https://splits.org). This address cannot be updated, instead you can specify an owner of the split, to modify the distribution percentages in future.
+* `principalThreshold` - This is a configurable amount of Ether which dictates at what amount of value in the contract should we consider it to be principal being returned rather than reward accrued. A sensible default here is 16 ether, the threshold used in Obol's earlier [Optimistic Withdrawal Recipients](obol-splits.md#optimistic-withdrawal-recipient​httpsdocsobolorglearnintroobol-splitsoptimistic-withdrawal-recipient-a-hrefwithdrawal-recipients-idwithdrawal-recipientsa-a-hrefoptimistic-withdrawal-recipient-idoptimistic-withdrawal-recipienta). Further detail in the [FAQ](obol-splits.md#faq) section.
 
 ### Roles
 
-Obol Validator Managers implement standard Role-Based Access Control. The OVM has the following roles that can be granted by the OVM owner, using the `grantRoles()` function.
+Obol Validator Managers implement standard Role-Based Access Control. The OVM has the following roles that can be granted by the OVM owner.
 
-* `DEPOSIT_ROLE`: Permits an address to call the `deposit()` function.
-* `CONSOLIDATION_ROLE`: Permits an address to initiate a consolidation between one or more source validators and a target validator, all managed by this contract. All source and target validators must be active with a balance greater than 32 ether.
 * `WITHDRAWAL_ROLE`: Permits an address to trigger a partial withdrawal, or full exit of all validators managed by this contract using [EIP7002](https://eips.ethereum.org/EIPS/eip-7002).
-* `SET_PRINCIPAL_ROLE`: Permits an address to change the recipient of the principal returned when validators exit, or a withdrawal above the principalThreshold is initiated. Also this permits an address to adjust the amount of principal stake being tracked by the contract.
-* `SET_REWARD_ROLE`: Permits an address to change the recipient of the reward when `distributeFunds()` is called.
+* `CONSOLIDATION_ROLE`: Permits an address to initiate a consolidation between one or more source validators and a target validator, all managed by this contract. All source and target validators must be active with a balance greater than 32 ether.
+* `SET_PRINCIPAL_ROLE`: Permits an address to change the recipient of the principal returned when validators exit, or a withdrawal above the principalThreshold is initiated.
 * `RECOVER_FUNDS_ROLE`: Permits an address to initiate `ERC20.transfer()` calls to arbitrary external addresses, with the intent to recover otherwise stuck tokens.
-
-### Deposit
-
-Every validator managed by an Obol Validator Manager must be deposited through the `deposit()` method. This method has the same signature as the official Ethereum deposit contract, but internally it accounts for the principal amount being deposited for the future calculation of returns of principal vs rewards. Only the `owner` address, or any address with the `DEPOSIT_ROLE` can call this method.
-
-{% hint style="info" %}
-If a deposit was done directly to the official Ethereum deposit contract, the OVM will not have recorded the principal amount. To fix this, consider using `setAmountOfPrincipalStake()` to update the total principal amount of stake.
-{% endhint %}
 
 ### Partial Withdrawals & Full Exits
 
@@ -89,7 +79,7 @@ All source and target validators must be active with a balance greater than 32 e
 {% endhint %}
 
 {% hint style="info" %}
-It is possible to permissionlessly consolidate a validator into (or out of) an OVM. This could result in the OVM's `amountOfPrincipalStake()` not accurately reflecting the true amount of stake on validators exiting to the OVM withdrawal address. This could result in more (or less) ether being treated as reward, and disbursed to the rewardRecipient address. The owner of the OVM or any address with the `SET_PRINCIPAL_ROLE` can update the amount of Ether treated as principal with the `setAmountOfPrincipalStake()` function. 
+Because the consolidation process is an asynchronous operation handled by the system contract, it is impossible to account for the deposited principal amount from the source validators. As a result, the principal of the consolidated validators is treated as a reward by the target ObolValidatorManager. This edge case will be addressed in a future update to the ObolValidatorManager smart contract.
 {% endhint %}
 
 ```solidity
@@ -190,10 +180,10 @@ The `ObolValidatorManager` contract is deployed via a [factory contract](https:/
 
 | Chain   | Address                                                                                                                       |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Mainnet | [0xA755669f314022ED2158e93867af5183E88370fe](https://etherscan.io/address/0xA755669f314022ED2158e93867af5183E88370fe)         |
-| Hoodi   | [0x885E7D97E3987BA57EF0d693C508d675e4Bf82FC](https://hoodi.etherscan.io/address/0x885E7D97E3987BA57EF0d693C508d675e4Bf82FC)   |
-| Holesky | [0x4B157b79277E44D12C234680ACE17Db028075EA5](https://holesky.etherscan.io/address/0x4B157b79277E44D12C234680ACE17Db028075EA5) |
-| Sepolia | [0xcf3c69401d1179a96305d785a49a5adfed2949a7](https://sepolia.etherscan.io/address/0xcf3c69401d1179a96305d785a49a5adfed2949a7) |
+| Mainnet | [0xdfe2d8b26806583cf03b3cb623b0752f8670e93e](https://etherscan.io/address/0xdfe2d8b26806583cf03b3cb623b0752f8670e93e)         |
+| Hoodi   | [0xb1E1f5e90f4190F78182A8d5cbed774893Dd1558](https://hoodi.etherscan.io/address/0xb1E1f5e90f4190F78182A8d5cbed774893Dd1558)   |
+| Holesky | [0x466bD4917e5e1662db1A549Bd828637E2CEDFEA9](https://holesky.etherscan.io/address/0x466bD4917e5e1662db1A549Bd828637E2CEDFEA9) |
+| Sepolia | [0x4Cdc690A9125Ec487aA625C54b64E162FE9b4E9C](https://sepolia.etherscan.io/address/0x4Cdc690A9125Ec487aA625C54b64E162FE9b4E9C) |
 
 ### Obol Lido Split Factory Deployment [**​**](https://docs.obol.org/learn/intro/obol-splits#ols-factory-deployment)
 
