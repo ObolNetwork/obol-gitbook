@@ -13,7 +13,7 @@ This is **optional** and does not confer any special privileges within the Obol 
 
 {% tabs %}
 {% tab title="Quickstart" %}
-This is for operators using the [example repo](https://github.com/ObolNetwork/charon-distributed-validator-node) from our [quickstart guide](http://localhost:3000/run/start/quickstart_overview), and have been provided with **Monitoring Credentials** used to push distributed validator metrics to Obol's central Prometheus cluster to monitor, analyze, and improve your Distributed Validator Cluster's performance. (For example, this is necessary to participate in the Obol [Techne](https://squadstaking.com/techne) credential program.)
+This is for operators using the [example repo](https://github.com/ObolNetwork/charon-distributed-validator-node) from our [quickstart guide](http://docs.obol.org/run-a-dv/start/quickstart_overview), and have been provided with **Monitoring Credentials** used to push distributed validator metrics to Obol's central Prometheus cluster to monitor, analyze, and improve your Distributed Validator Cluster's performance. (For example, this is necessary to participate in the Obol [Techne](https://squadstaking.com/techne) credential program.)
 
 #### Update the monitoring token in the `.env` file
 
