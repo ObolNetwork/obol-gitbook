@@ -22,7 +22,7 @@ DV Labs (originally “Obol Labs”) is one of the core research and software de
 
 ### The Obol Product Suite
 
-The [Obol Product Suite](https://obol.org/product-suite) empowers any node operator to run fault-tolerant, slashing-resistant distributed validators. Choose from [a suite of tools](../futher-reading/resources.md) to get distributed validators running on any type of hardware, with any combination of software clients.
+The [Obol Product Suite](https://obol.org/product-suite) empowers any node operator to run fault-tolerant, slashing-resistant distributed validators. Choose from [a suite of tools](broken-reference) to get distributed validators running on any type of hardware, with any combination of software clients.
 
 * Foundation: [Charon](../charon/intro.md), a middleware client that enables validators to run in a fault-tolerant, distributed manner;
 * Configuration: The [Distributed Validator Launchpad](launchpad.md), a user interface for configuring Distributed Validators. The Obol [SDK](../../sdk/index.md) & [API](https://docs.obol.org/api), allowing Distributed Validator clusters to be configured and run at scale, for example within staking protocols.
