@@ -12,7 +12,7 @@ description: >-
 
 <summary><strong>What is the OBOL token used for?</strong></summary>
 
-OBOL is the governance token of the Obol Collective. It enables holders to participate in on-chain governance by voting directly or delegating their voting power to delegates.&#x20;
+OBOL is the governance token of the Obol Collective. It enables holders to participate in on-chain governance by voting directly or delegating their voting power to delegates.
 
 OBOL is also used in the [RAF](../governance/raf/), where token holders delegate to vote on which contributors should receive retroactive funding for valuable work.
 
@@ -52,7 +52,7 @@ You can delegate via [vote.obol.org](https://vote.obol.org/dao/delegates). Conne
 
 <summary><strong>What happens if I stake OBOL?</strong></summary>
 
-You receive stOBOL, which maintains your delegation as long as it stays in your wallet. Once transferred (e.g., to a DeFi protocol), you lose the individual delegation. Voting power is then routed via an [auto-delegation strategy](staking-and-stobol.md#how-the-overwhelming-support-strategy-works).&#x20;
+You receive stOBOL, which maintains your delegation as long as it stays in your wallet. Once transferred (e.g., to a DeFi protocol), you lose the individual delegation. Voting power is then routed via an [auto-delegation strategy](staking-and-stobol.md#how-the-overwhelming-support-strategy-works).
 
 </details>
 
@@ -128,7 +128,7 @@ Currently, OBOL does not accrue protocol revenue. However, the DAO may vote in t
 
 <summary><strong>How can I stay up to date on OBOL news?</strong></summary>
 
-Join our [Discord](https://discord.gg/obol), follow [@ObolNetwork](https://x.com/Obol_Collective), and check our [Forum](https://community.obol.org) for governance and integration updates.
+Join our [Discord](https://discord.obol.org), follow [@ObolNetwork](https://x.com/Obol_Collective), and check our [Forum](https://community.obol.org) for governance and integration updates.
 
 </details>
 

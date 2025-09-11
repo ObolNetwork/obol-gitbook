@@ -72,4 +72,4 @@ RAF1: see the [RAF1 guide](https://community.obol.org/t/guide-for-raf-round-1-ra
 
 ## RAF1 Summary & Insights
 
-Head over to [raf1-guide.md](raf1-guide.md "mention") to find the results, top projects, and key takeaways from our first round.&#x20;
+Head over to [raf1-guide.md](raf1-guide.md "mention") to find the results, top projects, and key takeaways from our first round.

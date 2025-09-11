@@ -20,7 +20,7 @@ Whether you’re focused on operator growth, or ecosystem education — we want 
 
 * Details: Train and certify a professional class of operators who can scale networks reliably by running Obol DVs. Currently there is [about 600 Silver Techne credentials](https://etherscan.io/token/0xfdb3986f0c97c3c92af3c318d7d2742d8f7ed8cc).
 * Success Metrics: Grow the number of Silver Techne Credentials by 30%.
-* Exemples:&#x20;
+* Examples:
   * Design or improve training content for Silver Techne
     * Docs, videos, interactive workshops, validator testnets
   * Build or enhance certification workflows and dashboards

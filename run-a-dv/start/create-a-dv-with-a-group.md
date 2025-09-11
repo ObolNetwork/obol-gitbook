@@ -388,28 +388,27 @@ Currently, the [CDVN repo](https://github.com/ObolNetwork/charon-distributed-val
 
 Start by copying the appropriate `.env.sample.<NETWORK>` file to `.env`, and modifying values as needed.
 
-````sh
+```sh
 # To prepare the node for the Holesky test network
 # Copy ".env.sample.holesky", renaming it ".env"
 cp .env.sample.holesky .env
 
-
 # To prepare the node for the main Ethereum network
 # Copy ".env.sample.mainnet", renaming it ".env"
 cp .env.sample.mainnet .env
-
+```
 
 In the same folder where you created your ENR in Step 1, and ran the DKG in Step 3, start your node in the DV cluster with docker compose.
 
-```shell
+```sh
 
 # To be run from the ./charon-distributed-validator-node folder
 # Spin up a Distributed Validator Node with a Validator Client
 docker compose up -d
-````
+```
 
 {% hint style="danger" %}
-Do not start this node until the DKG is complete, as the charon container will interfere with the charon instance attempting to take part in the DKG ceremony.&#x20;
+Do not start this node until the DKG is complete, as the charon container will interfere with the charon instance attempting to take part in the DKG ceremony.
 {% endhint %}
 
 If at any point you need to turn off your node, you can run:
@@ -430,8 +429,7 @@ In particular you should check:
 
 * That your Charon client can connect to the configured beacon client.
 * That your Charon client can connect to all peers directly.
-* That your validator client is connected to Charon, and has the private keys it needs loaded and accessible. Most components in the dashboard have some help text there to assist you in understanding your cluster performance. You might notice that there are logs indicating that a validator cannot be found and that APIs are returning 404. This is to be expected at this point, as the validator public keys listed in the lock file have not been deposited and acknowledged on the consensus layer yet (usually it takes \~16 hours after the deposit is made).&#x20;
-
+* That your validator client is connected to Charon, and has the private keys it needs loaded and accessible. Most components in the dashboard have some help text there to assist you in understanding your cluster performance. You might notice that there are logs indicating that a validator cannot be found and that APIs are returning 404. This is to be expected at this point, as the validator public keys listed in the lock file have not been deposited and acknowledged on the consensus layer yet (usually it takes \~16 hours after the deposit is made).
 
 {% endtab %}
 
@@ -442,37 +440,13 @@ Using a remote beacon node will impact the performance of your Distributed Valid
 
 If you already have a beacon node running somewhere and you want to use that instead of running an EL (`nethermind`) & CL (`lighthouse`) as part of the example repo, you can disable these images. To do so, follow these steps:
 
-1. Copy the `docker-compose.override.yml.sample` file
+1. Stop your docker compose
 
+```sh
+docker compose down
 ```
 
-sh
-cp -n docker-compose.override.yml.sample docker-compose.override.yml
-```
-
-2. Uncomment the `profiles: [disable]` section for both `nethermind` and `lighthouse`. The override file should now look like this
-
-```
-services:
-  nethermind:
-    # Disable nethermind
-    profiles: [disable]
-    # Bind nethermind internal ports to host ports
-    #ports:
-      #- 8545:8545 # JSON-RPC
-      #- 8551:8551 # AUTH-RPC
-      #- 6060:6060 # Metrics
-  lighthouse:
-    # Disable lighthouse
-    profiles: [disable]
-    # Bind lighthouse internal ports to host ports
-    #ports:
-      #- 5052:5052 # HTTP
-      #- 5054:5054 # Metrics
-...
-```
-
-3. Then, uncomment and set the `CHARON_BEACON_NODE_ENDPOINTS` variable in the `.env` file to your beacon node's URL
+2. Uncomment and set the `CHARON_BEACON_NODE_ENDPOINTS` variable in the `.env` file to your beacon node's URL
 
 ```sh
 ...
@@ -481,12 +455,26 @@ CHARON_BEACON_NODE_ENDPOINTS=<YOUR_REMOTE_BEACON_NODE_URL>
 ...
 ```
 
-4. Restart your docker compose
+3. Uncomment `EL=el-none` and `CL=cl-none` variables in the `.env` file and comment `EL=el-nethermind` and `CL=cl-lighthouse` variables:
 
 ```sh
-docker compose down
+...
+#EL=el-nethermind
+...
+EL=el-none
+...
+#CL=cl-lighthouse
+...
+CL=cl-none
+...
+```
+
+4. Start your docker compose
+
+```sh
 docker compose up -d
 ```
+
 {% endtab %}
 
 {% tab title="Sedge" %}
@@ -595,11 +583,11 @@ Once all docker images are pulled, sedge will create & start the containers to r
 
 Given time, the execution and consensus clients should complete syncing, and if a Distributed Validator has already been activated, the node should begin to validate.
 
-If you encounter issues with using Sedge as part of a DV cluster, consider consulting the [Sedge docs](https://docs.sedge.nethermind.io/) directly, or opening an [issue](https://github.com/NethermindEth/sedge/issues) or [pull request](https://github.com/NethermindEth/sedge/pulls) if appropriate.&#x20;
+If you encounter issues with using Sedge as part of a DV cluster, consider consulting the [Sedge docs](https://docs.sedge.nethermind.io/) directly, or opening an [issue](https://github.com/NethermindEth/sedge/issues) or [pull request](https://github.com/NethermindEth/sedge/pulls) if appropriate.
 {% endtab %}
 
 {% tab title="Ansible" %}
-Use an Ansible playbook to start your node. [See the repo here](https://github.com/ObolNetwork/obol-ansible) for further instructions.&#x20;
+Use an Ansible playbook to start your node. [See the repo here](https://github.com/ObolNetwork/obol-ansible) for further instructions.
 {% endtab %}
 
 {% tab title="Helm" %}

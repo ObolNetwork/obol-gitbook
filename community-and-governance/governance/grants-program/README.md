@@ -61,7 +61,7 @@ The program will be managed via [Questbook](https://questbook.app), with future 
 ## Budget
 
 * All **funding will be disbursed on a milestone basis only** _(see above disclaimer)_
-* Future quarterly or annual grant budgets to be approved by DAO governance&#x20;
+* Future quarterly or annual grant budgets to be approved by DAO governance
 * The first pilot wave (Wave #1) will not specify any max  budget.
 
 ## Communication
