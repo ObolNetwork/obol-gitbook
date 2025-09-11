@@ -107,11 +107,11 @@ For Step 2 of the quickstart:
 {% endtab %}
 
 {% tab title="Sedge" %}
-**Installing Sedge**[**​**](http://localhost:3000/run/start/quickstart_group#installing-sedge)
+**Installing Sedge**
 
 First you must install Sedge, please refer to the [official Sedge installation guide](https://docs.sedge.nethermind.io/docs/quickstart/install-guide) to do so.
 
-**Check the install was successful**[**​**](http://localhost:3000/run/start/quickstart_group#check-the-install-was-successful)
+**Check the install was successful**
 
 Run the below command to check if your have successfully installed sedge in your computer.
 
