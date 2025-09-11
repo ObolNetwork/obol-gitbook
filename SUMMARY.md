@@ -2,7 +2,7 @@
 
 ## Learn
 
-* [Introduction](learn/intro/README.md)
+* [Introduction](README.md)
   * [Obol Collective](learn/intro/obol-collective.md)
   * [OBOL Incentives](learn/intro/obol-incentives.md)
   * [Key Staking Concepts](learn/intro/key-concepts.md)
@@ -17,10 +17,10 @@
   * [Charon Networking](learn/charon/charon-networking.md)
   * [CLI Reference](learn/charon/charon-cli-reference.md)
 * [Further Reading](learn/further-reading/README.md)
-  * [Ethereum and Its Relationship With DVT](learn/further-reading/ethereum_and_dvt.md)
-  * [Community Testing](learn/further-reading/testnet.md)
-  * [Peer Score](learn/further-reading/peer_score.md)
-  * [Useful Links](learn/further-reading/resources.md)
+  * [Ethereum and Its Relationship With DVT](learn/further-reading/ethereum-and-its-relationship-with-dvt.md)
+  * [Community Testing](learn/further-reading/community-testing.md)
+  * [Peer Score](learn/further-reading/peer-score.md)
+  * [Useful Links](learn/further-reading/useful-links.md)
 
 ## Run a DV
 
