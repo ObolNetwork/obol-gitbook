@@ -24,7 +24,7 @@ docker compose logs
 
 `cd` to the directory where your private keys are located (ex: `cd /path/to/charon/enr/private/key`)
 
-Run `docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.6.0 enr`. This prints the ENR on your screen.
+Run `docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.6.1 enr`. This prints the ENR on your screen.
 
 ### What do I do if lose my `charon-enr-private-key`?
 
