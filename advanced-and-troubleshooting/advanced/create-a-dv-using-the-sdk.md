@@ -99,8 +99,8 @@ const validatorDepositData =
   clusterLock.distributed_validators[validatorIndex].deposit_data;
 
 const depositContract = new ethers.Contract(
-  DEPOSIT_CONTRACT_ADDRESS, // 0x00000000219ab540356cBB839Cbe05303d7705Fa for Mainnet, 0xff50ed3d0ec03aC01D4C79aAd74928BFF48a7b2b for Goerli
-  depositContractABI, // https://etherscan.io/address/0x00000000219ab540356cBB839Cbe05303d7705Fa#code for Mainnet, and replace the address for Goerli
+  DEPOSIT_CONTRACT_ADDRESS, //0x0a502f846F6dc2e3D4d8C595B18b3AF44657B1bD  for Mainnet, 0xff50ed3d0ec03aC01D4C79aAd74928BFF48a7b2b for Goerli
+  depositContractABI, // https://etherscan.io/address/0x0a502f846F6dc2e3D4d8C595B18b3AF44657B1bD#code for Mainnet, and replace the address for Goerli
   signer
 );
 
