@@ -2,7 +2,7 @@
 
 ## Learn
 
-* [Introduction](learn/intro/README.md)
+* [Introduction](README.md)
   * [Obol Collective](learn/intro/obol-collective.md)
   * [OBOL Incentives](learn/intro/obol-incentives.md)
   * [Key Staking Concepts](learn/intro/key-concepts.md)
@@ -91,6 +91,7 @@
 * [The OBOL Token](community-and-governance/obol-token/README.md)
   * [Token Utility](community-and-governance/obol-token/token-utility.md)
   * [Staking & stOBOL](community-and-governance/obol-token/staking-and-stobol.md)
+  * [wstOBOL](community-and-governance/obol-token/wstobol.md)
   * [Token Distribution & Liquidity](community-and-governance/obol-token/token-distribution-and-liquidity.md)
   * [Token Holders FAQ](community-and-governance/obol-token/token-holders-faq.md)
   * [TGE FAQ](community-and-governance/obol-token/tge-faq.md)
