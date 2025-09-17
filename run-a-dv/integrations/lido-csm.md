@@ -23,7 +23,7 @@ Part 2: Using the [Obol DV Launchpad](https://launchpad.obol.org/) + CLI to crea
 Part 3: Deploying the validator to Lido's CSM using their UI.
 
 {% hint style="success" %}
-In this guide we'll be using CSM UI in advanced mode, using the `extendedManagerPermissions` to set the `managerAddress` to the cluster multi-sig (SAFE) and the `rewardAddress` to the Splits.org splitting contract.
+In this guide we'll be using the CSM widget and expanding  `Specify Custom Addresses` to set the `Manager Address` to the cluster multi-sig (SAFE) and the `Rewards Address` to the Splits.org splitting contract. Finally, we'll be selecting `Extended` permissions type which grants `Manager Address` ultimate control over the Node Operator.&#x20;
 {% endhint %}
 
 ## Part 1: Creating the Cluster SAFE + Splitter Contract
@@ -54,7 +54,7 @@ Finally, submit the transaction to create the Safe by clicking on the **Create**
 
 ### Deploy the Splitter Contract
 
-The squad leader should obtain the reward addresses from all the cluster members (if members want to use a distinct address to the one they sign with for receiving rewards). Open https://app.splits.org and create a `New contract`. Make sure to select the appropriate network.
+The squad leader should obtain the reward addresses from all the cluster members (this can be the same address used in the SAFE contract). Open https://app.splits.org and create a `New contract`. Make sure to select the appropriate network.
 
 <figure><img src="../../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
 
@@ -106,7 +106,7 @@ What you see in the console starting with `enr:-` is the **public key** for your
 
 ### Step 3: Create the DV cluster configuration using the Launchpad
 
-Obol has integrated a CSM details into the DV Launchpad. Choosing the "Lido CSM" withdrawal configuration allows you to create up to 12 validator keys (CSM's Early Access limit) with Lido's required withdrawal and fee recipient addresses.
+Obol has integrated the CSM details into the DV Launchpad. Choosing the "Lido CSM" withdrawal configuration allows you to create validator keys with Lido's required withdrawal and fee recipient addresses.
 
 To start, the squad leader opens the [DV Launchpad](https://launchpad.obol.org), then connects their wallet and chooses **Create a cluster with a group**.
 
@@ -199,23 +199,23 @@ At this point, execution and consensus clients should start syncing. Charon and 
 
 ## Part 3: Upload the public keys and deposit to Lido CSM
 
-CSM is launching with a whitelisted set of approved operators (Early Access). The squad member with EA should be the one to create the node through the CSM widget.
+CSM V2 enables a new Operator Type called Identified Community Staker ("ICS"). The squad member who is an ICS should be the one to create the node through the CSM widget. Doing so will ensure the clusters validators receive [ICS benefits](https://blog.lido.fi/unlock-exclusive-benefits-as-an-identified-community-staker/).&#x20;
 
-The EA member will head to [CSM Extended Mode](https://csm.lido.fi/?mode=extended) and connect their wallet. (Note the `mode=extended` parameter.) This allows the Lido CSM reward address to be set to the split contract created earlier.
+The ICS member will head to [csm.lido.fi](https://csm.lido.fi/) and connect their wallet.&#x20;
 
 <figure><img src="../../.gitbook/assets/image (47).png" alt=""><figcaption></figcaption></figure>
 
-The EA member clicks on the **Create Node Operator** button.
+The ICS member clicks on the **Create Node Operator** button.
 
 <figure><img src="../../.gitbook/assets/image (48).png" alt=""><figcaption></figcaption></figure>
 
-* The EA member pastes the contents of the `deposit-data.json` file into the `Upload deposit data` field. The EA member should have enough ETH/stETH/wstETH to cover the bond.
+* The ICS member pastes the contents of the `deposit-data.json` file into the `Upload deposit data` field. The ICS member should have enough ETH/stETH/wstETH to cover the bond.
 * Expand the **Specify custom addresses** section.
   * Set the **Reward Address** field to the `Split` contract address and the **Manager Address** field to the `Safe` wallet address. (These were created previously in [part 1](lido-csm.md#part-1-creating-the-cluster-safe--splitter-contract))
   * Verify that the **Extended** box is outlined. This ensures that the `Safe` address has the ability to change the reward address if necessary.
-* Check that the correct addresses are set and click the **Create Node Operator** button.\\
+*   Check that the correct addresses are set and click the **Create Node Operator** button.
 
-  <figure><img src="../../.gitbook/assets/image (49).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (49).png" alt=""><figcaption></figcaption></figure>
 
 Sign the transaction. The cluster is ready for deposit from Lido CSM. At this point, your job is finished.
 
