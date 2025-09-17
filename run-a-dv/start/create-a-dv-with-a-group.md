@@ -422,7 +422,7 @@ You should use the Grafana dashboard that accompanies the quickstart repo to see
 
 ```sh
 # Open Grafana dashboard
-open http://localhost:3000/d/d6qujIJVk/
+open http://localhost:3000/d/charonoverview/
 ```
 
 In particular you should check:

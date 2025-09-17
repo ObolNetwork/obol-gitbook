@@ -15,7 +15,7 @@ The local Grafana server will have a few pre-built dashboards:
 
 1.  Charon Overview
 
-    This is the main dashboard that provides all the relevant details about the Charon node, for example - peer connectivity, duty completion, health of beacon node and downstream validator, etc. To open, navigate to `charon-distributed-validator-node` directory and open the following `uri` in the browser `http://localhost:3000/d/d6qujIJVk/`.
+    This is the main dashboard that provides all the relevant details about the Charon node, for example - peer connectivity, duty completion, health of beacon node and downstream validator, etc. To open, navigate to `charon-distributed-validator-node` directory and open the following `uri` in the browser `http://localhost:3000/d/charonoverview/`.
 2.  Single Charon Node Dashboard (deprecated)
 
     This is an older dashboard Charon node monitoring which is now deprecated. If you are still using it, we would highly recommend to move to Charon Overview for most up to date panels.
