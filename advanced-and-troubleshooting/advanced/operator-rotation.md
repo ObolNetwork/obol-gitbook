@@ -12,7 +12,8 @@ Validator consolidation is a new feature for the Ethereum network, introduced wi
 - Consolidations can only be performed when the source validator has 0x01 or 0x02 withdrawal credentials and the target validator must be 0x02. The consolidation transaction must be sent from the withdrawal address defined in the source credentials. The target withdrawal credentials can be any address of choice.
 - This process transfers the staked ETH from the old validators to the new one while the stake never leaves the beacon chain. The only partial downtime for the source validator is the standard 27-hour waiting period on the beacon chain before the withdrawal. When compared to fully exiting and re-depositing, consolidation avoids the sweep delay required in that option.
 
-{% hint style="info" %} **Future direction (in development):** We’re moving toward a simpler, UI guided operator rotation powered by a new DKG algorithm called Pedersen. When available, operator rotation will run as a coordinated action across the cluster, old and new operators complete a single process together. Instead of changing your live setup, the flow generates a new set of cluster files that you can review before switching over. Operationally, your current cluster can keep running up until you’re ready to cut over. More details will be released soon. {% endhint %}
+> [!NOTE]
+> Future direction (in development): We’re moving toward a simpler, UI guided operator rotation powered by a new DKG algorithm called Pedersen. When available, operator rotation will run as a coordinated action across the cluster, old and new operators complete a single process together. Instead of changing your live setup, the flow generates a new set of cluster files that you can review before switching over. Operationally, your current cluster can keep running up until you’re ready to cut over. More details will be released soon.
 ---
 
 ### Guide: Operator Rotation in an Obol Cluster via Validator Consolidation
@@ -72,27 +73,18 @@ This document outlines the step-by-step process for rotating operators in an Obo
 
 - **Select Validators:** On the migration page, select the source validators from the original cluster that you wish to consolidate.
 
-INCLUDE IMAGE HERE FOR WITHDRAWAL ADDRESS PAGE AFTER SOURCE VALIDATORS ARE ACTIVATED
+
 
 - **Confirm and Consolidate:** Click the **Migrate** button to send the consolidation request.
 
-INCLUDE IMAGE OF CONFIRMED MIGRATION
-
-INCLUDE IMAGE HERE FOR WITHDRAWAL ADDRESS PAGE AFTER TARGET VALIDATORS ARE ACTIVATED
 
 <figure><img src="../../.gitbook/assets/operator-rotation-target-withdrawal.png" alt="Target withdrawal address view"><figcaption></figcaption></figure>
 
 ### 4. Post-Consolidation Actions
 
 - **Source Validator Exit:** Once the consolidation request is processed by the Ethereum network, the source validators will be set to exit automatically.
-
-SHOW THE EXAMPLE LINKS AND IMAGES HERE
-
 - **Waiting Period:** The validators will enter a waiting period of approximately 27 hours, which is standard for ETH withdrawals and exits.
 - **ETH Transfer:** After the waiting period, the staked ETH from the source validators will be automatically consolidated and credited to the target validators in the new cluster.
-
-SHOW IMAGE/LINK OF TARGET HERE
-
 - **Wind Down Source Clusters:** Once the source clusters have fully exited and the ETH has been credited to the new validators, you can safely wind down the source cluster's nodes.
 
 This process ensures a seamless and secure operator rotation, leveraging the efficiency of validator consolidation to minimize downtime and avoid a lengthy manual withdrawal process.
