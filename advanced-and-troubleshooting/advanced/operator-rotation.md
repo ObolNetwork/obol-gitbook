@@ -12,6 +12,7 @@ Validator consolidation is a new feature for the Ethereum network, introduced wi
 - Consolidations can only be performed when the source validator has 0x01 or 0x02 withdrawal credentials and the target validator must be 0x02. The consolidation transaction must be sent from the withdrawal address defined in the source credentials. The target withdrawal credentials can be any address of choice.
 - This process transfers the staked ETH from the old validators to the new one while the stake never leaves the beacon chain. The only partial downtime for the source validator is the standard 27-hour waiting period on the beacon chain before the withdrawal. When compared to fully exiting and re-depositing, consolidation avoids the sweep delay required in that option.
 
+{% hint style="info" %} **Future direction (in development):** We’re moving toward a simpler, UI guided operator rotation powered by a new DKG algorithm called Pedersen. When available, operator rotation will run as a coordinated action across the cluster, old and new operators complete a single process together. Instead of changing your live setup, the flow generates a new set of cluster files that you can review before switching over. Operationally, your current cluster can keep running up until you’re ready to cut over. More details will be released soon. {% endhint %}
 ---
 
 ### Guide: Operator Rotation in an Obol Cluster via Validator Consolidation
