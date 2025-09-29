@@ -16,7 +16,7 @@ The Delegate Reputation Score is a reputation system. It gives each delegate a s
 * **Forum rationale submissions**
 * **Forum engagement (discussion and replies)**
 
-These inputs are tracked over a rolling window of proposals, with scoring updates happening after [every **governance cycle** (every 21 days)](https://app.gitbook.com/o/lLbkJAnrBqjBjKugNPzM/s/ym0xLVqLq5ZCK1Q02khi/community-and-governance/governance/token-house#token-house-governance-proposal-process). The current scoring logic can be found in full detail on [Curia’s documentation](https://www.notion.so/DRS-v1-Implementation-Spec-Public-20f5e0b4886180219fcbfb8a2531264f), which also serves as the canonical source of truth.
+These inputs are tracked over a rolling window of proposals, with scoring updates happening after [every **governance cycle** (every 21 days)](https://app.gitbook.com/s/ym0xLVqLq5ZCK1Q02khi/community-and-governance/governance/token-house#token-house-governance-proposal-process). The current scoring logic can be found in full detail on [Curia’s documentation](https://www.notion.so/DRS-v1-Implementation-Spec-Public-20f5e0b4886180219fcbfb8a2531264f), which also serves as the canonical source of truth.
 
 {% hint style="success" %}
 **When does my DRS update?**
@@ -95,4 +95,4 @@ We are proud to help drive this standard forward and will continue sharing learn
 * [Curia's Source of truth for scoring logic](https://www.notion.so/DRS-v1-Implementation-Spec-Public-20f5e0b4886180219fcbfb8a2531264f) – Broken down calculation of DRS
 * [OIP-4: Delegate Compensation & DRS Scoring](https://community.obol.org/t/oip-4-delegate-compensation-and-delegate-reputation-score-integration-for-stobol/522) – original governance proposal
 
-\
+\\
