@@ -10,7 +10,7 @@ This section will serve as the **central hub** for all currently available open 
 
 Please check back soon for available missions.
 
-If you have a technical mission you'd like to propose to Obol instead, please use the [Staking Masters Grants track](https://docs.obol.org/~/revisions/f6ZmIaqOezvgymP2jTnN/community-and-governance/community/grants-program/grants-track-for-staking-masters).
+If you have a technical mission you'd like to propose to Obol instead, please use the [Staking Masters Grants track](../grants-track-for-staking-masters.md).
 
 ***
 
@@ -30,7 +30,7 @@ All Open Missions must go through the official application and evaluation proces
 
 **Goal**: Implement the add-validator functionality into the Obol DappNode package, leveraging the existing docs as reference.
 
-🔗[ docs.obol.org/add-validators](https://docs.obol.org/next/advanced-and-troubleshooting/advanced/add-validators)
+🔗[ docs.obol.org/add-validators](https://docs.obol.org/advanced-and-troubleshooting/advanced/add-validators)
 
 **Background**: This feature would allow users to dynamically add validators post-launch via DappNode. It is not currently supported and would require someone familiar with the Obol DappNode integration layer.
 

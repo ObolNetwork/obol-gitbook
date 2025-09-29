@@ -20,18 +20,18 @@ This program exists to extend the reach of the Collective: helping us ship faste
 
 The Grants Program is organized into **three distinct Grant Tracks:**
 
-### [Staking Mastery Program](https://docs.obol.org/~/revisions/XGawqlTVolVmLlVvlhb1/community-and-governance/community/grants-program/grants-track-for-staking-masters)
+### [Staking Mastery Program](grants-track-for-staking-masters.md)
 
 * For contributors applying to work on any of the [Obol Collective 2025 SQUAD Goals](https://community.obol.org/t/oip-3-obol-collective-2025-goals-proposal/388)&#x20;
 * This track revives the original Staking Mastery Program. I will now be running on a rolling basis to support research and technical contributions that advance distributed staking
 * Open application process with milestone-based disbursement
 
-### [Community Events & Workshops](https://docs.obol.org/~/revisions/XGawqlTVolVmLlVvlhb1/community-and-governance/community/grants-program/grants-track-for-community-events)
+### [Community Events & Workshops](grants-track-for-community-events.md)
 
 * For anyone hosting Obol-focused workshops, meetups or onboarding sessions
 * Permissionless structure, funded retroactively based on proof of attendance and impact
 
-### [Open Strategic Missions](https://docs.obol.org/~/revisions/XGawqlTVolVmLlVvlhb1/community-and-governance/community/grants-program/grants-track-for-strategic-open-missions)
+### [Open Strategic Missions](grants-track-for-open-strategic-missions/strategic-open-missions.md)
 
 * Pre-scoped, technical tasks created by Obol
 * Contributors can apply to complete these missions for funding

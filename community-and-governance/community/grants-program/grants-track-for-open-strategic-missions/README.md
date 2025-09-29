@@ -1,4 +1,4 @@
-# Grants Track for Strategic Open Missions
+# Grants Track for Open Strategic Missions
 
 This track enables technical contributors to pick up pre-scoped missions designed by the Obol team.
 
@@ -14,7 +14,7 @@ This track enables technical contributors to pick up **pre-scoped missions** des
 
 These missions are ideal for developers looking to ship meaningful tooling, research, or infrastructure improvements for **Obol Distributed Validators.**
 
-These missions are published directly in the [section below](https://docs.obol.org/~/revisions/XY6k3JVM6FfyM21je9Hy/community-and-governance/community/grants-program/grants-track-for-strategic-open-missions/strategic-open-missions). Each mission outlines:
+These missions are published directly in the [section below](strategic-open-missions.md). Each mission outlines:
 
 * The scope of work
 * The deliverables expected

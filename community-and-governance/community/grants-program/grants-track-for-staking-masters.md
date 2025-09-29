@@ -10,9 +10,9 @@ You can browse funded grants and milestone details for this track on[ ](https://
 
 ## Overview, Eligibility and Scope
 
-The **Staking Mastery Program** is a rolling grant track designed to empower individual contributors and small technical teams working to advance distributed staking. This track revives the ethos of the original [Staking Mastery Cohorts](https://docs.obol.org/~/revisions/v7a1DKzsdS3hejZZ27IA/community-and-governance/community/staking-masters) by preserving their spirit of excellence, but adapts the structure to support proactive applications aligned with the [Obol Collective’s 2025 SQUAD Goals](https://community.obol.org/t/oip-3-obol-collective-2025-goals-proposal/388).
+The **Staking Mastery Program** is a rolling grant track designed to empower individual contributors and small technical teams working to advance distributed staking. This track revives the ethos of the original [Staking Mastery Cohorts](../staking-masters.md) by preserving their spirit of excellence, but adapts the structure to support proactive applications aligned with the [Obol Collective’s 2025 SQUAD Goals](https://community.obol.org/t/oip-3-obol-collective-2025-goals-proposal/388).
 
-Unlike the original cohort-based model, this new iteration operates on a rolling basis. Contributors can apply at any time to work on initiatives that push forward distributed validator adoption, improve technical general infrastructure, or deliver impactful research. The focus here is technical. One time education initiatives are supported separately through our [Community Events track](https://docs.obol.org/~/revisions/v7a1DKzsdS3hejZZ27IA/community-and-governance/community/grants-program/grants-track-for-community-events).
+Unlike the original cohort-based model, this new iteration operates on a rolling basis. Contributors can apply at any time to work on initiatives that push forward distributed validator adoption, improve technical general infrastructure, or deliver impactful research. The focus here is technical. One time education initiatives are supported separately through our [Community Events track](grants-track-for-community-events.md).
 
 This grant track is designed for proactive applications submitted by individual contributors or small teams interested in helping the Collective move forward. These can include topics such as:
 
