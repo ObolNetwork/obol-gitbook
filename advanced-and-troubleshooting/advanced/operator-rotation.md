@@ -13,7 +13,7 @@ Validator consolidation is a new feature for the Ethereum network, introduced wi
 - This process transfers the staked ETH from the old validators to the new one while the stake never leaves the beacon chain. The only partial downtime for the source validator is the standard 27-hour waiting period on the beacon chain before the withdrawal. When compared to fully exiting and re-depositing, consolidation avoids the sweep delay required in that option.
 
 > [!NOTE]
-> Future direction (in development): We’re moving toward a simpler, UI guided operator rotation powered by a new DKG algorithm called Pedersen. When available, operator rotation will run as a coordinated action across the cluster, old and new operators complete a single process together. Instead of changing your live setup, the flow generates a new set of cluster files that you can review before switching over. Operationally, your current cluster can keep running up until you’re ready to cut over. More details will be released soon.
+> Future direction (in development): We’re building toward full cluster mutability so operators can react quickly to real-world events. That includes resharing fresh key material across the cluster if there’s ever a security concern, adding new operators to reach full Byzantine fault tolerance, and removing operators who aren’t meeting performance expectations. The goal is to make these changes possible without exiting or consolidating validators. The forthcoming tooling will guide the cluster through a coordinated workflow and produce a fresh set of operator files ready for cutover when you’re comfortable switching over.
 ---
 
 ### Guide: Operator Rotation in an Obol Cluster via Validator Consolidation
@@ -82,9 +82,30 @@ This document outlines the step-by-step process for rotating operators in an Obo
 
 ### 4. Post-Consolidation Actions
 
-- **Source Validator Exit:** Once the consolidation request is processed by the Ethereum network, the source validators will be set to exit automatically.
-- **Waiting Period:** The validators will enter a waiting period of approximately 27 hours, which is standard for ETH withdrawals and exits.
-- **ETH Transfer:** After the waiting period, the staked ETH from the source validators will be automatically consolidated and credited to the target validators in the new cluster.
-- **Wind Down Source Clusters:** Once the source clusters have fully exited and the ETH has been credited to the new validators, you can safely wind down the source cluster's nodes.
+> [!INFO]
+> Screenshots are for reference only, your validator balances and performance will differ.
+
+- **Source Validator Exit:** Once the consolidation request is processed by the Ethereum network, the source validators will be set to exit automatically. On [beaconcha.in](https://beaconcha.in) the validator pubkey will show an **exiting** status with consolidation in progress.
+
+<figure><img src="../../.gitbook/assets/operator-rotation-beaconcha-exiting.png" alt="Beaconcha.in validator showing exiting status"><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/operator-rotation-launchpad-exit.png" alt="Launchpad validator exit notification"><figcaption></figcaption></figure>
+
+- **Waiting Period:** After the exit is complete, the validator enters a ~27 hour waiting period (256 epochs). In the example below the validator is marked **exited** while the withdrawable epoch remains in the future (43257). Once the withdrawable epoch is reached, ETH will be consolidated to the target validator.
+
+<figure><img src="../../.gitbook/assets/operator-rotation-beaconcha-withdrawable.png" alt="Beaconcha.in withdrawable epoch countdown"><figcaption></figcaption></figure>
+
+- **ETH Transfer:** After the waiting period, the staked ETH from the source validators is automatically consolidated and credited to the target validators in the new cluster.
+
+<figure><img src="../../.gitbook/assets/operator-rotation-target-credited.png" alt="Target validator credited after consolidation"><figcaption></figcaption></figure>
+
+- **Wind Down Source Clusters:** Once the source validators have fully exited and funds have settled with the target cluster, you can wind down the original operators.
+
+<figure><img src="../../.gitbook/assets/operator-rotation-wind-down.png" alt="Cluster dashboard ready for wind down"><figcaption></figcaption></figure>
 
 This process ensures a seamless and secure operator rotation, leveraging the efficiency of validator consolidation to minimize downtime and avoid a lengthy manual withdrawal process.
+
+**Example clusters used in screenshots:**
+
+- Target cluster: [0x15d1…9e32](https://hoodi.launchpad.obol.org/cluster/details/?lockHash=0x15d113c8c3e3ca1ec24bbdd5c5d8f9065c36f07d9d70c13e9a4efba8a35b9e32)
+- Source cluster: [0xF321…2885](https://hoodi.launchpad.obol.org/cluster/details/?lockHash=0xF321443022ABA165FF5635CF71DC9DA0FC29EE91D03117055E97A1F92B5C2885)
