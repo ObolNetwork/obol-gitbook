@@ -34,7 +34,7 @@ To support transparent decision-making and empower active participation, here ar
 
 * [**Governance Forum**](https://community.obol.org/) – for proposal discussion and coordination
 * [**Voting Portal**](https://vote.obol.org/) – to delegate or vote on proposals
-* [**Dune Dashboard**](https://dune.com/vistawtf/obol-governance) – to track voting data and delegate participation
+* [**Dune Dashboard**](https://dune.com/vistalabs/obol-governance?ref=blog.obol.org) – to track voting data and delegate participation
 * [**Staking Portal**](https://stake.obol.org/) – to stake OBOL and receive stOBOL
 * [**0xretro.xyz**](https://0xretro.xyz/) – to access key info and metrics about delegates
 
