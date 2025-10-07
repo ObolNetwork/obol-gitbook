@@ -35,7 +35,7 @@ The number of tokens is 1:1. The economic value grows over time because **stOBOL
 
 ## User Flows
 
-You can manage wrapping and unwrapping directly on our staking platform. The process is fully integrated and intuitive: just head to the staking portal and you’ll see the following options:
+You can manage wrapping and unwrapping directly on our [staking platform](https://vote.obol.org/dao/token/wrap). The process is fully integrated and intuitive: just head to the staking portal and you’ll see the following options:
 
 * **Stake (OBOL → stOBOL)**: Stake OBOL and receive stOBOL, which auto-compounds and preserves delegation.
 * **Unstake (stOBOL → OBOL)**: Exit staking and redeem more OBOL back from stOBOL.
