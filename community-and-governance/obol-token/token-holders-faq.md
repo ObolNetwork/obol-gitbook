@@ -94,7 +94,7 @@ Yes, stOBOL is a fully transferable ERC-20 token. However, if you transfer it, y
 
 <summary><strong>Where can I use stOBOL?</strong></summary>
 
-stOBOL can be used in DeFi protocols (e.g., as collateral, in LPs, etc.). Integrations are ongoing and will be announced via Discord and Twitter.
+stOBOL can be used in DeFi protocols (e.g., as collateral, in LPs, etc.). Integrations are ongoing and will be announced via Discord and Twitter. Integrations are also documented [here](staking-and-stobol.md).
 
 </details>
 
