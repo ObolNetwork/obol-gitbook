@@ -37,7 +37,7 @@ To support transparent decision-making and empower active participation, here ar
 * [**Dune Dashboard**](https://dune.com/vistalabs/obol-governance?ref=blog.obol.org) – to track voting data and delegate participation
 * [**Staking Portal**](https://stake.obol.org/) – to stake OBOL and receive stOBOL
 * [**0xretro.xyz**](https://0xretro.xyz/) – to access key info and metrics about delegates
-* [Cura Labs Dashboard](https://obol.curiahub.xyz/delegate) – to find detailed insights on delegate reputation scores and contributions
+* [**Cura Labs Dashboard**](https://obol.curiahub.xyz/delegate) – to find detailed insights on delegate reputation scores and contributions
 
 ## Governance Sections
 
