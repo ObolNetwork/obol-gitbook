@@ -37,6 +37,7 @@ To support transparent decision-making and empower active participation, here ar
 * [**Dune Dashboard**](https://dune.com/vistalabs/obol-governance?ref=blog.obol.org) – to track voting data and delegate participation
 * [**Staking Portal**](https://stake.obol.org/) – to stake OBOL and receive stOBOL
 * [**0xretro.xyz**](https://0xretro.xyz/) – to access key info and metrics about delegates
+* [Cura Labs Dashboard](https://obol.curiahub.xyz/delegate) – to find detailed insights on delegate reputation scores and contributions
 
 ## Governance Sections
 
@@ -45,7 +46,7 @@ The Obol governance documentation is organized into the following sections:
 * [collective.md](collective.md "mention") – framing the governance bodies, roles, and progressive decentralization pathway
 * [token-house.md](token-house.md "mention") – the token-holder-based decision-making layer of the Collective
 * [raf](raf/ "mention") – information for delegates participating in the Retroactive Funding Program (RAF)
-* [Broken link](broken-reference "mention") – the Obol funding mechanism for contributors and ecosystem support, led by the Obol Association
+* [grants-program](../community/grants-program/ "mention") – the Obol funding mechanism for contributors and ecosystem support, led by the Obol Association
 
 _These sections evolve as the governance process matures. For any feedback, ideas, or questions, we invite you to join the discussion on the_ [_Forum_](https://community.obol.org/) _or reach out via_ [_Discord_](https://discord.obol.org)_._
 
