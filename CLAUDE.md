@@ -41,22 +41,33 @@ The repository contains two parallel directory structures:
 - **Active/Active Redundancy** - Multiple nodes can go offline while validator remains operational
 - **Non-custodial Architecture** - Private keys are never reconstructed in full
 
+### Cluster Modification Commands
+- **`charon alpha edit` commands** - Modify existing distributed validator cluster configurations
+  - `charon alpha edit add-validators` - Generate and add new validators to existing cluster
+  - `charon alpha edit add-operators` - Add new operators whilst keeping validator public keys unchanged
+  - `charon alpha edit remove-operators` - Remove operators whilst leaving all validators intact
+  - `charon alpha edit recreate-private-keys` - Create new private key shares whilst retaining operator identities and validator public keys
+- **Ceremony Coordination** - Most edit commands require threshold or all operators to participate
+- **Experimental Status** - These features should not be used in production (Mainnet) yet
+
 ### Testing & Validation
-- **`charon test` commands** - Comprehensive testing suite for cluster health
-  - `charon test beacon` - Test beacon node connectivity and performance
-  - `charon test validator` - Test validator client connectivity  
-  - `charon test peers` - Test peer-to-peer connectivity within cluster
-  - `charon test infra` - Test infrastructure (disk, memory, network)
+- **`charon alpha test` commands** - Comprehensive testing suite for cluster health
+  - `charon alpha test beacon` - Test beacon node connectivity and performance
+  - `charon alpha test validator` - Test validator client connectivity
+  - `charon alpha test peers` - Test peer-to-peer connectivity within cluster
+  - `charon alpha test infra` - Test infrastructure (disk, memory, network)
   - Add `--load-test` flag for performance testing
 
 ## Content Guidelines
 
 ### Documentation Standards
+- Use British English variant (e.g., "whilst", "recognise", "optimise") throughout all documentation
 - Use clear, technical language appropriate for both developers and stakers
 - Include troubleshooting sections with specific error conditions and resolutions
 - Provide hardware/infrastructure requirements where applicable
 - Reference external tools and clients with proper links
 - Include security warnings for sensitive operations (private keys, production environments)
+- Use GitBook-specific syntax (e.g., `{% hint style="warning" %}`, `{% hint style="info" %}`, `{% hint style="danger" %}`)
 
 ### File Organization
 - Keep related content together (e.g., all quickstart guides in `run-a-dv/start/`)
@@ -84,7 +95,8 @@ The repository contains two parallel directory structures:
 - Ensure image references point to correct `.gitbook/assets/` paths
 
 ### Technical Accuracy
-- Validate CLI command examples against latest Charon releases
+- Validate CLI command examples against latest Charon releases (run `charon [command] --help` to get current flags and usage)
 - Verify threshold mathematics in cluster configuration tables
 - Cross-check API documentation with actual API specifications
 - Ensure hardware requirements reflect current recommendations
+- Update internal documentation links to use relative paths with proper anchor links (e.g., `../../learn/charon/charon-cli-reference.md#section-name`)
