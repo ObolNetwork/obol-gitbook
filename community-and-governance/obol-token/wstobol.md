@@ -1,7 +1,3 @@
----
-description: Coming Soon...
----
-
 # wstOBOL
 
 ### What is wstOBOL? <a href="#what-is-wstobol" id="what-is-wstobol"></a>
