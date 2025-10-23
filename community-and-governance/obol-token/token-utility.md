@@ -24,9 +24,7 @@ Plans are in place to launch several DeFi avenues for the OBOL Token post-TGE, s
 
 ### Pendle Integration for stOBOL
 
-_Note: The Pendle integration is not yet live. It is expected to go live in the first half of August 2025. This information is provided in advance for community awareness._
-
-wstOBOL is supported on [Pendle Finance](https://app.pendle.finance/), enabling users to access advanced yield strategies with their staked OBOL. wstOBOL is the wrapped version of stOBOL.
+wstOBOL is supported on [Pendle Finance](https://app.pendle.finance/trade/pools/0x78954a6a2c2a08455f92e47c4e587feb7467bf37/zap/in?chain=ethereum), enabling users to access advanced yield strategies with their staked OBOL. wstOBOL is the wrapped version of stOBOL.
 
 For more info on wstOBOL, refer to our [dedicated page](wstobol.md).
 

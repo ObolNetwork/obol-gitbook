@@ -40,7 +40,7 @@ You can manage wrapping and unwrapping directly on our [staking platform](https:
 
 ### Where can I use wstOBOL? <a href="#where-can-i-use-wstobol" id="where-can-i-use-wstobol"></a>
 
-* **Pendle Finance** (yield trading, fixed/floating yield markets).
+* [**Pendle Finance**](https://app.pendle.finance/trade/pools/0x78954a6a2c2a08455f92e47c4e587feb7467bf37/zap/in?chain=ethereum) (yield trading, fixed/floating yield markets).
 * Future integrations in lending, borrowing, and liquidity protocols.
 
 ### Risks & Considerations <a href="#risks-and-considerations" id="risks-and-considerations"></a>
