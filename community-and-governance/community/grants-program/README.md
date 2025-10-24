@@ -50,8 +50,8 @@ All submitted applications (regardless of track) will receive an initial respons
 
 ## Funding & Disbursement <a href="#funding-and-disbursement" id="funding-and-disbursement"></a>
 
-* All budgets are discussed in **USD** terms
-* Disbursements are made in **OBOL tokens**, calculated at the time of milestone approval or delivery
+* All grants are scoped and approved with a fixed amount in $OBOL, agreed upon upfront.
+* Disbursements are made in **OBOL tokens**, disbursed upon approval of each milestone
 * Payments can be **one-shot** or broken into **milestones**, depending on scope
 
 ## Transparency & Communication <a href="#transparency-and-communication" id="transparency-and-communication"></a>
