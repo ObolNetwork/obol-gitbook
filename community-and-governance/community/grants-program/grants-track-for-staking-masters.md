@@ -32,7 +32,7 @@ There is no fixed format or size constraint for proposals. We welcome both small
 
 ## Budget & Funding <a href="#budget-and-funding" id="budget-and-funding"></a>
 
-Applicants must request funding using the template included in the application form. All budgets should be **denominated in USD** for clarity, and payments will be made in **OBOL token equivalents** at the time of disbursement.
+Applicants must request funding using the template included in the application form. All budgets should be **denominated in $OBOL**, and payments will be made in **OBOL tokens**.
 
 Grants are **milestone-based**. This means:
 
@@ -49,7 +49,7 @@ To apply, simply [fill out the dedicated application form](https://forms.gle/hJf
 * An overview of your project and its alignment with the Collective’s SQUAD Goals
 * A breakdown of proposed milestones and deliverables
 * Team background and relevant experience
-* A detailed cost breakdown and requested budget (USD-denominated)
+* A detailed cost breakdown and requested budget (USD-denominated for the cost breakdown and converted into $OBOL for the budget request)
 
 ## Evaluation & Review <a href="#evaluation-and-review" id="evaluation-and-review"></a>
 
