@@ -17,9 +17,9 @@ Currently supported client options are:
 | Execution layer | Consensus layer | Distributed validator | Validator client | MEV          |
 | --------------- | --------------- | --------------------- | ---------------- | ------------ |
 | Nethermind      | Lighthouse      | Charon                | Lodestar         | MEV boost    |
-|                 | Grandine        |                       | Nimbus           | Commit boost |
-|                 |                 |                       | Prysm            |              |
-|                 |                 |                       | Teku             |              |
+| Reth            | Grandine        |                       | Nimbus           | Commit boost |
+|                 | Lodestar        |                       | Prysm            |              |
+|                 | Teku            |                       | Teku             |              |
 
 For support between different combinations, refer to Charon's compatibility matrix, found in the [prepare section of the docs](../../run-a-dv/prepare/how_where_dvs.md) or under [release notes](https://github.com/ObolNetwork/charon/releases/) for each release.
 
@@ -27,6 +27,22 @@ For support between different combinations, refer to Charon's compatibility matr
 As CDVN natively supports more clients, the number of possible combinations grows quickly.
 We test extensively, but cannot guarantee the performance of all possible client combos.
 If you run a mixed-client cluster, monitor performance and be ready to swap to another client if you observe issues.
+{% endhint %}
+
+{% hint style="warning" %}
+There are incompatibilities on requesting beacon committee selections between validator clients. The different clients are being divised in the following two groups:
+
+1. Validator client requests beacon committee selections of the current slot, beginning of each slot:
+   1. Lodestar
+   2. Lighthouse
+   3. Nimbus
+2. Validator client requests beacon committee selections of the current epoch, beginning of each epoch:
+   1. Teku
+   2. Prysm
+
+Not having threshold nodes using validator client from one or the other group will result in beacon committee aggregation duties failing.
+
+**Lodestar validator client has a behaviour to skip the next slot if it fails attestation or aggregation. This means that clusters should not run Lodestar if they cannot reach threshold of validator clients from group 1, otherwise their attestation success will drop by half.**
 {% endhint %}
 
 ## Choosing clients in fresh cluster
