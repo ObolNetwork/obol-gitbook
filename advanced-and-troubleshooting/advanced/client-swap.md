@@ -32,13 +32,13 @@ If you run a mixed-client cluster, monitor performance and be ready to swap to a
 {% hint style="info" %}
 There is currently an incompatibility between validator clients that may cause attestation aggregation duties to fail. Aggregation duties are not economically rewarded nor punished for their completion.
 
-To ensure aggregations succeed, have at least threshold of nodes in the cluster running one of Lodestar, Lighthouse, and Nimbus, or alternatively; have a threshold of nodes in the cluster running one of Teku and Prysm. This incompatibility will be remediated in upcoming client releases.
+To ensure aggregations succeed; have at least threshold of nodes in the cluster running one of Lodestar, Lighthouse, and Nimbus, or alternatively; have a threshold of nodes in the cluster running one of Teku and Prysm. This incompatibility will be remediated in upcoming client releases.
 {% endhint %}
 
 {% hint style="warning" %}
-The **Lodestar validator** client's default behaviour is to skip the next slot if it fails an attestation or aggregation. This can impact your cluster's performance, particularly if you have more than the fault tolerance threshold of your cluster running Lodestar's validator client, as well as many validators running in the cluster. 
+**Lodestar's validator** client's default behaviour is to skip the next slot if it fails an attestation or aggregation. This can impact your cluster's performance, particularly if you have more than the fault tolerance threshold of your cluster running Lodestar's validator client, and many validators running in the cluster. 
 
-If your cluster is not successfully aggregating, you should ensure your cluster is running at least a threshold of compatible validator clients listed above, as well as ensuring your client's have the appropriate [`--distributed` flag](../troubleshooting/client-configurations) set to enable distributed aggregation mode, but failing that, you can add the flag `--slotSkip false` to your `lodestar vc` process (Requires lodestar to be version `v1.37.0` and newer) or set `VC_LODESTART_DISABLE_SLOT_SKIP` in your `.env` file if you're using (L)CDVN. This disables the slot skipping feature.
+If your cluster is not successfully aggregating, you should ideally swap to the compatible validator clients listed above, along with ensuring your clients have the appropriate [`--distributed` flag](../troubleshooting/client-configurations.md) set to enable distributed aggregation mode. Failing that, you can add the flag `--slotSkip false` to your `lodestar vc` process (Requires lodestar to be version `v1.37.0` and newer) or set `VC_LODESTAR_DISABLE_SLOT_SKIP` in your `.env` file if you're using (L)CDVN. This disables the slot skipping feature.
 {% endhint %}
 
 ## Choosing clients in fresh cluster
