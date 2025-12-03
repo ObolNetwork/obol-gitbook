@@ -91,7 +91,7 @@ All source and target validators must be active with a balance greater than 32 e
 {% endhint %}
 
 {% hint style="info" %}
-It is possible to permissionlessly consolidate a validator into (or out of) an OVM. This could result in the OVM's `amountOfPrincipalStake()` not accurately reflecting the true amount of stake on validators exiting to the OVM withdrawal address. This could result in more (or less) ether being treated as reward, and disbursed to the rewardRecipient address. The owner of the OVM or any address with the `SET_BENEFICIARY_ROLE` can update the amount of Ether treated as principal with the `setAmountOfPrincipalStake()` function.n.
+It is possible to permissionlessly consolidate a validator into (or out of) an OVM. This could result in the OVM's `amountOfPrincipalStake()` not accurately reflecting the true amount of stake on validators exiting to the OVM withdrawal address. This could result in more (or less) ether being treated as reward, and disbursed to the rewardRecipient address. The owner of the OVM or any address with the `SET_BENEFICIARY_ROLE` can update the amount of Ether treated as principal with the `setAmountOfPrincipalStake()` function.
 {% endhint %}
 
 ```solidity
