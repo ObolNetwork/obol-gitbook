@@ -582,7 +582,7 @@ The `charon alpha edit` commands allow you to modify existing distributed valida
 
 ```markdown
 charon alpha edit --help
-Subcommands allow users to modify existing distributed validator cluster configurations, such as adding and removing operators.
+Subcommands allow users to modify existing distributed validator cluster configurations, such as adding, removing or replacing operators.
 
 Usage:
   charon alpha edit [command]
@@ -592,6 +592,7 @@ Available Commands:
   add-validators        Add new validators to an existing distributed validator cluster
   recreate-private-keys Create new private key shares to replace existing validator private key shares
   remove-operators      Remove operators from an existing distributed validator cluster
+  replace-operator      Replace an operator in an existing distributed validator cluster
 
 Flags:
   -h, --help   Help for edit
@@ -745,6 +746,45 @@ Flags:
       --log-output-path string                 Path in which to write on-disk logs.
       --no-verify                              Disables cluster definition and lock file verification.
       --output-dir string                      The destination folder for the new cluster artifacts. Must be empty. (default "distributed_validator")
+      --p2p-disable-reuseport                  Disables TCP port reuse for outgoing libp2p connections.
+      --p2p-external-hostname string           The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
+      --p2p-external-ip string                 The IP address advertised by libp2p. This may be used to advertise an external IP.
+      --p2p-relays strings                     Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://4.relay.obol.dev])
+      --p2p-tcp-address strings                Comma-separated list of listening TCP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
+      --p2p-udp-address strings                Comma-separated list of listening UDP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
+      --private-key-file string                The path to the charon enr private key file.  (default ".charon/charon-enr-private-key")
+      --shutdown-delay duration                Graceful shutdown delay. (default 1s)
+      --timeout duration                       Timeout for the protocol, should be increased if protocol times out. (default 1m0s)
+      --validator-keys-dir string              Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
+```
+
+#### Replace an operator in a cluster
+
+The `charon alpha edit replace-operator` command replaces an existing operator in a distributed validator cluster with a new operator, whilst keeping all validators intact. All remaining and new operators must participate in this ceremony.
+
+{% hint style="warning" %}
+This is an experimental feature and should not be used in production (Mainnet) yet.
+{% endhint %}
+
+```markdown
+charon alpha edit replace-operator --help
+Replaces an operator in an existing distributed validator cluster, keeping validator public keys unchanged.
+
+Usage:
+  charon alpha edit replace-operator [flags]
+
+Flags:
+      --execution-client-rpc-endpoint string   Optional address of an execution engine JSON-RPC API. Used to validate smart contract signatures for Node Operators in the cluster.
+  -h, --help                                   Help for replace-operator
+      --lock-file string                       The path to the cluster lock file defining the distributed validator cluster. (default ".charon/cluster-lock.json")
+      --log-color string                       Log color; auto, force, disable. (default "auto")
+      --log-format string                      Log format; console, logfmt or json (default "console")
+      --log-level string                       Log level; debug, info, warn or error (default "info")
+      --log-output-path string                 Path in which to write on-disk logs.
+      --new-operator-enr string                The new operator to be added (Charon ENR address).
+      --no-verify                              Disables cluster definition and lock file verification.
+      --old-operator-enr string                The old operator to be replaced (Charon ENR address).
+      --output-dir string                      The destination folder for the new cluster data. Must be empty. (default "distributed_validator")
       --p2p-disable-reuseport                  Disables TCP port reuse for outgoing libp2p connections.
       --p2p-external-hostname string           The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
       --p2p-external-ip string                 The IP address advertised by libp2p. This may be used to advertise an external IP.
