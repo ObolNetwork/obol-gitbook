@@ -25,7 +25,7 @@ The Charon clients in a DV cluster are connected to each other via a small p2p n
 
 Related [Charon configuration flags](https://docs.obol.org/learn/charon/charon-cli-reference):
 
-* `--p2p-tcp-addresses`: Addresses for Charon to listen on and serve p2p requests.
+* `--p2p-tcp-address`: Address for Charon to listen on and serve p2p requests.
 * `--p2p-relays`: Connect Charon to one or more relay servers.
 * `--private-key-file`: Private key identifying the Charon client.
 
