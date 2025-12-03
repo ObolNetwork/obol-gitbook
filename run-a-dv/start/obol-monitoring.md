@@ -51,4 +51,25 @@ The last step in your DappNode setup is to add your Monitoring Credentials. This
 
     <figure><img src="../../.gitbook/assets/image (86).png" alt=""><figcaption></figcaption></figure>
 {% endtab %}
+{% tab title="DV-Pod" %}
+
+Get a Prometheus monitoring credential from the Obol core team, it will look like:
+
+```log
+obol20tnt8UC...
+```
+
+Then, either add `--set centralMonitoring.enabled=true --set-string centralMonitoring.token='YOUR_TOKEN_HERE'` to your `helm install` command, or if using a Values.yaml file, update `centralMonitoring.enabled` to `true`, and `centralMonitoring.token` to the monitoring credential you have been given, and then install/upgrade the chart.
+
+```yaml
+# -- Central Monitoring
+centralMonitoring:
+  # -- Specifies whether central monitoring should be enabled
+  enabled: true
+  # -- https endpoint to obol central prometheus
+  promEndpoint: "https://vm.monitoring.gcp.obol.tech/write"
+  # -- The authentication token to the central Obol prometheus instance
+  token: "YOUR_TOKEN_HERE"
+```
+{% endtab %}
 {% endtabs %}

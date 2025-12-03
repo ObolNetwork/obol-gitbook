@@ -6,7 +6,7 @@ description: A dapp to securely create Distributed Validators alone or with a gr
 
 In order to activate an Ethereum validator, 32 ETH must be deposited into the official deposit contract. Distributed validators are no different.
 
-The vast majority of users that created validators to date have used the [~~**Eth2**~~**&#x20;Staking Launchpad**](https://launchpad.ethereum.org/), a public good open-source website built by the Ethereum Foundation alongside participants who later went on to found Obol. This tool has been wildly successful in the safe and educational creation of a significant number of validators on the Ethereum mainnet.
+The vast majority of users that created validators to date have used the [~~**Eth2**~~** Staking Launchpad**](https://launchpad.ethereum.org/), a public good open-source website built by the Ethereum Foundation alongside participants who later went on to found Obol. This tool has been wildly successful in the safe and educational creation of a significant number of validators on the Ethereum mainnet.
 
 To facilitate the generation of distributed validator keys amongst remote users with high-trust, the Obol Network developed and maintains a website that enables a group of users to come together and create these threshold keys: **The DV Launchpad**.
 
