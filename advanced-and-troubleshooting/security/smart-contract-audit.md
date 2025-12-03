@@ -1,6 +1,28 @@
 # Smart Contract Audit
 
-## Obol Audit Report: Obol Manager Contracts
+The Obol Splits smart contracts have undergone multiple security audits to ensure the safety and reliability of the protocol. All audit reports are available in the [obol-splits audit directory](https://github.com/ObolNetwork/obol-splits/tree/main/audit).
+
+## Obol Splits V3 Audit (2025)
+
+Prepared by: Nethermind Security
+
+Date: 2025
+
+[PDF Version](https://github.com/ObolNetwork/obol-splits/blob/main/audit/2025%20-%20Obol%20Splits%20V3%20Audit%20-%20Nethermind.pdf)
+
+This audit covers the latest version of Obol Splits including the Obol Validator Manager (OVM) contracts and related improvements for Pectra upgrade support (EIP-7002 and EIP-7251).
+
+## Obol Splits V2 Audit (2025)
+
+Prepared by: Nethermind Security
+
+Date: 2025
+
+[PDF Version](https://github.com/ObolNetwork/obol-splits/blob/main/audit/2025%20-%20Obol%20Splits%20V2%20Audit%20-%20Nethermind.pdf)
+
+This audit covers enhancements and updates to the Obol Splits protocol following the initial audit.
+
+## Obol Splits V1 Audit (2023)
 
 Prepared by: Zach Obront, Independent Security Researcher
 
