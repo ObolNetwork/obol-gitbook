@@ -2,15 +2,15 @@
 description: A local Kubernetes-based framework for running blockchain networks
 ---
 
-# Introduction to Obol Stack
+# Introduction to the Obol Stack
 
-Obol Stack is a local development environment for running blockchain networks on your machine. It provides a simplified CLI experience for managing a Kubernetes cluster with dynamically deployable network instances, allowing developers and operators to run Ethereum nodes, Layer 2 networks, and other blockchain infrastructure locally.
+The Obol Stack is a local development environment for running blockchain networks on your machine. It provides a simplified CLI experience for managing a Kubernetes cluster with dynamically deployable network instances, allowing developers and operators to run Ethereum nodes, Layer 2 networks, and other blockchain infrastructure locally.
 
 {% hint style="info" %}
-Obol Stack is designed for local development and testing. For production deployments, refer to the respective network documentation and use appropriate infrastructure.
+The Obol Stack is designed for local development and testing. For production deployments, refer to the respective network documentation and use appropriate infrastructure.
 {% endhint %}
 
-## What is Obol Stack?
+## What is the Obol Stack?
 
 Obol Stack is a two-part system:
 
