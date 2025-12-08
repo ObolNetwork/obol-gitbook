@@ -8,7 +8,7 @@ description: Frequently asked questions about Obol Stack
 
 ### What is Obol Stack?
 
-Obol Stack is a local Kubernetes-based development environment for running blockchain networks. It uses k3d (Kubernetes in Docker) to provide a lightweight cluster where you can deploy Ethereum nodes, Layer 2 networks, and other blockchain infrastructure.
+The Obol Stack is a local Kubernetes-based development environment for running blockchain networks. It uses k3d (Kubernetes in Docker) to provide a lightweight cluster where you can deploy Ethereum nodes, Layer 2 networks, and other blockchain infrastructure.
 
 ### Is Obol Stack suitable for production?
 
@@ -21,7 +21,7 @@ Obol Stack supports:
 * **macOS** (Darwin) - Intel and Apple Silicon
 * **Linux** - amd64 and arm64 architectures
 
-Windows is not currently supported. Windows users can use WSL2 (Windows Subsystem for Linux) to run Obol Stack.
+Windows is not currently supported. Windows users can use WSL2 (Windows Subsystem for Linux) to run the Obol Stack.
 
 ### What are the hardware requirements?
 
@@ -62,7 +62,7 @@ open -a Docker
 sudo systemctl start docker
 ```
 
-### How do I update Obol Stack?
+### How do I update the Obol Stack?
 
 Re-run the installer to update to the latest version:
 
@@ -149,7 +149,7 @@ obol kubectl get all -A
 
 Obol Stack uses an isolated kubeconfig file at `~/.config/obol/kubeconfig.yaml`. This prevents conflicts with your existing Kubernetes configuration.
 
-To use Obol Stack's cluster with standard kubectl:
+To use the Obol Stack's cluster with standard kubectl:
 
 ```shell
 export KUBECONFIG=~/.config/obol/kubeconfig.yaml
