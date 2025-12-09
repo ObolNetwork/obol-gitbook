@@ -97,7 +97,7 @@ Running full Ethereum nodes requires significant disk space. Mainnet execution c
 ├─────────────────────────────────────────────────────────────┤
 │  Network Deployments                                        │
 │  ├── ethereum-mainnet-prod (namespace)                     │
-│  ├── ethereum-holesky-test (namespace)                     │
+│  ├── ethereum-hoodi-test (namespace)                     │
 │  ├── aztec-mainnet-node (namespace)                        │
 │  └── helios-knowing-wahoo (namespace)                      │
 └─────────────────────────────────────────────────────────────┘

@@ -67,19 +67,19 @@ Deploy a full Ethereum node with configurable execution and consensus clients.
 | Flag | Description | Options | Default |
 | --- | --- | --- | --- |
 | `--id` | Deployment identifier | Any string | Auto-generated |
-| `--network` | Ethereum network | mainnet, sepolia, holesky, hoodi | mainnet |
+| `--network` | Ethereum network | mainnet, sepolia, hoodi | mainnet |
 | `--execution-client` | Execution layer client | reth, geth, nethermind, besu, erigon, ethereumjs | reth |
 | `--consensus-client` | Consensus layer client | lighthouse, prysm, teku, nimbus, lodestar, grandine | lighthouse |
 
 ### Examples
 
 {% tabs %}
-{% tab title="Holesky testnet" %}
-Deploy an Ethereum node on Holesky testnet with default clients:
+{% tab title="Hoodi testnet" %}
+Deploy an Ethereum node on Hoodi testnet with default clients:
 
 ```shell
 # Install configuration
-obol network install ethereum --network=holesky
+obol network install ethereum --network=hoodi
 
 # Deploy to cluster (replace with your deployment ID)
 obol network sync ethereum/knowing-wahoo
@@ -109,12 +109,12 @@ Run mainnet and testnet nodes simultaneously:
 # Install mainnet
 obol network install ethereum --id=mainnet --network=mainnet
 
-# Install holesky testnet
-obol network install ethereum --id=holesky --network=holesky
+# Install hoodi testnet
+obol network install ethereum --id=hoodi --network=hoodi
 
 # Deploy both
 obol network sync ethereum/mainnet
-obol network sync ethereum/holesky
+obol network sync ethereum/hoodi
 ```
 {% endtab %}
 {% endtabs %}
