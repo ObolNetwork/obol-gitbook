@@ -122,10 +122,10 @@ obol network list
 
 ## Step 4: Install a network
 
-Install an Ethereum node on the Holesky testnet:
+Install an Ethereum node on the Hoodi testnet:
 
 ```shell
-obol network install ethereum --network=holesky
+obol network install ethereum --network=hoodi
 ```
 
 This creates a network configuration with an auto-generated deployment ID (e.g., `knowing-wahoo`).
