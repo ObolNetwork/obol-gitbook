@@ -74,8 +74,8 @@ Deploy a full Ethereum node with configurable execution and consensus clients.
 ### Examples
 
 {% tabs %}
-{% tab title="Holesky testnet" %}
-Deploy an Ethereum node on Holesky testnet with default clients:
+{% tab title="Hoodi testnet" %}
+Deploy an Ethereum node on Hoodi testnet with default clients:
 
 ```shell
 # Install configuration
@@ -109,12 +109,12 @@ Run mainnet and testnet nodes simultaneously:
 # Install mainnet
 obol network install ethereum --id=mainnet --network=mainnet
 
-# Install holesky testnet
-obol network install ethereum --id=holesky --network=holesky
+# Install hoodi testnet
+obol network install ethereum --id=hoodi --network=hoodi
 
 # Deploy both
 obol network sync ethereum/mainnet
-obol network sync ethereum/holesky
+obol network sync ethereum/hoodi
 ```
 {% endtab %}
 {% endtabs %}

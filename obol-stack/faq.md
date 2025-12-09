@@ -184,10 +184,10 @@ Yes. Each deployment gets a unique namespace. For example:
 
 ```shell
 obol network install ethereum --id=mainnet --network=mainnet
-obol network install ethereum --id=holesky --network=holesky
+obol network install ethereum --id=hoodi --network=hoodi
 ```
 
-This creates two separate deployments: `ethereum-mainnet` and `ethereum-holesky`.
+This creates two separate deployments: `ethereum-mainnet` and `ethereum-hoodi`.
 
 ### How long does it take to sync an Ethereum node?
 
@@ -195,8 +195,8 @@ Sync times vary significantly:
 
 | Network | Execution Client | Approximate Time |
 | --- | --- | --- |
-| Holesky | Reth | 2-6 hours |
-| Holesky | Geth | 4-12 hours |
+| Hoodi | Reth | 2-6 hours |
+| Hoodi | Geth | 4-12 hours |
 | Mainnet | Reth | 1-3 days |
 | Mainnet | Geth | 3-7 days |
 
