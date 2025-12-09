@@ -4,9 +4,9 @@ description: Get started with Obol Stack in under 5 minutes
 
 # Quickstart
 
-This guide walks you through installing Obol Stack and running your first blockchain network locally.
+This guide walks you through installing the Obol Stack and running your first blockchain network locally.
 
-## Pre-requisites
+## Prerequisites
 
 * Docker installed and running on your machine.
 * macOS or Linux operating system.
