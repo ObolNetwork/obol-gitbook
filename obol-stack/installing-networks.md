@@ -4,7 +4,7 @@ description: Deploy blockchain networks on your local Obol Stack
 
 # Installing networks
 
-Obol Stack supports installing multiple blockchain networks on your local Kubernetes cluster. Each network installation creates a unique deployment with its own namespace, allowing you to run multiple instances simultaneously.
+The Obol Stack supports installing multiple blockchain networks on your local Kubernetes cluster. Each network installation creates a unique deployment with its own namespace, allowing you to run multiple instances simultaneously.
 
 ## Available networks
 
