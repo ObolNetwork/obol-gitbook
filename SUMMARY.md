@@ -104,6 +104,14 @@
   * [Documentation Standards](community-and-governance/contribution/docs.md)
   * [Feedback](community-and-governance/contribution/feedback.md)
 
+## Obol Stack
+
+* [Introduction](obol-stack/README.md)
+* [Quickstart](obol-stack/quickstart.md)
+* [Installing Networks](obol-stack/installing-networks.md)
+* [Installing Apps](obol-stack/installing-apps.md)
+* [FAQ](obol-stack/faq.md)
+
 ## Walkthrough Guides
 
 * [Walkthroughs](walkthrough-guides/walkthroughs/README.md)
