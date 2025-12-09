@@ -4,7 +4,7 @@ description: Deploy additional applications on your Obol Stack
 
 # Installing apps
 
-Obol Stack supports installing additional applications on top of your local Kubernetes cluster. Applications extend the functionality of your stack with monitoring, RPC proxies, and other services.
+The Obol Stack supports installing additional applications on top of your local Kubernetes cluster. Applications extend the functionality of your stack with monitoring, RPC proxies, and other services.
 
 {% hint style="info" %}
 The application system is under active development. Currently, default applications are deployed automatically with the stack. The `obol app` command for installing additional applications is planned for a future release.
