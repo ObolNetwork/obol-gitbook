@@ -87,7 +87,7 @@ Lodestar's boot script (`lodestar/run.sh`) will automatically import all keys, r
 {% hint style="warning" %}
 All existing operators must fully shut down their cluster nodes before starting with the new configuration. The old cluster must be completely stopped before the new cluster with the expanded operator set can begin operating. Unlike add-validators, this is not a gradual migration.
 
-It is advisable to shut the cluster down for at least two epochs, to minimse any risk of unintended double signing during the controlled restart.
+It is advisable to shut the cluster down for at least two epochs, to minimise any risk of unintended double signing during the controlled restart.
 {% endhint %}
 
 ## Current Considerations
