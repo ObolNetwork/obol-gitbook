@@ -42,7 +42,7 @@ If you're removing operators within the fault tolerance, all remaining operators
 charon alpha edit remove-operators --operator-enrs-to-remove=enr:-JG4QH... --output-dir=output
 
 # Docker version
-docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:latest alpha edit remove-operators --operator-enrs-to-remove=enr:-JG4QH... --private-key-file=/opt/charon/.charon/charon-enr-private-key --lock-file=/opt/charon/.charon/cluster-lock.json --validator-keys-dir=/opt/charon/.charon/validator_keys --output-dir=/opt/charon/output
+docker run --rm -v "$(pwd):/opt/charon" -w "/opt/charon" obolnetwork/charon:latest alpha edit remove-operators --operator-enrs-to-remove=enr:-JG4QH... --output-dir=/opt/charon/output
 ```
 
 ### Advanced Removal (Exceeding Fault Tolerance)
@@ -54,7 +54,7 @@ If you're removing more operators than the fault tolerance allows, you must spec
 charon alpha edit remove-operators --operator-enrs-to-remove=enr:-JG4QH...,enr:-JG4QK... --participating-operator-enrs=enr:-JG4QL...,enr:-JG4QM...,enr:-JG4QN... --output-dir=output
 
 # Docker version
-docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:latest alpha edit remove-operators --operator-enrs-to-remove=enr:-JG4QH...,enr:-JG4QK... --participating-operator-enrs=enr:-JG4QL...,enr:-JG4QM...,enr:-JG4QN... --private-key-file=/opt/charon/.charon/charon-enr-private-key --lock-file=/opt/charon/.charon/cluster-lock.json --validator-keys-dir=/opt/charon/.charon/validator_keys --output-dir=/opt/charon/output
+docker run --rm -v "$(pwd):/opt/charon" -w "/opt/charon" obolnetwork/charon:latest alpha edit remove-operators --operator-enrs-to-remove=enr:-JG4QH...,enr:-JG4QK... --participating-operator-enrs=enr:-JG4QL...,enr:-JG4QM...,enr:-JG4QN... --output-dir=/opt/charon/output
 ```
 
 {% hint style="info" %}

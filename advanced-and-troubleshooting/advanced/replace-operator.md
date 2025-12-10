@@ -45,7 +45,7 @@ All continuing operators and the new operator must run this command. The old ope
 charon alpha edit replace-operator --old-operator-enr=enr:-JG4QH... --new-operator-enr=enr:-JG4QK... --output-dir=output
 
 # Docker version
-docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:latest alpha edit replace-operator --old-operator-enr=enr:-JG4QH... --new-operator-enr=enr:-JG4QK... --private-key-file=/opt/charon/.charon/charon-enr-private-key --lock-file=/opt/charon/.charon/cluster-lock.json --validator-keys-dir=/opt/charon/.charon/validator_keys --output-dir=/opt/charon/output
+docker run --rm -v "$(pwd):/opt/charon" -w "/opt/charon" obolnetwork/charon:latest alpha edit replace-operator --old-operator-enr=enr:-JG4QH... --new-operator-enr=enr:-JG4QK... --output-dir=/opt/charon/output
 ```
 
 ### For the New Operator

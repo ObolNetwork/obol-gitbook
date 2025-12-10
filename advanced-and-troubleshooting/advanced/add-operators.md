@@ -34,7 +34,7 @@ charon alpha edit add-operators --new-operator-enrs=enr:-JG4QH... --output-dir=o
 
 # Or, if you prefer running it in Docker
 # (replace 'latest' with the most recent version if needed: https://hub.docker.com/r/obolnetwork/charon/tags)
-docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:latest alpha edit add-operators --new-operator-enrs=enr:-JG4QH... --private-key-file=/opt/charon/.charon/charon-enr-private-key --lock-file=/opt/charon/.charon/cluster-lock.json --validator-keys-dir=/opt/charon/.charon/validator_keys --output-dir=/opt/charon/output
+docker run --rm -v "$(pwd):/opt/charon" -w "/opt/charon" obolnetwork/charon:latest alpha edit add-operators --new-operator-enrs=enr:-JG4QH... --output-dir=/opt/charon/output
 ```
 
 ### For New Operators
