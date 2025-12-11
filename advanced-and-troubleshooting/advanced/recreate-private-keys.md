@@ -6,7 +6,7 @@ description: >-
 # Recreating Private Keys
 
 {% hint style="warning" %}
-This is an experimental feature and should not be used in production (Mainnet) yet.
+This is an alpha feature and is not yet recommended for production use.
 {% endhint %}
 
 You can recreate the private key shares for your cluster using the `charon alpha edit recreate-private-keys` command. This operation creates new private key shares to replace the existing validator private keys whilst retaining the same operator identities and validator public keys.
