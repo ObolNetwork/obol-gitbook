@@ -6,7 +6,7 @@ description: >-
 # Replacing an Operator
 
 {% hint style="warning" %}
-This is an experimental feature and should not be used in production (Mainnet) yet.
+This is an alpha feature and is not yet recommended for production use.
 {% endhint %}
 
 You can replace an operator in your cluster using the `charon alpha edit replace-operator` command. This operation keeps all validators intact whilst swapping one operator for another in the cluster.

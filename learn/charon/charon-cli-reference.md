@@ -605,7 +605,7 @@ Use "charon alpha edit [command] --help" for more information about a command.
 The `charon alpha edit add-validators` command allows you to generate new validators and add them to an existing cluster. This process is very similar to the `charon dkg` ceremony, which requires all node operators to participate, because under the hood it runs the same DKG protocol with additional actions and verifications.
 
 {% hint style="warning" %}
-It is not yet recommended to use this command for Mainnet clusters.
+This is an alpha feature and is not yet recommended for production use.
 {% endhint %}
 
 ```markdown
@@ -648,7 +648,7 @@ Flags:
 The `charon alpha edit add-operators` command adds new operators to an existing distributed validator cluster whilst keeping all validator public keys unchanged. All existing operators and new operators must participate in this ceremony.
 
 {% hint style="warning" %}
-This is an experimental feature and should not be used in production (Mainnet) yet.
+This is an alpha feature and is not yet recommended for production use.
 {% endhint %}
 
 ```markdown
@@ -686,7 +686,7 @@ Flags:
 The `charon alpha edit remove-operators` command removes operators from an existing distributed validator cluster whilst leaving all validators intact. Remaining operators must participate in this ceremony.
 
 {% hint style="warning" %}
-This is an experimental feature and should not be used in production (Mainnet) yet.
+This is an alpha feature and is not yet recommended for production use.
 {% endhint %}
 
 ```markdown
@@ -726,7 +726,7 @@ Flags:
 The `charon alpha edit recreate-private-keys` command creates new private key shares to replace the existing validator private keys whilst retaining the same operator identities and validator public keys. All operators must participate in this ceremony.
 
 {% hint style="warning" %}
-This is an experimental feature and should not be used in production (Mainnet) yet.
+This is an alpha feature and is not yet recommended for production use.
 {% endhint %}
 
 ```markdown
@@ -763,7 +763,7 @@ Flags:
 The `charon alpha edit replace-operator` command replaces an existing operator in a distributed validator cluster with a new operator, whilst keeping all validators intact. All remaining and new operators must participate in this ceremony.
 
 {% hint style="warning" %}
-This is an experimental feature and should not be used in production (Mainnet) yet.
+This is an alpha feature and is not yet recommended for production use.
 {% endhint %}
 
 ```markdown

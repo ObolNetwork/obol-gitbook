@@ -6,7 +6,7 @@ description: >-
 # Removing Operators
 
 {% hint style="warning" %}
-This is an experimental feature and should not be used in production (Mainnet) yet.
+This is an alpha feature and is not yet recommended for production use.
 {% endhint %}
 
 You can remove operators from your cluster using the `charon alpha edit remove-operators` command. This operation leaves all validators intact whilst removing specified operators from the cluster.
