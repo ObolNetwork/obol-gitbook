@@ -63,10 +63,10 @@ Before preparing the DappNode to take part in a Distributed Validator Cluster, y
     <figure><img src="../../.gitbook/assets/image (58).png" alt=""><figcaption></figcaption></figure>
 2.  Click on the 'Stakers' tab on the left side, select an execution client (e.g. Geth) & consensus client (e.g. Lodestar) & click 'Apply changes'. This will start the syncing process which can take a number of hours.
 
-    <figure><img src="../../.gitbook/assets/image (64).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (59) (1).png" alt=""><figcaption></figcaption></figure>
 3.  Once the clients are finished syncing, it should reflect on your 'Dashboard' as shown below.
 
-    <figure><img src="../../.gitbook/assets/image (65).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (60) (1).png" alt=""><figcaption></figcaption></figure>
 
 **Install the Obol DappNode package**[**​**](https://docs.obol.org/next/run/start/quickstart_group#install-the-obol-dappnode-package)
 
@@ -77,13 +77,13 @@ With a fully synced Ethereum node now running on the DappNode, the below steps w
    * [Mainnet Repo](http://my.dappnode/installer/dnp/obol.dnp.dappnode.eth)
 2.  Copy the latest IPFS hash from the release details dropdown.
 
-    <figure><img src="../../.gitbook/assets/image (66).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (61) (1).png" alt=""><figcaption></figcaption></figure>
 3.  Go back to DappNode Dashboard > Dappstore, select the 'Public' tab, and accept the terms & conditions before proceeding.
 
-    <figure><img src="../../.gitbook/assets/image (68).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image-67 (1).png" alt=""><figcaption></figcaption></figure>
 4.  Paste the IPFS hash you copied from Github and click 'Search' (It may take a minute for the package to be found.) You will then be presented with the package installation page. Under the blue 'Install' button, click on 'Advanced Options' & toggle the button to 'Bypass only signed safe restriction'.
 
-    <figure><img src="../../.gitbook/assets/image (69).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (63) (1).png" alt=""><figcaption></figcaption></figure>
 5.  Click 'Install' & in the config mode page > select new cluster & submit. (if you already have the config URL, you can select URL option.)
 
     <figure><img src="../../.gitbook/assets/image (70).png" alt=""><figcaption></figcaption></figure>
@@ -254,10 +254,10 @@ Your cluster creator needs to configure the cluster, and send you an invite URL 
 1. Click on the DV launchpad link provided by the leader or creator. Make sure you recognise the domain and the person sending you the link, to ensure you are not being phished.
 2.  Connect your wallet using the Ethereum address provided to the leader.\\
 
-    <figure><img src="../../.gitbook/assets/image (81).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image-79 (1).png" alt=""><figcaption></figcaption></figure>
 3.  Review the operators addresses submitted and click `Get Started` to continue.\\
 
-    <figure><img src="../../.gitbook/assets/image (82).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (80) (1).png" alt=""><figcaption></figcaption></figure>
 4. Review and accept the DV Launchpad terms & conditions and advisories.
 5.  Review the cluster configuration set by the creator and add your `ENR` that you generated in [step 1](https://docs.obol.org/next/run/start/quickstart_group#step-1-generate-an-enr).\\
 
@@ -297,7 +297,7 @@ For the [DKG](https://docs.obol.org/next/learn/charon/dkg) to complete, all oper
 
 1.  Once all operators successfully signed, your screen will automatically advance to the next step and look like this. Click `Continue`. (If you closed the tab, you can always go back to the invite link shared by the leader and connect your wallet.) \\
 
-    <figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image-20 (1).png" alt=""><figcaption></figcaption></figure>
 2.  Copy and run the `docker` command on the screen into your terminal. It will retrieve the remote cluster details and begin the DKG process. \\
 
     <figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
@@ -327,7 +327,7 @@ Follow this step if you are signing through the DV Launchpad, importing the clus
     <figure><img src="../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 2.  To run the Distributed Key Generation ceremony using a DappNode, you must paste the cluster definition URL into the Obol Package interface. Go to the 'Config' tab, select 'URL' from the dropdown menu, paste the cluster definition URL you retrieved from the launchpad, into the validator `cluster-*`field which matches the cluster you took the ENR from. Example: If you picked ENR1 for signing, then you should paste the URL into Cluster-1. Finally, click the 'Update' button at the bottom of the page.\\
 
-    <figure><img src="../../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (5) (1) (2).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -430,7 +430,6 @@ In particular you should check:
 * That your Charon client can connect to the configured beacon client.
 * That your Charon client can connect to all peers directly.
 * That your validator client is connected to Charon, and has the private keys it needs loaded and accessible. Most components in the dashboard have some help text there to assist you in understanding your cluster performance. You might notice that there are logs indicating that a validator cannot be found and that APIs are returning 404. This is to be expected at this point, as the validator public keys listed in the lock file have not been deposited and acknowledged on the consensus layer yet (usually it takes \~16 hours after the deposit is made).
-
 {% endtab %}
 
 {% tab title="Existing BN" %}
@@ -474,7 +473,6 @@ CL=cl-none
 ```sh
 docker compose up -d
 ```
-
 {% endtab %}
 
 {% tab title="Sedge" %}

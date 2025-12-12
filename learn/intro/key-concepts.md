@@ -75,7 +75,7 @@ Examples of validator clients include:
 
 ## Distributed Validator Cluster
 
-<figure><img src="../../.gitbook/assets/image (6) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (20) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 A distributed validator cluster is a collection of distributed validator nodes connected together to service a set of distributed validators generated during a DVK ceremony.
 
@@ -105,7 +105,7 @@ The number of nodes in a cluster that need to be online and honest for their dis
 |      10      |    7/10   | Minimum to tolerate three **malicious** nodes |
 
 {% hint style="warning" %}
-Running the same Charon node in two places is considered a malicious (or byzantine) act, you should **take extra care not to run duplicate instances of a particular Charon peer if it is running in a three node setup**, which only tolerates one offline node, not a malicious one. Read more [here](../charon/cluster-configuration#cluster-size-and-resilience). 
+Running the same Charon node in two places is considered a malicious (or byzantine) act, you should **take extra care not to run duplicate instances of a particular Charon peer if it is running in a three node setup**, which only tolerates one offline node, not a malicious one. Read more [here](../charon/cluster-configuration/#cluster-size-and-resilience).
 {% endhint %}
 
 ### Distributed Validator Key Generation Ceremony
