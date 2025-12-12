@@ -42,6 +42,7 @@
 * [Partner Integrations](run-a-dv/integrations/README.md)
   * [Create an EigenLayer DV](run-a-dv/integrations/create-an-eigenlayer-dv.md)
   * [Create a Lido CSM DV](run-a-dv/integrations/lido-csm.md)
+  * [Lido V3 stVault Integration Kit](run-a-dv/integrations/lido-v3-stvault-integration-kit.md)
   * [DappNode](run-a-dv/integrations/dappnode.md)
 
 ## Advanced & Troubleshooting
