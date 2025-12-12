@@ -61,6 +61,6 @@ Note: It costs the same gas to distribute rewards for one address as it does for
 
 #### Case 3: You just created a new cluster with no active validators or rewards, but it shows a `Claim All` amount. <a href="#case-3-you-just-created-a-new-cluster-with-no-active-validators-or-rewards-but-it-shows-a-claim-all" id="case-3-you-just-created-a-new-cluster-with-no-active-validators-or-rewards-but-it-shows-a-claim-all"></a>
 
-<figure><img src="../../.gitbook/assets/ClaimCase3 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (89).png" alt=""><figcaption></figcaption></figure>
 
 The amount shown here is from a previous case and is now sitting in the Split Main, ready to be claimed. Unfortunately, it is not possible to associate the Split Main balance of an address with a specific cluster. If you are part of multiple clusters, your Split Main balance will appear next to all `Claim All` buttons, regardless of the cluster. We are working on a fix to avoid this confusion.

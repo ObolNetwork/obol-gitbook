@@ -23,7 +23,7 @@ Part 2: Using the [Obol DV Launchpad](https://launchpad.obol.org/) + CLI to crea
 Part 3: Deploying the validator to Lido's CSM using their UI.
 
 {% hint style="success" %}
-In this guide we'll be using the CSM widget and expanding `Specify Custom Addresses` to set the `Manager Address` to the cluster multi-sig (SAFE) and the `Rewards Address` to the Splits.org splitting contract. Finally, we'll be selecting `Extended` permissions type which grants `Manager Address` ultimate control over the Node Operator.
+In this guide we'll be using the CSM widget and expanding  `Specify Custom Addresses` to set the `Manager Address` to the cluster multi-sig (SAFE) and the `Rewards Address` to the Splits.org splitting contract. Finally, we'll be selecting `Extended` permissions type which grants `Manager Address` ultimate control over the Node Operator.
 {% endhint %}
 
 ## Part 1: Creating the Cluster SAFE + Splitter Contract
@@ -34,7 +34,7 @@ Detailed instructions on how to create a SAFE Wallet can be found [here](https:/
 
 The squad leader should obtain signing addresses for all the cluster members, to create a new SAFE with the operators all as owners.
 
-<figure><img src="../../.gitbook/assets/image (27) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
 
 After giving the Safe a name and selecting the appropriate network, continue by clicking the **Next** button.
 
@@ -161,7 +161,7 @@ If you are not, navigate to it using the `cd` command.
 
 Paste the DKG command into your terminal and wait for all the other squad members to connect and complete the DKG ceremony.
 
-<figure><img src="../../.gitbook/assets/image (45) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (46).png" alt=""><figcaption></figcaption></figure>
 
 New files were generated: `cluster-lock.json`, `deposit-data.json`, `validator_keys` are all found in the `.charon` folder (hidden by default). This contains each operator's partial key signatures for the validators.
 
@@ -199,7 +199,7 @@ At this point, execution and consensus clients should start syncing. Charon and 
 
 ## Part 3: Upload the public keys and deposit to Lido CSM
 
-CSM V2 enables a new Operator Type called Identified Community Staker ("ICS"). The squad member who is an ICS should be the one to create the node through the CSM widget. Doing so ensures the clusters validators receive [ICS benefits](https://blog.lido.fi/unlock-exclusive-benefits-as-an-identified-community-staker/).
+CSM V2 enables a new Operator Type called Identified Community Staker ("ICS"). The squad member who is an ICS should be the one to create the node through the CSM widget. Doing so ensures the clusters validators receive [ICS benefits](https://blog.lido.fi/unlock-exclusive-benefits-as-an-identified-community-staker/).&#x20;
 
 ICS member heads to [csm.lido.fi](https://csm.lido.fi/) and connects their wallet.
 
