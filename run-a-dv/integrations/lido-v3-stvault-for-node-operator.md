@@ -148,7 +148,7 @@ On **Hoodi**, Splits may not be available or may not support that network:
 
 The image below shows splits UI to create a splits contract where 1% is for Obol protocol fee and 24.5% to all other node operators.
 
-![image.png](attachment:b85af3e1-1e14-4569-b141-73e417eb98d2:image.png)
+![Splits.org UI showing recipients configuration](attachment:splits-ui-recipients:image.png)
 
 ---
 
@@ -216,15 +216,15 @@ Obol cluster creation docs:
 
 [Create a DV With a Group](../start/create-a-dv-with-a-group.md)
 
-> When generating the cluster lock, use the --publish flag so the cluster lock is published and verifiable by:
+> When generating the cluster lock, use the --publish flag so the cluster lock is published and verifiable by:
 > 
 > - DV participants,
 > - Lido risk review & DVT tier evaluation, and
 > - Better support by Obol Team in troubleshooting cluster issues.
 
-![image.png](attachment:9c11c6f7-bd54-426b-9b7c-203b64a46521:image.png)
+![Lido stVaults interface - Vault overview](attachment:lido-stvault-overview:image.png)
 
-![image.png](attachment:22264d19-a88a-4ba6-8955-04c7afe89c45:image.png)
+![Lido stVaults interface - Vault details](attachment:lido-stvault-details:image.png)
 
 ---
 
