@@ -214,7 +214,7 @@ Follow Obol’s docs for **multi-operator DV setup**:
 
 Obol cluster creation docs:
 
-[Create a DV With a Group](../../start/create-a-dv-with-a-group.md)
+[Create a DV With a Group](../start/create-a-dv-with-a-group.md)
 
 > When generating the cluster lock, use the --publish flag so the cluster lock is published and verifiable by:
 > 
@@ -236,7 +236,7 @@ For DV-specific monitoring (RAVER, attestations, client health, etc.), use Obol�
 
 Obol monitoring docs:
 
-[Monitoring Your Node](../../running/monitoring.md)
+[Monitoring Your Node](../running/monitoring.md)
 
 Typical components:
 

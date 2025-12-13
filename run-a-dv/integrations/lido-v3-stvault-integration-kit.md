@@ -92,6 +92,8 @@ A practical guide to designing, deploying, and operating a stVault using Obol DV
 * How to design your DV cluster (operators, clients, geos)
 * How to rehearse on testnet and prepare for mainnet launch
 * How this integrates into the Lido V3 stVault flow
+
+👉 **[Read the Node Operator Guide →](lido-v3-stvault-for-node-operator.md)**
 {% endstep %}
 
 {% step %}
