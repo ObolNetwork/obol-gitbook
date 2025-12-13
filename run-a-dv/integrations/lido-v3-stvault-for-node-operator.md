@@ -148,7 +148,7 @@ On **Hoodi**, Splits may not be available or may not support that network:
 
 The image below shows splits UI to create a splits contract where 1% is for Obol protocol fee and 24.5% to all other node operators.
 
-![Splits.org UI showing recipients configuration](attachment:splits-ui-recipients:image.png)
+<figure><img src="../../.gitbook/assets/SPLITS-UI-RECIPIENTS.png" alt=""><figcaption></figcaption></figure>
 
 ---
 
@@ -222,9 +222,34 @@ Obol cluster creation docs:
 > - Lido risk review & DVT tier evaluation, and
 > - Better support by Obol Team in troubleshooting cluster issues.
 
-![Lido stVaults interface - Vault overview](attachment:lido-stvault-overview:image.png)
+<figure><img src="../../.gitbook/assets/LIDO-STVAULT-OVERVIEW.png" alt=""><figcaption></figcaption></figure>
 
-![Lido stVaults interface - Vault details](attachment:lido-stvault-details:image.png)
+<figure><img src="../../.gitbook/assets/CUSTOM-WITHDRAWAL-CONFIG.png" alt=""><figcaption></figcaption></figure>
+
+### 5.1 DVT Cluster Identification Process
+
+After creating and publishing your Obol DV cluster, you must go through **Lido's identification process** to be classified as an **Obol DVT cluster** and qualify for DVT-specific tiers with improved Reserve Ratio (RR) and stETH minting limits.
+
+**Why identification matters:**
+
+- **Unidentified clusters** default to the **Default tier** with **50% Reserve Ratio** and limited stETH minting capacity.
+- **Identified DVT clusters** can qualify for **DVT tiers** with **Reserve Ratios as low as 2-4%** and significantly higher stETH minting limits (up to 969,000 stETH across 5 tiers).
+
+**The identification process:**
+
+1. Each individual Node Operator in the cluster must complete the identification process (post on Lido Research Forum, complete identification forms).
+2. A cluster representative posts a **DVT Cluster identification request** on the Lido Research Forum.
+3. Complete the **DVT Cluster Questionnaire** with technical and business information.
+4. The stVaults Committee assesses your cluster and assigns a **category and tier grid**.
+5. Once identified, your cluster can access DVT-specific tiers with improved economics.
+
+**Obol can help:**
+
+- Obol provides guidance and support throughout the identification process.
+- We can help coordinate the cluster identification request and questionnaire completion.
+- We assist with technical documentation and cluster structure details required for assessment.
+
+For detailed information about the identification process, requirements, and tier structures, refer to [Lido's Node Operators Identification documentation](https://docs.lido.fi/run-on-lido/stvaults/node-operators-identification).
 
 ---
 
