@@ -233,7 +233,9 @@ After creating and publishing your Obol DV cluster, you must go through **Lido's
 **Why identification matters:**
 
 - **Unidentified clusters** default to the **Default tier** with **50% Reserve Ratio** and limited stETH minting capacity.
-- **Identified DVT clusters** can qualify for **DVT tiers** with **Reserve Ratios as low as 2-4%** and significantly higher stETH minting limits (up to 969,000 stETH across 5 tiers).
+- **Identified DVT clusters** can qualify for **DVT tiers** with **Reserve Ratios as low as 2-4%** and significantly higher stETH minting limits.
+
+For detailed tier breakdowns and capital efficiency benefits, see the [Capital Allocator Guide](lido-v3-stvault-for-capital-allocators.md#dvt-tiers).
 
 **The identification process:**
 

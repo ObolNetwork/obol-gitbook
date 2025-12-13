@@ -253,12 +253,14 @@ Obol will assist along the way: from design → DV cluster → identification �
 **How Obol helps**
 
 - Co-design of roles, safes, and failure modes.
-- Help you move from normal tier to a DVT tier through [Lido's identification process.](https://docs.lido.fi/run-on-lido/stvaults/node-operators-identification/)
+- Help you move from normal tier to a DVT tier through [Lido's identification process](https://docs.lido.fi/run-on-lido/stvaults/node-operators-identification/).
 - Templates / examples for:
     - governance policies,
     - incident playbooks,
     - fee configurations.
 - Introduction to **curators / strategy providers** if you want an economic layer on top (beyond pure staking).
+
+> For detailed identification process steps, see the [Node Operator Guide](lido-v3-stvault-for-node-operator.md#51-dvt-cluster-identification-process).
 
 ---
 
@@ -299,6 +301,8 @@ Build a **DV cluster** that can qualify for Lido's **DVT category** and DVT tier
     - cluster bootstrap,
     - best practices on monitoring and upgrades.
 - Prepares technical input for the **Identified Node Operator** submission (DVT category).
+
+For detailed steps on the identification process, see the [Node Operator Guide](lido-v3-stvault-for-node-operator.md#51-dvt-cluster-identification-process).
 
 ---
 
