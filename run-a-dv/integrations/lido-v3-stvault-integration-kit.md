@@ -105,6 +105,8 @@ A higher-level walkthrough of:
 * Why multi-operator DVT is different from "just another node operator"
 * How Obol's **Cluster-as-a-Service** offering can help guide your decisions
 * What to ask from your operators or from Obol directly
+
+👉 **[Read the Capital Allocator Guide →](lido-v3-stvault-for-capital-allocators.md)**
 {% endstep %}
 
 {% step %}

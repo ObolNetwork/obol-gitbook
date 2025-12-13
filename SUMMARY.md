@@ -44,6 +44,7 @@
   * [Create a Lido CSM DV](run-a-dv/integrations/lido-csm.md)
   * [Lido V3 stVault Integration Kit](run-a-dv/integrations/lido-v3-stvault-integration-kit.md)
     * [For Node Operators](run-a-dv/integrations/lido-v3-stvault-for-node-operator.md)
+    * [For Capital Allocators](run-a-dv/integrations/lido-v3-stvault-for-capital-allocators.md)
   * [DappNode](run-a-dv/integrations/dappnode.md)
 
 ## Advanced & Troubleshooting
