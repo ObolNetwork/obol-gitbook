@@ -17,6 +17,7 @@ Lido V3 introduces **stVaults**—customizable staking vaults that unlock stETH 
 
 **I'm a Node Operator**\
 Show me how to implement a DV-backed stVault<br>
+👉 [Open the Node Operator Guide](lido-v3-stvault-for-node-operator.md)
 {% endhint %}
 {% endcolumn %}
 
@@ -25,8 +26,9 @@ Show me how to implement a DV-backed stVault<br>
 💼
 
 **I'm a Capital Allocator**\
-Show me the design and risk story<br>
+Why should I use DVT as infrastructure for my stVault<br>
 
+👉 [Open the Capital Allocator Guide](lido-v3-stvault-for-capital-allocators.md)
 
 {% endhint %}
 {% endcolumn %}
@@ -36,7 +38,7 @@ Show me the design and risk story<br>
 🤝
 
 **I Want Help from Obol**\
-Talk to a human or explore Cluster-as-a-Service<br>
+[Connect with the Obol team](mailto:lido@obol.tech) or explore [Cluster-as-a-Service](https://hubs.ly/Q03Y2Srl0)<br>
 {% endhint %}
 {% endcolumn %}
 {% endcolumns %}
@@ -103,7 +105,7 @@ A higher-level walkthrough of:
 
 * What you are optimizing for (safety, yield, minting capacity, counterparties)
 * Why multi-operator DVT is different from "just another node operator"
-* How Obol's **Cluster-as-a-Service** offering can help guide your decisions
+* How Obol's [**Cluster-as-a-Service**](https://hubs.ly/Q03Y2Srl0) offering can help guide your decisions
 * What to ask from your operators or from Obol directly
 
 👉 **[Read the Capital Allocator Guide →](lido-v3-stvault-for-capital-allocators.md)**
@@ -114,8 +116,8 @@ A higher-level walkthrough of:
 
 How to:
 
-* Get in touch with the Obol team for reviews and design help
-* Use Obol's **Cluster-as-a-Service** or curated operator networks
+* [Get in touch with the Obol team](mailto:lido@obol.tech) for reviews and design help
+* Use Obol's [**Cluster-as-a-Service**](https://hubs.ly/Q03Y2Srl0) or curated operator networks
 * Access additional resources, diagrams, and checklists
 {% endstep %}
 {% endstepper %}
@@ -139,4 +141,3 @@ As Lido's [**DeFi wrapper** ](https://hackmd.io/@lido/lido-v3-wrapper-design)and
 * Case studies, including the "client team vault", once it is live
 
 **For now, this page gives you the map. The linked sections show you how to actually build and run the vaults behind it.**
-
