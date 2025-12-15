@@ -127,9 +127,6 @@ How to:
 * [**DVT Cluster identification and assessment**](https://docs.lido.fi/run-on-lido/stvaults/node-operators-identification/#dvt-cluster-identification-and-assessment) — See the identification requirements for each node operator in a cluster in order to qualify for improved Tier&#x20;
 * [**stVaults Doc Center**](https://docs.lido.fi/run-on-lido/stvaults/) — View Lido's comprehensive guides which detail how to create any product powered by stVaults
 
-### What to Expect Next
-
-This initial version focuses on **DV + stVault design and operations**.
 
 #### Future Extensions
 
