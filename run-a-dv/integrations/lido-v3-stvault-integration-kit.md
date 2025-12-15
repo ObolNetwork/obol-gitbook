@@ -116,9 +116,8 @@ A higher-level walkthrough of:
 
 How to:
 
-* [Get in touch with the Obol team](mailto:lido@obol.tech) for reviews and design help
-* Use Obol's [**Cluster-as-a-Service**](https://hubs.ly/Q03Y2Srl0) or curated operator networks
-* Access additional resources, diagrams, and checklists
+* [Get in touch with the Obol team](mailto:lido@obol.tech) for guidance and design help
+* Use Obol's [**Cluster-as-a-Service**](https://hubs.ly/Q03Y2Srl0) and reach out to get set up
 {% endstep %}
 {% endstepper %}
 
