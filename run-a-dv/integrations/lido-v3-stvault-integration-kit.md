@@ -53,7 +53,7 @@ Why should I use DVT as infrastructure for my stVault<br>
 **Capital allocators** who:
 
 * Need to understand **why** a DVT-backed stVault can support more favorable risk assessments and reserve ratios
-* Want a clear set of questions to ask their operators and a sense of what "good" looks like for a DV cluster
+* Want a clear checklist for vetting operators and understanding what strong DV cluster operations look like
 
 {% hint style="info" %}
 ℹ️

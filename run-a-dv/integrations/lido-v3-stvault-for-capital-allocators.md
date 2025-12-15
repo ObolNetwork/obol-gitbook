@@ -6,6 +6,10 @@
 
 **Target audience:** ETH capital allocators – retail, treasuries, funds, ETF/ETP issuers, institutions.
 
+{% hint style="info" %}
+Obol's [Cluster-as-a-Service](https://hubs.ly/Q03Y2Srl0) offering can get you started quickly: we act as a trusted advisor, connect you with top node operators, and help guide decisions around validator sidecars or MEV strategies.
+{% endhint %}
+
 For a capital allocator, a **Lido stVault** provides a way to create a **dedicated, siloed ETH staking vault**:
 
 - you choose the **node operator set** (e.g. by geography, infra profile, reputation),
@@ -437,4 +441,3 @@ Profit ≈ 2,046 + 26.7 − 1,555 ≈ 518.6
 APR_DVT ≈ 518.6 / 10,000 ≈ 5.19%
 
 ```
-

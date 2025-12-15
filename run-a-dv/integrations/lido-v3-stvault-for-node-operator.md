@@ -1,21 +1,19 @@
 # Node Operator Guide – Operating a Lido V3 stVault with an Obol DV Cluster
 
-> Scope: This guide is for node operators / infra teams who operate a Lido V3 stVault backed by an Obol Distributed Validator (DV) cluster.
-> 
-> 
-> It assumes:
-> 
-> - stVault creation is done via **Lido’s stVault UI** or **Lido’s stVault CLI**, and
-> - validator operations (deposit, exit, withdrawal, etc.) are performed using **Lido stVault CLI or Lido’s stVault UI only**.
-> 
-> **Do not use the Obol Launchpad UI for any validators belonging to a stVault.**
-> 
+{% hint style="info" %}
+**Scope:** This guide is for node operators / infra teams who operate a **Lido V3 stVault** backed by an **Obol Distributed Validator (DV) cluster**.
 
-> ⚠️ This guide is multi-operator only.
-> 
-> 
-> All examples and RR benefits assume **multi-operator DVT vaults**. Single-operator setups are out of scope.
-> 
+It assumes:
+
+- stVault creation is done via **Lido’s stVault UI** or **Lido’s stVault CLI**, and
+- validator operations (deposit, exit, withdrawal, etc.) are performed using **Lido stVault CLI or Lido’s stVault UI only**.
+
+**Do not use the Obol Launchpad UI for any validators belonging to a stVault.**
+{% endhint %}
+
+{% hint style="warning" %}
+⚠️ **Multi-operator only.** All examples and RR benefits assume **multi-operator DVT vaults**. Single-operator setups are out of scope.
+{% endhint %}
 
 ---
 
