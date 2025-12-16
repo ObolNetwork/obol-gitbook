@@ -20,7 +20,7 @@ That liquidity can then be used by a curator or strategy provider for things lik
 
 ---
 
-## Glossary and Terminology
+## Definitions
 
 **stVaults** are Lido V3's staking "building blocks": isolated vaults that hold ETH, run validators, and (optionally) mint stETH under a configurable risk framework. Each vault has its own operator set and parameters, so risk and behavior are compartmentalized rather than shared across the entire protocol.
 
