@@ -1,10 +1,10 @@
 # Claim Rewards
 
-Introduction[​](https://docs.obol.org/next/run/running/claim-rewards#introduction)
+## Introduction
 
 For every epoch, active validators earn ETH rewards from both the consensus layer and the execution layer. The consensus layer rewards are derived from validator duties such as attestation, proposals, and sync committees. These rewards are accumulated in the validator’s withdrawal address. Execution rewards, which are earned from MEV and transaction priority tips, are accumulated in the fee recipient address.
 
-The method for claiming rewards depends on the Cluster's withdrawal configuration, whether it's an [**OWR**](https://docs.obol.org/next/learn/intro/obol-splits#optimistic-withdrawal-recipient) or an [**Exitable Withdrawal Configuration**](https://docs.obol.org/next/learn/intro/obol-splits#exitable-withdrawal-recipient) . The table below outlines the latest details on how and where to claim rewards.
+The method for claiming rewards depends on the Cluster's withdrawal configuration, whether it's an [**OWR**](../../learn/intro/obol-splits.md#optimistic-withdrawal-recipient) or an [**Exitable Withdrawal Configuration**](../../learn/intro/obol-splits.md#exitable-withdrawal-recipient) . The table below outlines the latest details on how and where to claim rewards.
 
 ### Claim Status <a href="#claim-status" id="claim-status"></a>
 
@@ -16,11 +16,11 @@ The method for claiming rewards depends on the Cluster's withdrawal configuratio
 | 2. Splits only rewards using OWR - ETH                                  | For all clusters with ETH rewards.                                                        | ✅                          | Cluster details page in the Operator Dashboard. For example, [here](https://holesky.launchpad.obol.org/cluster/details/?lockHash=0x42833298f3c767b866615814dd9f86ce35ed2f89bf3d397d5f353a0ad5a38013). |
 | 3. Split principal + rewards - ETH                                      | For clusters configured to split both principal and rewards.                              | ✅                          | Operators currently need to use the UI provided by Splits.org. For example, a [Lido Split](https://app.splits.org/accounts/0x845aF36663a9908D9E46101e3CC658FbCEB783a8/?chainId=1).                    |
 | 4. Splits non-ETH rewards using any withdrawal config - wstETH or weETH | For Lido and EtherFi clusters earning rewards in protocol-specific tokens.                | In Progress ➡️             | Operators currently need to use the UI provided by Splits.org. For example, a [Lido Split](https://app.splits.org/accounts/0x845aF36663a9908D9E46101e3CC658FbCEB783a8/?chainId=1).                    |
-| 5. Lido CSM rewards - wstETH                                            | For all Lido CSM clusters earning wstETH rewards.                                         | In Progress ➡️             | Similar to row number 3, use the Splits UI. More details can be found at the bottom of [this page](https://docs.obol.org/run/integrations/lido-csm).                                                  |
+| 5. Lido CSM rewards - wstETH                                            | For all Lido CSM clusters earning wstETH rewards.                                         | In Progress ➡️             | Similar to row number 3, use the Splits UI. More details can be found at the bottom of [this page](../integrations/lido-csm.md).                                                  |
 
-### Claim Flow[​](https://docs.obol.org/next/run/running/claim-rewards#claim-flow) <a href="#claim-flow" id="claim-flow"></a>
+### Claim Flow <a href="#claim-flow" id="claim-flow"></a>
 
-To understand how claims via Launchpad work, it is highly recommended to first understand how splits work. More details are available [**here**](https://docs.obol.org/next/learn/intro/obol-splits). The flowchart below summarizes how an operator and a non-operator can interact with split contracts to facilitate claims:
+To understand how claims via Launchpad work, it is highly recommended to first understand how splits work. More details are available [**here**](../../learn/intro/obol-splits.md). The flowchart below summarizes how an operator and a non-operator can interact with split contracts to facilitate claims:
 
 <figure><img src="../../.gitbook/assets/image (56).png" alt=""><figcaption></figcaption></figure>
 
@@ -32,7 +32,7 @@ To understand how claims via Launchpad work, it is highly recommended to first u
 4. The Split Main then sends proportional rewards to **address A**, completing steps 2a, 3, and 4 with a single click.
 5. Other addresses (e.g., B, C, D) can later click on `Claim All` to receive their share of the rewards.
 
-### Launchpad Edge Cases[​](https://docs.obol.org/next/run/running/claim-rewards#launchpad-edge-cases) <a href="#launchpad-edge-cases" id="launchpad-edge-cases"></a>
+### Launchpad Edge Cases <a href="#launchpad-edge-cases" id="launchpad-edge-cases"></a>
 
 We are constantly improving the user experience. Below are some edge cases to avoid confusion:
 
@@ -48,7 +48,7 @@ In this scenario, someone else (a splitter or non-splitter address) has already 
 Your total effective claimable amount will always be displayed next to the `Claim All` button.
 {% endhint %}
 
-#### Case 2: You don’t see a `Claim All` button but instead see `Distribute All`.[​](https://docs.obol.org/next/run/running/claim-rewards#case-2-you-dont-see-a-claim-all-button-but-instead-see-distribute-all) <a href="#case-2-you-dont-see-a-claim-all-button-but-instead-see-distribute-all" id="case-2-you-dont-see-a-claim-all-button-but-instead-see-distribute-all"></a>
+#### Case 2: You don't see a `Claim All` button but instead see `Distribute All`. <a href="#case-2-you-dont-see-a-claim-all-button-but-instead-see-distribute-all" id="case-2-you-dont-see-a-claim-all-button-but-instead-see-distribute-all"></a>
 
 <figure><img src="../../.gitbook/assets/image (88).png" alt=""><figcaption></figcaption></figure>
 

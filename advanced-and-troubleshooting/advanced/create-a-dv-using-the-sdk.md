@@ -1,12 +1,12 @@
 # Create a DV Using the SDK
 
-This is a walkthrough of using the [Obol-SDK](https://www.npmjs.com/package/@obolnetwork/obol-sdk) to propose a four-node distributed validator cluster for creation using the [DV Launchpad](https://docs.obol.org/next/learn/intro/launchpad).
+This is a walkthrough of using the [Obol-SDK](https://www.npmjs.com/package/@obolnetwork/obol-sdk) to propose a four-node distributed validator cluster for creation using the [DV Launchpad](../../learn/intro/launchpad.md).
 
-### Pre-requisites[​](https://docs.obol.org/next/adv/advanced/quickstart-sdk#pre-requisites) <a href="#pre-requisites" id="pre-requisites"></a>
+### Pre-requisites <a href="#pre-requisites" id="pre-requisites"></a>
 
 * You have [node.js](https://nodejs.org/en) installed.
 
-### Install the package[​](https://docs.obol.org/next/adv/advanced/quickstart-sdk#install-the-package) <a href="#install-the-package" id="install-the-package"></a>
+### Install the package <a href="#install-the-package" id="install-the-package"></a>
 
 Install the Obol-SDK package into your development environment
 
@@ -24,7 +24,7 @@ yarn add @obolnetwork/obol-sdk
 {% endtab %}
 {% endtabs %}
 
-### Instantiate the client[​](https://docs.obol.org/next/adv/advanced/quickstart-sdk#instantiate-the-client) <a href="#instantiate-the-client" id="instantiate-the-client"></a>
+### Instantiate the client <a href="#instantiate-the-client" id="instantiate-the-client"></a>
 
 The first thing you need to do is create an instance of the Obol SDK client. The client takes two constructor parameters:
 
@@ -45,7 +45,7 @@ const signer = wallet.connect(null);
 const obol = new Client({ chainId: 17000 }, signer);
 ```
 
-### Propose the cluster[​](https://docs.obol.org/next/adv/advanced/quickstart-sdk#propose-the-cluster) <a href="#propose-the-cluster" id="propose-the-cluster"></a>
+### Propose the cluster <a href="#propose-the-cluster" id="propose-the-cluster"></a>
 
 List the Ethereum addresses of participating operators, along with withdrawal and fee recipient address data for each validator you intend for the operators to create.
 
@@ -72,15 +72,15 @@ console.log(
 );
 ```
 
-### Invite the Operators to complete the DKG[​](https://docs.obol.org/next/adv/advanced/quickstart-sdk#invite-the-operators-to-complete-the-dkg) <a href="#invite-the-operators-to-complete-the-dkg" id="invite-the-operators-to-complete-the-dkg"></a>
+### Invite the Operators to complete the DKG <a href="#invite-the-operators-to-complete-the-dkg" id="invite-the-operators-to-complete-the-dkg"></a>
 
-Once the Obol-API returns a `configHash` string from the `createClusterDefinition` method, you can use this identifier to invite the operators to the [Launchpad](https://docs.obol.org/next/learn/intro/launchpad) to complete the process
+Once the Obol-API returns a `configHash` string from the `createClusterDefinition` method, you can use this identifier to invite the operators to the [Launchpad](../../learn/intro/launchpad.md) to complete the process
 
-1. Operators navigate to `https://<NETWORK_NAME_HERE>.launchpad.obol.org/dv?configHash=<CONFIG_HASH_HERE>` and complete the [run a DV with others](https://docs.obol.org/next/run/start/quickstart_group) flow.
+1. Operators navigate to `https://<NETWORK_NAME_HERE>.launchpad.obol.org/dv?configHash=<CONFIG_HASH_HERE>` and complete the [run a DV with others](../../run-a-dv/start/create-a-dv-with-a-group.md) flow.
 2. Once the DKG is complete, and operators are using the `--publish` flag, the created cluster details will be posted to the Obol API.
 3. The creator will be able to retrieve this data with `obol.getClusterLock(configHash)`, to use for activating the newly created validator.
 
-### Retrieve the created Distributed Validators using the SDK[​](https://docs.obol.org/next/adv/advanced/quickstart-sdk#retrieve-the-created-distributed-validators-using-the-sdk) <a href="#retrieve-the-created-distributed-validators-using-the-sdk" id="retrieve-the-created-distributed-validators-using-the-sdk"></a>
+### Retrieve the created Distributed Validators using the SDK <a href="#retrieve-the-created-distributed-validators-using-the-sdk" id="retrieve-the-created-distributed-validators-using-the-sdk"></a>
 
 Once the DKG is complete, the proposer of the cluster can retrieve key data such as the validator public keys and their associated deposit data messages.
 
@@ -90,7 +90,7 @@ const clusterLock = await obol.getClusterLock(configHash);
 
 Reference lock files can be found [here](https://github.com/ObolNetwork/charon/tree/main/cluster/testdata).
 
-### Activate the DVs using the deposit contract[​](https://docs.obol.org/next/adv/advanced/quickstart-sdk#activate-the-dvs-using-the-deposit-contract) <a href="#activate-the-dvs-using-the-deposit-contract" id="activate-the-dvs-using-the-deposit-contract"></a>
+### Activate the DVs using the deposit contract <a href="#activate-the-dvs-using-the-deposit-contract" id="activate-the-dvs-using-the-deposit-contract"></a>
 
 In order to activate the distributed validators, the cluster operator can retrieve the validators' associated deposit data from the lock file and use it to craft transactions to the `deposit()` method on the deposit contract.
 
@@ -117,6 +117,6 @@ const tx = await depositContract.deposit(
 const txResult = await tx.wait();
 ```
 
-### Usage Examples[​](https://docs.obol.org/next/adv/advanced/quickstart-sdk#usage-examples) <a href="#usage-examples" id="usage-examples"></a>
+### Usage Examples <a href="#usage-examples" id="usage-examples"></a>
 
 Examples of how our SDK can be used are found [here](https://github.com/ObolNetwork/obol-sdk-examples).

@@ -2,7 +2,7 @@
 
 This quickstart guide focuses on configuring the builder API for Charon and supported validator and consensus clients.
 
-### Getting started with Charon & the Builder API[​](https://docs.obol.org/next/adv/advanced/quickstart-builder-api#getting-started-with-charon--the-builder-api) <a href="#getting-started-with-charon--the-builder-api" id="getting-started-with-charon--the-builder-api"></a>
+### Getting started with Charon & the Builder API <a href="#getting-started-with-charon--the-builder-api" id="getting-started-with-charon--the-builder-api"></a>
 
 Running a distributed validator cluster with the builder API enabled will give the validators in the cluster access to the builder network. This builder network is a network of "Block Builders" who work with MEV searchers to produce the most valuable blocks a validator can propose.
 
@@ -14,7 +14,7 @@ Before completing this guide, please check your cluster version, which can be fo
 For clusters with a `cluster-lock.json` version `1.6.0` and below, Charon is compatible only with [Teku](https://github.com/ConsenSys/teku). Use the version history feature of this documentation to see the instructions for configuring a cluster in that manner (`v0.16.0`).
 {% endhint %}
 
-### Client configuration[​](https://docs.obol.org/next/adv/advanced/quickstart-builder-api#client-configuration) <a href="#client-configuration" id="client-configuration"></a>
+### Client configuration <a href="#client-configuration" id="client-configuration"></a>
 
 {% hint style="info" %}
 You need to add CLI flags to your consensus client, Charon client, and validator client, to enable the builder API.
@@ -22,7 +22,7 @@ You need to add CLI flags to your consensus client, Charon client, and validator
 You need all operators in the cluster to have their nodes properly configured to use the builder API, or you risk missing a proposal.
 {% endhint %}
 
-#### Charon[​](https://docs.obol.org/next/adv/advanced/quickstart-builder-api#charon) <a href="#charon" id="charon"></a>
+#### Charon <a href="#charon" id="charon"></a>
 
 Charon supports builder API with the `--builder-api` flag. To use builder API, one simply needs to add this flag to the `charon run` command:
 
@@ -30,9 +30,9 @@ Charon supports builder API with the `--builder-api` flag. To use builder API, o
 charon run --builder-api
 ```
 
-#### Consensus Clients[​](https://docs.obol.org/next/adv/advanced/quickstart-builder-api#consensus-clients) <a href="#consensus-clients" id="consensus-clients"></a>
+#### Consensus Clients <a href="#consensus-clients" id="consensus-clients"></a>
 
-The following flags need to be configured on your chosen consensus client. A Flashbots relay URL is provided for example purposes, you should use the [charon test mev command](https://docs.obol.org/next/run/prepare/test-command#test-mev-relay) and select the two or three relays with the lowest latency to your node that also conform to your block building preferences. A public list of MEV relays is available [here](https://github.com/eth-educators/ethstaker-guides/blob/main/MEV-relay-list.md#mev-relay-list-for-mainnet).
+The following flags need to be configured on your chosen consensus client. A Flashbots relay URL is provided for example purposes, you should use the [charon test mev command](../../run-a-dv/prepare/test-a-cluster.md#test-mev-relay) and select the two or three relays with the lowest latency to your node that also conform to your block building preferences. A public list of MEV relays is available [here](https://github.com/eth-educators/ethstaker-guides/blob/main/MEV-relay-list.md#mev-relay-list-for-mainnet).
 
 {% tabs %}
 {% tab title="Teku" %}
@@ -92,7 +92,7 @@ node ./lodestar --builder --builder.urls="https://0xac6e77dfe25ecd6110b8e780608c
 {% endtab %}
 {% endtabs %}
 
-#### Validator Clients[​](https://docs.obol.org/next/adv/advanced/quickstart-builder-api#validator-clients) <a href="#validator-clients" id="validator-clients"></a>
+#### Validator Clients <a href="#validator-clients" id="validator-clients"></a>
 
 The following flags need to be configured on your chosen validator client
 
@@ -128,7 +128,7 @@ node ./lodestar validator --builder="true" --builder.selection="builderonly"
 {% endtab %}
 {% endtabs %}
 
-### Verify your cluster is correctly configured[​](https://docs.obol.org/next/adv/advanced/quickstart-builder-api#verify-your-cluster-is-correctly-configured) <a href="#verify-your-cluster-is-correctly-configured" id="verify-your-cluster-is-correctly-configured"></a>
+### Verify your cluster is correctly configured <a href="#verify-your-cluster-is-correctly-configured" id="verify-your-cluster-is-correctly-configured"></a>
 
 It can be difficult to confirm everything is configured correctly with your cluster until a proposal opportunity arrives, but here are some things you can check.
 

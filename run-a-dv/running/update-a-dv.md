@@ -10,13 +10,13 @@ To do this, follow these steps:
 cd charon-distributed-validator-node
 ```
 
-#### Pull latest changes to the repo[​](https://docs.obol.org/next/run/running/update#pull-latest-changes-to-the-repo) <a href="#pull-latest-changes-to-the-repo" id="pull-latest-changes-to-the-repo"></a>
+#### Pull latest changes to the repo[​](#pull-latest-changes-to-the-repo) <a href="#pull-latest-changes-to-the-repo" id="pull-latest-changes-to-the-repo"></a>
 
 ```sh
 git pull
 ```
 
-#### Create (or recreate) your DV stack[​](https://docs.obol.org/next/run/running/update#create-or-recreate-your-dv-stack) <a href="#create-or-recreate-your-dv-stack" id="create-or-recreate-your-dv-stack"></a>
+#### Create (or recreate) your DV stack[​](#create-or-recreate-your-dv-stack) <a href="#create-or-recreate-your-dv-stack" id="create-or-recreate-your-dv-stack"></a>
 
 ```sh
 docker compose up -d --build
@@ -26,7 +26,7 @@ docker compose up -d --build
 If you run more than one node in a DV Cluster, please take caution upgrading them simultaneously. Particularly if you are updating or changing the validator client used or recreating disks. It is recommended to update nodes on a sequential basis to minimise liveness and safety risks.
 {% endhint %}
 
-#### Conflicts[​](https://docs.obol.org/next/run/running/update#conflicts) <a href="#conflicts" id="conflicts"></a>
+#### Conflicts[​](#conflicts) <a href="#conflicts" id="conflicts"></a>
 
 You may get a `git conflict` error similar to this:
 
@@ -67,13 +67,13 @@ To resolve this error, you can either:
 cd charon-distributed-validator-cluster
 ```
 
-#### Pull latest changes to the repo[​](https://docs.obol.org/next/run/running/update#pull-latest-changes-to-the-repo) <a href="#pull-latest-changes-to-the-repo" id="pull-latest-changes-to-the-repo"></a>
+#### Pull latest changes to the repo[​](#pull-latest-changes-to-the-repo) <a href="#pull-latest-changes-to-the-repo" id="pull-latest-changes-to-the-repo"></a>
 
 ```sh
 git pull
 ```
 
-#### Create (or recreate) your DV stack[​](https://docs.obol.org/next/run/running/update#create-or-recreate-your-dv-stack) <a href="#create-or-recreate-your-dv-stack" id="create-or-recreate-your-dv-stack"></a>
+#### Create (or recreate) your DV stack[​](#create-or-recreate-your-dv-stack) <a href="#create-or-recreate-your-dv-stack" id="create-or-recreate-your-dv-stack"></a>
 
 ```sh
 docker compose up -d --build
@@ -83,7 +83,7 @@ docker compose up -d --build
 If you run more than one node in a DV Cluster, please take caution upgrading them simultaneously. Particularly if you are updating or changing the validator client used or recreating disks. It is recommended to update nodes on a sequential basis to minimise liveness and safety risks.
 {% endhint %}
 
-#### Conflicts[​](https://docs.obol.org/next/run/running/update#conflicts) <a href="#conflicts" id="conflicts"></a>
+#### Conflicts[​](#conflicts) <a href="#conflicts" id="conflicts"></a>
 
 You may get a `git conflict` error similar to this:
 
