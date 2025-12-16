@@ -19,12 +19,12 @@ There are two ways to sign the partial exit and broadcast the full exit. Both th
 
 As per your preferences, choose the correct combination of -
 
-1. **Network** : Mainnet or Holesky
+1. **Network** : Mainnet or Hoodi
 2. **Exit Type** : Hosted (Charon) or Non-hosted (Validator client)
 3. **Validator Quanity**: Exit single or Exit all validators:
 
 {% tabs %}
-{% tab title="Holesky" %}
+{% tab title="Hoodi" %}
 {% tabs %}
 {% tab title="Charon" %}
 Voluntary exit can be submitted directly through Charon. This approach is validator client agnostic as Charon abstracts validator client's native exit commands underneath.
@@ -165,7 +165,7 @@ Following command signs a partial exit for a specific validator pubkey and broad
 docker exec -it charon-distributed-validator-node-teku-1 /opt/teku/bin/teku voluntary-exit \
 --beacon-node-api-endpoint="http://charon:3600/" \
 --validator-public-keys=<PARTIAL_PUBLIC_KEY> \
---network=holesky \
+--network=hoodi \
 --epoch=256 \
 --confirmation-enabled=false
 ```
@@ -180,7 +180,7 @@ Following command signs partial exits for all validator pubkeys and broadcast th
 docker exec -it charon-distributed-validator-node-teku-1 /opt/teku/bin/teku voluntary-exit \
 --beacon-node-api-endpoint="http://charon:3600/" \
 --validator-keys="/opt/charon/validator_keys:/opt/charon/validator_keys" \
---network=holesky \
+--network=hoodi \
 --epoch=256 \
 --confirmation-enabled=false
 ```
@@ -327,7 +327,7 @@ Following command signs a partial exit for a specific validator pubkey and broad
 docker exec -it charon-distributed-validator-node-lodestar-1 node /usr/app/packages/cli/bin/lodestar validator voluntary-exit \
 --beaconNodes="http://charon:3600" \
 --pubkeys=<PARTIAL_PUBLIC_KEY> \
---network=holesky \
+--network=hoodi \
 --exitEpoch=256 \
 --dataDir=/opt/data \
 --yes
@@ -342,7 +342,7 @@ Following command signs partial exits for all validator pubkeys and broadcast th
 ```sh
 docker exec -it charon-distributed-validator-node-lodestar-1 node /usr/app/packages/cli/bin/lodestar validator voluntary-exit \
 --beaconNodes="http://charon:3600" \
---network=holesky \
+--network=hoodi \
 --exitEpoch=256 \
 --dataDir=/opt/data \
 --yes
@@ -398,7 +398,7 @@ keystore=${filename%.*};
 lighthouse account validator exit \
     --beacon-node http://charon:3600 \
     --keystore /opt/charon/keys/$keystore.json \
-    --network holesky \
+    --network hoodi \
     --password-file /opt/charon/keys/$keystore.txt \
     --no-confirmation \
     --no-wait;'
@@ -419,7 +419,7 @@ for file in /opt/charon/keys/*; do \
         lighthouse account validator exit \
             --beacon-node http://charon:3600 \
             --keystore /opt/charon/keys/$keystore.json \
-            --network holesky \
+            --network hoodi \
             --password-file /opt/charon/keys/$keystore.txt \
             --no-confirmation \
             --no-wait;
