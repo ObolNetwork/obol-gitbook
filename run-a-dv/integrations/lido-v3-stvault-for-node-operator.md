@@ -5,8 +5,8 @@
 
 It assumes:
 
-- stVault creation is done via **Lido’s stVault UI** or **Lido’s stVault CLI**, and
-- validator operations (deposit, exit, withdrawal, etc.) are performed using **Lido stVault CLI or Lido’s stVault UI only**.
+- stVault creation is done via **Lido's stVault UI** or **Lido's stVault CLI**, and
+- validator operations (deposit, exit, withdrawal, etc.) are performed using **Lido stVault CLI or Lido's stVault UI only**.
 
 **Do not use the Obol Launchpad UI for any validators belonging to a stVault.**
 {% endhint %}
@@ -69,15 +69,15 @@ The CLI exposes two main entry points you will use:
 **Practical split:**
 
 - Use **`contracts dashboard r overview / health / info` as your primary monitoring entrypoint** (per vault “product”).
-- Use **`vo r overview / health / info / roles`** when you need contract-level detail, addresses, or role debugging.
+- Use **`vo r overview / health / info / roles`** when you need contract-level detail, addresses, or role debugging.
 
-> For beacon-chain deposits, validator exits, withdrawals and other stVault operations, use the Lido stVault UIor Lido stVault CLI only.
-> 
-> 
-> Do **not** use the Obol Launchpad UI for these validators.
-> 
+{% hint style="warning" %}
+For beacon-chain deposits, validator exits, withdrawals and other stVault operations, use the Lido stVault UI or Lido stVault CLI only.
 
-For the rest of this guide we assume a **multi-operator DVT vault** with, for example:
+Do **not** use the Obol Launchpad UI for these validators.
+{% endhint %}
+
+For the rest of this guide we assume a **multi-operator DVT vault** with, for example:
 
 - **Cluster size:** 5 operators
 - **Cluster limit:** up to ~1,000,000 ETH (subject to Lido risk / tier approvals)
@@ -214,11 +214,13 @@ Obol cluster creation docs:
 
 [Create a DV With a Group](../start/create-a-dv-with-a-group.md)
 
-> When generating the cluster lock, use the --publish flag so the cluster lock is published and verifiable by:
-> 
-> - DV participants,
-> - Lido risk review & DVT tier evaluation, and
-> - Better support by Obol Team in troubleshooting cluster issues.
+{% hint style="info" %}
+When generating the cluster lock, use the --publish flag so the cluster lock is published and verifiable by:
+
+- DV participants,
+- Lido risk review & DVT tier evaluation, and
+- Better support by Obol Team in troubleshooting cluster issues.
+{% endhint %}
 
 <figure><img src="../../.gitbook/assets/LIDO-STVAULT-OVERVIEW.png" alt=""><figcaption></figcaption></figure>
 
@@ -384,11 +386,11 @@ Use these for:
 
 ### 6.3 Example Alerting Rules (Non-Canonical)
 
-> The thresholds below are illustrative only.
-> 
-> 
-> They are not official Lido or Obol requirements and should be tuned to your vault’s risk profile, product design, and the latest protocol guidance.
-> 
+{% hint style="info" %}
+The thresholds below are illustrative only.
+
+They are not official Lido or Obol requirements and should be tuned to your vault's risk profile, product design, and the latest protocol guidance.
+{% endhint %}
 
 Examples of vault-level alerts you might configure:
 
@@ -495,15 +497,15 @@ If the splitter is configured correctly with Obol’s 1% share, **Obol rewards*
 
 Process:
 
-1. Connect the **recipient wallet / Safe** that owns the reward entitlement.
+1. Connect the **recipient wallet / Safe** that owns the reward entitlement.
 2. Navigate to the rewards section.
 3. Claim any available incentives.
 
-> Launchpad is used only for claiming Obol rewards.
-> 
-> 
-> All validator-related actions for stVaults must still go through the **Lido stVault UI or CLI**, not Launchpad.
-> 
+{% hint style="warning" %}
+Launchpad is used only for claiming Obol rewards.
+
+All validator-related actions for stVaults must still go through the **Lido stVault UI or CLI**, not Launchpad.
+{% endhint %}
 
 Hoodi Link: https://hoodi.launchpad.obol.org/operator/your_address/
 

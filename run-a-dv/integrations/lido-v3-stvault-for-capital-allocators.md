@@ -264,7 +264,9 @@ Obol will assist along the way: from design → DV cluster → identification �
     - fee configurations.
 - Introduction to **curators / strategy providers** if you want an economic layer on top (beyond pure staking).
 
-> For detailed identification process steps, see the [Node Operator Guide](lido-v3-stvault-for-node-operator.md#51-dvt-cluster-identification-process).
+{% hint style="info" %}
+For detailed identification process steps, see the [Node Operator Guide](lido-v3-stvault-for-node-operator.md#51-dvt-cluster-identification-process).
+{% endhint %}
 
 ---
 
