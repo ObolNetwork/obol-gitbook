@@ -1,4 +1,4 @@
-# Lido V3 stVault Integration Kit
+# Create a Lido StVault
 
 {% hint style="info" %}
 💡
@@ -6,7 +6,7 @@
 Lido V3 introduces **stVaults**—customizable staking vaults that unlock stETH liquidity for institutional stakers and asset managers. **Obol Distributed Validators offer the most capital-efficient way to deploy a stVault**, unlocking the **highest minting capacity** and the end game staking configuration.
 {% endhint %}
 
-## Lido V3 stVault Integration Kit
+## Create a Lido StVault
 
 **Target audience:** Node operators and capital allocators looking to deploy stVaults with **maximum capital efficiency** and institutional-grade security.
 
