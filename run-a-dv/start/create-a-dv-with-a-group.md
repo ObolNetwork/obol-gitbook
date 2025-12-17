@@ -383,7 +383,7 @@ The [CDVN repository](https://github.com/ObolNetwork/charon-distributed-validato
 {% tabs %}
 {% tab title="CDVN" %}
 {% hint style="info" %}
-Currently, the [CDVN repo](https://github.com/ObolNetwork/charon-distributed-validator-node) has defaults for the Holesky testnet and for mainnet.
+Currently, the [CDVN repo](https://github.com/ObolNetwork/charon-distributed-validator-node) has defaults for the Hoodi testnet and for mainnet.
 {% endhint %}
 
 Start by copying the appropriate `.env.sample.<NETWORK>` file to `.env`, and modifying values as needed.
