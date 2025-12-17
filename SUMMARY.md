@@ -157,11 +157,15 @@
 * [Cluster Lock](api/cluster-lock.md)
 * [State](api/state.md)
 * [DV Exit](api/dv-exit.md)
+* [DV Migrate](api/dv-migrate.md)
 * [Cluster Effectiveness](api/cluster-effectiveness.md)
+* [Deposit Data](api/deposit-data.md)
 * [Terms And Conditions](api/terms-and-conditions.md)
 * [Techne Credentials](api/techne-credentials.md)
 * [Address](api/address.md)
 * [OWR Information](api/owr-information.md)
+* [Test](api/test.md)
+* [TVS](api/tvs.md)
 
 ***
 
