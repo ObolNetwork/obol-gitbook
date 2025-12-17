@@ -389,9 +389,9 @@ Currently, the [CDVN repo](https://github.com/ObolNetwork/charon-distributed-val
 Start by copying the appropriate `.env.sample.<NETWORK>` file to `.env`, and modifying values as needed.
 
 ```sh
-# To prepare the node for the Holesky test network
-# Copy ".env.sample.holesky", renaming it ".env"
-cp .env.sample.holesky .env
+# To prepare the node for the Hoodi test network
+# Copy ".env.sample.hoodi", renaming it ".env"
+cp .env.sample.hoodi .env
 
 # To prepare the node for the main Ethereum network
 # Copy ".env.sample.mainnet", renaming it ".env"
@@ -484,10 +484,10 @@ To prepare a Distributed Validator node using sedge, we will use the `sedge gene
 
 With Sedge installed, and the DKG complete, it’s time to deploy a Distributed Validator. Using the `sedge generate` command and its subcommands, Sedge will create a Docker Compose file needed to run the validator node.
 
-1.  The following command generates the artifacts required to deploy a distributed validator on the Holesky network, using Teku as the validator client, Prysm as the consensus client, and Geth as the execution client. For additional supported client combinations, [refer to the documentation here](https://github.com/NethermindEth/sedge?tab=readme-ov-file#supported-networks-and-clients).
+1.  The following command generates the artifacts required to deploy a distributed validator on the Hoodi network, using Teku as the validator client, Prysm as the consensus client, and Geth as the execution client. For additional supported client combinations, [refer to the documentation here](https://github.com/NethermindEth/sedge?tab=readme-ov-file#supported-networks-and-clients).
 
     ```sh
-    sedge generate full-node --validator=teku --consensus=prysm --execution=geth --network=holesky --distributed
+    sedge generate full-node --validator=teku --consensus=prysm --execution=geth --network=hoodi --distributed
     ```
 
     You should be shown a long list of configuration outputs with the following endings:
@@ -509,7 +509,7 @@ With Sedge installed, and the DKG complete, it’s time to deploy a Distributed 
 Use the following command to import keys from the directory where the `.charon` dir is located.
 
 ```sh
-sedge import-key --from ./ holesky teku
+sedge import-key --from ./ hoodi teku
 ```
 
 **Sedge Run**[**​**](https://docs.obol.org/next/run/start/quickstart_group#sedge-run)
