@@ -59,6 +59,7 @@
   * [Removing Operators](advanced-and-troubleshooting/advanced/remove-operators.md)
   * [Replacing Operator](advanced-and-troubleshooting/advanced/replace-operator.md)
   * [Recreating Private Keys](advanced-and-troubleshooting/advanced/recreate-private-keys.md)
+  * [Alter Withdrawal Addresses](advanced-and-troubleshooting/advanced/alter-withdrawal-addresses.md)
   * [Custom Graffiti](advanced-and-troubleshooting/advanced/custom-graffiti.md)
   * [Enable TLS Protocol](advanced-and-troubleshooting/advanced/enable-tls-protocol.md)
   * [Fallback Beacon Nodes](advanced-and-troubleshooting/advanced/fallback-beacon-nodes.md)
