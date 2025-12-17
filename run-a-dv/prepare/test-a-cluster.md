@@ -184,7 +184,7 @@ Regular tests intended for relatively fast run, without putting any major load o
 **Example run**
 
 ```sh
-docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.7.1 alpha test all \
+docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.8.0 alpha test all \
   --peers-enrs="enr:-HW4QMno_MB_ID6GFVxoIQAHHVHZZZjzFctxtX2tm9D95tvaPbHathi8YUP8jh8v2YUAVu2fYWEOB_BT14pt8QgiGg2AgmlkgnY0iXNlY3AyNTZrMaECdpnK83s0dbBwCaEfDIkQ-3nJkkC93STvv6Vmi0bYlzg,enr:-HW4QO2vefLueTBEUGly5hkcpL7NWdMKWx7Nuy9f7z6XZInCbFAc0IZj6bsnmj-Wi4ElS6jNa0Mge5Rkc2WGTVemas2AgmlkgnY0iXNlY3AyNTZrMaECR9SmYQ_1HRgJmNxvh_ER2Sxx78HgKKgKaOkCROYwaDY" \
   --peers-private-key-file="/opt/charon/test/.charon/charon-enr-private-key" \
   --beacon-endpoints="https://ethereum-holesky-beacon-api.publicnode.com,https://ethereum-sepolia-beacon-api.publicnode.com" \
@@ -204,7 +204,7 @@ docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/ch
 **Example run**
 
 ```sh
-docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.7.1 alpha test all \
+docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.8.0 alpha test all \
   --peers-definition-file="/opt/charon/test/.charon/cluster-definition.json" \
   --peers-private-key-file="/opt/charon/test/.charon/charon-enr-private-key" \
   --beacon-endpoints="https://ethereum-holesky-beacon-api.publicnode.com,https://ethereum-sepolia-beacon-api.publicnode.com" \
@@ -224,7 +224,7 @@ docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/ch
 **Example run**
 
 ```sh
-docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.7.1 alpha test all \
+docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.8.0 alpha test all \
   --peers-lock-file="/opt/charon/test/.charon/cluster-lock.json" \
   --peers-private-key-file="/opt/charon/test/.charon/charon-enr-private-key" \
   --beacon-endpoints="https://ethereum-holesky-beacon-api.publicnode.com,https://ethereum-sepolia-beacon-api.publicnode.com" \
@@ -252,7 +252,7 @@ Load tests intended for more time consuming run. Beacon nodes are put under heav
 **Example run**
 
 ```sh
-docker run --network="charon-distributed-validator-node_dvnode" -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.7.1 alpha test all \
+docker run --network="charon-distributed-validator-node_dvnode" -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.8.0 alpha test all \
   --peers-enrs="enr:-HW4QMno_MB_ID6GFVxoIQAHHVHZZZjzFctxtX2tm9D95tvaPbHathi8YUP8jh8v2YUAVu2fYWEOB_BT14pt8QgiGg2AgmlkgnY0iXNlY3AyNTZrMaECdpnK83s0dbBwCaEfDIkQ-3nJkkC93STvv6Vmi0bYlzg,enr:-HW4QO2vefLueTBEUGly5hkcpL7NWdMKWx7Nuy9f7z6XZInCbFAc0IZj6bsnmj-Wi4ElS6jNa0Mge5Rkc2WGTVemas2AgmlkgnY0iXNlY3AyNTZrMaECR9SmYQ_1HRgJmNxvh_ER2Sxx78HgKKgKaOkCROYwaDY" \
   --peers-private-key-file="/opt/charon/test/.charon/charon-enr-private-key" \
   --beacon-endpoints="http://lighthouse:5052/" \
@@ -279,7 +279,7 @@ docker run --network="charon-distributed-validator-node_dvnode" -u $(id -u):$(id
 **Example run**
 
 ```sh
-docker run --network="charon-distributed-validator-node_dvnode" -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.7.1 alpha test all \
+docker run --network="charon-distributed-validator-node_dvnode" -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.8.0 alpha test all \
   --peers-definition-file="/opt/charon/test/.charon/cluster-definition.json" \
   --peers-private-key-file="/opt/charon/test/.charon/charon-enr-private-key" \
   --beacon-endpoints="http://lighthouse:5052/" \
@@ -305,7 +305,7 @@ docker run --network="charon-distributed-validator-node_dvnode" -u $(id -u):$(id
 **Example run**
 
 ```sh
-docker run --network="charon-distributed-validator-node_dvnode" -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.7.1 alpha test all \
+docker run --network="charon-distributed-validator-node_dvnode" -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.8.0 alpha test all \
   --peers-lock-file="/opt/charon/test/.charon/cluster-lock.json" \
   --peers-private-key-file="/opt/charon/test/.charon/charon-enr-private-key" \
   --beacon-endpoints="http://lighthouse:5052/" \
@@ -489,7 +489,7 @@ charon alpha test mev \
 **Example run**
 
 ```sh
-docker run obolnetwork/charon:v1.7.1 alpha test mev \
+docker run obolnetwork/charon:v1.8.0 alpha test mev \
   --endpoints="https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,https://0x8b5d2e73e2a3a55c6c87b8b6eb92e0149a125c852751db1422fa951e42a09b82c142c3ea98d0d9930b056a3bc9896b8f@bloxroute.max-profit.blxrbdn.com,https://0xac6e77dfe25ecd6110b8e780608cce0dab71fdd5ebea22a16c0205200f2f8e2e3ad3b71d3499c54ad14d6c21b41a37ae@boost-relay.flashbots.net,https://0xa1559ace749633b997cb3fdacffb890aeebdb0f5a3b6aaa7eeeaf1a38af0a8fe88b9e4b1f61f236d2e64d95733327a62@relay.ultrasound.money,https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@regional.titanrelay.xyz,https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@global.titanrelay.xyz"
 ```
 {% endtab %}
@@ -503,7 +503,7 @@ docker run obolnetwork/charon:v1.7.1 alpha test mev \
 **Example run**
 
 ```sh
-docker run obolnetwork/charon:v1.7.1 alpha test mev \
+docker run obolnetwork/charon:v1.8.0 alpha test mev \
   --endpoints="https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,https://0x8b5d2e73e2a3a55c6c87b8b6eb92e0149a125c852751db1422fa951e42a09b82c142c3ea98d0d9930b056a3bc9896b8f@bloxroute.max-profit.blxrbdn.com,https://0xac6e77dfe25ecd6110b8e780608cce0dab71fdd5ebea22a16c0205200f2f8e2e3ad3b71d3499c54ad14d6c21b41a37ae@boost-relay.flashbots.net,https://0xa1559ace749633b997cb3fdacffb890aeebdb0f5a3b6aaa7eeeaf1a38af0a8fe88b9e4b1f61f236d2e64d95733327a62@relay.ultrasound.money,https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@regional.titanrelay.xyz,https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@global.titanrelay.xyz" \
   --load-test \
   --beacon-node-endpoint="https://ethereum-beacon-api.publicnode.com"
@@ -538,7 +538,7 @@ charon alpha test infra
 #### Example run
 
 ```sh
-docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.7.1 alpha test infra \
+docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.8.0 alpha test infra \
         --disk-io-test-file-dir=/opt/charon/test
 ```
 

@@ -6,7 +6,7 @@ description: >-
 
 # CLI Reference
 
-The following is a reference for Charon version [`v1.7.1`](https://github.com/ObolNetwork/charon/releases/tag/v1.7.1). Find the latest release on [our Github](https://github.com/ObolNetwork/charon/releases).
+The following is a reference for Charon version [`v1.8.0`](https://github.com/ObolNetwork/charon/releases/tag/v1.8.0). Find the latest release on [our Github](https://github.com/ObolNetwork/charon/releases).
 
 The following are the top-level commands available to use.
 
@@ -22,6 +22,7 @@ Available Commands:
   combine     Combine the private key shares of a distributed validator cluster into a set of standard validator private keys
   completion  Generate the autocompletion script for the specified shell
   create      Create artifacts for a distributed validator cluster
+  deposit     Sign and fetch a new partial deposit.
   dkg         Participate in a Distributed Key Generation ceremony
   enr         Print the ENR that identifies this client
   exit        Exit a distributed validator.
@@ -134,7 +135,7 @@ Flags:
       --compounding                            Enable compounding rewards for validators by using 0x02 withdrawal credentials.
       --consensus-protocol string              Preferred consensus protocol name for the cluster. Selected automatically when not specified.
       --deposit-amounts ints                   List of partial deposit amounts (integers) in ETH. Values must sum up to at least 32ETH.
-      --dkg-algorithm string                   DKG algorithm to use; default, frost (default "default")
+      --dkg-algorithm string                   DKG algorithm to use; default, frost or pedersen. (default "default")
       --execution-client-rpc-endpoint string   The address of the execution engine JSON-RPC API.
       --fee-recipient-addresses strings        Comma separated list of Ethereum addresses of the fee recipient for each validator. Either provide a single fee recipient address or fee recipient addresses for each validator.
   -h, --help                                   Help for dkg
@@ -149,6 +150,72 @@ Flags:
       --target-gas-limit uint                  Preferred target gas limit for transactions. (default 60000000)
   -t, --threshold int                          Optional override of threshold required for signature reconstruction. Defaults to ceil(n*2/3) if zero. Warning, non-default values decrease security.
       --withdrawal-addresses strings           Comma separated list of Ethereum addresses to receive the returned stake and accrued rewards for each validator. Either provide a single withdrawal address or withdrawal addresses for each validator.
+```
+
+## The `deposit` command
+
+The `deposit` command enables signing and fetching new deposit messages for unactivated validators. This allows modification of a withdrawal address after validator creation but before activation, supporting partial deposits and withdrawal address changes.
+
+```markdown
+charon deposit --help
+Sign and fetch new deposit messages for unactivated validators using a remote API, enabling the modification of a withdrawal address after creation but before activation.
+
+Usage:
+  charon deposit [command]
+
+Available Commands:
+  fetch       Fetch a full deposit message.
+  sign        Sign a new partial deposit message.
+
+Flags:
+  -h, --help   Help for deposit
+
+Use "charon deposit [command] --help" for more information about a command.
+```
+
+### Sign a new partial deposit
+
+The `charon deposit sign` command signs new partial validator deposit messages and submits them to a remote API for aggregation.
+
+```markdown
+charon deposit sign --help
+Signs new partial validator deposit messages using a remote API.
+
+Usage:
+  charon deposit sign [flags]
+
+Flags:
+      --deposit-amounts uints           Comma separated list of partial deposit amounts (integers) in ETH. (default [32])
+  -h, --help                            Help for sign
+      --lock-file string                Path to the cluster lock file defining the distributed validator cluster. (default ".charon/cluster-lock.json")
+      --private-key-file string         Path to the charon enr private key file. (default ".charon/charon-enr-private-key")
+      --publish-address string          The URL of the remote API. (default "https://api.obol.tech/v1")
+      --publish-timeout duration        Timeout for publishing a signed deposit to the publish-address API. (default 5m0s)
+      --validator-keys-dir string       Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
+      --validator-public-keys strings   [REQUIRED] List of validator public keys for which new deposits will be signed.
+      --withdrawal-addresses strings    [REQUIRED] Withdrawal addresses for which the new deposits will be signed. Either a single address for all specified validator-public-keys or one address per key should be specified.
+```
+
+### Fetch a full deposit message
+
+The `charon deposit fetch` command fetches fully signed deposit messages from the remote API after enough operators have submitted their partial signatures.
+
+```markdown
+charon deposit fetch --help
+Fetch full validator deposit messages using a remote API.
+
+Usage:
+  charon deposit fetch [flags]
+
+Flags:
+      --deposit-data-dir string         Path to the directory in which fetched deposit data will be stored. (default ".charon/deposit-data-<TIMESTAMP>")
+  -h, --help                            Help for fetch
+      --lock-file string                Path to the cluster lock file defining the distributed validator cluster. (default ".charon/cluster-lock.json")
+      --private-key-file string         Path to the charon enr private key file. (default ".charon/charon-enr-private-key")
+      --publish-address string          The URL of the remote API. (default "https://api.obol.tech/v1")
+      --publish-timeout duration        Timeout for publishing a signed deposit to the publish-address API. (default 5m0s)
+      --validator-keys-dir string       Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
+      --validator-public-keys strings   [REQUIRED] List of validator public keys for which new deposits will be signed.
 ```
 
 ## The `dkg` command
@@ -169,7 +236,7 @@ Usage:
 Flags:
       --data-dir string                        The directory where charon will store all its internal data. (default ".charon")
       --definition-file string                 The path to the cluster definition file or an HTTP URL. (default ".charon/cluster-definition.json")
-      --execution-client-rpc-endpoint string   The address of the execution engine JSON-RPC API.
+      --execution-client-rpc-endpoint string   Optional address of an execution engine JSON-RPC API. Used to validate smart contract signatures for Node Operators in the cluster.
   -h, --help                                   Help for dkg
       --keymanager-address string              The keymanager URL to import validator keyshares.
       --keymanager-auth-token string           Authentication bearer token to interact with keymanager API. Don't include the "Bearer" symbol, only include the api-token.
@@ -181,7 +248,7 @@ Flags:
       --p2p-disable-reuseport                  Disables TCP port reuse for outgoing libp2p connections.
       --p2p-external-hostname string           The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
       --p2p-external-ip string                 The IP address advertised by libp2p. This may be used to advertise an external IP.
-      --p2p-relays strings                     Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://0.relay.obol.tech,https://2.relay.obol.dev,https://1.relay.obol.tech])
+      --p2p-relays strings                     Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://0.relay.obol.tech,https://1.relay.obol.tech,https://2.relay.obol.dev])
       --p2p-tcp-address strings                Comma-separated list of listening TCP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --p2p-udp-address strings                Comma-separated list of listening UDP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --publish                                Publish the created cluster to a remote API.
@@ -241,7 +308,7 @@ Flags:
       --p2p-disable-reuseport                    Disables TCP port reuse for outgoing libp2p connections.
       --p2p-external-hostname string             The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
       --p2p-external-ip string                   The IP address advertised by libp2p. This may be used to advertise an external IP.
-      --p2p-relays strings                       Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://0.relay.obol.tech,https://2.relay.obol.dev,https://1.relay.obol.tech])
+      --p2p-relays strings                       Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://0.relay.obol.tech,https://1.relay.obol.tech,https://2.relay.obol.dev])
       --p2p-tcp-address strings                  Comma-separated list of listening TCP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --p2p-udp-address strings                  Comma-separated list of listening UDP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --private-key-file string                  The path to the charon enr private key file. (default ".charon/charon-enr-private-key")
@@ -429,6 +496,53 @@ Flags:
       --validator-public-key string              Public key of the validator to exit, must be present in the cluster lock manifest. If --validator-index is also provided, validator liveliness won't be checked on the beacon chain.
 ```
 
+### List active validators
+
+The `charon exit active-validator-list` command returns a list of all distributed validators in the specified cluster whose status is ACTIVE_ONGOING, meaning they can be exited.
+
+```markdown
+charon exit active-validator-list --help
+Returns a list of all the DV in the specified cluster whose status is ACTIVE_ONGOING, i.e. can be exited.
+
+Usage:
+  charon exit active-validator-list [flags]
+
+Flags:
+      --beacon-node-endpoints strings            Comma separated list of one or more beacon node endpoint URLs. [REQUIRED]
+      --beacon-node-headers strings              Comma separated list of headers formatted as header=value
+      --beacon-node-timeout duration             Timeout for beacon node HTTP calls. (default 30s)
+      --fallback-beacon-node-endpoints strings   A list of beacon nodes to use if the primary list are offline or unhealthy.
+  -h, --help                                     Help for active-validator-list
+      --lock-file string                         The path to the cluster lock file defining the distributed validator cluster. (default ".charon/cluster-lock.json")
+      --log-color string                         Log color; auto, force, disable. (default "auto")
+      --log-format string                        Log format; console, logfmt or json (default "console")
+      --log-level string                         Log level; debug, info, warn or error (default "info")
+      --log-output-path string                   Path in which to write on-disk logs.
+      --plaintext                                Prints each active validator on a line, without any debugging or logging artifact. Useful for scripting.
+      --testnet-capella-hard-fork string         Capella hard fork version of the custom test network.
+      --testnet-chain-id uint                    Chain ID of the custom test network.
+      --testnet-fork-version string              Genesis fork version of the custom test network (in hex).
+      --testnet-genesis-timestamp int            Genesis timestamp of the custom test network.
+      --testnet-name string                      Name of the custom test network.
+```
+
+## The `enr` command
+
+The standalone `charon enr` command prints an Ethereum Node Record (ENR) from the client's charon-enr-private-key. This serves as a public key that identifies this client to its peers.
+
+```markdown
+charon enr --help
+Prints an Ethereum Node Record (ENR) from this client's charon-enr-private-key. This serves as a public key that identifies this client to its peers.
+
+Usage:
+  charon enr [flags]
+
+Flags:
+      --data-dir string   The directory where charon will store all its internal data. (default ".charon")
+  -h, --help              Help for enr
+      --verbose           Prints the expanded form of ENR.
+```
+
 ## The `combine` command
 
 ### Combine distributed validator key shares into a single validator key
@@ -565,7 +679,7 @@ Flags:
       --p2p-max-connections int           Libp2p maximum number of peers that can connect to this relay. (default 16384)
       --p2p-max-reservations int          Updates max circuit reservations per peer (each valid for 30min) (default 512)
       --p2p-relay-loglevel string         Libp2p circuit relay log level. E.g., debug, info, warn, error.
-      --p2p-relays strings                Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://0.relay.obol.tech,https://2.relay.obol.dev,https://1.relay.obol.tech])
+      --p2p-relays strings                Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://0.relay.obol.tech,https://1.relay.obol.tech,https://2.relay.obol.dev])
       --p2p-tcp-address strings           Comma-separated list of listening TCP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --p2p-udp-address strings           Comma-separated list of listening UDP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
 ```
@@ -582,7 +696,7 @@ The `charon alpha edit` commands allow you to modify existing distributed valida
 
 ```markdown
 charon alpha edit --help
-Subcommands allow users to modify existing distributed validator cluster configurations, such as adding, removing or replacing operators.
+Subcommands allow users to modify existing distributed validator cluster configurations, such as adding and removing operators.
 
 Usage:
   charon alpha edit [command]
@@ -592,7 +706,6 @@ Available Commands:
   add-validators        Add new validators to an existing distributed validator cluster
   recreate-private-keys Create new private key shares to replace existing validator private key shares
   remove-operators      Remove operators from an existing distributed validator cluster
-  replace-operator      Replace an operator in an existing distributed validator cluster
 
 Flags:
   -h, --help   Help for edit
@@ -758,52 +871,13 @@ Flags:
       --validator-keys-dir string              Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
 ```
 
-#### Replace an operator in a cluster
-
-The `charon alpha edit replace-operator` command replaces an existing operator in a distributed validator cluster with a new operator, whilst keeping all validators intact. All remaining and new operators must participate in this ceremony.
-
-{% hint style="warning" %}
-This is an alpha feature and is not yet recommended for production use.
-{% endhint %}
-
-```markdown
-charon alpha edit replace-operator --help
-Replaces an operator in an existing distributed validator cluster, keeping validator public keys unchanged.
-
-Usage:
-  charon alpha edit replace-operator [flags]
-
-Flags:
-      --execution-client-rpc-endpoint string   Optional address of an execution engine JSON-RPC API. Used to validate smart contract signatures for Node Operators in the cluster.
-  -h, --help                                   Help for replace-operator
-      --lock-file string                       The path to the cluster lock file defining the distributed validator cluster. (default ".charon/cluster-lock.json")
-      --log-color string                       Log color; auto, force, disable. (default "auto")
-      --log-format string                      Log format; console, logfmt or json (default "console")
-      --log-level string                       Log level; debug, info, warn or error (default "info")
-      --log-output-path string                 Path in which to write on-disk logs.
-      --new-operator-enr string                The new operator to be added (Charon ENR address).
-      --no-verify                              Disables cluster definition and lock file verification.
-      --old-operator-enr string                The old operator to be replaced (Charon ENR address).
-      --output-dir string                      The destination folder for the new cluster data. Must be empty. (default "distributed_validator")
-      --p2p-disable-reuseport                  Disables TCP port reuse for outgoing libp2p connections.
-      --p2p-external-hostname string           The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
-      --p2p-external-ip string                 The IP address advertised by libp2p. This may be used to advertise an external IP.
-      --p2p-relays strings                     Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://4.relay.obol.dev])
-      --p2p-tcp-address strings                Comma-separated list of listening TCP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
-      --p2p-udp-address strings                Comma-separated list of listening UDP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
-      --private-key-file string                The path to the charon enr private key file.  (default ".charon/charon-enr-private-key")
-      --shutdown-delay duration                Graceful shutdown delay. (default 1s)
-      --timeout duration                       Timeout for the protocol, should be increased if protocol times out. (default 1m0s)
-      --validator-keys-dir string              Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
-```
-
 ### Test your candidate distributed validator cluster
 
 Charon comes with a test suite for understanding the suitability and readiness of a given setup.
 
 ```markdown
 charon alpha test --help
-Test subcommands provide test suite to evaluate current cluster setup. The full validator stack can be tested - charon peers, consensus layer, validator client, MEV. Current machine's infra can be examined as well.
+Subcommands provide test suites to evaluate a cluster setup. The full validator stack can be tested - charon peers, consensus layer, validator client, MEV. Current machine's infra can be examined as well.
 
 Usage:
   charon alpha test [command]
@@ -856,7 +930,7 @@ Flags:
       --p2p-disable-reuseport                         Disables TCP port reuse for outgoing libp2p connections.
       --p2p-external-hostname string                  The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
       --p2p-external-ip string                        The IP address advertised by libp2p. This may be used to advertise an external IP.
-      --p2p-relays strings                            Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://0.relay.obol.tech,https://2.relay.obol.dev,https://1.relay.obol.tech])
+      --p2p-relays strings                            Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://0.relay.obol.tech,https://1.relay.obol.tech,https://2.relay.obol.dev])
       --p2p-tcp-address strings                       Comma-separated list of listening TCP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --p2p-udp-address strings                       Comma-separated list of listening UDP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --peers-definition-file string                  The path to the cluster definition file or an HTTP URL.
@@ -976,7 +1050,7 @@ Flags:
       --p2p-disable-reuseport                Disables TCP port reuse for outgoing libp2p connections.
       --p2p-external-hostname string         The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
       --p2p-external-ip string               The IP address advertised by libp2p. This may be used to advertise an external IP.
-      --p2p-relays strings                   Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://0.relay.obol.tech,https://2.relay.obol.dev,https://1.relay.obol.tech])
+      --p2p-relays strings                   Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://0.relay.obol.tech,https://1.relay.obol.tech,https://2.relay.obol.dev])
       --p2p-tcp-address strings              Comma-separated list of listening TCP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --p2p-udp-address strings              Comma-separated list of listening UDP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --private-key-file string              The path to the charon enr private key file. (default ".charon/charon-enr-private-key")
