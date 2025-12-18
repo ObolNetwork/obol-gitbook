@@ -648,6 +648,76 @@ The generated private keys are in the standard [EIP-2335](https://github.com/eth
 **Ensure your distributed validator cluster is completely shut down for at least two epochs before starting a replacement validator or you are likely to be slashed.**
 {% endhint %}
 
+## The `deposit` command
+
+{% hint style="warning" %}
+Activating a validator with an incorrect withdrawal address likely results in a loss of the funds. Take care when preparing alternative deposit data for a single validator client.
+{% endhint %}
+
+For unused, inactive validators in an existing cluster, you can prepare alternative deposit data for them, allowing you to use them as validators for a different withdrawal address than originally intended.
+
+See the [advanced guide](../../advanced-and-troubleshooting/advanced/alter-withdrawal-addresses.md) for more.
+
+```markdown
+Sign and fetch new deposit messages for unactivated validators using a remote API, enabling the modification of a withdrawal address after creation but before activation.
+
+Usage:
+  charon deposit [command]
+
+Available Commands:
+  fetch       Fetch a full deposit message.
+  sign        Sign a new partial deposit message.
+
+Flags:
+  -h, --help   Help for deposit
+
+Use "charon deposit [command] --help" for more information about a command.
+
+```
+
+### Sign a deposit for an alternative withdrawal address
+
+A threshold of node operators must run `charon deposit sign` with matching parameters, to enable a new deposit data to be fetched with `charon deposit fetch`.
+
+```markdown
+Signs new partial validator deposit messages using a remote API.
+
+Usage:
+  charon deposit sign [flags]
+
+Flags:
+      --deposit-amounts uints           Comma separated list of partial deposit amounts (integers) in ETH. (default [32])
+  -h, --help                            Help for sign
+      --lock-file string                Path to the cluster lock file defining the distributed validator cluster. (default ".charon/cluster-lock.json")
+      --private-key-file string         Path to the charon enr private key file. (default ".charon/charon-enr-private-key")
+      --publish-address string          The URL of the remote API. (default "https://api.obol.tech/v1")
+      --publish-timeout duration        Timeout for publishing a signed deposit to the publish-address API. (default 5m0s)
+      --validator-keys-dir string       Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
+      --validator-public-keys strings   [REQUIRED] List of validator public keys for which new deposits will be signed.
+      --withdrawal-addresses strings    [REQUIRED] Withdrawal addresses for which the new deposits will be signed. Either a single address for all specified validator-public-keys or one address per key should be specified.
+```
+
+### Download a fully signed alternative deposit message
+
+`charon deposit fetch` outputs a file `.charon/deposit-data-<timestamp>.json` for use with the Ethereum deposit contract.
+
+```markdown
+Fetch full validator deposit messages using a remote API.
+
+Usage:
+  charon deposit fetch [flags]
+
+Flags:
+      --deposit-data-dir string         Path to the directory in which fetched deposit data will be stored. (default ".charon/deposit-data-<TIMESTAMP>")
+  -h, --help                            Help for fetch
+      --lock-file string                Path to the cluster lock file defining the distributed validator cluster. (default ".charon/cluster-lock.json")
+      --private-key-file string         Path to the charon enr private key file. (default ".charon/charon-enr-private-key")
+      --publish-address string          The URL of the remote API. (default "https://api.obol.tech/v1")
+      --publish-timeout duration        Timeout for publishing a signed deposit to the publish-address API. (default 5m0s)
+      --validator-keys-dir string       Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
+      --validator-public-keys strings   [REQUIRED] List of validator public keys for which new deposits will be signed.
+```
+
 ## Host a relay
 
 Relays run a libp2p [circuit relay](https://docs.libp2p.io/concepts/nat/circuit-relay/) server that allows Charon clusters to perform peer discovery and for Charon clients behind strict NAT gateways to be communicated with. If you want to self-host a relay for your cluster(s) the following command will start one.
