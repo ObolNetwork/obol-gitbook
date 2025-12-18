@@ -59,7 +59,7 @@ Run the below command to create the validator private key shares and cluster art
 ```sh
   docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.7.1 create cluster \
     --nodes=6 \
-    --network=holesky \
+    --network=hoodi \
     --num-validators=1 \
     --name="Quickstart Guide Cluster" \
     --cluster-dir="cluster" \
@@ -181,7 +181,7 @@ Folder structure to be placed on each DV node:
 ```
 
 {% hint style="info" %}
-Currently, the quickstart repo installs a node on the Holesky testnet. It is possible to choose a different network (another testnet, or mainnet) by overriding the `.env` file.
+Currently, the quickstart repo installs a node on the Hoodi testnet. It is possible to choose a different network (another testnet, or mainnet) by overriding the `.env` file.
 
 `.env.sample` is a sample environment file that allows overriding default configuration defined in `docker-compose.yml`. Uncomment and set any variable to override its value.
 
@@ -189,7 +189,7 @@ Set up the desired inputs for the DV, including the network you wish to operate 
 
 ```sh
 # Copy ".env.sample", renaming it ".env"
-cp .env.sample.holesky .env
+cp .env.sample .env
 ```
 {% endhint %}
 {% endtab %}
