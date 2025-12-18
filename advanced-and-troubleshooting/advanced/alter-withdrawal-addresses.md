@@ -18,7 +18,7 @@ If you want to change the withdrawal address of a running validator, consider a 
 
 ## Sign an alternative deposit message
 
-A threshold of operators must decide which public keys they are changing the withdrawal address for, and what the new withdrawal address will be. The each run the `charon deposit sign` command with their partial private keys and the appropriate (identical) flags.
+A threshold of operators must decide which public keys they are changing the withdrawal address for, and what the new withdrawal address will be. Then each run the `charon deposit sign` command with their partial private keys and the appropriate (identical) flags.
 
 **Single public key**
 
