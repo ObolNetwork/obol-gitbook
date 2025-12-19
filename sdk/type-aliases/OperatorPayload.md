@@ -1,8 +1,4 @@
-[**@obolnetwork/obol-sdk**](../index.md)
-
-***
-
-[@obolnetwork/obol-sdk](../index.md) / OperatorPayload
+# OperatorPayload
 
 > **OperatorPayload** = `Partial`\<[`ClusterOperator`](ClusterOperator.md)\> & `Required`\<`Pick`\<[`ClusterOperator`](ClusterOperator.md), `"enr"` \| `"version"`\>\>
 

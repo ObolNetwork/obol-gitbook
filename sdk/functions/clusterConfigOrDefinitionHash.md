@@ -1,8 +1,4 @@
-[**@obolnetwork/obol-sdk**](../index.md)
-
-***
-
-[@obolnetwork/obol-sdk](../index.md) / clusterConfigOrDefinitionHash
+# clusterConfigOrDefinitionHash()
 
 > **clusterConfigOrDefinitionHash**(`cluster`, `configOnly`): `string`
 

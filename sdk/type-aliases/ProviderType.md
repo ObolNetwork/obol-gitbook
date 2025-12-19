@@ -1,8 +1,4 @@
-[**@obolnetwork/obol-sdk**](../index.md)
-
-***
-
-[@obolnetwork/obol-sdk](../index.md) / ProviderType
+# ProviderType
 
 > **ProviderType** = `Provider` \| `JsonRpcProvider` \| `JsonRpcApiProvider` \| `ethers.BrowserProvider`
 

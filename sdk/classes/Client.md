@@ -1,8 +1,4 @@
-[**@obolnetwork/obol-sdk**](../index.md)
-
-***
-
-[@obolnetwork/obol-sdk](../index.md) / Client
+# Client
 
 Defined in: [index.ts:67](https://github.com/ObolNetwork/obol-sdk/blob/5137bd5c4ded55a50234f19135ea3a5bfeab4d47/src/index.ts#L67)
 

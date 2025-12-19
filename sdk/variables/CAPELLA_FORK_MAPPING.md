@@ -1,8 +1,4 @@
-[**@obolnetwork/obol-sdk**](../index.md)
-
-***
-
-[@obolnetwork/obol-sdk](../index.md) / CAPELLA\_FORK\_MAPPING
+# CAPELLA\_FORK\_MAPPING
 
 > `const` **CAPELLA\_FORK\_MAPPING**: `Record`\<`string`, `string`\>
 

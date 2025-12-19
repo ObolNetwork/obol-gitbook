@@ -1,8 +1,4 @@
-[**@obolnetwork/obol-sdk**](../index.md)
-
-***
-
-[@obolnetwork/obol-sdk](../index.md) / ETH\_ADDRESS
+# ETH\_ADDRESS
 
 > **ETH\_ADDRESS** = `string`
 

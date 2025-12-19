@@ -1,8 +1,4 @@
-[**@obolnetwork/obol-sdk**](../index.md)
-
-***
-
-[@obolnetwork/obol-sdk](../index.md) / OVMTotalSplitPayload
+# OVMTotalSplitPayload
 
 > **OVMTotalSplitPayload** = [`OVMBaseSplitPayload`](OVMBaseSplitPayload.md) & `object`
 

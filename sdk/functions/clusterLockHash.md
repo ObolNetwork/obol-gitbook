@@ -1,8 +1,4 @@
-[**@obolnetwork/obol-sdk**](../index.md)
-
-***
-
-[@obolnetwork/obol-sdk](../index.md) / clusterLockHash
+# clusterLockHash()
 
 > **clusterLockHash**(`clusterLock`): `string`
 

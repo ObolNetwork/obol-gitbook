@@ -1,8 +1,4 @@
-[**@obolnetwork/obol-sdk**](../index.md)
-
-***
-
-[@obolnetwork/obol-sdk](../index.md) / ObolSplits
+# ObolSplits
 
 Defined in: [splits/splits.ts:42](https://github.com/ObolNetwork/obol-sdk/blob/5137bd5c4ded55a50234f19135ea3a5bfeab4d47/src/splits/splits.ts#L42)
 
@@ -25,7 +21,7 @@ await obolClient.splits.createValidatorManagerAndRewardsSplit(OVMRewardsSplitPay
 
 > **createValidatorManagerAndRewardsSplit**(`payload`): `Promise`\<[`ClusterValidator`](../type-aliases/ClusterValidator.md)\>
 
-Defined in: [splits/splits.ts:74](https://github.com/ObolNetwork/obol-sdk/blob/5137bd5c4ded55a50234f19135ea3a5bfeab4d47/src/splits/splits.ts#L74)
+Defined in: [splits/splits.ts:76](https://github.com/ObolNetwork/obol-sdk/blob/5137bd5c4ded55a50234f19135ea3a5bfeab4d47/src/splits/splits.ts#L76)
 
 Creates an Obol OVM and Pull split configuration for rewards-only scenario.
 
@@ -49,6 +45,8 @@ OVM address as withdrawal address and splitter as fee recipient
 **⚠️ Important:**  If you're storing the private key in an `.env` file, ensure it is securely managed
 and not pushed to version control.
 
+**📌 Note:** The Obol Validator Manager (OVM) feature is only enabled on Hoodi on launchpad.
+
 #### Throws
 
 Will throw an error if the splitter configuration is not supported or deployment fails
@@ -62,7 +60,7 @@ An example of how to use createValidatorManagerAndRewardsSplit:
 
 > **createValidatorManagerAndTotalSplit**(`payload`): `Promise`\<[`ClusterValidator`](../type-aliases/ClusterValidator.md)\>
 
-Defined in: [splits/splits.ts:240](https://github.com/ObolNetwork/obol-sdk/blob/5137bd5c4ded55a50234f19135ea3a5bfeab4d47/src/splits/splits.ts#L240)
+Defined in: [splits/splits.ts:244](https://github.com/ObolNetwork/obol-sdk/blob/5137bd5c4ded55a50234f19135ea3a5bfeab4d47/src/splits/splits.ts#L244)
 
 Creates an Obol OVM and Total split configuration for total split scenario.
 
@@ -86,6 +84,8 @@ OVM address as withdrawal address and splitter as fee recipient
 **⚠️ Important:**  If you're storing the private key in an `.env` file, ensure it is securely managed
 and not pushed to version control.
 
+**📌 Note:** The Obol Validator Manager (OVM) feature is only enabled on Hoodi on launchpad.
+
 #### Throws
 
 Will throw an error if the splitter configuration is not supported or deployment fails
@@ -99,7 +99,7 @@ An example of how to use createValidatorManagerAndTotalSplit:
 
 > **requestWithdrawal**(`payload`): `Promise`\<\{ `txHash`: `string`; \}\>
 
-Defined in: [splits/splits.ts:438](https://github.com/ObolNetwork/obol-sdk/blob/5137bd5c4ded55a50234f19135ea3a5bfeab4d47/src/splits/splits.ts#L438)
+Defined in: [splits/splits.ts:442](https://github.com/ObolNetwork/obol-sdk/blob/5137bd5c4ded55a50234f19135ea3a5bfeab4d47/src/splits/splits.ts#L442)
 
 Requests withdrawal from an OVM contract.
 
@@ -144,7 +144,7 @@ console.log('Withdrawal requested:', result.txHash);
 
 > **deposit**(`payload`): `Promise`\<\{ `txHashes`: `string`[]; \}\>
 
-Defined in: [splits/splits.ts:488](https://github.com/ObolNetwork/obol-sdk/blob/5137bd5c4ded55a50234f19135ea3a5bfeab4d47/src/splits/splits.ts#L488)
+Defined in: [splits/splits.ts:492](https://github.com/ObolNetwork/obol-sdk/blob/5137bd5c4ded55a50234f19135ea3a5bfeab4d47/src/splits/splits.ts#L492)
 
 Deposits to OVM contract by sending individual transactions for each deposit.
 
