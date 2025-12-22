@@ -7,13 +7,13 @@
 **Target audience:** ETH capital allocators – retail, treasuries, funds, ETF/ETP issuers, institutions.
 
 {% hint style="info" %}
-Obol's [Cluster-as-a-Service](https://hubs.ly/Q03Y2Srl0) offering can get you started quickly: we act as a trusted advisor, connect you with top node operators, and help guide decisions around validator sidecars or MEV strategies.
+Obol's [Cluster-as-a-Service](https://hubs.ly/Q03Y2Srl0) offering can get you started quickly: we act as a trusted advisor, connect you with top node operators, and help guide decisions around validator sidecars and MEV strategies.
 {% endhint %}
 
 For a capital allocator, a **Lido stVault** provides a way to create a **dedicated, siloed ETH staking vault**:
 
-- you choose the **node operator set** (e.g. by geography, infra profile, reputation),
-- you agree on **reward arrangements** (e.g. ETH gas, Primev, other DVT compatible sidecar incentives),
+- you choose the **node operator set** (e.g. by geography, infrastructure used, reputation),
+- you agree on **additional reward arrangements** (e.g. [ETH gas](https://www.ethgas.com/), [Primev](https://www.ethgas.com/), other DV compatible incentives),
 - and you retain the option to tap into **stETH liquidity** at the vault level.
 
 That liquidity can then be used by a curator or strategy provider for things like **boosted APR via looping**, **restaking**, or other structured strategies – while the underlying validators are run by an **Obol Distributed Validator (DV) cluster** for operational resilience.
@@ -22,9 +22,9 @@ That liquidity can then be used by a curator or strategy provider for things lik
 
 ## Definitions
 
-**stVaults** are Lido V3's staking "building blocks": isolated vaults that hold ETH, run validators, and (optionally) mint stETH under a configurable risk framework. Each vault has its own operator set and parameters, so risk and behavior are compartmentalized rather than shared across the entire protocol.
+**stVaults** are Lido's staking "building blocks": isolated vaults that hold ETH, run validators, and (optionally) mint stETH under a configurable risk framework. Each vault has its own operator set and parameters, so risk and behavior are compartmentalized rather than shared across the entire protocol.
 
-On top of this, Obol provides **Distributed Validator Technology (DVT)**: validator keys and duties are spread across multiple independent operators/nodes rather than being concentrated in a single box.
+On top of this, Obol provides **Distributed Validator Technology (DVT)**: validator keys and duties are spread across multiple independent operators/nodes rather than being concentrated on a single computer.
 
 ### stVault terminology
 
@@ -39,7 +39,7 @@ On top of this, Obol provides **Distributed Validator Technology (DVT)**: valida
     
     The percentage of vault value that must remain reserved as collateral when minting stETH.
     
-    - No stETH is minted for this reserved portion.
+    - No stETH can be minted for this reserved portion.
     - Higher RR ⇒ more conservative, less minting capacity.
     - Lower RR ⇒ more capital efficient, more minting capacity (within caps).
 - **Tier**
@@ -56,7 +56,7 @@ On top of this, Obol provides **Distributed Validator Technology (DVT)**: valida
     - conservative minting behavior, especially in early rollout phases.
 - **DVT tiers**
     
-    Tiers designed for vaults operated by **multi-operator DVT clusters** (e.g. Obol). The current default DVT vault schedule proposed in Lido's risk framework is:
+    Tiers designed for vaults operated by **multi-operator DV clusters** (e.g. Obol). The current default DV vault schedule proposed in Lido's risk framework is:
     
     - **Tier 1** – up to 50,000 ETH used for minting capacity, **RR = 2%** → max ~49,000 stETH
     - **Tier 2** – up to 50,000 ETH, **RR = 2%** → max ~49,000 stETH
@@ -85,11 +85,11 @@ On top of this, Obol provides **Distributed Validator Technology (DVT)**: valida
 
 - **Distributed Validator (DV)**
     
-    A validator whose signing key is split across multiple operator nodes. Duties are executed collaboratively through a DVT middleware (for example, Obol's Charon), so no single node holds the full key or can unilaterally control the validator.
+    A validator whose signing key is split across multiple operator nodes. Duties are executed collaboratively through DV middlewares (for example, Obol's Charon or Nethermind's Pluto), so no single node holds the full key or can unilaterally control the validator.
     
 - **DVT (Distributed Validator Technology)**
     
-    The underlying cryptographic and networking stack that makes DVs possible: threshold BLS, distributed key generation, aggregation, and fault-tolerant validator operation.
+    The underlying cryptographic and networking stack that makes DVs possible: threshold BLS signatures, distributed key generation, signature aggregation, peer to peer communication, and consensus components.
     
 - **DV cluster**
     
@@ -98,39 +98,38 @@ On top of this, Obol provides **Distributed Validator Technology (DVT)**: valida
     In the Lido stVault context, DVT categories typically assume:
     
     - **4 or more independent operators**, and
-    - validator keys generated via DKG.
+    - validator keys generated via a DKG ceremony.
 - **DKG (Distributed Key Generation)**
     
-    A protocol that generates validator keys collaboratively so that:
+    A protocol that generates validator private keys collaboratively such that:
     
-    - no single operator ever sees or stores the full private key, and
+    - no single operator ever knows the full validator private key, and
     - key shares can be used jointly to produce valid signatures.
 - **Curator / Strategy provider**
     
     An entity responsible for the *economic* behavior of the vault:
     
-    - deciding whether the vault is "pure staking" or uses minted liquidity,
-    - designing and managing strategies (e.g., looping, hedged positions, or other structured approaches).
+    - deciding whether the vault is staking only, or using minted liquid staked tokens to generate further yield.
+    - designing and managing these further strategies (e.g., looping, hedging price risk, or other structured approaches).
     
     Obol can help connect depositors with suitable curators where an end-to-end solution is desired.
-    
 
 ---
 
-## Comparison: Lido Core vs non-DV Vault vs Vault + Obol DV
+## Comparison: Lido Core vs non-DV Vault vs Vault on Obol DVs
 
 | Dimension | Staking via Lido Core (no vault) | Staking with a Vault (no DV) | Staking with an Obol DV and a Vault |
 | --- | --- | --- | --- |
 | **What it is** | Stake directly through Lido Core; ETH is pooled and allocated across Lido's curated operator set. | ETH is deposited into a **dedicated stVault** with a chosen single node operator; vault can optionally mint stETH under a tier (RR + cap). | ETH is deposited into a **dedicated stVault** whose validators are run by a **multi-operator Obol DV cluster**; vault can target DVT-specific tiers over time. |
-| **Risk isolation & scope** | Risk is **global** at the protocol level; underperformance or slashing impacts the broader Lido Core pool. | Each stVault is a **siloed risk container**; failures or misconfigurations are contained to that vault, not the global pool. But failure risk is higher due to lack of diversity of operators and clients.  | Same per-vault isolation as a non-DV vault, **plus** risk is spread across multiple operators inside the DV cluster, reducing reliance on any single operator. |
-| **Operator model** | Operators are selected by Lido and managed via governance; you do **not** choose specific operators for your stake. | You select a **specific operator** (or operator entity) per vault and rely on them for security and resilience. But even biggest operators can be [subject to attacks](https://www.theblock.co/post/370141/kiln-exits-ethereum-validators) with best practices. | You select or approve a **set of independent operators** forming a DV cluster; Obol coordinates cluster creation, DKG, and operational standards. No one hold entire key guaranteeing best key security even with one operator gets compromised along with top-notch performance. |
-| **Operational resilience** | Resilience comes from Lido's **diversified operator set** at protocol scale, but each validator is still run by a single operator infra. | Validator duties are typically run on a **single operator stack**. A misconfig, hardware failure, or outage can significantly impact that vault's uptime and rewards. | Duties are distributed across a **DV cluster** (multiple operators/machines, often across geographies). The system is never sensitive to one node/operator going offline. |
-| **Tiers & Reserve Ratio (RR)** | You don't see or control tiers directly; you simply receive stETH and its yield profile. | Vault uses a **tier** (RR + cap). Non-identified operator vaults default to **50% RR** (Default tier) with conservative minting behavior. | Vault can qualify for **DVT tiers**: RR as low as **2–4%** with explicit per-tier minting caps (e.g. 5 tiers totalling 1,000,000 ETH "mintable" with 969,000 max stETH). It is 10 times better than non-DV vaults |
+| **Risk isolation & scope** | Risk is **global** at the protocol level; underperformance or slashing impacts the broader Lido Core pool. | Each stVault is a **siloed risk container**; failures or misconfigurations are contained to that vault, not the global pool. But failure risk is higher due to lack of diversity of operators and clients.  | Same per-vault isolation as a non-DV vault, **plus** risk is mitigated due to multiple operators inside the DV cluster sharing the staking duties. |
+| **Operator model** | Operators are selected by Lido and managed via governance; you do **not** choose specific operators for your stake. | You select a **specific operator** (or operator entity) per vault and rely on them for security and resilience. But even the biggest operators can be [subject to attacks](https://www.theblock.co/post/370141/kiln-exits-ethereum-validators) despite their best practices. | You select or approve a **set of independent operators** forming a DV cluster. No one holds the entire private key, protecting your stake even when an operator is compromised. |
+| **Operational resilience** | Resilience comes from Lido's **diversified operator set** at protocol scale, but each validator is still run by a single operator in the majority of cases. | Validator duties are typically run on a **single operator's stack**. A misconfig, hardware failure, or outage can significantly impact that vault's uptime and rewards. | Duties are distributed across a **DV cluster** (multiple operators/machines, often across geographies). The system is not down with one node/operator going offline. |
+| **Tiers & Reserve Ratio (RR)** | You don't see or control tiers directly; you simply receive stETH and its yield. | Vault uses a **tier** (RR + cap). Non-identified operator vaults default to **50% RR** (Default tier) with conservative minting behavior. | Vault can qualify for **DVT tiers**: RR as low as **2–4%** with explicit per-tier minting caps (e.g. 5 tiers totalling 1,000,000 ETH "mintable" with 969,000 max stETH). It is 10+ times better than non-identified, non-DV vaults |
 | **Access to DVT tiers** | No direct access: there's no per-vault DVT tier concept since you're staking into the global Lido Core pool. | Not DVT by design, so **no DVT tier** access; can only move from Default 50% RR to other non-DVT identified tiers (if/when operator qualifies). | DV cluster can be **identified** via Lido's Identified Node Operator process and attached to **DVT tiers**, providing a path from Default 50% RR to lower-RR, higher-efficiency tiers. |
-| **Capital efficiency & strategies** | stETH/wstETH is liquid and can be used in DeFi, but there is no per-vault RR control; strategies are entirely external to Lido Core. | Vault can mint stETH subject to its RR and caps; with **50% RR**, leverage for looping/restaking is limited, so APR uplift over baseline staking is modest. | Low-RR DVT tiers enable **much higher minting capacity** for the same TV, making looping/restaking strategies more capital efficient (e.g. meaningful APR uplift vs Default RR 50%). |
+| **Capital efficiency & strategies** | stETH/wstETH is liquid and can be used in DeFi, but there is no per-vault RR control; strategies are entirely external to Lido Core. | Vault can mint stETH subject to its RR and caps; with **50% RR**, leverage for looping/restaking is limited, so APR uplift over baseline staking is modest. | Low-RR DVT tiers enable **much higher minting capacity** for the same TVL, making looping/restaking strategies more capital efficient (e.g. meaningful APR uplift vs Default RR 50%). |
 | **Strategy surface (looping, etc.)** | Strategy design is off-protocol; you use stETH in external DeFi venues. | Strategies can be layered at the vault level (via a curator), but constrained by higher RR if the operator isn't DVT-qualified. | Vault becomes a **strategy-friendly substrate**: DVT tiers with low RR + health metrics + multi-op resilience make it a natural base for looping, restaking, and structured products. |
 | **Governance & customization** | Governance is at the Lido protocol level; you cannot customize per-pool economics or operator sets for your specific capital. | You can customize **governance, fees, and operator choice** per vault using roles (e.g. fund-specific or ETF-specific vaults with bespoke controls). | Same per-vault governance/customization but roles can be given to a multisig-Safe wallet for extra security across operators. |
-| **Typical user / use case** | Users who want **simple, liquid staking** and are comfortable with protocol-wide diversification instead of bespoke vaults. They would like to actively manage their own strategies and calculate risks associated with it. | Capital allocators wanting **dedicated infrastructure** and configurable fees/parameters, but willing to accept **single-operator infra risk**. | Capital allocators who want **dedicated vaults**, **multi-operator resilience**, a **governed path to DVT tiers (lower RR)**, and the option to run advanced strategies on top. |
+| **Typical user / use case** | Users who want **simple, liquid staking** and are comfortable with protocol-wide diversification instead of bespoke vaults. They would like to actively manage their own strategies and calculate risks associated with it. | Capital allocators wanting **dedicated infrastructure** and configurable fees/parameters, but willing to accept **single-operator slashing and downtime risks**. | Capital allocators who want **dedicated vaults**, **multi-operator resilience**, a **governed path to DVT tiers (lower RR)**, and the option to run advanced strategies on top. |
 
 ## Understanding impact of RR with an Example
 
@@ -140,20 +139,24 @@ To illustrate how DVT RR if utilized properly can yield boosted APR, we compare 
 2. **Looping on non-DVT vault** (50% mintable capacity)
 3. **Looping on DVT vault** (98% mintable capacity)
 
-It must be noted that following calculations are only for illustrative purpose and numbers will vary with market conditions and risk appetite. To understand the calculations, refer appendix.
+It must be noted that following calculations are only for illustrative purpose and numbers will vary with market conditions and risk appetite. To understand the calculations, refer to the appendix.
 
 **High-level outcomes**
 
-| Case | Mintable fraction | Effective leverage (≈ TV / capital) | Approx. TV in vault | Approx. total borrow | User APR (net) |
+| Case | Mintable fraction | Effective leverage (≈ TVL / capital) | Approx. TVL in vault | Approx. total borrow | User APR (net) |
 | --- | --- | --- | --- | --- | --- |
 | No looping | 0% (no minting) | **1.0×** | 10,000 | 0 | **≈ 2.84%** |
-| Looping – non-DVT vault (default) | 50% | **≈ 1.87×** | ≈ 18,687 | ≈ 8,687 | **≈ 3.16%** |
+| Looping – non-DVT vault (default RR) | 50% | **≈ 1.87×** | ≈ 18,687 | ≈ 8,687 | **≈ 3.16%** |
 | Looping – DVT vault (DVT tier) | 98% | **≈ 7.22×** | ≈ 72,188 | ≈ 62,188 | **≈ 5.19%** |
 
 Where:
 
 - **Effective leverage** ≈ `Total vault value / Initial capital`
 - **Total borrow** is the cumulative ETH borrowed from Aave and re-deposited into the vault.
+
+{% hint style="warning" %}
+Eth Staking APR and Eth borrow cost are variable. Borrowing cost can be higher than the staking APR, resulting in a negative APR from looping. Consult the appendix below for more information.
+{% endhint %}
 
 ---
 
@@ -163,8 +166,8 @@ Where:
 Start
  ├─→ Are you a retail user or an allocator who does NOT need a dedicated, isolated vault?
  │      │
- │      ├─→ YES → Use the shared DeFi-wrapper vault
- │      │          (pooled vault, boosted strategies, Primev sidecar)
+ │      ├─→ YES → Use a shared vault such as the Ethereum Client Team Vault
+ │      │          (pooled vault, boosted strategies, Primev rewards)
  │      │
  │      └─→ NO  → Continue ↓
  │
@@ -174,7 +177,7 @@ Start
         ├─→ YES → Create a dedicated DVT stVault with Obol
         │          (per-vault operators, governance, strategies)
         │
-        └─→ NO  → Consider whether the DeFi-wrapper vault already meets
+        └─→ NO  → Consider whether a DeFi-wrapper enabled vault already meets
                    your requirements; if in doubt, talk to Obol.
 
 ```
@@ -191,20 +194,20 @@ Start
 
 **What you get**
 
-- A **DeFi-wrapper vault** (launching in January) that:
+- A **DeFi-wrapper vault** (launching in January 2026) that:
     - pools ETH from multiple users into an underlying stVault,
-    - is **run by client teams** and curated by **Nethermind**,
+    - is **run by Ethereum client teams** and curated by **Nethermind**,
     - implements **boosted strategies** (e.g. looping, restaking),
-    - runs a **Primev sidecar** for additional rewards where applicable.
+    - leverages **Primev** for additional rewards where applicable.
 
 **What you do**
 
-- Deposit ETH into the DeFi-wrapper vault.
+- Deposit ETH into the 'Ethereum Client Team Boosted Vault'.
 - Receive the wrapper's token / position representing your share.
 - Monitor:
     - published strategy,
     - net APR after fees,
-    - risk disclosures (health/LLTV-style metrics where available).
+    - risk disclosures (health/LTV-style metrics where available).
 
 You **do not** need to handle:
 
@@ -212,13 +215,13 @@ You **do not** need to handle:
 - node operator selection,
 - Obol DV cluster formation.
 
-All of that is handled by the client teams + Nethermind (strategy), with Obol DVT under the hood where applicable.
+All of that is handled by the client teams + Nethermind (strategy), with Obol DVT under the hood.
 
 ---
 
 ## Path B: Dedicated DVT stVault with Obol (ETF / Treasury / Institutional)
 
-If you are an ETF issuer, large fund, DAO treasury, or any allocator that **does not want to pool ETH with other users** or have specific choice of operators, you will create a **dedicated DVT stVault**.
+If you are an ETF issuer, large fund, DAO treasury, or any allocator that **does not want to pool ETH with other users** or have specific choice of operators, you will create a **dedicated DV stVault**.
 
 Obol will assist along the way: from design → DV cluster → identification → strategy.
 
@@ -251,13 +254,13 @@ Obol will assist along the way: from design → DV cluster → identification �
 
 - A **stVault** is deployed with:
     - roles and permissions matching the above,
-    - a designated Node Operator entity (which will become the DV cluster "wrapper"),
-    - initial tier attachment (typically Default 50% RR at launch).
+    - a designated Node Operator entity (which will represent the DV cluster),
+    - initial tier attachment (typically defaults to 50% RR at launch).
 
 **How Obol helps**
 
 - Co-design of roles, safes, and failure modes.
-- Help you move from normal tier to a DVT tier through [Lido's identification process](https://docs.lido.fi/run-on-lido/stvaults/node-operators-identification/).
+- Helps you move from normal tier to a DVT tier through [Lido's identification process](https://docs.lido.fi/run-on-lido/stvaults/node-operators-identification/).
 - Templates / examples for:
     - governance policies,
     - incident playbooks,
@@ -265,12 +268,12 @@ Obol will assist along the way: from design → DV cluster → identification �
 - Introduction to **curators / strategy providers** if you want an economic layer on top (beyond pure staking).
 
 {% hint style="info" %}
-For detailed identification process steps, see the [Node Operator Guide](lido-v3-stvault-for-node-operator.md#51-dvt-cluster-identification-process).
+For detailed identification process steps, see the [Node Operator Guide](lido-v3-stvault-for-node-operator.md#51-dv-cluster-identification-process).
 {% endhint %}
 
 ---
 
-### Step 2 — Assemble the DVT Operator Set
+### Step 2 — Assemble the DV Operators
 
 **Objective**
 
@@ -294,17 +297,17 @@ Build a **DV cluster** that can qualify for Lido's **DVT category** and DVT tier
     - DKG ceremony for validator keys,
     - cluster configuration (Charon, clients, networking),
     - metrics and alerting wired up.
-- The DV cluster's structure and ops posture are documented as part of the material needed for **Lido's Identified Node Operator process** (to attach DVT tiers later).
+- The DV cluster's structure and operational procedures are documented as part of the material needed for **Lido's Identified Node Operator process** (to attach DVT tiers later).
 
 **How Obol helps**
 
 - Maintains an ecosystem view of potential operators.
 - Proposes **operator sets** that match:
     - geography / jurisdiction preferences,
-    - infra diversity (cloud vs bare metal, client diversity, etc.).
+    - infrastructure diversity (cloud vs bare metal, client diversity, etc.).
 - Coordinates:
     - DKG,
-    - cluster bootstrap,
+    - cluster bootstrapping,
     - best practices on monitoring and upgrades.
 - Prepares technical input for the **Identified Node Operator** submission (DVT category).
 
@@ -314,7 +317,7 @@ For detailed steps on the identification process, see the [Node Operator Guide](
 
 ### Step 3 — Strategies and Additional Rewards (Optional)
 
-This step is optional and only applies if you want more than **baseline staking yield**.
+This step is optional and only applies if you want more than the **baseline staking yield**.
 
 **Decisions you make**
 
