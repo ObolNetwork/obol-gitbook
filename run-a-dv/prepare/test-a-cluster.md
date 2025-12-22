@@ -23,7 +23,7 @@ Regular tests intended for relatively fast run, without putting any major load o
 {% tab title="Just starting" %}
 **Pre-requisites**
 
-* [ENR private key](https://docs.obol.org/next/learn/charon/charon-cli-reference#creating-an-enr-for-charon).
+* [ENR private key](../../learn/charon/charon-cli-reference.md#creating-an-enr-for-charon).
 * Peers' ENRs, supplied to the `--peers-enrs` flag.
 * Running beacon node(s) towards which tests will be executed, supplied to `--beacon-endpoints` flag.
 * Running validator client towards which tests will be executed.
@@ -99,7 +99,7 @@ Load tests intended for more time consuming run. Beacon nodes are put under heav
 {% tab title="Just starting" %}
 **Pre-requisites**
 
-* [ENR private key](https://docs.obol.org/next/learn/charon/charon-cli-reference#creating-an-enr-for-charon).
+* [ENR private key](../../learn/charon/charon-cli-reference.md#creating-an-enr-for-charon).
 * Peers' ENRs, supplied to the `--peers-enrs` flag.
 * Running beacon node(s) towards which tests will be executed, supplied to `--beacon-endpoints` flag. It is important that the node is expecting to handle huge load and that it is **not** a publicly accessible one, which can block you.
 * Running validator client towards which tests will be executed.
@@ -211,7 +211,7 @@ Regular tests intended for relatively fast run, without putting any major load o
 {% tab title="Just starting" %}
 **Pre-requisites**
 
-* [ENR private key](https://docs.obol.org/next/learn/charon/charon-cli-reference#creating-an-enr-for-charon).
+* [ENR private key](../../learn/charon/charon-cli-reference.md#creating-an-enr-for-charon).
 * Peers' ENRs, supplied to the `--peers-enrs` flag.
 * Running beacon node(s) towards which tests will be executed, supplied to `--beacon-endpoints` flag.
 * Running validator client towards which tests will be executed.
@@ -293,7 +293,7 @@ Load tests intended for more time consuming run. Beacon nodes are put under heav
 {% tab title="Just starting" %}
 **Pre-requisites**
 
-* [ENR private key](https://docs.obol.org/next/learn/charon/charon-cli-reference#creating-an-enr-for-charon).
+* [ENR private key](../../learn/charon/charon-cli-reference.md#creating-an-enr-for-charon).
 * Peers' ENRs, supplied to the `--peers-enrs` flag.
 * Running beacon node(s) towards which tests will be executed, supplied to `--beacon-endpoints` flag. It is important that the node is expecting to handle huge load and that it is **not** a publicly accessible one, which can block you.
 * Running validator client towards which tests will be executed.
@@ -414,7 +414,7 @@ Based on which stage you are with your cluster creation, some steps are eased.
 {% tab title="Just starting" %}
 **Pre-requisites**
 
-* [ENR private key](https://docs.obol.org/next/learn/charon/charon-cli-reference#creating-an-enr-for-charon).
+* [ENR private key](../../learn/charon/charon-cli-reference.md#creating-an-enr-for-charon).
 * Peers' ENRs, supplied to the `--enrs` flag.
 
 **Example run**

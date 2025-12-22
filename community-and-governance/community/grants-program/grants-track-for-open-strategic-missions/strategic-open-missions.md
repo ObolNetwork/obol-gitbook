@@ -30,7 +30,7 @@ All Open Missions must go through the official application and evaluation proces
 
 **Goal**: Implement the add-validator functionality into the Obol DappNode package, leveraging the existing docs as reference.
 
-🔗[ docs.obol.org/add-validators](https://docs.obol.org/advanced-and-troubleshooting/advanced/add-validators)
+🔗[Add Validators](../../../../advanced-and-troubleshooting/advanced/add-validators.md)
 
 **Background**: This feature would allow users to dynamically add validators post-launch via DappNode. It is not currently supported and would require someone familiar with the Obol DappNode integration layer.
 

@@ -10,11 +10,13 @@ hide_title: true
 
 ## Obol SDK
 
-This repo contains the Obol Software Development Kit, for creating Distributed Validators with the help of the [Obol API](https://docs.obol.org/api).
+This repo contains the Obol Software Development Kit, for creating Distributed Validators with the help of the [Obol API](../api/what-is-this-api.md).
 
 ## Getting Started
 
-Checkout our [docs](https://docs.obol.org/docs/advanced/quickstart-sdk), [examples](https://github.com/ObolNetwork/obol-sdk-examples/), and SDK [reference](https://obolnetwork.github.io/obol-sdk). Further guides and walkthroughs coming soon.
+Checkout our [docs](../advanced-and-troubleshooting/advanced/create-a-dv-using-the-sdk.md), [examples](https://github.com/ObolNetwork/obol-sdk-examples/), and SDK [reference](https://obolnetwork.github.io/obol-sdk). Further guides and walkthroughs coming soon.
+
+### Terms and Conditions
 
 ## Terms and Conditions
 To use obol-sdk and in order to be able to create a cluster definition or accept an invite to join a cluster, you must accept the [latest Obol terms and conditions](https://obol.org/terms.pdf) by calling acceptObolLatestTermsAndConditions.

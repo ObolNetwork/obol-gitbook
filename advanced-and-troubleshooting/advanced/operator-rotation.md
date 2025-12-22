@@ -41,15 +41,15 @@ This document outlines the step-by-step process for rotating operators in an Obo
 
 ### 1. Prepare the Target Cluster
 
-- **Create a New Cluster:** As the user, first create a new Obol cluster for four new operators of your choice. More details can be found [here](https://docs.obol.org/run-a-dv/start/create-a-dv-with-a-group).
+- **Create a New Cluster:** As the user, first create a new Obol cluster for four new operators of your choice. More details can be found [here](../../run-a-dv/start/create-a-dv-with-a-group.md).
 - **Set Withdrawal Address:** Set the withdrawal address for this new cluster to be the same EOA address you used for the source cluster. In future this can be changed to a withdrawal address of your choice.
 - **Deploy a New Splitter:** Deploy a new splitter contract dedicated to the new operators of the target cluster.
 - **Configure Validators:** Ensure the validators in the new cluster are configured as **compounding validators** with the `0x02` credential type. To enable this make sure to turn the compound toggle on or use the `--compounding` flag if using the CLI directly.
 
 <figure><img src="../../.gitbook/assets/operator-rotation-compounding.png" alt="Compounding validator configuration"><figcaption></figcaption></figure>
 
-- **Run Nodes:** Start the Charon nodes for all operators in the new target cluster. Make sure all the nodes are healthy and ready for deposits. More details [here](https://docs.obol.org/run-a-dv/running/monitoring).
-- **Activate Validators:** Activate the target validators by depositing 32 ETH for each. More details [here](https://docs.obol.org/run-a-dv/running/activate-a-dv). The image shows a new operator `0x493...9b1`.
+- **Run Nodes:** Start the Charon nodes for all operators in the new target cluster. Make sure all the nodes are healthy and ready for deposits. More details [here](../../run-a-dv/running/monitoring.md).
+- **Activate Validators:** Activate the target validators by depositing 32 ETH for each. More details [here](../../run-a-dv/running/activate-a-dv.md). The image shows a new operator `0x493...9b1`.
 
 <figure><img src="../../.gitbook/assets/operator-rotation-activate.png" alt="Target validator activation view"><figcaption></figcaption></figure>
 

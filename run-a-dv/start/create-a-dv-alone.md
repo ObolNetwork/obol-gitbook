@@ -3,10 +3,10 @@
 {% hint style="info" %}
 It is possible for a single operator to manage all of the nodes of a DV cluster. The nodes can be run on a single machine, which is only suitable for testing, or the nodes can be run on multiple machines, which is expected for a production setup.
 
-The private key shares can be created centrally and distributed securely to each node. Alternatively, the private key shares can be created in a lower-trust manner with a [Distributed Key Generation](https://docs.obol.org/learn/intro/key-concepts#distributed-validator-key-generation-ceremony) process, which avoids the validator private key being stored in full anywhere, at any point in its lifecycle. Follow the [group quickstart](https://docs.obol.org/run/start/quickstart_group) instead for this latter case.
+The private key shares can be created centrally and distributed securely to each node. Alternatively, the private key shares can be created in a lower-trust manner with a [Distributed Key Generation](../../learn/intro/key-concepts.md#distributed-validator-key-generation-ceremony) process, which avoids the validator private key being stored in full anywhere, at any point in its lifecycle. Follow the [group quickstart](create-a-dv-with-a-group.md) instead for this latter case.
 {% endhint %}
 
-### Pre-requisites[​](https://docs.obol.org/next/run/start/quickstart_alone#pre-requisites) <a href="#pre-requisites" id="pre-requisites"></a>
+### Pre-requisites <a href="#pre-requisites" id="pre-requisites"></a>
 
 * A basic [knowledge](https://docs.ethstaker.cc/ethstaker-knowledge-base/) of Ethereum nodes and validators.
 * Ensure you have [git](https://git-scm.com/downloads) installed.
@@ -17,7 +17,7 @@ The private key shares can be created centrally and distributed securely to each
 
 {% tabs %}
 {% tab title="Launchpad" %}
-Go to the [DV Launchpad](https://docs.obol.org/docs/dvl/intro#dv-launchpad-links) and select `Create a distributed validator alone`. Follow the steps to configure your DV cluster. The Launchpad will give you a docker command to create your cluster.\
+Go to the [DV Launchpad](../../learn/intro/launchpad.md) and select `Create a distributed validator alone`. Follow the steps to configure your DV cluster. The Launchpad will give you a docker command to create your cluster.\
 Before you run the command, clone the [CDVC repo](https://github.com/ObolNetwork/charon-distributed-validator-cluster.git) and `cd` into the directory.
 
 ```sh
@@ -54,7 +54,7 @@ cd charon-distributed-validator-cluster/
 
 2. Run the cluster creation command, setting required flag values.
 
-Run the below command to create the validator private key shares and cluster artifacts locally, replacing the example values for `nodes`, `network`, `num-validators`, `fee-recipient-addresses`, and `withdrawal-addresses`. Check the [Charon CLI reference](https://docs.obol.org/next/learn/charon/charon-cli-reference#create-a-full-cluster-locally) for additional, optional flags to set.
+Run the below command to create the validator private key shares and cluster artifacts locally, replacing the example values for `nodes`, `network`, `num-validators`, `fee-recipient-addresses`, and `withdrawal-addresses`. Check the [Charon CLI reference](../../learn/charon/charon-cli-reference.md#create-a-full-cluster-locally) for additional, optional flags to set.
 
 ```sh
   docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.7.1 create cluster \
@@ -69,7 +69,7 @@ Run the below command to create the validator private key shares and cluster art
 ```
 
 {% hint style="success" %}
-If you would like your cluster to appear on the [DV Launchpad](https://docs.obol.org/next/learn/intro/launchpad), add the `--publish` flag to the command.
+If you would like your cluster to appear on the [DV Launchpad](../../learn/intro/launchpad.md), add the `--publish` flag to the command.
 {% endhint %}
 
 After the `create cluster` command is run, you should have multiple subfolders within the newly created `./cluster/` folder, one for each node created.
@@ -111,7 +111,7 @@ open http://localhost:3000/d/laEp8vupp
 {% hint style="warning" %}
 To distribute your cluster across multiple machines, each node in the cluster needs one of the folders called `node*/` to be copied to it. Each folder should be copied to a [CDVN repo](https://github.com/ObolNetwork/charon-distributed-validator-node) and renamed from `node*` to `.charon`.
 
-Right now, the `charon create cluster` command [used earlier to create the private keys](https://docs.obol.org/next/run/start/quickstart_alone#step-1-create-the-key-shares-locally) outputs a folder structure like `cluster/node*/`. Make sure to grab the `./node*/` folders, _rename_ them to `.charon` and then move them to one of the single node repos below. Once all nodes are online, synced, and connected, you will be ready to activate your validator.
+Right now, the `charon create cluster` command [used earlier to create the private keys](#step-1-create-the-key-shares-locally) outputs a folder structure like `cluster/node*/`. Make sure to grab the `./node*/` folders, _rename_ them to `.charon` and then move them to one of the single node repos below. Once all nodes are online, synced, and connected, you will be ready to activate your validator.
 {% endhint %}
 
 This is necessary for the folder to be found by the default `charon run` command. Optionally, it is possible to override `charon run`'s default file locations by using `charon run --private-key-file="node0/charon-enr-private-key" --lock-file="node0/cluster-lock.json"` for each instance of Charon you start (substituting `node0` for each node number in your cluster as needed).
@@ -185,7 +185,7 @@ Currently, the quickstart repo installs a node on the Hoodi testnet. It is possi
 
 `.env.sample` is a sample environment file that allows overriding default configuration defined in `docker-compose.yml`. Uncomment and set any variable to override its value.
 
-Set up the desired inputs for the DV, including the network you wish to operate on. Check the [Charon CLI reference](https://docs.obol.org/next/learn/charon/charon-cli-reference) for additional optional flags to set. Once you have set the values you wish to use. Make a copy of this file called `.env`.
+Set up the desired inputs for the DV, including the network you wish to operate on. Check the [Charon CLI reference](../../learn/charon/charon-cli-reference.md) for additional optional flags to set. Once you have set the values you wish to use. Make a copy of this file called `.env`.
 
 ```sh
 # Copy ".env.sample", renaming it ".env"

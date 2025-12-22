@@ -6,10 +6,10 @@ description: >-
 
 # Create a DV With a Group
 
-### Pre-requisites[​](https://docs.obol.org/next/run/start/quickstart_group#pre-requisites) <a href="#pre-requisites" id="pre-requisites"></a>
+### Pre-requisites <a href="#pre-requisites" id="pre-requisites"></a>
 
 * A basic [knowledge](https://docs.ethstaker.cc/ethstaker-knowledge-base/) of Ethereum nodes and validators.
-* A machine that meets the [minimum requirements](https://docs.obol.org/next/run/prepare/deployment-best-practices#hardware-specifications) for the network you intend to validate.
+* A machine that meets the [minimum requirements](../prepare/deployment-best-practices.md#hardware-specifications) for the network you intend to validate.
 * If you are taking part using a [DappNode](https://dappnode.com/):
   * A computer with an up to date version of [DappNode](https://docs.dappnode.io/docs/user/install/overview/)'s software and an internet connection.
 * If you are taking part using [Sedge](https://www.nethermind.io/sedge), or [Charon's Distributed Validator Node](https://github.com/ObolNetwork/lido-charon-distributed-validator-node) (CDVN) starter repo:
@@ -44,7 +44,7 @@ Please make sure to create a backup of the private key at `.charon/charon-enr-pr
 {% endhint %}
 
 {% hint style="success" %}
-If instead of being shown your `enr` you see an error saying `permission denied` then you may need to [update your docker permissions](https://docs.obol.org/next/adv/troubleshooting/errors#docker-permission-denied-error) to allow the command to run successfully.
+If instead of being shown your `enr` you see an error saying `permission denied` then you may need to [update your docker permissions](../../advanced-and-troubleshooting/troubleshooting/errors.md#docker-permission-denied-error) to allow the command to run successfully.
 {% endhint %}
 
 For Step 2 of the quickstart:
@@ -54,7 +54,7 @@ For Step 2 of the quickstart:
 {% endtab %}
 
 {% tab title="DappNode" %}
-**Prepare an Execution and Consensus client**[**​**](https://docs.obol.org/next/run/start/quickstart_group#prepare-an-execution-and-consensus-client)
+**Prepare an Execution and Consensus client**
 
 Before preparing the DappNode to take part in a Distributed Validator Cluster, you must ensure you have selected an execution client & consensus client on your DappNode under the 'Stakers' tab for the network you intend to validate.
 
@@ -68,7 +68,7 @@ Before preparing the DappNode to take part in a Distributed Validator Cluster, y
 
     <figure><img src="../../.gitbook/assets/image (65).png" alt=""><figcaption></figcaption></figure>
 
-**Install the Obol DappNode package**[**​**](https://docs.obol.org/next/run/start/quickstart_group#install-the-obol-dappnode-package)
+**Install the Obol DappNode package**
 
 With a fully synced Ethereum node now running on the DappNode, the below steps will walk through installing the Obol package via an IPFS hash and preparing for a Distributed Key Generation ceremony. Future versions of this guide will download the package from the official DappNode DappStore once a stable 1.0 release is made.
 
@@ -171,13 +171,13 @@ Before starting the cluster creation process, you will need to collect an Ethere
 
 {% tabs %}
 {% tab title="Launchpad" %}
-You will use the Launchpad to create an invitation, and share it with the operators. This video shows the flow within the [DV Launchpad](https://docs.obol.org/next/learn/intro/launchpad)
+You will use the Launchpad to create an invitation, and share it with the operators. This video shows the flow within the [DV Launchpad](../../learn/intro/launchpad.md)
 
 {% embed url="https://www.youtube.com/watch?v=6pXASqjAQbs" %}
 
 The following are the steps for creating a cluster.
 
-1. Go to the [DV Launchpad](https://docs.obol.org/docs/dvl/intro#dv-launchpad-links)
+1. Go to the [DV Launchpad](../../learn/intro/launchpad.md)
 2.  Connect your wallet
 
     <figure><img src="../../.gitbook/assets/image (75).png" alt=""><figcaption></figcaption></figure>
@@ -189,7 +189,7 @@ The following are the steps for creating a cluster.
    1. Input the `Cluster Name` & `Cluster Size` (i.e. number of operators in the cluster). The threshold will update automatically, it shows the number of nodes that need to be functioning for the validator(s) to stay active.
 6. Input the Ethereum addresses for each operator that you collected previously. If you will be taking part as an operator, click the "Use My Address" button for Operator 1.
    1. Select the desired amount of validators (32 ETH each) the cluster will run. (Note that the mainnet launchpad is restricted to one validator for now.)
-   2. If you are taking part in the cluster, enter the ENR you generated in [step one](https://docs.obol.org/next/run/start/quickstart_group#step-1-generate-an-enr) in the "What is your charon client's ENR?" field.
+   2. If you are taking part in the cluster, enter the ENR you generated in [step one](#step-1-get-your-enr) in the "What is your charon client's ENR?" field.
    3. Enter the `Principal address` which should receive the principal 32 ETH and the accrued consensus layer rewards when the validator is exited. This can optionally be set to the contract address of a multisig / splitter contract.
    4. Enter the `Fee Recipient address` to which the execution layer rewards will go. This can be the same as the principal address, or it can be a different address. This can optionally be set to the contract address of a multisig / splitter contract.
 7. Click `Create Cluster Configuration`. Review that all the details are correct, and press `Confirm and Sign` You will be prompted to sign two or three transactions with your MetaMask wallet. These are:
@@ -259,7 +259,7 @@ Your cluster creator needs to configure the cluster, and send you an invite URL 
 
     <figure><img src="../../.gitbook/assets/image (82).png" alt=""><figcaption></figcaption></figure>
 4. Review and accept the DV Launchpad terms & conditions and advisories.
-5.  Review the cluster configuration set by the creator and add your `ENR` that you generated in [step 1](https://docs.obol.org/next/run/start/quickstart_group#step-1-generate-an-enr).\\
+5.  Review the cluster configuration set by the creator and add your `ENR` that you generated in [step 1](#step-1-get-your-enr).\\
 
     <figure><img src="../../.gitbook/assets/image (83).png" alt=""><figcaption></figcaption></figure>
 6. Sign the two transactions with your wallet, these are:
@@ -288,7 +288,7 @@ Once every participating operator is ready, the next step is the distributed key
 ### Step 3: Run the Distributed Key Generation (DKG) ceremony <a href="#step-3-run-the-distributed-key-generation-dkg-ceremony" id="step-3-run-the-distributed-key-generation-dkg-ceremony"></a>
 
 {% hint style="success" %}
-For the [DKG](https://docs.obol.org/next/learn/charon/dkg) to complete, all operators need to be running the command simultaneously. It helps if operators can agree on a certain time or schedule a video call for them to all run the command together.
+For the [DKG](../../learn/charon/dkg.md) to complete, all operators need to be running the command simultaneously. It helps if operators can agree on a certain time or schedule a video call for them to all run the command together.
 {% endhint %}
 
 {% tabs %}
@@ -480,7 +480,7 @@ docker compose up -d
 {% tab title="Sedge" %}
 To prepare a Distributed Validator node using sedge, we will use the `sedge generate` command to prepare a docker-compose file of our preferred clients, `sedge import-key` to import the artifacts created during the DKG ceremony, and `sedge run` to begin running the node.
 
-**Sedge generate**[**​**](https://docs.obol.org/next/run/start/quickstart_group#sedge-generate)
+**Sedge generate**
 
 With Sedge installed, and the DKG complete, it’s time to deploy a Distributed Validator. Using the `sedge generate` command and its subcommands, Sedge will create a Docker Compose file needed to run the validator node.
 
@@ -504,7 +504,7 @@ With Sedge installed, and the DKG complete, it’s time to deploy a Distributed 
     > docker-compose.yml jwtsecret
     ```
 
-**Sedge Import-key**[**​**](https://docs.obol.org/next/run/start/quickstart_group#sedge-import-key)
+**Sedge Import-key**
 
 Use the following command to import keys from the directory where the `.charon` dir is located.
 
@@ -512,7 +512,7 @@ Use the following command to import keys from the directory where the `.charon` 
 sedge import-key --from ./ hoodi teku
 ```
 
-**Sedge Run**[**​**](https://docs.obol.org/next/run/start/quickstart_group#sedge-run)
+**Sedge Run**
 
 After confirming the configurations and ensuring all files are in place, use the `sedge run` command to deploy the DV docker containers. Sedge will then begin pulling all the required Docker images.
 
@@ -600,7 +600,7 @@ Use Kubernetes manifests to start your Charon client and validator client. These
 {% endtabs %}
 
 {% hint style="success" %}
-In a Distributed Validator Cluster, it is important to have a low latency connection to your peers. Charon clients will use the NAT protocol to attempt to establish a direct connection to one another automatically. If this doesn't happen, you should port forward Charon's p2p port to the public internet to facilitate direct connections. The default port to expose is `:3610`. Read more about Charon's networking [here](https://docs.obol.org/next/learn/charon/networking).
+In a Distributed Validator Cluster, it is important to have a low latency connection to your peers. Charon clients will use the NAT protocol to attempt to establish a direct connection to one another automatically. If this doesn't happen, you should port forward Charon's p2p port to the public internet to facilitate direct connections. The default port to expose is `:3610`. Read more about Charon's networking [here](../../learn/charon/charon-networking.md).
 {% endhint %}
 
-If you have gotten to this stage, every node is up, synced and connected, congratulations. You can now move forward to [activating your validator](https://docs.obol.org/next/run/running/activate-dv) to begin staking.
+If you have gotten to this stage, every node is up, synced and connected, congratulations. You can now move forward to [activating your validator](../running/activate-a-dv.md) to begin staking.

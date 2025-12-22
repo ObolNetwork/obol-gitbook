@@ -1,6 +1,6 @@
 # Exit a DV
 
-### Introduction[​](https://docs.obol.org/next/run/running/quickstart-exit#introduction) <a href="#introduction" id="introduction"></a>
+### Introduction <a href="#introduction" id="introduction"></a>
 
 Users looking to exit staking entirely and withdraw their full balance back must sign and broadcast a "voluntary exit" message with validator keys which will start the process of exiting from staking. In the case of a DV, Charon nodes need to broadcast a partial exit to the other nodes of the cluster. Once a threshold of partial exits has been received by any node, the full voluntary exit will be sent to the beacon chain. This process will take 27 hours or longer depending on the current length of the exit queue. Once the validator is exited, the principal plus unclaimed rewards will go to the withdrawal address of the validator. Depending on the cluster's withdrawal configuration, users can claim their proportion of principal and rewards.
 
@@ -913,7 +913,7 @@ Once a validator has broadcasted an exit message, it must continue to validate f
 {% endtab %}
 {% endtabs %}
 
-### Exit epoch and withdrawable epoch[​](https://docs.obol.org/next/run/running/quickstart-exit#exit-epoch-and-withdrawable-epoch) <a href="#exit-epoch-and-withdrawable-epoch" id="exit-epoch-and-withdrawable-epoch"></a>
+### Exit epoch and withdrawable epoch <a href="#exit-epoch-and-withdrawable-epoch" id="exit-epoch-and-withdrawable-epoch"></a>
 
 The process of a validator exiting from staking takes variable amounts of time, depending on how many others are exiting at the same time.
 

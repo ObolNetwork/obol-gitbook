@@ -30,17 +30,19 @@ Date: Sept 18 to 22, 2023
 
 [PDF Version](https://github.com/ObolNetwork/obol-splits/blob/main/audit/2023%20-%20Obol%20Splits%20V1%20Audit%20-%20Zach%20Obront.pdf)
 
-### About **Obol**[​](https://docs.obol.org/next/adv/security/smart_contract_audit#about-obol) <a href="#about-obol" id="about-obol"></a>
+Markdown version of the audit follows below:
+
+### About **Obol**[​](#about-obol) <a href="#about-obol" id="about-obol"></a>
 
 The Obol Network is an ecosystem for trust minimized staking that enables people to create, test, run & co-ordinate distributed validators.
 
 The Obol Manager contracts are responsible for distributing validator rewards and withdrawals among the validator and node operators involved in a distributed validator.
 
-### About **zachobront**[​](https://docs.obol.org/next/adv/security/smart_contract_audit#about-zachobront) <a href="#about-zachobront" id="about-zachobront"></a>
+### About **zachobront**[​](#about-zachobront) <a href="#about-zachobront" id="about-zachobront"></a>
 
 Zach Obront is an independent smart contract security researcher. He serves as a Lead Senior Watson at Sherlock, a Security Researcher at Spearbit, and has identified multiple critical severity bugs in the wild, including in a Top 5 Protocol on Immunefi. You can say hi on Twitter at [@zachobront](http://twitter.com/zachobront).
 
-### Summary & Scope[​](https://docs.obol.org/next/adv/security/smart_contract_audit#summary--scope) <a href="#summary--scope" id="summary--scope"></a>
+### Summary & Scope[​](#summary--scope) <a href="#summary--scope" id="summary--scope"></a>
 
 The [ObolNetwork/obol-manager-contracts](https://github.com/ObolNetwork/obol-manager-contracts/) repository was audited at commit [50ce277919723c80b96f6353fa8d1f8facda6e0e](https://github.com/ObolNetwork/obol-manager-contracts/tree/50ce277919723c80b96f6353fa8d1f8facda6e0e).
 
@@ -55,25 +57,25 @@ The following contracts were in scope:
 
 After completion of the fixes, the [2f4f059bfd145f5f05d794948c918d65d222c3a9](https://github.com/ObolNetwork/obol-manager-contracts/tree/2f4f059bfd145f5f05d794948c918d65d222c3a9) commit was reviewed. After this review, the updated Lido fee share system in [PR #96](https://github.com/ObolNetwork/obol-manager-contracts/pull/96/files) (at commit [fd244a05f964617707b0a40ebb11b523bbd683b8](https://github.com/ObolNetwork/obol-splits/pull/96/commits/fd244a05f964617707b0a40ebb11b523bbd683b8)) was reviewed.
 
-### Summary of Findings[​](https://docs.obol.org/next/adv/security/smart_contract_audit#summary-of-findings) <a href="#summary-of-findings" id="summary-of-findings"></a>
+### Summary of Findings[​](#summary-of-findings) <a href="#summary-of-findings" id="summary-of-findings"></a>
 
 | Identifier                                                                                                                                                     | Title                                                                                  | Severity      | Fixed |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------- | ----- |
-| [M-01](https://docs.obol.org/next/adv/security/smart_contract_audit#m-01-future-fees-may-be-skirted-by-setting-a-non-eth-reward-token)                         | Future fees may be skirted by setting a non-ETH reward token                           | Medium        | ✓     |
-| [M-02](https://docs.obol.org/next/adv/security/smart_contract_audit#m-02-splits-with-256-or-more-node-operators-will-not-be-able-to-switch-on-fees)            | Splits with 256 or more node operators will not be able to switch on fees              | Medium        | ✓     |
-| [M-03](https://docs.obol.org/next/adv/security/smart_contract_audit#m-03-in-a-mass-slashing-event-node-operators-are-incentivized-to-get-slashed)              | In a mass slashing event, node operators are incentivized to get slashed               | Medium        |       |
-| [L-01](https://docs.obol.org/next/adv/security/smart_contract_audit#l-01-obol-fees-will-be-applied-retroactively-to-all-non-distributed-funds-in-the-splitter) | Obol fees will be applied retroactively to all non-distributed funds in the Splitter   | Low           | ✓     |
-| [L-02](https://docs.obol.org/next/adv/security/smart_contract_audit#l-02-if-owr-is-used-with-rebase-tokens-and-theres-a-negative-rebase-principal-can-be-lost) | If OWR is used with rebase tokens and there's a negative rebase, principal can be lost | Low           | ✓     |
-| [L-03](https://docs.obol.org/next/adv/security/smart_contract_audit#l-03-lidosplit-can-receive-eth-which-will-be-locked-in-contract)                           | LidoSplit can receive ETH, which will be locked in contract                            | Low           | ✓     |
-| [L-04](https://docs.obol.org/next/adv/security/smart_contract_audit#l-04-upgrade-to-latest-version-of-solady-to-fix-libclone-bug)                              | Upgrade to latest version of Solady to fix LibClone bug                                | Low           | ✓     |
-| [G-01](https://docs.obol.org/next/adv/security/smart_contract_audit#g-01-steth-and-wsteth-addresses-can-be-saved-on-implementation-to-save-gas)                | stETH and wstETH addresses can be saved on implementation to save gas                  | Gas           | ✓     |
-| [G-02](https://docs.obol.org/next/adv/security/smart_contract_audit#g-02-owr-can-be-simplified-and-save-gas-by-not-tracking-distributedfunds)                  | OWR can be simplified and save gas by not tracking distributedFunds                    | Gas           | ✓     |
-| [I-01](https://docs.obol.org/next/adv/security/smart_contract_audit#i-01-strong-trust-assumptions-between-validators-and-node-operators)                       | Strong trust assumptions between validators and node operators                         | Informational |       |
-| [I-02](https://docs.obol.org/next/adv/security/smart_contract_audit#i-02-provide-node-operator-checklist-to-validate-setup)                                    | Provide node operator checklist to validate setup                                      | Informational |       |
+| [M-01](#m-01-future-fees-may-be-skirted-by-setting-a-non-eth-reward-token)                         | Future fees may be skirted by setting a non-ETH reward token                           | Medium        | ✓     |
+| [M-02](#m-02-splits-with-256-or-more-node-operators-will-not-be-able-to-switch-on-fees)            | Splits with 256 or more node operators will not be able to switch on fees              | Medium        | ✓     |
+| [M-03](#m-03-in-a-mass-slashing-event-node-operators-are-incentivized-to-get-slashed)              | In a mass slashing event, node operators are incentivized to get slashed               | Medium        |       |
+| [L-01](#l-01-obol-fees-will-be-applied-retroactively-to-all-non-distributed-funds-in-the-splitter) | Obol fees will be applied retroactively to all non-distributed funds in the Splitter   | Low           | ✓     |
+| [L-02](#l-02-if-owr-is-used-with-rebase-tokens-and-theres-a-negative-rebase-principal-can-be-lost) | If OWR is used with rebase tokens and there's a negative rebase, principal can be lost | Low           | ✓     |
+| [L-03](#l-03-lidosplit-can-receive-eth-which-will-be-locked-in-contract)                           | LidoSplit can receive ETH, which will be locked in contract                            | Low           | ✓     |
+| [L-04](#l-04-upgrade-to-latest-version-of-solady-to-fix-libclone-bug)                              | Upgrade to latest version of Solady to fix LibClone bug                                | Low           | ✓     |
+| [G-01](#g-01-steth-and-wsteth-addresses-can-be-saved-on-implementation-to-save-gas)                | stETH and wstETH addresses can be saved on implementation to save gas                  | Gas           | ✓     |
+| [G-02](#g-02-owr-can-be-simplified-and-save-gas-by-not-tracking-distributedfunds)                  | OWR can be simplified and save gas by not tracking distributedFunds                    | Gas           | ✓     |
+| [I-01](#i-01-strong-trust-assumptions-between-validators-and-node-operators)                       | Strong trust assumptions between validators and node operators                         | Informational |       |
+| [I-02](#i-02-provide-node-operator-checklist-to-validate-setup)                                    | Provide node operator checklist to validate setup                                      | Informational |       |
 
-### Detailed Findings[​](https://docs.obol.org/next/adv/security/smart_contract_audit#detailed-findings) <a href="#detailed-findings" id="detailed-findings"></a>
+### Detailed Findings[​](#detailed-findings) <a href="#detailed-findings" id="detailed-findings"></a>
 
-#### \[M-01] Future fees may be skirted by setting a non-ETH reward token[​](https://docs.obol.org/next/adv/security/smart_contract_audit#m-01-future-fees-may-be-skirted-by-setting-a-non-eth-reward-token) <a href="#m-01-future-fees-may-be-skirted-by-setting-a-non-eth-reward-token" id="m-01-future-fees-may-be-skirted-by-setting-a-non-eth-reward-token"></a>
+#### \[M-01] Future fees may be skirted by setting a non-ETH reward token[​](#m-01-future-fees-may-be-skirted-by-setting-a-non-eth-reward-token) <a href="#m-01-future-fees-may-be-skirted-by-setting-a-non-eth-reward-token" id="m-01-future-fees-may-be-skirted-by-setting-a-non-eth-reward-token"></a>
 
 Fees are planned to be implemented on the `rewardRecipient` splitter by updating to a new fee structure using the `ImmutableSplitController`.
 
@@ -83,15 +85,15 @@ This creates a fairly strong guarantee that reward funds will flow to the `rewar
 
 However, if the user selects a non-ETH token, all ETH will be withdrawable only thorugh the `recoverFunds()` function. If they set up a split with their node operators as their `recoveryAddress`, all funds will be withdrawable via `recoverFunds()` without ever touching the `rewardRecipient` or paying a fee.
 
-**Recommendation**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#recommendation)
+**Recommendation**[**​**](#recommendation)
 
 I would recommend removing the ability to use a non-ETH token from the `OptimisticWithdrawalRecipient`. Alternatively, if it feels like it may be a use case that is needed, it may make sense to always include ETH as a valid token, in addition to any `OWRToken` set.
 
-**Review**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#review)
+**Review**[**​**](#review)
 
 Fixed in [PR 85](https://github.com/ObolNetwork/obol-manager-contracts/pull/85) by removing the ability to use non-ETH tokens.
 
-#### \[M-02] Splits with 256 or more node operators will not be able to switch on fees[​](https://docs.obol.org/next/adv/security/smart_contract_audit#m-02-splits-with-256-or-more-node-operators-will-not-be-able-to-switch-on-fees) <a href="#m-02-splits-with-256-or-more-node-operators-will-not-be-able-to-switch-on-fees" id="m-02-splits-with-256-or-more-node-operators-will-not-be-able-to-switch-on-fees"></a>
+#### \[M-02] Splits with 256 or more node operators will not be able to switch on fees[​](#m-02-splits-with-256-or-more-node-operators-will-not-be-able-to-switch-on-fees) <a href="#m-02-splits-with-256-or-more-node-operators-will-not-be-able-to-switch-on-fees" id="m-02-splits-with-256-or-more-node-operators-will-not-be-able-to-switch-on-fees"></a>
 
 0xSplits is used to distribute rewards across node operators. All Splits are deployed with an ImmutableSplitController, which is given permissions to update the split one time to add a fee for Obol at a future date.
 
@@ -150,7 +152,7 @@ When the Controller is deployed, the full list of `percentAllocations` is passed
 
 When `updateSplit()` is eventually called on `splitsMain` to turn on fees, the `validSplit()` check on that contract will revert because the sum of the percent allocations will no longer sum to `1e6`, and the update will not be possible.
 
-**Proof of Concept**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#proof-of-concept)
+**Proof of Concept**[**​**](#proof-of-concept)
 
 The following test can be dropped into a file in `src/test` to demonstrate that passing 400 accounts will result in a `recipientSize` of `400 - 256 = 144`:
 
@@ -197,7 +199,7 @@ contract ZachTest is Test {
 }
 ```
 
-**Recommendation**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#recommendation-1)
+**Recommendation**[**​**](#recommendation-1)
 
 When packing the data in `_packSplitControllerData()`, check `recipientsSize` before downcasting to a uint8:
 
@@ -214,11 +216,11 @@ function _packSplitControllerData(
 }
 ```
 
-**Review**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#review-1)
+**Review**[**​**](#review-1)
 
 Fixed as recommended in [PR 86](https://github.com/ObolNetwork/obol-manager-contracts/pull/86).
 
-#### \[M-03] In a mass slashing event, node operators are incentivized to get slashed[​](https://docs.obol.org/next/adv/security/smart_contract_audit#m-03-in-a-mass-slashing-event-node-operators-are-incentivized-to-get-slashed) <a href="#m-03-in-a-mass-slashing-event-node-operators-are-incentivized-to-get-slashed" id="m-03-in-a-mass-slashing-event-node-operators-are-incentivized-to-get-slashed"></a>
+#### \[M-03] In a mass slashing event, node operators are incentivized to get slashed[​](#m-03-in-a-mass-slashing-event-node-operators-are-incentivized-to-get-slashed) <a href="#m-03-in-a-mass-slashing-event-node-operators-are-incentivized-to-get-slashed" id="m-03-in-a-mass-slashing-event-node-operators-are-incentivized-to-get-slashed"></a>
 
 When the `OptimisticWithdrawalRecipient` receives funds from the beacon chain, it uses the following rule to determine the allocation:
 
@@ -240,15 +242,15 @@ Because the measurement is taken from the 18 days before and after the incident,
 
 In the event that they observed that greater than 16.1% of validators were slashed, Obol node operators would be able to get themselves slashed, be exited with a withdrawal of less than 16 ether, and claim that withdrawal as rewards, effectively stealing from the principal recipient.
 
-**Recommendations**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#recommendations)
+**Recommendations**[**​**](#recommendations)
 
 Find a solution that provides a higher level of guarantee that the funds withdrawn are actually rewards, and not a withdrawal.
 
-**Review**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#review-2)
+**Review**[**​**](#review-2)
 
 Acknowledged. We believe this is a black swan event. It would require a major ETH client to be compromised, and would be a betrayal of trust, so likely not EV+ for doxxed operators. Users of this contract with unknown operators should be wary of such a risk.
 
-#### \[L-01] Obol fees will be applied retroactively to all non-distributed funds in the Splitter[​](https://docs.obol.org/next/adv/security/smart_contract_audit#l-01-obol-fees-will-be-applied-retroactively-to-all-non-distributed-funds-in-the-splitter) <a href="#l-01-obol-fees-will-be-applied-retroactively-to-all-non-distributed-funds-in-the-splitter" id="l-01-obol-fees-will-be-applied-retroactively-to-all-non-distributed-funds-in-the-splitter"></a>
+#### \[L-01] Obol fees will be applied retroactively to all non-distributed funds in the Splitter[​](#l-01-obol-fees-will-be-applied-retroactively-to-all-non-distributed-funds-in-the-splitter) <a href="#l-01-obol-fees-will-be-applied-retroactively-to-all-non-distributed-funds-in-the-splitter" id="l-01-obol-fees-will-be-applied-retroactively-to-all-non-distributed-funds-in-the-splitter"></a>
 
 When Obol decides to turn on fees, a call will be made to `ImmutableSplitController::updateSplit()`, which will take the predefined split parameters (the original user specified split with Obol's fees added in) and call `updateSplit()` to implement the change.
 
@@ -282,7 +284,7 @@ function updateSplit(
 
 This means that any funds that have been sent to the split but have not yet be distributed will be subject to the Obol fee. Since these splitters will be accumulating all execution layer fees, it is possible that some of them may have received large MEV bribes, where this after-the-fact fee could be quite expensive.
 
-**Recommendation**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#recommendation-2)
+**Recommendation**[**​**](#recommendation-2)
 
 The most strict solution would be for the `ImmutableSplitController` to store both the old split parameters and the new parameters. The old parameters could first be used to call `distributeETH()` on the split, and then `updateSplit()` could be called with the new parameters.
 
@@ -290,11 +292,11 @@ If storing both sets of values seems too complex, the alternative would be to re
 
 (Note that for the second solution, the ETH balance should be less than or equal to 1, not 0, because 0xSplits stores empty balances as `1` for gas savings.)
 
-**Review**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#review-3)
+**Review**[**​**](#review-3)
 
 Fixed as recommended in [PR 86](https://github.com/ObolNetwork/obol-manager-contracts/pull/86).
 
-#### \[L-02] If OWR is used with rebase tokens and there's a negative rebase, principal can be lost[​](https://docs.obol.org/next/adv/security/smart_contract_audit#l-02-if-owr-is-used-with-rebase-tokens-and-theres-a-negative-rebase-principal-can-be-lost) <a href="#l-02-if-owr-is-used-with-rebase-tokens-and-theres-a-negative-rebase-principal-can-be-lost" id="l-02-if-owr-is-used-with-rebase-tokens-and-theres-a-negative-rebase-principal-can-be-lost"></a>
+#### \[L-02] If OWR is used with rebase tokens and there's a negative rebase, principal can be lost[​](#l-02-if-owr-is-used-with-rebase-tokens-and-theres-a-negative-rebase-principal-can-be-lost) <a href="#l-02-if-owr-is-used-with-rebase-tokens-and-theres-a-negative-rebase-principal-can-be-lost" id="l-02-if-owr-is-used-with-rebase-tokens-and-theres-a-negative-rebase-principal-can-be-lost"></a>
 
 The `OptimisticWithdrawalRecipient` is deployed with a specific token immutably set on the clone. It is presumed that that token will usually be ETH, but it can also be an ERC20 to account for future integrations with tokenized versions of ETH.
 
@@ -316,7 +318,7 @@ In the event that rebasing tokens are used, there is the risk that slashing or i
 
 In this situation, the only way for the principal to get their funds back would be for the full `amountOfPrincipalStake` to hit the contract at once, and for them to call `withdraw()` before anyone called `distribute(PUSH)`. If anyone was to be able to call `distribute(PUSH)` before them, all principal would be sent to the reward recipient instead.
 
-**Recommendation**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#recommendation-3)
+**Recommendation**[**​**](#recommendation-3)
 
 Similar to #74, I would recommend removing the ability for the `OptimisticWithdrawalRecipient` to accept non-ETH tokens.
 
@@ -325,11 +327,11 @@ Otherwise, I would recommend two changes for redundant safety:
 1. Do not allow the OWR to be used with rebasing tokens.
 2. Move the `_fundsToBeDistributed = _endingDistributedFunds - _startingDistributedFunds;` out of the unchecked block. The case where `_endingDistributedFunds` underflows is already handled by a later check, so this one change should be sufficient to prevent any risk of this issue.
 
-**Review**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#review-4)
+**Review**[**​**](#review-4)
 
 Fixed in [PR 85](https://github.com/ObolNetwork/obol-manager-contracts/pull/85) by removing the ability to use non-ETH tokens.
 
-#### \[L-03] LidoSplit can receive ETH, which will be locked in contract[​](https://docs.obol.org/next/adv/security/smart_contract_audit#l-03-lidosplit-can-receive-eth-which-will-be-locked-in-contract) <a href="#l-03-lidosplit-can-receive-eth-which-will-be-locked-in-contract" id="l-03-lidosplit-can-receive-eth-which-will-be-locked-in-contract"></a>
+#### \[L-03] LidoSplit can receive ETH, which will be locked in contract[​](#l-03-lidosplit-can-receive-eth-which-will-be-locked-in-contract) <a href="#l-03-lidosplit-can-receive-eth-which-will-be-locked-in-contract" id="l-03-lidosplit-can-receive-eth-which-will-be-locked-in-contract"></a>
 
 Each new `LidoSplit` is deployed as a clone, which comes with a `receive()` function for receiving ETH.
 
@@ -337,7 +339,7 @@ However, the only function on `LidoSplit` is `distribute()`, which converts `stE
 
 While this contract should only be used for Lido to pay out rewards (which will come in `stETH`), it seems possible that users may accidentally use the same contract to receive other validator rewards (in ETH), or that Lido governance may introduce ETH payments in the future, which would cause the funds to be locked.
 
-**Proof of Concept**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#proof-of-concept-1)
+**Proof of Concept**[**​**](#proof-of-concept-1)
 
 The following test can be dropped into `LidoSplit.t.sol` to confirm that the clones can currently receive ETH:
 
@@ -349,15 +351,15 @@ function testZach_CanReceiveEth() public {
 }
 ```
 
-**Recommendation**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#recommendation-4)
+**Recommendation**[**​**](#recommendation-4)
 
 Introduce an additional function to `LidoSplit.sol` which wraps ETH into stETH before calling `distribute()`, in order to rescue any ETH accidentally sent to the contract.
 
-**Review**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#review-5)
+**Review**[**​**](#review-5)
 
 Fixed in [PR 87](https://github.com/ObolNetwork/obol-manager-contracts/pull/87/files) by adding a `rescueFunds()` function that can send ETH or any ERC20 (except `stETH` or `wstETH`) to the `splitWallet`.
 
-#### \[L-04] Upgrade to latest version of Solady to fix LibClone bug[​](https://docs.obol.org/next/adv/security/smart_contract_audit#l-04-upgrade-to-latest-version-of-solady-to-fix-libclone-bug) <a href="#l-04-upgrade-to-latest-version-of-solady-to-fix-libclone-bug" id="l-04-upgrade-to-latest-version-of-solady-to-fix-libclone-bug"></a>
+#### \[L-04] Upgrade to latest version of Solady to fix LibClone bug[​](#l-04-upgrade-to-latest-version-of-solady-to-fix-libclone-bug) <a href="#l-04-upgrade-to-latest-version-of-solady-to-fix-libclone-bug" id="l-04-upgrade-to-latest-version-of-solady-to-fix-libclone-bug"></a>
 
 In the recent [Solady audit](https://github.com/Vectorized/solady/blob/main/audits/cantina-solady-report.pdf), an issue was found the affects LibClone.
 
@@ -369,7 +371,7 @@ Fortunately, failed deployments or empty bytecode (which causes a revert when `i
 
 However, it is difficult to be sure how else this risk might be exploited by using the overflow to jump to later op codes, and it is recommended to update to a newer version of Solady where the issue has been resolved.
 
-**Proof of Concept**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#proof-of-concept-2)
+**Proof of Concept**[**​**](#proof-of-concept-2)
 
 If we comment out the `init()` call in the `createController()` call, we can see that the following test "successfully" deploys the controller, but the result is that there is no bytecode:
 
@@ -394,15 +396,15 @@ function testZach__CreateControllerSoladyBug() public {
 }
 ```
 
-**Recommendation**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#recommendation-5)
+**Recommendation**[**​**](#recommendation-5)
 
 Delete Solady and clone it from the most recent commit, or any commit after the fixes from [PR #548](https://github.com/Vectorized/solady/pull/548/files#diff-27a3ba4730de4b778ecba4697ab7dfb9b4f30f9e3666d1e5665b194fe6c9ae45) were merged.
 
-**Review**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#review-6)
+**Review**[**​**](#review-6)
 
 Solady has been updated to v.0.0.123 in [PR 88](https://github.com/ObolNetwork/obol-manager-contracts/pull/88).
 
-#### \[G-01] stETH and wstETH addresses can be saved on implementation to save gas[​](https://docs.obol.org/next/adv/security/smart_contract_audit#g-01-steth-and-wsteth-addresses-can-be-saved-on-implementation-to-save-gas) <a href="#g-01-steth-and-wsteth-addresses-can-be-saved-on-implementation-to-save-gas" id="g-01-steth-and-wsteth-addresses-can-be-saved-on-implementation-to-save-gas"></a>
+#### \[G-01] stETH and wstETH addresses can be saved on implementation to save gas[​](#g-01-steth-and-wsteth-addresses-can-be-saved-on-implementation-to-save-gas) <a href="#g-01-steth-and-wsteth-addresses-can-be-saved-on-implementation-to-save-gas" id="g-01-steth-and-wsteth-addresses-can-be-saved-on-implementation-to-save-gas"></a>
 
 The `LidoSplitFactory` contract holds two immutable values for the addresses of the `stETH` and `wstETH` tokens.
 
@@ -412,7 +414,7 @@ Since these values will be consistent across all clones on the same chain, it wo
 
 This would save 40 bytes of calldata on each call to the clone, which leads to a savings of approximately 640 gas on each call.
 
-**Recommendation**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#recommendation-6)
+**Recommendation**[**​**](#recommendation-6)
 
 1. Add the following to `LidoSplit.sol`:
 
@@ -425,11 +427,11 @@ address immutable public wstETH;
 3. Remove `stETH` and `wstETH` from `LidoSplitFactory.sol`, both as storage values, arguments to the constructor, and arguments to `clone()`.
 4. Adjust the `distribute()` function in `LidoSplit.sol` to read the storage values for these two addresses, and remove the helper functions to read the clone's immutable arguments for these two values.
 
-**Review**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#review-7)
+**Review**[**​**](#review-7)
 
 Fixed as recommended in [PR 87](https://github.com/ObolNetwork/obol-manager-contracts/pull/87).
 
-#### \[G-02] OWR can be simplified and save gas by not tracking distributedFunds[​](https://docs.obol.org/next/adv/security/smart_contract_audit#g-02-owr-can-be-simplified-and-save-gas-by-not-tracking-distributedfunds) <a href="#g-02-owr-can-be-simplified-and-save-gas-by-not-tracking-distributedfunds" id="g-02-owr-can-be-simplified-and-save-gas-by-not-tracking-distributedfunds"></a>
+#### \[G-02] OWR can be simplified and save gas by not tracking distributedFunds[​](#g-02-owr-can-be-simplified-and-save-gas-by-not-tracking-distributedfunds) <a href="#g-02-owr-can-be-simplified-and-save-gas-by-not-tracking-distributedfunds" id="g-02-owr-can-be-simplified-and-save-gas-by-not-tracking-distributedfunds"></a>
 
 Currently, the `OptimisticWithdrawalRecipient` contract tracks four variables:
 
@@ -450,7 +452,7 @@ As we can see, `distributedFunds` is added to the `endingDistributedFunds` varia
 
 The `distributedFunds` variable is not read or used anywhere else on the contract.
 
-**Recommendation**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#recommendation-7)
+**Recommendation**[**​**](#recommendation-7)
 
 We can simplify the math and save substantial gas (a storage write plus additional operations) by not tracking this value at all.
 
@@ -460,11 +462,11 @@ This would allow us to calculate `fundsToBeDistributed` directly, as follows:
 fundsToBeDistributed = currentBalance - fundsPendingWithdrawal;
 ```
 
-**Review**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#review-8)
+**Review**[**​**](#review-8)
 
 Fixed as recommended in [PR 85](https://github.com/ObolNetwork/obol-manager-contracts/pull/85).
 
-#### \[I-01] Strong trust assumptions between validators and node operators[​](https://docs.obol.org/next/adv/security/smart_contract_audit#i-01-strong-trust-assumptions-between-validators-and-node-operators) <a href="#i-01-strong-trust-assumptions-between-validators-and-node-operators" id="i-01-strong-trust-assumptions-between-validators-and-node-operators"></a>
+#### \[I-01] Strong trust assumptions between validators and node operators[​](#i-01-strong-trust-assumptions-between-validators-and-node-operators) <a href="#i-01-strong-trust-assumptions-between-validators-and-node-operators" id="i-01-strong-trust-assumptions-between-validators-and-node-operators"></a>
 
 It is assumed that validators and node operators will always act in the best interest of the group, rather than in their selfish best interest.
 
@@ -478,11 +480,11 @@ Here are a select few examples of attacks that a malicious set of node operators
 
 Note that there are likely many other possible attacks that malicious node operators could perform. This report is intended to demonstrate some examples of the trust level that is needed between validators and node operators, and to emphasize the importance of making these assumptions clear to users.
 
-**Review**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#review-9)
+**Review**[**​**](#review-9)
 
 Acknowledged. We believe EIP 7002 will reduce this trust assumption as it would enable the validator exit via the execution layer withdrawal key.
 
-#### \[I-02] Provide node operator checklist to validate setup[​](https://docs.obol.org/next/adv/security/smart_contract_audit#i-02-provide-node-operator-checklist-to-validate-setup) <a href="#i-02-provide-node-operator-checklist-to-validate-setup" id="i-02-provide-node-operator-checklist-to-validate-setup"></a>
+#### \[I-02] Provide node operator checklist to validate setup[​](#i-02-provide-node-operator-checklist-to-validate-setup) <a href="#i-02-provide-node-operator-checklist-to-validate-setup" id="i-02-provide-node-operator-checklist-to-validate-setup"></a>
 
 There are a number of ways that the user setting up the DVT could plant backdoors to harm the other users involved in the DVT.
 
@@ -493,7 +495,7 @@ Each of these risks is possible to check before signing off on the setup, but so
 3. `OptimisticWithdrawalRecipient.getTranches()` should be called to check that `amountOfPrincipalStake` is equal to the amount that they will actually be providing.
 4. The controller's `owner` and future split including Obol fees should be provided to the user. They should be able to check that `ImmutableSplitControllerFactory.predictSplitControllerAddress()`, with those parameters inputted, results in the controller that is actually listed on `SplitsMain.getController(split)`.
 
-**Review**[**​**](https://docs.obol.org/next/adv/security/smart_contract_audit#review-10)
+**Review**[**​**](#review-10)
 
 Acknowledged. We do some of these already (will add the remainder) automatically in the launchpad UI during the cluster confirmation phase by the node operator. We will also add it in markdown to the repo.
 
