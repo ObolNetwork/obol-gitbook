@@ -30,6 +30,8 @@ Date: Sept 18 to 22, 2023
 
 [PDF Version](https://github.com/ObolNetwork/obol-splits/blob/main/audit/2023%20-%20Obol%20Splits%20V1%20Audit%20-%20Zach%20Obront.pdf)
 
+Markdown version of the audit follows below:
+
 ### About **Obol**[​](#about-obol) <a href="#about-obol" id="about-obol"></a>
 
 The Obol Network is an ecosystem for trust minimized staking that enables people to create, test, run & co-ordinate distributed validators.
