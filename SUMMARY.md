@@ -42,10 +42,10 @@
 * [Partner Integrations](run-a-dv/integrations/README.md)
   * [Create an EigenLayer DV](run-a-dv/integrations/create-an-eigenlayer-dv.md)
   * [Create a Lido CSM DV](run-a-dv/integrations/lido-csm.md)
-  * [Create a Lido StVault](run-a-dv/integrations/lido-v3-stvault-integration-kit.md)
+  * [Create a Lido stVault](run-a-dv/integrations/lido-v3-stvault-integration-kit.md)
     * [For Node Operators](run-a-dv/integrations/lido-v3-stvault-for-node-operator.md)
     * [For Capital Allocators](run-a-dv/integrations/lido-v3-stvault-for-capital-allocators.md)
-  * [DappNode](run-a-dv/integrations/dappnode.md)
+  * [Run a DV on a DappNode](run-a-dv/integrations/dappnode.md)
 
 ## Advanced & Troubleshooting
 

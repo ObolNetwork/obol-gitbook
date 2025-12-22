@@ -1,18 +1,14 @@
 # Node Operator Guide – Operating a Lido V3 stVault with an Obol DV Cluster
 
 {% hint style="info" %}
-**Scope:** This guide is for node operators / infra teams who operate a **Lido V3 stVault** backed by an **Obol Distributed Validator (DV) cluster**.
+**Scope:** This guide is for node operators who operate a **Lido V3 stVault** with an **Obol Distributed Validator (DV) cluster**.
 
 It assumes:
 
 - stVault creation is done via **Lido's stVault UI** or **Lido's stVault CLI**, and
-- validator operations (deposit, exit, withdrawal, etc.) are performed using **Lido stVault CLI or Lido's stVault UI only**.
+- validator operations (deposit, exit, withdrawal, etc.) are performed using **Lido stVault CLI or Lido's stVault UI** only.
 
-**Do not use the Obol Launchpad UI for any validators belonging to a stVault.**
-{% endhint %}
-
-{% hint style="warning" %}
-⚠️ **Multi-operator only.** All examples and RR benefits assume **multi-operator DVT vaults**. Single-operator setups are out of scope.
+Reserve ratio benefits require **multi-operator DV vaults**. Single-operator setups do not qualify you for improved reserve ratios (though may qualify you for Obol's [Incentive](https://obol.org/incentives) program).
 {% endhint %}
 
 ---
@@ -27,11 +23,11 @@ At a high level, the lifecycle for a multi-operator Obol DV stVault is:
     
 2. **Set up governance & fee routing**
     
-    – configure `GOVERNANCE_SAFE`, `NODE_OPERATOR_SAFE` using GnosisSafe UI and `FEE_SPLIT_CONTRACT`  using [splits.org](http://splits.org) UI. 
+    – Configure a `GOVERNANCE_SAFE` and `NODE_OPERATOR_SAFE` using Gnosis's [Safe UI](https://app.safe.global/) as well as a `FEE_SPLIT_CONTRACT` using the [splits.org](http://splits.org) UI. 
     
 3. **Create and publish the Obol DV cluster**
     
-    – multi-operator DV cluster with the vault as withdrawal / fee recipient.
+    – Use the `charon create dkg --publish` command or the [DV Launchpad](https://launchpad.obol.org/) to create a multi-operator DV cluster with the vault as both the withdrawal and fee recipient addresses. Use the `--operator-addresses` flag to invite the Node Operators to complete the DKG ceremony.
     
 4. **Run and monitor the DV cluster**
     
@@ -39,11 +35,11 @@ At a high level, the lifecycle for a multi-operator Obol DV stVault is:
     
 5. **Monitor the vault**
     
-    – using **Lido stVault CLI** (`contracts dashboard` and `vo` read commands) plus stVault UI.
+    – using **Lido stVault CLI** (`contracts dashboard` and `vo` read commands) plus the stVault UI.
     
 6. **Distribute rewards and fees**
     
-    – from the vault to the splitter, and from the splitter to participants (including Obol).
+    – from the vault to the split contract, and from the split contract to participants (including Obol).
     
 
 ---
@@ -55,7 +51,7 @@ You can create a stVault in two ways:
 - **Lido stVault UI (recommended)**
     - Hoodi testnet UI: `https://stvaults-hoodi.testnet.fi/`
     - Mainnet stVault UI link will follow Lido’s official docs once live.
-- **Lido Staking Vault CLI**
+- **Lido stVault CLI**
     - Main docs and command reference:
         
         `https://lidofinance.github.io/lido-staking-vault-cli/`
@@ -77,14 +73,14 @@ For beacon-chain deposits, validator exits, withdrawals and other stVault operat
 Do **not** use the Obol Launchpad UI for these validators.
 {% endhint %}
 
-For the rest of this guide we assume a **multi-operator DVT vault** with, for example:
+For the rest of this guide we assume a **multi-operator DV vault** with, for example:
 
-- **Cluster size:** 5 operators
+- **Cluster size:** 4 operators
 - **Cluster limit:** up to ~1,000,000 ETH (subject to Lido risk / tier approvals)
-- **Validator max stake:** 1,920 ETH per validator
+- **Validator max stake:** 1,920 ETH per validator (allowing space for compounding)
 - **Total validators:** ~520–600 in a full configuration
 
-These values are **illustrative**; actual limits depend on your and depositor’s risk framework and governance.
+These values are **illustrative**; actual limits depend on your and your depositor’s risk framework and governance.
 
 ---
 
@@ -99,7 +95,7 @@ Before (or alongside) vault creation, set up three core components.
     - Mainnet: `https://safe.global/`
     - Hoodi testnet: Protofire Safe UI – `https://app.safe.protofire.io/`
 - **Example policy:**
-    - 5/5 multi-sig across:
+    - 3/4 multi-sig across:
         - client / treasury signers and/or
         - operator representatives.
     - Typically used as:
@@ -115,7 +111,7 @@ Before (or alongside) vault creation, set up three core components.
     - Mainnet: `https://safe.global/`
     - Hoodi: `https://app.safe.protofire.io/`
 - **Example policy:**
-    - 3/5 multi-sig across node operators and/or client infra.
+    - 3/4 multi-sig across node operators and/or client infra.
 - **Typical responsibilities:**
     - Funding the vault
     - Depositing to beacon chain
@@ -129,24 +125,28 @@ Before (or alongside) vault creation, set up three core components.
 
 ### 3.3 Fee Split Contract (`FEE_SPLIT_CONTRACT`)
 
-On **mainnet**, Obol’s protocol fee is enforced via a fee splitter:
+On **mainnet**, Obol’s protocol fee is enforced via a fee splitting contract:
 
-- Create via **Splits UI**: `https://app.splits.org/`
+- Create via the **Splits.org UI**: `https://app.splits.org/`
 - Configure:
-    - **1% of node operator fee → Obol protocol fee address**
+    - **1% of validator rewards → Obol protocol fee address**
         
         `0xDe5aE4De36c966747Ea7DF13BD9589642e2B1D0d`
         
-    - Remaining **99% split** between client teams / operators according to your commercial terms.
+    - Remaining percentage split between operators according to your commercial terms.
 
 On **Hoodi**, Splits may not be available or may not support that network:
 
-- You may **skip the splitter** on testnet.
-- On mainnet, **using a splitter that routes 1% to Obol is mandatory** for Obol protocol rewards.
+- You may **skip the split contract** on testnet.
+- On mainnet, **using a split contract that routes 1% of validator rewards to Obol is required** to earn Obol's incentive rewards. If this vault will be extremely significant, consider reaching out to the Obol core team to discuss the potential for a custom arrangement.
 
-The image below shows splits UI to create a splits contract where 1% is for Obol protocol fee and 24.5% to all other node operators.
+The image below shows using the splits UI to create a split contract where 5% of validator rewards will be distributed equally across the 4 node operators and Obol.
 
-<figure><img src="../../.gitbook/assets/SPLITS-UI-RECIPIENTS.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/SPLITS-UI-RECIPIENTS.png" alt=""><figcaption>Example split contract configuration</figcaption></figure>
+
+{% hint style="info" %}
+Consider setting the controller for this split contract to `NODE_OPERATOR_SAFE` or `GOVERNANCE_SAFE` to retain the ability to modify it at a later date.
+{% endhint %}
 
 ---
 
@@ -172,7 +172,7 @@ When creating the vault via UI or CLI, we recommend the following mapping.
     
     Set **after vault creation** so all node-operator fees route through the splitter.
     
-- **Node Operator Fee:** typically **5–10%** (expressed in basis points in the UI / CLI).
+- **Node Operator Fee:** typically **3–10%** (expressed in basis points in the UI / CLI).
 - **Confirmation Lifetime:** e.g. **48 hours**
     
     Relevant if `Vault Owner` and `Node Operator Manager` differ; defines how long confirmations are valid for sensitive operations.
@@ -182,7 +182,7 @@ For the latest flags and options when creating a vault, refer to:
 
 **Lido stVault CLI – `vo` commands**
 
-`https://lidofinance.github.io/lido-staking-vault-cli/commands/vo`
+`https://lidofinance.github.io/lido-staking-vault-cli/commands/vault-operations`
 
 ---
 
@@ -190,11 +190,11 @@ For the latest flags and options when creating a vault, refer to:
 
 | Address | Type | Permissions (examples) | Duties (examples) | Notes |
 | --- | --- | --- | --- | --- |
-| `GOVERNANCE_SAFE` | Multi-sig (e.g. 5/5) | Grant / revoke roles, transfer vault ownership, set confirmation expiry, pause / resume deposits, recover stuck assets, change node operator, set fee rates. | Strategic governance, emergency handling, fee structure oversight, monitoring node-operator performance, asset recovery. | Primary governance. Often also the node operator manager and vault owner. |
-| `NODE_OPERATOR_SAFE` | Multi-sig (e.g. 3/5) | Deposit ETH to beacon chain, manage validator operations, trigger withdrawals, request exits, rebalance vault, monitor performance, claim node-operator fees. | Day-to-day vault and validator operations, responding to alerts, maintaining uptime and SLAs. | Single operational entry-point; should follow strict runbooks and operational policies. |
-| `FEE_SPLIT_CONTRACT` | Smart contract | Anyone can call **distribute**; only configured recipients can **claim**. | Receive node-operator fee rewards, split to participants (client teams, operators, Obol), maintain on-chain records. | Obol gets 1% fee share via its protocol address; 99% split as per commercial agreement. |
+| `GOVERNANCE_SAFE` | Multi-sig (e.g. 4/5) | Grant / revoke roles, transfer vault ownership, set confirmation expiry, pause / resume deposits, recover stuck assets, change node operator, set fee rates. | Strategic governance, emergency handling, fee structure oversight, monitoring node-operator performance, asset recovery. | Primary governance. Often also the node operator manager and vault owner. |
+| `NODE_OPERATOR_SAFE` | Multi-sig (e.g. 3/4) | Deposit ETH to beacon chain, manage validator operations, trigger withdrawals, request exits, rebalance vault, monitor performance, claim node-operator fees. | Day-to-day vault and validator operations, responding to alerts, maintaining uptime and SLAs. | Single operational entry-point; should follow strict runbooks and operational policies. |
+| `FEE_SPLIT_CONTRACT` | Smart contract | Anyone can call **distribute** to disburse the funds. | Receive node-operator fee rewards, splits across participants. | Obol gets 1% fee share via its protocol address; or as per commercial agreement. |
 
-These are **recommendations**, not protocol requirements; adapt to your own governance and risk appetite.
+These are **recommendations**, not stVault requirements; adapt to your own governance needs and risk appetite.
 
 ---
 
@@ -218,38 +218,38 @@ Obol cluster creation docs:
 When generating the cluster lock, use the --publish flag so the cluster lock is published and verifiable by:
 
 - DV participants,
-- Lido risk review & DVT tier evaluation, and
-- Better support by Obol Team in troubleshooting cluster issues.
+- Lido risk review & DV tier evaluation, and for
+- Better support by the Obol Team in troubleshooting cluster issues.
 {% endhint %}
 
 <figure><img src="../../.gitbook/assets/LIDO-STVAULT-OVERVIEW.png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../../.gitbook/assets/CUSTOM-WITHDRAWAL-CONFIG.png" alt=""><figcaption></figcaption></figure>
 
-### 5.1 DVT Cluster Identification Process
+### 5.1 DV Cluster Identification Process
 
-After creating and publishing your Obol DV cluster, you must go through **Lido's identification process** to be classified as an **Obol DVT cluster** and qualify for DVT-specific tiers with improved Reserve Ratio (RR) and stETH minting limits.
+After creating and publishing your Obol DV cluster, you must go through **Lido's identification process** to be classified as an **Obol DV cluster** and qualify for DV-specific tiers with improved Reserve Ratio (RR) and stETH minting limits.
 
 **Why identification matters:**
 
-- **Unidentified clusters** default to the **Default tier** with **50% Reserve Ratio** and limited stETH minting capacity.
-- **Identified DVT clusters** can qualify for **DVT tiers** with **Reserve Ratios as low as 2-4%** and significantly higher stETH minting limits.
+- **Unidentified clusters** default to the **Default tier** with only a **50% Reserve Ratio** and limited stETH minting capacity.
+- **Identified DV clusters** can qualify for **DV tiers** with **Reserve Ratios as low as 2-4%** and significantly higher stETH minting limits.
 
 For detailed tier breakdowns and capital efficiency benefits, see the [Capital Allocator Guide](lido-v3-stvault-for-capital-allocators.md#dvt-tiers).
 
 **The identification process:**
 
 1. Each individual Node Operator in the cluster must complete the identification process (post on Lido Research Forum, complete identification forms).
-2. A cluster representative posts a **DVT Cluster identification request** on the Lido Research Forum.
-3. Complete the **DVT Cluster Questionnaire** with technical and business information.
+2. A cluster representative posts a **DV Cluster identification request** on the Lido Research Forum.
+3. The representative completes the **DV Cluster Questionnaire** with technical and business information.
 4. The stVaults Committee assesses your cluster and assigns a **category and tier grid**.
-5. Once identified, your cluster can access DVT-specific tiers with improved economics.
+5. Once identified, your cluster can access DV-specific tiers with improved economics.
 
-**Obol can help:**
+**How Obol can help:**
 
 - Obol provides guidance and support throughout the identification process.
 - We can help coordinate the cluster identification request and questionnaire completion.
-- We assist with technical documentation and cluster structure details required for assessment.
+- We assist with technical documentation and cluster structure details required for the assessment.
 
 For detailed information about the identification process, requirements, and tier structures, refer to [Lido's Node Operators Identification documentation](https://docs.lido.fi/run-on-lido/stvaults/node-operators-identification).
 
@@ -261,21 +261,19 @@ For detailed information about the identification process, requirements, and tie
 
 For DV-specific monitoring (RAVER, attestations, client health, etc.), use Obol’s monitoring stack:
 
-Obol monitoring docs:
-
-[Monitoring Your Node](../running/monitoring.md)
+Obol monitoring docs: [Monitoring Your Own Node](../running/monitoring.md), [Sending metrics to Obol](../start/obol-monitoring.md)
 
 Typical components:
 
 - Metrics (e.g. Prometheus) for:
-    - attestation inclusion & timing
+    - attestation success
     - proposer success
     - Charon peer connectivity
     - execution and consensus client health
-- Alerts on:
+- Alerts for:
     - missed duties
-    - peer disconnects
-    - client restarts / crashes
+    - insufficient peers
+    - clients offline
     - RAVER dropping below your target (e.g. 98%, if that’s your internal standard)
 
 Operators should agree on:
@@ -347,7 +345,7 @@ yarn start vo r info -v <vaultAddress>
 
 Docs:
 
-`https://lidofinance.github.io/lido-staking-vault-cli/commands/vo`
+`https://lidofinance.github.io/lido-staking-vault-cli/commands/vault-operations`
 
 In practice:
 
@@ -380,7 +378,7 @@ Use these for:
 
 - performance reviews
 - sanity-checking expected vs realized APR
-- understanding the effect of DVT tiers and any strategy layer
+- understanding the effect of DV tiers and any strategy layer
 
 ---
 
@@ -389,7 +387,7 @@ Use these for:
 {% hint style="info" %}
 The thresholds below are illustrative only.
 
-They are not official Lido or Obol requirements and should be tuned to your vault's risk profile, product design, and the latest protocol guidance.
+They are not official Lido nor Obol requirements and should be tuned to your vault's risk profile, product design, and the latest protocol guidance.
 {% endhint %}
 
 Examples of vault-level alerts you might configure:
@@ -427,18 +425,18 @@ use the **Lido stVault CLI** docs:
 
 - Dashboard write commands (deposits, exits, etc.):
     
-    `https://lidofinance.github.io/lido-staking-vault-cli/commands/contracts/dashboard#write`
+    [`https://lidofinance.github.io/lido-staking-vault-cli/commands/contracts/dashboard#write`](https://lidofinance.github.io/lido-staking-vault-cli/commands/contracts/dashboard#write)
     
 - Vault / VaultHub / additional commands:
     
-    `https://lidofinance.github.io/lido-staking-vault-cli/commands/`
+    [`https://lidofinance.github.io/lido-staking-vault-cli/category/commands/`](https://lidofinance.github.io/lido-staking-vault-cli/category/commands/)
     
 
 This keeps your operational runbooks aligned with the latest Lido contracts and CLI behaviour.
 
 ---
 
-## 8. Fees, Splitter & Obol Rewards
+## 8. Fees, Splits & Obol Incentives
 
 ### 8.1 From Vault to Fee Splitter
 
@@ -460,7 +458,7 @@ Step 1: disburse **node operator fees** from the vault/dashboard to `FEE_SPLI
 
 Dashboard write docs:
 
-`https://lidofinance.github.io/lido-staking-vault-cli/commands/contracts/dashboard#write`
+[`https://lidofinance.github.io/lido-staking-vault-cli/commands/contracts/dashboard#write`](https://lidofinance.github.io/lido-staking-vault-cli/commands/contracts/dashboard#write)
 
 This moves accrued node-operator fees from the vault to your `FEE_SPLIT_CONTRACT`.
 
@@ -470,43 +468,33 @@ Hoodi link: https://stvaults-hoodi.testnet.fi/vaults/your_vault_address/claim
 
 ### 8.2 From Splitter to Participants
 
-Step 2: **distribute and claim** via Splits:
+Step 2: **distribute and claim** via Splits.org:
 
-1. Open **Splits UI**: `https://app.splits.org/`
-2. Select your `FEE_SPLIT_CONTRACT`.
-3. Run:
+1. Open the **Splits.org UI**: [`https://app.splits.org/`](https://app.splits.org/)
+2. Navigate to the page for your `FEE_SPLIT_CONTRACT` address.
+3. Connect your wallet and choose either to:
     - **Distribute** – moves the contract’s balance into recipients’ claimable balances.
-    - **Claim** – each participant (client, operators, Obol) claims to their own address or Safe.
-
-Verify:
-
-- Vault → splitter transfers match expectations.
-- Splitter allocations match your agreed split.
-- Obol’s **1% fee share** is visible and claimable at its protocol address.
+    - **Distribute and Withdraw** – moves the contract's balance into each participant's own address or Safe. Skipping their requirement to claim.
 
 Hoodi Link: Not available
-Mainnet Link: https://app.splits.org/accounts/fee_splitter_contract_address/?chainId=1
+Mainnet Link: `https://app.splits.org/accounts/<FEE_SPLIT_CONTRACT>`
 
 ---
 
 ### 8.3 Obol Rewards (Protocol Incentives)
 
-If the splitter is configured correctly with Obol’s 1% share, **Obol rewards** can be claimed via:
-
-- **Obol Launchpad:** `https://launchpad.obol.org/`
+If the split contract is configured correctly with Obol’s share of validator rewards, **Obol incentives** can be claimed proportionally via the [Obol DV Launchpad](https://launchpad.obol.org/) by the other addresses in the split:
 
 Process:
 
-1. Connect the **recipient wallet / Safe** that owns the reward entitlement.
-2. Navigate to the rewards section.
-3. Claim any available incentives.
+1. Connect the **recipient wallet / Safe** that's entitled to the reward on the [DV Launchpad](https://launchpad.obol.org/).
+2. Click the "Dashboard" button.
+3. Claim any available Obol incentives.
 
-{% hint style="warning" %}
-Launchpad is used only for claiming Obol rewards.
-
-All validator-related actions for stVaults must still go through the **Lido stVault UI or CLI**, not Launchpad.
+{% hint style="info" %}
+The DV Launchpad can also be used by Operators to claim their outstanding wstEth rewards once someone has distributed them from the split contract to make them claimable.
 {% endhint %}
 
-Hoodi Link: https://hoodi.launchpad.obol.org/operator/your_address/
+Hoodi Link: [https://hoodi.launchpad.obol.org/cluster/list/](https://hoodi.launchpad.obol.org/cluster/list/)
 
-Mainnet Link: https://launchpad.obol.org/operator/your_address/
+Mainnet Link: [https://launchpad.obol.org/cluster/list/](https://launchpad.obol.org/cluster/list/)
