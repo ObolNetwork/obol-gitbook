@@ -152,72 +152,6 @@ Flags:
       --withdrawal-addresses strings           Comma separated list of Ethereum addresses to receive the returned stake and accrued rewards for each validator. Either provide a single withdrawal address or withdrawal addresses for each validator.
 ```
 
-## The `deposit` command
-
-The `deposit` command enables signing and fetching new deposit messages for unactivated validators. This allows modification of a withdrawal address after validator creation but before activation, supporting partial deposits and withdrawal address changes.
-
-```markdown
-charon deposit --help
-Sign and fetch new deposit messages for unactivated validators using a remote API, enabling the modification of a withdrawal address after creation but before activation.
-
-Usage:
-  charon deposit [command]
-
-Available Commands:
-  fetch       Fetch a full deposit message.
-  sign        Sign a new partial deposit message.
-
-Flags:
-  -h, --help   Help for deposit
-
-Use "charon deposit [command] --help" for more information about a command.
-```
-
-### Sign a new partial deposit
-
-The `charon deposit sign` command signs new partial validator deposit messages and submits them to a remote API for aggregation.
-
-```markdown
-charon deposit sign --help
-Signs new partial validator deposit messages using a remote API.
-
-Usage:
-  charon deposit sign [flags]
-
-Flags:
-      --deposit-amounts uints           Comma separated list of partial deposit amounts (integers) in ETH. (default [32])
-  -h, --help                            Help for sign
-      --lock-file string                Path to the cluster lock file defining the distributed validator cluster. (default ".charon/cluster-lock.json")
-      --private-key-file string         Path to the charon enr private key file. (default ".charon/charon-enr-private-key")
-      --publish-address string          The URL of the remote API. (default "https://api.obol.tech/v1")
-      --publish-timeout duration        Timeout for publishing a signed deposit to the publish-address API. (default 5m0s)
-      --validator-keys-dir string       Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
-      --validator-public-keys strings   [REQUIRED] List of validator public keys for which new deposits will be signed.
-      --withdrawal-addresses strings    [REQUIRED] Withdrawal addresses for which the new deposits will be signed. Either a single address for all specified validator-public-keys or one address per key should be specified.
-```
-
-### Fetch a full deposit message
-
-The `charon deposit fetch` command fetches fully signed deposit messages from the remote API after enough operators have submitted their partial signatures.
-
-```markdown
-charon deposit fetch --help
-Fetch full validator deposit messages using a remote API.
-
-Usage:
-  charon deposit fetch [flags]
-
-Flags:
-      --deposit-data-dir string         Path to the directory in which fetched deposit data will be stored. (default ".charon/deposit-data-<TIMESTAMP>")
-  -h, --help                            Help for fetch
-      --lock-file string                Path to the cluster lock file defining the distributed validator cluster. (default ".charon/cluster-lock.json")
-      --private-key-file string         Path to the charon enr private key file. (default ".charon/charon-enr-private-key")
-      --publish-address string          The URL of the remote API. (default "https://api.obol.tech/v1")
-      --publish-timeout duration        Timeout for publishing a signed deposit to the publish-address API. (default 5m0s)
-      --validator-keys-dir string       Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
-      --validator-public-keys strings   [REQUIRED] List of validator public keys for which new deposits will be signed.
-```
-
 ## The `dkg` command
 
 ### Performing a DKG Ceremony
@@ -502,7 +436,7 @@ The `charon exit active-validator-list` command returns a list of all distribute
 
 ```markdown
 charon exit active-validator-list --help
-Returns a list of all the DV in the specified cluster whose status is ACTIVE_ONGOING, i.e. can be exited.
+Returns a list of all the DVs in the specified cluster whose status is ACTIVE_ONGOING, i.e. can be exited.
 
 Usage:
   charon exit active-validator-list [flags]
