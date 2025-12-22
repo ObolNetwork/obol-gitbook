@@ -8,7 +8,7 @@ The total supply is capped at 500 million tokens. The full supply is not immedia
 
 ### **Ecosystem Treasury & Retroactive Funding (RAF) | 38.8%**
 
-A significant portion of OBOL Tokens are allocated to the ecosystem treasury to drive innovation and decentralization. These funds support different initiatives, for example, [**SQUAD Goals**](https://community.obol.org/t/oip-3-obol-collective-2025-goals-proposal/)**, Grants & Incentives Funding** contributors who help to the growth of the protocol and the broader Collective and [**Retroactive Funding (RAF)**](../../governance/raf/README.md)**,** rewarding contributions that have positively impacted the Obol Collective. Over time, the Obol Association plans to give additional control over these tokens to the community.
+A significant portion of OBOL Tokens are allocated to the ecosystem treasury to drive innovation and decentralization. These funds support different initiatives, for example, [**SQUAD Goals**](https://community.obol.org/t/oip-3-obol-collective-2025-goals-proposal/)**, Grants & Incentives Funding** contributors who help to the growth of the protocol and the broader Collective and [**Retroactive Funding (RAF)**](../governance/raf/README.md)**,** rewarding contributions that have positively impacted the Obol Collective. Over time, the Obol Association plans to give additional control over these tokens to the community.
 
 ### **Investors | 23.7%**
 
