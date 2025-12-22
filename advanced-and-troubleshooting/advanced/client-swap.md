@@ -48,7 +48,7 @@ In order to choose which clients to use in a new cluster, simply leave uncomment
 ## Swapping clients in an already running cluster
 
 {% hint style="warning" %}
-For ([L](https://github.com/obolNetwork/lido-charon-distributed-validator-node))[CDVN](https://github.com/obolNetwork/charon-distributed-validator-node) users who created their `.env` file before the release of charon `v1.7.1`, there are breaking changes between then and the current multi-client `.env` file setup.
+For ([L](https://github.com/obolNetwork/lido-charon-distributed-validator-node))[CDVN](https://github.com/obolNetwork/charon-distributed-validator-node) users who created their `.env` file before the release of charon `v1.8.0`, there are breaking changes between then and the current multi-client `.env` file setup.
 The minimal addition to an older version of the `.env` file compatible with the current versions of the repos is to add `COMPOSE_PROFILES=el_nethermind,cl_lighthouse,dv_charon,vc_lodestar,mev_mevboost` to your existing `.env` file.
 Some environment variables were renamed in order to be client-agnostic. **If you had set these environment variables to custom values in your `.env`, you need to set the new variables to your custom values**. They serve the same purpose.
 
