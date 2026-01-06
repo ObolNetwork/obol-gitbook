@@ -44,7 +44,7 @@ Please make sure to create a backup of the private key at `.charon/charon-enr-pr
 {% endhint %}
 
 {% hint style="success" %}
-If instead of being shown your `enr` you see an error saying `permission denied` then you may need to [update your docker permissions](../../advanced-and-troubleshooting/troubleshooting/errors.md#docker-permission-denied-error) to allow the command to run successfully.
+If instead of being shown your `enr` you see an error saying `permission denied` then you may need to [update your docker permissions](../../advanced-and-troubleshooting/troubleshooting/errors.md#how-to-fix-permission-denied-errors) to allow the command to run successfully.
 {% endhint %}
 
 For Step 2 of the quickstart:
@@ -177,7 +177,7 @@ You will use the Launchpad to create an invitation, and share it with the operat
 
 The following are the steps for creating a cluster.
 
-1. Go to the [DV Launchpad](../../learn/intro/launchpad.md)
+1. Go to the [DV Launchpad](../../learn/intro/launchpad.md#dv-launchpad-links)
 2.  Connect your wallet
 
     <figure><img src="../../.gitbook/assets/image (75).png" alt=""><figcaption></figcaption></figure>
