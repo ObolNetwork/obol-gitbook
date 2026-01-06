@@ -6,7 +6,7 @@ description: >-
 
 # Create a DV With a Group
 
-### Pre-requisites[​]() <a href="#pre-requisites" id="pre-requisites"></a>
+### Pre-requisites <a href="#pre-requisites" id="pre-requisites"></a>
 
 * A basic [knowledge](https://docs.ethstaker.cc/ethstaker-knowledge-base/) of Ethereum nodes and validators.
 * A machine that meets the [minimum requirements](../prepare/deployment-best-practices.md#hardware-specifications) for the network you intend to validate.
@@ -29,7 +29,7 @@ git clone https://github.com/ObolNetwork/charon-distributed-validator-node.git
 # Change directory
 cd charon-distributed-validator-node/
 # Use docker to create an ENR. Backup the file `.charon/charon-enr-private-key`.
-docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.7.1 create enr
+docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.8.0 create enr
 ```
 
 You should expect to see a console output like this:
@@ -54,7 +54,7 @@ For Step 2 of the quickstart:
 {% endtab %}
 
 {% tab title="DappNode" %}
-**Prepare an Execution and Consensus client**[**​**]()
+**Prepare an Execution and Consensus client**
 
 Before preparing the DappNode to take part in a Distributed Validator Cluster, you must ensure you have selected an execution client & consensus client on your DappNode under the 'Stakers' tab for the network you intend to validate.
 
@@ -68,7 +68,7 @@ Before preparing the DappNode to take part in a Distributed Validator Cluster, y
 
     <figure><img src="../../.gitbook/assets/image (65).png" alt=""><figcaption></figcaption></figure>
 
-**Install the Obol DappNode package**[**​**]()
+**Install the Obol DappNode package**
 
 With a fully synced Ethereum node now running on the DappNode, the below steps will walk through installing the Obol package via an IPFS hash and preparing for a Distributed Key Generation ceremony. Future versions of this guide will download the package from the official DappNode DappStore once a stable 1.0 release is made.
 
@@ -151,7 +151,7 @@ Create an ENR using charon:
 
 ```sh
 # Use docker to create an ENR. Backup the file `.charon/charon-enr-private-key`.
-docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.7.1 create enr
+docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.8.0 create enr
 ```
 
 For Step 2 of the quickstart:
@@ -189,7 +189,7 @@ The following are the steps for creating a cluster.
    1. Input the `Cluster Name` & `Cluster Size` (i.e. number of operators in the cluster). The threshold will update automatically, it shows the number of nodes that need to be functioning for the validator(s) to stay active.
 6. Input the Ethereum addresses for each operator that you collected previously. If you will be taking part as an operator, click the "Use My Address" button for Operator 1.
    1. Select the desired amount of validators (32 ETH each) the cluster will run. (Note that the mainnet launchpad is restricted to one validator for now.)
-   2. If you are taking part in the cluster, enter the ENR you generated in [step one](#step-1-generate-an-enr) in the "What is your charon client's ENR?" field.
+   2. If you are taking part in the cluster, enter the ENR you generated in [step one](#step-1-get-your-enr) in the "What is your charon client's ENR?" field.
    3. Enter the `Principal address` which should receive the principal 32 ETH and the accrued consensus layer rewards when the validator is exited. This can optionally be set to the contract address of a multisig / splitter contract.
    4. Enter the `Fee Recipient address` to which the execution layer rewards will go. This can be the same as the principal address, or it can be a different address. This can optionally be set to the contract address of a multisig / splitter contract.
 7. Click `Create Cluster Configuration`. Review that all the details are correct, and press `Confirm and Sign` You will be prompted to sign two or three transactions with your MetaMask wallet. These are:
@@ -215,7 +215,7 @@ You will use the CLI to create the cluster definition file, which you will distr
 3.  Run the `charon create dkg` command that generates DKG cluster-definition.json file.
 
     ```sh
-    docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.7.1 create dkg 
+    docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.8.0 create dkg 
 
     --name="Quickstart" 
 
@@ -311,7 +311,7 @@ For the [DKG](../../learn/charon/dkg.md) to complete, all operators need to be r
 Once the creator gives you the `cluster-definition.json` file and you place it in a `.charon` subdirectory, run:
 
 ```sh
-docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.7.1 dkg --publish
+docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.8.0 dkg --publish
 ```
 
 and the DKG process should begin.
@@ -480,7 +480,7 @@ docker compose up -d
 {% tab title="Sedge" %}
 To prepare a Distributed Validator node using sedge, we will use the `sedge generate` command to prepare a docker-compose file of our preferred clients, `sedge import-key` to import the artifacts created during the DKG ceremony, and `sedge run` to begin running the node.
 
-**Sedge generate**[**​**]()
+**Sedge generate**
 
 With Sedge installed, and the DKG complete, it’s time to deploy a Distributed Validator. Using the `sedge generate` command and its subcommands, Sedge will create a Docker Compose file needed to run the validator node.
 
@@ -504,7 +504,7 @@ With Sedge installed, and the DKG complete, it’s time to deploy a Distributed 
     > docker-compose.yml jwtsecret
     ```
 
-**Sedge Import-key**[**​**]()
+**Sedge Import-key**
 
 Use the following command to import keys from the directory where the `.charon` dir is located.
 
@@ -512,7 +512,7 @@ Use the following command to import keys from the directory where the `.charon` 
 sedge import-key --from ./ hoodi teku
 ```
 
-**Sedge Run**[**​**]()
+**Sedge Run**
 
 After confirming the configurations and ensuring all files are in place, use the `sedge run` command to deploy the DV docker containers. Sedge will then begin pulling all the required Docker images.
 
@@ -603,4 +603,4 @@ Use Kubernetes manifests to start your Charon client and validator client. These
 In a Distributed Validator Cluster, it is important to have a low latency connection to your peers. Charon clients will use the NAT protocol to attempt to establish a direct connection to one another automatically. If this doesn't happen, you should port forward Charon's p2p port to the public internet to facilitate direct connections. The default port to expose is `:3610`. Read more about Charon's networking [here](../../learn/charon/charon-networking.md).
 {% endhint %}
 
-If you have gotten to this stage, every node is up, synced and connected, congratulations. You can now move forward to [activating your validator](../running/activate-a-dv) to begin staking.
+If you have gotten to this stage, every node is up, synced and connected, congratulations. You can now move forward to [activating your validator](../running/activate-a-dv.md) to begin staking.
