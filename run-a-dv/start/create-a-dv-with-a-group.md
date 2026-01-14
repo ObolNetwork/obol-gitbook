@@ -454,7 +454,10 @@ docker compose down
 CHARON_BEACON_NODE_ENDPOINTS=<YOUR_REMOTE_BEACON_NODE_URL>
 ...
 ```
-
+{% hint style="info" %}
+If your existing  beacon node is running in a another CDVN instance on the same Docker host, you can access it by specifying
+`http://host.docker.internal:5052` as the endpoint.
+{% endhint %}
 3. Uncomment `EL=el-none` and `CL=cl-none` variables in the `.env` file and comment `EL=el-nethermind` and `CL=cl-lighthouse` variables:
 
 ```sh
