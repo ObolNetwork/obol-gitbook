@@ -119,7 +119,7 @@ docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon ex
 
 **Step 2: Monitor the Partial Exits' status**
 
-After a threshold of signed partial exits from node operators in the cluster is accumulated, a full (complete) exit can be created. For example, in the cluster below, only 2 out of 4 clusters have reached the threshold. Operators will have to wait for one more partial exit signature, either from operator 1 or 3 to create a full exit message.\\
+After a threshold of signed partial exits from node operators in the cluster is accumulated, a full (complete) exit can be created. For example, in the cluster below, only 2 out of 4 clusters have reached the threshold. Operators will have to wait for one more partial exit signature, either from operator 1 or 3 to create a full exit message.
 
 <figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -251,26 +251,23 @@ docker exec -it charon-distributed-validator-node-teku-1 /opt/teku/bin/teku volu
 
 Consult the examples below and compare them to your validator's monitoring to verify that exits from each operator in the cluster are being received. This example is a cluster of 4 nodes with 2 validators and threshold of 3 nodes broadcasting exits are needed.
 
-1.  Operator 1 broadcasts an exit on validator client 1.\
-    \\
+1.  Operator 1 broadcasts an exit on validator client 1.
 
     <figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
-2.  Operator 2 broadcasts an exit on validator client 2.\
-    \\
+2.  Operator 2 broadcasts an exit on validator client 2.
 
     <figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
-3.  Operator 3 broadcasts an exit on validator client 3.\
-    \\
+3.  Operator 3 broadcasts an exit on validator client 3.
 
     <figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
-At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following: \\
+At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
 <figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
@@ -348,26 +345,23 @@ Once a validator has broadcasted an exit message, it must continue to validate f
 
 Consult the examples below and compare them to your validator's monitoring to verify that exits from each operator in the cluster are being received. This example is a cluster of 4 nodes with 2 validators and threshold of 3 nodes broadcasting exits are needed.
 
-1.  Operator 1 broadcasts an exit on validator client 1.\
-    \\
+1.  Operator 1 broadcasts an exit on validator client 1.
 
     <figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
-2.  Operator 2 broadcasts an exit on validator client 2.\
-    \\
+2.  Operator 2 broadcasts an exit on validator client 2.
 
     <figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
-3.  Operator 3 broadcasts an exit on validator client 3.\
-    \\
+3.  Operator 3 broadcasts an exit on validator client 3.
 
     <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
-At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following: \\
+At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
 <figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
@@ -414,17 +408,17 @@ docker exec -it charon-distributed-validator-node-lodestar-1 node /usr/app/packa
 
 Consult the examples below and compare them to your validator's monitoring to verify that exits from each operator in the cluster are being received. This example is a cluster of 4 nodes with 2 validators and threshold of 3 nodes broadcasting exits are needed.
 
-1.  Operator 1 broadcasts an exit on validator client 1.\\
+1.  Operator 1 broadcasts an exit on validator client 1.
 
     <figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
-2.  Operator 2 broadcasts an exit on validator client 2. \\
+2.  Operator 2 broadcasts an exit on validator client 2.
 
     <figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
-3.  Operator 3 broadcasts an exit on validator client 3. \\
+3.  Operator 3 broadcasts an exit on validator client 3.
 
     <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
@@ -493,17 +487,17 @@ done;'
 
 Consult the examples below and compare them to your validator's monitoring to verify that exits from each operator in the cluster are being received. This example is a cluster of 4 nodes with 2 validators and threshold of 3 nodes broadcasting exits are needed.
 
-1.  Operator 1 broadcasts an exit on validator client 1.\\
+1.  Operator 1 broadcasts an exit on validator client 1.
 
     <figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
-2.  Operator 2 broadcasts an exit on validator client 2. \\
+2.  Operator 2 broadcasts an exit on validator client 2.
 
     <figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
-3.  Operator 3 broadcasts an exit on validator client 3. \\
+3.  Operator 3 broadcasts an exit on validator client 3.
 
     <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
