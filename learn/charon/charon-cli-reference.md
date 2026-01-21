@@ -103,7 +103,7 @@ Flags:
       --keymanager-addresses strings           Comma separated list of keymanager URLs to import validator key shares to. Note that multiple addresses are required, one for each node in the cluster, with node0's keyshares being imported to the first address, node1's keyshares to the second, and so on.
       --keymanager-auth-tokens strings         Authentication bearer tokens to interact with the keymanager URLs. Don't include the "Bearer" symbol, only include the api-token.
       --name string                            The cluster name
-      --network string                         Ethereum network to create validators for. Options: mainnet, goerli, sepolia, hoodi, holesky, gnosis, chiado.
+      --network string                         Ethereum network to create validators for. Options: mainnet, goerli, sepolia, hoodi, holesky, gnosis, chiado. (default "mainnet")
       --nodes int                              The number of charon nodes in the cluster. Minimum is 3.
       --num-validators int                     The number of distributed validators needed in the cluster.
       --publish                                Publish lock file to obol-api.
@@ -148,6 +148,10 @@ Flags:
       --publish                                Creates an invitation to the DKG ceremony on the DV Launchpad. Terms and conditions apply.
       --publish-address string                 The URL to publish the cluster to. (default "https://api.obol.tech/v1")
       --target-gas-limit uint                  Preferred target gas limit for transactions. (default 60000000)
+      --testnet-chain-id uint                  Chain ID of the custom test network.
+      --testnet-fork-version string            Genesis fork version of the custom test network (in hex).
+      --testnet-genesis-timestamp int          Genesis timestamp of the custom test network.
+      --testnet-name string                    Name of the custom test network.
   -t, --threshold int                          Optional override of threshold required for signature reconstruction. Defaults to ceil(n*2/3) if zero. Warning, non-default values decrease security.
       --withdrawal-addresses strings           Comma separated list of Ethereum addresses to receive the returned stake and accrued rewards for each validator. Either provide a single withdrawal address or withdrawal addresses for each validator.
 ```
