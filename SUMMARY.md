@@ -62,7 +62,6 @@
   * [Enable MEV](advanced-and-troubleshooting/advanced/enable-mev.md)
   * [Combine DV Private Key Shares](advanced-and-troubleshooting/advanced/quickstart-combine.md)
   * [Beacon node authentication](advanced-and-troubleshooting/advanced/beacon-node-authentication.md)
->>>>>>> 95f7b0c (Removing duplicated links)
   * [Alter Withdrawal Addresses](advanced-and-troubleshooting/advanced/alter-withdrawal-addresses.md)
   * [Custom Graffiti](advanced-and-troubleshooting/advanced/custom-graffiti.md)
   * [Enable TLS Protocol](advanced-and-troubleshooting/advanced/enable-tls-protocol.md)
