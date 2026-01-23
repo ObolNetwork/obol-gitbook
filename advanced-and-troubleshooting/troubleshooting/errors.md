@@ -29,7 +29,7 @@ Run `docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.8.0 enr`. Thi
 ### What do I do if lose my `charon-enr-private-key`?
 
 If an ENR is lost, a new cluster operator can be created replacing the operator with the lost ENR. The steps to recover from a lost key are:
-1. Generate a new ENR with `charon creat enr`
+1. Generate a new ENR with `charon create enr`
 2. Complete the [replace-operator ceremony](../advanced/replace-operator.md) within the cluster, using the new ENR public key as the `new-operator` and the lost ENR as the `old-operator`. Consult the `cluster-lock.json` file if you don't know the lost ENR public key.
 3. Deploy the newly generated cluster artifacts to your node. The lost ENR has now been cycled out of the cluster.
 
