@@ -28,7 +28,12 @@ Run `docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.8.0 enr`. Thi
 
 ### What do I do if lose my `charon-enr-private-key`?
 
-For now, ENR rotation/replacement is not supported, it will be supported in a future release. Therefore, it's advised to always keep a backup of your `charon-enr-private-key ` in a secure location (ex: cloud storage, USB Flash drive, etc.).
+If an ENR is lost, a new cluster operator can be created replacing the operator with the lost ENR. The steps to recover from a lost key are:
+1. Generate a new ENR with `charon creat enr`
+2. Complete the `replace-operator` ceremony within the cluster, using the new ENR public key as the `new-operator` and the lost ENR as the `old-operator`. Consult the `cluster-lock.json` file if you don't know the lost ENR public key.
+3. Deploy the newly generated cluster artifacts to your node. The lost ENR has now been cycled out of the cluster.
+
+To avoid having to disrupt cluster operation, it's recommended to make a secure backup of your ENR.
 
 ### I can't find the keys anywhere
 The `charon-enr-private-key` is generated inside a hidden folder `.charon`. To view it, run `ls -al` in your terminal. This step may be a bit different for Windows.
@@ -267,12 +272,12 @@ to. This can be generally be fixed with some of the following:
   - `sudo chmod -R 666 .charon`.
 
 ### I see a lot of errors after running `docker compose up`
-    It`s because both Nethermind and Lighthouse start syncing and so there's
-    connectivity issues among the containers. Simply let the containers run for
-    a while. You won't observe frequent errors when Nethermind finishes syncing. You
-    can also add a second beacon node endpoint for something like Infura by
-    adding a comma separated API URL to the end of
-    `CHARON_BEACON_NODE_ENDPOINTS` in the docker-compose.yml.
+
+This is because both EL and CL clients start syncing, causing connectivity issues among the containers. Simply let the containers run for
+a while. You won't observe frequent errors when the EL client finishes syncing. You
+can also add a second beacon node endpoint for something like Infura by
+adding a comma separated API URL to the end of
+`CHARON_BEACON_NODE_ENDPOINTS` in the docker-compose.yml.
 
 ### How do I fix the `plugin "loki" not found` error?
   If you get the following error when calling `docker compose up`:
