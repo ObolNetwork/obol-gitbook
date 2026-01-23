@@ -60,14 +60,6 @@ Not directly. Only staking OBOL (to receive auto-compounding stOBOL) allows you 
 
 <details>
 
-<summary><strong>What gives the OBOL token value?</strong></summary>
-
-OBOL gains utility through governance rights, staking yield, and its use in DeFi. Long term, its value could be tied to the growth of the Obol Network, including fees, protocol usage, and TVL.
-
-</details>
-
-<details>
-
 <summary><strong>Does OBOL accrue fees?</strong></summary>
 
 Currently, OBOL does not accrue protocol revenue. However, the DAO may vote in the future to direct protocol revenue toward token holders or stakers.
