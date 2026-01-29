@@ -188,7 +188,7 @@ The following are the steps for creating a cluster.
 5. Configure the Cluster
    1. Input the `Cluster Name` & `Cluster Size` (i.e. number of operators in the cluster). The threshold will update automatically, it shows the number of nodes that need to be functioning for the validator(s) to stay active.
 6. Input the Ethereum addresses for each operator that you collected previously. If you will be taking part as an operator, click the "Use My Address" button for Operator 1.
-   1. Select the desired amount of validators (32 ETH each) the cluster will run. (Note that the mainnet launchpad is restricted to one validator for now.)
+   1. Select the desired amount of validators (32 ETH each) the cluster will run.
    2. If you are taking part in the cluster, enter the ENR you generated in [step one](#step-1-get-your-enr) in the "What is your charon client's ENR?" field.
    3. Enter the `Principal address` which should receive the principal 32 ETH and the accrued consensus layer rewards when the validator is exited. This can optionally be set to the contract address of a multisig / splitter contract.
    4. Enter the `Fee Recipient address` to which the execution layer rewards will go. This can be the same as the principal address, or it can be a different address. This can optionally be set to the contract address of a multisig / splitter contract.

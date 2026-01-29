@@ -33,7 +33,7 @@ You can participate by:
 
 ### Is existing stake eligible?
 
-* If you are staking yourself directly on Obol DVs and/or Squad Staking, your stake is 100% eligible for rewards. Please note, you must opt into [1% for Decentralisation](https://blog.obol.org/1-percent-for-decentralisation/) to qualify for Obol Incentives.
+* If you are staking yourself directly on Obol DVs and/or Squad Staking, your stake is 100% eligible for rewards. Please note, you must opt into [1% for Decentralization](https://blog.obol.org/1-percent-for-decentralisation/) to qualify for Obol Incentives.
 * If you are staking with a partner protocol, it's best to review the details of that partner at Obol.org/incentives. Only ETH staked on Obol DVs with qualified partners qualify for Obol Incentives and not all partners are created equal.
 
 ***
