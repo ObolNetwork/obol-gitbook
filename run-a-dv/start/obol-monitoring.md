@@ -1,19 +1,22 @@
 ---
 sidebar_position: 5
 description: >-
-  Add monitoring credentials to help the Obol Team monitor the health of your
+  Add credentials to help the Obol Team monitor the health of your
   cluster
 ---
 
-# Push Metrics to Obol Monitoring
+# Push Metrics and Logs to Obol
 
 {% hint style="info" %}
-This is **optional** and does not confer any special privileges within the Obol Network.
+This is **optional** but encouraged, and does not confer any special privileges within Obol.
 {% endhint %}
 
+## Metrics
+Metrics are statistics that are gathered on a periodic basis and used to visualise the health and performance of your Charon node and DV cluster. These metrics power your local Grafana dashboard, as well as the hosted dashboards. Submitting metrics to the Obol Core team will allow you to see advanced performance analytics on Obol's hosted platform, as well as to opt into automated alerting whenever something goes wrong with your node.
+
 {% tabs %}
-{% tab title="Quickstart" %}
-This is for operators using the [example repo](https://github.com/ObolNetwork/charon-distributed-validator-node) from our [quickstart guide](http://docs.obol.org/run-a-dv/start/quickstart_overview), and have been provided with **Monitoring Credentials** used to push distributed validator metrics to Obol's central Prometheus cluster to monitor, analyze, and improve your Distributed Validator Cluster's performance. (For example, this is necessary to participate in the Obol [Techne](https://squadstaking.com/techne) credential program.)
+{% tab title="(L)CDVN Quickstart" %}
+This is for operators using the [example repo](https://github.com/ObolNetwork/charon-distributed-validator-node) from our [quickstart guide](./quickstart_overview.md) (or [Lido equivalent](https://github.com/ObolNetwork/charon-distributed-validator-node)), and have been provided with **Monitoring Credentials** used to push Distributed Validator metrics to Obol's central Prometheus cluster to monitor, analyze, and improve their Distributed Validator Cluster's performance. (For example, this is necessary to participate in the Obol [Techne](https://squadstaking.com/techne) credential program.)
 
 #### Update the monitoring token in the `.env` file
 
@@ -70,6 +73,37 @@ centralMonitoring:
   promEndpoint: "https://vm.monitoring.gcp.obol.tech/write"
   # -- The authentication token to the central Obol prometheus instance
   token: "YOUR_TOKEN_HERE"
+```
+{% endtab %}
+{% endtabs %}
+
+## Logs
+
+Metrics show the performance of a cluster, but sometimes, there is reason to go into deeper detail of a clusters runtime, by reviewing its logs. Sometimes logs from the Charon client alone are sufficient, but often times (for example in the case of a missed proposal), the logs from other parts of the stack are necessary to debug a situation (e.g. a MEV-sidecar and a beacon node). 
+
+In both cases, an Obol core team member will give you a URL to send your logs to, and where you put the URL is what changes. Follow the instructions below to submit logs to the core team. 
+
+{% tabs %}
+{% tab title="Charon Logs Only" %}
+Given a URL, you can either pass it to Charon as an additional flag to `charon run`, or by setting an environment variable on the Charon container.
+```sh
+--loki-addresses="URL here"
+```
+Or:
+```env
+CHARON_LOKI_ADDRESSES="URL here"
+```
+{% endtab %}
+
+{% tab title="All Logs" %}
+If you are using one of our [Quickstart](https://github.com/ObolNetwork/charon-distributed-validator-node) [repos](https://github.com/ObolNetwork/lido-charon-distributed-validator-node), you should uncomment the `CHARON_LOKI_ADDRESSES` environment variable, and save the URL provided to you by the Obol team as the value, you should also uncomment `MONITORING=${MONITORING:-monitoring},monitoring-log-collector` to enable the [Alloy](https://grafana.com/docs/alloy/latest/) container, which collects logs from all containers and submits them to Obol. Once you've saved these changes to your `.env` file, you should run `docker compose up -d` to (re)start the containers as needed.
+
+```env
+# Uncomment and set the log URL
+CHARON_LOKI_ADDRESSES="URL here"
+
+# Uncomment
+MONITORING=${MONITORING:-monitoring},monitoring-log-collector
 ```
 {% endtab %}
 {% endtabs %}
