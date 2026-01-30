@@ -49,6 +49,32 @@ The following smart contracts power OBOL staking, governance, and reward distrib
 
 </details>
 
+<details>
+
+<summary>Lockup / Unlock Contract (Airdrop Claim NFTs)</summary>
+
+* **Contract name:** ObolLockups
+* **Address:** [0x3b9122704a20946e9cb49b2a8616ccc0f0d61adb](https://etherscan.io/address/0x3b9122704a20946e9cb49b2a8616ccc0f0d61adb)
+* **Network:** Ethereum mainnet
+* **Purpose:** This contract was used during the OBOL airdrop to manage token lockups. Airdrop allocations were issued as **NFT-based lockups**, allowing recipients to claim their tokens and unlock them over time **without a fixed deadline**. The original claiming interface ([claim.obol.org](http://claim.obol.org)) is no longer live. However, the lockups remain fully accessible **onchain**, and users can still unlock their tokens directly via the contract.
+* **How the mechanism works:**
+  * Each airdrop recipient received an NFT representing a locked OBOL allocation.
+  * The NFT encodes the lockup parameters.
+  * Tokens can be unlocked by calling the unlock function on the contract once the conditions are met.
+* **What you can find onchain:**
+  * NFT ownership (ownerOf)
+  * Lockup parameters
+  * Locked and unlocked token balances
+  * The unlock function used to release available tokens
+  * Administrative parameters related to transferability and global lockups
+* **Important note for users:** If you believe you still have locked OBOL tokens from the airdrop, you can:
+  * Verify that you hold an **ObolLockups NFT** at the address above.
+  * Interact **directly with this contract on Etherscan** to call the unlock function.
+
+For security reasons, users should **only** interact with the contract address listed here and not rely on token or NFT names alone.
+
+</details>
+
 ## Learn more about...
 
 {% content-ref url="token-distribution-and-liquidity.md" %}
