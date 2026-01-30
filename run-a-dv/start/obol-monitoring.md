@@ -8,7 +8,7 @@ description: >-
 # Push Metrics and Logs to Obol
 
 {% hint style="info" %}
-This is **optional** but encouraged, and does not confer any special privileges within Obol.
+This is **optional but encouraged**, and does not confer any special privileges within Obol.
 {% endhint %}
 
 ## Metrics
@@ -81,20 +81,9 @@ centralMonitoring:
 
 Metrics show the performance of a cluster, but sometimes, there is reason to go into deeper detail of a clusters runtime, by reviewing its logs. Sometimes logs from the Charon client alone are sufficient, but often times (for example in the case of a missed proposal), the logs from other parts of the stack are necessary to debug a situation (e.g. a MEV-sidecar and a beacon node). 
 
-In both cases, an Obol core team member will give you a URL to send your logs to, and where you put the URL is what changes. Follow the instructions below to submit logs to the core team. 
+An Obol core team member will give you a URL to send your logs to, and if feasible, sending all logs is preferable to sending only Charon logs. In custom deployments that might not be convenient or feasible, and sending only Charon logs may suffice. Follow the instructions below to configure automated log submission.
 
 {% tabs %}
-{% tab title="Charon Logs Only" %}
-Given a URL, you can either pass it to Charon as an additional flag to `charon run`, or by setting an environment variable on the Charon container.
-```sh
---loki-addresses="URL here"
-```
-Or:
-```env
-CHARON_LOKI_ADDRESSES="URL here"
-```
-{% endtab %}
-
 {% tab title="All Logs" %}
 If you are using one of our [Quickstart](https://github.com/ObolNetwork/charon-distributed-validator-node) [repos](https://github.com/ObolNetwork/lido-charon-distributed-validator-node), you should uncomment the `CHARON_LOKI_ADDRESSES` environment variable, and save the URL provided to you by the Obol team as the value, you should also uncomment `MONITORING=${MONITORING:-monitoring},monitoring-log-collector` to enable the [Alloy](https://grafana.com/docs/alloy/latest/) container, which collects logs from all containers and submits them to Obol. Once you've saved these changes to your `.env` file, you should run `docker compose up -d` to (re)start the containers as needed.
 
@@ -104,6 +93,16 @@ CHARON_LOKI_ADDRESSES="URL here"
 
 # Uncomment
 MONITORING=${MONITORING:-monitoring},monitoring-log-collector
+```
+{% endtab %}
+{% tab title="Charon Logs Only" %}
+Given a URL, you can either pass it to Charon as an additional flag to `charon run`, or by setting an environment variable on the Charon container.
+```sh
+--loki-addresses="URL here"
+```
+Or:
+```env
+CHARON_LOKI_ADDRESSES="URL here"
 ```
 {% endtab %}
 {% endtabs %}
