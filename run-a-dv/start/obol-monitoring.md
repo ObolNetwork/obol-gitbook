@@ -91,6 +91,10 @@ If you are using one of our [Quickstart](https://github.com/ObolNetwork/charon-d
 # Uncomment and set the log URL
 CHARON_LOKI_ADDRESSES="URL here"
 
+# Uncomment both and set to the details of your node, otherwise the core team won't be able to isolate your logs amongst all the others
+CLUSTER_NAME="The name of your cluster"
+CLUSTER_PEER="The name of your peer. e.g. approachable-chair, unsightly-couch"
+
 # Uncomment
 MONITORING=${MONITORING:-monitoring},monitoring-log-collector
 ```
