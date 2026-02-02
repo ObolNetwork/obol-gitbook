@@ -5,7 +5,7 @@ description: >-
 
 # OVM Contract Pre-Deploy Workflow
 
-In some cases, it's desirable to set up an [Obol Validator Monitor](../../learn/intro/obol-splits.md#obol-validator-managers) (OVM) contract in advance. For example, a professional staking business could provision and deploy an Obol DV cluster with unfunded validators managed by an OVM contract. When a capital allocator wishes to stake ETH, the OVM contract can quickly have control transferred to the stake owner who can then fund the validators through the contract. This eliminates downtime related to cluster allocation, providing "ready-to-go" staking with Obol DV.
+In some cases, it's desirable to set up an [Obol Validator Monitor](../../learn/intro/obol-splits.md#obol-validator-managers) (OVM) contract in advance. For example, a professional staking business could provision and deploy an Obol DV cluster with unfunded validators managed by an OVM contract. When a capital allocator wishes to stake ETH, the OVM contract can quickly have control transferred to the stake owner who can then fund the validators through the contract. This eliminates downtime related to cluster allocation, providing "ready-to-go" staking with Obol DVs.
 
 This guide will demonstrate the key steps in deploying and configuring an OVM contract for this type of scenario. The Hoodi testnet will be used for all examples.
 <figure><img src="../../.gitbook/assets/OVMs-on-demand.png" alt=""><figcaption></figcaption></figure>
@@ -15,7 +15,7 @@ The following code snippets are minimal examples for the purpose of showing how 
 
 ### Contract Deployment
 A safe and convenient way to deploy an OVM contract is through the [existing contract factory](https://docs.obol.org/next/learn/readme/obol-splits#obol-validator-manager-factory-deployment). 
-
+{% tabs %}
 {% tab title="TypeScript" %}
 ```sh
 import { createWalletClient, createPublicClient, http, parseAbi, parseEventLogs } from "viem";
@@ -116,10 +116,11 @@ contract DeployOVM is Script {
 }
 ```
 {% endtab %}
-
+{% endtabs %}
 ### Granting OVM Roles
 
 Next, OVM contract privileges can be reduced to only those necessary for later stages of deployment. While not strictly necessary, this allows for the distribution of less privileged account private keys to lower security layers of infrastructure. The [SET_BENEFICIARY_ROLE](../../learn/intro/obol-splits.md#roles) can be used later to update the recipient of the principal deposit to the actual depositor, while the `WITHDRAWAL_ROLE` will be used to process withdrawal requests.
+{% tabs %}
 {% tab title="TypeScript" %}
 ```sh
 import { createWalletClient, createPublicClient, http, parseAbi } from "viem";
@@ -205,12 +206,13 @@ contract GrantRoles is Script {
 }
 ```
 {% endtab %}
-
+{% endtabs %}
 At this point, the contract is ready to be personalized. When staking services are requested by a capital allocator, the OVM contract can be assigned and validator initialization can proceed.
 
 ### Assigning the Contract
 
 When the capital allocator is identified, the contract can be assigned to that entity. The principal beneficiary is updated to the entity's address and privileges are dropped by the secondary key created previously (as needed). This prevents further changes of the beneficiary by that key.
+{% tabs %}
 {% tab title="TypeScript" %}
 ```sh
 import { createWalletClient, createPublicClient, http, parseAbi } from "viem";
@@ -307,8 +309,10 @@ contract SetBeneficiaryAndRenounce is Script {
 }
 ```
 {% endtab %}
+{% endtabs %}
 ### Granting Deposit Role and Dropping Privileges
 The contract is ready for deposits now, but currently only the contract owner key can perform them. Grant the `DEPOSIT_ROLE` to the capital allocator.
+{% tabs %}
 {% tab title="TypeScript" %}
 ```sh
 import { createWalletClient, createPublicClient, http, parseAbi } from "viem";
@@ -383,8 +387,9 @@ contract GrantDepositRole is Script {
 }
 ```
 {% endtab %}
+{% endtabs %}
 For optimal security of the OVM contract, ownership can now be transferred to a multi-sig [Safe wallet](https://help.safe.global/en/articles/40868-creating-a-safe-on-a-web-browser) to split contract admin rights:
-
+{% tabs %}
 {% tab title="TypeScript" %}
 ```sh
 import { createWalletClient, createPublicClient, http, parseAbi } from "viem";
@@ -455,10 +460,11 @@ contract TransferOwnership is Script {
 }
 ```
 {% endtab %}
-
+{% endtabs %}
 ### Handling Deposits
 
 The capital allocator can now be assigned uninitialized validators to deposit to. The validator keys are held by the [provisioned DV cluster](../../run-a-dv/start/). As a depositor-initiated action, this step would normally need to connect to a wallet and parse the deposit-data.json file(s) for necessary data:
+{% tabs %}
 {% tab title="TypeScript" %}
 ```sh
 import { createWalletClient, createPublicClient, http, parseAbi } from "viem";
@@ -549,10 +555,12 @@ contract Deposit is Script {
 }
 ```
 {% endtab %}
+{% endtabs %}
 The validator(s) will enter the activation queue and the amountOfPrincipalStake value on the contract will track how much of the balance is considered the principal (owned by the beneficiary). The EL and CL rewards from any targeting validators will be sent to the OVM contract.
 
 ### Reward Distribution and Splitters
 When rewards accrued on the OVM contract should be distributed to the `rewardRecipient` (set during [contract deployment](#contract-deployment)), call distributeFunds(). This function can be called by any account and is unprivileged.
+{% tabs %}
 {% tab title="TypeScript" %}
 ```sh
 import { createWalletClient, createPublicClient, http, parseAbi } from "viem";
@@ -617,14 +625,14 @@ contract DistributeFunds is Script {
 }
 ```
 {% endtab %}
-
+{% endtabs %}
 When EL/CL rewards are to be split among multiple parties, a [splitter contract](https://docs.splits.org/) can be deployed as the target of OVM's `rewardRecipient` to chain the functionality of both contracts. In the case where not all the earning parties are known before OVM deloyment, multiple splitter contracts can be chained to separate mutable vs immutable reward flows.
 <figure><img src="../../.gitbook/assets/ContractChain.svg" alt=""><figcaption></figcaption></figure>
 With the above setup, static rewards recipients can be deployed ahead of time while retaining flexibility with the remainder. The second splitter contract could have ownership transferred to the capital allocator after personalization, while maintaining existing contractual reward splits.
 
 ### Withdrawing Validator Balance
 Compounding validators (0x02 type) can have part of their principal withdrawn from active stake, or be fully exited, via the same `withdraw()` call. Specifying a nonzero value for `amounts` will initiate a partial withdrawal, while 0 will fully exit the validator. This action can use the lesser-privileged key [assigned](#granting-ovm-roles) the `WITHDRAWAL_ROLE` to avoid keeping ownership keys on low-security systems.
-
+{% tabs %}
 {% tab title="TypeScript" %}
 ```sh
 import { createWalletClient, createPublicClient, http, parseAbi } from "viem";
@@ -731,6 +739,7 @@ contract PartialWithdrawal is Script {
 }
 ```
 {% endtab %}
+{% endtabs %}
 {% hint style="warning" %}
 The above partial withdrawal is for 16 ETH, which meets the cutoff that was set earlier to be considered principal rather than rewards. If 4 ETH were instead withdrawn, it would be distributed to the `rewardRecipient` instead of the `beneficiary`. Keep in mind the `principalThreshold` set for the contract when processing withdrawals, as withdrawals below the threshold will be counted as rewards.
 {% endhint %}
