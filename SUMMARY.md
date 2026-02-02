@@ -69,6 +69,7 @@
   * [Nicknames](advanced-and-troubleshooting/advanced/nicknames.md)
   * [Self-Host a Relay](advanced-and-troubleshooting/advanced/self-relay.md)
   * [Advanced Docker Configs](advanced-and-troubleshooting/advanced/adv-docker-configs.md)
+  * [OVM Predeployment Demo](advanced-and-troubleshooting/advanced/ovm-predeploy.md)
 * [Troubleshooting](advanced-and-troubleshooting/troubleshooting/README.md)
   * [Errors & Resolutions](advanced-and-troubleshooting/troubleshooting/errors.md)
   * [Handling DKG Failure](advanced-and-troubleshooting/troubleshooting/dkg_failure.md)
