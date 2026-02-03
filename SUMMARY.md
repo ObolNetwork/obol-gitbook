@@ -28,7 +28,7 @@
   * [Quickstart Overview](run-a-dv/start/quickstart_overview.md)
   * [Create a DV Alone](run-a-dv/start/create-a-dv-alone.md)
   * [Create a DV With a Group](run-a-dv/start/create-a-dv-with-a-group.md)
-  * [Push Metrics to Obol Monitoring](run-a-dv/start/obol-monitoring.md)
+  * [Push Metrics and Logs to Obol](run-a-dv/start/obol-monitoring.md)
 * [Prepare to Run a DV](run-a-dv/prepare/README.md)
   * [How and Where To Run DVs](run-a-dv/prepare/how_where_dvs.md)
   * [Deployment Best Practices](run-a-dv/prepare/deployment-best-practices.md)
