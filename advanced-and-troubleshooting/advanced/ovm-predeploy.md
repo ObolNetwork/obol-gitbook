@@ -828,5 +828,5 @@ contract PartialWithdrawal is Script {
 {% endtab %}
 {% endtabs %}
 {% hint style="warning" %}
-The above partial withdrawal is for 16 ETH, which meets the cutoff that was set earlier to be considered principal rather than rewards. If 4 ETH were instead withdrawn, it would be distributed to the `rewardRecipient` instead of the `beneficiary`. Keep in mind the `principalThreshold` set for the contract when processing withdrawals, as withdrawals below the threshold will be counted as rewards.
+The above partial withdrawal is for 16 ETH, which meets the cutoff that was set earlier to be considered principal rather than rewards. If 4 ETH were instead withdrawn, it would be distributed to the `rewardRecipient` instead of the `beneficiary`. Keep in mind the `principalThreshold` [set for the contract](../../learn/intro/obol-splits.md#what-is-the-principal-threshold-for) when processing withdrawals, as withdrawals below the threshold will be counted as rewards.
 {% endhint %}
