@@ -1,0 +1,68 @@
+<svg height="514" width="1000" xmlns="http://www.w3.org/2000/svg">
+<title>Your Diagram Title</title>
+<!-- Generated with SankeyMATIC: 2/4/2026, 3:36:09 PM -->
+<rect height="514" width="1000" fill="#ffffff"></rect>
+<g transform="translate(96.42004,8)">
+<g id="sankey_flows">
+<path id="flow0" d="M25 165.4884C142.47712 165.4884 66.27575 175.59701 183.75287 175.59701" fill="none" stroke-width="93.02095" stroke="#4e79a7" opacity="0.45"><title>Stake → OVM: 32.0</title></path>
+<path id="flow2" d="M208.75287 129.08653v93.02095L735.01148 220.93143v-93.02095z" fill="#e15759" stroke-width="0.5" stroke="#e15759" opacity="0.45"><title>OVM → Capital Allocator: 32.0</title></path>
+<path id="flow1" d="M25 268.98956C142.47712 268.98956 66.27575 236.64201 183.75287 236.64201" fill="none" stroke-width="29.06905" stroke="#4e79a7" opacity="0.45"><title>Rewards → OVM: 10.0</title></path>
+<path id="flow3" d="M208.75287 236.64201C326.23 236.64201 250.02862 268.98974 367.50574 268.98974" fill="none" stroke-width="29.06905" stroke="#76b7b2" opacity="0.45"><title>OVM → Splitter 1  (Immutable): 10.0</title></path>
+<path id="flow4" d="M392.50574 254.45522v27.3249L551.25861 281.07277v-27.3249z" fill="#76b7b2" stroke-width="0.5" stroke="#76b7b2" opacity="0.45"><title>Splitter 1  (Immutable) → Splitter 2 (Mutable): 9.4</title></path>
+<path id="flow7" d="M576.25861 267.41032C693.73574 267.41032 617.53436 234.59388 735.01148 234.59388" fill="none" stroke-width="27.3249" stroke="#e15759" opacity="0.45"><title>Splitter 2 (Mutable) → Capital Allocator: 9.4</title></path>
+<path id="flow5" d="M392.50574 282.50685C509.98287 282.50685 433.78149 324.25567 551.25861 324.25567" fill="none" stroke-width="1.45345" stroke="#59a14f" opacity="0.45"><title>Splitter 1  (Immutable) → Platform Owner %: 0.5</title></path>
+<path id="flow6" d="M392.50574 283.37892C509.98287 283.37892 433.78149 367.5839 551.25861 367.5839" fill="none" stroke-width="1" stroke="#edc949" opacity="0.45"><title>Splitter 1  (Immutable) → Obol %: 0.1</title></path>
+</g>
+<g id="sankey_nodes">
+<g class="node" style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+<rect id="r0" class="for_r0" x="0" y="118.97792" height="93.02095" width="25" fill="#bab0ab" fill-opacity="1"><title>Stake:
+32.0</title></rect>
+</g>
+<g class="node" style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+<rect id="r1" class="for_r1" x="183.75287" y="129.08653" height="122.09" width="25" fill="#4e79a7" fill-opacity="1"><title>OVM:
+42.0</title></rect>
+</g>
+<g class="node" style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+<rect id="r2" class="for_r2" x="0" y="254.45504" height="29.06905" width="25" fill="#f28e2c" fill-opacity="1"><title>Rewards:
+10.0</title></rect>
+</g>
+<g class="node" style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+<rect id="r3" class="for_r3" x="735.01148" y="127.91047" height="120.34586" width="25" fill="#e15759" fill-opacity="1"><title>Capital Allocator:
+41.4</title></rect>
+</g>
+<g class="node" style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+<rect id="r4" class="for_r4" x="367.50574" y="254.45522" height="29.06905" width="25" fill="#76b7b2" fill-opacity="1"><title>Splitter 1  (Immutable):
+10.0</title></rect>
+</g>
+<g class="node" style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+<rect id="r5" class="for_r5" x="551.25861" y="253.74787" height="27.3249" width="25" fill="#76b7b2" fill-opacity="1"><title>Splitter 2 (Mutable):
+9.4</title></rect>
+</g>
+<g class="node" style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+<rect id="r6" class="for_r6" x="551.25861" y="323.52894" height="1.45345" width="25" fill="#59a14f" fill-opacity="1"><title>Platform Owner %:
+0.5</title></rect>
+</g>
+<g class="node" style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+<rect id="r7" class="for_r7" x="551.25861" y="367.43856" height="0.29069" width="25" fill="#edc949" fill-opacity="1"><title>Obol %:
+0.1</title></rect>
+</g>
+</g>
+<g id="sankey_labels" font-family="sans-serif" font-size="25px" fill="#000000">
+<rect id="label0_bg" class="for_r0" x="-84.42004" y="135.6459" width="81.8686" height="59.125" rx="6.25" fill="#fff" fill-opacity="0.55" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label0" class="for_r0" text-anchor="end" x="-9.84129" y="165.4884" font-weight="400" font-size="15.75px" dy="-11.5925">Stake<tspan x="-9.84129" dy="29.625" font-weight="400" font-size="34.25px">32.0</tspan></text>
+<rect id="label1_bg" class="for_r1" x="211.30432" y="160.28903" width="81.86861" height="59.125" rx="6.25" fill="#fff" fill-opacity="0.55" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label1" class="for_r1" text-anchor="start" x="218.59416" y="190.13153" font-weight="400" font-size="15.75px" dy="-11.5925">OVM<tspan x="218.59416" dy="29.625" font-weight="400" font-size="34.25px">42.0</tspan></text>
+<rect id="label2_bg" class="for_r2" x="-84.42004" y="239.14706" width="81.86859" height="59.125" rx="6.25" fill="#fff" fill-opacity="0.55" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label2" class="for_r2" text-anchor="end" x="-9.84129" y="268.98956" font-weight="400" font-size="15.75px" dy="-11.5925">Rewards<tspan x="-9.84129" dy="29.625" font-weight="400" font-size="34.25px">10.0</tspan></text>
+<rect id="label3_bg" class="for_r3" x="762.56294" y="158.24091" width="129.01703" height="59.125" rx="6.25" fill="#fff" fill-opacity="0.55" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label3" class="for_r3" text-anchor="start" x="769.85277" y="188.0834" font-weight="400" font-size="15.75px" dy="-11.5925">Capital Allocator<tspan x="769.85277" dy="29.625" font-weight="400" font-size="34.25px">41.4</tspan></text>
+<rect id="label4_bg" class="for_r4" x="395.05717" y="231.27225" width="99.22797" height="74.875" rx="6.25" fill="#fff" fill-opacity="0.55" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label4" class="for_r4" text-anchor="start" x="402.34703" y="268.98974" font-weight="400" font-size="15.75px" dy="-19.4675">Splitter 1 <tspan x="402.34703" dy="15.75" font-weight="400" font-size="15.75px">(Immutable)</tspan><tspan x="402.34703" dy="29.625" font-weight="400" font-size="34.25px">10.0</tspan></text>
+<rect id="label5_bg" class="for_r5" x="578.81007" y="229.69281" width="81.72797" height="74.875" rx="6.25" fill="#fff" fill-opacity="0.55" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label5" class="for_r5" text-anchor="start" x="586.0999" y="267.41032" font-weight="400" font-size="15.75px" dy="-19.4675">Splitter 2<tspan x="586.0999" dy="15.75" font-weight="400" font-size="15.75px">(Mutable)</tspan><tspan x="586.0999" dy="29.625" font-weight="400" font-size="34.25px">9.4</tspan></text>
+<rect id="label6_bg" class="for_r6" x="578.81007" y="294.41318" width="142.99359" height="59.125" rx="6.25" fill="#fff" fill-opacity="0.55" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label6" class="for_r6" text-anchor="start" x="586.0999" y="324.25567" font-weight="400" font-size="15.75px" dy="-11.5925">Platform Owner %<tspan x="586.0999" dy="29.625" font-weight="400" font-size="34.25px">0.5</tspan></text>
+<rect id="label7_bg" class="for_r7" x="578.81007" y="337.74139" width="66.86078" height="59.125" rx="6.25" fill="#fff" fill-opacity="0.55" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label7" class="for_r7" text-anchor="start" x="586.0999" y="367.5839" font-weight="400" font-size="15.75px" dy="-11.5925">Obol %<tspan x="586.0999" dy="29.625" font-weight="400" font-size="34.25px">0.1</tspan></text>
+</g>
+</g></svg>

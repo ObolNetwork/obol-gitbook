@@ -5,7 +5,7 @@ description: >-
 
 # OVM Contract Pre-Deploy Workflow
 
-In some cases, it's desirable to set up an [Obol Validator Monitor](../../learn/intro/obol-splits.md#obol-validator-managers) (OVM) contract in advance. For example, a professional staking business could provision and deploy an Obol DV cluster with unfunded validators managed by an OVM contract. When a capital allocator wishes to stake ETH, the OVM contract can quickly have control transferred to the stake owner who can then fund the validators through the contract. This eliminates downtime related to cluster allocation, providing "ready-to-go" staking with Obol DVs.
+In some cases, it's desirable to set up an [Obol Validator Manager](../../learn/intro/obol-splits.md#obol-validator-managers) (OVM) contract in advance. For example, a professional staking business could provision and deploy an Obol DV cluster with unfunded validators managed by an OVM contract. When a capital allocator wishes to stake ETH, the OVM contract can quickly have control transferred to the stake owner who can then fund the validators through the contract. This eliminates downtime related to cluster allocation, providing "ready-to-go" staking with Obol DVs.
 
 This guide will demonstrate the key steps in deploying and configuring an OVM contract for this type of scenario. The Hoodi testnet will be used for all examples.
 <figure><img src="../../.gitbook/assets/OVMs-on-demand.png" alt=""><figcaption></figcaption></figure>
@@ -78,6 +78,15 @@ const ovmAddress = logs[0].args.ovm;
 console.log("ObolValidatorManager deployed at:", ovmAddress);
 ```
 {% endtab %}
+{% tab title="Cast" %}
+```sh
+cast send 0x5754C8665B7e7BF15E83fCdF6d9636684B782b12 \
+  "createObolValidatorManager(address,address,address,uint64)" \
+  0xOwnerKeyAddress 0xOwnerKeyAddress 0xOwnerKeyAddress 16000000000 \
+  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
+  --private-key 0x...
+```
+{% endtab %}
 {% tab title="Forge" %}
 ```sh
 // SPDX-License-Identifier: MIT
@@ -119,7 +128,7 @@ contract DeployOVM is Script {
 {% endtabs %}
 ### Granting OVM Roles
 
-Next, OVM contract privileges can be reduced to only those necessary for later stages of deployment. While not strictly necessary, this allows for the distribution of less privileged account private keys to lower security layers of infrastructure. The [SET_BENEFICIARY_ROLE](../../learn/intro/obol-splits.md#roles) can be used later to update the recipient of the principal deposit to the actual depositor, while the `WITHDRAWAL_ROLE` will be used to process withdrawal requests.
+Next, OVM contract privileges can be reduced to only those necessary for later stages of deployment. While not strictly necessary, this allows for the distribution of less privileged account private keys to lower security layers of infrastructure. For example, an API backend could have access to certain less-sensitive contract functions to unlock utility without the owner key being exposed during everyday operations. The [SET_BENEFICIARY_ROLE](../../learn/intro/obol-splits.md#roles) can be used later to update the recipient of the principal deposit to the actual depositor, while the `WITHDRAWAL_ROLE` will be used to process withdrawal requests.
 {% tabs %}
 {% tab title="TypeScript" %}
 ```sh
@@ -169,6 +178,15 @@ console.log("Grant roles tx:", hash);
 await publicClient.waitForTransactionReceipt({ hash: hash });
 
 console.log("Granted WITHDRAWAL_ROLE and SET_BENEFICIARY_ROLE to:", GRANTEE_ADDRESS);
+```
+{% endtab %}
+{% tab title="Cast" %}
+```sh
+cast send 0xYourOVMAddress \
+  "grantRoles(address,uint256)" \
+  0xLessPrivilegedKeyAddress 5 \
+  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
+  --private-key 0x...
 ```
 {% endtab %}
 {% tab title="Forge" %}
@@ -272,6 +290,23 @@ await publicClient.waitForTransactionReceipt({ hash: hash2 });
 console.log("SET_BENEFICIARY_ROLE renounced - beneficiary is now locked");
 ```
 {% endtab %}
+{% tab title="Cast" %}
+```sh
+# Set beneficiary
+cast send 0xYourOVMAddress \
+  "setBeneficiary(address)" \
+  0xCustomerAddress \
+  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
+  --private-key 0xLessPrivilegedKey...
+
+# Renounce SET_BENEFICIARY_ROLE
+cast send 0xYourOVMAddress \
+  "renounceRoles(uint256)" \
+  4 \
+  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
+  --private-key 0xLessPrivilegedKey...
+```
+{% endtab %}
 {% tab title="Forge" %}
 ```sh
 // SPDX-License-Identifier: MIT
@@ -359,6 +394,15 @@ await publicClient.waitForTransactionReceipt({ hash: hash });
 console.log("DEPOSIT_ROLE granted to:", CUSTOMER_ADDRESS);
 ```
 {% endtab %}
+{% tab title="Cast" %}
+```sh
+cast send 0xYourOVMAddress \
+  "grantRoles(address,uint256)" \
+  0xCustomerAddress 32 \
+  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
+  --private-key 0x...
+```
+{% endtab %}
 {% tab title="Forge" %}
 ```sh
 // SPDX-License-Identifier: MIT
@@ -431,6 +475,15 @@ console.log("Transfer ownership tx:", hash);
 await publicClient.waitForTransactionReceipt({ hash: hash });
 
 console.log("Ownership transferred to SAFE:", SAFE_ADDRESS);
+```
+{% endtab %}
+{% tab title="Cast" %}
+```sh
+cast send 0xYourOVMAddress \
+  "transferOwnership(address)" \
+  0xYourSafeAddress \
+  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
+  --private-key 0x...
 ```
 {% endtab %}
 {% tab title="Forge" %}
@@ -510,6 +563,19 @@ const hash = await walletClient.writeContract({
 console.log("Deposit tx:", hash);
 await publicClient.waitForTransactionReceipt({ hash: hash });
 console.log("Deposit complete - validator activation pending");
+```
+{% endtab %}
+{% tab title="Cast" %}
+```sh
+cast send 0xYourOVMAddress \
+  "deposit(bytes,bytes,bytes,bytes32)" \
+  0x<pubkey_48_bytes> \
+  0x<withdrawal_credentials_32_bytes> \
+  0x<signature_96_bytes> \
+  0x<deposit_data_root_32_bytes> \
+  --value 32ether \
+  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
+  --private-key 0xCustomerPrivateKey...
 ```
 {% endtab %}
 {% tab title="Forge" %}
@@ -600,6 +666,14 @@ await publicClient.waitForTransactionReceipt({ hash: hash });
 console.log("Funds distributed to beneficiary and reward recipient");
 ```
 {% endtab %}
+{% tab title="Cast" %}
+```sh
+cast send 0xYourOVMAddress \
+  "distributeFunds()" \
+  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
+  --private-key 0x...
+```
+{% endtab %}
 {% tab title="Forge" %}
 ```sh
 // SPDX-License-Identifier: MIT
@@ -627,7 +701,7 @@ contract DistributeFunds is Script {
 {% endtab %}
 {% endtabs %}
 When EL/CL rewards are to be split among multiple parties, a [splitter contract](https://docs.splits.org/) can be deployed as the target of OVM's `rewardRecipient` to chain the functionality of both contracts. In the case where not all the earning parties are known before OVM deloyment, multiple splitter contracts can be chained to separate mutable vs immutable reward flows.
-<figure><img src="../../.gitbook/assets/ContractChain.svg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/RewardFlow.svg" alt=""><figcaption></figcaption></figure>
 With the above setup, static rewards recipients can be deployed ahead of time while retaining flexibility with the remainder. The second splitter contract could have ownership transferred to the capital allocator after personalization, while maintaining existing contractual reward splits.
 
 ### Withdrawing Validator Balance
@@ -686,6 +760,19 @@ const hash = await walletClient.writeContract({
 console.log("Partial withdrawal tx:", hash);
 await publicClient.waitForTransactionReceipt({ hash: hash });
 console.log("Partial withdrawal requested - funds will arrive after protocol processes it");
+```
+{% endtab %}
+{% tab title="Cast" %}
+```sh
+cast send 0xYourOVMAddress \
+  "withdraw(bytes[],uint64[],uint256,address)" \
+  "[0x<validator_pubkey_48_bytes>]" \
+  "[16000000000]" \
+  1000000000000000 \
+  0xYourRefundAddress \
+  --value 0.001ether \
+  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
+  --private-key 0xSecondaryKeyPrivateKey...
 ```
 {% endtab %}
 {% tab title="Forge" %}
