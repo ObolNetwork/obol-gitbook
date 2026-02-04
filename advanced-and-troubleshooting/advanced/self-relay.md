@@ -18,8 +18,9 @@ cd charon-distributed-validator-node
 # If you are exposing your relay on the public internet, determine your public IP
 curl v4.ident.me
 
-# Replace 'replace.with.public.ip.or.hostname' in relay/docker-compose.yml with your public IPv4 or DNS hostname, or with your private IP on your local (v)LAN, if this relay is running for Charon's sharing a private network. 
-
+# Replace 'replace.with.public.ip.or.hostname' in relay/docker-compose.yml with your 
+# public IPv4 or DNS hostname, or with your private IP on your local (v)LAN, if this 
+# relay is running for Charon's sharing a private network. 
 nano relay/docker-compose.yml
 
 # Start the relay
@@ -39,7 +40,7 @@ Configure **ALL** charon nodes in your cluster to use this relay:
 Keep the default relays and append your self-hosted relay to Charon's flag/environment variables if you want the most resilience `https://0.relay.obol.tech,https://1.relay.obol.tech,https://2.relay.obol.dev`, rather than having your one relay be a single point of failure in your cluster.
 {% endhint %}
 {% hint style="info" %}
-If you are running a relay on a private network, consult your monitoring to confirm your Charon nodes are able to establish a direct connection with one another for optimal performance. You may need to update `charon run` to specify `--p2p-tcp-address=<this-charons-private-network-host-and-port`, such the two Charon's discover each other on the same (v)LAN.
+If you are running a relay on a private network, consult your monitoring to confirm your Charon nodes are able to establish a direct connection with one another for optimal performance. You may need to update `charon run` to specify `--p2p-tcp-address=<this-charons-private-network-host-and-port`, such that the two Charon's discover each other on their shared private network.
 {% endhint %}
 
 Note that a local `relay/.charon/charon-enr-private-key` file will be created next to `relay/docker-compose.yml` to ensure a persisted relay ENR across restarts.
