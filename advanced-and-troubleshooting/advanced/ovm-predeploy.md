@@ -765,7 +765,16 @@ console.log("Funds distributed to beneficiary and reward recipient");
 {% endtabs %}
 When EL/CL rewards are to be split among multiple parties, a [splitter contract](https://docs.splits.org/) can be deployed as the target of OVM's `rewardRecipient` to chain the functionality of both contracts. In the case where not all the earning parties are known before OVM deloyment, multiple splitter contracts can be chained to separate mutable vs immutable reward flows.
 
-<figure><img src="../../.gitbook/assets/RewardFlow.svg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/SimpleRewardFlow.svg" alt=""><figcaption></figcaption></figure>
+<!-- 
+Staking Rewards [3] OVM
+Stake [32] OVM
+MEV Rewards [1] Reward Splitter
+OVM [32] Capital Allocator
+OVM [3] Reward Splitter
+Reward Splitter[3.6] Capital Allocator
+Reward Splitter[0.4] Fees
+-->
 With the above setup, static rewards recipients can be deployed ahead of time while retaining flexibility with the remainder. The second splitter contract could have ownership transferred to the capital allocator after personalization, while maintaining existing contractual reward splits.
 
 ### Withdrawing Validator Balance
