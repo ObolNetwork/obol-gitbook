@@ -262,10 +262,10 @@ Your cluster creator needs to configure the cluster, and send you an invite URL 
 {% embed url="https://www.youtube.com/watch?v=6pXASqjAQbs" %}
 
 1. Click on the DV launchpad link provided by the leader or creator. Make sure you recognise the domain and the person sending you the link, to ensure you are not being phished.
-2.  Connect your wallet using the Ethereum address provided to the leader.
+2. Connect your wallet using the Ethereum address the leader was provided.
 
     <figure><img src="../../.gitbook/assets/image (81).png" alt=""><figcaption></figcaption></figure>
-3.  Review the operators addresses submitted and click `Get Started` to continue.
+3. Review the operators addresses submitted and click `Get Started` to continue.
 
     <figure><img src="../../.gitbook/assets/image (82).png" alt=""><figcaption></figcaption></figure>
 4. Review and accept the DV Launchpad terms & conditions and advisories.
@@ -404,7 +404,7 @@ Now that the DKG has been completed, all operators can start their nodes.
 
 With the DKG ceremony over, the last phase before activation is to prepare your node for validating over the long-term.
 
-The [CDVN repository](https://github.com/ObolNetwork/charon-distributed-validator-node) is configured to sync an execution layer client (`Nethermind`) and a consensus layer client (`Lighthouse`) using Docker Compose, further client combinations can be prepared using Sedge. You can also leverage alternative ways to run a node such as Ansible, Helm, or Kubernetes manifests.
+The [CDVN repository](https://github.com/ObolNetwork/charon-distributed-validator-node) is configured to sync an execution layer client (`Nethermind`) and a consensus layer client (`Lighthouse`) using Docker Compose. Further client combinations can be prepared using Sedge. You can also leverage alternative ways to run a node such as Ansible, Helm, or Kubernetes manifests.
 
 {% tabs %}
 {% tab title="CDVN" %}
@@ -481,7 +481,7 @@ CHARON_BEACON_NODE_ENDPOINTS=<YOUR_REMOTE_BEACON_NODE_URL>
 ...
 ```
 {% hint style="info" %}
-If your existing  beacon node is running in a another CDVN instance on the same Docker host, you can access it by specifying
+If your existing beacon node is running in another CDVN instance on the same Docker host, you can access it by specifying
 `http://host.docker.internal:5052` as the endpoint.
 {% endhint %}
 3. Uncomment `EL=el-none` and `CL=cl-none` variables in the `.env` file and comment `EL=el-nethermind` and `CL=cl-lighthouse` variables:
