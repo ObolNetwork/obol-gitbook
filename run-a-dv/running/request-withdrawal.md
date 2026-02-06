@@ -5,48 +5,48 @@ description: >-
 
 # Request Withdrawal
 
-Post-Pectra update, new kind of validators with `0x02` withdrawal credentials type are supported that can have more than 32 ETH of effective balance. Unlike the validators with `0x01` withdrawal credentials type, which go through periodic skimming of their consensus rewards through a withdrawal sweep, `0x02` rewards are added to the balance to enable auto-compounding. As a result, there is no automatic skimming of rewards. Users have to explicitly send a transaction to request a withdrawal of their rewards to the beacon chain. OVM simplifies requesting withdrawal:
+Post-Pectra update, a new type of validator with 0x02 withdrawal credentials type are supported that can have more than 32 ETH of effective balance. Unlike the validators with a `0x01` withdrawal credentials type, which go through periodic skimming of their consensus rewards through a withdrawal sweep, `0x02` rewards are added to the balance to enable auto-compounding. As a result, there is no automatic skimming of rewards. Users have to explicitly send a transaction to request a withdrawal of their rewards to the beacon chain. OVM simplifies requesting a withdrawal by:
 
-1. By supporting batching of withdrawal requests across multiple validators
-2. Helping users distinguish between rewards and principal as long as all deposits are done through OVMs and reward amounts are below principal threshold
+1. Supporting batching of withdrawal requests across multiple validators
+2. Helping users distinguish between rewards and principal as long as all deposits are done through OVM's and reward amounts are below the principal threshold
 
-The following steps guide through how to request the withdrawal from the validators:
+The following steps guide you through how to request a withdrawal from your validators:
 
 ## Step-by-Step Withdrawal Process
 
-1. On the cluster details page, go to the validators table. In the actions column, click on the withdraw icon. It must be noted that the connected address must have `WITHDRAWAL_ROLE` to request withdrawal if the withdrawal address is OVM. **Read more about how to assign roles [here](../../advanced-and-troubleshooting/advanced/assign-ovm-roles.md).** If the withdrawal address is EOA, make sure to be connected with the correct EOA.
+1. On the cluster details page, go to the validators table. In the actions column, click on the withdraw icon. If the withdrawal address is an OVM, the connected address must have the `WITHDRAWAL_ROLE` to request a withdrawal. If the withdrawal address is an EOA, make sure you are connected with the correct EOA. **Read more about how to assign roles [here](../../advanced-and-troubleshooting/advanced/assign-ovm-roles.md).**
 
 <figure><img src="../../.gitbook/assets/OVMWithdrawal1.png" alt=""><figcaption></figcaption></figure>
 
-2. If the user has sufficient permissions, withdrawal address is EOA or OVM and the validator is with `0x02` withdrawal credentials, it will open up the modal to specify total withdrawal amount. The fields here mean the following:
+2. If the user has sufficient permissions, the withdrawal address is an EOA or an OVM, and the validator is with `0x02` withdrawal credentials, a modal opens allowing the user to specify the total withdrawal amount. The fields in this modal mean the following:
    1. **Validator Balance:** Total balance of all validators under this OVM or EOA
    2. **Withdrawal Limit:** The maximum amount a user can withdraw without triggering an exit. For example, if the validator balance is 100 ETH and 2 validators are active, the withdrawal limit is 100 - (2 × 32) = 36 ETH
 
 {% hint style="info" %}
-💡 When deciding the amount to withdraw, users must pay attention to the amount of ETH in OVM's balance, pending withdrawals and OVM's principal threshold. These fields together help decide how much to withdraw to reach principal threshold. Read more about this in the [FAQ section](#3-how-to-decide-initial-withdrawal-amount).
+💡 When deciding the amount to withdraw, users must pay attention to the amount of ETH in their OVM's balance, pending withdrawals and OVM's principal threshold. These fields together help decide how much to withdraw to reach the principal threshold. Read more about this in the [FAQ section](#3-how-to-decide-initial-withdrawal-amount).
 {% endhint %}
 
 <figure><img src="../../.gitbook/assets/OVMWithdrawal2.png" alt=""><figcaption></figcaption></figure>
 
-3. Once an amount is selected, users are recommended a split for where to withdraw the amount from. Read more about the recommendation in the [FAQ section](#2-how-recommendation-for-requesting-withdrawal-works). If you would prefer to allocate manually according to some specific amounts, click on `Allocate Manually`.
+3. Once an amount has been selected, the UI recommends how the withdrawal amount should be split across validators. Read more in the [FAQ section](#2-how-recommendation-for-requesting-withdrawal-works). If you would prefer to allocate specific amounts manually, click on `Allocate Manually`.
 
 <figure><img src="../../.gitbook/assets/OVMWithdrawal3.png" alt=""><figcaption></figcaption></figure>
 
-4. For allocating manually, users must stay under the withdrawal limit. Users can also specify here if they want to exit a specific validator by withdrawing all the amounts.
+4. For manually allocating, users must stay below the withdrawal limit. Users can also choose to exit a validator by withdrawing its entire available balance.
 
 <figure><img src="../../.gitbook/assets/OVMWithdrawal4.png" alt=""><figcaption></figcaption></figure>
 
-5. In the confirmation stage, review the post-withdrawal balances of validators and if the validators will exit. Upon confirmation, transactions requesting withdrawal will be sent. Once the transaction is accepted, the validator will be in queue waiting for withdrawal sweep. The exact waiting period here depends on the index of the validator on the withdrawal sweep right now and the index of the requesting validator.
+5. Before you confirm, review the post-withdrawal balances of the validators and whether any validators will exit. Upon confirmation, withdrawal request transactions are sent. Once the transaction is accepted, the validator enters the queue awaiting a withdrawal sweep. The waiting period depends on the validator’s position in the current withdrawal queue.
 
 ## FAQ
 
-### 1. Why did ETH not arrive after I have sent withdrawal request?
+### 1. Why can I not see the ETH in my wallet after I sent a withdrawal request?
 
-If you have successfully sent a transaction to the Ethereum Withdrawal Contract to trigger a partial withdrawal or exit for your **0x02 validator**, but the ETH is not yet in your wallet, it is usually due to one of the following protocol-level steps.
+If you have successfully sent a transaction to the Ethereum Withdrawal Contract to trigger a partial withdrawal or an exit for your **0x02 validator**, but the ETH is not yet in your wallet, it is usually due to one of the following protocol-level steps.
 
-#### 1. Is your request still in the "Partial Withdrawal Queue"?
+#### 1. Is your request still in the Partial Withdrawal Queue"?
 
-Unlike older 0x01 validators that are automatically "swept" by the protocol, 0x02 withdrawals are **manually triggered** and enter a First-In-First-Out (FIFO) queue.
+Unlike older 0x01 validators that are automatically "swept" by the protocol, 0x02 withdrawals are **triggered manually** and therefore enter a First-In-First-Out (FIFO) queue.
 
 - **The Delay:** If many stakers are withdrawing at once, your request must wait its turn.
 - **How to check:** Visit a block explorer like [beaconcha.in](https://beaconcha.in/) and look for the **"Partial Withdrawal Queue"** status.
@@ -64,12 +64,12 @@ For 0x02 validators, you can only withdraw the "excess" balance.
 
 - **The Rule:** You cannot partially withdraw a validator's balance below **32 ETH** while keeping it active. If you requested an amount that would drop your balance below 32 ETH, the protocol may reject the request or only process the amount available above the 32 ETH limit.
 
-#### 4. Is the network experiencing a "Mass Exit" or High Churn?
+#### 4. Is the network experiencing a "Mass Exit" or "High Churn"?
 
-If you are performing a **Full Exit** (not just a partial withdrawal), you are subject to the **Churn Limit**.
+If you are performing a **Full Exit** and not just a partial withdrawal, you are subject to the **Churn Limit**.
 
-- **The Delay:** Ethereum only allows a certain amount of ETH (currently 256 ETH per epoch) to exit the network at once. During periods of high volatility or institutional exits, this queue can stretch from a few days to **several weeks**.
-- **0x01 vs 0x02:** While 0x02 partial withdrawals are usually faster because they skip the "sweep cycle," full exits for both 0x01 and 0x02 validators wait in the same global exit line.
+- **The Delay:** Ethereum only allows a certain amount of ETH (approximately 256 ETH per epoch) to exit the network at once. During periods of high volatility or institutional exits, this queue can stretch from a few days to **several weeks**.
+- **0x01 vs 0x02:** While 0x02 partial withdrawals are usually faster because they skip the "sweep cycle," full exits for both 0x01 and 0x02 validators remain in the same global exit line.
 
 #### 5. Are you checking the right "Arrival" type?
 
@@ -96,7 +96,7 @@ While the difference in rewards is usually minimal, this strategy helps to **opt
 
 When initiating a withdrawal, the OVM (Obol Validator Manager) uses the **Principal Threshold** (Tp) to determine whether the withdrawn ETH will be classified as **Principal** or **Rewards** upon the next distribution event.
 
-The key calculation users must understand is the **Projected OVM Balance**—the total ETH that will reside in the OVM once all current and pending transactions are complete. The amount you input in the withdrawal field is the only variable you can control to govern this outcome. The UI provides warnings when your input will suggest where the withdrawal will go after it succeeds.
+The key calculation users must understand is the **Projected OVM Balance**—the total ETH that will reside in the OVM once all current and pending transactions are complete. The amount you input in the withdrawal field is the only variable you can control to govern this outcome. Based on your input, the UI provides warnings indicating where the withdrawal will be routed once it succeeds.
 
 #### Core Withdrawal Principle
 
