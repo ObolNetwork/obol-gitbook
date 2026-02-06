@@ -188,7 +188,7 @@ The following are the steps for creating a cluster.
 5. Configure the Cluster
    1. Input the `Cluster Name` & `Cluster Size` (i.e. number of operators in the cluster). The threshold will update automatically, it shows the number of nodes that need to be functioning for the validator(s) to stay active.
 6. Input the Ethereum addresses for each operator that you collected previously. If you will be taking part as an operator, click the "Use My Address" button for Operator 1.
-   1. Select the desired amount of validators the cluster will run. If you would like to run validators with compounding rewards, swtich the compounding toggle on. This will create validators with '0x02' prefix withdrawal credentials.
+   1. Select the desired amount of validators the cluster will run. If you would like to run validators with compounding rewards, switch the compounding toggle on. This will create validators with '0x02' prefix withdrawal credentials.
 
     <figure><img src="../../.gitbook/assets/CompoundingRewardsToggle.png" alt=""><figcaption></figcaption></figure>
    2. If you are taking part in the cluster, enter the ENR you generated in [step one](#step-1-get-your-enr) in the "What is your charon client's ENR?" field.
