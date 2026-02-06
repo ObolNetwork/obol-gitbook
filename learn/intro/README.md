@@ -35,6 +35,19 @@ Whether you’re here to learn about DVT, integrate it into your staking stack, 
       <td><a href="../charon/intro.md">Learn About Obol</a></td>
       <td><a href="../../.gitbook/assets/cards/open_book.png">open_book.png</a></td>
     </tr>
+  </tbody>
+</table>
+
+<table data-view="cards">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th data-hidden data-card-target data-type="content-ref"></th>
+      <th data-hidden data-card-cover data-type="files"></th>
+    </tr>
+  </thead>
+  <tbody>
     <tr>
       <td><strong>Integrate Obol DVs</strong></td>
       <td>Deploy DVs on mainnet or testnet and follow the quickstart path for operators and allocators.</td>
