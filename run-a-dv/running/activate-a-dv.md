@@ -65,7 +65,7 @@ Once the allocation is solidified, users review and send transactions. The amoun
 
 ### A. How Large Activations (>32 ETH) are Made (Option 2)
 
-When a compounding (`0x02`) validator is created with an amount greater than 32 ETH (e.g., 40 ETH), Charon generates following deposit files (1 ETH, 8 ETH, 32 ETH, 256 ETH). When performing the initial deposit through OVM, the launchpad **bundles multiple deposits into a single multi-call transaction.** When deposits are made via EOA, the batching is done using deposit contracts built by [Pier Two](https://docs.piertwo.com/docs/batch-deposit-contract). Batching results in a slightly higher gas cost than a single 32 ETH deposit. While doing top-ups, any deposit amount can be used.
+When a compounding (`0x02`) validator is created with an amount greater than 32 ETH (e.g., 40 ETH), Charon generates the following deposit files (1 ETH, 8 ETH, 32 ETH, 256 ETH). When performing the initial deposit through OVM, the launchpad **bundles multiple deposits into a single multi-call transaction.** When deposits are made via EOA, the batching is done using deposit contracts built by [Pier Two](https://docs.piertwo.com/docs/batch-deposit-contract). Batching results in a slightly higher gas cost than a single 32 ETH deposit. While doing top-ups, any deposit amount can be used.
 
 ### B. Recommended Allocation Strategy
 
