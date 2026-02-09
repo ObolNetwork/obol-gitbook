@@ -59,7 +59,7 @@
   * [Operator Rotation](advanced-and-troubleshooting/advanced/operator-rotation.md)
   * [Migrate an Existing Validator](advanced-and-troubleshooting/advanced/quickstart-split.md)
   * [Create a DV Using the SDK](advanced-and-troubleshooting/advanced/create-a-dv-using-the-sdk.md)
-  * [Pre-creating Obol Validators](advanced-and-troubleshooting/advanced/ovm-predeploy.md)
+  * [Pre-Create a DV with an OVM](advanced-and-troubleshooting/advanced/ovm-predeploy.md)
   * [Enable MEV](advanced-and-troubleshooting/advanced/enable-mev.md)
   * [Combine DV Private Key Shares](advanced-and-troubleshooting/advanced/quickstart-combine.md)
   * [Beacon node authentication](advanced-and-troubleshooting/advanced/beacon-node-authentication.md)

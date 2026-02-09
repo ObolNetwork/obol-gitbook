@@ -5,21 +5,64 @@ description: >-
 
 # Validator Pre-Deploy Workflow
 
-A customer opting into staking at an unknown time, is a key trigger for enterprise staking deployments. There are two primary ways these ad-hoc demands are automatically fulfilled, via smart contracts or via the private keys.
+A customer opting into staking at an unknown time, is a key trigger for enterprise staking deployments. There are two primary ways these ad-hoc demands are programatically fulfilled, using smart contracts or using/generating the private keys.
 
-- Smart contracts such as an [Obol Validator Manager](../../learn/intro/obol-splits.md#obol-validator-managers) (OVM) can re-assign their (beneficial) ownership, and then the customer can activate a pre-prepared deposit for this smart contract.
-- A fresh DV cluster can be [created](../../run-a-dv/start/create-a-dv-alone.md), a [DKG invite](../../run-a-dv/start/create-a-dv-with-a-group.md) could be created for waiting [DV-pods](https://github.com/ObolNetwork/helm-charts/tree/main/charts/dv-pod) ready to partake, a [`charon add-validators`](./add-validators.md) command could be triggered to add extra keys to a running cluster, or [`charon deposit sign`](./alter-withdrawal-addresses.md) could be used to alter an unused validator's withdrawal address.
+- Smart contracts such as an [Obol Validator Manager](../../learn/intro/obol-splits.md#obol-validator-managers) (OVM) can re-assign their (beneficial) ownership; allowing a customer to activate a pre-created deposit for this smart contract.
+- A fresh DV cluster can be [created](../../run-a-dv/start/create-a-dv-alone.md), a [DKG invite](../../run-a-dv/start/create-a-dv-with-a-group.md) cam be created for waiting [DV-pods](https://github.com/ObolNetwork/helm-charts/tree/main/charts/dv-pod) ready to partake, a [`charon add-validators`](./add-validators.md) command could be triggered to add extra keys to a running cluster, or [`charon deposit sign`](./alter-withdrawal-addresses.md) could be used to alter an unused validator's withdrawal address.
 
 This guide will focus on the former, managing validators using Obol smart contracts, and their role based access control. This approach requires less coordination for multi-operator setups, and is simpler than creating or interacting with private key material on the fly by a remote trigger.
 
-This guide will demonstrate the key steps in preparing a DV cluster for this type of scenario. 50 blank OVMs will be created, each with 10 0x02 validator keys. Administership will be given to a private key that will sit in a back end API, and when a customer triggers an allocation of an OVM, the key will make the necessary updates, and then revoke its access to the smart contract, leaving it ready for deposit.
+This guide will demonstrate the key steps in preparing a DV cluster for this type of scenario. 50 blank OVMs will be created, each with 10 `0x02` validator keys (>1m eth capacity) along with 50 blank splitter contracts. Adjust the number of OVMs, splitters, and their key counts for your use case. Administratorship of the OVMs and splitters will be given to a private key that will sit in a secure back end API server, and when a customer triggers an allocation of an OVM, the API server private key will make the necessary updates to an unallocated OVM, and then revoke its control over the smart contracts, leaving them ready for the customer's deposit.
 
 The Hoodi testnet will be used for all examples.
 
 <figure><img src="../../.gitbook/assets/OVMs-on-demand.png" alt=""><figcaption></figcaption></figure>
+<!-- Need to update the above to reflect ownership going to API, and then from API to admin safe. Also transfer of deposit role to user-->
+
 {% hint style="warning" %}
 The following code snippets are minimal examples for the purpose of achieving the desired functionality. These should not be run in production without thorough testing and review.
 {% endhint %}
+
+
+#### Pre-requisites
+
+To keep the `cast` examples neat, we'll declare the key addresses upfront here, and refer to them as environment variables in each `cast` command.
+
+```sh
+# Create a keypair with `cast wallet new`. Put some (hoodi)Eth in the corresponding address. 
+# (Make sure you don't commit it to version control!)
+export DEPLOYER_PRIVATE_KEY=0xPrivateKeyForADeployer
+
+# You need an RPC for your commands to reach the Ethereum network. Use one for the correct chain.
+export RPC_URL=https://ethereum-hoodi-rpc.publicnode.com
+#export RPC_URL=https://ethereum-rpc.publicnode.com
+
+# This address will be the in case of emergency break glass address for all OVMs. 
+# This address has custody of the funds and can modify all roles. 
+# Consider if this address should be the end user, burned outright, 
+# or a trusted, high threshold SAFE account in case of issue.
+export ADMIN_SAFE_ADDRESS=0xFallbackSafeAddressHere
+
+# The private key corresponding to this address should run in your API service
+# This address will have temporary control over the OVM until a User requests it
+# Create a keypair with `cast wallet new` and send it some Ether for transaction fees.
+export BACKEND_API_ADDRESS=0xPublicAddressForAPIWallet
+# The corresponding private key. (Make sure you don't commit it to version control!)
+export BACKEND_API_PRIVATE_KEY=0xPrivateKeyForAnAPIWallet
+
+# The address of the OVM factory on Hoodi
+export OBOL_VALIDATOR_MANAGER_FACTORY_ADDRESS=0x5754C8665B7e7BF15E83fCdF6d9636684B782b12
+# The address of the OVM factory address on **Mainnet**
+#export OBOL_VALIDATOR_MANAGER_FACTORY_ADDRESS=0x2c26B5A373294CaccBd3DE817D9B7C6aea7De584
+
+# Pull Split Factory Address
+export PULL_SPLIT_FACTORY_ADDRESS=0x6B9118074aB15142d7524E8c4ea8f62A3Bdb98f1
+# https://etherscan.io/address/0x6B9118074aB15142d7524E8c4ea8f62A3Bdb98f1#code
+```
+
+#### Fee Splitting
+
+A key decision when it comes to preparing a Distributed Validator is how Node Operators and Service providers can be non-custodially compensated for their services. Obol Validator Managers are built to leverage [Splits.org](https://splits.org) split contracts. For this demo, split contracts will be pre-created with the unallocated OVMs, and edited for customers as they appear. You may want to consider smoothing MEV across your customers using a pair of nested splitters. This is described in more detail at the end of the [guide](#appendix-mev-smoothing).
 
 ### Contract Deployment
 
@@ -27,14 +70,23 @@ A safe and convenient way to deploy an OVM contract is through the [existing con
 {% tabs %}
 {% tab title="Cast" %}
 
-```sh
-cast send 0x5754C8665B7e7BF15E83fCdF6d9636684B782b12 \
-  "createObolValidatorManager(address,address,address,uint64)" \
-  0xOwnerKeyAddress 0xOwnerKeyAddress 0xOwnerKeyAddress 16000000000 \
-  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
-  --private-key 0x...
-```
+Run these commands 50 times. (You may need to use `createSplitDeterministic()` with a salt value or use different placeholder recipient addresses for the PullSplits or the command will error due to a split with that configuration already existing)
 
+```sh
+# Create an OVM owned by the backend API, with placeholder beneficiary and reward addresses
+cast send $OBOL_VALIDATOR_MANAGER_FACTORY_ADDRESS \
+  "createObolValidatorManager(address,address,address,uint64)" \
+  $BACKEND_API_ADDRESS $BACKEND_API_ADDRESS $BACKEND_API_ADDRESS 16000000000 \
+  --rpc-url $RPC_URL \
+  --private-key $DEPLOYER_PRIVATE_KEY
+
+# Create a PullSplit owned by the backend API
+cast send $PULL_SPLIT_FACTORY_ADDRESS \
+  "createSplit((address[],uint256[],uint256,uint16),address,address)" \
+  (($BACKEND_API_ADDRESS) (1000000) 1000000, 0) $BACKEND_API_ADDRESS $BACKEND_API_ADDRESS \
+  --rpc-url $RPC_URL \
+  --private-key $DEPLOYER_PRIVATE_KEY
+```
 {% endtab %}
 {% tab title="Forge" %}
 
@@ -55,17 +107,17 @@ interface IObolValidatorManagerFactory {
 
 contract DeployOVM is Script {
     // Factory contract address (already deployed)
-    address constant FACTORY_ADDRESS = 0x5754C8665B7e7BF15E83fCdF6d9636684B782b12;
+    address constant OBOL_VALIDATOR_MANAGER_FACTORY_ADDRESS = 0x5754C8665B7e7BF15E83fCdF6d9636684B782b12;
 
     function run() external {
         vm.startBroadcast();
 
         // Deploy the ObolValidatorManager via the factory
-        address ovm = IObolValidatorManagerFactory(FACTORY_ADDRESS).createObolValidatorManager(
-            0xOwnerKeyAddress,        // owner
-            0xOwnerKeyAddress,        // beneficiary (receives principal)
-            0xOwnerKeyAddress,        // rewardRecipient (receives rewards)
-            16_000_000_000            // 16 ETH in gwei (recommended principal threshold)
+        address ovm = IObolValidatorManagerFactory(OBOL_VALIDATOR_MANAGER_FACTORY_ADDRESS).createObolValidatorManager(
+            0xPublicAddressForAPIWallet,  // API wallet
+            0xOwnerKeyAddress,            // beneficiary (receives principal)
+            0xOwnerKeyAddress,            // rewardRecipient (receives rewards)
+            16_000_000_000                // 16 ETH in gwei (recommended principal threshold)
         );
 
         console.log("ObolValidatorManager deployed at:", ovm);
@@ -90,7 +142,7 @@ import { privateKeyToAccount } from "viem/accounts";
 import { hoodi } from "viem/chains";
 
 // Factory contract address (already deployed)
-const FACTORY_ADDRESS = "0x5754C8665B7e7BF15E83fCdF6d9636684B782b12";
+const OBOL_VALIDATOR_MANAGER_FACTORY_ADDRESS = "0x5754C8665B7e7BF15E83fCdF6d9636684B782b12";
 
 // Minimal ABI for the factory - just what we need to deploy and parse events
 const factoryAbi = parseAbi([
@@ -116,11 +168,11 @@ const publicClient = createPublicClient({
 
 // Deploy the ObolValidatorManager via the factory
 const hash = await walletClient.writeContract({
-  address: FACTORY_ADDRESS,
+  address: OBOL_VALIDATOR_MANAGER_FACTORY_ADDRESS,
   abi: factoryAbi,
   functionName: "createObolValidatorManager",
   args: [
-    "0xOwnerKeyAddress",
+    "0xPublicAddressForAPIWallet",
     "0xOwnerKeyAddress",
     "0xOwnerKeyAddress",
     16_000_000_000n, // 16 ETH in gwei (recommended principal threshold)
@@ -148,136 +200,63 @@ console.log("ObolValidatorManager deployed at:", ovmAddress);
 {% endtab %}
 {% endtabs %}
 
-### Granting OVM Roles
+After you have deployed an Obol Validator Manager contract, lets save its address and an example customer address as environment variables to make the rest of the `cast` demo easier. 
 
-Next, OVM contract privileges can be reduced to only those necessary for later stages of deployment. While not strictly necessary, this allows for the distribution of less privileged account private keys to lower security layers of infrastructure. For example, an API backend could have access to certain less-sensitive contract functions to unlock utility without the owner key being exposed during everyday operations. The [SET_BENEFICIARY_ROLE](../../learn/intro/obol-splits.md#roles) can be used later to update the recipient of the principal deposit to the actual depositor, while the `WITHDRAWAL_ROLE` will be used to process withdrawal requests.
+```sh
+# The created OVM from the factory
+export EXAMPLE_OVM_ADDRESS=0xYourRecentlyDeployedOVM
+
+# The created PullSplit from the factory
+export EXAMPLE_PULL_SPLIT_ADDRESS=0xYourRecentlyDeployedPullSplit
+
+# An address of a hypothetical new customer
+export EXAMPLE_CUSTOMER_ADDRESS=0xCustomerAddress
+
+# A private key of a new customer. (Demo Only. Don't use raw customer private keys in practice)
+export EXAMPLE_CUSTOMER_PRIVATE_KEY=0xCustomerPrivateKey
+```
+
+### Create the DV Cluster
+
+At this point, you can prepare a DV cluster pointed at these OVMs and split contracts. Use the [`charon create cluster ... --publish`](../../learn/charon/charon-cli-reference.md#create-a-full-cluster-locally) command if you are controlling the validator keys centrally, or [`charon create dkg ... ---publish`](../../learn/charon/charon-cli-reference.md#creating-the-configuration-for-a-dkg-ceremony) if you have a group of operators taking part in the cluster. Comma separate the `--withdrawal-addresses` and `--fee-recipient-addresses` flags with your created OVMs and Pull Splits. Once you complete the key creation, you can load these artifacts into your nodes and get the cluster online and ready for deposits. At this point the last remaining action will be with the API key, which will change the ownership of an OVM to make it ready for deposits.
+
+### Assigning the Contracts to Customers
+
+When a capital allocator (customer) is onboarding, the pre-created contracts can be assigned to that entity. The principal beneficiary address is updated to the entity's preferred address, permissions are allocated to the customer and backend's addresses as needed, and then ownership of the OVMs are transferred or burned.
+
 {% tabs %}
 {% tab title="Cast" %}
 
 ```sh
-cast send 0xYourOVMAddress \
-  "grantRoles(address,uint256)" \
-  0xLessPrivilegedKeyAddress 5 \
-  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
-  --private-key 0x...
-```
-
-{% endtab %}
-{% tab title="Forge" %}
-
-```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
-
-import {Script, console} from "forge-std/Script.sol";
-
-interface IObolValidatorManager {
-    function grantRoles(address user, uint256 roles) external payable;
-}
-
-contract GrantRoles is Script {
-    address constant OVM_ADDRESS = 0xYourOVMAddress;
-    address constant GRANTEE_ADDRESS = 0xLessPrivilegedKeyAddress;
-
-    // Role bitmasks from the contract
-    uint256 constant WITHDRAWAL_ROLE = 0x01;
-    uint256 constant SET_BENEFICIARY_ROLE = 0x04;
-
-    function run() external {
-        vm.startBroadcast();
-
-        // Grant both roles in a single transaction using bitwise OR
-        IObolValidatorManager(OVM_ADDRESS).grantRoles(
-            GRANTEE_ADDRESS,
-            WITHDRAWAL_ROLE | SET_BENEFICIARY_ROLE
-        );
-
-        console.log("Granted roles to:", GRANTEE_ADDRESS);
-
-        vm.stopBroadcast();
-    }
-}
-```
-
-{% endtab %}
-{% tab title="TypeScript" %}
-
-```ts
-import { createWalletClient, createPublicClient, http, parseAbi } from "viem";
-import { privateKeyToAccount } from "viem/accounts";
-import { hoodi } from "viem/chains";
-
-// The deployed OVM address
-const OVM_ADDRESS = "0xYourOVMAddress";
-
-// The address to grant roles to
-const GRANTEE_ADDRESS = "0xLessPrivilegedKeyAddress";
-
-// Role bitmasks from the contract
-const WITHDRAWAL_ROLE = 0x01n;
-const SET_BENEFICIARY_ROLE = 0x04n;
-
-// Combine roles using bitwise OR
-const ROLES_TO_GRANT = WITHDRAWAL_ROLE | SET_BENEFICIARY_ROLE; // 0x05
-
-const ovmAbi = parseAbi([
-  "function grantRoles(address user, uint256 roles) external payable",
-]);
-
-const account = privateKeyToAccount("0x...");
-
-const walletClient = createWalletClient({
-  account,
-  chain: hoodi,
-  transport: http("https://ethereum-hoodi-rpc.publicnode.com"),
-});
-
-const publicClient = createPublicClient({
-  chain: hoodi,
-  transport: http("https://ethereum-hoodi-rpc.publicnode.com"),
-});
-
-// Grant both roles in a single transaction
-const hash = await walletClient.writeContract({
-  address: OVM_ADDRESS,
-  abi: ovmAbi,
-  functionName: "grantRoles",
-  args: [GRANTEE_ADDRESS, ROLES_TO_GRANT],
-});
-
-console.log("Grant roles tx:", hash);
-await publicClient.waitForTransactionReceipt({ hash: hash });
-
-console.log(
-  "Granted WITHDRAWAL_ROLE and SET_BENEFICIARY_ROLE to:",
-  GRANTEE_ADDRESS
-);
-```
-
-{% endtab %}
-{% endtabs %}
-At this point, the contract is ready to be personalized. When staking services are requested by a capital allocator, the OVM contract can be assigned and validator initialization can proceed.
-
-### Assigning the Contract
-
-When the capital allocator is identified, the contract can be assigned to that entity. The principal beneficiary is updated to the entity's address and privileges are dropped by the secondary key created previously (as needed). This prevents further changes of the beneficiary by that key.
-{% tabs %}
-{% tab title="Cast" %}
-
-```sh
-# Set beneficiary
-cast send 0xYourOVMAddress \
+# Set the beneficiary address to the customer
+cast send $EXAMPLE_OVM_ADDRESS \
   "setBeneficiary(address)" \
-  0xCustomerAddress \
-  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
-  --private-key 0xLessPrivilegedKey...
+  $EXAMPLE_CUSTOMER_ADDRESS \
+  --rpc-url $RPC_URL \
+  --private-key $BACKEND_API_PRIVATE_KEY
 
-# Renounce SET_BENEFICIARY_ROLE
-cast send 0xYourOVMAddress \
-  "renounceRoles(uint256)" \
-  4 \
-  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
-  --private-key 0xLessPrivilegedKey...
+# Modify the splitter to include the customer and service providers (example is 90/10 split customer/admin address)
+cast send $EXAMPLE_PULL_SPLIT_ADDRESS \
+  "updateSplit(address[],uint256[],uint256,uint16)" \
+  ($EXAMPLE_CUSTOMER_ADDRESS,$ADMIN_SAFE_ADDRESS) (900000,100000) 1000000 0 \
+  --rpc-url $RPC_URL \
+  --private-key $BACKEND_API_PRIVATE_KEY
+
+# Grant the customer the DEPOSIT_ROLE and WITHDRAWAL_ROLE
+cast send $EXAMPLE_OVM_ADDRESS \
+  "grantRoles(address,uint256)" \
+  $EXAMPLE_CUSTOMER_ADDRESS 21 \
+  --rpc-url $RPC_URL \
+  --private-key $BACKEND_API_PRIVATE_KEY
+
+# [OPTIONAL] If the backend service needs the ability to trigger 
+# partial (or full) withdrawals, grant it the WITHDRAWAL_ROLE.
+# Warning; This allows this address to selectively charge fees on principal
+cast send $EXAMPLE_OVM_ADDRESS \
+  "grantRoles(address,uint256)" \
+  $BACKEND_API_ADDRESS 1 \
+  --rpc-url $RPC_URL \
+  --private-key $BACKEND_API_PRIVATE_KEY
 ```
 
 {% endtab %}
@@ -298,7 +277,8 @@ contract SetBeneficiaryAndRenounce is Script {
     address constant OVM_ADDRESS = 0xYourOVMAddress;
     address constant CUSTOMER_ADDRESS = 0xCustomerAddress;
 
-    uint256 constant SET_BENEFICIARY_ROLE = 0x04;
+    uint256 constant WITHDRAWAL_ROLE = 0x01;
+    uint256 constant DEPOSIT_ROLE = 0x20;
 
     function run() external {
         // Use the secondary key that was granted SET_BENEFICIARY_ROLE
@@ -310,10 +290,10 @@ contract SetBeneficiaryAndRenounce is Script {
         ovm.setBeneficiary(CUSTOMER_ADDRESS);
         console.log("Beneficiary set to:", CUSTOMER_ADDRESS);
 
-        // Renounce SET_BENEFICIARY_ROLE to lock the beneficiary permanently
-        ovm.renounceRoles(SET_BENEFICIARY_ROLE);
-        console.log("SET_BENEFICIARY_ROLE renounced - beneficiary is now locked");
-
+        // Allow the beneficiary to deposit and withdraw
+        ovm.grantRoles(CUSTOMER_ADDRESS, WITHDRAWAL_ROLE|DEPOSIT_ROLE)
+        console.log("Customer assigned deposit and withdrawal roles");
+        
         vm.stopBroadcast();
     }
 }
@@ -333,15 +313,19 @@ const OVM_ADDRESS = "0xYourOVMAddress";
 // The customer address to receive principal deposits
 const CUSTOMER_ADDRESS = "0xCustomerAddress";
 
-// Role bitmask
-const SET_BENEFICIARY_ROLE = 0x04n;
+// Role bitmasks from the contract
+const WITHDRAWAL_ROLE = 0x01n;
+const DEPOSIT_ROLE = 0x20n;
+
+// Combine roles using bitwise OR
+const ROLES_TO_GRANT = WITHDRAWAL_ROLE | DEPOSIT_ROLE; // 0x21
 
 const ovmAbi = parseAbi([
   "function setBeneficiary(address newBeneficiary) external",
-  "function renounceRoles(uint256 roles) external payable",
+  "function grantRoles(address user, uint256 roles) external payable"
 ]);
 
-// Use the secondary key that was granted SET_BENEFICIARY_ROLE
+// Use the backend API key
 const account = privateKeyToAccount("0xLessPrivilegedKey...");
 
 const walletClient = createWalletClient({
@@ -367,126 +351,39 @@ console.log("Set beneficiary tx:", hash1);
 await publicClient.waitForTransactionReceipt({ hash: hash1 });
 console.log("Beneficiary set to:", CUSTOMER_ADDRESS);
 
-// Renounce SET_BENEFICIARY_ROLE to lock the beneficiary permanently
+// Grant the customer the roles to deposit and withdraw
 const hash2 = await walletClient.writeContract({
   address: OVM_ADDRESS,
   abi: ovmAbi,
-  functionName: "renounceRoles",
-  args: [SET_BENEFICIARY_ROLE],
-});
-
-console.log("Renounce role tx:", hash2);
-await publicClient.waitForTransactionReceipt({ hash: hash2 });
-console.log("SET_BENEFICIARY_ROLE renounced - beneficiary is now locked");
-```
-
-{% endtab %}
-{% endtabs %}
-
-### Granting Deposit Role and Dropping Privileges
-
-The contract is ready for deposits now, but currently only the contract owner key can perform them. Grant the `DEPOSIT_ROLE` to the capital allocator.
-{% tabs %}
-{% tab title="Cast" %}
-
-```sh
-cast send 0xYourOVMAddress \
-  "grantRoles(address,uint256)" \
-  0xCustomerAddress 32 \
-  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
-  --private-key 0x...
-```
-
-{% endtab %}
-{% tab title="Forge" %}
-
-```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
-
-import {Script, console} from "forge-std/Script.sol";
-
-interface IObolValidatorManager {
-    function grantRoles(address user, uint256 roles) external payable;
-}
-
-contract GrantDepositRole is Script {
-    address constant OVM_ADDRESS = 0xYourOVMAddress;
-    address constant CUSTOMER_ADDRESS = 0xCustomerAddress;
-
-    uint256 constant DEPOSIT_ROLE = 0x20;
-
-    function run() external {
-        vm.startBroadcast();
-
-        IObolValidatorManager(OVM_ADDRESS).grantRoles(CUSTOMER_ADDRESS, DEPOSIT_ROLE);
-        console.log("DEPOSIT_ROLE granted to:", CUSTOMER_ADDRESS);
-
-        vm.stopBroadcast();
-    }
-}
-```
-
-{% endtab %}
-{% tab title="TypeScript" %}
-
-```ts
-import { createWalletClient, createPublicClient, http, parseAbi } from "viem";
-import { privateKeyToAccount } from "viem/accounts";
-import { hoodi } from "viem/chains";
-
-// The deployed OVM address
-const OVM_ADDRESS = "0xYourOVMAddress";
-
-// The customer address to grant DEPOSIT_ROLE to
-const CUSTOMER_ADDRESS = "0xCustomerAddress";
-
-// Role bitmask
-const DEPOSIT_ROLE = 0x20n;
-
-const ovmAbi = parseAbi([
-  "function grantRoles(address user, uint256 roles) external payable",
-]);
-
-// Use the owner key (before ownership is transferred to SAFE)
-const account = privateKeyToAccount("0x...");
-
-const walletClient = createWalletClient({
-  account,
-  chain: hoodi,
-  transport: http("https://ethereum-hoodi-rpc.publicnode.com"),
-});
-
-const publicClient = createPublicClient({
-  chain: hoodi,
-  transport: http("https://ethereum-hoodi-rpc.publicnode.com"),
-});
-
-// Grant DEPOSIT_ROLE to the customer
-const hash = await walletClient.writeContract({
-  address: OVM_ADDRESS,
-  abi: ovmAbi,
   functionName: "grantRoles",
-  args: [CUSTOMER_ADDRESS, DEPOSIT_ROLE],
+  args: [CUSTOMER_ADDRESS,ROLES_TO_GRANT],
 });
 
-console.log("Grant DEPOSIT_ROLE tx:", hash);
-await publicClient.waitForTransactionReceipt({ hash: hash });
-console.log("DEPOSIT_ROLE granted to:", CUSTOMER_ADDRESS);
+console.log("Grant roles tx:", hash2);
+await publicClient.waitForTransactionReceipt({ hash: hash2 });
+console.log("Deposit and withdrawal role assigned to customer");
 ```
 
 {% endtab %}
 {% endtabs %}
-For optimal security of the OVM contract, ownership can now be transferred to a multi-sig [Safe wallet](https://help.safe.global/en/articles/40868-creating-a-safe-on-a-web-browser) to split contract admin rights:
+
+### Transferring Ownership
+
+{% hint style="warning" %}
+This is a crucial step, and failure to adequately secure the ownership of an OVM could lead to a loss or theft of funds. Ensure you trust the `owner()` address of an OVM before making a deposit.
+{% endhint %}
+
+The last step before the OVM is ready for activation is to transfer the ownership of the OVM away from the backend, to either the customer, or an extremely well secured administrative multi-sig wallet like a [SAFE](https://safe.global) that can intervene to update key values in future if needed. Consider that the owner of an OVM has custodial control over it.
+
 {% tabs %}
 {% tab title="Cast" %}
 
 ```sh
-cast send 0xYourOVMAddress \
+cast send $EXAMPLE_OVM_ADDRESS \
   "transferOwnership(address)" \
-  0xYourSafeAddress \
-  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
-  --private-key 0x...
+  $ADMIN_SAFE_ADDRESS \
+  --rpc-url $RPC_URL \
+  --private-key $BACKEND_API_PRIVATE_KEY
 ```
 
 {% endtab %}
@@ -536,6 +433,7 @@ const ovmAbi = parseAbi([
   "function transferOwnership(address newOwner) external payable",
 ]);
 
+// The backend API address that currently owns the OVM
 const account = privateKeyToAccount("0x...");
 
 const walletClient = createWalletClient({
@@ -568,20 +466,29 @@ console.log("Ownership transferred to SAFE:", SAFE_ADDRESS);
 
 ### Handling Deposits
 
-The capital allocator can now be assigned uninitialized validators to deposit to. The validator keys are held by the [provisioned DV cluster](../../run-a-dv/start/). As a depositor-initiated action, this step would normally need to connect to a wallet and parse the deposit-data.json file(s) for necessary data:
+The capital allocator can now deposit the validators that point to this withdrawal address. The validator keys are held by the [provisioned DV cluster](../../run-a-dv/start/) operators and the deposit data was created during cluster creation. 
+
+This step would normally be through a wallet and web interface. This example using raw private keys is for demo purposes only.
+
+{% hint style="info" %}
+To accurately differentiate reward from principal in an OVM, the OVM contract needs to be invoked during the deposit call. Each OVM has a `deposit()` function exactly matching and wrapping the official deposit smart contract, and should be used for that purpose. 
+
+If a deposit is made not through the OVM, the OVM can be updated with the `setAmountOfPrincipalStake()` method by the `owner` or an address with the `SET_BENEFICIARY_ROLE`.
+{% endhint %}
+
 {% tabs %}
 {% tab title="Cast" %}
 
 ```sh
-cast send 0xYourOVMAddress \
+cast send $EXAMPLE_OVM_ADDRESS \
   "deposit(bytes,bytes,bytes,bytes32)" \
   0x<pubkey_48_bytes> \
   0x<withdrawal_credentials_32_bytes> \
   0x<signature_96_bytes> \
   0x<deposit_data_root_32_bytes> \
   --value 32ether \
-  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
-  --private-key 0xCustomerPrivateKey...
+  --rpc-url $RPC_URL \
+  --private-key $EXAMPLE_CUSTOMER_PRIVATE_KEY
 ```
 
 {% endtab %}
@@ -680,119 +587,31 @@ console.log("Deposit complete - validator activation pending");
 
 {% endtab %}
 {% endtabs %}
-The validator(s) will enter the activation queue and the `amountOfPrincipalStake` value on the contract will track how much of the balance is considered the principal (owned by the beneficiary). The EL and CL rewards from any targeting validators will be sent to the OVM contract.
+The validator(s) will enter the activation queue and the `amountOfPrincipalStake` value on the contract will track how much of the balance is considered the principal (owed to the beneficiary). The EL and CL rewards from any targeting validators will be sent to the OVM contract and Pull Split.
 
-### Reward Distribution and Splitters
-
-When rewards accrued on the OVM contract should be distributed to the `rewardRecipient` (set during [contract deployment](#contract-deployment)), call distributeFunds(). This function can be called by any account and is unprivileged.
-{% tabs %}
-{% tab title="Cast" %}
-
-```sh
-cast send 0xYourOVMAddress \
-  "distributeFunds()" \
-  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
-  --private-key 0x...
-```
-
-{% endtab %}
-{% tab title="Forge" %}
-
-```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
-
-import {Script, console} from "forge-std/Script.sol";
-
-interface IObolValidatorManager {
-    function distributeFunds() external;
-}
-
-contract DistributeFunds is Script {
-    address constant OVM_ADDRESS = 0xYourOVMAddress;
-
-    function run() external {
-        vm.startBroadcast();
-
-        IObolValidatorManager(OVM_ADDRESS).distributeFunds();
-        console.log("Funds distributed to beneficiary and reward recipient");
-
-        vm.stopBroadcast();
-    }
-}
-```
-
-{% endtab %}
-{% tab title="TypeScript" %}
-
-```ts
-import { createWalletClient, createPublicClient, http, parseAbi } from "viem";
-import { privateKeyToAccount } from "viem/accounts";
-import { hoodi } from "viem/chains";
-
-// The deployed OVM address
-const OVM_ADDRESS = "0xYourOVMAddress";
-
-const ovmAbi = parseAbi(["function distributeFunds() external"]);
-
-// Anyone can call distributeFunds - no special role required
-const account = privateKeyToAccount("0x...");
-
-const walletClient = createWalletClient({
-  account,
-  chain: hoodi,
-  transport: http("https://ethereum-hoodi-rpc.publicnode.com"),
-});
-
-const publicClient = createPublicClient({
-  chain: hoodi,
-  transport: http("https://ethereum-hoodi-rpc.publicnode.com"),
-});
-
-// Distribute funds to beneficiary (principal) and rewardRecipient (rewards)
-const hash = await walletClient.writeContract({
-  address: OVM_ADDRESS,
-  abi: ovmAbi,
-  functionName: "distributeFunds",
-});
-
-console.log("Distribute funds tx:", hash);
-await publicClient.waitForTransactionReceipt({ hash: hash });
-console.log("Funds distributed to beneficiary and reward recipient");
-```
-
-{% endtab %}
-{% endtabs %}
-When EL/CL rewards are to be split among multiple parties, a [splitter contract](https://docs.splits.org/) can be deployed as the target of OVM's `rewardRecipient` to chain the functionality of both contracts. In the case where not all the earning parties are known before OVM deloyment, multiple splitter contracts can be chained to separate mutable vs immutable reward flows.
-
-<figure><img src="../../.gitbook/assets/SimpleRewardFlow.svg" alt=""><figcaption></figcaption></figure>
-<!-- 
-Staking Rewards [3] OVM
-Stake [32] OVM
-MEV Rewards [1] Reward Splitter
-OVM [32] Capital Allocator
-OVM [3] Reward Splitter
-Reward Splitter[3.6] Capital Allocator
-Reward Splitter[0.4] Fees
--->
-With the above setup, static rewards recipients can be deployed ahead of time while retaining flexibility with the remainder. The second splitter contract could have ownership transferred to the capital allocator after personalization, while maintaining existing contractual reward splits.
 
 ### Withdrawing Validator Balance
 
-Compounding validators (0x02 type) can have part of their principal withdrawn from active stake, or be fully exited, via the same `withdraw()` call. Specifying a nonzero value for `amounts` will initiate a partial withdrawal, while 0 will fully exit the validator. This action can use the lesser-privileged key [assigned](#granting-ovm-roles) the `WITHDRAWAL_ROLE` to avoid keeping ownership keys on low-security systems.
+Compounding validators (0x02 type) can have part of their principal withdrawn from active stake, or be fully exited, via the same `withdraw()` call. Specifying a nonzero value for `amounts` will initiate a partial withdrawal, while 0 will fully exit the validator. You cannot specify an amount that will leave the validator with less than 32 ether in active stake remaining.
+
+{% hint style="warning" %}
+There is an important nuance when it comes to partial withdrawals. With an OVM (on the default settings), it will treat a withdrawal of less than 16 ether as rewards rather than principal. **A customer should not withdraw less than this amount of principal or they may be charged fees on it**. Similarly, care must be taken with the `WITHDRAWAL_ROLE`; although it does not allow the changing of who gets rewards, it can cause this 'over-charging' behaviour by doing repeated small withdrawals.
+{% endhint %}
+
+
 {% tabs %}
 {% tab title="Cast" %}
 
 ```sh
-cast send 0xYourOVMAddress \
+cast send $EXAMPLE_OVM_ADDRESS \
   "withdraw(bytes[],uint64[],uint256,address)" \
   "[0x<validator_pubkey_48_bytes>]" \
   "[16000000000]" \
   1000000000000000 \
   0xYourRefundAddress \
   --value 0.001ether \
-  --rpc-url https://ethereum-hoodi-rpc.publicnode.com \
-  --private-key 0xSecondaryKeyPrivateKey...
+  --rpc-url $RPC_URL \
+  --private-key $BACKEND_API_PRIVATE_KEY
 ```
 
 {% endtab %}
@@ -909,6 +728,111 @@ console.log(
 
 {% endtab %}
 {% endtabs %}
-{% hint style="warning" %}
-The above partial withdrawal is for 16 ETH, which meets the cutoff that was set earlier to be considered principal rather than rewards. If 4 ETH were instead withdrawn, it would be distributed to the `rewardRecipient` instead of the `beneficiary`. Keep in mind the `principalThreshold` [set for the contract](../../learn/intro/obol-splits.md#what-is-the-principal-threshold-for) when processing withdrawals, as withdrawals below the threshold will be counted as rewards.
-{% endhint %}
+
+
+### Reward Distribution and Splitters
+
+When withdrawals requested eventually exit the beacon chain, they appear on the OVM contract, and should be distributed to the `rewardRecipient` or `principalRecipient` (depending on if they amount to above or below the `principalThreshold` of 16 eth). Calling `distributeFunds()` will push the Ether to the correct address. Split contracts as principal or reward addresses will also need to be distributed from for the funds to land in their ultimate recipients addresses.
+
+{% tabs %}
+{% tab title="Cast" %}
+
+```sh
+cast send $EXAMPLE_OVM_ADDRESS \
+  "distributeFunds()" \
+  --rpc-url $RPC_URL \
+  --private-key $BACKEND_API_PRIVATE_KEY
+```
+
+{% endtab %}
+{% tab title="Forge" %}
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+
+import {Script, console} from "forge-std/Script.sol";
+
+interface IObolValidatorManager {
+    function distributeFunds() external;
+}
+
+contract DistributeFunds is Script {
+    address constant OVM_ADDRESS = 0xYourOVMAddress;
+
+    function run() external {
+        vm.startBroadcast();
+
+        IObolValidatorManager(OVM_ADDRESS).distributeFunds();
+        console.log("Funds distributed to beneficiary and reward recipient");
+
+        vm.stopBroadcast();
+    }
+}
+```
+
+{% endtab %}
+{% tab title="TypeScript" %}
+
+```ts
+import { createWalletClient, createPublicClient, http, parseAbi } from "viem";
+import { privateKeyToAccount } from "viem/accounts";
+import { hoodi } from "viem/chains";
+
+// The deployed OVM address
+const OVM_ADDRESS = "0xYourOVMAddress";
+
+const ovmAbi = parseAbi(["function distributeFunds() external"]);
+
+// Anyone can call distributeFunds - no special role required
+const account = privateKeyToAccount("0x...");
+
+const walletClient = createWalletClient({
+  account,
+  chain: hoodi,
+  transport: http("https://ethereum-hoodi-rpc.publicnode.com"),
+});
+
+const publicClient = createPublicClient({
+  chain: hoodi,
+  transport: http("https://ethereum-hoodi-rpc.publicnode.com"),
+});
+
+// Distribute funds to beneficiary (principal) and rewardRecipient (rewards)
+const hash = await walletClient.writeContract({
+  address: OVM_ADDRESS,
+  abi: ovmAbi,
+  functionName: "distributeFunds",
+});
+
+console.log("Distribute funds tx:", hash);
+await publicClient.waitForTransactionReceipt({ hash: hash });
+console.log("Funds distributed to beneficiary and reward recipient");
+```
+
+{% endtab %}
+{% endtabs %}
+
+<!-- When EL/CL rewards are to be split among multiple parties, a [splitter contract](https://docs.splits.org/) can be deployed as the target of OVM's `rewardRecipient` to chain the functionality of both contracts. In the case where not all the earning parties are known before OVM deloyment, multiple splitter contracts can be chained to separate mutable vs immutable reward flows.
+
+<figure><img src="../../.gitbook/assets/SimpleRewardFlow.svg" alt=""><figcaption></figcaption></figure>
+<!-- 
+Staking Rewards [3] OVM
+Stake [32] OVM
+MEV Rewards [1] Reward Splitter
+OVM [32] Capital Allocator
+OVM [3] Reward Splitter
+Reward Splitter[3.6] Capital Allocator
+Reward Splitter[0.4] Fees
+-->
+<!-- With the above setup, static rewards recipients can be deployed ahead of time while retaining flexibility with the remainder. The second splitter contract could have ownership transferred to the capital allocator after personalization, while maintaining existing contractual reward splits. -->
+
+#### Appendix: MEV Smoothing
+
+If you setup validators where every customer gets their own fee recipient address (and underlying splitter), they will each get proposals rarely (approximately twice per year for a 32 ETH validator). Due to MEV being unequally distributed, only a small number of proposals in the year contain most of the MEV. This means that most of your users will get the median amount of Ether as MEV rather than the average, and may notice a lower APR versus setups that pool and distribute their variable rewards across their users. It may be beneficial for you to instead smooth the MEV being accrued through block proposals across all depositors in the cluster. This can be achieved through two nested split contracts as follows: 
+
+- First create an editable [PullSplit](https://docs.splits.org/core/split-v2) we'll refer to as the Child Split. The owner of this split should be the `$BACKEND_API_ADDRESS`. 
+- Next create a second PullSplit we'll refer to as the Parent Split. It can be immutable if preferred. It should send the majority of its inflow to the Child Split, and some amount to a set of addresses that receive operating fees for the cluster. 
+- Set the parent split as the `--fee-recipient-address` for all validators in the cluster. This means all proposal rewards for the cluster will go to this address.
+- When a customer makes a deposit, use the `$BACKEND_API_PRIVATE_KEY` to update the Child Split to proportionally reflect the eth provided by all customers to the cluster. 
+- As proposals by the validators earn tips and MEV, this collects on the Split Contracts. Distributing these rewards sends the ether to the fee recipients and customers.
