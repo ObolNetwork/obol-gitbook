@@ -4,8 +4,7 @@
 
 Users looking to exit staking entirely and withdraw their full balance back have two options:
 
-1. **Exit via Withdrawal Address (Recommended for Post-Pectra):** If your cluster's withdrawal address is an EOA or OVM, you can trigger an EL exit directly from the Launchpad without needing validator keys or operator coordination. This is the simplest method and is described in the [Exit via Withdrawal Address](#exit-via-withdrawal-address-post-pectra) section below.
-
+1. **Exit via Withdrawal Address (Recommended for Post-Pectra):** If your cluster's withdrawal address is an EOA or OVM, you can trigger an EL exit directly from the Launchpad without needing validator keys or operator coordination. This is the simplest method and is described in the [Exit via Withdrawal Address](exit-a-dv.md#exit-via-withdrawal-address-post-pectra) section below.
 2. **Exit via Validator Keys (Traditional Method):** This method requires signing and broadcasting a "voluntary exit" message with validator keys. In the case of a DV, Charon nodes need to broadcast a partial exit to the other nodes of the cluster. Once a threshold of partial exits has been received by any node, the full voluntary exit will be sent to the beacon chain. This process will take 27 hours or longer depending on the current length of the exit queue. Once the validator is exited, the principal plus unclaimed rewards will go to the withdrawal address of the validator. Depending on the cluster's withdrawal configuration, users can claim their proportion of principal and rewards.
 
 For the traditional validator key-based method, there are two ways to sign the partial exit and broadcast the full exit. Neither solution requires gas:
@@ -15,6 +14,7 @@ For the traditional validator key-based method, there are two ways to sign the p
 
 {% hint style="info" %}
 **For the traditional validator key-based exit method:**
+
 * A threshold of operators need to run the exit command for the exit to succeed. This is the same threshold as is specified during cluster creation.
 * **Ensure that all operators within a cluster consistently use either the hosted solution (Charon Exit) or the non-hosted solution (Validator Client Exit). Mixing both solutions within the same cluster—where some operators use Charon Exit while others use Validator Client Exit—is not allowed.**
 * In case of validator client native exits, partial exits can be broadcast by any validator client as long as the threshold for the cluster is reached.
@@ -22,7 +22,7 @@ For the traditional validator key-based method, there are two ways to sign the p
 * All operators need to use the same `EXIT_EPOCH` for the exit to be successful. Assuming you want to exit as soon as possible, the default epochs included in the below commands should be sufficient for the respective network.
 {% endhint %}
 
----
+***
 
 ## Exit via Withdrawal Address (Post-Pectra)
 
@@ -36,22 +36,22 @@ Post-Pectra fork, withdrawal addresses of validators can trigger an EL (Executio
 
 In the Launchpad, you can initiate an EL exit using the Exit validator button in the actions column of the validators table. To trigger an EL exit, you must meet one of the following conditions:
 
-- **Connected with the withdrawal address:** If the withdrawal address is an EOA (Externally Owned Account), you must be connected with that EOA wallet.
-- **Have WITHDRAWAL_ROLE:** If the withdrawal address of the validator is an OVM, you must have `WITHDRAWAL_ROLE` in that OVM. Read more about how to assign roles [here](../../advanced-and-troubleshooting/advanced/assign-ovm-roles.md).
+* **Connected with the withdrawal address:** If the withdrawal address is an EOA (Externally Owned Account), you must be connected with that EOA wallet.
+* **Have WITHDRAWAL\_ROLE:** If the withdrawal address of the validator is an OVM, you must have `WITHDRAWAL_ROLE` in that OVM. Read more about how to assign roles [here](../../advanced-and-troubleshooting/advanced/assign-ovm-roles.md).
 
-<figure><img src="../../.gitbook/assets/ElExit1.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2026-02-11 at 16.46.19.png" alt=""><figcaption></figcaption></figure>
 
 ### Step-by-Step Process
 
 1. **Initiate Exit:** Upon clicking the Exit validator button, you can multi-select the active validators you would like to exit. In the example below, there is only one active validator, so only one can be selected for the exit.
 
-<figure><img src="../../.gitbook/assets/ElExit2.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2026-02-11 at 16.59.40.png" alt="" width="347"><figcaption></figcaption></figure>
 
-2. **Review and Confirm:** You will see a confirmation page showing the validators that will be exited. If you are sending exits via EOA, it will require exiting validators one by one. In the future, we will use EIP-7702 to perform a single-click exit for all validators.
+1. **Review and Confirm:** You will see a confirmation page showing the validators that will be exited. If you are sending exits via EOA, it will require exiting validators one by one. In the future, we will use EIP-7702 to perform a single-click exit for all validators.
 
-<figure><img src="../../.gitbook/assets/ElExit3.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2026-02-11 at 17.01.17.png" alt="" width="347"><figcaption></figcaption></figure>
 
-3. **Transaction Submission:** Once the exit is submitted, a transaction will be sent with `0` as the withdrawal amount. This signals the beacon chain to exit the validator. Once the transaction is processed, validators will enter the `Active Exiting` stage.
+1. **Transaction Submission:** Once the exit is submitted, a transaction will be sent with `0` as the withdrawal amount. This signals the beacon chain to exit the validator. Once the transaction is processed, validators will enter the `Active Exiting` stage.
 
 {% hint style="warning" %}
 **Important:** You must keep the nodes up as validators have only entered the exit queue. Once the exit is processed and there are no more active validators on the node, you can bring the node down.
@@ -66,12 +66,12 @@ In the Launchpad, you can initiate an EL exit using the Exit validator button in
 <figure><img src="../../.gitbook/assets/ElExit6.png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="danger" %}
-🚨 **Crucial Warning:** You **must** distribute any existing undistributed rewards *before* the exit process finishes. If you do not perform this distribution beforehand, the exiting principal amount will be combined with the remaining rewards upon completion. This combined value will then incorrectly exceed the principal distribution threshold, which will cause the rewards to be mistakenly sent to the principal recipient when you initiate the final distribution.
+🚨 **Crucial Warning:** You **must** distribute any existing undistributed rewards _before_ the exit process finishes. If you do not perform this distribution beforehand, the exiting principal amount will be combined with the remaining rewards upon completion. This combined value will then incorrectly exceed the principal distribution threshold, which will cause the rewards to be mistakenly sent to the principal recipient when you initiate the final distribution.
 
-For more information on distribution, see the [Distribution guide](./distribute-rewards.md).
+For more information on distribution, see the [Distribution guide](distribute-rewards.md).
 {% endhint %}
 
----
+***
 
 ## Exit via Validator Keys (Traditional Method)
 
@@ -89,7 +89,7 @@ Choose the correct combination of:
 {% tab title="Charon" %}
 Voluntary exit can be submitted directly through Charon. This approach is validator client agnostic as Charon abstracts validator client's native exit commands underneath.
 
-#### Step 1: Submit partial exit <a href="#introduction" id="introduction"></a>
+**Step 1: Submit partial exit**
 
 {% tabs %}
 {% tab title="Single Validator" %}
@@ -521,7 +521,7 @@ Once a validator has broadcasted an exit message, it must continue to validate f
 {% endtab %}
 
 {% tab title="DappNode" %}
-#### Exit a distributed validator using DappNode
+**Exit a distributed validator using DappNode**
 
 1.  Navigate to the config tab of your Obol DappNode package. Click 'Packages', then click 'My Packages', and enter the Obol package. Go to the config tab. At the bottom right corner of the page, click on 'Show Advanced Editor'.
 
@@ -946,7 +946,7 @@ Currently voluntary exits through Prysm are not supported. This is because [Prys
 {% endtab %}
 
 {% tab title="DappNode" %}
-#### Exit a distributed validator using DappNode
+**Exit a distributed validator using DappNode**
 
 1.  Navigate to the config tab of your Obol DappNode package. Click 'Packages', then click 'My Packages', and enter the Obol package. Go to the config tab. At the bottom right corner of the page, click on 'Show Advanced Editor'.
 
