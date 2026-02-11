@@ -46,11 +46,11 @@ The last step in your DappNode setup is to add your Monitoring Credentials. This
     ```
     obol20tnt8UC...
     ```
-2.  Navigate to your Obol package in DappNode and go to the Config tab.\\
+2.  Navigate to your Obol package in DappNode and go to the Config tab.
 
     <figure><img src="../../.gitbook/assets/image (85).png" alt=""><figcaption></figcaption></figure>
 3. At the bottom of the page, add the credential token under **Prometheus Monitoring Credentials (optional)**, then click the **Update** button.
-4.  Return to the **Info** tab, scroll down to the Containers section, and click the down arrow to view all container statuses. If the Prometheus container is stopped, please restart it.\\
+4.  Return to the **Info** tab, scroll down to the Containers section, and click the down arrow to view all container statuses. If the Prometheus container is stopped, please restart it.
 
     <figure><img src="../../.gitbook/assets/image (86).png" alt=""><figcaption></figcaption></figure>
 {% endtab %}

@@ -2,14 +2,19 @@
 
 ### Introduction <a href="#introduction" id="introduction"></a>
 
-Users looking to exit staking entirely and withdraw their full balance back must sign and broadcast a "voluntary exit" message with validator keys which will start the process of exiting from staking. In the case of a DV, Charon nodes need to broadcast a partial exit to the other nodes of the cluster. Once a threshold of partial exits has been received by any node, the full voluntary exit will be sent to the beacon chain. This process will take 27 hours or longer depending on the current length of the exit queue. Once the validator is exited, the principal plus unclaimed rewards will go to the withdrawal address of the validator. Depending on the cluster's withdrawal configuration, users can claim their proportion of principal and rewards.
+Users looking to exit staking entirely and withdraw their full balance back have two options:
 
-There are two ways to sign the partial exit and broadcast the full exit. Both the solutions don't require gas.
+1. **Exit via Withdrawal Address (Recommended for Post-Pectra):** If your cluster's withdrawal address is an EOA or OVM, you can trigger an EL exit directly from the Launchpad without needing validator keys or operator coordination. This is the simplest method and is described in the [Exit via Withdrawal Address](#exit-via-withdrawal-address-post-pectra) section below.
 
-1. **Using the Charon’s exit solution** - It is an Obol hosted solution which is facilitated by Obol APIs. It provides several benefits such as signing partial exits for multiple validators at once, live monitoring of partial exits status via launchpad and ability to download partial exits and broadcast them later as required. Users don’t have to worry about the intricacies of validator clients. Charon Exit abstracts all the complexity.
-2. **Using the Validator Clients directly** - Users can also directly use the validator client that is connected to your Charon client to submit partial exits, as the client only signs a partial exit message using its share of the private key. Charon will combine the partial exit messages from the other operators. Once the threshold is reached, they are submitted to the beacon node. All of this is usually wrapped under a single command and hence users cannot download full exit signatures for broadcasting it later. In this case, users cannot use launchpad to monitor exit status and will have to use grafana to query the partial exit status.
+2. **Exit via Validator Keys (Traditional Method):** This method requires signing and broadcasting a "voluntary exit" message with validator keys. In the case of a DV, Charon nodes need to broadcast a partial exit to the other nodes of the cluster. Once a threshold of partial exits has been received by any node, the full voluntary exit will be sent to the beacon chain. This process will take 27 hours or longer depending on the current length of the exit queue. Once the validator is exited, the principal plus unclaimed rewards will go to the withdrawal address of the validator. Depending on the cluster's withdrawal configuration, users can claim their proportion of principal and rewards.
+
+For the traditional validator key-based method, there are two ways to sign the partial exit and broadcast the full exit. Neither solution requires gas:
+
+1. **Using Charon's exit solution** - It is an Obol hosted solution which is facilitated by Obol APIs. It provides several benefits such as signing partial exits for multiple validators at once, live monitoring of partial exits status via Launchpad and ability to download partial exits and broadcast them later as required. Users don't have to worry about the intricacies of validator clients. Charon Exit abstracts all the complexity.
+2. **Using the Validator Clients directly** - Users can also directly use the validator client that is connected to your Charon client to submit partial exits, as the client only signs a partial exit message using its share of the private key. Charon will combine the partial exit messages from the other operators. Once the threshold is reached, they are submitted to the beacon node. All of this is usually wrapped under a single command and hence users cannot download full exit signatures for broadcasting it later. In this case, users cannot use Launchpad to monitor exit status and will have to use Grafana to query the partial exit status.
 
 {% hint style="info" %}
+**For the traditional validator key-based exit method:**
 * A threshold of operators need to run the exit command for the exit to succeed. This is the same threshold as is specified during cluster creation.
 * **Ensure that all operators within a cluster consistently use either the hosted solution (Charon Exit) or the non-hosted solution (Validator Client Exit). Mixing both solutions within the same cluster—where some operators use Charon Exit while others use Validator Client Exit—is not allowed.**
 * In case of validator client native exits, partial exits can be broadcast by any validator client as long as the threshold for the cluster is reached.
@@ -17,11 +22,66 @@ There are two ways to sign the partial exit and broadcast the full exit. Both th
 * All operators need to use the same `EXIT_EPOCH` for the exit to be successful. Assuming you want to exit as soon as possible, the default epochs included in the below commands should be sufficient for the respective network.
 {% endhint %}
 
-As per your preferences, choose the correct combination of -
+---
+
+## Exit via Withdrawal Address (Post-Pectra)
+
+Post-Pectra fork, withdrawal addresses of validators can trigger an EL (Execution Layer) exit directly. This method allows the withdrawal address (EOA or OVM) to initiate exits without requiring validator keys or coordination between operators. This is an alternative to the validator key-based exit methods described below.
+
+{% hint style="info" %}
+**When to use this method:** If your cluster's withdrawal address is an EOA or OVM, you can use this simpler method to exit validators directly from the Launchpad, without needing to coordinate with other operators or use validator keys.
+{% endhint %}
+
+### How to Trigger an EL Exit
+
+In the Launchpad, you can initiate an EL exit using the Exit validator button in the actions column of the validators table. To trigger an EL exit, you must meet one of the following conditions:
+
+- **Connected with the withdrawal address:** If the withdrawal address is an EOA (Externally Owned Account), you must be connected with that EOA wallet.
+- **Have WITHDRAWAL_ROLE:** If the withdrawal address of the validator is an OVM, you must have `WITHDRAWAL_ROLE` in that OVM. Read more about how to assign roles [here](../../advanced-and-troubleshooting/advanced/assign-ovm-roles.md).
+
+<figure><img src="../../.gitbook/assets/ElExit1.png" alt=""><figcaption></figcaption></figure>
+
+### Step-by-Step Process
+
+1. **Initiate Exit:** Upon clicking the Exit validator button, you can multi-select the active validators you would like to exit. In the example below, there is only one active validator, so only one can be selected for the exit.
+
+<figure><img src="../../.gitbook/assets/ElExit2.png" alt=""><figcaption></figcaption></figure>
+
+2. **Review and Confirm:** You will see a confirmation page showing the validators that will be exited. If you are sending exits via EOA, it will require exiting validators one by one. In the future, we will use EIP-7702 to perform a single-click exit for all validators.
+
+<figure><img src="../../.gitbook/assets/ElExit3.png" alt=""><figcaption></figcaption></figure>
+
+3. **Transaction Submission:** Once the exit is submitted, a transaction will be sent with `0` as the withdrawal amount. This signals the beacon chain to exit the validator. Once the transaction is processed, validators will enter the `Active Exiting` stage.
+
+{% hint style="warning" %}
+**Important:** You must keep the nodes up as validators have only entered the exit queue. Once the exit is processed and there are no more active validators on the node, you can bring the node down.
+{% endhint %}
+
+4. **Exit Completion:** After the exit is complete, the total balance will be sent to the OVM after the required on-chain withdrawal sweep has finished. At this point, you can distribute the principal and rewards, which are then claimed via the operator page.
+
+<figure><img src="../../.gitbook/assets/ElExit4.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/ElExit5.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/ElExit6.png" alt=""><figcaption></figcaption></figure>
+
+{% hint style="danger" %}
+🚨 **Crucial Warning:** You **must** distribute any existing undistributed rewards *before* the exit process finishes. If you do not perform this distribution beforehand, the exiting principal amount will be combined with the remaining rewards upon completion. This combined value will then incorrectly exceed the principal distribution threshold, which will cause the rewards to be mistakenly sent to the principal recipient when you initiate the final distribution.
+
+For more information on distribution, see the [Distribution guide](./distribute-rewards.md).
+{% endhint %}
+
+---
+
+## Exit via Validator Keys (Traditional Method)
+
+The following sections describe the traditional method of exiting validators using validator keys, which requires coordination between operators in the cluster.
+
+Choose the correct combination of:
 
 1. **Network** : Mainnet or Hoodi
 2. **Exit Type** : Hosted (Charon) or Non-hosted (Validator client)
-3. **Validator Quanity**: Exit single or Exit all validators:
+3. **Validator Quantity**: Exit single or Exit all validators:
 
 {% tabs %}
 {% tab title="Hoodi" %}
@@ -59,16 +119,16 @@ docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon ex
 
 **Step 2: Monitor the Partial Exits' status**
 
-After a threshold of signed partial exits from node operators in the cluster is accumulated, a full (complete) exit can be created. For example, in the cluster below, only 2 out of 4 clusters have reached the threshold. Operators will have to wait for one more partial exit signature, either from operator 1 or 3 to create a full exit message.\\
+After a threshold of signed partial exits from node operators in the cluster is accumulated, a full (complete) exit can be created. For example, in the cluster below, only 2 out of 4 clusters have reached the threshold. Operators will have to wait for one more partial exit signature, either from operator 1 or 3 to create a full exit message.
 
 <figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 **Step 3: Broadcast the full exit**
 
-Once the partial exit threshold is reached, a full exit can be broadcasted from any of the operator. There are two options to do it, depending on your use-case
+Once the partial exit threshold is reached, a full exit can be broadcasted from any of the operators. There are two options to do it, depending on your use-case
 
-1. **Fetch the full exit and broadcast instantaneously (Broadcast directly )** - users can choose it for a single validator or all validators in the cluster.
-2. **Fetch the full exit and broadcast it later(Fetch & Broadcast later )** - users can choose it for a single validator or all validators in the cluster.
+1. **Fetch the full exit and broadcast instantaneously (Broadcast directly)** - users can choose it for a single validator or all validators in the cluster.
+2. **Fetch the full exit and broadcast it later(Fetch & Broadcast later)** - users can choose it for a single validator or all validators in the cluster.
 
 {% tabs %}
 {% tab title="Broadcast directly" %}
@@ -191,26 +251,23 @@ docker exec -it charon-distributed-validator-node-teku-1 /opt/teku/bin/teku volu
 
 Consult the examples below and compare them to your validator's monitoring to verify that exits from each operator in the cluster are being received. This example is a cluster of 4 nodes with 2 validators and threshold of 3 nodes broadcasting exits are needed.
 
-1.  Operator 1 broadcasts an exit on validator client 1.\
-    \\
+1.  Operator 1 broadcasts an exit on validator client 1.
 
     <figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
-2.  Operator 2 broadcasts an exit on validator client 2.\
-    \\
+2.  Operator 2 broadcasts an exit on validator client 2.
 
     <figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
-3.  Operator 3 broadcasts an exit on validator client 3.\
-    \\
+3.  Operator 3 broadcasts an exit on validator client 3.
 
     <figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
-At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following: \\
+At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
 <figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
@@ -288,26 +345,23 @@ Once a validator has broadcasted an exit message, it must continue to validate f
 
 Consult the examples below and compare them to your validator's monitoring to verify that exits from each operator in the cluster are being received. This example is a cluster of 4 nodes with 2 validators and threshold of 3 nodes broadcasting exits are needed.
 
-1.  Operator 1 broadcasts an exit on validator client 1.\
-    \\
+1.  Operator 1 broadcasts an exit on validator client 1.
 
     <figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
-2.  Operator 2 broadcasts an exit on validator client 2.\
-    \\
+2.  Operator 2 broadcasts an exit on validator client 2.
 
     <figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
-3.  Operator 3 broadcasts an exit on validator client 3.\
-    \\
+3.  Operator 3 broadcasts an exit on validator client 3.
 
     <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
-At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following: \\
+At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
 <figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
@@ -354,17 +408,17 @@ docker exec -it charon-distributed-validator-node-lodestar-1 node /usr/app/packa
 
 Consult the examples below and compare them to your validator's monitoring to verify that exits from each operator in the cluster are being received. This example is a cluster of 4 nodes with 2 validators and threshold of 3 nodes broadcasting exits are needed.
 
-1.  Operator 1 broadcasts an exit on validator client 1.\\
+1.  Operator 1 broadcasts an exit on validator client 1.
 
     <figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
-2.  Operator 2 broadcasts an exit on validator client 2. \\
+2.  Operator 2 broadcasts an exit on validator client 2.
 
     <figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
-3.  Operator 3 broadcasts an exit on validator client 3. \\
+3.  Operator 3 broadcasts an exit on validator client 3.
 
     <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
@@ -383,7 +437,7 @@ Once a validator has broadcasted an exit message, it must continue to validate f
 **Step 1: Submit partial exit**
 
 {% hint style="info" %}
-Lighthouse VC cannot perform an exit for custom epoch and always uses the current one. This means you should coordinate your efforts between cluster peers, in order to sign the same payload. If you sign exit messages in different epochs, signatures will not be aggregated as they will missmatch and new signing of exit messages needs to be done.
+Lighthouse VC cannot perform an exit for custom epoch and always uses the current one. This means you should coordinate your efforts between cluster peers, in order to sign the same payload. If you sign exit messages in different epochs, signatures will not be aggregated as they will mismatch and new signing of exit messages needs to be done.
 {% endhint %}
 
 {% tabs %}
@@ -404,7 +458,7 @@ lighthouse account validator exit \
     --no-wait;'
 ```
 
-Replace `<N>` with the keystore index. Keystore indeces can be found in `.charon/validator_keys/`. Each JSON file has a `pubkey` field corresponding to the partial pubkey. To which full pubkey this partial pubkey corresponds (as visible in Ethereum), can be looked up in the `.charon/cluster-lock.json`, under `distributed_validators` field.
+Replace `<N>` with the keystore index. Keystore indices can be found in `.charon/validator_keys/`. Each JSON file has a `pubkey` field corresponding to the partial pubkey. To which full pubkey this partial pubkey corresponds (as visible in Ethereum), can be looked up in the `.charon/cluster-lock.json`, under `distributed_validators` field.
 {% endtab %}
 
 {% tab title="All Validators" %}
@@ -433,17 +487,17 @@ done;'
 
 Consult the examples below and compare them to your validator's monitoring to verify that exits from each operator in the cluster are being received. This example is a cluster of 4 nodes with 2 validators and threshold of 3 nodes broadcasting exits are needed.
 
-1.  Operator 1 broadcasts an exit on validator client 1.\\
+1.  Operator 1 broadcasts an exit on validator client 1.
 
     <figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
-2.  Operator 2 broadcasts an exit on validator client 2. \\
+2.  Operator 2 broadcasts an exit on validator client 2.
 
     <figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
-3.  Operator 3 broadcasts an exit on validator client 3. \\
+3.  Operator 3 broadcasts an exit on validator client 3.
 
     <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
