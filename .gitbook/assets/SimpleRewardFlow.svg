@@ -1,0 +1,61 @@
+<svg height="514" width="1000" xmlns="http://www.w3.org/2000/svg">
+<title>Your Diagram Title</title>
+<!-- Generated with SankeyMATIC: 5/2/2026, 19:41:35 -->
+<rect height="514" width="1000" fill="#2d4349"></rect>
+<g transform="translate(153.24467,8)">
+<g id="sankey_flows">
+<path id="flow1" d="M25 307.10344C172.47229 307.10344 76.81459 298.17675 224.28688 298.17675" fill="none" stroke-width="107.18222" stroke="#2fe4ab" opacity="0.45"><title>Stake → OVM: 32.0</title></path>
+<path id="flow3" d="M249.28688 244.58564v107.18222L672.86064 350.03015v-107.18222z" fill="#2fe4ab" stroke-width="0.5" stroke="#2fe4ab" opacity="0.45"><title>OVM → Capital Allocator: 32.0</title></path>
+<path id="flow5" d="M473.57376 143.08935C621.04605 143.08935 525.38835 236.81893 672.86064 236.81893" fill="none" stroke-width="12.058" stroke="#2fe4ab" opacity="0.45"><title>Reward Splitter → Capital Allocator: 3.6</title></path>
+<path id="flow0" d="M25 144.34346C172.47229 144.34346 76.81459 239.56147 224.28688 239.56147" fill="none" stroke-width="10.04833" stroke="#2fe4ab" opacity="0.45"><title>Staking Rewards → OVM: 3.0</title></path>
+<path id="flow4" d="M249.28688 239.56147C396.75917 239.56147 301.10147 144.09418 448.57376 144.09418" fill="none" stroke-width="10.04833" stroke="#2fe4ab" opacity="0.45"><title>OVM → Reward Splitter: 3.0</title></path>
+<path id="flow2" d="M249.28688 128.71789C396.75917 128.71789 301.10147 137.3953 448.57376 137.3953" fill="none" stroke-width="3.34944" stroke="#2fe4ab" opacity="0.45"><title>MEV Rewards → Reward Splitter: 1.0</title></path>
+<path id="flow6" d="M473.57376 136.39046C621.04605 136.39046 525.38835 125.97534 672.86064 125.97534" fill="none" stroke-width="1.33978" stroke="#2fe4ab" opacity="0.45"><title>Reward Splitter → Fees: 0.4</title></path>
+</g>
+<g id="sankey_nodes">
+<g class="node">
+<rect id="r0" class="for_r0" x="0" y="139.3193" height="10.04833" width="25" fill="#2fe4ab" fill-opacity="1"><title>Staking Rewards:
+3.0</title></rect>
+</g>
+<g class="node">
+<rect id="r1" class="for_r1" x="224.28688" y="234.53731" height="117.23056" width="25" fill="#2fe4ab" fill-opacity="1"><title>OVM:
+35.0</title></rect>
+</g>
+<g class="node">
+<rect id="r2" class="for_r2" x="0" y="253.51233" height="107.18222" width="25" fill="#2fe4ab" fill-opacity="1"><title>Stake:
+32.0</title></rect>
+</g>
+<g class="node">
+<rect id="r3" class="for_r3" x="224.28688" y="127.04316" height="3.34944" width="25" fill="#2fe4ab" fill-opacity="1"><title>MEV Rewards:
+1.0</title></rect>
+</g>
+<g class="node">
+<rect id="r4" class="for_r4" x="448.57376" y="135.72057" height="13.39778" width="25" fill="#2fe4ab" fill-opacity="1"><title>Reward Splitter:
+4.0</title></rect>
+</g>
+<g class="node">
+<rect id="r5" class="for_r5" x="672.86064" y="230.78993" height="119.24022" width="25" fill="#2fe4ab" fill-opacity="1"><title>Capital Allocator:
+35.6</title></rect>
+</g>
+<g class="node">
+<rect id="r6" class="for_r6" x="672.86064" y="125.30545" height="1.33978" width="25" fill="#2fe4ab" fill-opacity="1"><title>Fees:
+0.4</title></rect>
+</g>
+</g>
+<g id="sankey_labels" font-family="sans-serif" font-size="25px" fill="#000000">
+<rect id="label0_bg" class="for_r0" x="-139.978" y="112.14262" width="137.97334" height="62.55165" rx="6.25" fill="#fff" fill-opacity="0.55" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label0" class="for_r0" text-anchor="end" x="-11.44967" y="144.34346" font-weight="400" font-size="15.75px" dy="-11.26584">Staking Rewards<tspan x="-11.44967" dy="29.625" font-weight="400" font-size="34.25px">3.0</tspan></text>
+<rect id="label1_bg" class="for_r1" x="251.29155" y="260.95176" width="85.55665" height="62.55166" rx="6.25" fill="#fff" fill-opacity="0.55" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label1" class="for_r1" text-anchor="start" x="260.73655" y="293.15259" font-weight="400" font-size="15.75px" dy="-11.26584">OVM<tspan x="260.73655" dy="29.625" font-weight="400" font-size="34.25px">35.0</tspan></text>
+<rect id="label2_bg" class="for_r2" x="-87.56134" y="274.90263" width="85.55666" height="62.55166" rx="6.25" fill="#fff" fill-opacity="0.55" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label2" class="for_r2" text-anchor="end" x="-11.44967" y="307.10344" font-weight="400" font-size="15.75px" dy="-11.26584">Stake<tspan x="-11.44967" dy="29.625" font-weight="400" font-size="34.25px">32.0</tspan></text>
+<rect id="label3_bg" class="for_r3" x="102.74221" y="96.51706" width="119.54001" height="62.55167" rx="6.25" fill="#fff" fill-opacity="0.55" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label3" class="for_r3" text-anchor="end" x="212.83721" y="128.71789" font-weight="400" font-size="15.75px" dy="-11.26584">MEV Rewards<tspan x="212.83721" dy="29.625" font-weight="400" font-size="34.25px">1.0</tspan></text>
+<rect id="label4_bg" class="for_r4" x="475.57844" y="110.21863" width="126.60667" height="62.55165" rx="6.25" fill="#fff" fill-opacity="0.55" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label4" class="for_r4" text-anchor="start" x="485.02343" y="142.41946" font-weight="400" font-size="15.75px" dy="-11.26584">Reward Splitter<tspan x="485.02343" dy="29.625" font-weight="400" font-size="34.25px">4.0</tspan></text>
+<rect id="label5_bg" class="for_r5" x="699.86531" y="258.20921" width="133.62333" height="62.55166" rx="6.25" fill="#fff" fill-opacity="0.55" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label5" class="for_r5" text-anchor="start" x="709.3103" y="290.41004" font-weight="400" font-size="15.75px" dy="-11.26584">Capital Allocator<tspan x="709.3103" dy="29.625" font-weight="400" font-size="34.25px">35.6</tspan></text>
+<rect id="label6_bg" class="for_r6" x="699.86531" y="93.77451" width="66.50669" height="62.55167" rx="6.25" fill="#fff" fill-opacity="0.55" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label6" class="for_r6" text-anchor="start" x="709.3103" y="125.97534" font-weight="400" font-size="15.75px" dy="-11.26584">Fees<tspan x="709.3103" dy="29.625" font-weight="400" font-size="34.25px">0.4</tspan></text>
+</g>
+</g></svg>
