@@ -3,6 +3,7 @@
 ## Learn
 
 * [Introduction](README.md)
+  * [Learn About Obol](learn/introduction/learn-about-obol/README.md)
   * [Obol Collective](learn/intro/obol-collective.md)
   * [OBOL Incentives](learn/intro/obol-incentives.md)
   * [Key Staking Concepts](learn/intro/key-concepts.md)

@@ -32,7 +32,7 @@ Whether you’re here to learn about DVT, integrate it into your staking stack, 
     <tr>
       <td><strong>Learn About Obol</strong></td>
       <td>Start here to understand DVT, how Charon (our middleware) works, and why distributed validators are fundamental to Ethereums future.</td>
-      <td><a href="learn/charon/intro.md">Learn About Obol</a></td>
+      <td><a href="learn/introduction/learn-about-obol/README.md">Learn About Obol</a></td>
       <td><a href=".gitbook/assets/cards/open_book.png">open_book.png</a></td>
     </tr>
   </tbody>
