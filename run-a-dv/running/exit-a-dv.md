@@ -8,10 +8,10 @@ Users looking to exit staking entirely and withdraw their full balance back have
 
 2. **Exit via Validator Keys (Traditional Method):** This method requires signing and broadcasting a "voluntary exit" message with validator keys. In the case of a DV, Charon nodes need to broadcast a partial exit to the other nodes of the cluster. Once a threshold of partial exits has been received by any node, the full voluntary exit will be sent to the beacon chain. This process will take 27 hours or longer depending on the current length of the exit queue. Once the validator is exited, the principal plus unclaimed rewards will go to the withdrawal address of the validator. Depending on the cluster's withdrawal configuration, users can claim their proportion of principal and rewards.
 
-For the traditional validator key-based method, there are two ways to sign the partial exit and broadcast the full exit. Both solutions don't require gas:
+For the traditional validator key-based method, there are two ways to sign the partial exit and broadcast the full exit. Neither solution requires gas:
 
-1. **Using the Charon's exit solution** - It is an Obol hosted solution which is facilitated by Obol APIs. It provides several benefits such as signing partial exits for multiple validators at once, live monitoring of partial exits status via launchpad and ability to download partial exits and broadcast them later as required. Users don't have to worry about the intricacies of validator clients. Charon Exit abstracts all the complexity.
-2. **Using the Validator Clients directly** - Users can also directly use the validator client that is connected to your Charon client to submit partial exits, as the client only signs a partial exit message using its share of the private key. Charon will combine the partial exit messages from the other operators. Once the threshold is reached, they are submitted to the beacon node. All of this is usually wrapped under a single command and hence users cannot download full exit signatures for broadcasting it later. In this case, users cannot use launchpad to monitor exit status and will have to use grafana to query the partial exit status.
+1. **Using Charon's exit solution** - It is an Obol hosted solution which is facilitated by Obol APIs. It provides several benefits such as signing partial exits for multiple validators at once, live monitoring of partial exits status via Launchpad and ability to download partial exits and broadcast them later as required. Users don't have to worry about the intricacies of validator clients. Charon Exit abstracts all the complexity.
+2. **Using the Validator Clients directly** - Users can also directly use the validator client that is connected to your Charon client to submit partial exits, as the client only signs a partial exit message using its share of the private key. Charon will combine the partial exit messages from the other operators. Once the threshold is reached, they are submitted to the beacon node. All of this is usually wrapped under a single command and hence users cannot download full exit signatures for broadcasting it later. In this case, users cannot use Launchpad to monitor exit status and will have to use Grafana to query the partial exit status.
 
 {% hint style="info" %}
 **For the traditional validator key-based exit method:**
@@ -34,7 +34,7 @@ Post-Pectra fork, withdrawal addresses of validators can trigger an EL (Executio
 
 ### How to Trigger an EL Exit
 
-In the Launchpad, you can initiate an EL exit using the exit validator button in the actions column of the validators table. To trigger an EL exit, you must meet one of the following conditions:
+In the Launchpad, you can initiate an EL exit using the Exit validator button in the actions column of the validators table. To trigger an EL exit, you must meet one of the following conditions:
 
 - **Connected with the withdrawal address:** If the withdrawal address is an EOA (Externally Owned Account), you must be connected with that EOA wallet.
 - **Have WITHDRAWAL_ROLE:** If the withdrawal address of the validator is an OVM, you must have `WITHDRAWAL_ROLE` in that OVM. Read more about how to assign roles [here](../../advanced-and-troubleshooting/advanced/assign-ovm-roles.md).
@@ -43,7 +43,7 @@ In the Launchpad, you can initiate an EL exit using the exit validator button in
 
 ### Step-by-Step Process
 
-1. **Initiate Exit:** Upon clicking the exit validator button, you can multi-select the active validators you would like to exit. In the example below, there is only one active validator, so only one can be selected for the exit.
+1. **Initiate Exit:** Upon clicking the Exit validator button, you can multi-select the active validators you would like to exit. In the example below, there is only one active validator, so only one can be selected for the exit.
 
 <figure><img src="../../.gitbook/assets/ElExit2.png" alt=""><figcaption></figcaption></figure>
 
@@ -51,10 +51,10 @@ In the Launchpad, you can initiate an EL exit using the exit validator button in
 
 <figure><img src="../../.gitbook/assets/ElExit3.png" alt=""><figcaption></figcaption></figure>
 
-3. **Transaction Submission:** Once exit is submitted, a transaction will be sent with `0` as withdrawal amount. This signals the beacon chain to exit the validator. Once the transaction is processed, validators will enter the `Active Exiting` stage.
+3. **Transaction Submission:** Once the exit is submitted, a transaction will be sent with `0` as the withdrawal amount. This signals the beacon chain to exit the validator. Once the transaction is processed, validators will enter the `Active Exiting` stage.
 
 {% hint style="warning" %}
-**Important:** You must keep the nodes up as validators have only entered the exit queue right now. Once the exit is processed and there are no more active validators on the node, you can bring the node down.
+**Important:** You must keep the nodes up as validators have only entered the exit queue. Once the exit is processed and there are no more active validators on the node, you can bring the node down.
 {% endhint %}
 
 4. **Exit Completion:** After the exit is complete, the total balance will be sent to the OVM after the required on-chain withdrawal sweep has finished. At this point, you can distribute the principal and rewards, which are then claimed via the operator page.
@@ -77,11 +77,11 @@ For more information on distribution, see the [Distribution guide](./distribute-
 
 The following sections describe the traditional method of exiting validators using validator keys, which requires coordination between operators in the cluster.
 
-As per your preferences, choose the correct combination of -
+Choose the correct combination of:
 
 1. **Network** : Mainnet or Hoodi
 2. **Exit Type** : Hosted (Charon) or Non-hosted (Validator client)
-3. **Validator Quanity**: Exit single or Exit all validators:
+3. **Validator Quantity**: Exit single or Exit all validators:
 
 {% tabs %}
 {% tab title="Hoodi" %}
@@ -125,10 +125,10 @@ After a threshold of signed partial exits from node operators in the cluster is 
 
 **Step 3: Broadcast the full exit**
 
-Once the partial exit threshold is reached, a full exit can be broadcasted from any of the operator. There are two options to do it, depending on your use-case
+Once the partial exit threshold is reached, a full exit can be broadcasted from any of the operators. There are two options to do it, depending on your use-case
 
-1. **Fetch the full exit and broadcast instantaneously (Broadcast directly )** - users can choose it for a single validator or all validators in the cluster.
-2. **Fetch the full exit and broadcast it later(Fetch & Broadcast later )** - users can choose it for a single validator or all validators in the cluster.
+1. **Fetch the full exit and broadcast instantaneously (Broadcast directly)** - users can choose it for a single validator or all validators in the cluster.
+2. **Fetch the full exit and broadcast it later(Fetch & Broadcast later)** - users can choose it for a single validator or all validators in the cluster.
 
 {% tabs %}
 {% tab title="Broadcast directly" %}
@@ -437,7 +437,7 @@ Once a validator has broadcasted an exit message, it must continue to validate f
 **Step 1: Submit partial exit**
 
 {% hint style="info" %}
-Lighthouse VC cannot perform an exit for custom epoch and always uses the current one. This means you should coordinate your efforts between cluster peers, in order to sign the same payload. If you sign exit messages in different epochs, signatures will not be aggregated as they will missmatch and new signing of exit messages needs to be done.
+Lighthouse VC cannot perform an exit for custom epoch and always uses the current one. This means you should coordinate your efforts between cluster peers, in order to sign the same payload. If you sign exit messages in different epochs, signatures will not be aggregated as they will mismatch and new signing of exit messages needs to be done.
 {% endhint %}
 
 {% tabs %}
@@ -458,7 +458,7 @@ lighthouse account validator exit \
     --no-wait;'
 ```
 
-Replace `<N>` with the keystore index. Keystore indeces can be found in `.charon/validator_keys/`. Each JSON file has a `pubkey` field corresponding to the partial pubkey. To which full pubkey this partial pubkey corresponds (as visible in Ethereum), can be looked up in the `.charon/cluster-lock.json`, under `distributed_validators` field.
+Replace `<N>` with the keystore index. Keystore indices can be found in `.charon/validator_keys/`. Each JSON file has a `pubkey` field corresponding to the partial pubkey. To which full pubkey this partial pubkey corresponds (as visible in Ethereum), can be looked up in the `.charon/cluster-lock.json`, under `distributed_validators` field.
 {% endtab %}
 
 {% tab title="All Validators" %}
