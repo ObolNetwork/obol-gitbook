@@ -41,6 +41,12 @@
   * [Update a DV](run-a-dv/running/update-a-dv.md)
   * [Monitoring Your Node](run-a-dv/running/monitoring.md)
   * [Exit a DV](run-a-dv/running/exit-a-dv.md)
+* [Edit a Cluster](run-a-dv/editing/README.md)
+  * [Adding Validators](run-a-dv/editing/add-validators.md)
+  * [Adding Operators](run-a-dv/editing/add-operators.md)
+  * [Removing Operators](run-a-dv/editing/remove-operators.md)
+  * [Replace an Operator](run-a-dv/editing/replace-operator.md)
+  * [Recreating Private Keys](run-a-dv/editing/recreate-private-keys.md)
 * [Partner Integrations](run-a-dv/integrations/README.md)
   * [Create an EigenLayer DV](run-a-dv/integrations/create-an-eigenlayer-dv.md)
   * [Create a Lido CSM DV](run-a-dv/integrations/lido-csm.md)
@@ -53,11 +59,8 @@
 
 * [Advanced Guides](advanced-and-troubleshooting/advanced/README.md)
   * [Swapping Clients](advanced-and-troubleshooting/advanced/client-swap.md)
-  * [Adding Validators](advanced-and-troubleshooting/advanced/add-validators.md)
-  * [Adding Operators](advanced-and-troubleshooting/advanced/add-operators.md)
-  * [Removing Operators](advanced-and-troubleshooting/advanced/remove-operators.md)
-  * [Replace an Operator](advanced-and-troubleshooting/advanced/replace-operator.md)
-  * [Recreating Private Keys](advanced-and-troubleshooting/advanced/recreate-private-keys.md)
+
+
   * [Operator Rotation](advanced-and-troubleshooting/advanced/operator-rotation.md)
   * [Migrate an Existing Validator](advanced-and-troubleshooting/advanced/quickstart-split.md)
   * [Create a DV Using the SDK](advanced-and-troubleshooting/advanced/create-a-dv-using-the-sdk.md)
