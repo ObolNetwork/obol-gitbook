@@ -14,7 +14,7 @@ Lido V3 introduces **stVaults** — customizable staking vaults that unlock stET
 {% column %}
 {% hint style="info" %}
 **I'm a Node Operator**\
-Show me how to implement a DV-backed stVault.<br>
+Show me how to implement a DV-backed stVault.\
 [Open the Node Operator Guide](lido-v3-stvault-for-node-operator.md)
 {% endhint %}
 {% endcolumn %}
@@ -22,7 +22,7 @@ Show me how to implement a DV-backed stVault.<br>
 {% column %}
 {% hint style="info" %}
 **I'm a Capital Allocator**\
-Why should I use DV as infrastructure for my stVault.<br>
+Why should I use DV as infrastructure for my stVault.\
 [Open the Capital Allocator Guide](lido-v3-stvault-for-capital-allocators.md)
 {% endhint %}
 {% endcolumn %}
@@ -72,7 +72,7 @@ One of Lido V3's key innovations is the **Reserve Ratio (RR)**, which determines
 
 {% stepper %}
 {% step %}
-### For Node Operators – Implementation Guide
+#### For Node Operators – Implementation Guide
 
 A practical guide to designing, deploying, and operating an stVault using Obol DVs, including:
 
@@ -81,11 +81,11 @@ A practical guide to designing, deploying, and operating an stVault using Obol D
 * How to rehearse on testnet and prepare for mainnet launch
 * How this integrates into the Lido V3 stVault flow
 
-👉 **[Read the Node Operator Guide →](lido-v3-stvault-for-node-operator.md)**
+👉 [**Read the Node Operator Guide →**](lido-v3-stvault-for-node-operator.md)
 {% endstep %}
 
 {% step %}
-### For Capital Allocators – Design & Risk Overview
+#### For Capital Allocators – Design & Risk Overview
 
 A higher-level walkthrough of:
 
@@ -94,11 +94,11 @@ A higher-level walkthrough of:
 * How Obol's [**Cluster-as-a-Service**](https://hubs.ly/Q03Y2Srl0) offering can help guide your decisions
 * What to ask from your operators or from Obol directly
 
-👉 **[Read the Capital Allocator Guide →](lido-v3-stvault-for-capital-allocators.md)**
+👉 [**Read the Capital Allocator Guide →**](lido-v3-stvault-for-capital-allocators.md)
 {% endstep %}
 
 {% step %}
-### Support & Services for stVault Builders
+#### Support & Services for stVault Builders
 
 How to:
 
@@ -112,7 +112,6 @@ How to:
 * [**Default risk assessment framework**](https://research.lido.fi/t/default-risk-assessment-framework-and-fees-parameters-for-lido-v3-stvaults/10504) — Explore how Tiers within Identified Node Operators effect the reserve ratio of the vault
 * [**DV Cluster identification and assessment**](https://docs.lido.fi/run-on-lido/stvaults/node-operators-identification/#dvt-cluster-identification-and-assessment) — See the identification requirements for each node operator in a cluster in order to qualify for improved Tiering
 * [**stVaults Doc Center**](https://docs.lido.fi/run-on-lido/stvaults/) — View Lido's comprehensive guides which detail how to create any product powered by stVaults
-
 
 #### Future Extensions
 

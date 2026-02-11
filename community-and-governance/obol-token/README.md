@@ -25,59 +25,12 @@ The following smart contracts power OBOL staking, governance, and reward distrib
 <summary>Governor Contract</summary>
 
 * **Address:** [`0xcB1622185A0c62A80494bEde05Ba95ef29Fbf85c`](https://etherscan.io/address/0xcB1622185A0c62A80494bEde05Ba95ef29Fbf85c)
-
-- **Purpose:** Manages onchain proposal lifecycle and voting logic for Token House governance.
-- **What you can find onchain:**
+* **Purpose:** Manages onchain proposal lifecycle and voting logic for Token House governance.
+* **What you can find onchain:**
   * Voting thresholds
   * Quorum settings,
   * Delay/period configs,
   * Proposal and vote history.
-
-</details>
-
-<details>
-
-<summary>Obol Staker</summary>
-
-* **Address:** [`0x30641013934ec7625c9e73a4D63aab4201004259`](https://etherscan.io/address/0x30641013934ec7625c9e73a4D63aab4201004259)
-
-- **Purpose:** This is the base layer of the Obol staking system. It facilitates the basic mechanics of staking, such as managing deposits, forwarding governance delegation, and streaming rewards based on earning power.
-- **What you can find onchain:**
-  * Total OBOL staked in the contract
-  * Stake, earning power, rewards and balances on a granular, per-deposit basis
-  * Current reward rate and configuration
-  * Contract events (e.g. `Staked`, `Withdrawn`)
-  * Interactions for staking/unstaking
-
-</details>
-
-<details>
-
-<summary>stOBOL (ERC-20 Token Contract)</summary>
-
-* **Address:** [`0x6590cBBCCbE6B83eF3774Ef1904D86A7B02c2fCC`](https://etherscan.io/address/0x6590cBBCCbE6B83eF3774Ef1904D86A7B02c2fCC)
-* **Purpose:** A liquid ERC-20 representation of staked OBOL built on top of the Obol Staker. It adds features like transferability, reward auto compounding, and the ability to use a staked OBOL position in other protocols. Holders retain the ability to delegate their staked tokens to the governance delagate of their choice.
-* **What you can find onchain:**
-  * ERC-20 metadata (name, symbol, decimals)
-  * Total supply and balances
-  * Transfer history
-  * Allowances / approvals
-  * Voting power interface (via `getVotes` and `delegates`)
-  * Event logs for delegation changes
-
-</details>
-
-<details>
-
-<summary>Reward Notifier</summary>
-
-* **Address:** [`0x384dd81047F88eE35DE75DA1149943B8e62d8802`](https://etherscan.io/address/0x384dd81047F88eE35DE75DA1149943B8e62d8802)
-* **Purpose:** Manages the distribution of tokens to the staking contract so they can be streamed as rewards to stakers.
-* **What you can find onchain:**
-  * Current and past reward rate values
-  * Administrative role settings (who can push updates)
-  * Timing/config changes made through proposals
-  * Events like `RewardRateUpdated`
 
 </details>
 
@@ -96,15 +49,33 @@ The following smart contracts power OBOL staking, governance, and reward distrib
 
 </details>
 
+<details>
+
+<summary>Lockup / Unlock Contract (Airdrop Claim NFTs)</summary>
+
+* **Contract name:** ObolLockups
+* **Address:** [0x3b9122704a20946e9cb49b2a8616ccc0f0d61adb](https://etherscan.io/address/0x3b9122704a20946e9cb49b2a8616ccc0f0d61adb)
+* **Network:** Ethereum mainnet
+* **Purpose:** This contract was used during the OBOL airdrop to manage token lockups. Airdrop allocations were issued as **NFT-based lockups**, allowing recipients to claim their tokens and unlock them over time **without a fixed deadline**. The original claiming interface ([claim.obol.org](http://claim.obol.org)) is no longer live. However, the lockups remain fully accessible **onchain**, and users can still unlock their tokens directly via the contract.
+* **How the mechanism works:**
+  * Each airdrop recipient received an NFT representing a locked OBOL allocation.
+  * The NFT encodes the lockup parameters.
+  * Tokens can be unlocked by calling the unlock function on the contract once the conditions are met.
+* **What you can find onchain:**
+  * NFT ownership (ownerOf)
+  * Lockup parameters
+  * Locked and unlocked token balances
+  * The unlock function used to release available tokens
+  * Administrative parameters related to transferability and global lockups
+* **Important note for users:** If you believe you still have locked OBOL tokens from the airdrop, you can:
+  * Verify that you hold an **ObolLockups NFT** at the address above.
+  * Interact **directly with this contract on Etherscan** to call the unlock function.
+
+For security reasons, users should **only** interact with the contract address listed here and not rely on token or NFT names alone.
+
+</details>
+
 ## Learn more about...
-
-{% content-ref url="token-utility.md" %}
-[token-utility.md](token-utility.md)
-{% endcontent-ref %}
-
-{% content-ref url="staking-and-stobol.md" %}
-[staking-and-stobol.md](staking-and-stobol.md)
-{% endcontent-ref %}
 
 {% content-ref url="token-distribution-and-liquidity.md" %}
 [token-distribution-and-liquidity.md](token-distribution-and-liquidity.md)

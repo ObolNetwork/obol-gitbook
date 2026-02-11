@@ -32,7 +32,7 @@ The replace-operator ceremony performs a one-for-one swap:
 - All **continuing operators** must participate with their existing validator keys
 - All validator public keys remain unchanged
 
-This is different from remove-operators followed by add-operators, as it maintains the cluster size and threshold in a single atomic operation.
+This is more convenient than `remove-operators` followed by `add-operators`, as it maintains the cluster size and threshold in a single atomic operation.
 
 ## Replacing an Operator
 
@@ -42,10 +42,10 @@ All continuing operators and the new operator must run this command. The old ope
 
 ```bash
 # Standard usage
-charon alpha edit replace-operator --old-operator-enr=enr:-JG4QH... --new-operator-enr=enr:-JG4QK... --output-dir=output
+charon alpha edit replace-operator --old-operator-enr=enr:-JG4QH... --new-operator-enr=enr:-JG4QK... 
 
 # Docker version
-docker run --rm -v "$(pwd):/opt/charon" -w "/opt/charon" obolnetwork/charon:latest alpha edit replace-operator --old-operator-enr=enr:-JG4QH... --new-operator-enr=enr:-JG4QK... --output-dir=/opt/charon/output
+docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon" -w "/opt/charon" obolnetwork/charon:latest alpha edit replace-operator --old-operator-enr=enr:-JG4QH... --new-operator-enr=enr:-JG4QK... 
 ```
 
 ### For the New Operator
@@ -57,14 +57,14 @@ The new operator being added should run the same command but only needs to provi
 charon alpha edit replace-operator --old-operator-enr=enr:-JG4QH... --new-operator-enr=enr:-JG4QK... --output-dir=output --lock-file=cluster-lock.json --private-key-file=charon-enr-private-key
 
 # Docker version
-docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:latest alpha edit replace-operator --old-operator-enr=enr:-JG4QH... --new-operator-enr=enr:-JG4QK... --private-key-file=/opt/charon/charon-enr-private-key --lock-file=/opt/charon/cluster-lock.json --output-dir=/opt/charon/output
+docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon" -w "/opt/charon" obolnetwork/charon:latest alpha edit replace-operator --old-operator-enr=enr:-HW4...UVM --new-operator-enr=enr:-HW4QB-SH7cQ....2A0g6y0
 ```
 
 ### For the Old Operator Being Replaced
 
 The old operator **should not participate** in the ceremony. Simply do not run the command.
 
-{% hint style="danger" %}
+{% hint style="warning" %}
 The old operator's ENR and new operator's ENR must be different. The command will fail if they are the same.
 {% endhint %}
 
@@ -72,30 +72,30 @@ The old operator's ENR and new operator's ENR must be different. The command wil
 
 The example below is designed for the [CDVN repository](https://github.com/ObolNetwork/charon-distributed-validator-node), but the process is similar for other setups.
 
+{% hint style="danger" %}
+The old cluster **must be shut down for at least two epochs**. If you're not sure of the epoch boundary, wait 18 minutes from the original cluster going offline until you turn on the modified cluster. **Failure to heed this warning may result in slashing**.
+{% endhint %}
+
 ### For Continuing Operators and New Operator
 
 1. Stop the current Charon and validator client instances:
 
 ```bash
-docker compose stop charon lodestar
+docker compose down
 ```
 
-2. Back up and remove the existing `.charon` directory, then move the `output` directory to `.charon`:
+2. Back up and remove the existing `.charon` directory, then move the `distributed_validator` directory to `.charon`:
 
 ```bash
 mv .charon .charon-backup
-mv output .charon
+mv distributed_validator .charon
 ```
 
-3. Restart the Charon and validator client instances:
+3. Restart the Charon and validator client instances **once at least two epochs of downtime have passed**:
 
 ```bash
-docker compose up -d charon lodestar
+docker compose up -d 
 ```
-
-{% hint style="warning" %}
-All continuing operators must fully shut down their existing cluster nodes before starting with the new configuration. The old cluster must be completely stopped before the new cluster with the replaced operator can begin operating.
-{% endhint %}
 
 ### For the Old Operator Being Replaced
 

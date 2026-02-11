@@ -5,12 +5,12 @@ description: Setup and run a DV within the Lido Community Staking Module
 
 # Create a Lido CSM DV
 
-This is a guide on taking part in Lido's [Community Staking Module](https://operatorportal.lido.fi/modules/community-staking-module) (CSM) with a squad as part of a [Distributed Validator Cluster](../../learn/intro/key-concepts.md#distributed-validator-cluster).
+This is a guide on taking part in Lido's [Community Staking Module](https://lido.fi/csm) (CSM) with a squad as part of a [Distributed Validator Cluster](../../learn/intro/key-concepts.md#distributed-validator-cluster).
 
 To start, this guide makes a couple assumptions:
 
 1. You're running a Linux distribution and you've installed [Git](https://git-scm.com/downloads) and [Docker](https://docs.docker.com/engine/install/) (as a [non-root user](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)).
-2. You will be deploying on Ethereum mainnet. Some screenshots in this guide are from Holesky just for demonstration purposes, so please verify you are using the correct [mainnet addresses](https://operatorportal.lido.fi/modules/community-staking-module#block-d8e94f551b2e47029a54e6cedea914a7).
+2. You will be deploying on Ethereum mainnet. Some screenshots in this guide are from the deprecated Holesky testnet (use Hoodi for testing from now on) just for demonstration purposes, so please verify you are using the correct [mainnet addresses](https://operatorportal.lido.fi/modules/community-staking-module#block-d8e94f551b2e47029a54e6cedea914a7).
 
 ## Getting started
 
