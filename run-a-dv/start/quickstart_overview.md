@@ -15,7 +15,7 @@ There are two ways to set up a distributed validator and each comes with its own
 
 If you want to integrate DVs but are not a node operator yourself, Obol offers **Cluster as a Service (CaaS)**: distributed validators operate deep in the staking stack and are compatible with different staking strategies, and with CaaS you can select your strategy, choose your node operators, and deploy and monitor clusters with confidence.
 
-* [Read the Cluster as a Service offering](../../context/Cluster+as+a+Service.pdf)
+* [Read the Cluster as a Service offering](https://hubs.ly/Q03Y2Srl0)
 * [Contact us](mailto:business@obol.tech)
 
 ## Need assistance?
