@@ -19,7 +19,6 @@ Currently supported networks:
 | Network | Description |
 | --- | --- |
 | **ethereum** | Full Ethereum node (execution + consensus clients) |
-| **helios** | Ethereum light client for RPC access |
 | **aztec** | Aztec Layer 2 sequencer node |
 
 ## Network installation workflow
@@ -40,7 +39,7 @@ obol network install <network> [flags]
 This creates a deployment directory at `~/.config/obol/networks/<network>/<id>/` containing:
 
 * `values.yaml` - Configuration values (editable)
-* `helmfile.yaml.gotmpl` - Deployment definition
+* `helmfile.yaml` - Deployment definition
 
 ### Sync command
 
@@ -67,7 +66,7 @@ Deploy a full Ethereum node with configurable execution and consensus clients.
 | Flag | Description | Options | Default |
 | --- | --- | --- | --- |
 | `--id` | Deployment identifier | Any string | Auto-generated |
-| `--network` | Ethereum network | mainnet, sepolia, hoodi | mainnet |
+| `--network` | Ethereum network | mainnet, hoodi | mainnet |
 | `--execution-client` | Execution layer client | reth, geth, nethermind, besu, erigon, ethereumjs | reth |
 | `--consensus-client` | Consensus layer client | lighthouse, prysm, teku, nimbus, lodestar, grandine | lighthouse |
 
@@ -90,14 +89,12 @@ obol network sync ethereum/knowing-wahoo
 Deploy a mainnet node with Geth and Prysm:
 
 ```shell
-# Install with specific clients
 obol network install ethereum \
   --id=mainnet-prod \
   --network=mainnet \
   --execution-client=geth \
   --consensus-client=prysm
 
-# Deploy to cluster
 obol network sync ethereum/mainnet-prod
 ```
 {% endtab %}
@@ -106,13 +103,9 @@ obol network sync ethereum/mainnet-prod
 Run mainnet and testnet nodes simultaneously:
 
 ```shell
-# Install mainnet
 obol network install ethereum --id=mainnet --network=mainnet
-
-# Install hoodi testnet
 obol network install ethereum --id=hoodi --network=hoodi
 
-# Deploy both
 obol network sync ethereum/mainnet
 obol network sync ethereum/hoodi
 ```
@@ -125,8 +118,6 @@ Full Ethereum nodes require significant resources. Mainnet execution clients nee
 
 ### Check sync status
 
-Monitor your Ethereum node sync progress:
-
 ```shell
 # View pod status
 obol kubectl get pods -n ethereum-<id>
@@ -137,31 +128,6 @@ obol kubectl logs -n ethereum-<id> -l app=execution -f
 # Check consensus client logs
 obol kubectl logs -n ethereum-<id> -l app=consensus -f
 ```
-
-## Helios light client
-
-Deploy a Helios Ethereum light client for fast RPC access without syncing a full node.
-
-### Configuration options
-
-| Flag | Description | Options | Default |
-| --- | --- | --- | --- |
-| `--id` | Deployment identifier | Any string | Auto-generated |
-| `--network` | Ethereum network | mainnet | mainnet |
-| `--consensus-rpc` | Consensus RPC endpoint | URL | Public endpoint |
-| `--execution-rpc` | Execution RPC endpoint | URL | Public endpoint |
-
-### Example
-
-```shell
-# Install Helios
-obol network install helios
-
-# Deploy to cluster
-obol network sync helios/<id>
-```
-
-Helios provides a local RPC endpoint that verifies data against the consensus layer, giving you trustless Ethereum access without running a full node.
 
 ## Aztec network
 
@@ -186,32 +152,17 @@ obol network install aztec \
   --l1-consensus-url=https://prysm-geth-mainnet-1.gcp.obol.tech/
 ```
 
-**What this does:**
-
-* Deploys an Aztec sequencer node in your local Kubernetes cluster.
-* Connects to Ethereum mainnet using the specified RPC endpoints.
-* Configures your node as an attester using the provided private key.
-
-**Default L1 RPC endpoints:**
-
-* **Execution Layer**: `https://geth-prysm-mainnet-1.gcp.obol.tech/` (Geth)
-* **Consensus Layer**: `https://prysm-geth-mainnet-1.gcp.obol.tech/` (Prysm)
-
-These are production-grade, publicly accessible Ethereum nodes provided by Obol.
-
-{% hint style="info" %}
-You can use your own Ethereum node endpoints by changing the `--l1-execution-url` and `--l1-consensus-url` flags.
-{% endhint %}
-
 Deploy to the cluster:
 
 ```shell
 obol network sync aztec/<id>
 ```
 
-### Resource requirements
+{% hint style="info" %}
+You can use your own Ethereum node endpoints or the in-cluster ERPC endpoint by changing the L1 URL flags.
+{% endhint %}
 
-The Aztec sequencer requires significant resources:
+### Resource requirements
 
 | Resource | Request | Limit |
 | --- | --- | --- |
@@ -220,52 +171,29 @@ The Aztec sequencer requires significant resources:
 | **Storage** | 1 TB | - |
 
 {% hint style="warning" %}
-Ensure your machine has sufficient resources before deploying an Aztec node. The node requires substantial CPU, memory, and disk space for operation.
+Ensure your machine has sufficient resources before deploying an Aztec node.
 {% endhint %}
 
 ## Managing deployments
 
-### List installed networks
-
-View configuration directories:
-
-```shell
-ls ~/.config/obol/networks/
-```
-
 ### View deployment status
 
-Check running deployments:
-
 ```shell
-obol kubectl get namespaces | grep -E "ethereum|helios|aztec"
+obol kubectl get namespaces | grep -E "ethereum|aztec"
 ```
 
 ### Modify configuration
 
-Edit the values file before syncing:
-
 ```shell
-# Open values.yaml in your editor
 $EDITOR ~/.config/obol/networks/<network>/<id>/values.yaml
-
-# Re-sync to apply changes
 obol network sync <network>/<id>
 ```
 
 ### Delete a deployment
 
-Remove a network deployment:
-
 ```shell
 obol network delete <network>/<id>
 ```
-
-This deletes:
-
-* Kubernetes namespace and all resources
-* Local configuration directory
-* Persistent volume claims (data)
 
 {% hint style="warning" %}
 Deletion is permanent. All blockchain data stored in the deployment will be lost.
