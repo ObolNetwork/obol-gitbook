@@ -95,7 +95,7 @@ obol openclaw setup default
 Or configure the global model gateway directly:
 
 ```shell
-obol model configure
+obol model setup
 ```
 
 ### How do I open the agent dashboard?

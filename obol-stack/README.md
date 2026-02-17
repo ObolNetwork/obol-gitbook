@@ -34,7 +34,7 @@ The stack runs entirely on your local machine using [k3d](https://k3d.io/) (Kube
 | `obol stack init / up / down / purge` | Cluster lifecycle management |
 | `obol agent init` | Set up the AI agent (OpenClaw) |
 | `obol openclaw dashboard / setup / ...` | Manage OpenClaw instances |
-| `obol model configure / status` | Configure LLM providers |
+| `obol model setup / status` | Configure LLM providers |
 | `obol network list / install / sync / delete` | Manage blockchain networks |
 | `obol app install / sync / list / delete` | Install arbitrary Helm charts |
 | `obol tunnel status / login / provision` | Manage Cloudflare tunnels |
