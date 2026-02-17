@@ -132,7 +132,7 @@ obol kubectl get pods -A
 obol tunnel status
 
 # Configure model provider globally
-obol model configure
+obol model setup
 ```
 
 ## Stopping and cleaning up
