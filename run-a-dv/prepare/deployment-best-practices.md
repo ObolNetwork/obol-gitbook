@@ -20,7 +20,7 @@ The following specifications are recommended for bare metal machines for cluster
 * 2TB+ free SSD disk space (for mainnet)
 * 1000 read/write SSD IOPS
 * 500MB/s read/write SSD speed
-* 10mb/s internet bandwidth
+* 10Mbps internet bandwidth
 
 ### Recommended Specs for extremely large clusters
 
@@ -29,7 +29,7 @@ The following specifications are recommended for bare metal machines for cluster
 * 4TB+ NVMe storage
 * 2000 read/write SSD IOPS
 * 1000MB/s read/write SSD speed
-* 25mb/s internet bandwidth
+* 25Mbps internet bandwidth
 
 An NVMe storage device is **highly recommended for optimal performance**, offering nearly 10x more random read/writes per second than a standard SSD.
 
@@ -47,27 +47,33 @@ In cases where latencies exceed these thresholds, efforts should be made to redu
 
 For high-scale, performance deployments; inter-peer latency of < 25ms is optimal, along with an average consensus duration under 100ms.
 
-## Node Locations
-
-For optimal performance and high availability, it is recommended to provision machines or virtual machines (VMs) within the same continent. This practice helps minimize potential latency issues ensuring efficient communication and responsiveness. Consider maps of [undersea internet cables](https://www.submarinecablemap.com/) when selecting locations across oceans with low latency.
-
 ## Peer Connections
 
 Charon clients can establish connections with one another in two ways: either through a third publicly accessible server known as [a relay](../../learn/charon/charon-cli-reference.md#host-a-relay) or directly with one another if they can establish a connection. The former is known as a relay connection and the latter is known as a direct connection.
 
-It is important that all nodes in a cluster be directly connected to one another - this can halve the latency between them and reduces bandwidth constraints significantly. Opening Charon’s p2p port (the default is `3610`) to the Internet, or configuring your routers NAT gateway to permit connections to your Charon client, are what are required to facilitate a direct connection between clients.
+It is important that all nodes in a cluster be directly connected to one another - this can halve the latency between them and reduces bandwidth constraints significantly. Opening Charon’s p2p port (the default is `3610`) to the Internet, or configuring your routers NAT gateway to permit connections to your Charon client, are what are required to facilitate a direct connection between clients. Confirm direct peer reachability with `charon alpha test peers`.
+
+## Node Locations
+
+For optimal performance and high availability, it is recommended to provision machines or virtual machines (VMs) within the same continent. This practice helps minimise potential latency issues ensuring efficient communication and responsiveness. Consider maps of [undersea internet cables](https://www.submarinecablemap.com/) when selecting locations across oceans with low latency.
+
+When operating multiple nodes within a cloud environment, care must be taken to distribute nodes across availability zones to avoid AZ outages becoming cluster outages.
 
 ## Instance Independence
 
-Each node in the cluster should have its own independent beacon node (EL+CL) and validator client as well as Charon client. Sharing beacon nodes between the different nodes would potentially impact the fault tolerance of the cluster and as a result should be avoided.
+Each node in the cluster should have its own independent beacon node (EL+CL) and validator client as well as Charon client. Sharing beacon nodes between the different nodes significantly hinders the benefits of running a Charon cluster by reintroducing a single point of failure to the distributed architecture.
+
+## Beacon Node Redundancy
+
+In cases where multiple beacon nodes are available to a node, Charon should be configured to use both in parallel by adding them to `--beacon-node-endpoints`. This will query each beacon node and use the fastest response, improving both performance and availability. Only in situations where this is not economically feasible should `--fallback-beacon-node-endpoints` be used instead, which will query beacon nodes sequentially. Sequential querying will decrease performance due to timeouts being required before failover.
 
 ## Placement of Charon clients
 
-If you wish to divide a Distributed Validator node across multiple physical or virtual machines; locate the Charon client on the EL/CL machine instead of the VC machine. This setup reduces latency from Charon to the consensus layer, as well as keeping the public-internet connected clients separate from the clients that hold the validator private keys. Be sure to use encrypted communication between your VC and the Charon client, potentially through a cloud-provided network, a self-managed network tunnel, a VPN, a Kubernetes [CNI](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/), or other manner.
+If you wish to divide a Distributed Validator node across multiple physical or virtual machines; locate the Charon client on the EL/CL machine instead of the VC machine. This setup reduces latency from Charon to the consensus layer, as well as keeping the public-internet connected clients separate from the clients that hold the validator private keys. If Charon and the VC connect over an untrusted network, the connection should be encrypted (VPN, Kubernetes [CNI](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/) etc).
 
 ## Node Configuration
 
-Cluster sizes that allow for Byzantine Fault Tolerance are recommended as they are safer than clusters with simply Crash Fault Tolerance (See this guide for reference - [Cluster Size and Resilience](../../learn/charon/cluster-configuration/#cluster-size-and-resilience)).
+Cluster sizes that allow for Byzantine Fault Tolerance are recommended as they are safer than clusters with simply Crash Fault Tolerance (See this guide for reference - [Cluster Size and Resilience](../../learn/charon/cluster-configuration/#cluster-size-and-resilience)). A minimum of four Charon nodes is strongly recommended for this reason.
 
 ## MEV-Boost Relays
 
@@ -77,15 +83,28 @@ Use Charon's [`test mev` command](../../run/prepare/test-command.mdx#test-mev-re
 
 ## Client Diversity
 
-The clusters should consist of a combination of your preferred consensus, execution, and validator clients. It is recommended to include a combination of multiple clients in order to have a healthy client diversity within the cluster, ideally, if any single client type fails, it should be less than the fault tolerance of the cluster, and the validators should stay online/not do anything slashable.
+Obol clusters should consist of a mix of different consensus, execution, and validator clients. Charon can't [detect client failures](../../learn/further-reading/ethereum_and_dvt#deep-dive-into-dvt-and-charons-architecture) if all nodes are using the same client. At a minimum, no single client should comprise the [threshold](../../learn/charon/cluster-configuration.md#cluster-size-and-resilience) of nodes in the cluster.
+For example:
+
+A 7 node cluster with 4 Teku, 2 Lodestar and 1 Nimbus for validator clients **does not** have client error safety since the threshold (4) of votes can be met with just the Teku client.
+
+A 7 node cluster with 3 Teku, 3 Lodestar and 1 Nimbus for validator clients **is safe against a single client bug** as the threshold is not met by any one client.
+
+Keep in mind that client diversity includes EL, CL and VC clients and each layer needs an appropriate mix for optimal security.
 
 Remote signers can be included as well, such as Web3signer or Dirk. A diversity of private key infrastructure setups further reduces the risk of total key compromise.
 
 Tested client combinations can be found in the [release notes](https://github.com/ObolNetwork/charon/releases) for each Charon version.
 
+## Execution Layer Configuration
+
+When available on the EL client (e.g Nethermind), blob inclusion for locally-built blocks should be set to 0. Setting blob count to 0 for locally-built blocks avoids the additional latency of gathering blob transactions, which matters when falling back from MEV relay blocks under time pressure.
+
 ## Metrics Monitoring
 
-As requested by Obol Labs, node operators can push [standard monitoring](../start/obol-monitoring.md) (Prometheus) and logging (Loki) data to Obol Labs' core team's cloud infrastructure for in-depth analysis of performance data and to assist during potential issues that may arise. Our recommendation for operators is to independently store information on their node health over the course of the validator lifecycle as well as any information on validator performance that they collect during the normal life cycle of a validator.
+Node operators should push [standard monitoring](../start/obol-monitoring.md) (Prometheus) and logging (Loki) data to Obol Labs' core team's cloud infrastructure for in-depth analysis of performance data and to assist during potential issues that may arise. The logging and metrics configuration values will be provided by the Obol team during onboarding.
+
+It is recommended that operators independently store information on their node health over the course of the validator lifecycle as well as any information on validator performance that they collect during the normal life cycle of a validator.
 
 ## Obol Splits
 
@@ -95,6 +114,6 @@ Leveraging [Obol Splits](../../learn/intro/obol-splits.mdx) smart contracts allo
 
 Deposit processes can be done via an automated script. This can be used for DV clusters until they reach the desired number of validators.
 
-It is important to allow time for the validators to be activated (usually < 24 hours).
+It is important to allow time for the validators to be activated (see current [queue](https://beaconcha.in/validators/queues)).
 
 Consider using batching smart contracts to reduce the gas cost of a script, but take caution in their integration not to make an invalid deposit.
