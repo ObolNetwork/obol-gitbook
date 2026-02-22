@@ -82,7 +82,7 @@ Running full Ethereum nodes requires significant disk space. Mainnet execution c
 |  obol CLI                                               |
 |  +-- stack     (init, up, down, purge)                  |
 |  +-- agent     (init)                                   |
-|  +-- openclaw  (dashboard, setup, sync, ...)            |
+|  +-- openclaw  (dashboard, setup, sync, skills, ...)     |
 |  +-- model     (configure, status)                      |
 |  +-- network   (list, install, sync, delete)            |
 |  +-- app       (install, sync, list, delete)            |
