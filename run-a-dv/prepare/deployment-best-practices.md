@@ -79,7 +79,7 @@ Cluster sizes that allow for Byzantine Fault Tolerance are recommended as they a
 
 MEV relays are configured at the Consensus Layer or MEV-boost client level. Refer to our [guide](../../adv/advanced/quickstart-builder-api.mdx) to ensure all necessary configuration has been applied to your clients. As with all validators, low latency during proposal opportunities is extremely important. By default, MEV-Boost waits for all configured relays to return a bid, or will timeout if any have not returned a bid within 950ms. This default timeout is generally too slow for a distributed cluster (think of this time as additive to the time it takes the cluster to come to consensus, both of which need to happen within a 2 second window for optimal proposal broadcasting). It is likely better to only list relays that are located geographically near your node, so that once all relays respond (e.g. in < 50ms) your cluster will move forward with the proposal.
 
-Use Charon's [`test mev` command](../test-a-cluster.md#test-mev-relay) to test a number of your preferred relays, and select the two or three relays with the lowest latency to your node(s), you do not need to have the same relays on each node in a cluster.
+Use Charon's [`test mev` command](./test-a-cluster.md#test-mev-relay) to test a number of your preferred relays, and select the two or three relays with the lowest latency to your node(s), you do not need to have the same relays on each node in a cluster.
 
 ## Client Diversity
 
@@ -108,7 +108,7 @@ It is recommended that operators independently store information on their node h
 
 ## Obol Splits
 
-Leveraging [Obol Splits](../../learn/intro/obol-splits.md) smart contracts allows for non-custodial fund handling and allows for net customer payouts in an ongoing manner. Obol Splits ensure no commingling of funds across customers, and maintain full non-custodial integrity. Read more about Obol Splits [here](../../learn/intro/faq.mdx#obol-splits).
+Leveraging [Obol Splits](../../learn/intro/obol-splits.md) smart contracts allows for non-custodial fund handling and allows for net customer payouts in an ongoing manner. Obol Splits ensure no commingling of funds across customers, and maintain full non-custodial integrity. Read more about Obol Splits [here](../../learn/intro/frequently-asked-questions.md#obol-splits).
 
 ## Deposit Process
 
