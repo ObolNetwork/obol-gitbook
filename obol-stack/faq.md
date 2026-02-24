@@ -89,7 +89,7 @@ This runs the interactive OpenClaw onboard flow, which prompts you to choose a m
 ### How do I change the model provider?
 
 ```shell
-obol openclaw setup default
+obol openclaw setup
 ```
 
 Or configure the global model gateway directly:
@@ -101,7 +101,7 @@ obol model setup
 ### How do I open the agent dashboard?
 
 ```shell
-obol openclaw dashboard default
+obol openclaw dashboard
 ```
 
 This starts a port-forward and opens the web UI in your browser.
@@ -109,8 +109,12 @@ This starts a port-forward and opens the web UI in your browser.
 ### How do I get the gateway token?
 
 ```shell
-obol openclaw token default
+obol openclaw token
 ```
+
+{% hint style="info" %}
+When only one OpenClaw instance is installed, the instance ID is auto-selected. With multiple instances, specify the name: `obol openclaw dashboard my-agent`.
+{% endhint %}
 
 ## Stack operations
 

@@ -88,11 +88,13 @@ This walks you through choosing a model provider:
 Once complete, open the agent dashboard:
 
 ```shell
-obol openclaw dashboard default
+obol openclaw dashboard
 ```
 
+Each agent is automatically provisioned with an Ethereum signing wallet (via the remote-signer service). The wallet address is displayed during setup.
+
 {% hint style="success" %}
-You can reconfigure the model provider at any time with `obol openclaw setup default`.
+You can reconfigure the model provider at any time with `obol openclaw setup`.
 {% endhint %}
 
 ## Step 4: Deploy a blockchain network (optional)
