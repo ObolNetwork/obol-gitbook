@@ -20,7 +20,7 @@ In an Obol DV cluster, nodes use LibP2P to communicate directly with each other,
 
 <figure><img src="../../.gitbook/assets/image (9) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-## Works with existing validator clients and PKI
+## Works with existing validator clients and keys
 
 We built Obol’s DV implementation as a secure and trust-minimised middleware architecture. Our middleware client, Charon, doesn’t replace anything in the client stack, instead it sits between the consensus and validator clients. Node operators integrating the Charon DVT middleware into their stack can continue to use the same clients and private key infrastructure as before, albeit with a different key generation method.
 
