@@ -98,7 +98,7 @@ Running full Ethereum nodes requires significant disk space. Mainnet execution c
 |  +-- Monitoring (Prometheus)                            |
 +---------------------------------------------------------+
 |  Deployments                                            |
-|  +-- openclaw-default     (AI agent)                    |
+|  +-- openclaw-<id>        (AI agent + remote-signer)    |
 |  +-- ethereum-<id>        (blockchain network)          |
 |  +-- aztec-<id>           (blockchain network)          |
 |  +-- redis-<id>           (installed app)               |
