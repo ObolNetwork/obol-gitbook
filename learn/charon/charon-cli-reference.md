@@ -182,18 +182,19 @@ Flags:
       --log-format string                      Log format; console, logfmt or json (default "console")
       --log-level string                       Log level; debug, info, warn or error (default "info")
       --log-output-path string                 Path in which to write on-disk logs.
+      --nickname string                        Human friendly peer nickname. Maximum 32 characters.
       --no-verify                              Disables cluster definition and lock file verification.
       --p2p-disable-reuseport                  Disables TCP port reuse for outgoing libp2p connections.
       --p2p-external-hostname string           The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
       --p2p-external-ip string                 The IP address advertised by libp2p. This may be used to advertise an external IP.
-      --p2p-relays strings                     Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://0.relay.obol.tech,https://1.relay.obol.tech,https://2.relay.obol.dev])
+      --p2p-relays strings                     Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://4.relay.obol.dev])
       --p2p-tcp-address strings                Comma-separated list of listening TCP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --p2p-udp-address strings                Comma-separated list of listening UDP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --publish                                Publish the created cluster to a remote API.
       --publish-address string                 The URL to publish the cluster to. (default "https://api.obol.tech/v1")
-      --publish-timeout duration               Timeout for publishing a cluster, consider increasing if the cluster contains more than 200 validators. (default 30s)
-      --shutdown-delay duration                Graceful shutdown delay. (default 1s)
-      --timeout duration                       Timeout for the DKG process, should be increased if DKG times out. (default 1m0s)
+      --publish-timeout duration               Timeout for publishing a cluster, consider increasing if the cluster contains more than 200 validators. (default 1m0s)
+      --shutdown-delay duration                Graceful shutdown delay. (default 5s)
+      --timeout duration                       Timeout for the DKG process, should be increased if DKG times out. (default 2m0s)
       --zipped                                 Create a tar archive compressed with gzip of the target directory after creation.
 ```
 
@@ -235,7 +236,7 @@ Flags:
       --log-output-path string                   Path in which to write on-disk logs.
       --loki-addresses strings                   Enables sending of logfmt structured logs to these Loki log aggregation server addresses. This is in addition to normal stderr logs.
       --loki-service string                      Service label sent with logs to Loki. (default "charon")
-      --manifest-file string                     The path to the cluster manifest file. If both cluster manifest and cluster lock files are provided, the cluster manifest file takes precedence. (default ".charon/cluster-manifest.pb")
+      --manifest-file string                     [DEPRECATED] The path to the cluster manifest file. If both cluster manifest and cluster lock files are provided, the cluster manifest file takes precedence. (default ".charon/cluster-manifest.pb")
       --monitoring-address string                Listening address (ip and port) for the monitoring API (prometheus). (default "127.0.0.1:3620")
       --nickname string                          Human friendly peer nickname. Maximum 32 characters.
       --no-verify                                Disables cluster definition and lock file verification.
@@ -440,7 +441,7 @@ The `charon exit active-validator-list` command returns a list of all distribute
 
 ```markdown
 charon exit active-validator-list --help
-Returns a list of all the DVs in the specified cluster whose status is ACTIVE_ONGOING, i.e. can be exited.
+Returns a list of all the DV in the specified cluster whose status is ACTIVE_ONGOING, i.e. can be exited.
 
 Usage:
   charon exit active-validator-list [flags]
@@ -597,6 +598,7 @@ For unused, inactive validators in an existing cluster, you can prepare alternat
 See the [advanced guide](../../advanced-and-troubleshooting/advanced/alter-withdrawal-addresses.md) for more.
 
 ```markdown
+charon deposit --help
 Sign and fetch new deposit messages for unactivated validators using a remote API, enabling the modification of a withdrawal address after creation but before activation.
 
 Usage:
@@ -610,7 +612,6 @@ Flags:
   -h, --help   Help for deposit
 
 Use "charon deposit [command] --help" for more information about a command.
-
 ```
 
 ### Sign a deposit for an alternative withdrawal address
@@ -618,6 +619,7 @@ Use "charon deposit [command] --help" for more information about a command.
 A threshold of node operators must run `charon deposit sign` with matching parameters, to enable a new deposit data to be fetched with `charon deposit fetch`.
 
 ```markdown
+charon deposit sign --help
 Signs new partial validator deposit messages using a remote API.
 
 Usage:
@@ -640,6 +642,7 @@ Flags:
 `charon deposit fetch` outputs a file `.charon/deposit-data-<timestamp>.json` for use with the Ethereum deposit contract.
 
 ```markdown
+charon deposit fetch --help
 Fetch full validator deposit messages using a remote API.
 
 Usage:
@@ -760,8 +763,8 @@ Flags:
       --private-key-file string                The path to the charon enr private key file.  (default ".charon/charon-enr-private-key")
       --publish                                Publish the created cluster to a remote API.
       --publish-address string                 The URL to publish the cluster to. (default "https://api.obol.tech/v1")
-      --publish-timeout duration               Timeout for publishing a cluster, consider increasing if the cluster contains more than 200 validators. (default 30s)
-      --shutdown-delay duration                Graceful shutdown delay. (default 1s)
+      --publish-timeout duration               Timeout for publishing a cluster, consider increasing if the cluster contains more than 200 validators. (default 1m0s)
+      --shutdown-delay duration                Graceful shutdown delay. (default 5s)
       --timeout duration                       Timeout for the command, should be increased if the command times out. (default 1m0s)
       --unverified                             If charon has no access to the existing validator keys, this flag allows the addition to proceed, but skips hashing and signing the new cluster lock data. charon run must be started with --no-verify flag.
       --validator-keys-dir string              Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
@@ -803,8 +806,8 @@ Flags:
       --private-key-file string                The path to the charon enr private key file.  (default ".charon/charon-enr-private-key")
       --publish                                Publish the created cluster to a remote API.
       --publish-address string                 The URL to publish the cluster to. (default "https://api.obol.tech/v1")
-      --publish-timeout duration               Timeout for publishing a cluster, consider increasing if the cluster contains more than 200 validators. (default 30s)
-      --shutdown-delay duration                Graceful shutdown delay. (default 1s)
+      --publish-timeout duration               Timeout for publishing a cluster, consider increasing if the cluster contains more than 200 validators. (default 1m0s)
+      --shutdown-delay duration                Graceful shutdown delay. (default 5s)
       --timeout duration                       Timeout for the protocol, should be increased if protocol times out. (default 1m0s)
       --validator-keys-dir string              Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
 ```
@@ -846,8 +849,8 @@ Flags:
       --private-key-file string                The path to the charon enr private key file.  (default ".charon/charon-enr-private-key")
       --publish                                Publish the created cluster to a remote API.
       --publish-address string                 The URL to publish the cluster to. (default "https://api.obol.tech/v1")
-      --publish-timeout duration               Timeout for publishing a cluster, consider increasing if the cluster contains more than 200 validators. (default 30s)
-      --shutdown-delay duration                Graceful shutdown delay. (default 1s)
+      --publish-timeout duration               Timeout for publishing a cluster, consider increasing if the cluster contains more than 200 validators. (default 1m0s)
+      --shutdown-delay duration                Graceful shutdown delay. (default 5s)
       --timeout duration                       Timeout for the protocol, should be increased if protocol times out. (default 1m0s)
       --validator-keys-dir string              Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
 ```
@@ -888,8 +891,8 @@ Flags:
       --private-key-file string                The path to the charon enr private key file.  (default ".charon/charon-enr-private-key")
       --publish                                Publish the created cluster to a remote API.
       --publish-address string                 The URL to publish the cluster to. (default "https://api.obol.tech/v1")
-      --publish-timeout duration               Timeout for publishing a cluster, consider increasing if the cluster contains more than 200 validators. (default 30s)
-      --shutdown-delay duration                Graceful shutdown delay. (default 1s)
+      --publish-timeout duration               Timeout for publishing a cluster, consider increasing if the cluster contains more than 200 validators. (default 1m0s)
+      --shutdown-delay duration                Graceful shutdown delay. (default 5s)
       --timeout duration                       Timeout for the protocol, should be increased if protocol times out. (default 1m0s)
       --validator-keys-dir string              Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
 ```
@@ -928,8 +931,8 @@ Flags:
       --private-key-file string                The path to the charon enr private key file.  (default ".charon/charon-enr-private-key")
       --publish                                Publish the created cluster to a remote API.
       --publish-address string                 The URL to publish the cluster to. (default "https://api.obol.tech/v1")
-      --publish-timeout duration               Timeout for publishing a cluster, consider increasing if the cluster contains more than 200 validators. (default 30s)
-      --shutdown-delay duration                Graceful shutdown delay. (default 1s)
+      --publish-timeout duration               Timeout for publishing a cluster, consider increasing if the cluster contains more than 200 validators. (default 1m0s)
+      --shutdown-delay duration                Graceful shutdown delay. (default 5s)
       --timeout duration                       Timeout for the protocol, should be increased if protocol times out. (default 1m0s)
       --validator-keys-dir string              Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
 ```
@@ -989,11 +992,12 @@ Flags:
       --mev-endpoints strings                         Comma separated list of one or more MEV relay endpoint URLs.
       --mev-load-test                                 Enable load test.
       --mev-number-of-payloads uint                   Increases the accuracy of the load test by asking for multiple payloads. Increases test duration. (default 1)
+      --mev-x-timeout-ms uint                         X-Timeout-Ms header flag for each request in milliseconds, used by MEVs to compute maximum delay for reply. (default 1000)
       --output-json string                            File path to which output can be written in JSON format.
       --p2p-disable-reuseport                         Disables TCP port reuse for outgoing libp2p connections.
       --p2p-external-hostname string                  The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
       --p2p-external-ip string                        The IP address advertised by libp2p. This may be used to advertise an external IP.
-      --p2p-relays strings                            Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://0.relay.obol.tech,https://1.relay.obol.tech,https://2.relay.obol.dev])
+      --p2p-relays strings                            Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://4.relay.obol.dev])
       --p2p-tcp-address strings                       Comma-separated list of listening TCP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --p2p-udp-address strings                       Comma-separated list of listening UDP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --peers-definition-file string                  The path to the cluster definition file or an HTTP URL.
@@ -1007,7 +1011,7 @@ Flags:
       --publish-address string                        The URL to publish the test result file to. (default "https://api.obol.tech/v1")
       --publish-private-key-file string               The path to the charon enr private key file, used for signing the publish request. Temporary key will be generated if the file does not exist. (default ".charon/charon-enr-private-key")
       --quiet                                         Do not print test results to stdout.
-      --test-cases strings                            List of comma separated names of tests to be executed. Available tests are: [Ping PingMeasure PingLoad DirectConn Libp2pTCPPortOpen PingRelay PingMeasureRelay Version Synced PingLoad Simulate1 Simulate100 Simulate500 Simulate1000 PingMeasure PeerCount Simulate10 SimulateCustom Ping Ping PingMeasure PingLoad Ping PingMeasure CreateBlock DiskWriteSpeed DiskReadSpeed DiskReadIOPS TotalMemory InternetLatency InternetDownloadSpeed InternetUploadSpeed DiskWriteIOPS AvailableMemory]
+      --test-cases strings                            List of comma separated names of tests to be executed. Available tests are: [Ping PingMeasure PingLoad DirectConn Libp2pTCPPortOpen PingRelay PingMeasureRelay PeerCount PingLoad Simulate1 Simulate10 Simulate100 Simulate1000 Ping PingMeasure Synced Simulate500 SimulateCustom Version Ping PingMeasure PingLoad Ping PingMeasure CreateBlock InternetDownloadSpeed InternetUploadSpeed DiskWriteIOPS AvailableMemory DiskWriteSpeed DiskReadSpeed DiskReadIOPS TotalMemory InternetLatency]
       --timeout duration                              Execution timeout for all tests. (default 1h0m0s)
       --validator-load-test-duration duration         Time to keep running the load tests in seconds. For each second a new continuous ping instance is spawned. (default 5s)
       --validator-validator-api-address string        Listening address (ip and port) for validator-facing traffic proxying the beacon-node API. (default "127.0.0.1:3600")
@@ -1036,7 +1040,7 @@ Flags:
       --simulation-duration-in-slots int   Time to keep running the simulation in slots. (default 32)
       --simulation-file-dir string         Time to keep running the simulation in slots. (default "./")
       --simulation-verbose                 Show results for each request and each validator.
-      --test-cases strings                 List of comma separated names of tests to be executed. Available tests are: [Simulate1000 SimulateCustom Version PingLoad Simulate10 Simulate500 Ping PingMeasure Synced PeerCount Simulate1 Simulate100]
+      --test-cases strings                 List of comma separated names of tests to be executed. Available tests are: [Ping Synced Simulate10 Simulate100 Simulate500 Simulate1000 PingMeasure Version PeerCount PingLoad Simulate1 SimulateCustom]
       --timeout duration                   Execution timeout for all tests. (default 1h0m0s)
 ```
 
@@ -1060,7 +1064,7 @@ Flags:
       --publish-address string                  The URL to publish the test result file to. (default "https://api.obol.tech/v1")
       --publish-private-key-file string         The path to the charon enr private key file, used for signing the publish request. Temporary key will be generated if the file does not exist. (default ".charon/charon-enr-private-key")
       --quiet                                   Do not print test results to stdout.
-      --test-cases strings                      List of comma separated names of tests to be executed. Available tests are: [InternetDownloadSpeed DiskWriteSpeed DiskWriteIOPS DiskReadSpeed AvailableMemory TotalMemory InternetLatency InternetUploadSpeed DiskReadIOPS]
+      --test-cases strings                      List of comma separated names of tests to be executed. Available tests are: [DiskReadSpeed TotalMemory InternetLatency InternetUploadSpeed DiskWriteSpeed DiskWriteIOPS DiskReadIOPS AvailableMemory InternetDownloadSpeed]
       --timeout duration                        Execution timeout for all tests. (default 1h0m0s)
 ```
 
@@ -1084,8 +1088,9 @@ Flags:
       --publish-address string            The URL to publish the test result file to. (default "https://api.obol.tech/v1")
       --publish-private-key-file string   The path to the charon enr private key file, used for signing the publish request. Temporary key will be generated if the file does not exist. (default ".charon/charon-enr-private-key")
       --quiet                             Do not print test results to stdout.
-      --test-cases strings                List of comma separated names of tests to be executed. Available tests are: [PingMeasure CreateBlock Ping]
+      --test-cases strings                List of comma separated names of tests to be executed. Available tests are: [Ping PingMeasure CreateBlock]
       --timeout duration                  Execution timeout for all tests. (default 1h0m0s)
+      --x-timeout-ms uint                 X-Timeout-Ms header flag for each request in milliseconds, used by MEVs to compute maximum delay for reply. (default 1000)
 ```
 
 #### Test Charon peers
@@ -1113,7 +1118,7 @@ Flags:
       --p2p-disable-reuseport                Disables TCP port reuse for outgoing libp2p connections.
       --p2p-external-hostname string         The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
       --p2p-external-ip string               The IP address advertised by libp2p. This may be used to advertise an external IP.
-      --p2p-relays strings                   Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://0.relay.obol.tech,https://1.relay.obol.tech,https://2.relay.obol.dev])
+      --p2p-relays strings                   Comma-separated list of libp2p relay URLs or multiaddrs. (default [https://4.relay.obol.dev])
       --p2p-tcp-address strings              Comma-separated list of listening TCP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --p2p-udp-address strings              Comma-separated list of listening UDP addresses (ip and port) for libP2P traffic. Empty default doesn't bind to local port therefore only supports outgoing connections.
       --private-key-file string              The path to the charon enr private key file. (default ".charon/charon-enr-private-key")
