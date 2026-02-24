@@ -25,7 +25,7 @@ Split an existing Ethereum validator key into multiple key shares for use in an 
 ## Step 1. Prepare the existing keystore files
 
 {% hint style="info" %}
-Starting with Charon v1.9.0, you may not need to manually prepare the keystore files as described below. Charon can recursively search for keystore files in the specified directory and attempt to match the corresponding password files. The only case where this does not work is when you specify an exact list of withdrawal addresses; in that case, you must prepare the files manually and ensure the keystore indices match the order of the specified withdrawal addresses.
+Starting with Charon v1.8.0, you may not need to manually prepare the keystore files as described below. Charon can recursively search for keystore files in the specified directory and attempt to match the corresponding password files. The only case where this does not work is when you specify an exact list of withdrawal addresses; in that case, you must prepare the files manually and ensure the keystore indices match the order of the specified withdrawal addresses.
 {% endhint %}
 
 Create a folder to hold the encrypted keystores, along with the passwords to decrypt them.
