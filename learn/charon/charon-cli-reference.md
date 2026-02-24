@@ -6,7 +6,7 @@ description: >-
 
 # CLI Reference
 
-The following is a reference for Charon version [`v1.8.0`](https://github.com/ObolNetwork/charon/releases/tag/v1.8.0). Find the latest release on [our Github](https://github.com/ObolNetwork/charon/releases).
+The following is a reference for Charon version [`v1.9.0`](https://github.com/ObolNetwork/charon/releases/tag/v1.9.0). Find the latest release on [our Github](https://github.com/ObolNetwork/charon/releases).
 
 The following are the top-level commands available to use.
 
