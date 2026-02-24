@@ -4,88 +4,112 @@ description: Deploy additional applications on your Obol Stack
 
 # Installing apps
 
-The Obol Stack supports installing additional applications on top of your local Kubernetes cluster. Applications extend the functionality of your stack with monitoring, RPC proxies, and other services.
+The Obol Stack supports installing arbitrary Helm charts as managed applications. Each installation creates an isolated deployment with its own namespace, similar to network deployments.
 
-{% hint style="info" %}
-The application system is under active development. Currently, default applications are deployed automatically with the stack. The `obol app` command for installing additional applications is planned for a future release.
-{% endhint %}
+## Install an application
 
-## Default applications
-
-When you run `obol stack up`, the following applications are automatically deployed:
-
-### Monitoring stack
-
-A complete monitoring solution based on Prometheus and Grafana:
-
-* **Grafana** - Dashboards and visualization
-* **Prometheus** - Metrics collection and storage
-* **Pre-configured dashboards** - Kubernetes and application metrics
-
-Access Grafana at: `http://grafana.localhost:8080`
-
-{% hint style="success" %}
-Grafana is configured with anonymous admin access for local development. No login required.
-{% endhint %}
-
-Access Prometheus at: `http://prometheus.localhost:8080`
-
-### Local path provisioner
-
-Provides persistent storage for applications using local disk. All networks and applications use this storage class by default.
-
-## Application architecture
-
-Applications in Obol Stack follow a self-registration pattern for monitoring:
-
-* **ServiceMonitors** - Applications expose metrics that Prometheus discovers via the `release: monitoring` label.
-* **Grafana dashboards** - Applications can provide dashboards via ConfigMaps with the `grafana_dashboard: "1"` label.
-
-This means networks you install (Ethereum, Aztec, etc.) automatically appear in the monitoring stack.
-
-## Planned features
-
-The following features are planned for future releases:
-
-### Application management commands
+Install any Helm chart using one of the supported reference formats:
 
 ```shell
-obol app list                    # List available apps
-obol app install <app-name>      # Install an application
-obol app edit <app-name>         # Edit application configuration
-obol app sync <app-name>         # Deploy/update application
-obol app delete <app-name>       # Remove application
+# Install from ArtifactHub (repo/chart format)
+obol app install bitnami/redis
+
+# Specific version
+obol app install bitnami/postgresql@15.0.0
+
+# Direct URL to chart archive
+obol app install https://charts.bitnami.com/bitnami/redis-19.0.0.tgz
+
+# Custom name and deployment ID
+obol app install bitnami/postgresql --name mydb --id production
 ```
 
-### Additional applications
+{% hint style="info" %}
+Find charts at [Artifact Hub](https://artifacthub.io).
+{% endhint %}
 
-* **ERPC** - Unified RPC proxy and load balancer for Ethereum endpoints
-* **Obol Frontend** - Web-based management interface
+**Supported chart reference formats:**
 
-## Viewing application status
+| Format | Example |
+| --- | --- |
+| `repo/chart` | `bitnami/redis` (resolved via ArtifactHub) |
+| `repo/chart@version` | `bitnami/redis@19.0.0` |
+| `https://.../*.tgz` | Direct URL to chart archive |
 
-Check running applications:
+**What happens during installation:**
+
+1. Resolves the chart reference (via ArtifactHub for `repo/chart` format).
+2. Fetches default values from the chart.
+3. Generates a `helmfile.yaml` that references the chart remotely.
+4. Saves configuration to `~/.config/obol/applications/<app>/<id>/`.
+
+## Deploy to the cluster
+
+After installing, deploy the application:
 
 ```shell
-# View default namespace resources
-obol kubectl get all -n default
+obol app sync postgresql/eager-fox
+```
 
-# View monitoring stack
-obol kubectl get all -n monitoring
+Check status:
 
-# View all Helm releases
+```shell
+obol kubectl get all -n postgresql-eager-fox
+```
+
+## List applications
+
+```shell
+# Simple list
+obol app list
+
+# Detailed output
+obol app list --verbose
+```
+
+## Customize configuration
+
+Edit the values file before deploying or re-syncing:
+
+```shell
+$EDITOR ~/.config/obol/applications/postgresql/eager-fox/values.yaml
+
+# Re-deploy with changes
+obol app sync postgresql/eager-fox
+```
+
+**Local files per deployment:**
+
+* `helmfile.yaml` - Deployment configuration (references chart remotely)
+* `values.yaml` - Configuration values (edit to customize)
+
+## Delete an application
+
+```shell
+# With confirmation prompt
+obol app delete postgresql/eager-fox
+
+# Skip confirmation
+obol app delete postgresql/eager-fox --force
+```
+
+This removes the Kubernetes namespace, all deployed resources, and the local configuration directory.
+
+## Default infrastructure
+
+The following services are deployed automatically when the stack starts (you do not need to install them):
+
+| Service | Namespace | Purpose |
+| --- | --- | --- |
+| **ERPC** | `erpc` | Unified RPC load balancer for Ethereum endpoints |
+| **Obol Frontend** | `obol-frontend` | Web management dashboard |
+| **Monitoring** | `monitoring` | Prometheus + kube-prometheus-stack |
+| **Traefik** | `traefik` | Gateway API ingress controller |
+| **Cloudflared** | `traefik` | Cloudflare tunnel connector |
+| **llmspy** | `llm` | LLM proxy/router |
+
+View all running services:
+
+```shell
 obol helm list -A
 ```
-
-## Accessing services
-
-Services are exposed via Traefik ingress on ports 8080 (HTTP) and 8443 (HTTPS).
-
-| Service | URL |
-| --- | --- |
-| Grafana | `http://grafana.localhost:8080` |
-| Prometheus | `http://prometheus.localhost:8080` |
-
-{% hint style="info" %}
-The `obol.stack` hostname is added to `/etc/hosts` during installation, enabling local DNS resolution for stack services.
-{% endhint %}

@@ -202,7 +202,7 @@ The `ObolLidoSplit` contract is deployed via a [factory contract](https://github
 
 | Chain   | Address                                                                                                                     |
 | ------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Mainnet |                                                                                                                             |
+| Mainnet | [0xa9d94139a310150ca1163b5e23f3e1dbb7d9e2a6](https://etherscan.io/address/0xa9d94139a310150ca1163b5e23f3e1dbb7d9e2a6)       |
 | Hoodi   | [0xb633CD420aF83E8A5172e299104842b63dd97ab7](https://hoodi.etherscan.io/address/0xb633CD420aF83E8A5172e299104842b63dd97ab7) |
 | Sepolia |                                                                                                                             |
 

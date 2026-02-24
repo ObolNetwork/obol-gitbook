@@ -1,13 +1,13 @@
 ---
-description: A local Kubernetes-based framework for running blockchain networks
+description: A framework for AI agents to run decentralised infrastructure locally
 ---
 
 # Introduction to the Obol Stack
 
-The Obol Stack is a local development environment for running blockchain networks on your machine. It provides a simplified CLI experience for managing a Kubernetes cluster with dynamically deployable network instances, allowing developers and operators to run Ethereum nodes, Layer 2 networks, and other blockchain infrastructure locally.
+The Obol Stack is a local development environment for running AI agents alongside blockchain infrastructure. It provides a simplified CLI for managing a Kubernetes cluster with an AI agent ([OpenClaw](https://openclaw.ai)), dynamically deployable blockchain networks, and public access via Cloudflare tunnels.
 
 {% hint style="info" %}
-The Obol Stack is designed for local development and testing. For production deployments, refer to the respective network documentation and use appropriate infrastructure.
+The Obol Stack is alpha software. For production deployments, refer to the respective network documentation and use appropriate infrastructure.
 {% endhint %}
 
 ## What is the Obol Stack?
@@ -15,49 +15,43 @@ The Obol Stack is designed for local development and testing. For production dep
 Obol Stack is a two-part system:
 
 1. **obolup.sh** - A bootstrap installer that sets up your environment
-2. **obol CLI** - A Go-based binary for stack and network management
+2. **obol CLI** - A Go-based binary for stack, agent, and network management
 
-The stack runs entirely on your local machine using [k3d](https://k3d.io/) (Kubernetes in Docker), providing a lightweight yet fully-featured Kubernetes environment for blockchain development.
+The stack runs entirely on your local machine using [k3d](https://k3d.io/) (Kubernetes in Docker), providing a lightweight yet fully-featured Kubernetes environment.
 
 ## Key features
 
-* **Local-first architecture** - Run everything on your machine without cloud dependencies.
-* **Multiple network support** - Deploy Ethereum nodes, Helios light clients, Aztec sequencers, and more.
-* **Unique deployments** - Each network installation creates a uniquely-namespaced deployment, allowing multiple instances of the same network type to run simultaneously.
+* **Agent-first** - Deploy an AI agent (OpenClaw) that can interact with blockchain networks and expose services.
+* **Multiple network support** - Deploy Ethereum nodes, Aztec sequencers, and more.
+* **Unique deployments** - Each installation creates a uniquely-namespaced deployment, allowing multiple instances to run simultaneously.
+* **Public access** - Expose services to the internet via Cloudflare tunnels and x402 payment gateways.
 * **Simplified tooling** - Wraps kubectl, helm, and other Kubernetes tools with automatic configuration.
-* **Persistent storage** - Data persists across cluster restarts.
 
-## Core concepts
-
-### Stack lifecycle
-
-The Obol Stack follows a simple lifecycle:
+## CLI overview
 
 | Command | Description |
 | --- | --- |
-| `obol stack init` | Initialize cluster configuration |
-| `obol stack up` | Start the Kubernetes cluster |
-| `obol stack down` | Stop the cluster (preserves data) |
-| `obol stack purge` | Remove cluster and configuration |
+| `obol stack init / up / down / purge` | Cluster lifecycle management |
+| `obol agent init` | Set up the AI agent (OpenClaw) |
+| `obol openclaw dashboard / setup / ...` | Manage OpenClaw instances |
+| `obol model setup / status` | Configure LLM providers |
+| `obol network list / install / sync / delete` | Manage blockchain networks |
+| `obol app install / sync / list / delete` | Install arbitrary Helm charts |
+| `obol tunnel status / login / provision` | Manage Cloudflare tunnels |
+| `obol kubectl / helm / k9s` | Kubernetes tool passthroughs |
 
-### Network deployments
+## Default infrastructure
 
-Networks are deployed as isolated Kubernetes namespaces. Each deployment gets a unique identifier (either user-specified or auto-generated), enabling:
+When you start the stack, the following services are deployed automatically:
 
-* Multiple deployments of the same network type (e.g., mainnet and testnet Ethereum nodes)
-* Isolated resources per deployment
-* Independent lifecycle management
-* Simple cleanup via namespace deletion
-
-### Passthrough commands
-
-Obol Stack wraps common Kubernetes tools with automatic kubeconfig configuration:
-
-```shell
-obol kubectl get pods -A          # kubectl with stack kubeconfig
-obol helm list -A                 # helm with stack kubeconfig
-obol k9s                          # k9s terminal UI
-```
+| Service | Namespace | Description |
+| --- | --- | --- |
+| **Traefik** | `traefik` | Gateway API ingress controller |
+| **Cloudflared** | `traefik` | Cloudflare tunnel connector |
+| **ERPC** | `erpc` | Unified RPC load balancer for Ethereum endpoints |
+| **Obol Frontend** | `obol-frontend` | Web management dashboard |
+| **Monitoring** | `monitoring` | Prometheus + kube-prometheus-stack |
+| **llmspy** | `llm` | LLM proxy/router for AI agent traffic |
 
 ## System requirements
 
@@ -76,31 +70,39 @@ obol k9s                          # k9s terminal UI
 | **Storage** | 50 GB | 500+ GB (varies by network) |
 
 {% hint style="warning" %}
-Running full Ethereum nodes requires significant disk space. Mainnet execution clients can require 1+ TB of storage. Plan your storage accordingly based on which networks you intend to run.
+Running full Ethereum nodes requires significant disk space. Mainnet execution clients can require 1+ TB of storage.
 {% endhint %}
 
 ## Architecture overview
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                        Obol Stack                           │
-├─────────────────────────────────────────────────────────────┤
-│  obol CLI                                                   │
-│  ├── stack (init, up, down, purge)                         │
-│  ├── network (list, install, sync, delete)                 │
-│  └── passthrough (kubectl, helm, helmfile, k9s)            │
-├─────────────────────────────────────────────────────────────┤
-│  k3d Cluster                                                │
-│  ├── 1 Server + 3 Agent Nodes                              │
-│  ├── Traefik Ingress (ports 8080, 8443)                    │
-│  └── Local Path Storage                                     │
-├─────────────────────────────────────────────────────────────┤
-│  Network Deployments                                        │
-│  ├── ethereum-mainnet-prod (namespace)                     │
-│  ├── ethereum-hoodi-test (namespace)                     │
-│  ├── aztec-mainnet-node (namespace)                        │
-│  └── helios-knowing-wahoo (namespace)                      │
-└─────────────────────────────────────────────────────────────┘
++---------------------------------------------------------+
+|                      Obol Stack                         |
++---------------------------------------------------------+
+|  obol CLI                                               |
+|  +-- stack     (init, up, down, purge)                  |
+|  +-- agent     (init)                                   |
+|  +-- openclaw  (dashboard, setup, sync, skills, ...)     |
+|  +-- model     (configure, status)                      |
+|  +-- network   (list, install, sync, delete)            |
+|  +-- app       (install, sync, list, delete)            |
+|  +-- tunnel    (status, login, provision)               |
+|  +-- kubectl / helm / helmfile / k9s                    |
++---------------------------------------------------------+
+|  k3d Cluster                                            |
+|  +-- Traefik Gateway (ports 80, 8080, 443, 8443)       |
+|  +-- Cloudflared (public tunnel)                        |
+|  +-- llmspy (LLM gateway)                               |
+|  +-- ERPC (RPC load balancer)                           |
+|  +-- Obol Frontend (web dashboard)                      |
+|  +-- Monitoring (Prometheus)                            |
++---------------------------------------------------------+
+|  Deployments                                            |
+|  +-- openclaw-<id>        (AI agent + remote-signer)    |
+|  +-- ethereum-<id>        (blockchain network)          |
+|  +-- aztec-<id>           (blockchain network)          |
+|  +-- redis-<id>           (installed app)               |
++---------------------------------------------------------+
 ```
 
 ## Need assistance?
