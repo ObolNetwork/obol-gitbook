@@ -7,6 +7,13 @@ description: A reference for extra configuration of Ethereum Clients when runnin
 
 Many execution, consensus, and validator clients need custom flags or parameters to work best with Distributed Validators. These settings are often dispersed across a number of documentation pages or example repos. This page aims to be a reference for each client and the specific additions they may require.
 
+## Nethermind
+
+Nethermind should be configured to not include blobs in locally-built blocks while using MEV relays. In the case where MEV relays fail to provide blocks to propose and the node falls back to building locally, significant time will have passed and there is a risk of missing the block proposal window should block building be further delayed with blob processing. For this reason, blob inclusion should be disabled:
+```shell
+--Blocks.BlockProductionBlobLimit 0
+```
+
 ## Lighthouse
 
 ### Consensus Client

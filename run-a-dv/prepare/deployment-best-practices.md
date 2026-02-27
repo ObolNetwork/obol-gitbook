@@ -98,7 +98,12 @@ Tested client combinations can be found in the [release notes](https://github.co
 
 ## Execution Layer Configuration
 
-When available on the EL client (e.g Nethermind), blob inclusion for locally-built blocks should be set to 0. Setting blob count to 0 for locally-built blocks avoids the additional latency of gathering blob transactions, which matters when falling back from MEV relay blocks under time pressure.
+When available on the EL client (e.g [Nethermind](../../advanced-and-troubleshooting/troubleshooting/client_configurations.md#nethermind)), blob inclusion for locally-built blocks should be set to 0. Setting blob count to 0 for locally-built blocks avoids the additional latency of gathering blob transactions, which matters when falling back from MEV relay blocks under time pressure.
+
+For Nethermind:
+```shell
+--Blocks.BlockProductionBlobLimit 0
+```
 
 ## Metrics Monitoring
 
