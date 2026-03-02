@@ -99,7 +99,7 @@ You can reconfigure the model provider at any time with `obol openclaw setup`.
 
 ## Step 4: Deploy a blockchain network (optional)
 
-The stack ships with built-in RPC access to Ethereum mainnet and Hoodi via Obol's RPC — no node required. However if you're agent is doing a lot of requests or running a distributed validator, you might want to run your own local node:
+The stack ships with built-in RPC access to Ethereum mainnet and Hoodi via Obol's RPC — no node required. However if your agent is making a lot of requests or needs a Consensus Layer client to run a distributed validator, you might want to run your own local node:
 
 ```shell
 # Install an Ethereum node on Hoodi testnet
