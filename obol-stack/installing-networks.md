@@ -44,7 +44,14 @@ This creates a deployment directory at `~/.config/obol/networks/<network>/<id>/`
 ### Sync command
 
 ```shell
+# Auto-selects if only one deployment exists
+obol network sync
+
+# Specify explicitly when multiple deployments exist
 obol network sync <network>/<id>
+
+# Sync all deployments at once
+obol network sync --all
 ```
 
 This deploys the configuration to your Kubernetes cluster using Helmfile.
@@ -52,6 +59,10 @@ This deploys the configuration to your Kubernetes cluster using Helmfile.
 ### Delete command
 
 ```shell
+# Auto-selects if only one deployment exists
+obol network delete
+
+# Specify explicitly when multiple deployments exist
 obol network delete <network>/<id>
 ```
 
@@ -186,12 +197,18 @@ obol kubectl get namespaces | grep -E "ethereum|aztec"
 
 ```shell
 $EDITOR ~/.config/obol/networks/<network>/<id>/values.yaml
+
+# Re-deploy (auto-selects if only one deployment, otherwise specify)
 obol network sync <network>/<id>
 ```
 
 ### Delete a deployment
 
 ```shell
+# Auto-selects if only one deployment exists
+obol network delete
+
+# Or specify explicitly
 obol network delete <network>/<id>
 ```
 
