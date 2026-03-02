@@ -46,7 +46,7 @@ Files are installed to:
 
 {% tab title="Specific version" %}
 ```shell
-OBOL_RELEASE=v0.1.0 bash <(curl -s https://stack.obol.org)
+OBOL_RELEASE=v0.5.0 bash <(curl -s https://stack.obol.org)
 ```
 {% endtab %}
 
@@ -99,33 +99,32 @@ You can reconfigure the model provider at any time with `obol openclaw setup`.
 
 ## Step 4: Deploy a blockchain network (optional)
 
-Install an Ethereum node on the Hoodi testnet:
+The stack ships with built-in RPC access to Ethereum mainnet and Hoodi via Obol's RPC — no node required. However if you're agent is doing a lot of requests or running a distributed validator, you might want to run your own local node:
 
 ```shell
+# Install an Ethereum node on Hoodi testnet
 obol network install ethereum --network=hoodi
+
+# Deploy to the cluster
+obol network sync ethereum
 ```
 
-Deploy it to the cluster:
-
-```shell
-# Auto-selects since this is the only deployment
-obol network sync
-```
-
-{% hint style="info" %}
-If you have multiple network deployments, specify which one: `obol network sync ethereum/hoodi`
-{% endhint %}
+This creates the deployment `ethereum/hoodi` and registers the local node as the primary RPC upstream, with the built-in public RPCs as automatic fallback.
 
 Check the deployment:
 
 ```shell
-obol kubectl get pods -n ethereum-<your-id>
+obol kubectl get pods -n ethereum-hoodi
 ```
+
+{% hint style="info" %}
+You can also deploy mainnet (`obol network install ethereum`) or sepolia (`obol network install ethereum --network=sepolia`). Run multiple networks side by side — use `obol network sync ethereum` or `obol network sync ethereum/hoodi` to target a specific one.
+{% endhint %}
 
 ## Step 5: Explore
 
 ```shell
-# Interactive cluster UI
+# Interactive cluster UI. (Press '0' to view all)
 obol k9s
 
 # View all pods
