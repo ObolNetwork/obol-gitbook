@@ -47,7 +47,10 @@ This creates a deployment directory at `~/.config/obol/networks/<network>/<id>/`
 # Auto-selects if only one deployment exists
 obol network sync
 
-# Specify explicitly when multiple deployments exist
+# By type (auto-selects if only one ethereum deployment)
+obol network sync ethereum
+
+# By full identifier
 obol network sync <network>/<id>
 
 # Sync all deployments at once
@@ -62,7 +65,10 @@ This deploys the configuration to your Kubernetes cluster using Helmfile.
 # Auto-selects if only one deployment exists
 obol network delete
 
-# Specify explicitly when multiple deployments exist
+# By type (auto-selects if only one of that type)
+obol network delete ethereum
+
+# By full identifier
 obol network delete <network>/<id>
 ```
 
@@ -76,8 +82,8 @@ Deploy a full Ethereum node with configurable execution and consensus clients.
 
 | Flag | Description | Options | Default |
 | --- | --- | --- | --- |
-| `--id` | Deployment identifier | Any string | Auto-generated |
-| `--network` | Ethereum network | mainnet, hoodi | mainnet |
+| `--id` | Deployment identifier | Any string | Network name (e.g. `mainnet`), then petname |
+| `--network` | Ethereum network | mainnet, sepolia, hoodi | mainnet |
 | `--execution-client` | Execution layer client | reth, geth, nethermind, besu, erigon, ethereumjs | reth |
 | `--consensus-client` | Consensus layer client | lighthouse, prysm, teku, nimbus, lodestar, grandine | lighthouse |
 
@@ -88,11 +94,11 @@ Deploy a full Ethereum node with configurable execution and consensus clients.
 Deploy an Ethereum node on Hoodi testnet with default clients:
 
 ```shell
-# Install configuration
+# Install configuration (ID defaults to "hoodi")
 obol network install ethereum --network=hoodi
 
-# Deploy to cluster (replace with your deployment ID)
-obol network sync ethereum/knowing-wahoo
+# Deploy to cluster
+obol network sync ethereum/hoodi
 ```
 {% endtab %}
 
@@ -114,8 +120,8 @@ obol network sync ethereum/mainnet-prod
 Run mainnet and testnet nodes simultaneously:
 
 ```shell
-obol network install ethereum --id=mainnet --network=mainnet
-obol network install ethereum --id=hoodi --network=hoodi
+obol network install ethereum --network=mainnet
+obol network install ethereum --network=hoodi
 
 obol network sync ethereum/mainnet
 obol network sync ethereum/hoodi
@@ -148,7 +154,7 @@ Deploy an Aztec Layer 2 sequencer node for the privacy-focused Ethereum rollup.
 
 | Flag | Description | Options | Default |
 | --- | --- | --- | --- |
-| `--id` | Deployment identifier | Any string | Auto-generated |
+| `--id` | Deployment identifier | Any string | Network name (e.g. `mainnet`), then petname |
 | `--network` | Aztec network | mainnet | mainnet |
 | `--attester-private-key` | Attester private key (hex) | Required | None |
 | `--l1-execution-url` | L1 execution RPC URL | URL | ERPC endpoint |

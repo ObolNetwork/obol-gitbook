@@ -51,7 +51,10 @@ After installing, deploy the application:
 # Auto-selects if only one app is installed
 obol app sync
 
-# With multiple apps, specify which one
+# By type (auto-selects if only one postgresql deployment)
+obol app sync postgresql
+
+# By full identifier
 obol app sync postgresql/eager-fox
 ```
 
@@ -93,7 +96,8 @@ obol app sync
 # Auto-selects if only one app is installed
 obol app delete
 
-# Or specify explicitly
+# By type or full identifier
+obol app delete postgresql
 obol app delete postgresql/eager-fox
 
 # Skip confirmation

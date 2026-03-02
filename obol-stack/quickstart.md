@@ -113,7 +113,7 @@ obol network sync
 ```
 
 {% hint style="info" %}
-If you have multiple network deployments, specify which one: `obol network sync ethereum/<your-id>`
+If you have multiple network deployments, specify which one: `obol network sync ethereum/hoodi`
 {% endhint %}
 
 Check the deployment:
