@@ -44,14 +44,6 @@ Required flags:
 
 ## Nimbus
 
-### Consensus Client
-
-When running a Nimbus Consensus Client you must add the following flag **to `charon run`**:
-
-```shell
---feature-set-enable=json_requests
-```
-
 ### Validator Client
 
 Required flags:
