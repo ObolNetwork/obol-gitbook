@@ -48,6 +48,13 @@ Find charts at [Artifact Hub](https://artifacthub.io).
 After installing, deploy the application:
 
 ```shell
+# Auto-selects if only one app is installed
+obol app sync
+
+# By type (auto-selects if only one postgresql deployment)
+obol app sync postgresql
+
+# By full identifier
 obol app sync postgresql/eager-fox
 ```
 
@@ -74,8 +81,8 @@ Edit the values file before deploying or re-syncing:
 ```shell
 $EDITOR ~/.config/obol/applications/postgresql/eager-fox/values.yaml
 
-# Re-deploy with changes
-obol app sync postgresql/eager-fox
+# Re-deploy with changes (auto-selects if only one app)
+obol app sync
 ```
 
 **Local files per deployment:**
@@ -86,7 +93,11 @@ obol app sync postgresql/eager-fox
 ## Delete an application
 
 ```shell
-# With confirmation prompt
+# Auto-selects if only one app is installed
+obol app delete
+
+# By type or full identifier
+obol app delete postgresql
 obol app delete postgresql/eager-fox
 
 # Skip confirmation

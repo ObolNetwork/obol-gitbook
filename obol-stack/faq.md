@@ -204,9 +204,9 @@ Start the cluster:
 obol stack up
 ```
 
-### Error: "deployment not found"
+### Error: "deployment not found" or "multiple deployments found"
 
-Check your deployment ID:
+If you have a single deployment, `obol network sync` auto-selects it. With multiple deployments, specify which one:
 
 ```shell
 ls ~/.config/obol/networks/

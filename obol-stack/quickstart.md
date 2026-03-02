@@ -105,14 +105,15 @@ Install an Ethereum node on the Hoodi testnet:
 obol network install ethereum --network=hoodi
 ```
 
-Deploy it to the cluster (replace with your deployment ID):
+Deploy it to the cluster:
 
 ```shell
-obol network sync ethereum/<your-id>
+# Auto-selects since this is the only deployment
+obol network sync
 ```
 
-{% hint style="warning" %}
-Replace the ID with the actual deployment ID shown in your terminal output (e.g., `knowing-wahoo`).
+{% hint style="info" %}
+If you have multiple network deployments, specify which one: `obol network sync ethereum/hoodi`
 {% endhint %}
 
 Check the deployment:
