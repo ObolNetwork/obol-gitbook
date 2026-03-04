@@ -783,7 +783,7 @@ helm upgrade my-dv-pod obol/dv-pod \
 helm uninstall my-dv-pod
 ```
 
-{% hint style="warning" %}
+{% hint style="danger" %}
 Uninstalling the Helm release will remove all Kubernetes components. Ensure you have backed up your validator keys and cluster artifacts before uninstalling.
 {% endhint %}
 
