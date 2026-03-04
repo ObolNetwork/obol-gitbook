@@ -124,6 +124,72 @@ configured to connect to a different relay.
 To fix this error, ensure the peer is online and configured with the exact
 same `--p2p-relays` flag.
 
+### `Beacon Node is unreachable`
+
+This error indicates that Charon cannot establish a connection to the configured beacon node API endpoint. Common causes include:
+- The beacon node process has crashed or is not running. Check its status with `docker ps` or `docker compose ps` and inspect the beacon node container logs for crash messages.
+- The beacon node API endpoint URL in your configuration is incorrect. Verify that `CHARON_BEACON_NODE_ENDPOINTS` in your `docker-compose.yml` points to the correct host and port.
+- A firewall or network rule is blocking the connection between the Charon container and the beacon node. If you are running the beacon node outside of the Charon docker compose stack on the same machine, you may need to use the host's docker network IP rather than `localhost`. Run `docker network inspect <NETWORK ID>` to find the correct IP.
+- The beacon node API port is not exposed or is bound to a different interface. Ensure the beacon node is listening on an interface accessible from the Charon container (e.g., `0.0.0.0` rather than `127.0.0.1`).
+
+Restart the beacon node, confirm it is healthy, and verify network connectivity before restarting Charon.
+
+### Beacon Node is syncing
+
+This error occurs when Charon detects that the connected beacon node has not finished its initial sync with the Ethereum network. While the beacon node is syncing, it cannot provide accurate duty data, attestation information, or block proposals, which causes cascading failures across Charon and the validator client.
+
+- Check your beacon node logs to monitor sync progress. For Lighthouse, look for messages like `Syncing` with slot progress indicators. For Teku, look for `Slot Event` logs showing the current sync state.
+- Do not attempt to troubleshoot other Charon errors until the beacon node is fully synced. Most duty failures, fetcher errors, and consensus errors will resolve themselves once the beacon node reaches the head of the chain.
+- If syncing is taking an unusually long time, ensure your execution layer (EL) client is also fully synced, as the beacon node depends on it. Check that your machine has sufficient disk I/O, CPU, and memory resources.
+
+### Beacon Node has zero peers
+
+This error indicates that your beacon node is running but has not discovered or connected to any peers on the Ethereum p2p network. Without peers, the beacon node cannot sync or stay up to date with the chain head.
+
+- Check that the beacon node's p2p port (typically `9000` for both TCP and UDP) is open and reachable from the internet. Verify any firewall, security group, or router/NAT port-forwarding rules are correctly configured.
+- Ensure that the beacon node's discovery port (UDP) is not being blocked. Some cloud providers or ISPs may block UDP traffic by default.
+- If running behind a NAT, confirm that the beacon node is configured with the correct external IP address (e.g., `--enr-address` for Lighthouse).
+- Restart the beacon node to re-trigger peer discovery. If the issue persists, try adding known bootstrap nodes or peers manually via the beacon node's CLI flags.
+- Check that your system clock is accurate, as significant clock drift can cause peers to reject connections.
+
+### Beacon Node is too far behind the current slot
+
+This error indicates that the beacon node is running and has peers but is lagging significantly behind the current head of the chain. This means duties fetched from the beacon node are stale, leading to missed attestations and proposals.
+
+- Check the beacon node logs for warnings about slow processing, database errors, or resource exhaustion (CPU, memory, disk I/O).
+- Ensure your execution layer (EL) client is healthy and fully synced. A degraded or lagging EL client will cause the beacon node to fall behind as it cannot verify payloads.
+- Review system resource utilization. Insufficient disk I/O is a common cause, particularly on spinning disks or under-provisioned cloud instances. SSDs are mandatory for beacon node operation.
+- If the beacon node has fallen far behind, it may be faster to resync from scratch using checkpoint sync rather than waiting for it to catch up incrementally.
+
+### Insufficient peers to reach the required cluster threshold
+
+This error indicates that Charon cannot communicate with enough peer operators to meet the threshold required for signing duties. In a distributed validator cluster, a minimum number of operators (the [threshold](../../learn/charon/cluster-configuration.md#cluster-size-and-resilience) must be online and participating for any duty to succeed.
+
+- Check which peers are absent by inspecting Charon logs
+- Coordinate with your fellow cluster operators to ensure they are online and running. Peers may be offline due to maintenance, crashes, or misconfiguration.
+- Verify that all operators are running the same compatible version of Charon. Version mismatches can cause p2p communication failures that prevent peers from being recognized.
+- Check for p2p connectivity issues. If operators are behind restrictive firewalls or NATs, relay connections may be failing. Look for relay-related errors in the logs.
+- If a peer's node has permanently failed and cannot be recovered, consider initiating the [replace-operator ceremony](../../run-a-dv/editing/replace-operator.md) to cycle the offline operator out of the cluster.
+
+### Validator Client is not connected
+
+This error indicates that Charon is not receiving any requests from the local validator client (VC). The validator client must be connected to Charon's validator API in order to submit partial signatures for cluster duties.
+
+- Verify that the validator client container is running by checking `docker ps` or `docker compose ps`. If it has exited, inspect the logs with `docker compose logs <vc-container-name>` to determine the cause of the crash.
+- Ensure the validator client is configured to point to Charon's validator API endpoint, not directly to the beacon node. The VC should be using the Charon API address (typically `http://charon:3600` within the docker compose network) as its beacon node URL.
+- Check for port conflicts or network misconfigurations if using the docker compose stack. The Charon container must expose its validator API port, and the VC container must be able to reach it.
+- If the validator client is running but Charon still reports no connection, check the VC logs for authentication errors, TLS issues, or repeated connection timeouts that may indicate a configuration mismatch.
+- Restart the validator client after verifying the configuration.
+
+### Validator Client is missing validator private keys
+
+This error indicates that the validator client cannot find or load the validator key shares required for signing duties. Without these keys, the VC cannot submit partial signatures to Charon.
+
+- Ensure a DKG ceremony has been completed successfully before starting the node.
+- Verify that the keystore files (`keystore-*.json`) and their corresponding password files exist in the directory mounted into the validator client container. Check your `docker-compose.yml` volume mounts to confirm the correct path is being used.
+- Ensure file permissions allow the validator client to read the keystore files. Run `ls -la` on the validator keys directory to check ownership and permissions. If necessary, adjust file permissions.
+- If you have recently moved or redeployed your node, double-check that you copied the correct key shares for your specific operator index. Each operator in the cluster has unique key shares — using another operator's keys will result in mismatching key share errors.
+
 ### `Couldnt fetch duty data from the beacon node`
 
 `msgFetcher` indicates a duty failed in the fetcher component when
