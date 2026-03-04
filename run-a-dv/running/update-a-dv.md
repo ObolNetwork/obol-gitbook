@@ -118,5 +118,29 @@ To resolve this error, you can either:
 
     After overriding the changes, you will need to recreate your DV stack using the updated files. By following one of these approaches, you should be able to handle Git conflicts when pulling the latest changes to your repository, either preserving your changes or overriding them as per your requirements.
 {% endtab %}
+
+{% tab title="Helm" %}
+#### Update the Helm repository
+
+```sh
+helm repo update obol
+```
+
+#### Upgrade the release
+
+```sh
+helm upgrade my-dv-pod obol/dv-pod --reuse-values
+```
+
+This will upgrade your Charon and validator client containers to the latest chart version while preserving your existing configuration values.
+
+{% hint style="info" %}
+Check the [chart changelog](https://github.com/ObolNetwork/helm-charts/releases) before upgrading to review any breaking changes or new configuration options.
+{% endhint %}
+
+{% hint style="danger" %}
+If you run more than one node in a DV Cluster, please take caution upgrading them simultaneously. Particularly if you are updating or changing the validator client used or recreating disks. It is recommended to update nodes on a sequential basis to minimise liveness and safety risks.
+{% endhint %}
+{% endtab %}
 {% endtabs %}
 
