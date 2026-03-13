@@ -30,7 +30,7 @@ Run `docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.9.0 enr`. Thi
 
 If an ENR is lost, a new cluster operator can be created replacing the operator with the lost ENR. The steps to recover from a lost key are:
 1. Generate a new ENR with `charon create enr`
-2. Complete the [replace-operator ceremony](../advanced/replace-operator.md) within the cluster, using the new ENR public key as the `new-operator` and the lost ENR as the `old-operator`. Consult the `cluster-lock.json` file if you don't know the lost ENR public key.
+2. Complete the [replace-operator ceremony](../../run-a-dv/editing/replace-operator.md) within the cluster, using the new ENR public key as the `new-operator` and the lost ENR as the `old-operator`. Consult the `cluster-lock.json` file if you don't know the lost ENR public key.
 3. Shut down the existing cluster across all operators. Wait at least two epochs fully offline to minimize any slashing risk. Have all operators replace their previous cluster artifacts with the new artifacts created in the replacement ceremony. 
 4. Bring the cluster nodes back online with the new artifacts. The lost ENR has now been cycled out of the cluster.
 
