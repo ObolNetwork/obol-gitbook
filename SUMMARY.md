@@ -46,7 +46,7 @@
   * [Adding Validators](run-a-dv/editing/add-validators.md)
   * [Adding Operators](run-a-dv/editing/add-operators.md)
   * [Removing Operators](run-a-dv/editing/remove-operators.md)
-  * [Replace an Operator](run-a-dv/editing/replace-operator.md)
+  * [Replacing Operators](run-a-dv/editing/replace-operator.md)
   * [Recreating Private Keys](run-a-dv/editing/recreate-private-keys.md)
 * [Partner Integrations](run-a-dv/integrations/README.md)
   * [Create an EigenLayer DV](run-a-dv/integrations/create-an-eigenlayer-dv.md)
@@ -60,9 +60,6 @@
 
 * [Advanced Guides](advanced-and-troubleshooting/advanced/README.md)
   * [Swapping Clients](advanced-and-troubleshooting/advanced/client-swap.md)
-
-
-  * [Operator Rotation](advanced-and-troubleshooting/advanced/operator-rotation.md)
   * [Migrate an Existing Validator](advanced-and-troubleshooting/advanced/quickstart-split.md)
   * [Create a DV Using the SDK](advanced-and-troubleshooting/advanced/create-a-dv-using-the-sdk.md)
   * [Pre-Create a DV with an OVM](advanced-and-troubleshooting/advanced/ovm-predeploy.md)

@@ -848,7 +848,7 @@ Yes, each operator can use different execution and consensus clients. The Charon
 <details>
 <summary><strong>What happens if I need to replace an operator in the cluster?</strong></summary>
 
-Replacing an operator requires creating a new cluster configuration with the new operator's details and having all remaining operators plus the new operator sign the new configuration. This will require running a new DKG ceremony. For more information, see the [operator rotation guide](../../advanced-and-troubleshooting/advanced/operator-rotation.md).
+Replacing an operator can be done using the `charon alpha edit replace-operator` command for a single operator swap, or via validator consolidation when making larger changes. For more information, see the [replacing operators guide](../../run-a-dv/editing/replace-operator.md).
 
 </details>
 
