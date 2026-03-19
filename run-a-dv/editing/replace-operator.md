@@ -137,14 +137,7 @@ This method is best suited when:
 - Consolidations can only be performed when the source validator has `0x01` or `0x02` withdrawal credentials and the target validator must be `0x02`. The consolidation transaction must be sent from the withdrawal address defined in the source credentials. The target withdrawal credentials can be any address of choice.
 - This process transfers the staked ETH from the old validators to the new one whilst the stake never leaves the beacon chain. The only partial downtime for the source validator is the standard 27-hour waiting period on the beacon chain before the withdrawal. When compared to fully exiting and re-depositing, consolidation avoids the sweep delay required in that option.
 
-Operator rotation via consolidation can be classified into several scenarios:
-
-- Source and target cluster validators have the same withdrawal address that is an EOA (wallet address) or a Safe contract.
-- Source and target cluster validators have different withdrawal addresses but they are still EOAs.
-- Source and target cluster validators have the same OVMs as withdrawal addresses.
-- Source and target cluster validators have different OVMs as withdrawal addresses. Source can be an OVM and withdrawal can be an EigenPod/EOA/Safe or vice versa.
-
-In this guide, we focus on source and target validators that have the same withdrawal address that is an EOA or Safe. The other scenarios are actively in development.
+In this guide, we focus on source and target validators that have the same withdrawal address (EOA or contract). Other scenarios supporting differing withdrawal addresses are in development.
 
 **Pros:**
 
