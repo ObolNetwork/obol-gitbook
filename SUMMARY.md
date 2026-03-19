@@ -67,6 +67,7 @@
   * [Create a DV Using the SDK](advanced-and-troubleshooting/advanced/create-a-dv-using-the-sdk.md)
   * [Pre-Create a DV with an OVM](advanced-and-troubleshooting/advanced/ovm-predeploy.md)
   * [Enable MEV](advanced-and-troubleshooting/advanced/enable-mev.md)
+  * [Change Fee Recipient](advanced-and-troubleshooting/advanced/change-fee-recipient.md)
   * [Combine DV Private Key Shares](advanced-and-troubleshooting/advanced/quickstart-combine.md)
   * [Beacon node authentication](advanced-and-troubleshooting/advanced/beacon-node-authentication.md)
   * [Alter Withdrawal Addresses](advanced-and-troubleshooting/advanced/alter-withdrawal-addresses.md)
