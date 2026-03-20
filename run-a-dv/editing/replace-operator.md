@@ -1,9 +1,14 @@
 ---
 description: >-
-  Replace an operator in your existing distributed validator cluster using the charon alpha edit replace-operator command.
+  Replace an operator in your existing distributed validator cluster using the
+  charon alpha edit replace-operator command.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/run-a-dv/editing/replace-operator
 ---
 
-# Replacing an Operator
+# Replace an Operator
 
 {% hint style="warning" %}
 This is an alpha feature and is not yet recommended for production use.
@@ -27,10 +32,10 @@ The ceremony uses a different p2p relay from your running cluster to avoid confl
 
 The replace-operator ceremony performs a one-for-one swap:
 
-- The **old operator** is completely removed from the cluster and does not participate in the ceremony
-- The **new operator** takes over at the same index position as the old operator
-- All **continuing operators** must participate with their existing validator keys
-- All validator public keys remain unchanged
+* The **old operator** is completely removed from the cluster and does not participate in the ceremony
+* The **new operator** takes over at the same index position as the old operator
+* All **continuing operators** must participate with their existing validator keys
+* All validator public keys remain unchanged
 
 This is more convenient than `remove-operators` followed by `add-operators`, as it maintains the cluster size and threshold in a single atomic operation.
 
@@ -107,9 +112,9 @@ docker compose down
 
 ## Current Limitations
 
-- The new cluster configuration will not be reflected on the Launchpad.
-- The new cluster configuration will have a new cluster hash, so the observability stack will display new cluster data under a different identifier.
-- All continuing operators must have valid validator keys to participate in the replacement ceremony.
-- The cluster's threshold value remains unchanged after replacing an operator.
-- The new operator's ENR must not already exist in the cluster.
-- The old operator's ENR must exist in the current cluster.
+* The new cluster configuration will not be reflected on the Launchpad.
+* The new cluster configuration will have a new cluster hash, so the observability stack will display new cluster data under a different identifier.
+* All continuing operators must have valid validator keys to participate in the replacement ceremony.
+* The cluster's threshold value remains unchanged after replacing an operator.
+* The new operator's ENR must not already exist in the cluster.
+* The old operator's ENR must exist in the current cluster.

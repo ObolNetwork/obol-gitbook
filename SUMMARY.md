@@ -60,8 +60,6 @@
 
 * [Advanced Guides](advanced-and-troubleshooting/advanced/README.md)
   * [Swapping Clients](advanced-and-troubleshooting/advanced/client-swap.md)
-
-
   * [Operator Rotation](advanced-and-troubleshooting/advanced/operator-rotation.md)
   * [Migrate an Existing Validator](advanced-and-troubleshooting/advanced/quickstart-split.md)
   * [Create a DV Using the SDK](advanced-and-troubleshooting/advanced/create-a-dv-using-the-sdk.md)
@@ -93,23 +91,12 @@
 
 ## Community & Governance
 
-* [Governance](community-and-governance/governance/README.md)
-  * [Collective Overview](community-and-governance/governance/collective.md)
-  * [The Token House](community-and-governance/governance/token-house.md)
-  * [The RAF](community-and-governance/governance/raf/README.md)
-    * [RAF #1](community-and-governance/governance/raf/raf1-guide.md)
-  * [Delegate Guide](community-and-governance/governance/delegate-guide.md)
-    * [Delegate Reputation Score & Compensation](community-and-governance/governance/delegate-guide/delegate-reputation-score-and-compensation.md)
+* [Governance](community-and-governance/governance.md)
 * [The OBOL Token](community-and-governance/obol-token/README.md)
   * [Token Distribution & Liquidity](community-and-governance/obol-token/token-distribution-and-liquidity.md)
-  * [Token Holders FAQ](community-and-governance/obol-token/token-holders-faq.md)
-  * [TGE FAQ](community-and-governance/obol-token/tge-faq.md)
+  * [Guide for Unstaking OBOL](community-and-governance/obol-token/guide-for-unstaking-obol.md)
 * [Community](community-and-governance/community/README.md)
-  * [Grants Program](community-and-governance/community/grants-program/README.md)
-    * [Grants Track for Staking Masters](community-and-governance/community/grants-program/grants-track-for-staking-masters.md)
-    * [Grants Track for Community Events](community-and-governance/community/grants-program/grants-track-for-community-events.md)
-    * [Grants Track for Open Strategic Missions](community-and-governance/community/grants-program/grants-track-for-open-strategic-missions/README.md)
-      * [Strategic Open Missions](community-and-governance/community/grants-program/grants-track-for-open-strategic-missions/strategic-open-missions.md)
+  * [Grants Program](community-and-governance/community/grants-program.md)
   * [Techne](community-and-governance/community/techne.md)
   * [Staking Mastery Program (Archived)](community-and-governance/community/staking-masters.md)
 * [Contribution & Feedback](community-and-governance/contribution/README.md)

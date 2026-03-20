@@ -1,14 +1,17 @@
 ---
-description: >-
-  Assign pre-created validators to customers on demand
+description: Assign pre-created validators to customers on demand
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/advanced-and-troubleshooting/advanced/ovm-predeploy
 ---
 
-# Validator Pre-Deploy Workflow
+# Pre-Create a DV with an OVM
 
 A customer opting into staking at an unknown time, is a key trigger for enterprise staking deployments. There are two primary ways these ad-hoc demands are programatically fulfilled, using smart contracts or using/generating the private keys.
 
-- Smart contracts such as an [Obol Validator Manager](../../learn/intro/obol-splits.md#obol-validator-managers) (OVM) can re-assign their (beneficial) ownership; allowing a customer to activate a pre-created deposit for this smart contract.
-- A fresh DV cluster can be [created](../../run-a-dv/start/create-a-dv-alone.md), a [DKG invite](../../run-a-dv/start/create-a-dv-with-a-group.md) can be created for waiting [DV-pods](https://github.com/ObolNetwork/helm-charts/tree/main/charts/dv-pod) ready to partake, a [`charon add-validators`](../../run-a-dv/editing/add-validators.md) command could be triggered to add extra keys to a running cluster, or [`charon deposit sign`](./alter-withdrawal-addresses.md) could be used to alter an unused validator's withdrawal address.
+* Smart contracts such as an [Obol Validator Manager](../../learn/intro/obol-splits.md#obol-validator-managers) (OVM) can re-assign their (beneficial) ownership; allowing a customer to activate a pre-created deposit for this smart contract.
+* A fresh DV cluster can be [created](../../run-a-dv/start/create-a-dv-alone.md), a [DKG invite](../../run-a-dv/start/create-a-dv-with-a-group.md) can be created for waiting [DV-pods](https://github.com/ObolNetwork/helm-charts/tree/main/charts/dv-pod) ready to partake, a [`charon add-validators`](../../run-a-dv/editing/add-validators.md) command could be triggered to add extra keys to a running cluster, or [`charon deposit sign`](alter-withdrawal-addresses.md) could be used to alter an unused validator's withdrawal address.
 
 This guide will focus on the former, managing validators using Obol smart contracts, and their role based access control. This approach requires less coordination for multi-operator setups, and is simpler than creating or interacting with private key material on the fly by a remote trigger.
 
@@ -21,7 +24,6 @@ The Hoodi testnet will be used for all examples.
 {% hint style="warning" %}
 The following code snippets are minimal examples for the purpose of achieving the desired functionality. These should not be run in production without thorough testing and review.
 {% endhint %}
-
 
 #### Pre-requisites
 
@@ -57,11 +59,12 @@ export PULL_SPLIT_FACTORY_ADDRESS=0x6B9118074aB15142d7524E8c4ea8f62A3Bdb98f1
 
 #### Fee Splitting
 
-A key decision when it comes to preparing a Distributed Validator is how Node Operators and Service providers can be non-custodially compensated for their services. Obol Validator Managers are built to leverage [Splits.org](https://splits.org) split contracts. For this demo, split contracts will be pre-created with the unallocated OVMs, and edited for customers as they appear. You may want to consider smoothing MEV across your customers using a pair of nested splitters. This is described in more detail at the end of the [guide](#appendix-mev-smoothing).
+A key decision when it comes to preparing a Distributed Validator is how Node Operators and Service providers can be non-custodially compensated for their services. Obol Validator Managers are built to leverage [Splits.org](https://splits.org) split contracts. For this demo, split contracts will be pre-created with the unallocated OVMs, and edited for customers as they appear. You may want to consider smoothing MEV across your customers using a pair of nested splitters. This is described in more detail at the end of the [guide](ovm-predeploy.md#appendix-mev-smoothing).
 
 ### Contract Deployment
 
 A safe and convenient way to deploy an OVM contract is through the [existing contract factory](https://docs.obol.org/next/learn/readme/obol-splits#obol-validator-manager-factory-deployment). A splitter contract can be deployed in a similar fashion.
+
 {% tabs %}
 {% tab title="Cast" %}
 ```sh
@@ -80,8 +83,8 @@ cast send $OBOL_VALIDATOR_MANAGER_FACTORY_ADDRESS \
   --private-key $BACKEND_API_PRIVATE_KEY
 ```
 {% endtab %}
-{% tab title="Forge" %}
 
+{% tab title="Forge" %}
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
@@ -154,10 +157,9 @@ contract DeployOVMAndSplit is Script {
     }
 }
 ```
-
 {% endtab %}
-{% tab title="TypeScript" %}
 
+{% tab title="TypeScript" %}
 ```ts
 import {
   createWalletClient,
@@ -249,11 +251,10 @@ const logs = parseEventLogs({
 const ovmAddress = logs[0].args.ovm;
 console.log("ObolValidatorManager deployed at:", ovmAddress);
 ```
-
 {% endtab %}
 {% endtabs %}
 
-After you have deployed an Obol Validator Manager contract, let's save its address and an example customer address as environment variables to make the rest of the `cast` demo easier. 
+After you have deployed an Obol Validator Manager contract, let's save its address and an example customer address as environment variables to make the rest of the `cast` demo easier.
 
 ```sh
 # The created OVM from the factory
@@ -279,7 +280,6 @@ When a capital allocator (customer) is onboarding, the pre-created contracts can
 
 {% tabs %}
 {% tab title="Cast" %}
-
 ```sh
 # Set the beneficiary address to the customer
 cast send $EXAMPLE_OVM_ADDRESS \
@@ -311,10 +311,9 @@ cast send $EXAMPLE_OVM_ADDRESS \
   --rpc-url $RPC_URL \
   --private-key $BACKEND_API_PRIVATE_KEY
 ```
-
 {% endtab %}
-{% tab title="Forge" %}
 
+{% tab title="Forge" %}
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
@@ -373,10 +372,9 @@ contract AssignToCustomer is Script {
     }
 }
 ```
-
 {% endtab %}
-{% tab title="TypeScript" %}
 
+{% tab title="TypeScript" %}
 ```ts
 import { createWalletClient, createPublicClient, http, parseAbi } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
@@ -463,7 +461,6 @@ console.log("Grant roles tx:", hash3);
 await publicClient.waitForTransactionReceipt({ hash: hash3 });
 console.log("Deposit and withdrawal role assigned to customer");
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -477,7 +474,6 @@ The last step before the OVM is ready for activation is to transfer the ownershi
 
 {% tabs %}
 {% tab title="Cast" %}
-
 ```sh
 cast send $EXAMPLE_OVM_ADDRESS \
   "transferOwnership(address)" \
@@ -485,10 +481,9 @@ cast send $EXAMPLE_OVM_ADDRESS \
   --rpc-url $RPC_URL \
   --private-key $BACKEND_API_PRIVATE_KEY
 ```
-
 {% endtab %}
-{% tab title="Forge" %}
 
+{% tab title="Forge" %}
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
@@ -514,10 +509,9 @@ contract TransferOwnership is Script {
     }
 }
 ```
-
 {% endtab %}
-{% tab title="TypeScript" %}
 
+{% tab title="TypeScript" %}
 ```ts
 import { createWalletClient, createPublicClient, http, parseAbi } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
@@ -560,25 +554,23 @@ await publicClient.waitForTransactionReceipt({ hash: hash });
 
 console.log("Ownership transferred to SAFE:", SAFE_ADDRESS);
 ```
-
 {% endtab %}
 {% endtabs %}
 
 ### Handling Deposits
 
-The capital allocator can now deposit the validators that point to this withdrawal address. The validator keys are held by the [provisioned DV cluster](../../run-a-dv/start/) operators and the deposit data was created during cluster creation. 
+The capital allocator can now deposit the validators that point to this withdrawal address. The validator keys are held by the [provisioned DV cluster](../../run-a-dv/start/) operators and the deposit data was created during cluster creation.
 
 This step would normally be through a wallet and web interface. This example using raw private keys is for demo purposes only.
 
 {% hint style="info" %}
-To accurately differentiate reward from principal in an OVM, the OVM contract needs to be invoked during the deposit call. Each OVM has a `deposit()` function exactly matching and wrapping the official deposit smart contract, and should be used for that purpose. 
+To accurately differentiate reward from principal in an OVM, the OVM contract needs to be invoked during the deposit call. Each OVM has a `deposit()` function exactly matching and wrapping the official deposit smart contract, and should be used for that purpose.
 
 If a deposit is made not through the OVM, the OVM can be updated with the `setAmountOfPrincipalStake()` method by the `owner` or an address with the `SET_BENEFICIARY_ROLE`.
 {% endhint %}
 
 {% tabs %}
 {% tab title="Cast" %}
-
 ```sh
 cast send $EXAMPLE_OVM_ADDRESS \
   "deposit(bytes,bytes,bytes,bytes32)" \
@@ -590,10 +582,9 @@ cast send $EXAMPLE_OVM_ADDRESS \
   --rpc-url $RPC_URL \
   --private-key $EXAMPLE_CUSTOMER_PRIVATE_KEY
 ```
-
 {% endtab %}
-{% tab title="Forge" %}
 
+{% tab title="Forge" %}
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
@@ -635,10 +626,9 @@ contract Deposit is Script {
     }
 }
 ```
-
 {% endtab %}
-{% tab title="TypeScript" %}
 
+{% tab title="TypeScript" %}
 ```ts
 import { createWalletClient, createPublicClient, http, parseAbi } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
@@ -684,11 +674,10 @@ console.log("Deposit tx:", hash);
 await publicClient.waitForTransactionReceipt({ hash: hash });
 console.log("Deposit complete - validator activation pending");
 ```
-
 {% endtab %}
 {% endtabs %}
-The validator(s) will enter the activation queue and the `amountOfPrincipalStake` value on the contract will track how much of the balance is considered the principal (owed to the beneficiary). The EL and CL rewards from any targeting validators will be sent to the OVM contract and Pull Split.
 
+The validator(s) will enter the activation queue and the `amountOfPrincipalStake` value on the contract will track how much of the balance is considered the principal (owed to the beneficiary). The EL and CL rewards from any targeting validators will be sent to the OVM contract and Pull Split.
 
 ### Withdrawing Validator Balance
 
@@ -698,10 +687,8 @@ Compounding validators (0x02 type) can have part of their principal withdrawn fr
 There is an important nuance when it comes to partial withdrawals. With an OVM (on the default settings), it will treat a withdrawal of less than 16 ether as rewards rather than principal. **A customer should not withdraw less than this amount of principal or they may be charged fees on it**. Similarly, care must be taken with the `WITHDRAWAL_ROLE`; although it does not allow the changing of who gets rewards, it can cause this 'over-charging' behaviour by doing repeated small withdrawals.
 {% endhint %}
 
-
 {% tabs %}
 {% tab title="Cast" %}
-
 ```sh
 cast send $EXAMPLE_OVM_ADDRESS \
   "withdraw(bytes[],uint64[],uint256,address)" \
@@ -713,10 +700,9 @@ cast send $EXAMPLE_OVM_ADDRESS \
   --rpc-url $RPC_URL \
   --private-key $BACKEND_API_PRIVATE_KEY
 ```
-
 {% endtab %}
-{% tab title="Forge" %}
 
+{% tab title="Forge" %}
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
@@ -766,10 +752,9 @@ contract PartialWithdrawal is Script {
     }
 }
 ```
-
 {% endtab %}
-{% tab title="TypeScript" %}
 
+{% tab title="TypeScript" %}
 ```ts
 import { createWalletClient, createPublicClient, http, parseAbi } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
@@ -825,10 +810,8 @@ console.log(
   "Partial withdrawal requested - funds will arrive after protocol processes it"
 );
 ```
-
 {% endtab %}
 {% endtabs %}
-
 
 ### Reward Distribution and Splitters
 
@@ -836,17 +819,15 @@ When withdrawals requested eventually exit the beacon chain, they appear on the 
 
 {% tabs %}
 {% tab title="Cast" %}
-
 ```sh
 cast send $EXAMPLE_OVM_ADDRESS \
   "distributeFunds()" \
   --rpc-url $RPC_URL \
   --private-key $BACKEND_API_PRIVATE_KEY
 ```
-
 {% endtab %}
-{% tab title="Forge" %}
 
+{% tab title="Forge" %}
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
@@ -870,10 +851,9 @@ contract DistributeFunds is Script {
     }
 }
 ```
-
 {% endtab %}
-{% tab title="TypeScript" %}
 
+{% tab title="TypeScript" %}
 ```ts
 import { createWalletClient, createPublicClient, http, parseAbi } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
@@ -909,30 +889,15 @@ console.log("Distribute funds tx:", hash);
 await publicClient.waitForTransactionReceipt({ hash: hash });
 console.log("Funds distributed to beneficiary and reward recipient");
 ```
-
 {% endtab %}
 {% endtabs %}
 
-<!-- When EL/CL rewards are to be split among multiple parties, a [splitter contract](https://docs.splits.org/) can be deployed as the target of OVM's `rewardRecipient` to chain the functionality of both contracts. In the case where not all the earning parties are known before OVM deloyment, multiple splitter contracts can be chained to separate mutable vs immutable reward flows.
-
-<figure><img src="../../.gitbook/assets/SimpleRewardFlow.svg" alt=""><figcaption></figcaption></figure>
-<!-- 
-Staking Rewards [3] OVM
-Stake [32] OVM
-MEV Rewards [1] Reward Splitter
-OVM [32] Capital Allocator
-OVM [3] Reward Splitter
-Reward Splitter[3.6] Capital Allocator
-Reward Splitter[0.4] Fees
--->
-<!-- With the above setup, static rewards recipients can be deployed ahead of time while retaining flexibility with the remainder. The second splitter contract could have ownership transferred to the capital allocator after personalization, while maintaining existing contractual reward splits. -->
-
 #### Appendix: MEV Smoothing
 
-If you setup validators where every customer gets their own fee recipient address (and underlying splitter), they will each get proposals rarely (approximately twice per year for a 32 ETH validator). Due to MEV being unequally distributed, only a small number of proposals in the year contain most of the MEV. This means that most of your users will get the median amount of Ether as MEV rather than the average, and may notice a lower APR versus setups that pool and distribute their variable rewards across their users. It may be beneficial for you to instead smooth the MEV being accrued through block proposals across all depositors in the cluster. This can be achieved through two nested split contracts as follows: 
+If you setup validators where every customer gets their own fee recipient address (and underlying splitter), they will each get proposals rarely (approximately twice per year for a 32 ETH validator). Due to MEV being unequally distributed, only a small number of proposals in the year contain most of the MEV. This means that most of your users will get the median amount of Ether as MEV rather than the average, and may notice a lower APR versus setups that pool and distribute their variable rewards across their users. It may be beneficial for you to instead smooth the MEV being accrued through block proposals across all depositors in the cluster. This can be achieved through two nested split contracts as follows:
 
-- First create an editable [PullSplit](https://docs.splits.org/core/split-v2) we'll refer to as the Child Split. The owner of this split should be the `$BACKEND_API_ADDRESS`. 
-- Next create a second PullSplit we'll refer to as the Parent Split. It can be immutable if preferred. It should send the majority of its inflow to the Child Split, and some amount to a set of addresses that receive operating fees for the cluster. 
-- Set the parent split as the `--fee-recipient-address` for all validators in the cluster. This means all proposal rewards for the cluster will go to this address.
-- When a customer makes a deposit, use the `$BACKEND_API_PRIVATE_KEY` to update the Child Split to proportionally reflect the eth provided by all customers to the cluster. 
-- As proposals by the validators earn tips and MEV, this collects on the Split Contracts. Distributing these rewards sends the ether to the fee recipients and customers.
+* First create an editable [PullSplit](https://docs.splits.org/core/split-v2) we'll refer to as the Child Split. The owner of this split should be the `$BACKEND_API_ADDRESS`.
+* Next create a second PullSplit we'll refer to as the Parent Split. It can be immutable if preferred. It should send the majority of its inflow to the Child Split, and some amount to a set of addresses that receive operating fees for the cluster.
+* Set the parent split as the `--fee-recipient-address` for all validators in the cluster. This means all proposal rewards for the cluster will go to this address.
+* When a customer makes a deposit, use the `$BACKEND_API_PRIVATE_KEY` to update the Child Split to proportionally reflect the eth provided by all customers to the cluster.
+* As proposals by the validators earn tips and MEV, this collects on the Split Contracts. Distributing these rewards sends the ether to the fee recipients and customers.

@@ -1,6 +1,10 @@
 ---
 sidebar_position: 1
 description: Information about the Techne Credential Program.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/community-and-governance/community/techne
 ---
 
 # Techne

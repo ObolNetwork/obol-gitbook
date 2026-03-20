@@ -2,6 +2,10 @@
 description: >-
   Learn how to activate your distributed validator cluster using the new deposit
   flow with support for compounding validators and OVM integration.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/run-a-dv/running/activate-a-dv
 ---
 
 # Activate a DV
@@ -47,7 +51,7 @@ There are three strategic ways to break down a large deposit (e.g., 1000 ETH) fo
 | **2**  | **Single Activation (>32 ETH)** (e.g., 1000 ETH)         | Multiple deposits are bundled into a single multi-call transaction. This eliminates opportunity cost and ensures all ETH yields rewards immediately. | Decimal amounts of ETH are not supported. Transaction gas cost could be high depending upon the amount chosen.     |
 | **3**  | **Activate Multiple Validators** (distributing 1000 ETH) | Similar to Option 2, but leaves more room for individual top-ups later.                                                                              | Creates more load on nodes due to the higher validator count.                                                      |
 
-<figure><img src="../../.gitbook/assets/Screenshot 2026-02-11 at 16.36.53.png" alt="Deposit " width="367"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2026-02-11 at 16.36.53.png" alt="Deposit" width="367"><figcaption></figcaption></figure>
 
 ## 2. Allocation & Submission
 

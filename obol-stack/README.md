@@ -1,8 +1,11 @@
 ---
 description: A framework for AI agents to run decentralised infrastructure locally
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/obol-stack/obol-stack
 ---
 
-# Introduction to the Obol Stack
+# Introduction
 
 The Obol Stack is a local development environment for running AI agents alongside blockchain infrastructure. It provides a simplified CLI for managing a Kubernetes cluster with an AI agent ([OpenClaw](https://openclaw.ai)), dynamically deployable blockchain networks, and public access via Cloudflare tunnels.
 
@@ -29,29 +32,29 @@ The stack runs entirely on your local machine using [k3d](https://k3d.io/) (Kube
 
 ## CLI overview
 
-| Command | Description |
-| --- | --- |
-| `obol stack init / up / down / purge` | Cluster lifecycle management |
-| `obol agent init` | Set up the AI agent (OpenClaw) |
-| `obol openclaw dashboard / setup / ...` | Manage OpenClaw instances |
-| `obol model setup / status` | Configure LLM providers |
-| `obol network list / install / sync / delete` | Manage blockchain networks |
-| `obol app install / sync / list / delete` | Install arbitrary Helm charts |
-| `obol tunnel status / login / provision` | Manage Cloudflare tunnels |
-| `obol kubectl / helm / k9s` | Kubernetes tool passthroughs |
+| Command                                       | Description                    |
+| --------------------------------------------- | ------------------------------ |
+| `obol stack init / up / down / purge`         | Cluster lifecycle management   |
+| `obol agent init`                             | Set up the AI agent (OpenClaw) |
+| `obol openclaw dashboard / setup / ...`       | Manage OpenClaw instances      |
+| `obol model setup / status`                   | Configure LLM providers        |
+| `obol network list / install / sync / delete` | Manage blockchain networks     |
+| `obol app install / sync / list / delete`     | Install arbitrary Helm charts  |
+| `obol tunnel status / login / provision`      | Manage Cloudflare tunnels      |
+| `obol kubectl / helm / k9s`                   | Kubernetes tool passthroughs   |
 
 ## Default infrastructure
 
 When you start the stack, the following services are deployed automatically:
 
-| Service | Namespace | Description |
-| --- | --- | --- |
-| **Traefik** | `traefik` | Gateway API ingress controller |
-| **Cloudflared** | `traefik` | Cloudflare tunnel connector |
-| **ERPC** | `erpc` | Unified RPC load balancer for Ethereum endpoints |
-| **Obol Frontend** | `obol-frontend` | Web management dashboard |
-| **Monitoring** | `monitoring` | Prometheus + kube-prometheus-stack |
-| **llmspy** | `llm` | LLM proxy/router for AI agent traffic |
+| Service           | Namespace       | Description                                      |
+| ----------------- | --------------- | ------------------------------------------------ |
+| **Traefik**       | `traefik`       | Gateway API ingress controller                   |
+| **Cloudflared**   | `traefik`       | Cloudflare tunnel connector                      |
+| **ERPC**          | `erpc`          | Unified RPC load balancer for Ethereum endpoints |
+| **Obol Frontend** | `obol-frontend` | Web management dashboard                         |
+| **Monitoring**    | `monitoring`    | Prometheus + kube-prometheus-stack               |
+| **llmspy**        | `llm`           | LLM proxy/router for AI agent traffic            |
 
 ## System requirements
 
@@ -63,11 +66,11 @@ When you start the stack, the following services are deployed automatically:
 
 ### Resource recommendations
 
-| Component | Minimum | Recommended |
-| --- | --- | --- |
-| **CPU** | 4 cores | 8 cores |
-| **RAM** | 8 GB | 16 GB |
-| **Storage** | 50 GB | 500+ GB (varies by network) |
+| Component   | Minimum | Recommended                 |
+| ----------- | ------- | --------------------------- |
+| **CPU**     | 4 cores | 8 cores                     |
+| **RAM**     | 8 GB    | 16 GB                       |
+| **Storage** | 50 GB   | 500+ GB (varies by network) |
 
 {% hint style="warning" %}
 Running full Ethereum nodes requires significant disk space. Mainnet execution clients can require 1+ TB of storage.

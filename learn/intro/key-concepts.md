@@ -1,5 +1,8 @@
 ---
 description: Some of the key terms in the field of Distributed Validator Technology
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/learn/readme/key-concepts
 ---
 
 # Key Staking Concepts
@@ -105,7 +108,7 @@ The number of nodes in a cluster that need to be online and honest for their dis
 |      10      |    7/10   | Minimum to tolerate three **malicious** nodes |
 
 {% hint style="warning" %}
-Running the same Charon node in two places is considered a malicious (or byzantine) act, you should **take extra care not to run duplicate instances of a particular Charon peer if it is running in a three node setup**, which only tolerates one offline node, not a malicious one. Read more [here](../charon/cluster-configuration#cluster-size-and-resilience). 
+Running the same Charon node in two places is considered a malicious (or byzantine) act, you should **take extra care not to run duplicate instances of a particular Charon peer if it is running in a three node setup**, which only tolerates one offline node, not a malicious one. Read more [here](../charon/cluster-configuration/#cluster-size-and-resilience).
 {% endhint %}
 
 ### Distributed Validator Key Generation Ceremony

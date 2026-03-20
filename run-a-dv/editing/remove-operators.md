@@ -1,6 +1,11 @@
 ---
 description: >-
-  Remove operators from your existing distributed validator cluster using the charon alpha edit remove-operators command.
+  Remove operators from your existing distributed validator cluster using the
+  charon alpha edit remove-operators command.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/run-a-dv/editing/remove-operators
 ---
 
 # Removing Operators
@@ -26,8 +31,8 @@ The ceremony uses a different p2p relay from your running cluster to avoid confl
 
 Before removing operators, it's crucial to understand your cluster's fault tolerance:
 
-- **Fault tolerance (f)** = `number of operators - threshold`
-- If you're removing **more operators than the fault tolerance**, you must use the `--participating-operator-enrs` flag to specify which operators will participate in the ceremony.
+* **Fault tolerance (f)** = `number of operators - threshold`
+* If you're removing **more operators than the fault tolerance**, you must use the `--participating-operator-enrs` flag to specify which operators will participate in the ceremony.
 
 For example, if your cluster has 4 operators with a threshold of 3 (f=1), removing 2 operators requires specifying at least 3 participating operators.
 
@@ -124,7 +129,7 @@ docker compose down
 
 ## Current Limitations
 
-- The new cluster configuration will not be reflected on the Launchpad.
-- The new cluster configuration will have a new cluster hash, so the observability stack will display new cluster data under a different identifier.
-- All remaining operators must have valid validator keys to participate in the removal ceremony.
-- When removing more operators than the fault tolerance, at least `threshold` operators must participate in the ceremony.
+* The new cluster configuration will not be reflected on the Launchpad.
+* The new cluster configuration will have a new cluster hash, so the observability stack will display new cluster data under a different identifier.
+* All remaining operators must have valid validator keys to participate in the removal ceremony.
+* When removing more operators than the fault tolerance, at least `threshold` operators must participate in the ceremony.

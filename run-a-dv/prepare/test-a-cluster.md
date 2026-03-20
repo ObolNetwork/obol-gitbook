@@ -1,17 +1,21 @@
+---
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/run-a-dv/prepare/test-a-cluster
+---
+
 # Test a Cluster
 
 Charon test commands are designed to help you evaluate the performance and readiness of your candidate cluster. It allows you to test your connection to other Charon peers, the performance of your beacon node(s), the readiness of your validator client, the performance of the MEV relays you will be using and the infrastructure on which you will run the cluster. It prints a performance report to the standard output (which can be omitted with the `--quiet` flag) and a machine-readable JSON format of the report if the `--output-json` flag is set.
 
-
 {% hint style="success" %}
-
 Adding the `--publish` flag to the below commands, and running the command from the directory containing your `.charon` folder, will submit the test results to the [Obol API](../../api/what-is-this-api.md). Publishing your performance reports grows the staking node dataset, and allows Obol and Ethereum development teams to make data-driven choices regarding the required specs for validating Ethereum. We hope you will consider opting in.
-
 {% endhint %}
 
 {% tabs %}
 {% tab title="Executable" %}
-#### Test all
+**Test all**
 
 Intended for running tests across all categories. Each flag should have a prefix for its category (i.e.: the flag `--endpoints` from the beacon tests becomes `--beacon-endpoints`). For details about each category refer to their respective sections.
 
@@ -190,16 +194,13 @@ https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72d
 {% endtab %}
 
 {% tab title="Docker" %}
-
 {% hint style="info" %}
-
 If you are running Charon using the [charon-distributed-validator-node repository](https://github.com/ObolNetwork/charon-distributed-validator-node/), services like the beacon node and validator client are hosted locally. To run the `beacon` node and `validator` client tests, you need to point them toward the correct Docker container, this includes specifying the Docker container’s network. Check your docker networks with the command `docker network ls`. When you run the test command, specify the Docker network with `--network <name>`.
 
 Read more about docker networking [here](https://docs.docker.com/engine/network/).
-
 {% endhint %}
 
-#### Test all
+**Test all**
 
 Intended for running tests across all categories. Each flag should have a prefix for its category (i.e.: the flag `--endpoints` from the beacon tests becomes `--beacon-endpoints`). For details about each category refer to their respective sections.
 
@@ -517,7 +518,6 @@ At least 1 endpoint is required to be supplied to the `--endpoints` flag.
 
 {% tabs %}
 {% tab title="Executable" %}
-
 {% tabs %}
 {% tab title="Regular Test" %}
 **Pre-requisites**
@@ -562,10 +562,9 @@ https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72d
 ```
 {% endtab %}
 {% endtabs %}
-
 {% endtab %}
+
 {% tab title="Docker" %}
-
 {% tabs %}
 {% tab title="Regular Test" %}
 **Pre-requisites**
@@ -610,7 +609,6 @@ https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72d
 ```
 {% endtab %}
 {% endtabs %}
-
 {% endtab %}
 {% endtabs %}
 
@@ -620,27 +618,23 @@ Run tests of your machine and network, to evaluate their effectiveness for a Dis
 
 {% tabs %}
 {% tab title="Executable" %}
-
-#### Pre-requisites
+**Pre-requisites**
 
 The executable storage tests require `fio` to be installed on your host machine. Read more about `fio` [here](https://fio.readthedocs.io/en/latest/fio_doc.html).
 
-#### Example run
+**Example run**
 
 ```sh
 charon alpha test infra
 ```
-
 {% endtab %}
 
 {% tab title="Docker" %}
-
-#### Example run
+**Example run**
 
 ```sh
 docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.9.0 alpha test infra \
         --disk-io-test-file-dir=/opt/charon/test
 ```
-
 {% endtab %}
 {% endtabs %}

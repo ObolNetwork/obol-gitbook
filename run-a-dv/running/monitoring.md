@@ -3,6 +3,9 @@ sidebar_position: 4
 description: >-
   Add monitoring credentials to help the Obol Team monitor the health of your
   cluster
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/run-a-dv/running/monitoring
 ---
 
 # Monitoring Your Node

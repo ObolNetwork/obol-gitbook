@@ -1,3 +1,9 @@
+---
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/api/dv-exit
+---
+
 # DV Exit
 
 {% openapi src="https://api.obol.tech/docs-json" path="/exp/exit/{lockHash}/{shareIdx}/{validatorPubkey}" method="get" %}

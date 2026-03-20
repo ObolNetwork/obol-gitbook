@@ -1,90 +1,80 @@
 ---
 sidebar_position: 4
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/community-and-governance/obol-token
 ---
 
 # The OBOL Token
 
-The OBOL Token is central to the governance and operation of the Obol Collective. It serves multiple purposes that are essential to its functioning.
+## Overview
 
-**OBOL Token Transferability:** With the approval of[ OIP-2](https://community.obol.org/t/oip-2-unlock-obol-token/317/30), the OBOL Token is set for a strategic and well-planned unlock. The tokens will be unlocked on the 7th May 2025 at 11:00 UTC, following the completion of centralized exchange listings. Please go to [claim.obol.org](https://claim.obol.org) to unlock airdrop tokens.
+The OBOL token is the core coordination asset of the Obol Collective. It plays a central role in aligning participants, supporting the growth of the Distributed Validator ecosystem, and enabling long-term value creation across the network.
 
-## Token Contract
+Below you’ll find the key information related to the token, including contract details, distribution, and current status.
 
-The official token contract address of the OBOL Token is [0x0B010000b7624eb9B3DfBC279673C76E9D29D5F7](https://etherscan.io/address/0x0B010000b7624eb9B3DfBC279673C76E9D29D5F7)
+## Token Information
 
-## Official Uniswap Pool
+### Token Contract
 
-The official Uniswap Pool for the OBOL Token is [https://app.uniswap.org/explore/pools/ethereum/0x57F52C9faa6D40c5163D76b8D7dD81ddB7c95434](https://app.uniswap.org/explore/pools/ethereum/0x57F52C9faa6D40c5163D76b8D7dD81ddB7c95434)
+The official token contract address of the OBOL Token is[ 0x0B010000b7624eb9B3DfBC279673C76E9D29D5F7](https://etherscan.io/address/0x0B010000b7624eb9B3DfBC279673C76E9D29D5F7)
 
-## Verified Contract Addresses <a href="#verified-contract-addresses" id="verified-contract-addresses"></a>
+### Official Uniswap Pool
 
-The following smart contracts power OBOL staking, governance, and reward distribution on Ethereum mainnet.
+The official Uniswap Pool for the OBOL Token is [https://app.uniswap.org/explore/pools/ethereum/0x29ecbccc2be2c0c9f87f4f84438bc9756a88f7cfe5ee91649a01240ae2242093](https://app.uniswap.org/explore/pools/ethereum/0x29ecbccc2be2c0c9f87f4f84438bc9756a88f7cfe5ee91649a01240ae2242093)
 
-<details>
+## Current Token Utility
 
-<summary>Governor Contract</summary>
+Following recent updates and broader changes in the ecosystem, the OBOL token is evolving in how it is used.
 
-* **Address:** [`0xcB1622185A0c62A80494bEde05Ba95ef29Fbf85c`](https://etherscan.io/address/0xcB1622185A0c62A80494bEde05Ba95ef29Fbf85c)
-* **Purpose:** Manages onchain proposal lifecycle and voting logic for Token House governance.
-* **What you can find onchain:**
-  * Voting thresholds
-  * Quorum settings,
-  * Delay/period configs,
-  * Proposal and vote history.
+### Staking
 
-</details>
+Staking is no longer actively promoted as a core token utility.
 
-<details>
+* Existing staking contracts remain live and fully functional
+* Users who have staked OBOL (via stOBOL) can keep their position as-is
+* However, no new incentives or emissions are currently associated with staking
 
-<summary>Auto Delegate (Overwhelming Support Strategy)</summary>
+This change reflects both:
 
-* **Address:** [`0xCa28852B6Fc15EbD95b17c875D5Eb14b08579158`](https://etherscan.io/address/0xCa28852B6Fc15EbD95b17c875D5Eb14b08579158)
-* **Purpose:** Implements the “Overwhelming Support” auto-delegation strategy. This contract casts votes on behalf of un-delegated or transferred stOBOL when proposals receive strong community support. This mechanism uses tokens that would otherwise not be available in governance to ensure uncontroversial proposals will meet quorum.
-* **What you can find onchain:**
-  * Parameters like `supportThreshold`, `subQuorumBips`, and `votingWindow`
-  * Proposals voted on by the strategy
-  * Vote power amounts cast
-  * Event logs showing execution activity
-  * Wallets or protocols interacting with auto-delegation logic
+* A shift away from mechanisms that primarily extract value without strengthening the core network
+* The need to ensure long-term alignment with evolving regulatory frameworks
 
-</details>
+### Unstaking
 
-<details>
+If you wish to unstake your tokens, you can do so at any time directly on-chain.
 
-<summary>Lockup / Unlock Contract (Airdrop Claim NFTs)</summary>
+This currently requires interacting with the staking contracts manually.
 
-* **Contract name:** ObolLockups
-* **Address:** [0x3b9122704a20946e9cb49b2a8616ccc0f0d61adb](https://etherscan.io/address/0x3b9122704a20946e9cb49b2a8616ccc0f0d61adb)
-* **Network:** Ethereum mainnet
-* **Purpose:** This contract was used during the OBOL airdrop to manage token lockups. Airdrop allocations were issued as **NFT-based lockups**, allowing recipients to claim their tokens and unlock them over time **without a fixed deadline**. The original claiming interface ([claim.obol.org](http://claim.obol.org)) is no longer live. However, the lockups remain fully accessible **onchain**, and users can still unlock their tokens directly via the contract.
-* **How the mechanism works:**
-  * Each airdrop recipient received an NFT representing a locked OBOL allocation.
-  * The NFT encodes the lockup parameters.
-  * Tokens can be unlocked by calling the unlock function on the contract once the conditions are met.
-* **What you can find onchain:**
-  * NFT ownership (ownerOf)
-  * Lockup parameters
-  * Locked and unlocked token balances
-  * The unlock function used to release available tokens
-  * Administrative parameters related to transferability and global lockups
-* **Important note for users:** If you believe you still have locked OBOL tokens from the airdrop, you can:
-  * Verify that you hold an **ObolLockups NFT** at the address above.
-  * Interact **directly with this contract on Etherscan** to call the unlock function.
+We are working on a lightweight interface to simplify this process.
 
-For security reasons, users should **only** interact with the contract address listed here and not rely on token or NFT names alone.
+Until then, you can follow the step-by-step guide [in the next page](guide-for-unstaking-obol.md).&#x20;
 
-</details>
+## Long-Term Token Vision
 
-## Learn more about...
+The long-term role of OBOL remains unchanged.
 
-{% content-ref url="token-distribution-and-liquidity.md" %}
-[token-distribution-and-liquidity.md](token-distribution-and-liquidity.md)
-{% endcontent-ref %}
+Our goal is for the token to become the economic backbone of the Distributed Validator ecosystem, tightly integrated into the core product and network dynamics.
 
-{% content-ref url="token-holders-faq.md" %}
-[token-holders-faq.md](token-holders-faq.md)
-{% endcontent-ref %}
+This includes:
 
-{% content-ref url="tge-faq.md" %}
-[tge-faq.md](tge-faq.md)
-{% endcontent-ref %}
+* Aligning incentives between operators, users, and contributors
+* Supporting sustainable network growth
+* Enabling deeper integration within validator workflows and infrastructure
+
+We are actively working toward a model where token utility is:
+
+* Product-driven rather than purely financial
+* Tightly coupled to real usage and demand
+* Sustainable over the long term
+
+## Ongoing Work
+
+Several initiatives are currently underway to strengthen OBOL’s role within the ecosystem:
+
+* [Strategic treasury operations to support long-term token health](https://x.com/Obol_Collective/status/2020904507895579028)
+* [The Obol Economic Engine and  Protocol Owned Liquidity](https://x.com/Obol_Collective/status/2019439135585628267)
+* Deeper integration of the token within the Distributed Validator stack
+
+More details will be shared progressively as these efforts evolve.

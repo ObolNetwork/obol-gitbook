@@ -1,3 +1,10 @@
+---
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/run-a-dv/running/update-a-dv
+---
+
 # Update a DV
 
 It is highly recommended to upgrade your DV stack from time to time. This ensures that your node is secure, performant, up-to-date and you don't miss important hard forks.
@@ -10,13 +17,13 @@ To do this, follow these steps:
 cd charon-distributed-validator-node
 ```
 
-#### Pull latest changes to the repo[​](#pull-latest-changes-to-the-repo) <a href="#pull-latest-changes-to-the-repo" id="pull-latest-changes-to-the-repo"></a>
+**Pull latest changes to the repo**[**​**](update-a-dv.md#pull-latest-changes-to-the-repo)
 
 ```sh
 git pull
 ```
 
-#### Create (or recreate) your DV stack[​](#create-or-recreate-your-dv-stack) <a href="#create-or-recreate-your-dv-stack" id="create-or-recreate-your-dv-stack"></a>
+**Create (or recreate) your DV stack**[**​**](update-a-dv.md#create-or-recreate-your-dv-stack)
 
 ```sh
 docker compose up -d --build
@@ -26,7 +33,7 @@ docker compose up -d --build
 If you run more than one node in a DV Cluster, please take caution upgrading them simultaneously. Particularly if you are updating or changing the validator client used or recreating disks. It is recommended to update nodes on a sequential basis to minimise liveness and safety risks.
 {% endhint %}
 
-#### Conflicts[​](#conflicts) <a href="#conflicts" id="conflicts"></a>
+**Conflicts**[**​**](update-a-dv.md#conflicts)
 
 You may get a `git conflict` error similar to this:
 
@@ -67,13 +74,13 @@ To resolve this error, you can either:
 cd charon-distributed-validator-cluster
 ```
 
-#### Pull latest changes to the repo[​](#pull-latest-changes-to-the-repo) <a href="#pull-latest-changes-to-the-repo" id="pull-latest-changes-to-the-repo"></a>
+**Pull latest changes to the repo**[**​**](update-a-dv.md#pull-latest-changes-to-the-repo)
 
 ```sh
 git pull
 ```
 
-#### Create (or recreate) your DV stack[​](#create-or-recreate-your-dv-stack) <a href="#create-or-recreate-your-dv-stack" id="create-or-recreate-your-dv-stack"></a>
+**Create (or recreate) your DV stack**[**​**](update-a-dv.md#create-or-recreate-your-dv-stack)
 
 ```sh
 docker compose up -d --build
@@ -83,7 +90,7 @@ docker compose up -d --build
 If you run more than one node in a DV Cluster, please take caution upgrading them simultaneously. Particularly if you are updating or changing the validator client used or recreating disks. It is recommended to update nodes on a sequential basis to minimise liveness and safety risks.
 {% endhint %}
 
-#### Conflicts[​](#conflicts) <a href="#conflicts" id="conflicts"></a>
+**Conflicts**[**​**](update-a-dv.md#conflicts)
 
 You may get a `git conflict` error similar to this:
 
@@ -119,4 +126,3 @@ To resolve this error, you can either:
     After overriding the changes, you will need to recreate your DV stack using the updated files. By following one of these approaches, you should be able to handle Git conflicts when pulling the latest changes to your repository, either preserving your changes or overriding them as per your requirements.
 {% endtab %}
 {% endtabs %}
-

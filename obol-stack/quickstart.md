@@ -1,5 +1,8 @@
 ---
 description: Get started with Obol Stack in under 5 minutes
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/obol-stack/quickstart
 ---
 
 # Quickstart

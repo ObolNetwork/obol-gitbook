@@ -1,8 +1,12 @@
 ---
 description: Deploy blockchain networks on your local Obol Stack
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/obol-stack/installing-networks
 ---
 
-# Installing networks
+# Installing Networks
 
 The Obol Stack supports installing multiple blockchain networks on your local Kubernetes cluster. Each network installation creates a unique deployment with its own namespace, allowing you to run multiple instances simultaneously.
 
@@ -16,10 +20,10 @@ obol network list
 
 Currently supported networks:
 
-| Network | Description |
-| --- | --- |
+| Network      | Description                                        |
+| ------------ | -------------------------------------------------- |
 | **ethereum** | Full Ethereum node (execution + consensus clients) |
-| **aztec** | Aztec Layer 2 sequencer node |
+| **aztec**    | Aztec Layer 2 sequencer node                       |
 
 ## Network installation workflow
 
@@ -63,12 +67,12 @@ Deploy a full Ethereum node with configurable execution and consensus clients.
 
 ### Configuration options
 
-| Flag | Description | Options | Default |
-| --- | --- | --- | --- |
-| `--id` | Deployment identifier | Any string | Auto-generated |
-| `--network` | Ethereum network | mainnet, hoodi | mainnet |
-| `--execution-client` | Execution layer client | reth, geth, nethermind, besu, erigon, ethereumjs | reth |
-| `--consensus-client` | Consensus layer client | lighthouse, prysm, teku, nimbus, lodestar, grandine | lighthouse |
+| Flag                 | Description            | Options                                             | Default        |
+| -------------------- | ---------------------- | --------------------------------------------------- | -------------- |
+| `--id`               | Deployment identifier  | Any string                                          | Auto-generated |
+| `--network`          | Ethereum network       | mainnet, hoodi                                      | mainnet        |
+| `--execution-client` | Execution layer client | reth, geth, nethermind, besu, erigon, ethereumjs    | reth           |
+| `--consensus-client` | Consensus layer client | lighthouse, prysm, teku, nimbus, lodestar, grandine | lighthouse     |
 
 ### Examples
 
@@ -135,13 +139,13 @@ Deploy an Aztec Layer 2 sequencer node for the privacy-focused Ethereum rollup.
 
 ### Configuration options
 
-| Flag | Description | Options | Default |
-| --- | --- | --- | --- |
-| `--id` | Deployment identifier | Any string | Auto-generated |
-| `--network` | Aztec network | mainnet | mainnet |
-| `--attester-private-key` | Attester private key (hex) | Required | None |
-| `--l1-execution-url` | L1 execution RPC URL | URL | ERPC endpoint |
-| `--l1-consensus-url` | L1 consensus RPC URL | URL | Public endpoint |
+| Flag                     | Description                | Options    | Default         |
+| ------------------------ | -------------------------- | ---------- | --------------- |
+| `--id`                   | Deployment identifier      | Any string | Auto-generated  |
+| `--network`              | Aztec network              | mainnet    | mainnet         |
+| `--attester-private-key` | Attester private key (hex) | Required   | None            |
+| `--l1-execution-url`     | L1 execution RPC URL       | URL        | ERPC endpoint   |
+| `--l1-consensus-url`     | L1 consensus RPC URL       | URL        | Public endpoint |
 
 ### Example
 
@@ -164,11 +168,11 @@ You can use your own Ethereum node endpoints or the in-cluster ERPC endpoint by 
 
 ### Resource requirements
 
-| Resource | Request | Limit |
-| --- | --- | --- |
-| **CPU** | 4 cores | 8 cores |
-| **Memory** | 16 GB | 32 GB |
-| **Storage** | 1 TB | - |
+| Resource    | Request | Limit   |
+| ----------- | ------- | ------- |
+| **CPU**     | 4 cores | 8 cores |
+| **Memory**  | 16 GB   | 32 GB   |
+| **Storage** | 1 TB    | -       |
 
 {% hint style="warning" %}
 Ensure your machine has sufficient resources before deploying an Aztec node.

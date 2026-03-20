@@ -1,3 +1,10 @@
+---
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/sdk/type-aliases/eth_address
+---
+
 # ETH\_ADDRESS
 
 > **ETH\_ADDRESS** = `string`

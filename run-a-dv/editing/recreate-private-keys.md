@@ -1,6 +1,11 @@
 ---
 description: >-
-  Create new private key shares for your existing distributed validator cluster using the charon alpha edit recreate-private-keys command.
+  Create new private key shares for your existing distributed validator cluster
+  using the charon alpha edit recreate-private-keys command.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/run-a-dv/editing/recreate-private-keys
 ---
 
 # Recreating Private Keys
@@ -15,10 +20,10 @@ You can recreate the private key shares for your cluster using the `charon alpha
 
 You might need to recreate private key shares in several scenarios:
 
-- **Security concerns**: If you suspect that private key shares may have been compromised
-- **Key rotation**: As part of regular security practices to rotate cryptographic material
-- **Recovery**: After a security incident where you want to refresh all key material
-- **Compliance**: Meeting organisational policies that require periodic key rotation
+* **Security concerns**: If you suspect that private key shares may have been compromised
+* **Key rotation**: As part of regular security practices to rotate cryptographic material
+* **Recovery**: After a security incident where you want to refresh all key material
+* **Compliance**: Meeting organisational policies that require periodic key rotation
 
 {% hint style="info" %}
 This operation maintains the same validator public keys, so your validators remain registered on the beacon chain without any changes. Only the underlying private key shares held by operators are refreshed.
@@ -49,6 +54,7 @@ docker run --rm -v "$(pwd):/opt/charon" -w "/opt/charon" obolnetwork/charon:late
 ```
 
 This command will:
+
 1. Use the existing cluster configuration and operator identities
 2. Generate new private key shares for all validators
 3. Create a new cluster lock file with updated key shares
@@ -109,15 +115,15 @@ docker compose logs -f charon
 
 ## Security Best Practices
 
-- **Secure deletion**: After successfully transitioning to the new keys and verifying operation, securely delete the old key shares
-- **Coordination**: Ensure all operators are prepared and available during the planned maintenance window
-- **Communication**: Maintain clear communication channels between all operators throughout the process
-- **Backup**: Keep the backup until you've verified that the cluster is operating normally with the new keys for at least several epochs
+* **Secure deletion**: After successfully transitioning to the new keys and verifying operation, securely delete the old key shares
+* **Coordination**: Ensure all operators are prepared and available during the planned maintenance window
+* **Communication**: Maintain clear communication channels between all operators throughout the process
+* **Backup**: Keep the backup until you've verified that the cluster is operating normally with the new keys for at least several epochs
 
 ## Current Limitations
 
-- The new cluster configuration will not be reflected on the Launchpad.
-- The new cluster configuration will have a new cluster hash, so the observability stack will display new cluster data under a different identifier.
-- All operators must participate in the ceremony; there is no option for partial participation.
-- All operators must have their current validator private key shares available for the ceremony to succeed.
-- The transition period requires coordination to minimise validator downtime.
+* The new cluster configuration will not be reflected on the Launchpad.
+* The new cluster configuration will have a new cluster hash, so the observability stack will display new cluster data under a different identifier.
+* All operators must participate in the ceremony; there is no option for partial participation.
+* All operators must have their current validator private key shares available for the ceremony to succeed.
+* The transition period requires coordination to minimise validator downtime.

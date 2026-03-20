@@ -1,5 +1,8 @@
 ---
 description: 'Download OpenAPI specifications: https://api.obol.tech/docs-json'
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/api/what-is-this-api
 ---
 
 # What is this API?

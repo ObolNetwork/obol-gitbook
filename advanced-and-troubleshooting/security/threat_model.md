@@ -1,6 +1,10 @@
 ---
 sidebar_position: 5
 description: Threat model for a Distributed Validator
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/advanced-and-troubleshooting/security/threat_model
 ---
 
 # Charon Threat Model

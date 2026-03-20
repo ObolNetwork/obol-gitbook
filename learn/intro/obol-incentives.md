@@ -1,3 +1,10 @@
+---
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/learn/readme/obol-incentives
+---
+
 # OBOL Incentives
 
 ## OBOL Incentives Program
@@ -162,7 +169,7 @@ You’ll also see an estimated multiplier, which reflects how each partner manag
 
 | Partner Name                                                     | Eligible TVL                                                                                                                | Claim Method                                                                                       | Incentives Split                                                                                                    | Multiplier |
 | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ---------- |
-| [Mellow DVV](https://app.mellow.finance/vaults/ethereum-dvsteth) | <p>All of Mellow DVV TVL<br>+ Lido SDVT Module validators added post Jan 13th Airdrop<br>+ Lido CSM TVL ran by Obol DVs</p> | [Obol Launchpad](https://launchpad.obol.org/)                                                      | <ul><li>Mellow Depositors: 80% for CSM TVL, 90% for SDVT TVL</li></ul><ul><li>Rest to Node Operators</li></ul>      | ≥ 100%     |
+| [Mellow DVV](https://app.mellow.finance/vaults/ethereum-dvsteth) | <p>All of Mellow DVV TVL<br>+ Lido SDVT Module validators added post Jan 13th Airdrop<br>+ Lido CSM TVL ran by Obol DVs</p> | [Obol Launchpad](https://launchpad.obol.org/)                                                      | <ul><li>Mellow Depositors: 80% for CSM TVL, 90% for SDVT TVL</li><li>Rest to Node Operators</li></ul>               | ≥ 100%     |
 | [Ether.fi](https://app.ether.fi/weeth)                           | Portion of total TVL running on Obol DVs                                                                                    | Directly accruing as [KING rewards](https://etherfi.gitbook.io/etherfi/king-protocol-formerly-lrt) | According to partner's [fee structure](https://etherfi.gitbook.io/etherfi/ether.fi-whitepaper/ether.fi-staking)     | <100%      |
 | Blockdaemon                                                      | TBD                                                                                                                         | [Blockdaemon UI](https://www.blockdaemon.com/)                                                     | According to partner's fee structure                                                                                | TBD        |
 | [Chorus One](https://opus.chorus.one/pool/stake/)                | Total TVL of the OBOL Vault                                                                                                 | TBD                                                                                                | According to partner's fee structure                                                                                | = 100%     |

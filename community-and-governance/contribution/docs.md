@@ -1,6 +1,10 @@
 ---
 sidebar_position: 2
 description: Documentation Standards
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/community-and-governance/contribution/docs
 ---
 
 # Documentation Standards
@@ -173,11 +177,11 @@ In the wise words of Winnie the Pooh _"People say nothing is impossible, but I d
 
 Tag code blocks with the syntax of the core they are presenting:
 
-```markdown
+````markdown
     ```javascript
     console.log(error);
     ```
-```
+````
 
 **List items**
 

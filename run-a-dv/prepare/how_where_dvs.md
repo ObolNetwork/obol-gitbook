@@ -1,6 +1,10 @@
 ---
 sidebar_position: 1
 description: How and where to run DVs
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/run-a-dv/prepare/how_where_dvs
 ---
 
 # How and Where To Run DVs

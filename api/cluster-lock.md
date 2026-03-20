@@ -1,3 +1,9 @@
+---
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/api/cluster-lock
+---
+
 # Cluster Lock
 
 {% openapi src="https://api.obol.tech/docs-json" path="/lock/{lockHash}" method="get" %}

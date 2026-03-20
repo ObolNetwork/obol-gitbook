@@ -3,6 +3,10 @@ sidebar_position: 2
 description: >-
   DV Deployment best practices, for running an optimal Distributed Validator
   setup at scale.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/run-a-dv/prepare/deployment-best-practices
 ---
 
 # Deployment Best Practices
@@ -79,12 +83,11 @@ Cluster sizes that allow for Byzantine Fault Tolerance are recommended as they a
 
 MEV relays are configured at the Consensus Layer or MEV-boost client level. Refer to our [guide](../../adv/advanced/quickstart-builder-api.mdx) to ensure all necessary configuration has been applied to your clients. As with all validators, low latency during proposal opportunities is extremely important. By default, MEV-Boost waits for all configured relays to return a bid, or will timeout if any have not returned a bid within 950ms. This default timeout is generally too slow for a distributed cluster (think of this time as additive to the time it takes the cluster to come to consensus, both of which need to happen within a 2 second window for optimal proposal broadcasting). It is likely better to only list relays that are located geographically near your node, so that once all relays respond (e.g. in < 50ms) your cluster will move forward with the proposal.
 
-Use Charon's [`test mev` command](./test-a-cluster.md#test-mev-relay) to test a number of your preferred relays, and select the two or three relays with the lowest latency to your node(s), you do not need to have the same relays on each node in a cluster.
+Use Charon's [`test mev` command](test-a-cluster.md#test-mev-relay) to test a number of your preferred relays, and select the two or three relays with the lowest latency to your node(s), you do not need to have the same relays on each node in a cluster.
 
 ## Client Diversity
 
-Obol clusters should consist of a mix of different consensus, execution, and validator clients. Charon can't [detect client failures](../../learn/further-reading/ethereum_and_dvt.md#deep-dive-into-dvt-and-charons-architecture) if all nodes are using the same client. At a minimum, no single client should comprise the [threshold](../../learn/charon/cluster-configuration.md#cluster-size-and-resilience) of nodes in the cluster.
-For example:
+Obol clusters should consist of a mix of different consensus, execution, and validator clients. Charon can't [detect client failures](../../learn/further-reading/ethereum_and_dvt.md#deep-dive-into-dvt-and-charons-architecture) if all nodes are using the same client. At a minimum, no single client should comprise the [threshold](../../learn/charon/cluster-configuration.md#cluster-size-and-resilience) of nodes in the cluster. For example:
 
 A 7 node cluster with 4 Teku, 2 Lodestar and 1 Nimbus for validator clients **does not** have client error safety since the threshold (4) of votes can be met with just the Teku client.
 

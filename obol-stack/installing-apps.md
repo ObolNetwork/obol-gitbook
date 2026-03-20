@@ -1,8 +1,11 @@
 ---
 description: Deploy additional applications on your Obol Stack
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/obol-stack/installing-apps
 ---
 
-# Installing apps
+# Installing Apps
 
 The Obol Stack supports installing arbitrary Helm charts as managed applications. Each installation creates an isolated deployment with its own namespace, similar to network deployments.
 
@@ -30,11 +33,11 @@ Find charts at [Artifact Hub](https://artifacthub.io).
 
 **Supported chart reference formats:**
 
-| Format | Example |
-| --- | --- |
-| `repo/chart` | `bitnami/redis` (resolved via ArtifactHub) |
-| `repo/chart@version` | `bitnami/redis@19.0.0` |
-| `https://.../*.tgz` | Direct URL to chart archive |
+| Format               | Example                                    |
+| -------------------- | ------------------------------------------ |
+| `repo/chart`         | `bitnami/redis` (resolved via ArtifactHub) |
+| `repo/chart@version` | `bitnami/redis@19.0.0`                     |
+| `https://.../*.tgz`  | Direct URL to chart archive                |
 
 **What happens during installation:**
 
@@ -99,14 +102,14 @@ This removes the Kubernetes namespace, all deployed resources, and the local con
 
 The following services are deployed automatically when the stack starts (you do not need to install them):
 
-| Service | Namespace | Purpose |
-| --- | --- | --- |
-| **ERPC** | `erpc` | Unified RPC load balancer for Ethereum endpoints |
-| **Obol Frontend** | `obol-frontend` | Web management dashboard |
-| **Monitoring** | `monitoring` | Prometheus + kube-prometheus-stack |
-| **Traefik** | `traefik` | Gateway API ingress controller |
-| **Cloudflared** | `traefik` | Cloudflare tunnel connector |
-| **llmspy** | `llm` | LLM proxy/router |
+| Service           | Namespace       | Purpose                                          |
+| ----------------- | --------------- | ------------------------------------------------ |
+| **ERPC**          | `erpc`          | Unified RPC load balancer for Ethereum endpoints |
+| **Obol Frontend** | `obol-frontend` | Web management dashboard                         |
+| **Monitoring**    | `monitoring`    | Prometheus + kube-prometheus-stack               |
+| **Traefik**       | `traefik`       | Gateway API ingress controller                   |
+| **Cloudflared**   | `traefik`       | Cloudflare tunnel connector                      |
+| **llmspy**        | `llm`           | LLM proxy/router                                 |
 
 View all running services:
 

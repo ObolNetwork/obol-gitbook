@@ -1,5 +1,8 @@
 ---
 description: System related endpoints.
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/api/system
 ---
 
 # System

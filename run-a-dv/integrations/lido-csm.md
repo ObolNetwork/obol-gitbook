@@ -1,6 +1,10 @@
 ---
 sidebar_position: 2
 description: Setup and run a DV within the Lido Community Staking Module
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/run-a-dv/integrations/lido-csm
 ---
 
 # Create a Lido CSM DV
@@ -23,7 +27,7 @@ Part 2: Using the [Obol DV Launchpad](https://launchpad.obol.org/) + CLI to crea
 Part 3: Deploying the validator to Lido's CSM using their UI.
 
 {% hint style="success" %}
-In this guide we'll be using the CSM widget and expanding  `Specify Custom Addresses` to set the `Manager Address` to the cluster multi-sig (SAFE) and the `Rewards Address` to the Splits.org splitting contract. Finally, we'll be selecting `Extended` permissions type which grants `Manager Address` ultimate control over the Node Operator.
+In this guide we'll be using the CSM widget and expanding `Specify Custom Addresses` to set the `Manager Address` to the cluster multi-sig (SAFE) and the `Rewards Address` to the Splits.org splitting contract. Finally, we'll be selecting `Extended` permissions type which grants `Manager Address` ultimate control over the Node Operator.
 {% endhint %}
 
 ## Part 1: Creating the Cluster SAFE + Splitter Contract
@@ -199,7 +203,7 @@ At this point, execution and consensus clients should start syncing. Charon and 
 
 ## Part 3: Upload the public keys and deposit to Lido CSM
 
-CSM V2 enables a new Operator Type called Identified Community Staker ("ICS"). The squad member who is an ICS should be the one to create the node through the CSM widget. Doing so ensures the clusters validators receive [ICS benefits](https://blog.lido.fi/unlock-exclusive-benefits-as-an-identified-community-staker/).&#x20;
+CSM V2 enables a new Operator Type called Identified Community Staker ("ICS"). The squad member who is an ICS should be the one to create the node through the CSM widget. Doing so ensures the clusters validators receive [ICS benefits](https://blog.lido.fi/unlock-exclusive-benefits-as-an-identified-community-staker/).
 
 ICS member heads to [csm.lido.fi](https://csm.lido.fi/) and connects their wallet.
 

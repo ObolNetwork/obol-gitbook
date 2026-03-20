@@ -1,3 +1,9 @@
+---
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/learn/readme/obol-splits
+---
+
 # Obol Splits
 
 Obol develops and maintains a suite of smart contracts for use with Distributed Validators and their surrounding ecosystem of decentralised infrastructure. These contracts include:
@@ -15,7 +21,7 @@ Key Design Principles the Obol Smart Contract suite include are:
 * They divide the reward ether from principal ether such that staking providers can be paid a percentage of the _reward_ they accrue for the principal provider rather than a percentage of _principal and reward_.
 * That rewards can be withdrawn in an ongoing manner without exiting the validator. (Some conditions apply).
 
-## Obol Validator Managers[​](#obol-validator-managers)
+## Obol Validator Managers[​](obol-splits.md#obol-validator-managers)
 
 An Obol Validator Manager (OVM) is a smart contract which manages the deposit, withdrawal, exit, and public key rotation of one or more Ethereum validators. It is deployed as the withdrawal address for a validator and supports 0x01 and 0x02 validator types.
 
@@ -142,7 +148,7 @@ Be cautious when interacting with unknown ERC20 addresses, they may not behave a
 ```
 {% endcode %}
 
-## Optimistic Withdrawal Recipient[​](#optimistic-withdrawal-recipient) <a href="#optimistic-withdrawal-recipient" id="optimistic-withdrawal-recipient"></a>
+## Optimistic Withdrawal Recipient[​](obol-splits.md#optimistic-withdrawal-recipient) <a href="#optimistic-withdrawal-recipient" id="optimistic-withdrawal-recipient"></a>
 
 <figure><img src="../../.gitbook/assets/image (15) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -166,7 +172,7 @@ The alternative is to use a splits.org [waterfall contract](https://docs.splits.
 
 This contract fits both design goals and can be used with thousands of validators. It is safe to deploy an Optimistic Withdrawal Recipient with a principal higher than you actually end up using, though you should process the accrued rewards before exiting a validator or the reward recipients will be short-changed as that balance may be counted as principal instead of reward the next time the contract is updated. If you activate more validators than you specified in your contract deployment, you will record too much ether as reward and will overpay your reward address with ether that was principal ether, not earned ether. Current iterations of this contract are not designed for editing the amount of principal set.
 
-## Split Contracts[​](#split-contracts) <a href="#split-contracts" id="split-contracts"></a>
+## Split Contracts[​](obol-splits.md#split-contracts) <a href="#split-contracts" id="split-contracts"></a>
 
 Validators have two streams of revenue, the consensus layer rewards and the execution layer rewards. Validator Managers focus on the former, split contracts focus on the latter. They are best used in tandem.
 
@@ -176,17 +182,17 @@ A split, or splitter, is a set of contracts that can divide ether or an ERC20 ac
 
 Further information about splits can be found on the splits.org team's [docs site](https://docs.splits.org/). The addresses of their deployments can be found [here](https://docs.splits.org/core/split#addresses).
 
-### Split Controllers[​](#split-controllers) <a href="#split-controllers" id="split-controllers"></a>
+### Split Controllers[​](obol-splits.md#split-controllers) <a href="#split-controllers" id="split-controllers"></a>
 
 Splits can be completely edited through the use of the `controller` address, however, total editability of a split is not always wanted. We recommend using a [SAFE wallet](https://safe.global) to manage the Split.
 
-#### (Gnosis) SAFE wallet[​](#gnosis-safe-wallet) <a href="#gnosis-safe-wallet" id="gnosis-safe-wallet"></a>
+#### (Gnosis) SAFE wallet[​](obol-splits.md#gnosis-safe-wallet) <a href="#gnosis-safe-wallet" id="gnosis-safe-wallet"></a>
 
 A [SAFE](https://safe.global/) is a common method to administer an editable split. The most well-known deployment of this pattern is the [Protocol Guild](https://protocol-guild.readthedocs.io/en/latest/3-smart-contract.html). The SAFE can arbitrarily update the split to any set of addresses with any valid set of percentages.
 
 ## Deployments
 
-### Obol Validator Manager Factory Deployment [**​**](#ovm-factory-deployment)
+### Obol Validator Manager Factory Deployment [**​**](obol-splits.md#ovm-factory-deployment)
 
 The `ObolValidatorManager` contract is deployed via a [factory contract](https://github.com/ObolNetwork/obol-splits/blob/main/src/ovm/ObolValidatorManagerFactory.sol). The factory is deployed at the following addresses on the following chains.
 
@@ -196,7 +202,7 @@ The `ObolValidatorManager` contract is deployed via a [factory contract](https:/
 | Hoodi   | [0x5754C8665B7e7BF15E83fCdF6d9636684B782b12](https://hoodi.etherscan.io/address/0x5754C8665B7e7BF15E83fCdF6d9636684B782b12)   |
 | Sepolia | [0xF32F8B563d8369d40C45D5d667C2B26937F2A3d3](https://sepolia.etherscan.io/address/0xF32F8B563d8369d40C45D5d667C2B26937F2A3d3) |
 
-### Obol Lido Split Factory Deployment [**​**](#ols-factory-deployment)
+### Obol Lido Split Factory Deployment [**​**](obol-splits.md#ols-factory-deployment)
 
 The `ObolLidoSplit` contract is deployed via a [factory contract](https://github.com/ObolNetwork/obol-splits/blob/main/src/lido/ObolLidoSplitFactory.sol). The factory is deployed at the following addresses on the following chains.
 
@@ -206,7 +212,7 @@ The `ObolLidoSplit` contract is deployed via a [factory contract](https://github
 | Hoodi   | [0xb633CD420aF83E8A5172e299104842b63dd97ab7](https://hoodi.etherscan.io/address/0xb633CD420aF83E8A5172e299104842b63dd97ab7) |
 | Sepolia |                                                                                                                             |
 
-### OWR Factory Deployment [**​**](#owr-factory-deployment)
+### OWR Factory Deployment [**​**](obol-splits.md#owr-factory-deployment)
 
 The `OptimisticWithdrawalRecipient` contract is deployed via a [factory contract](https://github.com/ObolNetwork/obol-splits/blob/main/src/owr/OptimisticWithdrawalRecipientFactory.sol). The factory is deployed at the following addresses on the following chains.
 

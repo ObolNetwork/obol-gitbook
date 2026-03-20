@@ -1,6 +1,10 @@
 ---
 sidebar_position: 5
 description: Software Development Security Assessment
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/advanced-and-troubleshooting/security/ev-assessment
 ---
 
 # Software Development at Obol

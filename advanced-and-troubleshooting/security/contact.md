@@ -1,6 +1,10 @@
 ---
 sidebar_position: 7
 description: Security details for the Obol Network
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/advanced-and-troubleshooting/security/contact
 ---
 
 # Contacts

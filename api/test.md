@@ -1,5 +1,8 @@
 ---
 description: Test related endpoints.
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/api/test
 ---
 
 # Test
@@ -11,4 +14,3 @@ description: Test related endpoints.
 {% openapi src="https://api.obol.tech/docs-json" path="/v1/test/enr/{enr}" method="get" %}
 [https://api.obol.tech/docs-json](https://api.obol.tech/docs-json)
 {% endopenapi %}
-

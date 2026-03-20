@@ -1,19 +1,23 @@
 ---
 description: Prepare an alternative deposit for an unused validator
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/advanced-and-troubleshooting/advanced/alter-withdrawal-addresses
 ---
 
-# Altering a Withdrawal Address for an unused validator
+# Alter Withdrawal Addresses
 
 {% hint style="warning" %}
 Please take care when changing a withdrawal address for an inactivated validator. Activating a validator that exits to a withdrawal address you don't control likely means your funds are lost.
 
-Also be careful as to the trustworthiness of the original withdrawal address. They [could attempt to front-run](https://medium.com/immunefi/rocketpool-lido-frontrunning-bug-fix-postmortem-e701f26d7971) the alternative deposit, and end up receiving the new depositor's funds to their withdrawal address. 
+Also be careful as to the trustworthiness of the original withdrawal address. They [could attempt to front-run](https://medium.com/immunefi/rocketpool-lido-frontrunning-bug-fix-postmortem-e701f26d7971) the alternative deposit, and end up receiving the new depositor's funds to their withdrawal address.
 {% endhint %}
 
 On occasion it can be useful to be able to change the withdrawal address specified for an already created but unused distributed validator. For example if they are unneeded extra capacity, or if the withdrawal address to be used was not known at cluster creation time and a trusted placeholder address was used instead. The `charon deposit` commands allow you to sign alternative deposit messages for **inactive validators** with the help of the Obol [API](../../api/what-is-this-api.md).
 
 {% hint style="info" %}
-If you want to change the withdrawal address of a running validator, consider a validator [consolidation](./operator-rotation.md) instead.
+If you want to change the withdrawal address of a running validator, consider a validator [consolidation](operator-rotation.md) instead.
 {% endhint %}
 
 ## Sign an alternative deposit message
@@ -29,7 +33,7 @@ docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon
 ```
 
 {% hint style="info" %}
-`validator-public-keys` are the distributed validator public keys for which the alternative deposit data should be signed (find them in your cluster_lock.json file in the `distributed_validator_public_keys` mapping or on the DV Launchpad). `withdrawal-addresses` are the new withdrawal address(es) for which the new deposit data should be signed. There should either be the same amount as `validator-public-keys` specified, or a single address that will be used for all public keys specified. 
+`validator-public-keys` are the distributed validator public keys for which the alternative deposit data should be signed (find them in your cluster\_lock.json file in the `distributed_validator_public_keys` mapping or on the DV Launchpad). `withdrawal-addresses` are the new withdrawal address(es) for which the new deposit data should be signed. There should either be the same amount as `validator-public-keys` specified, or a single address that will be used for all public keys specified.
 
 Optionally, users can also specify multiple different `deposit-amounts` (defaults to only `32`) to be prepared.
 {% endhint %}
@@ -71,7 +75,7 @@ If there are not enough partial signatures, an error message will be returned.
 17:18:40.771 ERRO cmd        Application failed to start: fetch full deposit data from Obol API: not enough partial signatures to meet threshold {"submitted_public_keys": "[0x8677e2014a173f72b3d4528893cb01881549631c2a39d90d7c19c230299a57440e73c82c7daf1d72713b1e26e42bae99]", "submitted_public_keys_length": 1, "required_threshold": 3}
 ```
 
-This deposit message file can be used with a deposit interface, to activate the validator on the Ethereum deposit contract. 
+This deposit message file can be used with a deposit interface, to activate the validator on the Ethereum deposit contract.
 
 {% hint style="danger" %}
 Please take care not to mistakenly activate the old `deposit-data.json` file when the cluster was originally created, containing the withdrawal address you hope to replace. If you activate a validator with a withdrawal address you don't control, your funds are likely lost.

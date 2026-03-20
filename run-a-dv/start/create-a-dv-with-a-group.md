@@ -2,6 +2,10 @@
 description: >-
   This quickstart guide will walk you through creating a Distributed Validator
   Cluster with a number of other node operators.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/run-a-dv/start/create-a-dv-with-a-group
 ---
 
 # Create a DV With a Group
@@ -187,19 +191,20 @@ The following are the steps for creating a cluster.
 4. Follow the flow and accept the advisories.
 5. Configure the Cluster
    1. Input the `Cluster Name` & `Cluster Size` (i.e. number of operators in the cluster). The threshold will update automatically, it shows the number of nodes that need to be functioning for the validator(s) to stay active.
-6. Input the Ethereum addresses for each operator that you collected previously. If you will be taking part as an operator, click the "Use My Address" button for Operator 1.
-   1. Select the desired amount of validators (32 ETH each) the cluster will run.
-   2. If you are taking part in the cluster, enter the ENR you generated in [step one](#step-1-get-your-enr) in the "What is your charon client's ENR?" field.
-   3. Choose the suitable withdrawal configuration:
+6.  Input the Ethereum addresses for each operator that you collected previously. If you will be taking part as an operator, click the "Use My Address" button for Operator 1.
+
+    1. Select the desired amount of validators (32 ETH each) the cluster will run.
+    2. If you are taking part in the cluster, enter the ENR you generated in [step one](create-a-dv-with-a-group.md#step-1-get-your-enr) in the "What is your charon client's ENR?" field.
+    3. Choose the suitable withdrawal configuration:
 
     <figure><img src="../../.gitbook/assets/WithdrawalConfigurations.png" alt=""><figcaption></figcaption></figure>
 
-      - **Split only rewards**: Deploys an OVM contract as withdrawal address to a principal address of your choice, and a splitter as fee recipient. OVM is used to distribute amounts to principal and fee recipient. It requires two inputs:
-        - **Owner address**: The Owner address is the super-admin of the OVM. It has access to all the roles - deposit, withdraw, distribute etc and it can also give roles to other addresses. For security purposes, it is recommended to either use a trusted address or a multi-sig wallet like [SAFE](https://app.safe.global/welcome/accounts) so all the transactions are approved by a quorum of addresses inside the SAFE. For testing purposes on Hoodi, [protofire](https://app.safe.protofire.io/home) can be used.
-        - **Principal address**: This is the address that will receive the amount after the principal threshold amount is crossed. Read more about it [here](../../learn/intro/obol-splits.md#obol-validator-managers) where it is explained.
-      - **Split Everything**: Deploys an OVM contract as withdrawal address, with principal and fee recipient addresses both as splitter contracts. In this case both principal and rewards are distributed. It just requires Owner address as input which is again recommended to be a SAFE wallet.
-      - **Lido CSM**: Deploys the clusters with Lido's withdrawal vault as withdrawal address and execution vault as fee recipient. Read more about the process to register CSM cluster [here](../integrations/lido-csm.md).
-      - **Custom**: Enter the `Principal address` which should receive the principal 32 ETH and the accrued consensus layer rewards when the validator is exited. This can optionally be set to the contract address of a multisig / splitter contract. Enter the `Fee Recipient address` to which the execution layer rewards will go. This can be the same as the principal address, or it can be a different address. This can optionally be set to the contract address of a multisig / splitter contract.
+    * **Split only rewards**: Deploys an OVM contract as withdrawal address to a principal address of your choice, and a splitter as fee recipient. OVM is used to distribute amounts to principal and fee recipient. It requires two inputs:
+      * **Owner address**: The Owner address is the super-admin of the OVM. It has access to all the roles - deposit, withdraw, distribute etc and it can also give roles to other addresses. For security purposes, it is recommended to either use a trusted address or a multi-sig wallet like [SAFE](https://app.safe.global/welcome/accounts) so all the transactions are approved by a quorum of addresses inside the SAFE. For testing purposes on Hoodi, [protofire](https://app.safe.protofire.io/home) can be used.
+      * **Principal address**: This is the address that will receive the amount after the principal threshold amount is crossed. Read more about it [here](../../learn/intro/obol-splits.md#obol-validator-managers) where it is explained.
+    * **Split Everything**: Deploys an OVM contract as withdrawal address, with principal and fee recipient addresses both as splitter contracts. In this case both principal and rewards are distributed. It just requires Owner address as input which is again recommended to be a SAFE wallet.
+    * **Lido CSM**: Deploys the clusters with Lido's withdrawal vault as withdrawal address and execution vault as fee recipient. Read more about the process to register CSM cluster [here](../integrations/lido-csm.md).
+    * **Custom**: Enter the `Principal address` which should receive the principal 32 ETH and the accrued consensus layer rewards when the validator is exited. This can optionally be set to the contract address of a multisig / splitter contract. Enter the `Fee Recipient address` to which the execution layer rewards will go. This can be the same as the principal address, or it can be a different address. This can optionally be set to the contract address of a multisig / splitter contract.
 7. Click `Create Cluster Configuration`. Review that all the details are correct, and press `Confirm and Sign` You will be prompted to sign two or three transactions with your MetaMask wallet. These are:
    1. The `config_hash`. This is a hashed representation of the details of this cluster, to ensure everyone is agreeing to an identical setup.
    2. The `operator_config_hash`. This is your acceptance of the terms and conditions to participate as a node operator.
@@ -260,30 +265,27 @@ Your cluster creator needs to configure the cluster, and send you an invite URL 
 {% embed url="https://www.youtube.com/watch?v=6pXASqjAQbs" %}
 
 1. Click on the DV launchpad link provided by the leader or creator. Make sure you recognise the domain and the person sending you the link, to ensure you are not being phished.
-2. Connect your wallet using the Ethereum address the leader was provided.
+2.  Connect your wallet using the Ethereum address the leader was provided.
 
     <figure><img src="../../.gitbook/assets/image (81).png" alt=""><figcaption></figcaption></figure>
-3. Review the operators addresses submitted and click `Get Started` to continue.
+3.  Review the operators addresses submitted and click `Get Started` to continue.
 
     <figure><img src="../../.gitbook/assets/image (82).png" alt=""><figcaption></figcaption></figure>
 4. Review and accept the DV Launchpad terms & conditions and advisories.
-5. Before accepting the invite and adding your ENR, ensure the following:
+5.  Before accepting the invite and adding your ENR, ensure the following:
 
-   {% hint style="warning" %}
-   **Important:** Review these details carefully before proceeding. Once you accept the cluster configuration, you'll be committed to the withdrawal and fee recipient addresses set by the creator.
-   {% endhint %}
+    <div data-gb-custom-block data-tag="hint" data-style="warning" class="hint hint-warning"><p><strong>Important:</strong> Review these details carefully before proceeding. Once you accept the cluster configuration, you'll be committed to the withdrawal and fee recipient addresses set by the creator.</p></div>
 
-   1. **Withdrawal address verification:**
-      - If the withdrawal address is an OVM (Obol Validator Manager):
-        1. Make sure it has the **OVM tag** to ensure it's the correct and official version of the audited contract.
-        2. Ensure the **OVM owner** is correct. If it's a SAFE contract, verify the SAFE and all addresses inside the SAFE are as expected.
-        3. Verify that all **roles are assigned correctly** if required. Note that the owner can edit roles even after accepting the cluster invite. If you require roles to be permanent, ensure ownership is renounced before accepting.
-      - For more information on OVM roles, see the [OVM role assignment guide](../../advanced-and-troubleshooting/advanced/assign-ovm-roles.md).
-   2. **Fee recipient verification:**
-      - If the fee recipient is a splitter contract, ensure the **percentage of fee splits are correct**.
-      - Just like OVM, fee recipient contracts also have an owner. Ensure that **ownership is revoked** if you want the shares to remain unchanged.
-
-6.  Review the cluster configuration set by the creator and add your `ENR` that you generated in [step 1](#step-1-get-your-enr).\
+    1. **Withdrawal address verification:**
+       * If the withdrawal address is an OVM (Obol Validator Manager):
+         1. Make sure it has the **OVM tag** to ensure it's the correct and official version of the audited contract.
+         2. Ensure the **OVM owner** is correct. If it's a SAFE contract, verify the SAFE and all addresses inside the SAFE are as expected.
+         3. Verify that all **roles are assigned correctly** if required. Note that the owner can edit roles even after accepting the cluster invite. If you require roles to be permanent, ensure ownership is renounced before accepting.
+       * For more information on OVM roles, see the [OVM role assignment guide](../../advanced-and-troubleshooting/advanced/assign-ovm-roles.md).
+    2. **Fee recipient verification:**
+       * If the fee recipient is a splitter contract, ensure the **percentage of fee splits are correct**.
+       * Just like OVM, fee recipient contracts also have an owner. Ensure that **ownership is revoked** if you want the shares to remain unchanged.
+6.  Review the cluster configuration set by the creator and add your `ENR` that you generated in [step 1](create-a-dv-with-a-group.md#step-1-get-your-enr).\\
 
     <figure><img src="../../.gitbook/assets/image (83).png" alt=""><figcaption></figcaption></figure>
 7. Sign the two transactions with your wallet, these are:
@@ -454,7 +456,6 @@ In particular you should check:
 * That your Charon client can connect to the configured beacon client.
 * That your Charon client can connect to all peers directly.
 * That your validator client is connected to Charon, and has the private keys it needs loaded and accessible. Most components in the dashboard have some help text there to assist you in understanding your cluster performance. You might notice that there are logs indicating that a validator cannot be found and that APIs are returning 404. This is to be expected at this point, as the validator public keys listed in the lock file have not been deposited and acknowledged on the consensus layer yet (usually it takes \~16 hours after the deposit is made).
-
 {% endtab %}
 
 {% tab title="Existing BN" %}
@@ -478,10 +479,11 @@ docker compose down
 CHARON_BEACON_NODE_ENDPOINTS=<YOUR_REMOTE_BEACON_NODE_URL>
 ...
 ```
+
 {% hint style="info" %}
-If your existing  beacon node is running in a another CDVN instance on the same Docker host, you can access it by specifying
-`http://host.docker.internal:5052` as the endpoint. Note: You will need to change the charon p2p port in the .env file (`CHARON_PORT_P2P_TCP=`) of the second CDVN stack to avoid port conflict.
+If your existing beacon node is running in a another CDVN instance on the same Docker host, you can access it by specifying `http://host.docker.internal:5052` as the endpoint. Note: You will need to change the charon p2p port in the .env file (`CHARON_PORT_P2P_TCP=`) of the second CDVN stack to avoid port conflict.
 {% endhint %}
+
 3. Uncomment `EL=el-none` and `CL=cl-none` variables in the `.env` file and comment `EL=el-nethermind` and `CL=cl-lighthouse` variables:
 
 ```sh
@@ -501,7 +503,6 @@ CL=cl-none
 ```sh
 docker compose up -d
 ```
-
 {% endtab %}
 
 {% tab title="Sedge" %}
@@ -635,6 +636,7 @@ If you have gotten to this stage, every node is up, synced and connected, congra
 ### FAQ <a href="#faq" id="faq"></a>
 
 <details>
+
 <summary><strong>What happens if I lose my ENR private key?</strong></summary>
 
 If you lose your ENR private key (`.charon/charon-enr-private-key`), you won't be able to participate in the DKG ceremony or start the DV cluster successfully. It's critical to back up this file securely before proceeding with the cluster creation process.
@@ -642,6 +644,7 @@ If you lose your ENR private key (`.charon/charon-enr-private-key`), you won't b
 </details>
 
 <details>
+
 <summary><strong>Can I change the cluster configuration after it's been created?</strong></summary>
 
 Once a cluster configuration has been created and signed by all operators, it cannot be changed. If you need to modify the cluster settings, you'll need to create a new cluster configuration and have all operators sign the new configuration.
@@ -649,6 +652,7 @@ Once a cluster configuration has been created and signed by all operators, it ca
 </details>
 
 <details>
+
 <summary><strong>What if one operator doesn't show up for the DKG ceremony?</strong></summary>
 
 All operators must participate simultaneously in the DKG ceremony for it to complete successfully. If an operator is unable to participate, you'll need to wait for them or create a new cluster configuration without that operator. It's recommended to schedule the DKG ceremony at a time when all operators can participate.
@@ -656,6 +660,7 @@ All operators must participate simultaneously in the DKG ceremony for it to comp
 </details>
 
 <details>
+
 <summary><strong>How do I know if my node is properly connected to the cluster?</strong></summary>
 
 You can verify your node's connection status by checking the Grafana dashboard (if using CDVN) or monitoring the Charon logs. Your Charon client should be able to connect to all peers directly, and you should see successful handshakes in the logs. The dashboard will show connection status for each peer in the cluster.
@@ -663,6 +668,7 @@ You can verify your node's connection status by checking the Grafana dashboard (
 </details>
 
 <details>
+
 <summary><strong>What should I do if the DKG ceremony fails?</strong></summary>
 
 If the DKG ceremony fails, check the logs for error messages. Common issues include network connectivity problems, mismatched cluster definitions, or operators not running the command simultaneously. Ensure all operators have the correct `cluster-definition.json` file and are running the DKG command at the same time. You may need to restart the DKG process after resolving any issues.
@@ -670,6 +676,7 @@ If the DKG ceremony fails, check the logs for error messages. Common issues incl
 </details>
 
 <details>
+
 <summary><strong>Can I use different client combinations for different operators in the cluster?</strong></summary>
 
 Yes, each operator can use different execution and consensus clients. The Charon client handles the coordination between different client implementations, so operators can choose the clients that work best for their infrastructure while still participating in the same distributed validator cluster.
@@ -677,6 +684,7 @@ Yes, each operator can use different execution and consensus clients. The Charon
 </details>
 
 <details>
+
 <summary><strong>What happens if I need to replace an operator in the cluster?</strong></summary>
 
 Replacing an operator requires creating a new cluster configuration with the new operator's details and having all remaining operators plus the new operator sign the new configuration. This will require running a new DKG ceremony. For more information, see the [operator rotation guide](../../advanced-and-troubleshooting/advanced/operator-rotation.md).
@@ -684,18 +692,17 @@ Replacing an operator requires creating a new cluster configuration with the new
 </details>
 
 <details>
+
 <summary><strong>How should I set the validator count for compounding rewards?</strong></summary>
 
-We recommend setting the validator count such that each validator's maxEB is capped at 1920 ETH, allowing rewards to compound for two years until it reaches 2048 ETH. [**Read more**](#step-1-get-your-enr)
+We recommend setting the validator count such that each validator's maxEB is capped at 1920 ETH, allowing rewards to compound for two years until it reaches 2048 ETH. [**Read more**](create-a-dv-with-a-group.md#step-1-get-your-enr)
 
 Unlike a standard bank account where interest compounds daily, validator rewards follow a step-function. Your effective balance (which earns rewards) only increases when your real balance exceeds the current effective balance by 1.25 ETH. This "hysteresis" means growth is slightly slower than pure continuous compounding, as 'dust' rewards sit idle until they accumulate enough to trigger a balance update.
 
 **Recommendation: The 1920 ETH Strategy**
 
-To maximize compounding efficiency, avoid depositing the full 2048 ETH cap immediately. Leaving ~128 ETH of "headroom" allows your validators to compound rewards autonomously for approximately 2 years (at 3% APR) before hitting the 2048 ETH effective balance cap.
+To maximize compounding efficiency, avoid depositing the full 2048 ETH cap immediately. Leaving \~128 ETH of "headroom" allows your validators to compound rewards autonomously for approximately 2 years (at 3% APR) before hitting the 2048 ETH effective balance cap.
 
 <figure><img src="../../.gitbook/assets/CompoundingRewardsCurve.png" alt=""><figcaption></figcaption></figure>
 
 </details>
-
-

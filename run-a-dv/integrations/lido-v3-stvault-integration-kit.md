@@ -1,3 +1,10 @@
+---
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/run-a-dv/integrations/lido-v3-stvault-integration-kit
+---
+
 # Create a Lido stVault
 
 {% hint style="info" %}
@@ -72,7 +79,7 @@ One of Lido V3's key innovations is the **Reserve Ratio (RR)**, which determines
 
 {% stepper %}
 {% step %}
-#### For Node Operators – Implementation Guide
+**For Node Operators – Implementation Guide**
 
 A practical guide to designing, deploying, and operating an stVault using Obol DVs, including:
 
@@ -85,7 +92,7 @@ A practical guide to designing, deploying, and operating an stVault using Obol D
 {% endstep %}
 
 {% step %}
-#### For Capital Allocators – Design & Risk Overview
+**For Capital Allocators – Design & Risk Overview**
 
 A higher-level walkthrough of:
 
@@ -98,7 +105,7 @@ A higher-level walkthrough of:
 {% endstep %}
 
 {% step %}
-#### Support & Services for stVault Builders
+**Support & Services for stVault Builders**
 
 How to:
 

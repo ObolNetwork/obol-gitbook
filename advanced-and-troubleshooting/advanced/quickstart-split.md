@@ -1,6 +1,10 @@
 ---
 sidebar_position: 3
 description: Migrate an existing validator by splitting its private key into shares
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/advanced-and-troubleshooting/advanced/quickstart-split
 ---
 
 # Migrate an Existing Validator

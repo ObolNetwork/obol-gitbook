@@ -1,6 +1,11 @@
 ---
 description: >-
-  Add validators to your existing distributed validator cluster using the charon alpha edit add-validators command.
+  Add validators to your existing distributed validator cluster using the charon
+  alpha edit add-validators command.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/run-a-dv/editing/add-validators
 ---
 
 # Adding Validators
@@ -70,7 +75,7 @@ Steps 1–3 must be performed independently by all node operators, likely at dif
 
 ## Current Considerations
 
-- The new cluster configuration will not be reflected on the Obol Launchpad.
-- The new cluster configuration will have a new cluster hash, so the observability stack will display new cluster under a different identifier.
-- If Charon has no access to the existing validator keys (for example, if they're stored in a remote KeyManager), you must use the `--unverified` flag. This flag allows the addition to proceed but skips hashing and signing the new cluster lock data. However when using cluster artifacts created with this flag, you must start `charon run` with the `--no-verify` flag or set the `CHARON_NO_VERIFY=true` environment variable.
-- If you use different validator clients, review the keys import script. The old keys in `.charon/validator_keys` remain unchanged, so verify that importing the same keys will not disrupt the validator client's state.
+* The new cluster configuration will not be reflected on the Obol Launchpad.
+* The new cluster configuration will have a new cluster hash, so the observability stack will display new cluster under a different identifier.
+* If Charon has no access to the existing validator keys (for example, if they're stored in a remote KeyManager), you must use the `--unverified` flag. This flag allows the addition to proceed but skips hashing and signing the new cluster lock data. However when using cluster artifacts created with this flag, you must start `charon run` with the `--no-verify` flag or set the `CHARON_NO_VERIFY=true` environment variable.
+* If you use different validator clients, review the keys import script. The old keys in `.charon/validator_keys` remain unchanged, so verify that importing the same keys will not disrupt the validator client's state.

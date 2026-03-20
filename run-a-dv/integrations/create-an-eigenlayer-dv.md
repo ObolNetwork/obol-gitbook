@@ -1,3 +1,10 @@
+---
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/run-a-dv/integrations/create-an-eigenlayer-dv
+---
+
 # Create an EigenLayer DV
 
 {% hint style="warning" %}
@@ -53,4 +60,3 @@ With these contracts deployed, you can now create the DV cluster invitation to s
 ### Deposit and restake your Distributed Validator <a href="#deposit-and-restake-your-distributed-validator" id="deposit-and-restake-your-distributed-validator"></a>
 
 Once you have completed the DKG ceremony, you can continue the flow on the EigenLayer app to activate these validators and restake them. Consult the EigenLayer [documentation](https://docs.eigenlayer.xyz/eigenlayer/restaking-guides/restaking-user-guide/native-restaking/create-eigenpod-and-set-withdrawal-credentials/enable-restaking) to continue the process.
-

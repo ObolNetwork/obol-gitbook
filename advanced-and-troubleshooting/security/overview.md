@@ -1,6 +1,10 @@
 ---
 sidebar_position: 1
 description: Security Overview
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/advanced-and-troubleshooting/security/overview
 ---
 
 # Overview
@@ -9,7 +13,7 @@ This page serves as an overview of the Obol Network from a security point of vie
 
 This page is updated quarterly. The last update was on 2025-December-05.
 
-View the operational status of Obol's supporting infrastructure at https://status.obol.org/. Your distributed validator does not require any centrally managed software to operate (if you run your own [relay](./risks.md)).
+View the operational status of Obol's supporting infrastructure at https://status.obol.org/. Your distributed validator does not require any centrally managed software to operate (if you run your own [relay](risks.md)).
 
 ## Table of Contents
 
@@ -23,12 +27,13 @@ View the operational status of Obol's supporting infrastructure at https://statu
 ## Domain names and official channels
 
 The Obol network and affiliated teams may use the following domain names and social media accounts;
-- [obol.org](https://obol.org/)
-- [obol.tech](https://obol.tech/)
-- obol.dev
-- [dvlabs.tech](https://dvlabs.tech/)
-- [@obol_collective](https://twitter.com/obol_collective) on x.com
-- [@dv_labs](https://x.com/dv_labs) on x.com
+
+* [obol.org](https://obol.org/)
+* [obol.tech](https://obol.tech/)
+* obol.dev
+* [dvlabs.tech](https://dvlabs.tech/)
+* [@obol\_collective](https://twitter.com/obol_collective) on x.com
+* [@dv\_labs](https://x.com/dv_labs) on x.com
 
 Be wary of any communication presenting as related to Obol from other domains or social media accounts. Use good judgement and caution even when interacting with trusted domains and channels, as domain names, emails, and social media accounts can be compromised or impersonated.
 

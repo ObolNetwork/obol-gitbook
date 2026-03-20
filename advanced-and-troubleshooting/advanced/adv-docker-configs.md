@@ -2,6 +2,10 @@
 description: >-
   Use advanced docker-compose features to have more flexibility and power to
   change the default configuration.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/advanced-and-troubleshooting/advanced/adv-docker-configs
 ---
 
 # Advanced Docker Configs

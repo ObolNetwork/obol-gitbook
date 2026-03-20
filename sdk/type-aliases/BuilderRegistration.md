@@ -1,3 +1,10 @@
+---
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/sdk/type-aliases/builderregistration
+---
+
 # BuilderRegistration
 
 > **BuilderRegistration** = `object`
@@ -8,7 +15,7 @@ Pre-generated Signed Validator Builder Registration
 
 ## Properties
 
-| Property | Type | Description | Defined in |
-| ------ | ------ | ------ | ------ |
-| <a id="message"></a> `message` | [`BuilderRegistrationMessage`](BuilderRegistrationMessage.md) | Builder registration message. | [types.ts:292](https://github.com/ObolNetwork/obol-sdk/blob/5137bd5c4ded55a50234f19135ea3a5bfeab4d47/src/types.ts#L292) |
-| <a id="signature"></a> `signature` | `string` | BLS signature of the builder registration message. | [types.ts:295](https://github.com/ObolNetwork/obol-sdk/blob/5137bd5c4ded55a50234f19135ea3a5bfeab4d47/src/types.ts#L295) |
+| Property    | Type                                                          | Description                                        | Defined in                                                                                                              |
+| ----------- | ------------------------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `message`   | [`BuilderRegistrationMessage`](BuilderRegistrationMessage.md) | Builder registration message.                      | [types.ts:292](https://github.com/ObolNetwork/obol-sdk/blob/5137bd5c4ded55a50234f19135ea3a5bfeab4d47/src/types.ts#L292) |
+| `signature` | `string`                                                      | BLS signature of the builder registration message. | [types.ts:295](https://github.com/ObolNetwork/obol-sdk/blob/5137bd5c4ded55a50234f19135ea3a5bfeab4d47/src/types.ts#L295) |

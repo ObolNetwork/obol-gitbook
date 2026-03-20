@@ -2,6 +2,10 @@
 description: >-
   Send authenticated requests to a beacon node protected by HTTP Basic, or
   header-based access control.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/advanced-and-troubleshooting/advanced/beacon-node-authentication
 ---
 
 # Beacon node authentication

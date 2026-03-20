@@ -2,6 +2,10 @@
 description: >-
   A collection of links to products and content relating to Distributed
   Validators.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/learn/further-reading/resources
 ---
 
 # Useful Links

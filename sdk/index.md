@@ -1,5 +1,8 @@
 ---
 hide_title: true
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/sdk/index
 ---
 
 # Intro
@@ -19,13 +22,15 @@ Checkout our [docs](../advanced-and-troubleshooting/advanced/create-a-dv-using-t
 ### Terms and Conditions
 
 ## Terms and Conditions
+
 To use obol-sdk and in order to be able to create a cluster definition or accept an invite to join a cluster, you must accept the [latest Obol terms and conditions](https://obol.org/terms.pdf) by calling acceptObolLatestTermsAndConditions.
 
 ## ⚠️ Important Security Notice:
+
 If you're integrating this SDK with a **backend** (e.g., in Node.js), and you store a private key for executing splitter transactions, handle it with extreme caution. Ensure that:
 
-- The private key is securely stored (e.g., in an `.env` file).
-- Never commit or push your `.env` file containing the private key to version control.
+* The private key is securely stored (e.g., in an `.env` file).
+* Never commit or push your `.env` file containing the private key to version control.
 
 ## ⚡️ Integration with Safe Wallet
 
@@ -35,9 +40,9 @@ When integrating the Obol SDK with a **Safe Wallet**, you can either pass an RPC
 
 Please review the following guidelines:
 
-- [How to Report Bugs](#how-to-report-bugs)
-- [How to Propose Changes](#how-to-propose-changes)
-- [Code Review Process](#code-review-process)
+* [How to Report Bugs](index.md#how-to-report-bugs)
+* [How to Propose Changes](index.md#how-to-propose-changes)
+* [Code Review Process](index.md#code-review-process)
 
 ### How to Report Bugs
 
@@ -96,70 +101,70 @@ webpack: (config, { isServer, webpack }) => {
 
 ## Enumerations
 
-- [FORK\_MAPPING](enumerations/FORK_MAPPING.md)
+* [FORK\_MAPPING](enumerations/FORK_MAPPING.md)
 
 ## Classes
 
-- [EOA](classes/EOA.md)
-- [Exit](classes/Exit.md)
-- [Incentives](classes/Incentives.md)
-- [Client](classes/Client.md)
-- [ObolSplits](classes/ObolSplits.md)
+* [EOA](classes/EOA.md)
+* [Exit](classes/Exit.md)
+* [Incentives](classes/Incentives.md)
+* [Client](classes/Client.md)
+* [ObolSplits](classes/ObolSplits.md)
 
 ## Interfaces
 
-- [ClusterDefinition](interfaces/ClusterDefinition.md)
-- [RewardsSplitPayload](interfaces/RewardsSplitPayload.md)
-- [ExitOperator](interfaces/ExitOperator.md)
-- [ExitClusterDefinition](interfaces/ExitClusterDefinition.md)
-- [ExitDistributedValidator](interfaces/ExitDistributedValidator.md)
-- [ExitClusterConfig](interfaces/ExitClusterConfig.md)
-- [ExitValidationMessage](interfaces/ExitValidationMessage.md)
-- [SignedExitValidationMessage](interfaces/SignedExitValidationMessage.md)
-- [ExitValidationBlob](interfaces/ExitValidationBlob.md)
-- [ExitValidationPayload](interfaces/ExitValidationPayload.md)
-- [ExistingExitValidationBlobData](interfaces/ExistingExitValidationBlobData.md)
+* [ClusterDefinition](interfaces/ClusterDefinition.md)
+* [RewardsSplitPayload](interfaces/RewardsSplitPayload.md)
+* [ExitOperator](interfaces/ExitOperator.md)
+* [ExitClusterDefinition](interfaces/ExitClusterDefinition.md)
+* [ExitDistributedValidator](interfaces/ExitDistributedValidator.md)
+* [ExitClusterConfig](interfaces/ExitClusterConfig.md)
+* [ExitValidationMessage](interfaces/ExitValidationMessage.md)
+* [SignedExitValidationMessage](interfaces/SignedExitValidationMessage.md)
+* [ExitValidationBlob](interfaces/ExitValidationBlob.md)
+* [ExitValidationPayload](interfaces/ExitValidationPayload.md)
+* [ExistingExitValidationBlobData](interfaces/ExistingExitValidationBlobData.md)
 
 ## Type Aliases
 
-- [ClusterOperator](type-aliases/ClusterOperator.md)
-- [OperatorPayload](type-aliases/OperatorPayload.md)
-- [ClusterCreator](type-aliases/ClusterCreator.md)
-- [ClusterValidator](type-aliases/ClusterValidator.md)
-- [ClusterPayload](type-aliases/ClusterPayload.md)
-- [SplitRecipient](type-aliases/SplitRecipient.md)
-- [TotalSplitPayload](type-aliases/TotalSplitPayload.md)
-- [OVMBaseSplitPayload](type-aliases/OVMBaseSplitPayload.md)
-- [OVMRewardsSplitPayload](type-aliases/OVMRewardsSplitPayload.md)
-- [OVMTotalSplitPayload](type-aliases/OVMTotalSplitPayload.md)
-- [OVMSplitPayload](type-aliases/OVMSplitPayload.md)
-- [SplitV2Recipient](type-aliases/SplitV2Recipient.md)
-- [OWRTranches](type-aliases/OWRTranches.md)
-- [BuilderRegistrationMessage](type-aliases/BuilderRegistrationMessage.md)
-- [BuilderRegistration](type-aliases/BuilderRegistration.md)
-- [DepositData](type-aliases/DepositData.md)
-- [DistributedValidator](type-aliases/DistributedValidator.md)
-- [ClusterLock](type-aliases/ClusterLock.md)
-- [ClaimableIncentives](type-aliases/ClaimableIncentives.md)
-- [ETH\_ADDRESS](type-aliases/ETH_ADDRESS.md)
-- [ProviderType](type-aliases/ProviderType.md)
-- [SafeRpcUrl](type-aliases/SafeRpcUrl.md)
-- [SignerType](type-aliases/SignerType.md)
-- [ClaimIncentivesResponse](type-aliases/ClaimIncentivesResponse.md)
-- [HttpRequestFunc](type-aliases/HttpRequestFunc.md)
-- [OVMArgs](type-aliases/OVMArgs.md)
-- [OVMRequestWithdrawalPayload](type-aliases/OVMRequestWithdrawalPayload.md)
-- [EOAWithdrawalPayload](type-aliases/EOAWithdrawalPayload.md)
-- [OVMDepositPayload](type-aliases/OVMDepositPayload.md)
-- [EOADepositPayload](type-aliases/EOADepositPayload.md)
+* [ClusterOperator](type-aliases/ClusterOperator.md)
+* [OperatorPayload](type-aliases/OperatorPayload.md)
+* [ClusterCreator](type-aliases/ClusterCreator.md)
+* [ClusterValidator](type-aliases/ClusterValidator.md)
+* [ClusterPayload](type-aliases/ClusterPayload.md)
+* [SplitRecipient](type-aliases/SplitRecipient.md)
+* [TotalSplitPayload](type-aliases/TotalSplitPayload.md)
+* [OVMBaseSplitPayload](type-aliases/OVMBaseSplitPayload.md)
+* [OVMRewardsSplitPayload](type-aliases/OVMRewardsSplitPayload.md)
+* [OVMTotalSplitPayload](type-aliases/OVMTotalSplitPayload.md)
+* [OVMSplitPayload](type-aliases/OVMSplitPayload.md)
+* [SplitV2Recipient](type-aliases/SplitV2Recipient.md)
+* [OWRTranches](type-aliases/OWRTranches.md)
+* [BuilderRegistrationMessage](type-aliases/BuilderRegistrationMessage.md)
+* [BuilderRegistration](type-aliases/BuilderRegistration.md)
+* [DepositData](type-aliases/DepositData.md)
+* [DistributedValidator](type-aliases/DistributedValidator.md)
+* [ClusterLock](type-aliases/ClusterLock.md)
+* [ClaimableIncentives](type-aliases/ClaimableIncentives.md)
+* [ETH\_ADDRESS](type-aliases/ETH_ADDRESS.md)
+* [ProviderType](type-aliases/ProviderType.md)
+* [SafeRpcUrl](type-aliases/SafeRpcUrl.md)
+* [SignerType](type-aliases/SignerType.md)
+* [ClaimIncentivesResponse](type-aliases/ClaimIncentivesResponse.md)
+* [HttpRequestFunc](type-aliases/HttpRequestFunc.md)
+* [OVMArgs](type-aliases/OVMArgs.md)
+* [OVMRequestWithdrawalPayload](type-aliases/OVMRequestWithdrawalPayload.md)
+* [EOAWithdrawalPayload](type-aliases/EOAWithdrawalPayload.md)
+* [OVMDepositPayload](type-aliases/OVMDepositPayload.md)
+* [EOADepositPayload](type-aliases/EOADepositPayload.md)
 
 ## Variables
 
-- [CAPELLA\_FORK\_MAPPING](variables/CAPELLA_FORK_MAPPING.md)
+* [CAPELLA\_FORK\_MAPPING](variables/CAPELLA_FORK_MAPPING.md)
 
 ## Functions
 
-- [validateClusterLock](functions/validateClusterLock.md)
-- [clusterConfigOrDefinitionHash](functions/clusterConfigOrDefinitionHash.md)
-- [clusterLockHash](functions/clusterLockHash.md)
-- [verifyDepositData](functions/verifyDepositData.md)
+* [validateClusterLock](functions/validateClusterLock.md)
+* [clusterConfigOrDefinitionHash](functions/clusterConfigOrDefinitionHash.md)
+* [clusterLockHash](functions/clusterLockHash.md)
+* [verifyDepositData](functions/verifyDepositData.md)

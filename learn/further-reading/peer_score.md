@@ -1,5 +1,9 @@
 ---
 description: Measuring Individual Performance in Distributed Validators
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/learn/further-reading/peer_score
 ---
 
 # Peer Score

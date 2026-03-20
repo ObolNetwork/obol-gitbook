@@ -1,6 +1,10 @@
 ---
 sidebar_position: 2
 description: Outlining potential centralization risks and their mitigations
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/advanced-and-troubleshooting/security/risks
 ---
 
 # Centralization Risks and Mitigation
@@ -38,7 +42,7 @@ To mitigate the risk of launchpad failure, consider using the `create cluster` o
 
 **Mitigation**: Use withdrawal address initiated exits or validator client exits
 
-Before the Pectra hardfork, there was no way for a delegator to exit their validator without the co-operation of the node operator(s). In an effort to reduce this risk, Obol developed the [Charon exit](../../learn/charon/charon-cli-reference.md#the-exit-command) command, which allows operators to pre-sign and download exit messages to give to the delegator for safe keeping, ensuring they could broadcast them at any point in time. This feature relies on Obol's [API](../../api/what-is-this-api), and means the Obol core team could in theory initiate an unwanted exit. If a delegator does not want to be exposed to that centralization risk, they should not use Charon's built-in exit commands, and instead should initiate exits using the [EIP7002](https://eips.ethereum.org/EIPS/eip-7002) exit contract, or alternatively by running normal exit commands on the operator's validator clients.
+Before the Pectra hardfork, there was no way for a delegator to exit their validator without the co-operation of the node operator(s). In an effort to reduce this risk, Obol developed the [Charon exit](../../learn/charon/charon-cli-reference.md#the-exit-command) command, which allows operators to pre-sign and download exit messages to give to the delegator for safe keeping, ensuring they could broadcast them at any point in time. This feature relies on Obol's [API](../../api/what-is-this-api/), and means the Obol core team could in theory initiate an unwanted exit. If a delegator does not want to be exposed to that centralization risk, they should not use Charon's built-in exit commands, and instead should initiate exits using the [EIP7002](https://eips.ethereum.org/EIPS/eip-7002) exit contract, or alternatively by running normal exit commands on the operator's validator clients.
 
 Guides to exiting validators using all three approaches are outlined [here](../../run-a-dv/running/exit-a-dv.md).
 

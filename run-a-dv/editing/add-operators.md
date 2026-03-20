@@ -1,6 +1,11 @@
 ---
 description: >-
-  Add operators to your existing distributed validator cluster using the charon alpha edit add-operators command.
+  Add operators to your existing distributed validator cluster using the charon
+  alpha edit add-operators command.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/run-a-dv/editing/add-operators
 ---
 
 # Adding Operators
@@ -14,7 +19,7 @@ You can add operators to your cluster using the `charon alpha edit add-operators
 ## Prerequisites
 
 1. Review the `edit add-operators` command [CLI reference](../../learn/charon/charon-cli-reference.md#add-operators-to-a-cluster).
-2. **For existing operators**: Keep the DV node running during the process and ensure you have a copy of the current [cluster lock file](../../learn/charon/cluster-configuration#cluster-lock-file) and validator private key shares.
+2. **For existing operators**: Keep the DV node running during the process and ensure you have a copy of the current [cluster lock file](../../learn/charon/cluster-configuration/#cluster-lock-file) and validator private key shares.
 3. **For new operators**: Obtain a copy of the existing cluster lock file from the existing operators and have your Charon ENR private key file ready.
 4. Obtain the Charon ENR addresses of all new operators being added to the cluster.
 
@@ -92,7 +97,7 @@ It is advisable to shut the cluster down for at least two epochs, to minimise an
 
 ## Current Considerations
 
-- The new cluster configuration will not yet be reflected on the Obol Launchpad.
-- The new cluster configuration will have a new cluster hash, so the observability stack will display new cluster data under a different identifier.
-- All operators (both existing and new) must participate in the add-operators ceremony for it to complete successfully.
-- The cluster's threshold value remains unchanged after adding operators because the existing set of operators already possesses enough shares to create full signatures.
+* The new cluster configuration will not yet be reflected on the Obol Launchpad.
+* The new cluster configuration will have a new cluster hash, so the observability stack will display new cluster data under a different identifier.
+* All operators (both existing and new) must participate in the add-operators ceremony for it to complete successfully.
+* The cluster's threshold value remains unchanged after adding operators because the existing set of operators already possesses enough shares to create full signatures.

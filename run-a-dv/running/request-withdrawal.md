@@ -2,6 +2,10 @@
 description: >-
   Learn how to request withdrawals from validators with 0x02 withdrawal
   credentials using OVM, including batching and principal/rewards distinction.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/run-a-dv/running/request-withdrawal
 ---
 
 # Request Withdrawal

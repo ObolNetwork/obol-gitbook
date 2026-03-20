@@ -1,5 +1,8 @@
 ---
 description: Some of the key terms in the field of Distributed Validator Technology
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/learn/readme/obol-vs-others
 ---
 
 # Obol vs Other DV Implementations

@@ -1,3 +1,9 @@
+---
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/api/address
+---
+
 # Address
 
 {% openapi src="https://api.obol.tech/docs-json" path="/v1/address/techne/{address}" method="get" %}

@@ -1,8 +1,11 @@
 ---
 description: Frequently asked questions about Obol Stack
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/obol-stack/faq
 ---
 
-# Frequently Asked Questions
+# FAQ
 
 ## General
 
@@ -23,11 +26,11 @@ Windows is not currently supported. Windows users can use WSL2 to run the Obol S
 
 ### What are the hardware requirements?
 
-| Resource | Minimum | Recommended |
-| --- | --- | --- |
-| **CPU** | 4 cores | 8+ cores |
-| **RAM** | 8 GB | 16+ GB |
-| **Storage** | 50 GB | 500 GB - 2 TB (depends on networks) |
+| Resource    | Minimum | Recommended                         |
+| ----------- | ------- | ----------------------------------- |
+| **CPU**     | 4 cores | 8+ cores                            |
+| **RAM**     | 8 GB    | 16+ GB                              |
+| **Storage** | 50 GB   | 500 GB - 2 TB (depends on networks) |
 
 {% hint style="info" %}
 Running multiple networks or full Ethereum mainnet nodes significantly increases resource requirements.
@@ -174,11 +177,11 @@ obol network install ethereum --id=hoodi --network=hoodi
 ### How long does it take to sync an Ethereum node?
 
 | Network | Client | Approximate Time |
-| --- | --- | --- |
-| Hoodi | Reth | 2-6 hours |
-| Hoodi | Geth | 4-12 hours |
-| Mainnet | Reth | 1-3 days |
-| Mainnet | Geth | 3-7 days |
+| ------- | ------ | ---------------- |
+| Hoodi   | Reth   | 2-6 hours        |
+| Hoodi   | Geth   | 4-12 hours       |
+| Mainnet | Reth   | 1-3 days         |
+| Mainnet | Geth   | 3-7 days         |
 
 {% hint style="info" %}
 Sync times depend on hardware, network connection, and chain state.

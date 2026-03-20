@@ -1,6 +1,10 @@
 ---
 sidebar_position: 3
 description: A reference for extra configuration of Ethereum Clients when running in DVs.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/advanced-and-troubleshooting/troubleshooting/client_configurations
 ---
 
 # Client Configuration

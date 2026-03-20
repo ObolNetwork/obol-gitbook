@@ -2,6 +2,9 @@
 description: >-
   Generating private keys for a Distributed Validator requires a Distributed Key
   Generation (DKG) Ceremony.
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/learn/charon/dkg
 ---
 
 # Distributed Key Generation

@@ -1,6 +1,10 @@
 ---
 sidebar_position: 3
 description: Troubleshoot issues spotted by the test command
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/advanced-and-troubleshooting/troubleshooting/test_command
 ---
 
 # Test Commands

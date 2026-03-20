@@ -2,6 +2,10 @@
 description: >-
   A go-based middleware client for taking part in Distributed Validator
   clusters.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/learn/charon/charon-cli-reference
 ---
 
 # CLI Reference
@@ -437,7 +441,7 @@ Flags:
 
 ### List active validators
 
-The `charon exit active-validator-list` command returns a list of all distributed validators in the specified cluster whose status is ACTIVE_ONGOING, meaning they can be exited.
+The `charon exit active-validator-list` command returns a list of all distributed validators in the specified cluster whose status is ACTIVE\_ONGOING, meaning they can be exited.
 
 ```markdown
 charon exit active-validator-list --help

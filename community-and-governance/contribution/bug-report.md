@@ -1,6 +1,10 @@
 ---
-description: Filing a bug report
 sidebar_position: 1
+description: Filing a bug report
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/community-and-governance/contribution/bug-report
 ---
 
 # Filing a Bug Report

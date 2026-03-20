@@ -1,3 +1,9 @@
+---
+metaLinks:
+  alternates:
+    - https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/run-a-dv/running/exit-a-dv
+---
+
 # Exit a DV
 
 ### Introduction <a href="#introduction" id="introduction"></a>

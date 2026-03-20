@@ -1,9 +1,13 @@
 ---
 sidebar_position: 1
 description: Information about the Staking Mastery Program
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/community-and-governance/community/staking-masters
 ---
 
-# Staking Mastery Program
+# Staking Mastery Program (Archived)
 
 Information about the Staking Mastery Program can be found at https://squadstaking.com/mastery.
 

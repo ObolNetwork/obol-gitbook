@@ -1,5 +1,9 @@
 ---
 description: Documenting a Distributed Validator Cluster in a standardised file format
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/learn/charon/cluster-configuration
 ---
 
 # Cluster Configuration

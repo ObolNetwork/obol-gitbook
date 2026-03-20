@@ -1,5 +1,9 @@
 ---
 description: Ethereum and its relationship with DVT
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/learn/further-reading/ethereum_and_dvt
 ---
 
 # Ethereum and Its Relationship With DVT

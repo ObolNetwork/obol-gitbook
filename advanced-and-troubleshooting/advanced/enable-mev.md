@@ -1,3 +1,10 @@
+---
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/advanced-and-troubleshooting/advanced/enable-mev
+---
+
 # Enable MEV
 
 This quickstart guide focuses on configuring the builder API for Charon and supported validator and consensus clients.

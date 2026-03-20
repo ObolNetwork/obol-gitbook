@@ -1,12 +1,19 @@
+---
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/learn/charon/charon-networking
+---
+
 # Charon Networking
 
 ## Charon networking
 
-### Overview[​](#overview) <a href="#overview" id="overview"></a>
+### Overview[​](charon-networking.md#overview) <a href="#overview" id="overview"></a>
 
-This document describes Charon's networking model which can be divided into two parts: the [_internal validator stack_](#internal-validator-stack) and the [_external p2p network_](#external-p2p-network).
+This document describes Charon's networking model which can be divided into two parts: the [_internal validator stack_](charon-networking.md#internal-validator-stack) and the [_external p2p network_](charon-networking.md#external-p2p-network).
 
-### Internal Validator Stack[​](#internal-validator-stack) <a href="#internal-validator-stack" id="internal-validator-stack"></a>
+### Internal Validator Stack[​](charon-networking.md#internal-validator-stack) <a href="#internal-validator-stack" id="internal-validator-stack"></a>
 
 <figure><img src="../../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
 
@@ -17,7 +24,7 @@ Related Charon configuration flags:
 * `--beacon-node-endpoints`: Connects Charon to one or more beacon nodes.
 * `--validator-api-address`: Address for Charon to listen on and serve requests from the validator client.
 
-### External P2P Network[​](#external-p2p-network) <a href="#external-p2p-network" id="external-p2p-network"></a>
+### External P2P Network[​](charon-networking.md#external-p2p-network) <a href="#external-p2p-network" id="external-p2p-network"></a>
 
 <figure><img src="../../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
 
@@ -29,7 +36,7 @@ Related [Charon configuration flags](charon-cli-reference.md):
 * `--p2p-relays`: Connect Charon to one or more relay servers.
 * `--private-key-file`: Private key identifying the Charon client.
 
-#### LibP2P Authentication and Security[​](#libp2p-authentication-and-security) <a href="#libp2p-authentication-and-security" id="libp2p-authentication-and-security"></a>
+#### LibP2P Authentication and Security[​](charon-networking.md#libp2p-authentication-and-security) <a href="#libp2p-authentication-and-security" id="libp2p-authentication-and-security"></a>
 
 Each Charon client has a secp256k1 private key. The associated public key is encoded into the [cluster lock file](cluster-configuration.md#cluster-lock-file) to identify the nodes in the cluster. For ease of use and to align with the Ethereum ecosystem, Charon encodes these public keys in the [ENR format](https://eips.ethereum.org/EIPS/eip-778), not in [libp2p's Peer ID format](https://docs.libp2p.io/concepts/fundamentals/peers/).
 
@@ -43,7 +50,7 @@ For more on p2p security, refer to [libp2p's article](https://docs.libp2p.io/con
 
 Charon currently only supports libp2p tcp connections with [noise](https://noiseprotocol.org/) security and only accepts incoming libp2p connections from peers defined in the cluster lock.
 
-#### LibP2P Relays and Peer Discovery[​](#libp2p-relays-and-peer-discovery) <a href="#libp2p-relays-and-peer-discovery" id="libp2p-relays-and-peer-discovery"></a>
+#### LibP2P Relays and Peer Discovery[​](charon-networking.md#libp2p-relays-and-peer-discovery) <a href="#libp2p-relays-and-peer-discovery" id="libp2p-relays-and-peer-discovery"></a>
 
 Relays are simple libp2p servers that are publicly accessible supporting the [circuit-relay](https://docs.libp2p.io/concepts/nat/circuit-relay/) protocol. Circuit-relay is a libp2p transport protocol that routes traffic between two peers over a third-party “relay” peer.
 
@@ -72,7 +79,7 @@ Only the following three libp2p protocols are established between a Charon node 
 
 All other Charon protocols are only established between nodes in the same cluster.
 
-#### Scalable Relay Clusters[​](#scalable-relay-clusters) <a href="#scalable-relay-clusters" id="scalable-relay-clusters"></a>
+#### Scalable Relay Clusters[​](charon-networking.md#scalable-relay-clusters) <a href="#scalable-relay-clusters" id="scalable-relay-clusters"></a>
 
 In order for a Charon client to connect to a relay, it needs the relay's [multiaddr](https://docs.libp2p.io/concepts/fundamentals/addressing/) (containing its public key and IP address). But a single multiaddr can only point to a single relay server which can easily be overloaded if too many clusters connect to it. Charon therefore supports resolving a relay’s multiaddr via HTTP GET request. Since Charon also includes the unique `cluster-hash` header in this request, the relay provider can use [consistent header-based load-balancing](https://cloud.google.com/load-balancing/docs/https/traffic-management-global#traffic_steering_header-based_routing) to map clusters to one of many relays using a single HTTP address.
 

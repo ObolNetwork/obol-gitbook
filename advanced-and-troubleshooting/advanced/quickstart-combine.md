@@ -3,6 +3,10 @@ sidebar_position: 4
 description: >-
   Combine distributed validator private key shares to recover the validator
   private key.
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/advanced-and-troubleshooting/advanced/quickstart-combine
 ---
 
 # Combine DV Private Key Shares

@@ -1,8 +1,12 @@
 ---
 description: Add fallback beacon nodes to use when primary beacon node fails
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/advanced-and-troubleshooting/advanced/fallback-beacon-nodes
 ---
 
-# Fallback beacon nodes
+# Fallback Beacon Nodes
 
 Charon allows specifying multiple beacon node URL endpoints. It sends requests to all specified endpoints simultaneously and proceeds with the first response received. This approach improves reliability but increases the load on the beacon nodes.
 

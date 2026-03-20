@@ -1,6 +1,10 @@
 ---
 sidebar_position: 5
 description: Self-host a relay
+metaLinks:
+  alternates:
+    - >-
+      https://app.gitbook.com/s/qEcekJHEGL3v8mnLzK2b/advanced-and-troubleshooting/advanced/self-relay
 ---
 
 # Self-Host a Relay
@@ -39,6 +43,7 @@ Configure **ALL** charon nodes in your cluster to use this relay:
 {% hint style="info" %}
 Keep the default relays and append your self-hosted relay to Charon's flag/environment variables if you want the most resilience `https://0.relay.obol.tech,https://1.relay.obol.tech,https://2.relay.obol.dev`, rather than having your one relay be a single point of failure in your cluster.
 {% endhint %}
+
 {% hint style="info" %}
 If you are running a relay on a private network, consult your monitoring to confirm your Charon nodes are able to establish a direct connection with one another for optimal performance. You may need to update `charon run` to specify `--p2p-tcp-address=<this-charons-private-network-host-and-port`, such that the two Charon's discover each other on their shared private network.
 {% endhint %}
