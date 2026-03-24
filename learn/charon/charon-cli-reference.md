@@ -223,9 +223,9 @@ Flags:
       --execution-client-rpc-endpoint string     The address of the execution engine JSON-RPC API.
       --fallback-beacon-node-endpoints strings   A list of beacon nodes to use if the primary list are offline or unhealthy.
       --feature-set string                       Minimum feature set to enable by default: alpha, beta, or stable. Warning: modify at own risk. (default "stable")
-      --fetch-feerecipient-updates               Fetches updated fee recipients from a remote API.
       --feature-set-disable strings              Comma-separated list of features to disable, overriding the default minimum feature set.
       --feature-set-enable strings               Comma-separated list of features to enable, overriding the default minimum feature set.
+      --fetch-feerecipient-updates               Fetches updated fee recipients from a remote API.
       --graffiti strings                         Comma-separated list or single graffiti string to include in block proposals. List maps to validator's public key in cluster lock. Appends "OB<CL_TYPE>" suffix to graffiti. Maximum 28 bytes per graffiti.
       --graffiti-disable-client-append           Disables appending "OB<CL_TYPE>" suffix to graffiti. Increases maximum bytes per graffiti to 32.
   -h, --help                                     Help for run
