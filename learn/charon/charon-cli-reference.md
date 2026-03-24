@@ -6,7 +6,7 @@ description: >-
 
 # CLI Reference
 
-The following is a reference for Charon version [`v1.9.0`](https://github.com/ObolNetwork/charon/releases/tag/v1.9.0). Find the latest release on [our Github](https://github.com/ObolNetwork/charon/releases).
+The following is a reference for Charon version [`v1.10.0`](https://github.com/ObolNetwork/charon/releases/tag/v1.10.0). Find the latest release on [our Github](https://github.com/ObolNetwork/charon/releases).
 
 The following are the top-level commands available to use.
 
@@ -18,18 +18,19 @@ Usage:
   charon [command]
 
 Available Commands:
-  alpha       Alpha subcommands provide early access to in-development features
-  combine     Combine the private key shares of a distributed validator cluster into a set of standard validator private keys
-  completion  Generate the autocompletion script for the specified shell
-  create      Create artifacts for a distributed validator cluster
-  deposit     Sign and fetch a new partial deposit.
-  dkg         Participate in a Distributed Key Generation ceremony
-  enr         Print the ENR that identifies this client
-  exit        Exit a distributed validator.
-  help        Help about any command
-  relay       Start a libp2p relay server
-  run         Run the charon middleware client
-  version     Print version and exit
+  alpha        Alpha subcommands provide early access to in-development features
+  combine      Combine the private key shares of a distributed validator cluster into a set of standard validator private keys
+  completion   Generate the autocompletion script for the specified shell
+  create       Create artifacts for a distributed validator cluster
+  deposit      Sign and fetch a new partial deposit.
+  dkg          Participate in a Distributed Key Generation ceremony
+  enr          Print the ENR that identifies this client
+  exit         Exit a distributed validator.
+  feerecipient Manage the preferred fee recipient addresses for the cluster.
+  help         Help about any command
+  relay        Start a libp2p relay server
+  run          Run the charon middleware client
+  version      Print version and exit
 
 Flags:
   -h, --help   Help for charon
@@ -224,6 +225,7 @@ Flags:
       --feature-set string                       Minimum feature set to enable by default: alpha, beta, or stable. Warning: modify at own risk. (default "stable")
       --feature-set-disable strings              Comma-separated list of features to disable, overriding the default minimum feature set.
       --feature-set-enable strings               Comma-separated list of features to enable, overriding the default minimum feature set.
+      --fetch-feerecipient-updates               Fetches updated fee recipients from a remote API.
       --graffiti strings                         Comma-separated list or single graffiti string to include in block proposals. List maps to validator's public key in cluster lock. Appends "OB<CL_TYPE>" suffix to graffiti. Maximum 28 bytes per graffiti.
       --graffiti-disable-client-append           Disables appending "OB<CL_TYPE>" suffix to graffiti. Increases maximum bytes per graffiti to 32.
   -h, --help                                     Help for run
@@ -244,6 +246,7 @@ Flags:
       --otlp-headers strings                     Comma separated list of headers formatted as header=value, to include in OTLP requests.
       --otlp-insecure                            Use insecure connection (no TLS) when connecting to OTLP endpoint.
       --otlp-service-name string                 Service name used for OTLP gRPC tracing. (default "charon")
+      --overrides-file string                    Path to the builder registrations overrides file. (default ".charon/builder_registrations_overrides.json")
       --p2p-disable-reuseport                    Disables TCP port reuse for outgoing libp2p connections.
       --p2p-external-hostname string             The DNS hostname advertised by libp2p. This may be used to advertise an external DNS.
       --p2p-external-ip string                   The IP address advertised by libp2p. This may be used to advertise an external IP.
@@ -253,6 +256,8 @@ Flags:
       --private-key-file string                  The path to the charon enr private key file. (default ".charon/charon-enr-private-key")
       --private-key-file-lock                    Enables private key locking to prevent multiple instances using the same key.
       --proc-directory string                    Directory to look into in order to detect other stack components running on the host.
+      --publish-address string                   The URL of the remote API for background fee recipient fetching. (default "https://api.obol.tech/v1")
+      --publish-timeout duration                 Timeout for accessing the remote API. (default 5m0s)
       --simnet-beacon-mock                       Enables an internal mock beacon node for running a simnet.
       --simnet-beacon-mock-fuzz                  Configures simnet beaconmock to return fuzzed responses.
       --simnet-slot-duration duration            Configures slot duration in simnet beacon mock. (default 1s)
@@ -659,6 +664,91 @@ Flags:
       --validator-public-keys strings   [REQUIRED] List of validator public keys for which new deposits will be signed.
 ```
 
+## The `feerecipient` command
+
+The `feerecipient` command manages the preferred fee recipient addresses for the cluster. A threshold of operators must sign new builder registration messages to update the fee recipient, after which the aggregated result can be fetched and applied locally.
+
+```markdown
+charon feerecipient --help
+Manage the preferred fee recipient addresses for the cluster. These addresses receive transaction tips and MEV when a validator makes a proposal.
+
+Usage:
+  charon feerecipient [command]
+
+Available Commands:
+  fetch       Fetch new fee recipients (builder registrations).
+  list        Display the latest builder registration details for each validator.
+  sign        Sign new builder registration messages.
+
+Flags:
+  -h, --help   Help for feerecipient
+
+Use "charon feerecipient [command] --help" for more information about a command.
+```
+
+### Sign new fee recipient builder registrations
+
+The `charon feerecipient sign` command signs new builder registration messages to update the preferred fee recipient and publishes them to a remote API. A threshold of operators must run this command with matching parameters for the new fee recipient to take effect.
+
+```markdown
+charon feerecipient sign --help
+Signs new builder registration messages to update the preferred fee recipient and publishes them to a remote API.
+
+Usage:
+  charon feerecipient sign [flags]
+
+Flags:
+      --fee-recipient string            [REQUIRED] New fee recipient address to be applied to all specified validators.
+      --gas-limit uint                  Optional gas limit override for builder registrations. If not set, the existing gas limit from the cluster lock or overrides file is used.
+  -h, --help                            Help for sign
+      --lock-file string                Path to the cluster lock file defining the distributed validator cluster. (default ".charon/cluster-lock.json")
+      --overrides-file string           Path to the builder registrations overrides file. (default ".charon/builder_registrations_overrides.json")
+      --private-key-file string         Path to the charon enr private key file. (default ".charon/charon-enr-private-key")
+      --publish-address string          The URL of the remote API. (default "https://api.obol.tech/v1")
+      --publish-timeout duration        Timeout for accessing the remote API. (default 5m0s)
+      --timestamp int                   Optional Unix timestamp for the builder registration message. When set, all operators can sign independently with the same timestamp. If not set, either the current time is used for new registrations or if another peer already submitted partial signature to the API, its timestamp is used.
+      --validator-keys-dir string       Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
+      --validator-public-keys strings   [REQUIRED] Comma-separated list of validator public keys to sign builder registrations for.
+```
+
+### Fetch aggregated fee recipient builder registrations
+
+Once enough operators have signed their partial builder registrations, the `charon feerecipient fetch` command fetches and aggregates those with quorum from the remote API, writing them to a local JSON overrides file. The `charon run` command will then use this overrides file to apply the updated fee recipients.
+
+```markdown
+charon feerecipient fetch --help
+Fetches builder registration messages from a remote API and aggregates those with quorum, writing them to a local JSON file.
+
+Usage:
+  charon feerecipient fetch [flags]
+
+Flags:
+  -h, --help                            Help for fetch
+      --lock-file string                Path to the cluster lock file defining the distributed validator cluster. (default ".charon/cluster-lock.json")
+      --overrides-file string           Path to the builder registrations overrides file. (default ".charon/builder_registrations_overrides.json")
+      --publish-address string          The URL of the remote API. (default "https://api.obol.tech/v1")
+      --publish-timeout duration        Timeout for accessing the remote API. (default 5m0s)
+      --validator-public-keys strings   Optional comma-separated list of validator public keys to fetch builder registrations for.
+```
+
+### List current fee recipient details
+
+The `charon feerecipient list` command displays the most recent builder registration for each validator, selecting the entry with the highest timestamp from either the cluster lock file or the overrides file.
+
+```markdown
+charon feerecipient list --help
+Displays the most recent builder registration for each validator, selecting the entry with the highest timestamp from either the cluster lock file or the overrides file.
+
+Usage:
+  charon feerecipient list [flags]
+
+Flags:
+  -h, --help                            Help for list
+      --lock-file string                Path to the cluster lock file defining the distributed validator cluster. (default ".charon/cluster-lock.json")
+      --overrides-file string           Path to the builder registrations overrides file. (default ".charon/builder_registrations_overrides.json")
+      --validator-public-keys strings   Optional comma-separated list of validator public keys to list builder registrations for.
+```
+
 ## Host a relay
 
 Relays run a libp2p [circuit relay](https://docs.libp2p.io/concepts/nat/circuit-relay/) server that allows Charon clusters to perform peer discovery and for Charon clients behind strict NAT gateways to be communicated with. If you want to self-host a relay for your cluster(s) the following command will start one.
@@ -1011,7 +1101,7 @@ Flags:
       --publish-address string                        The URL to publish the test result file to. (default "https://api.obol.tech/v1")
       --publish-private-key-file string               The path to the charon enr private key file, used for signing the publish request. Temporary key will be generated if the file does not exist. (default ".charon/charon-enr-private-key")
       --quiet                                         Do not print test results to stdout.
-      --test-cases strings                            List of comma separated names of tests to be executed. Available tests are: [Ping PingMeasure PingLoad DirectConn Libp2pTCPPortOpen PingRelay PingMeasureRelay PeerCount PingLoad Simulate1 Simulate10 Simulate100 Simulate1000 Ping PingMeasure Synced Simulate500 SimulateCustom Version Ping PingMeasure PingLoad Ping PingMeasure CreateBlock InternetDownloadSpeed InternetUploadSpeed DiskWriteIOPS AvailableMemory DiskWriteSpeed DiskReadSpeed DiskReadIOPS TotalMemory InternetLatency]
+      --test-cases strings                            List of comma separated names of tests to be executed. Available tests are: [Ping PingMeasure PingLoad DirectConn Libp2pTCPPortOpen PingRelay PingMeasureRelay PeerCount Simulate100 Simulate500 SimulateCustom Ping Synced PingLoad Simulate1 Simulate10 Simulate1000 PingMeasure Version Ping PingMeasure PingLoad Ping PingMeasure CreateBlock AvailableMemory TotalMemory InternetLatency DiskWriteSpeed DiskWriteIOPS DiskReadSpeed DiskReadIOPS InternetDownloadSpeed InternetUploadSpeed]
       --timeout duration                              Execution timeout for all tests. (default 1h0m0s)
       --validator-load-test-duration duration         Time to keep running the load tests in seconds. For each second a new continuous ping instance is spawned. (default 5s)
       --validator-validator-api-address string        Listening address (ip and port) for validator-facing traffic proxying the beacon-node API. (default "127.0.0.1:3600")
@@ -1040,7 +1130,7 @@ Flags:
       --simulation-duration-in-slots int   Time to keep running the simulation in slots. (default 32)
       --simulation-file-dir string         Time to keep running the simulation in slots. (default "./")
       --simulation-verbose                 Show results for each request and each validator.
-      --test-cases strings                 List of comma separated names of tests to be executed. Available tests are: [Ping Synced Simulate10 Simulate100 Simulate500 Simulate1000 PingMeasure Version PeerCount PingLoad Simulate1 SimulateCustom]
+      --test-cases strings                 List of comma separated names of tests to be executed. Available tests are: [PeerCount Simulate1 PingLoad Simulate10 Simulate100 Simulate500 Simulate1000 SimulateCustom Ping PingMeasure Version Synced]
       --timeout duration                   Execution timeout for all tests. (default 1h0m0s)
 ```
 
@@ -1064,7 +1154,7 @@ Flags:
       --publish-address string                  The URL to publish the test result file to. (default "https://api.obol.tech/v1")
       --publish-private-key-file string         The path to the charon enr private key file, used for signing the publish request. Temporary key will be generated if the file does not exist. (default ".charon/charon-enr-private-key")
       --quiet                                   Do not print test results to stdout.
-      --test-cases strings                      List of comma separated names of tests to be executed. Available tests are: [DiskReadSpeed TotalMemory InternetLatency InternetUploadSpeed DiskWriteSpeed DiskWriteIOPS DiskReadIOPS AvailableMemory InternetDownloadSpeed]
+      --test-cases strings                      List of comma separated names of tests to be executed. Available tests are: [InternetLatency DiskWriteSpeed DiskWriteIOPS DiskReadSpeed DiskReadIOPS TotalMemory InternetDownloadSpeed InternetUploadSpeed AvailableMemory]
       --timeout duration                        Execution timeout for all tests. (default 1h0m0s)
 ```
 
@@ -1088,7 +1178,7 @@ Flags:
       --publish-address string            The URL to publish the test result file to. (default "https://api.obol.tech/v1")
       --publish-private-key-file string   The path to the charon enr private key file, used for signing the publish request. Temporary key will be generated if the file does not exist. (default ".charon/charon-enr-private-key")
       --quiet                             Do not print test results to stdout.
-      --test-cases strings                List of comma separated names of tests to be executed. Available tests are: [Ping PingMeasure CreateBlock]
+      --test-cases strings                List of comma separated names of tests to be executed. Available tests are: [PingMeasure CreateBlock Ping]
       --timeout duration                  Execution timeout for all tests. (default 1h0m0s)
       --x-timeout-ms uint                 X-Timeout-Ms header flag for each request in milliseconds, used by MEVs to compute maximum delay for reply. (default 1000)
 ```
