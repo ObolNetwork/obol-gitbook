@@ -103,13 +103,21 @@ You should see the new fee recipient address reflected for the updated validator
 
 ## Automatic application by Charon
 
-A running `charon run` process watches the overrides file for changes using filesystem events and automatically reloads it — **no restart is required**. Additionally, `charon run` periodically fetches updated registrations from the remote API:
+A running `charon run` process watches the overrides file for changes using filesystem events and automatically reloads it — **no restart is required**.
+
+Additionally, `charon run` can periodically fetch updated builder registrations from the remote API automatically. To enable this, set the flag `--fetch-feerecipient-updates`:
+
+```sh
+charon run --fetch-feerecipient-updates ...
+```
+
+When enabled, the background fetch runs on the following schedule:
 
 - Every **24 hours** under normal conditions.
 - Every **1 hour** if partial (not yet fully aggregated) entries are detected.
 - On every **restart**.
 
-This means that in most cases, once a threshold of operators have signed, a running Charon node will automatically pick up the new fee recipient without any manual `fetch` step. The manual `charon feerecipient fetch` command is useful for applying the change immediately or for verifying the result before relying on the automatic background fetch.
+This means that in most cases, once a threshold of operators have signed, a running Charon node with `--fetch-feerecipient-updates` enabled will automatically pick up the new fee recipient without any manual `fetch` step. The manual `charon feerecipient fetch` command is useful for applying the change immediately or for verifying the result before relying on the automatic background fetch.
 
 ## Further reading
 
