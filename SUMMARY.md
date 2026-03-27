@@ -110,6 +110,7 @@
 * [Quickstart](obol-stack/quickstart.md)
 * [Installing Networks](obol-stack/installing-networks.md)
 * [Installing Apps](obol-stack/installing-apps.md)
+* [Selling training from Google Colab](obol-stack/selling-training-from-google-colab.md)
 * [FAQ](obol-stack/faq.md)
 
 ## Walkthrough Guides
