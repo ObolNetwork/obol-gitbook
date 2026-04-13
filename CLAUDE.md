@@ -10,9 +10,10 @@ This is the Obol Network GitBook documentation repository containing comprehensi
 
 ### Content Organization
 - **`learn/`** - Educational content about DVT concepts, Charon client, and Ethereum staking
-- **`run-a-dv/`** - Practical guides for running distributed validators (quickstarts, preparation, operations)
+- **`run-a-dv/`** - Practical guides for running distributed validators (quickstarts, preparation, operations, cluster editing)
 - **`advanced-and-troubleshooting/`** - Advanced configurations, security documentation, and troubleshooting guides
 - **`community-and-governance/`** - Governance, token information, and community resources
+- **`obol-stack/`** - Obol Stack product documentation (quickstart, installing networks/apps)
 - **`api/`** - API documentation for Obol services
 - **`sdk/`** - Auto-generated SDK documentation
 - **`walkthrough-guides/`** - Step-by-step tutorials
@@ -20,7 +21,7 @@ This is the Obol Network GitBook documentation repository containing comprehensi
 ### Duplicate Structure Pattern
 The repository contains two parallel directory structures:
 - **Long-form paths** (e.g., `run-a-dv/`, `advanced-and-troubleshooting/`) - Main content
-- **Short-form paths** (e.g., `run/`, `adv/`) - Contains `_category_.json` files and `.mdx` versions
+- **Short-form paths** (`adv/`, `gov/`, `guides/`, `learn/`, `sdk/`) - Contains `_category_.json` files and `.mdx` versions
 
 ### GitBook Configuration
 - Uses `_category_.json` files for navigation structure with properties: `label`, `position`, `collapsed`, `collapsible`, `className`
@@ -42,11 +43,11 @@ The repository contains two parallel directory structures:
 - **Non-custodial Architecture** - Private keys are never reconstructed in full
 
 ### Cluster Modification Commands
-- **`charon alpha edit` commands** - Modify existing distributed validator cluster configurations
-  - `charon alpha edit add-validators` - Generate and add new validators to existing cluster
-  - `charon alpha edit add-operators` - Add new operators whilst keeping validator public keys unchanged
-  - `charon alpha edit remove-operators` - Remove operators whilst leaving all validators intact
-  - `charon alpha edit recreate-private-keys` - Create new private key shares whilst retaining operator identities and validator public keys
+Documentation lives in `run-a-dv/editing/`. These map to `charon alpha edit` subcommands:
+- `add-validators.md` - Generate and add new validators to existing cluster
+- `add-operators.md` - Add new operators whilst keeping validator public keys unchanged
+- `remove-operators.md` / `replace-operator.md` - Remove or replace operators
+- `recreate-private-keys.md` - Create new private key shares whilst retaining operator identities
 - **Ceremony Coordination** - Most edit commands require threshold or all operators to participate
 - **Experimental Status** - These features should not be used in production (Mainnet) yet
 
@@ -61,13 +62,27 @@ The repository contains two parallel directory structures:
 ## Content Guidelines
 
 ### Documentation Standards
-- Use British English variant (e.g., "whilst", "recognise", "optimise") throughout all documentation
+- Use American English throughout all documentation (per `community-and-governance/contribution/docs.md`)
 - Use clear, technical language appropriate for both developers and stakers
 - Include troubleshooting sections with specific error conditions and resolutions
 - Provide hardware/infrastructure requirements where applicable
 - Reference external tools and clients with proper links
 - Include security warnings for sensitive operations (private keys, production environments)
 - Use GitBook-specific syntax (e.g., `{% hint style="warning" %}`, `{% hint style="info" %}`, `{% hint style="danger" %}`)
+
+### Content Types
+Two distinct content types used throughout the documentation:
+- **Walkthroughs** - How-to guides with concrete numbered steps. Short (2-10 min read), neutral tone. Structure: (1) context, (2) what we're about to do, (3) the steps, (4) summary and next steps.
+- **Conceptual articles** - Explain _why_ something exists or works. No steps. Confident and friendly tone. Structure: (1) intro, (2) what it is, (3) why it's essential, (4) related topics, (5) summary.
+
+### Formatting Rules
+- **Titles** follow sentence structure — only names and places are capitalised, e.g., `## Distributed key generation` not `## Distributed Key Generation`
+- **Bold** (`**text**`) for UI elements the reader interacts with (buttons, fields, window names)
+- **Italics** (`_text_`) for names of things (products, documents, concepts)
+- **Lists** use `-` for unordered items; each item ends with a period `.`
+- **Acronyms** — spell out in full on first use per page, e.g., "Distributed Key Generation (DKG)"
+- **Oxford comma** required in lists of three or more items
+- Front matter must include `description:` field
 
 ### File Organization
 - Keep related content together (e.g., all quickstart guides in `run-a-dv/start/`)
