@@ -5,7 +5,68 @@ description: Troubleshoot issues spotted by the test command
 
 # Test Commands
 
-This page aims to give guidance on the causes, and potential for troubleshooting or improvement, of failed tests or low test scores from the [Charon Test commands](../../run/prepare/test-command.mdx).
+This page aims to give guidance on the causes, and potential for troubleshooting or improvement, of failed tests or low test scores from the [Charon Test commands](../../run-a-dv/prepare/test-a-cluster.md).
+
+## Running test commands
+
+Below are sample invocations for each deployment method. Replace placeholder values (e.g. `<PEER_ENRS>`, `<BEACON_ENDPOINT>`) with your actual configuration. For full details on all available flags, refer to the [Test a Cluster](../../run-a-dv/prepare/test-a-cluster.md) page.
+
+{% hint style="info" %}
+Most test commands require a `--lock-file` or `--definition-file` flag to identify your cluster. There is no default value for these flags in test commands, so you must specify them explicitly. If you have completed DKG, use `--lock-file`; if you have only created a cluster definition, use `--definition-file`.
+{% endhint %}
+
+{% tabs %}
+{% tab title="(L)CDVN" %}
+If you are using the [CDVN](https://github.com/ObolNetwork/charon-distributed-validator-node) or [LCDVN](https://github.com/ObolNetwork/lido-charon-distributed-validator-node) repo, run test commands with Docker from within the repo directory.
+
+```sh
+# Run from within the charon-distributed-validator-node/ directory
+docker run --rm -u $(id -u):$(id -g) -v "$(pwd):/opt/charon" obolnetwork/charon:v1.9.0 alpha test <COMMAND> \
+  --lock-file="/opt/charon/.charon/cluster-lock.json" \
+  --private-key-file="/opt/charon/.charon/charon-enr-private-key" \
+  [FLAGS]
+```
+{% endtab %}
+
+{% tab title="DappNode" %}
+On DappNode, you can run test commands by executing them inside the Charon container via the DappNode UI terminal or SSH.
+
+```sh
+# Via docker exec (find your container name with `docker ps`)
+docker exec -it DAppNodePackage-hoodi-obol.dnp.dappnode.eth charon alpha test <COMMAND> \
+  --lock-file=".charon/cluster-lock.json" \
+  [FLAGS]
+```
+
+{% hint style="info" %}
+The container name depends on the network package you installed (e.g. `DAppNodePackage-hoodi-obol.dnp.dappnode.eth` for Hoodi or `DAppNodePackage-obol.dnp.dappnode.eth` for Mainnet). Verify using `docker ps`.
+{% endhint %}
+{% endtab %}
+
+{% tab title="Helm" %}
+For Kubernetes deployments using the [Obol Helm charts](https://github.com/ObolNetwork/helm-charts), exec into the Charon pod to run test commands. Replace the namespace and release name if you used different values during installation.
+
+```sh
+# Find your Charon pod (default namespace: dv-pod, default release: my-dv-pod)
+kubectl get pods -n dv-pod -l app.kubernetes.io/instance=my-dv-pod
+
+# Exec into the pod and run the test
+kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test <COMMAND> \
+  --lock-file=".charon/cluster-lock.json" \
+  [FLAGS]
+```
+{% endtab %}
+
+{% tab title="Executable" %}
+If you have the Charon binary installed directly, run test commands from the directory containing your `.charon` folder.
+
+```sh
+charon alpha test <COMMAND> \
+  --lock-file=".charon/cluster-lock.json" \
+  [FLAGS]
+```
+{% endtab %}
+{% endtabs %}
 
 ## Peers
 
@@ -19,7 +80,7 @@ This page aims to give guidance on the causes, and potential for troubleshooting
 
 * Peer might be too far away (geographically) from you.
 * If the connection to the peer is indirect, the route is from your node, to the relay, to the peer. Meaning you are measuring the travel time from you to the relay, and from the relay to the peer: (your node -> relay -> peer). This means, even if your peer's node is right next to yours, if the connection is being transmitted through a relay far away, the latency between your nodes might be too high to be effective.
-* Your general network latency to the public internet might be high. Verify with the [`charon test infra`](../../run/prepare/test-command.mdx#test-machine-and-network-performance) tests.
+* Your general network latency to the public internet might be high. Verify with the [`charon test infra`](../../run-a-dv/prepare/test-a-cluster.md#test-machine-and-network-performance) tests.
 * If the connection to the peer is indirect, there is a potential that the relay might be overloaded or under-resourced, consider adding [alternative relays](../security/risks.md#risk-obol-hosting-the-relay-infrastructure), or preferably [opening charon's p2p port](../../learn/charon/networking.mdx#libp2p-relays-and-peer-discovery) to the internet to establish direct peer to peer connections.
 
 #### PingLoad
