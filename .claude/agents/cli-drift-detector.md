@@ -11,7 +11,7 @@ Your job: compare the CLI reference documentation against what `charon` actually
 
 ## Source of truth
 
-- **Documentation**: `learn/charon/charon-cli-reference.md` in the repo root `/Users/pinebit/obol-gitbook`
+- **Documentation**: `learn/charon/charon-cli-reference.md` in the repo root
 - **Live binary**: run `charon <command> --help` via Bash
 
 ## Algorithm
@@ -48,6 +48,6 @@ If the binary is not available, read the doc and report which version it documen
 
 ## Important notes
 
-- Work from the repo root `/Users/pinebit/obol-gitbook`.
+- Work from the repo root.
 - Don't modify any files — this is a read-only audit.
 - Focus on flag names and their presence/absence; minor wording differences in descriptions are low priority.

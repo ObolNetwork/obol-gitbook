@@ -13,7 +13,7 @@ Your job: cross-reference all `.md`/`.mdx` content files against `SUMMARY.md` an
 
 ### Step 1 — Build the set of files on disk
 
-Use Glob to find all `.md` and `.mdx` files under `/Users/pinebit/obol-gitbook`.
+Use Glob to find all `.md` and `.mdx` files under the repo root.
 
 Exclude:
 - `SUMMARY.md` itself
@@ -27,7 +27,7 @@ Normalise all paths relative to the repo root.
 
 ### Step 2 — Build the set of files referenced in SUMMARY.md
 
-Read `/Users/pinebit/obol-gitbook/SUMMARY.md`.
+Read `SUMMARY.md` from the repo root.
 
 Extract every file path referenced in markdown links: `\[.*?\]\((.*?\.mdx?)\)`.
 

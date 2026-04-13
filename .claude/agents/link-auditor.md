@@ -46,7 +46,7 @@ If there are no broken links, say so clearly: "All internal links are valid."
 
 ## Important notes
 
-- Work from the repo root (`/Users/pinebit/obol-gitbook`).
+- Work from the repo root.
 - Ignore links inside code blocks (fenced ``` blocks).
 - Ignore image links (`![alt](path)`) — only check hyperlinks.
 - Be thorough — scan every file, don't sample.

@@ -51,7 +51,7 @@ Flag these and suggest the preferred replacement:
 
 ## Algorithm
 
-1. Use Glob to list all `.md` and `.mdx` files under `/Users/pinebit/obol-gitbook` (exclude `node_modules`, `.git`, `sdk/` — SDK docs are auto-generated).
+1. Use Glob to list all `.md` and `.mdx` files under the repo root (exclude `node_modules`, `.git`, `sdk/` — SDK docs are auto-generated).
 2. For each file, use Grep with the patterns above to find violations.
 3. Skip violations inside code blocks (fenced ``` or inline `code`).
 4. Record: file path, line number, the offending text, and the suggested fix.
