@@ -28,8 +28,8 @@ The following is a curated list of the best internal and external resources for 
 
 ## Quickstart Guides
 
-* [Run a DV alone](../../run/start/quickstart_alone.mdx)
-* [Run a DV as a group](../../run/start/quickstart_group.mdx)
+* [Run a DV alone](../../run-a-dv/start/create-a-dv-alone.md)
+* [Run a DV as a group](../../run-a-dv/start/create-a-dv-with-a-group.md)
 * [Run a DV using the SDK](../../adv/advanced/quickstart-sdk.mdx)
 
 ## Security and Best Practices

@@ -120,7 +120,7 @@ Charon alone uses negligible disk space of not more than a few MBs. However, if 
 
 For more hardware considerations, check out the [ethereum.org guides](https://ethereum.org/en/developers/docs/nodes-and-clients/run-a-node/#environment-and-hardware) which explores various setups and trade-offs, such as running the node locally or in the cloud.
 
-For now, Geth, Teku & Lighthouse clients are packaged within the docker compose file provided in the [quickstart guides](../../run/start/quickstart_overview.md), so you don't have to install anything else to run a cluster. Just make sure you give them some time to sync once you start running your node.
+For now, Geth, Teku & Lighthouse clients are packaged within the docker compose file provided in the [quickstart guides](../../run-a-dv/start/quickstart_overview.md), so you don't have to install anything else to run a cluster. Just make sure you give them some time to sync once you start running your node.
 
 ### What is the difference between a node, a validator and a cluster?
 
@@ -196,4 +196,4 @@ Another aspect to be aware of is how the splitting of principal from rewards wor
 
 You can check if the containers on your node are outputting errors by running `docker compose logs` on a machine with a running cluster.
 
-Diagnose some common errors and view their resolutions [here](../../adv/troubleshooting/errors.md).
+Diagnose some common errors and view their resolutions [here](../../advanced-and-troubleshooting/troubleshooting/errors.md).

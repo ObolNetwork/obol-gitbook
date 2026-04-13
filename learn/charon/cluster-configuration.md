@@ -146,7 +146,7 @@ Cluster resilience can be broadly classified into two categories:
 * [**Byzantine Fault Tolerance (BFT)**](https://en.wikipedia.org/wiki/Byzantine_fault) - the ability to tolerate nodes that are actively trying to disrupt the cluster.
 * [**Crash Fault Tolerance (CFT)**](https://en.wikipedia.org/wiki/Fault_tolerance) - the ability to tolerate nodes that have crashed or are otherwise unavailable.
 
-Different cluster sizes tolerate different counts of byzantine vs crash nodes. In practice, hardware and software crash relatively frequently, while byzantine behaviour is relatively uncommon. However, Byzantine Fault Tolerance is crucial for trust minimised systems like distributed validators. Thus, cluster size can be chosen to optimise for either BFT or CFT.
+Different cluster sizes tolerate different counts of byzantine vs crash nodes. In practice, hardware and software crash relatively frequently, while byzantine behavior is relatively uncommon. However, Byzantine Fault Tolerance is crucial for trust minimized systems like distributed validators. Thus, cluster size can be chosen to optimize for either BFT or CFT.
 
 The table below lists different cluster sizes and their characteristics:
 
