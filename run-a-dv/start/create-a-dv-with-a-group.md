@@ -738,7 +738,7 @@ kubectl logs my-dv-pod-0 -c charon -f
 
 **Key configuration options:**
 
-You can customise your deployment by upgrading the release with additional parameters:
+You can customize your deployment by upgrading the release with additional parameters:
 
 ```sh
 helm upgrade my-dv-pod obol/dv-pod \

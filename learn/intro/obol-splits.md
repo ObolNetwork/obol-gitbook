@@ -9,7 +9,7 @@ Key Design Principles the Obol Smart Contract suite include are:
 
 * That they are secure. All [released](https://github.com/ObolNetwork/obol-splits/releases/) Obol Splits products are [audited by high quality security teams](../../advanced-and-troubleshooting/security/overview.md#list-of-security-audits-and-assessments).
 * They are not upgradeable.
-* They are self-sovereign. Any permissioned actions, such as withdrawal, exit, or operator rotation, are controlled by the user, not an unaccountable set of third parties with the ability to upgrade your contract's behaviour.
+* They are self-sovereign. Any permissioned actions, such as withdrawal, exit, or operator rotation, are controlled by the user, not an unaccountable set of third parties with the ability to upgrade your contract's behavior.
 * They do not require a token to function.
 * They are oracle-free. (Unless you intend to leverage a [swapper](https://docs.splits.org/core/swapper)).
 * They divide the reward ether from principal ether such that staking providers can be paid a percentage of the _reward_ they accrue for the principal provider rather than a percentage of _principal and reward_.
