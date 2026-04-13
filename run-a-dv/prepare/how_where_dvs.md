@@ -19,8 +19,8 @@ description: How and where to run DVs
 
 ## Quickstart Guides
 
-* [Run a DV alone](../../run/start/quickstart_alone.mdx)
-* [Run a DV as a group](../../run/start/quickstart_group.mdx)
+* [Run a DV alone](../start/create-a-dv-alone.md)
+* [Run a DV as a group](../start/create-a-dv-with-a-group.md)
 
 ## CL+VC Combinations:
 

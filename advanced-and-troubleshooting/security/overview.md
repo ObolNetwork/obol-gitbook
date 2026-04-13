@@ -36,16 +36,16 @@ Be wary of any communication presenting as related to Obol from other domains or
 
 The completed audits reports are linked [here](https://github.com/ObolNetwork/obol-security/tree/main/audits).
 
-* A review of Obol Labs [development processes](../../adv/security/ev-assessment/) by [Ethereal Ventures](https://www.etherealventures.com/).
+* A review of Obol Labs [development processes](ev-assessment.md) by [Ethereal Ventures](https://www.etherealventures.com/).
 * A [security assessment](https://github.com/ObolNetwork/obol-security/blob/f9d7b0ad0bb8897f74ccb34cd4bd83012ad1d2b5/audits/Sigma_Prime_Obol_Network_Charon_Security_Assessment_Report_v2_1.pdf) of Charon by [Sigma Prime](https://sigmaprime.io/) resulting in version [`v0.16.0`](https://github.com/ObolNetwork/charon/releases/tag/v0.16.0).
 * A second [assessment of Charon](https://obol.tech/charon_quantstamp_assessment.pdf) by [QuantStamp](https://quantstamp.com/) resulting in version [`v0.19.1`](https://github.com/ObolNetwork/charon/releases/tag/v0.19.1).
-* A [solidity audit](../../adv/security/smart_contract_audit/) of the Obol Splits contracts by [Zach Obront](https://zachobront.com/).
+* A [solidity audit](smart-contract-audit.md) of the Obol Splits contracts by [Zach Obront](https://zachobront.com/).
 * A [penetration testing certificate](https://github.com/ObolNetwork/obol-security/blob/main/audits/Sayfer_2024-03_Penetration_Testing_CFD.pdf) of the Obol DV Launchpad by [Sayfer](https://sayfer.io/).
 * A [second](https://github.com/ObolNetwork/obol-splits/blob/main/audit/2025%20-%20Obol%20Splits%20V2%20Audit%20-%20Nethermind.pdf) and [third](https://github.com/ObolNetwork/obol-splits/blob/main/audit/2025%20-%20Obol%20Splits%20V3%20Audit%20-%20Nethermind.pdf) solidity audit by [Nethermind Security](https://www.nethermind.io/nethermind-security).
 
 ## Security focused documents
 
-* A [threat model](../../adv/security/threat_model/) for a DV middleware client like Charon.
+* A [threat model](threat_model.md) for a DV middleware client like Charon.
 
 ## Bug Bounty
 
