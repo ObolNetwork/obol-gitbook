@@ -76,8 +76,7 @@ Before preparing the DappNode to take part in a Distributed Validator Cluster, y
 
 With a fully synced Ethereum node now running on the DappNode, the below steps will walk through installing the Obol package via an IPFS hash and preparing for a Distributed Key Generation ceremony. Future versions of this guide will download the package from the official DappNode DappStore once a stable 1.0 release is made.
 
-1. Before installing the package, make sure you are installing the correct one, this depends on which network your creator configures the cluster on, Holesky or Mainnet. You can find the link to both packages below:
-   * [Holesky Repo](http://my.dappnode/installer/dnp/holesky-obol.dnp.dappnode.eth)
+1. Before installing the package, make sure you are installing the correct one for Mainnet. You can find the link to the package below:
    * [Mainnet Repo](http://my.dappnode/installer/dnp/obol.dnp.dappnode.eth)
 2.  Copy the latest IPFS hash from the release details dropdown.
 
@@ -96,7 +95,7 @@ With a fully synced Ethereum node now running on the DappNode, the below steps w
     <figure><img src="../../.gitbook/assets/image (71).png" alt=""><figcaption></figcaption></figure>
 
     <figure><img src="../../.gitbook/assets/image (72).png" alt=""><figcaption></figcaption></figure>
-7.  You should now be able to see the Holesky Obol package under the 'Packages' tab. Click on the package to see important details.
+7.  You should now be able to see the Obol package under the 'Packages' tab. Click on the package to see important details.
 
     <figure><img src="../../.gitbook/assets/image (73).png" alt=""><figcaption></figcaption></figure>
 8.  Under the 'Info' tab, you will see pre-generated ENRs, along with information such as the status of all five distributed validator clusters, their docker volumes & other menu options.

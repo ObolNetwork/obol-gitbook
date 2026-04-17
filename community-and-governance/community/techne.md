@@ -59,7 +59,7 @@ The performance requirements are different depending on the different tiers.
 * For the **Silver Credential,** you will need to create and manage 1 or more validators for 8 months on mainnet, with performance at near or above the network average. We will take into account the overall performance of the cluster as well as the individual performance of the operators.
 
 {% hint style="info" %}
-For Base + Bronze (testnet), if you require delegate hETH, we ask you to set the address 0x17E6F6270A101dc7687Cc9899889819EeAF8253f as the withdrawal recipient. We will not activate validators that have not done this. At the end of the wave, you will only be eligible for the Credentials after we receive the Holesky ETH back.
+For Base + Bronze (testnet), if you require delegate hETH, we ask you to set the address 0x17E6F6270A101dc7687Cc9899889819EeAF8253f as the withdrawal recipient. We will not activate validators that have not done this. At the end of the wave, you will only be eligible for the Credentials after we receive the testnet ETH back.
 {% endhint %}
 
 ### Performance Monitoring
@@ -102,9 +102,9 @@ _Obol Network does not assume responsibility for any financial losses that may b
 
 There are curerntly no active waves for earning Base or Bronze, but we plan to offer another wave in January of 2025. Currently, you still do have the ability to earn Silver. Please head to the [Obol Discord](https://discord.obol.org) to learn more about earning a Silver Techne Credential.
 
-**It has been 24 hours since I filled out the form to receive my Holesky ETH, but I haven't received anything yet. Is this normal?**
+**It has been 24 hours since I filled out the form to receive my testnet ETH, but I haven't received anything yet. Is this normal?**
 
-This is probably due to an unusually high number of requests. Please wait for up to 48 hours and reach out to us on Discord. Also, please note that we do not distribute any Holseky ETH on weekends.
+This is probably due to an unusually high number of requests. Please wait for up to 48 hours and reach out to us on Discord. Also, please note that we do not distribute any testnet ETH on weekends.
 
 **Can I qualify for the program if I run all the nodes on a single machine?**
 
@@ -114,6 +114,6 @@ This is not aligned with the principle of distributed validators (DVs). You must
 
 Yes, those running a DV on mainnet have the opportunity to earn the Silver Techne Credential.
 
-**I don’t have the Base Credential but I have enough Holesky ETH to run 50 validators, can I aim for the Bronze Techne?**
+**I don’t have the Base Credential but I have enough testnet ETH to run 50 validators, can I aim for the Bronze Techne?**
 
-Yes, you can. Please send a message on [Discord](https://discord.obol.org) in the #techne-applicants channel explaining your desire to run for Bronze using your own Holesky ETH.
+Yes, you can. Please send a message on [Discord](https://discord.obol.org) in the #techne-applicants channel explaining your desire to run for Bronze using your own testnet ETH.

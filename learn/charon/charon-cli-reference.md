@@ -104,7 +104,7 @@ Flags:
       --keymanager-addresses strings           Comma separated list of keymanager URLs to import validator key shares to. Note that multiple addresses are required, one for each node in the cluster, with node0's keyshares being imported to the first address, node1's keyshares to the second, and so on.
       --keymanager-auth-tokens strings         Authentication bearer tokens to interact with the keymanager URLs. Don't include the "Bearer" symbol, only include the api-token.
       --name string                            The cluster name
-      --network string                         Ethereum network to create validators for. Options: mainnet, goerli, sepolia, hoodi, holesky, gnosis, chiado. (default "mainnet")
+      --network string                         Ethereum network to create validators for. Options: mainnet, goerli, sepolia, hoodi, gnosis, chiado. (default "mainnet")
       --nodes int                              The number of charon nodes in the cluster. Minimum is 3.
       --num-validators int                     The number of distributed validators needed in the cluster.
       --publish                                Publish lock file to obol-api.
@@ -141,7 +141,7 @@ Flags:
       --fee-recipient-addresses strings        Comma separated list of Ethereum addresses of the fee recipient for each validator. Either provide a single fee recipient address or fee recipient addresses for each validator.
   -h, --help                                   Help for dkg
       --name string                            Optional cosmetic cluster name
-      --network string                         Ethereum network to create validators for. Options: mainnet, goerli, sepolia, hoodi, holesky, gnosis, chiado. (default "mainnet")
+      --network string                         Ethereum network to create validators for. Options: mainnet, goerli, sepolia, hoodi, gnosis, chiado. (default "mainnet")
       --num-validators int                     The number of distributed validators the cluster will manage (32ETH+ staked for each). (default 1)
       --operator-addresses strings             Comma-separated list of each operator's Ethereum address.
       --operator-enrs strings                  Comma-separated list of each operator's Charon ENR address.
