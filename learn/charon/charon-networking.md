@@ -21,7 +21,7 @@ Related Charon configuration flags:
 
 <figure><img src="../../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
 
-The Charon clients in a DV cluster are connected to each other via a small p2p network consisting of only the clients in the cluster. Peer IP addresses are discovered via an external "relay" server. The p2p connections are over the public internet so the Charon p2p port must be publicly accessible. Charon leverages the popular [libp2p](https://libp2p.io/) protocol.
+The Charon clients in a DV cluster are connected to each other via a small p2p network consisting of only the clients in the cluster. Peer IP addresses are discovered via an external "relay" server. The p2p connections are over the public internet so the Charon p2p port must be publicly accessible. Charon leverages the popular [libp2p](https://libp2p.io/) protocol over TCP port 3610 by default.
 
 Related [Charon configuration flags](charon-cli-reference.md):
 
