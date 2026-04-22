@@ -17,7 +17,6 @@ The following non-Obol entities run relays that you can consider adding to your 
 | ------------------------------------------- | ------------------------------------ |
 | [DSRV](https://www.dsrvlabs.com/)           | https://charon-relay.dsrvlabs.dev    |
 | [Hashquark](https://www.hashquark.io/)      | https://relay-2.prod-relay.721.land/ |
-| [Node Guardians](https://nodeguardians.io/) | https://obol-relay.nodeguardians.io/ |
 
 ## Risk: Obol being able to update Charon code
 
