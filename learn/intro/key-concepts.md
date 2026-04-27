@@ -12,7 +12,7 @@ This page outlines a number of the key concepts behind the various technologies 
 
 A distributed validator is an Ethereum proof-of-stake validator that runs on more than one node/machine. This functionality is possible with the use of **Distributed Validator Technology** (DVT).
 
-Distributed validator technology removes some of the single points of failure in validation. Should <33% of the participating nodes in a DV cluster go offline, the remaining active nodes can still come to consensus on what to sign and can produce valid signatures for their staking duties. This is known as Active/Active redundancy, a common pattern for minimising downtime in mission-critical systems.
+Distributed validator technology removes some of the single points of failure in validation. Should <33% of the participating nodes in a DV cluster go offline, the remaining active nodes can still come to consensus on what to sign and can produce valid signatures for their staking duties. This is known as Active/Active redundancy, a common pattern for minimizing downtime in mission-critical systems.
 
 ## Distributed Validator Node
 
@@ -26,7 +26,7 @@ In the above example, the stack includes Geth, Lighthouse, Charon and Teku.
 
 <figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-An execution client (formerly known as an Eth1 client) specialises in running the EVM and managing the transaction pool for the Ethereum network. These clients provide execution payloads to consensus clients for inclusion into blocks.
+An execution client (formerly known as an Eth1 client) specializes in running the EVM and managing the transaction pool for the Ethereum network. These clients provide execution payloads to consensus clients for inclusion into blocks.
 
 Examples of execution clients include:
 
@@ -52,7 +52,7 @@ Examples of Consensus clients include:
 
 <figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-A distributed validator client intercepts the validator client ↔ consensus client communication flow over the [standardised REST API](https://ethereum.github.io/beacon-APIs/#/ValidatorRequiredApi), and focuses on two core duties:
+A distributed validator client intercepts the validator client ↔ consensus client communication flow over the [standardized REST API](https://ethereum.github.io/beacon-APIs/#/ValidatorRequiredApi), and focuses on two core duties:
 
 * Coming to consensus on a candidate duty for all validators to sign.
 * Combining signatures from all validators into a distributed validator signature.

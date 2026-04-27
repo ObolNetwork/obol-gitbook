@@ -1,6 +1,6 @@
 # Obol Splits
 
-Obol develops and maintains a suite of smart contracts for use with Distributed Validators and their surrounding ecosystem of decentralised infrastructure. These contracts include:
+Obol develops and maintains a suite of smart contracts for use with Distributed Validators and their surrounding ecosystem of decentralized infrastructure. These contracts include:
 
 * Validator Managers: Contracts used for a validator's withdrawal address, enabling ownership transfer, partial withdrawals, full exits, and operator rotation.
 * Reward Splitting contracts: Contracts to split ether (and tokens) across multiple entities. Developed by [Splits.org](https://splits.org/)
@@ -82,7 +82,7 @@ function withdraw(
 
 ### Validator Consolidations
 
-Obol Validator Managers support [EIP-7251](https://eips.ethereum.org/EIPS/eip-7251) smart contract-based validator consolidations. This is an important feature for rotating the private keys for the validators managed by this contract. The rotation of private keys allows for the secure re-distribution of validation duties amongst new operators, without a significant period of inactivity in a normal exit and recreate flow.
+Obol Validator Managers support [EIP-7251](https://eips.ethereum.org/EIPS/eip-7251) smart contract-based validator consolidations. This is an important feature for rotating the private keys for the validators managed by this contract. The rotation of private keys allows for the secure re-distribution of validation duties among new operators, without a significant period of inactivity in a normal exit and recreate flow.
 
 The `owner` address, or any address with the `CONSOLIDATION_ROLE` can call the `consolidate()` method, to initiate a consolidation between one or more source validators and a target validator, all managed by this contract.
 
@@ -220,7 +220,7 @@ The `OptimisticWithdrawalRecipient` contract is deployed via a [factory contract
 
 ### What are Obol Splits?
 
-Obol Splits refers to a collection of composable smart contracts that enable the splitting of validator rewards and/or principal in a non-custodial, trust-minimised manner. Obol Splits contains integrations to enable DVs within Lido with Obol Lido Splits, and Native Staking with Obol Validator Managers.
+Obol Splits refers to a collection of composable smart contracts that enable the splitting of validator rewards and/or principal in a non-custodial, trust-minimized manner. Obol Splits contains integrations to enable DVs within Lido with Obol Lido Splits, and Native Staking with Obol Validator Managers.
 
 ### Are Obol Splits non-custodial?
 

@@ -863,7 +863,7 @@ Flags:
 
 #### Add operators to a cluster
 
-The `charon alpha edit add-operators` command adds new operators to an existing distributed validator cluster whilst keeping all validator public keys unchanged. All existing operators and new operators must participate in this ceremony.
+The `charon alpha edit add-operators` command adds new operators to an existing distributed validator cluster while keeping all validator public keys unchanged. All existing operators and new operators must participate in this ceremony.
 
 {% hint style="warning" %}
 This is an alpha feature and is not yet recommended for production use.
@@ -904,7 +904,7 @@ Flags:
 
 #### Remove operators from a cluster
 
-The `charon alpha edit remove-operators` command removes operators from an existing distributed validator cluster whilst leaving all validators intact. Remaining operators must participate in this ceremony.
+The `charon alpha edit remove-operators` command removes operators from an existing distributed validator cluster while leaving all validators intact. Remaining operators must participate in this ceremony.
 
 {% hint style="warning" %}
 This is an alpha feature and is not yet recommended for production use.
@@ -989,7 +989,7 @@ Flags:
 
 #### Recreate private key shares
 
-The `charon alpha edit recreate-private-keys` command creates new private key shares to replace the existing validator private keys whilst retaining the same operator identities and validator public keys. All operators must participate in this ceremony.
+The `charon alpha edit recreate-private-keys` command creates new private key shares to replace the existing validator private keys while retaining the same operator identities and validator public keys. All operators must participate in this ceremony.
 
 {% hint style="warning" %}
 This is an alpha feature and is not yet recommended for production use.

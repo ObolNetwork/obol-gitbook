@@ -73,13 +73,13 @@ It is possible to migrate your Charon node to another machine running the same c
 
 Currently, the minimum is 4 operators with a threshold of 3.
 
-The threshold (aka quorum) corresponds to the minimum number of operators that need to be active for the validator(s) to be able to perform its duties. It is defined by the following formula `n-(ceil(n/3)-1)`. We strongly recommend using this default threshold in your DKG as it maximises liveness while maintaining BFT safety. Setting a 4 out of 4 cluster for example, would make your validator more vulnerable to going offline instead of less vulnerable. You can check the recommended threshold values for a cluster [here](key-concepts.md#distributed-validator-threshold).
+The threshold (aka quorum) corresponds to the minimum number of operators that need to be active for the validator(s) to be able to perform its duties. It is defined by the following formula `n-(ceil(n/3)-1)`. We strongly recommend using this default threshold in your DKG as it maximizes liveness while maintaining BFT safety. Setting a 4 out of 4 cluster for example, would make your validator more vulnerable to going offline instead of less vulnerable. You can check the recommended threshold values for a cluster [here](key-concepts.md#distributed-validator-threshold).
 
 ### Obol Splits[​](#obol-splits) <a href="#obol-splits" id="obol-splits"></a>
 
 #### What are Obol Splits?[​](#what-are-obol-splits) <a href="#what-are-obol-splits" id="what-are-obol-splits"></a>
 
-Obol Splits refers to a collection of composable smart contracts that enable the splitting of validator rewards and/or principal in a non-custodial, trust-minimised manner. Obol Splits contains integrations to enable DVs within Lido, Eigenlayer, and in the future a number of other LSPs.
+Obol Splits refers to a collection of composable smart contracts that enable the splitting of validator rewards and/or principal in a non-custodial, trust-minimized manner. Obol Splits contains integrations to enable DVs within Lido, Eigenlayer, and in the future a number of other LSPs.
 
 #### Are Obol Splits non-custodial?[​](#are-obol-splits-non-custodial) <a href="#are-obol-splits-non-custodial" id="are-obol-splits-non-custodial"></a>
 

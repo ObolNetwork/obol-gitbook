@@ -55,7 +55,7 @@ It is important that all nodes in a cluster be directly connected to one another
 
 ## Node Locations
 
-For optimal performance and high availability, it is recommended to provision machines or virtual machines (VMs) within the same continent. This practice helps minimise potential latency issues ensuring efficient communication and responsiveness. Consider maps of [undersea internet cables](https://www.submarinecablemap.com/) when selecting locations across oceans with low latency.
+For optimal performance and high availability, it is recommended to provision machines or virtual machines (VMs) within the same continent. This practice helps minimize potential latency issues ensuring efficient communication and responsiveness. Consider maps of [undersea internet cables](https://www.submarinecablemap.com/) when selecting locations across oceans with low latency.
 
 When operating multiple nodes within a cloud environment, care must be taken to distribute nodes across availability zones to avoid AZ outages becoming cluster outages.
 

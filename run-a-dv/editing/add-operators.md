@@ -9,7 +9,7 @@ description: >-
 This is an alpha feature and is not yet recommended for production use.
 {% endhint %}
 
-You can add operators to your cluster using the `charon alpha edit add-operators` command. This operation keeps all distributed validator public keys unchanged whilst adding new operators to the cluster.
+You can add operators to your cluster using the `charon alpha edit add-operators` command. This operation keeps all distributed validator public keys unchanged while adding new operators to the cluster.
 
 ## Prerequisites
 
@@ -53,7 +53,7 @@ docker run --rm -v "$(pwd):/opt/charon" obolnetwork/charon:v1.9.0 alpha edit add
 To add multiple operators at once, provide a comma-separated list: `--new-operator-enrs=enr:-JG4QH...,enr:-JG4QK...,enr:-JG4QL...`
 {% endhint %}
 
-This command will create a new cluster configuration with the additional operators whilst keeping all validator public keys unchanged. The new configuration will be saved in the `output` directory.
+This command will create a new cluster configuration with the additional operators while keeping all validator public keys unchanged. The new configuration will be saved in the `output` directory.
 
 ## Making the DV Stack Use the New Configuration
 
@@ -82,12 +82,12 @@ mv output .charon
 docker compose up -d charon lodestar
 ```
 
-Lodestar's boot script (`lodestar/run.sh`) will automatically import all keys, removing any existing keys and cache. Charon will load the new `cluster-lock.json` and recognise all validators in the cluster with the updated operator set.
+Lodestar's boot script (`lodestar/run.sh`) will automatically import all keys, removing any existing keys and cache. Charon will load the new `cluster-lock.json` and recognize all validators in the cluster with the updated operator set.
 
 {% hint style="warning" %}
 All existing operators must fully shut down their cluster nodes before starting with the new configuration. The old cluster must be completely stopped before the new cluster with the expanded operator set can begin operating. Unlike add-validators, this is not a gradual migration.
 
-It is advisable to shut the cluster down for at least two epochs, to minimise any risk of unintended double signing during the controlled restart.
+It is advisable to shut the cluster down for at least two epochs, to minimize any risk of unintended double signing during the controlled restart.
 {% endhint %}
 
 ## Current Considerations

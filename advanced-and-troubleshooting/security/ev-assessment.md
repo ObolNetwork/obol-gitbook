@@ -265,7 +265,7 @@ During the interviews, I got some conflicting information when asking about Obol
 Some interviewees directed me towards Obol’s security repo, which details security contacts: [ObolNetwork/obol-security](https://github.com/ObolNetwork/obol-security), while some answered that disclosure should happen primarily through Immunefi. While these may both be part of the correct answer, it seems that Obol’s disclosure process may not be as well-defined as it could be. Here are some notes:
 
 * I wasn’t able to find information about Obol on Immunefi. I also didn’t find any reference to a security contact or disclosure policy in Obol’s docs.
-* When looking into the obol security repo, I noticed broken links in a few of the sections in README.md and SECURITY.md:
+* When looking into the Obol security repo, I noticed broken links in a few of the sections in README.md and SECURITY.md:
   * Security policy
   * More Information
 * Some of the text and links in the Bug Bounty Program don’t seem to apply to Obol (see text referring to Vaults and Strategies).

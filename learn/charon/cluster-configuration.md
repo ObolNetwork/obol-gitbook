@@ -1,11 +1,11 @@
 ---
-description: Documenting a Distributed Validator Cluster in a standardised file format
+description: Documenting a Distributed Validator Cluster in a standardized file format
 ---
 
 # Cluster Configuration
 
 {% hint style="warning" %}
-These cluster definition and cluster lock files are a work in progress. The intention is for the files to be standardised for operating distributed validators via the [EIP process](https://eips.ethereum.org/) when appropriate.
+These cluster definition and cluster lock files are a work in progress. The intention is for the files to be standardized for operating distributed validators via the [EIP process](https://eips.ethereum.org/) when appropriate.
 {% endhint %}
 
 This document describes the configuration options for running a Charon client or cluster.
@@ -91,7 +91,7 @@ The schema of the `cluster-definition.json` is defined as:
   * The list of participants in the cluster specified by Ethereum address(/ENS);
   * The threshold of fault tolerance required.
 * These key pieces of information form the basis of the cluster configuration. These fields (and some technical fields like DKG algorithm to use) are serialized and merklized to produce the definition's `cluster_definition_hash`. This merkle root will be used to confirm that there is no ambiguity or deviation between definitions when they are provided to Charon nodes.
-* Once the `leader/creator` is satisfied with the configuration they publish it to the launchpad's data availability layer for the other participants to access. (For early development the launchpad will use a centralised backend db to store the cluster configuration. Near production, solutions like IPFS or arweave may be more suitable for the long-term decentralisation of the launchpad.)
+* Once the `leader/creator` is satisfied with the configuration they publish it to the launchpad's data availability layer for the other participants to access. (For early development the launchpad will use a centralized backend db to store the cluster configuration. Near production, solutions like IPFS or arweave may be more suitable for the long-term decentralization of the launchpad.)
 
 ## Cluster Lock File
 
