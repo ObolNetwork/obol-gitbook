@@ -34,7 +34,7 @@ Regular tests intended for relatively fast run, without putting any major load o
 ```sh
 charon alpha test all \
   --peers-enrs="enr:-HW4QMno_MB_ID6GFVxoIQAHHVHZZZjzFctxtX2tm9D95tvaPbHathi8YUP8jh8v2YUAVu2fYWEOB_BT14pt8QgiGg2AgmlkgnY0iXNlY3AyNTZrMaECdpnK83s0dbBwCaEfDIkQ-3nJkkC93STvv6Vmi0bYlzg,enr:-HW4QO2vefLueTBEUGly5hkcpL7NWdMKWx7Nuy9f7z6XZInCbFAc0IZj6bsnmj-Wi4ElS6jNa0Mge5Rkc2WGTVemas2AgmlkgnY0iXNlY3AyNTZrMaECR9SmYQ_1HRgJmNxvh_ER2Sxx78HgKKgKaOkCROYwaDY" \
-  --beacon-endpoints="https://ethereum-hoodi-beacon-api.publicnode.com,https://ethereum-sepolia-beacon-api.publicnode.com" \
+  --beacon-endpoints="https://ethereum-hoodi-beacon-api.publicnode.com" \
   --mev-endpoints="\
 https://0x98f0ef62f00780cf8eb06701a7d22725b9437d4768bb19b363e882ae87129945ec206ec2dc16933f31d983f8225772b6@hoodi-helix.aestus.live,\
 https://0x821f2a65afb70e7f2e820a925a9b4c80a159620582c1766b1b09729fec178b11ea22abb3a51f07b288be815a1a2ff516@bloxroute.hoodi.blxrbdn.com,\
@@ -57,7 +57,7 @@ https://0xaa58208899c6105603b74396734a6263cc7d947f444f396a90f7b7d3e65d102aec7e5e
 ```sh
 charon alpha test all \
   --peers-definition-file="./.charon/cluster-definition.json" \
-  --beacon-endpoints="https://ethereum-hoodi-beacon-api.publicnode.com,https://ethereum-sepolia-beacon-api.publicnode.com" \
+  --beacon-endpoints="https://ethereum-hoodi-beacon-api.publicnode.com" \
   --mev-endpoints="\
 https://0x98f0ef62f00780cf8eb06701a7d22725b9437d4768bb19b363e882ae87129945ec206ec2dc16933f31d983f8225772b6@hoodi-helix.aestus.live,\
 https://0x821f2a65afb70e7f2e820a925a9b4c80a159620582c1766b1b09729fec178b11ea22abb3a51f07b288be815a1a2ff516@bloxroute.hoodi.blxrbdn.com,\
@@ -80,7 +80,7 @@ https://0xaa58208899c6105603b74396734a6263cc7d947f444f396a90f7b7d3e65d102aec7e5e
 ```sh
 charon alpha test all \
   --peers-lock-file="./.charon/cluster-lock.json" \
-  --beacon-endpoints="https://ethereum-hoodi-beacon-api.publicnode.com,https://ethereum-sepolia-beacon-api.publicnode.com" \
+  --beacon-endpoints="https://ethereum-hoodi-beacon-api.publicnode.com" \
   --mev-endpoints="\
 https://0x98f0ef62f00780cf8eb06701a7d22725b9437d4768bb19b363e882ae87129945ec206ec2dc16933f31d983f8225772b6@hoodi-helix.aestus.live,\
 https://0x821f2a65afb70e7f2e820a925a9b4c80a159620582c1766b1b09729fec178b11ea22abb3a51f07b288be815a1a2ff516@bloxroute.hoodi.blxrbdn.com,\
@@ -223,7 +223,7 @@ Regular tests intended for relatively fast run, without putting any major load o
 docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.9.0 alpha test all \
   --peers-enrs="enr:-HW4QMno_MB_ID6GFVxoIQAHHVHZZZjzFctxtX2tm9D95tvaPbHathi8YUP8jh8v2YUAVu2fYWEOB_BT14pt8QgiGg2AgmlkgnY0iXNlY3AyNTZrMaECdpnK83s0dbBwCaEfDIkQ-3nJkkC93STvv6Vmi0bYlzg,enr:-HW4QO2vefLueTBEUGly5hkcpL7NWdMKWx7Nuy9f7z6XZInCbFAc0IZj6bsnmj-Wi4ElS6jNa0Mge5Rkc2WGTVemas2AgmlkgnY0iXNlY3AyNTZrMaECR9SmYQ_1HRgJmNxvh_ER2Sxx78HgKKgKaOkCROYwaDY" \
   --peers-private-key-file="/opt/charon/test/.charon/charon-enr-private-key" \
-  --beacon-endpoints="https://ethereum-hoodi-beacon-api.publicnode.com,https://ethereum-sepolia-beacon-api.publicnode.com" \
+  --beacon-endpoints="https://ethereum-hoodi-beacon-api.publicnode.com" \
   --mev-endpoints="\
 https://0x98f0ef62f00780cf8eb06701a7d22725b9437d4768bb19b363e882ae87129945ec206ec2dc16933f31d983f8225772b6@hoodi-helix.aestus.live,\
 https://0x821f2a65afb70e7f2e820a925a9b4c80a159620582c1766b1b09729fec178b11ea22abb3a51f07b288be815a1a2ff516@bloxroute.hoodi.blxrbdn.com,\
@@ -248,7 +248,7 @@ https://0xaa58208899c6105603b74396734a6263cc7d947f444f396a90f7b7d3e65d102aec7e5e
 docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.9.0 alpha test all \
   --peers-definition-file="/opt/charon/test/.charon/cluster-definition.json" \
   --peers-private-key-file="/opt/charon/test/.charon/charon-enr-private-key" \
-  --beacon-endpoints="https://ethereum-hoodi-beacon-api.publicnode.com,https://ethereum-sepolia-beacon-api.publicnode.com" \
+  --beacon-endpoints="https://ethereum-hoodi-beacon-api.publicnode.com" \
   --mev-endpoints="\
 https://0x98f0ef62f00780cf8eb06701a7d22725b9437d4768bb19b363e882ae87129945ec206ec2dc16933f31d983f8225772b6@hoodi-helix.aestus.live,\
 https://0x821f2a65afb70e7f2e820a925a9b4c80a159620582c1766b1b09729fec178b11ea22abb3a51f07b288be815a1a2ff516@bloxroute.hoodi.blxrbdn.com,\
@@ -273,7 +273,7 @@ https://0xaa58208899c6105603b74396734a6263cc7d947f444f396a90f7b7d3e65d102aec7e5e
 docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.9.0 alpha test all \
   --peers-lock-file="/opt/charon/test/.charon/cluster-lock.json" \
   --peers-private-key-file="/opt/charon/test/.charon/charon-enr-private-key" \
-  --beacon-endpoints="https://ethereum-hoodi-beacon-api.publicnode.com,https://ethereum-sepolia-beacon-api.publicnode.com" \
+  --beacon-endpoints="https://ethereum-hoodi-beacon-api.publicnode.com" \
   --mev-endpoints="\
 https://0x98f0ef62f00780cf8eb06701a7d22725b9437d4768bb19b363e882ae87129945ec206ec2dc16933f31d983f8225772b6@hoodi-helix.aestus.live,\
 https://0x821f2a65afb70e7f2e820a925a9b4c80a159620582c1766b1b09729fec178b11ea22abb3a51f07b288be815a1a2ff516@bloxroute.hoodi.blxrbdn.com,\
@@ -394,6 +394,197 @@ https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72d
 {% endtab %}
 {% endtabs %}
 {% endtab %}
+
+{% tab title="Helm" %}
+
+{% hint style="info" %}
+For Helm deployments, exec into your Charon pod to run test commands. Replace the namespace and pod name if you used different values during installation.
+
+```sh
+# Find your Charon pod (default namespace: dv-pod, default release: my-dv-pod)
+kubectl get pods -n dv-pod -l app.kubernetes.io/instance=my-dv-pod
+```
+{% endhint %}
+
+#### Test all
+
+Intended for running tests across all categories. Each flag should have a prefix for its category (i.e.: the flag `--endpoints` from the beacon tests becomes `--beacon-endpoints`). For details about each category refer to their respective sections.
+
+{% tabs %}
+{% tab title="Regular Test" %}
+Regular tests intended for relatively fast run, without putting any major load on any tested system. Based on which stage you are with your cluster creation, some steps are eased.
+
+{% tabs %}
+{% tab title="Just starting" %}
+**Pre-requisites**
+
+* [ENR private key](../../learn/charon/charon-cli-reference.md#creating-an-enr-for-charon).
+* Peers' ENRs, supplied to the `--peers-enrs` flag.
+* Running beacon node(s) towards which tests will be executed, supplied to `--beacon-endpoints` flag.
+* Running validator client towards which tests will be executed.
+* Running MEV relay(s) towards which tests will be executed, supplied to `--mev-endpoints` flag.
+
+**Example run**
+
+```sh
+kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test all \
+  --peers-enrs="enr:-HW4QMno_MB_ID6GFVxoIQAHHVHZZZjzFctxtX2tm9D95tvaPbHathi8YUP8jh8v2YUAVu2fYWEOB_BT14pt8QgiGg2AgmlkgnY0iXNlY3AyNTZrMaECdpnK83s0dbBwCaEfDIkQ-3nJkkC93STvv6Vmi0bYlzg,enr:-HW4QO2vefLueTBEUGly5hkcpL7NWdMKWx7Nuy9f7z6XZInCbFAc0IZj6bsnmj-Wi4ElS6jNa0Mge5Rkc2WGTVemas2AgmlkgnY0iXNlY3AyNTZrMaECR9SmYQ_1HRgJmNxvh_ER2Sxx78HgKKgKaOkCROYwaDY" \
+  --beacon-endpoints="https://ethereum-hoodi-beacon-api.publicnode.com" \
+  --mev-endpoints="\
+https://0x98f0ef62f00780cf8eb06701a7d22725b9437d4768bb19b363e882ae87129945ec206ec2dc16933f31d983f8225772b6@hoodi-helix.aestus.live,\
+https://0x821f2a65afb70e7f2e820a925a9b4c80a159620582c1766b1b09729fec178b11ea22abb3a51f07b288be815a1a2ff516@bloxroute.hoodi.blxrbdn.com,\
+https://0xafa4c6985aa049fb79dd37010438cfebeb0f2bd42b115b89dd678dab0670c1de38da0c4e9138c9290a398ecd9a0b3110@boost-relay-hoodi.flashbots.net,\
+https://0xb1559beef7b5ba3127485bbbb090362d9f497ba64e177ee2c8e7db74746306efad687f2cf8574e38d70067d40ef136dc@relay-hoodi.ultrasound.money,\
+https://0xaa58208899c6105603b74396734a6263cc7d947f444f396a90f7b7d3e65d102aec7e5e5291b27e08d02c50a050825c2f@hoodi.titanrelay.xyz"
+```
+{% endtab %}
+
+{% tab title="Completed cluster creation" %}
+**Pre-requisites**
+
+* Cluster definition file, supplied to the `--peers-definition-file` flag.
+* Running beacon node(s) towards which tests will be executed, supplied to `--beacon-endpoints` flag.
+* Running validator client towards which tests will be executed.
+* Running MEV relay(s) towards which tests will be executed, supplied to `--mev-endpoints` flag.
+
+**Example run**
+
+```sh
+kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test all \
+  --peers-definition-file="./.charon/cluster-definition.json" \
+  --beacon-endpoints="https://ethereum-hoodi-beacon-api.publicnode.com" \
+  --mev-endpoints="\
+https://0x98f0ef62f00780cf8eb06701a7d22725b9437d4768bb19b363e882ae87129945ec206ec2dc16933f31d983f8225772b6@hoodi-helix.aestus.live,\
+https://0x821f2a65afb70e7f2e820a925a9b4c80a159620582c1766b1b09729fec178b11ea22abb3a51f07b288be815a1a2ff516@bloxroute.hoodi.blxrbdn.com,\
+https://0xafa4c6985aa049fb79dd37010438cfebeb0f2bd42b115b89dd678dab0670c1de38da0c4e9138c9290a398ecd9a0b3110@boost-relay-hoodi.flashbots.net,\
+https://0xb1559beef7b5ba3127485bbbb090362d9f497ba64e177ee2c8e7db74746306efad687f2cf8574e38d70067d40ef136dc@relay-hoodi.ultrasound.money,\
+https://0xaa58208899c6105603b74396734a6263cc7d947f444f396a90f7b7d3e65d102aec7e5e5291b27e08d02c50a050825c2f@hoodi.titanrelay.xyz"
+```
+{% endtab %}
+
+{% tab title="Completed DKG" %}
+**Pre-requisites**
+
+* Cluster lock file, supplied to the `--peers-lock-file` flag.
+* Running beacon node(s) towards which tests will be executed, supplied to `--beacon-endpoints` flag.
+* Running validator client towards which tests will be executed.
+* Running MEV relay(s) towards which tests will be executed, supplied to `--mev-endpoints` flag.
+
+**Example run**
+
+```sh
+kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test all \
+  --peers-lock-file="./.charon/cluster-lock.json" \
+  --beacon-endpoints="https://ethereum-hoodi-beacon-api.publicnode.com" \
+  --mev-endpoints="\
+https://0x98f0ef62f00780cf8eb06701a7d22725b9437d4768bb19b363e882ae87129945ec206ec2dc16933f31d983f8225772b6@hoodi-helix.aestus.live,\
+https://0x821f2a65afb70e7f2e820a925a9b4c80a159620582c1766b1b09729fec178b11ea22abb3a51f07b288be815a1a2ff516@bloxroute.hoodi.blxrbdn.com,\
+https://0xafa4c6985aa049fb79dd37010438cfebeb0f2bd42b115b89dd678dab0670c1de38da0c4e9138c9290a398ecd9a0b3110@boost-relay-hoodi.flashbots.net,\
+https://0xb1559beef7b5ba3127485bbbb090362d9f497ba64e177ee2c8e7db74746306efad687f2cf8574e38d70067d40ef136dc@relay-hoodi.ultrasound.money,\
+https://0xaa58208899c6105603b74396734a6263cc7d947f444f396a90f7b7d3e65d102aec7e5e5291b27e08d02c50a050825c2f@hoodi.titanrelay.xyz"
+```
+{% endtab %}
+{% endtabs %}
+{% endtab %}
+
+{% tab title="Load Test" %}
+Load tests intended for more time consuming run. Beacon nodes are put under heavy load. MEV relays are required to create real blocks. Based on which stage you are with your cluster creation, some steps are eased.
+
+{% tabs %}
+{% tab title="Just starting" %}
+**Pre-requisites**
+
+* [ENR private key](../../learn/charon/charon-cli-reference.md#creating-an-enr-for-charon).
+* Peers' ENRs, supplied to the `--peers-enrs` flag.
+* Running beacon node(s) towards which tests will be executed, supplied to `--beacon-endpoints` flag. It is important that the node is expecting to handle huge load and that it is **not** a publicly accessible one, which can block you.
+* Running validator client towards which tests will be executed.
+* Running MEV relay(s) towards which tests will be executed, supplied to `--mev-endpoints` flag.
+* Running beacon node which will be used for fetching data required by the MEV relay for block creation, supplied to `--mev-beacon-node-endpoint`. There is no restrictions on the node and a public one can be used.
+
+**Example run**
+
+```sh
+kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test all \
+  --peers-enrs="enr:-HW4QMno_MB_ID6GFVxoIQAHHVHZZZjzFctxtX2tm9D95tvaPbHathi8YUP8jh8v2YUAVu2fYWEOB_BT14pt8QgiGg2AgmlkgnY0iXNlY3AyNTZrMaECdpnK83s0dbBwCaEfDIkQ-3nJkkC93STvv6Vmi0bYlzg,enr:-HW4QO2vefLueTBEUGly5hkcpL7NWdMKWx7Nuy9f7z6XZInCbFAc0IZj6bsnmj-Wi4ElS6jNa0Mge5Rkc2WGTVemas2AgmlkgnY0iXNlY3AyNTZrMaECR9SmYQ_1HRgJmNxvh_ER2Sxx78HgKKgKaOkCROYwaDY" \
+  --beacon-endpoints="http://lighthouse:5052/" \
+  --beacon-load-test \
+  --validator-api-address="lodestar:5064" \
+  --mev-endpoints="\
+https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,\
+https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,\
+https://0x8b5d2e73e2a3a55c6c87b8b6eb92e0149a125c852751db1422fa951e42a09b82c142c3ea98d0d9930b056a3bc9896b8f@bloxroute.max-profit.blxrbdn.com,\
+https://0xac6e77dfe25ecd6110b8e780608cce0dab71fdd5ebea22a16c0205200f2f8e2e3ad3b71d3499c54ad14d6c21b41a37ae@boost-relay.flashbots.net,\
+https://0xa1559ace749633b997cb3fdacffb890aeebdb0f5a3b6aaa7eeeaf1a38af0a8fe88b9e4b1f61f236d2e64d95733327a62@relay.ultrasound.money,\
+https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@regional.titanrelay.xyz,\
+https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@global.titanrelay.xyz" \
+  --mev-beacon-node-endpoint="https://ethereum-beacon-api.publicnode.com" \
+  --mev-load-test
+```
+{% endtab %}
+
+{% tab title="Completed cluster creation" %}
+**Pre-requisites**
+
+* Cluster definition file, supplied to the `--peers-definition-file` flag.
+* Running beacon node(s) towards which tests will be executed, supplied to `--beacon-endpoints` flag. It is important that the node is expecting to handle huge load and that it is **not** a publicly accessible one, which can block you.
+* Running validator client towards which tests will be executed.
+* Running MEV relay(s) towards which tests will be executed, supplied to `--mev-endpoints` flag.
+* Running beacon node which will be used for fetching data required by the MEV relay for block creation, supplied to `--mev-beacon-node-endpoint`. There is no restrictions on the node and a public one can be used.
+
+**Example run**
+
+```sh
+kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test all \
+  --peers-definition-file="./.charon/cluster-definition.json" \
+  --beacon-endpoints="http://lighthouse:5052/" \
+  --beacon-load-test \
+  --validator-api-address="lodestar:5064" \
+  --mev-endpoints="\
+https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,\
+https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,\
+https://0x8b5d2e73e2a3a55c6c87b8b6eb92e0149a125c852751db1422fa951e42a09b82c142c3ea98d0d9930b056a3bc9896b8f@bloxroute.max-profit.blxrbdn.com,\
+https://0xac6e77dfe25ecd6110b8e780608cce0dab71fdd5ebea22a16c0205200f2f8e2e3ad3b71d3499c54ad14d6c21b41a37ae@boost-relay.flashbots.net,\
+https://0xa1559ace749633b997cb3fdacffb890aeebdb0f5a3b6aaa7eeeaf1a38af0a8fe88b9e4b1f61f236d2e64d95733327a62@relay.ultrasound.money,\
+https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@regional.titanrelay.xyz,\
+https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@global.titanrelay.xyz" \
+  --mev-beacon-node-endpoint="https://ethereum-beacon-api.publicnode.com" \
+  --mev-load-test
+```
+{% endtab %}
+
+{% tab title="Completed DKG" %}
+**Pre-requisites**
+
+* Cluster lock file, supplied to the `--peers-lock-file` flag.
+* Running beacon node(s) towards which tests will be executed, supplied to `--beacon-endpoints` flag. It is important that the node is expecting to handle huge load and that it is **not** a publicly accessible one, which can block you.
+* Running validator client towards which tests will be executed.
+* Running MEV relay(s) towards which tests will be executed, supplied to `--mev-endpoints` flag.
+* Running beacon node which will be used for fetching data required by the MEV relay for block creation, supplied to `--mev-beacon-node-endpoint`. There is no restrictions on the node and a public one can be used.
+
+**Example run**
+
+```sh
+kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test all \
+  --peers-lock-file="./.charon/cluster-lock.json" \
+  --beacon-endpoints="http://lighthouse:5052/" \
+  --beacon-load-test \
+  --validator-api-address="lodestar:5064" \
+  --mev-endpoints="\
+https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,\
+https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,\
+https://0x8b5d2e73e2a3a55c6c87b8b6eb92e0149a125c852751db1422fa951e42a09b82c142c3ea98d0d9930b056a3bc9896b8f@bloxroute.max-profit.blxrbdn.com,\
+https://0xac6e77dfe25ecd6110b8e780608cce0dab71fdd5ebea22a16c0205200f2f8e2e3ad3b71d3499c54ad14d6c21b41a37ae@boost-relay.flashbots.net,\
+https://0xa1559ace749633b997cb3fdacffb890aeebdb0f5a3b6aaa7eeeaf1a38af0a8fe88b9e4b1f61f236d2e64d95733327a62@relay.ultrasound.money,\
+https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@regional.titanrelay.xyz,\
+https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@global.titanrelay.xyz" \
+  --mev-beacon-node-endpoint="https://ethereum-beacon-api.publicnode.com" \
+  --mev-load-test
+```
+{% endtab %}
+{% endtabs %}
+{% endtab %}
+{% endtabs %}
+{% endtab %}
 {% endtabs %}
 
 ### Test connection to peers
@@ -410,6 +601,8 @@ If all points are satisfied by you and the other peers, you should be able to es
 
 Based on which stage you are with your cluster creation, some steps are eased.
 
+{% tabs %}
+{% tab title="Executable" %}
 {% tabs %}
 {% tab title="Just starting" %}
 **Pre-requisites**
@@ -451,11 +644,106 @@ charon alpha test peers \
 ```
 {% endtab %}
 {% endtabs %}
+{% endtab %}
+
+{% tab title="Docker" %}
+{% tabs %}
+{% tab title="Just starting" %}
+**Pre-requisites**
+
+* [ENR private key](../../learn/charon/charon-cli-reference.md#creating-an-enr-for-charon).
+* Peers' ENRs, supplied to the `--enrs` flag.
+
+**Example run**
+
+```sh
+docker run --rm -u $(id -u):$(id -g) -v "$(pwd):/opt/charon" obolnetwork/charon:v1.9.0 alpha test peers \
+  --enrs="enr:-HW4QMno_MB_ID6GFVxoIQAHHVHZZZjzFctxtX2tm9D95tvaPbHathi8YUP8jh8v2YUAVu2fYWEOB_BT14pt8QgiGg2AgmlkgnY0iXNlY3AyNTZrMaECdpnK83s0dbBwCaEfDIkQ-3nJkkC93STvv6Vmi0bYlzg,enr:-HW4QO2vefLueTBEUGly5hkcpL7NWdMKWx7Nuy9f7z6XZInCbFAc0IZj6bsnmj-Wi4ElS6jNa0Mge5Rkc2WGTVemas2AgmlkgnY0iXNlY3AyNTZrMaECR9SmYQ_1HRgJmNxvh_ER2Sxx78HgKKgKaOkCROYwaDY" \
+  --private-key-file="/opt/charon/.charon/charon-enr-private-key"
+```
+{% endtab %}
+
+{% tab title="Completed cluster creation" %}
+**Pre-requisites**
+
+* Cluster definition file, supplied to the `--definition-file` flag.
+
+**Example run**
+
+```sh
+docker run --rm -u $(id -u):$(id -g) -v "$(pwd):/opt/charon" obolnetwork/charon:v1.9.0 alpha test peers \
+  --definition-file="/opt/charon/.charon/cluster-definition.json" \
+  --private-key-file="/opt/charon/.charon/charon-enr-private-key"
+```
+{% endtab %}
+
+{% tab title="Completed DKG" %}
+**Pre-requisites**
+
+* Cluster lock file, supplied to the `--lock-file` flag.
+
+**Example run**
+
+```sh
+docker run --rm -u $(id -u):$(id -g) -v "$(pwd):/opt/charon" obolnetwork/charon:v1.9.0 alpha test peers \
+  --lock-file="/opt/charon/.charon/cluster-lock.json" \
+  --private-key-file="/opt/charon/.charon/charon-enr-private-key"
+```
+{% endtab %}
+{% endtabs %}
+{% endtab %}
+
+{% tab title="Helm" %}
+{% tabs %}
+{% tab title="Just starting" %}
+**Pre-requisites**
+
+* [ENR private key](../../learn/charon/charon-cli-reference.md#creating-an-enr-for-charon).
+* Peers' ENRs, supplied to the `--enrs` flag.
+
+**Example run**
+
+```sh
+kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test peers \
+  --enrs="enr:-HW4QMno_MB_ID6GFVxoIQAHHVHZZZjzFctxtX2tm9D95tvaPbHathi8YUP8jh8v2YUAVu2fYWEOB_BT14pt8QgiGg2AgmlkgnY0iXNlY3AyNTZrMaECdpnK83s0dbBwCaEfDIkQ-3nJkkC93STvv6Vmi0bYlzg,enr:-HW4QO2vefLueTBEUGly5hkcpL7NWdMKWx7Nuy9f7z6XZInCbFAc0IZj6bsnmj-Wi4ElS6jNa0Mge5Rkc2WGTVemas2AgmlkgnY0iXNlY3AyNTZrMaECR9SmYQ_1HRgJmNxvh_ER2Sxx78HgKKgKaOkCROYwaDY"
+```
+{% endtab %}
+
+{% tab title="Completed cluster creation" %}
+**Pre-requisites**
+
+* Cluster definition file, supplied to the `--definition-file` flag.
+
+**Example run**
+
+```sh
+kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test peers \
+  --definition-file="./.charon/cluster-definition.json"
+```
+{% endtab %}
+
+{% tab title="Completed DKG" %}
+**Pre-requisites**
+
+* Cluster lock file, supplied to the `--lock-file` flag.
+
+**Example run**
+
+```sh
+kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test peers \
+  --lock-file="./.charon/cluster-lock.json"
+```
+{% endtab %}
+{% endtabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Test beacon node
 
 Run tests on beacon node(s), to evaluate their effectiveness for a Distributed Validator cluster. The beacon node is usually the client doing the most work in a validating stack, especially with a high number of validators being serviced by the validator client(s) and Charon(s) that depend on it.
 
+{% tabs %}
+{% tab title="Executable" %}
 {% tabs %}
 {% tab title="Regular test" %}
 Regular tests intended for relatively fast run, without putting any major load on any tested system.
@@ -468,7 +756,7 @@ Regular tests intended for relatively fast run, without putting any major load o
 
 ```sh
 charon alpha test beacon \
-  --endpoints="https://ethereum-hoodi-beacon-api.publicnode.com,https://ethereum-sepolia-beacon-api.publicnode.com"
+  --endpoints="https://ethereum-hoodi-beacon-api.publicnode.com"
 ```
 {% endtab %}
 
@@ -492,6 +780,71 @@ charon alpha test beacon \
 ```
 {% endtab %}
 {% endtabs %}
+{% endtab %}
+
+{% tab title="Docker" %}
+{% tabs %}
+{% tab title="Regular test" %}
+**Pre-requisites**
+
+* Running beacon node(s) towards which tests will be executed, supplied to `--endpoints` flag.
+
+**Example run**
+
+```sh
+docker run --rm obolnetwork/charon:v1.9.0 alpha test beacon \
+  --endpoints="https://ethereum-hoodi-beacon-api.publicnode.com"
+```
+{% endtab %}
+
+{% tab title="Load test" %}
+**Pre-requisites**
+
+* Running beacon node(s) towards which tests will be executed, supplied to `--endpoints` flag. It is important that the node is expecting to handle huge load and that it is **not** a publicly accessible one, which can block you.
+
+**Example run**
+
+```sh
+docker run --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.9.0 alpha test beacon \
+  --endpoints="http://127.0.0.1:5052/" \
+  --load-test \
+  --simulation-file-dir="/opt/charon/test"
+```
+{% endtab %}
+{% endtabs %}
+{% endtab %}
+
+{% tab title="Helm" %}
+{% tabs %}
+{% tab title="Regular test" %}
+**Pre-requisites**
+
+* Running beacon node(s) towards which tests will be executed, supplied to `--endpoints` flag.
+
+**Example run**
+
+```sh
+kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test beacon \
+  --endpoints="https://ethereum-hoodi-beacon-api.publicnode.com"
+```
+{% endtab %}
+
+{% tab title="Load test" %}
+**Pre-requisites**
+
+* Running beacon node(s) towards which tests will be executed, supplied to `--endpoints` flag. It is important that the node is expecting to handle huge load and that it is **not** a publicly accessible one, which can block you.
+
+**Example run**
+
+```sh
+kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test beacon \
+  --endpoints="http://lighthouse:5052/" \
+  --load-test
+```
+{% endtab %}
+{% endtabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Test validator client
 
@@ -499,15 +852,44 @@ Run tests towards your validator client, to evaluate its effectiveness for a Dis
 
 Default endpoint for validator and port is used at `127.0.0.1:3600`. This can be changed by supplying different endpoint to the `--validator-api-address` flag.
 
-#### Pre-requisites
+{% tabs %}
+{% tab title="Executable" %}
+**Pre-requisites**
 
 * Running validator client towards which tests will be executed.
 
-#### Example run
+**Example run**
 
 ```sh
 charon alpha test validator
 ```
+{% endtab %}
+
+{% tab title="Docker" %}
+**Pre-requisites**
+
+* Running validator client towards which tests will be executed.
+
+**Example run**
+
+```sh
+docker run --rm obolnetwork/charon:v1.9.0 alpha test validator \
+  --validator-api-address="<VALIDATOR_CLIENT_ADDRESS>:3600"
+```
+{% endtab %}
+
+{% tab title="Helm" %}
+**Pre-requisites**
+
+* Running validator client towards which tests will be executed.
+
+**Example run**
+
+```sh
+kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test validator
+```
+{% endtab %}
+{% endtabs %}
 
 ### Test MEV relay
 
@@ -612,6 +994,55 @@ https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72d
 {% endtabs %}
 
 {% endtab %}
+
+{% tab title="Helm" %}
+
+{% tabs %}
+{% tab title="Regular Test" %}
+**Pre-requisites**
+
+* Running MEV relay(s) towards which tests will be executed.
+
+**Example run**
+
+```sh
+kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test mev \
+  --endpoints="\
+https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,\
+https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,\
+https://0x8b5d2e73e2a3a55c6c87b8b6eb92e0149a125c852751db1422fa951e42a09b82c142c3ea98d0d9930b056a3bc9896b8f@bloxroute.max-profit.blxrbdn.com,\
+https://0xac6e77dfe25ecd6110b8e780608cce0dab71fdd5ebea22a16c0205200f2f8e2e3ad3b71d3499c54ad14d6c21b41a37ae@boost-relay.flashbots.net,\
+https://0xa1559ace749633b997cb3fdacffb890aeebdb0f5a3b6aaa7eeeaf1a38af0a8fe88b9e4b1f61f236d2e64d95733327a62@relay.ultrasound.money,\
+https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@regional.titanrelay.xyz,\
+https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@global.titanrelay.xyz"
+```
+{% endtab %}
+
+{% tab title="Load Test" %}
+**Pre-requisites**
+
+* Running MEV relay(s) towards which tests will be executed.
+* Running beacon node which will be used for fetching data required by the MEV relay for block creation, supplied to `--beacon-node-endpoint`. There is no restrictions on the node and a public one can be used.
+
+**Example run**
+
+```sh
+kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test mev \
+  --endpoints="\
+https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,\
+https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,\
+https://0x8b5d2e73e2a3a55c6c87b8b6eb92e0149a125c852751db1422fa951e42a09b82c142c3ea98d0d9930b056a3bc9896b8f@bloxroute.max-profit.blxrbdn.com,\
+https://0xac6e77dfe25ecd6110b8e780608cce0dab71fdd5ebea22a16c0205200f2f8e2e3ad3b71d3499c54ad14d6c21b41a37ae@boost-relay.flashbots.net,\
+https://0xa1559ace749633b997cb3fdacffb890aeebdb0f5a3b6aaa7eeeaf1a38af0a8fe88b9e4b1f61f236d2e64d95733327a62@relay.ultrasound.money,\
+https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@regional.titanrelay.xyz,\
+https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72dece09bb313f2a1855595ab677d@global.titanrelay.xyz" \
+  --load-test \
+  --beacon-node-endpoint="https://ethereum-beacon-api.publicnode.com"
+```
+{% endtab %}
+{% endtabs %}
+
+{% endtab %}
 {% endtabs %}
 
 ### Test machine and network performance
@@ -640,6 +1071,16 @@ charon alpha test infra
 ```sh
 docker run -u $(id -u):$(id -g) --rm -v "$(pwd):/opt/charon/test" obolnetwork/charon:v1.9.0 alpha test infra \
         --disk-io-test-file-dir=/opt/charon/test
+```
+
+{% endtab %}
+
+{% tab title="Helm" %}
+
+#### Example run
+
+```sh
+kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test infra
 ```
 
 {% endtab %}
