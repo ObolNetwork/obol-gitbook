@@ -21,7 +21,7 @@ If you are using the [CDVN](https://github.com/ObolNetwork/charon-distributed-va
 
 ```sh
 # Run from within the charon-distributed-validator-node/ directory
-docker run --rm -u $(id -u):$(id -g) -v "$(pwd):/opt/charon" obolnetwork/charon:v1.9.0 alpha test <COMMAND> \
+docker run --rm -u $(id -u):$(id -g) -v "$(pwd):/opt/charon" obolnetwork/charon:v1.10.0 alpha test <COMMAND> \
   --lock-file="/opt/charon/.charon/cluster-lock.json" \
   --private-key-file="/opt/charon/.charon/charon-enr-private-key" \
   [FLAGS]
