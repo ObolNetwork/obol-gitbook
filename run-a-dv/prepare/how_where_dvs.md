@@ -19,24 +19,24 @@ description: How and where to run DVs
 
 ## Quickstart Guides
 
-* [Run a DV alone](../../run/start/quickstart_alone.mdx)
-* [Run a DV as a group](../../run/start/quickstart_group.mdx)
+* [Run a DV alone](../start/create-a-dv-alone.md)
+* [Run a DV as a group](../start/create-a-dv-with-a-group.md)
 
 ## CL+VC Combinations:
 
 **Legend**
 
 * ✅: All duties succeed in testing
-* 🟡: All duties succeed in testing, except non-penalised aggregation duties
+* 🟡: All duties succeed in testing, except non-penalized aggregation duties
 * 🟠: Duties may fail for this combination
 * 🔴: One or more duties fails consistently
 
 | Validator 👉 Consensus 👇 | Teku v24.10.3 | Lighthouse v5.3.0 | Lodestar v1.23.0 | Nimbus v24.10.0 | Prysm v5.1.2 | Remarks                                                                                                                                                                                                                                                                             |
 | ------------------------- | ------------- | ----------------- | ---------------- | --------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Teku v24.10.3             | ✅             | 🟡                | ✅                | ✅               | 🟠           | Teku `beacon node` needs the `--validators-graffiti-client-append-format=DISABLED` flag in order to produce blocks properly. Teku `validator client` is only failing aggregation duties 50% of the time, which are not directly penalised but impact network density at high scale. |
-| Lighthouse v5.3.0         | ✅             | 🟡                | ✅                | ✅               | ✅            | Lighthouse `validator client` is only failing aggregation duties, which are not directly penalised but impact network density at high scale.                                                                                                                                        |
+| Teku v24.10.3             | ✅             | 🟡                | ✅                | ✅               | 🟠           | Teku `beacon node` needs the `--validators-graffiti-client-append-format=DISABLED` flag in order to produce blocks properly. Teku `validator client` is only failing aggregation duties 50% of the time, which are not directly penalized but impact network density at high scale. |
+| Lighthouse v5.3.0         | ✅             | 🟡                | ✅                | ✅               | ✅            | Lighthouse `validator client` is only failing aggregation duties, which are not directly penalized but impact network density at high scale.                                                                                                                                        |
 | Lodestar v1.23.0          | ✅             | 🟡                | ✅                | ✅               | 🟠           |                                                                                                                                                                                                                                                                                     |
 | Nimbus v24.10.0           | ✅             | 🟡                | ✅                | ✅               | 🟠           |                                                                                                                                                                                                                                                                                     |
-| Prysm v5.1.2              | ✅             | 🟡                | ✅                | ✅               | ✅            | Prysm `validator client` is failing aggregation duties 50% of the time, which are not directly penalised but impact network density at high scale. In some combinations rare failures of attestation and proposal duties were observed (0-2% per epoch).                            |
+| Prysm v5.1.2              | ✅             | 🟡                | ✅                | ✅               | ✅            | Prysm `validator client` is failing aggregation duties 50% of the time, which are not directly penalized but impact network density at high scale. In some combinations rare failures of attestation and proposal duties were observed (0-2% per epoch).                            |
 
 Note: for the most recent compatibility information, please see the [release notes](https://github.com/ObolNetwork/charon/releases/) from the most recent release of Charon.

@@ -432,7 +432,7 @@ use the **Lido stVault CLI** docs:
     [`https://lidofinance.github.io/lido-staking-vault-cli/category/commands/`](https://lidofinance.github.io/lido-staking-vault-cli/category/commands/)
     
 
-This keeps your operational runbooks aligned with the latest Lido contracts and CLI behaviour.
+This keeps your operational runbooks aligned with the latest Lido contracts and CLI behavior.
 
 ---
 

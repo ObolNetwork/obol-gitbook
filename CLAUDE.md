@@ -45,9 +45,9 @@ The repository contains two parallel directory structures:
 ### Cluster Modification Commands
 Documentation lives in `run-a-dv/editing/`. These map to `charon alpha edit` subcommands:
 - `add-validators.md` - Generate and add new validators to existing cluster
-- `add-operators.md` - Add new operators whilst keeping validator public keys unchanged
+- `add-operators.md` - Add new operators while keeping validator public keys unchanged
 - `remove-operators.md` / `replace-operator.md` - Remove or replace operators
-- `recreate-private-keys.md` - Create new private key shares whilst retaining operator identities
+- `recreate-private-keys.md` - Create new private key shares while retaining operator identities
 - **Ceremony Coordination** - Most edit commands require threshold or all operators to participate
 - **Experimental Status** - These features should not be used in production (Mainnet) yet
 
@@ -76,7 +76,7 @@ Two distinct content types used throughout the documentation:
 - **Conceptual articles** - Explain _why_ something exists or works. No steps. Confident and friendly tone. Structure: (1) intro, (2) what it is, (3) why it's essential, (4) related topics, (5) summary.
 
 ### Formatting Rules
-- **Titles** follow sentence structure — only names and places are capitalised, e.g., `## Distributed key generation` not `## Distributed Key Generation`
+- **Titles** follow sentence structure — only names and places are capitalized, e.g., `## Distributed key generation` not `## Distributed Key Generation`
 - **Bold** (`**text**`) for UI elements the reader interacts with (buttons, fields, window names)
 - **Italics** (`_text_`) for names of things (products, documents, concepts)
 - **Lists** use `-` for unordered items; each item ends with a period `.`

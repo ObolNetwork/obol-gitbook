@@ -23,7 +23,7 @@ docker compose up -d --build
 ```
 
 {% hint style="danger" %}
-If you run more than one node in a DV Cluster, please take caution upgrading them simultaneously. Particularly if you are updating or changing the validator client used or recreating disks. It is recommended to update nodes on a sequential basis to minimise liveness and safety risks.
+If you run more than one node in a DV Cluster, please take caution upgrading them simultaneously. Particularly if you are updating or changing the validator client used or recreating disks. It is recommended to update nodes on a sequential basis to minimize liveness and safety risks.
 {% endhint %}
 
 #### Conflicts[​](#conflicts) <a href="#conflicts" id="conflicts"></a>
@@ -80,7 +80,7 @@ docker compose up -d --build
 ```
 
 {% hint style="danger" %}
-If you run more than one node in a DV Cluster, please take caution upgrading them simultaneously. Particularly if you are updating or changing the validator client used or recreating disks. It is recommended to update nodes on a sequential basis to minimise liveness and safety risks.
+If you run more than one node in a DV Cluster, please take caution upgrading them simultaneously. Particularly if you are updating or changing the validator client used or recreating disks. It is recommended to update nodes on a sequential basis to minimize liveness and safety risks.
 {% endhint %}
 
 #### Conflicts[​](#conflicts) <a href="#conflicts" id="conflicts"></a>
@@ -139,7 +139,7 @@ Check the [chart changelog](https://github.com/ObolNetwork/helm-charts/releases)
 {% endhint %}
 
 {% hint style="danger" %}
-If you run more than one node in a DV Cluster, please take caution upgrading them simultaneously. Particularly if you are updating or changing the validator client used or recreating disks. It is recommended to update nodes on a sequential basis to minimise liveness and safety risks.
+If you run more than one node in a DV Cluster, please take caution upgrading them simultaneously. Particularly if you are updating or changing the validator client used or recreating disks. It is recommended to update nodes on a sequential basis to minimize liveness and safety risks.
 {% endhint %}
 {% endtab %}
 {% endtabs %}

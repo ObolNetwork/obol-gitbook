@@ -9,7 +9,7 @@ description: >-
 This is an alpha feature and is not yet recommended for production use.
 {% endhint %}
 
-You can recreate the private key shares for your cluster using the `charon alpha edit recreate-private-keys` command. This operation creates new private key shares to replace the existing validator private keys whilst retaining the same operator identities and validator public keys.
+You can recreate the private key shares for your cluster using the `charon alpha edit recreate-private-keys` command. This operation creates new private key shares to replace the existing validator private keys while retaining the same operator identities and validator public keys.
 
 ## When to Use This Feature
 
@@ -88,7 +88,7 @@ docker compose up -d charon lodestar
 Lodestar's boot script (`lodestar/run.sh`) will automatically import all keys, removing any existing keys and cache. Charon will load the new `cluster-lock.json` with the recreated private key shares.
 
 {% hint style="warning" %}
-All operators must fully shut down their existing cluster nodes before starting with the new configuration. The old cluster must be completely stopped before the new cluster with the recreated private keys can begin operating. Steps 1–3 must be performed by all node operators within a coordinated maintenance window to minimise downtime.
+All operators must fully shut down their existing cluster nodes before starting with the new configuration. The old cluster must be completely stopped before the new cluster with the recreated private keys can begin operating. Steps 1–3 must be performed by all node operators within a coordinated maintenance window to minimize downtime.
 {% endhint %}
 
 ## Verifying the New Configuration
@@ -120,4 +120,4 @@ docker compose logs -f charon
 - The new cluster configuration will have a new cluster hash, so the observability stack will display new cluster data under a different identifier.
 - All operators must participate in the ceremony; there is no option for partial participation.
 - All operators must have their current validator private key shares available for the ceremony to succeed.
-- The transition period requires coordination to minimise validator downtime.
+- The transition period requires coordination to minimize validator downtime.

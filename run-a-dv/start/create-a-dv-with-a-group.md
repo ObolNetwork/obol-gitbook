@@ -253,13 +253,13 @@ The following are the steps for creating a cluster.
 7. Click `Create Cluster Configuration`. Review that all the details are correct, and press `Confirm and Sign` You will be prompted to sign two or three transactions with your MetaMask wallet. These are:
    1. The `config_hash`. This is a hashed representation of the details of this cluster, to ensure everyone is agreeing to an identical setup.
    2. The `operator_config_hash`. This is your acceptance of the terms and conditions to participate as a node operator.
-   3. Your `ENR`. Signing your ENR authorises the corresponding private key to act on your behalf in the cluster.
+   3. Your `ENR`. Signing your ENR authorizes the corresponding private key to act on your behalf in the cluster.
 8.  Share your cluster invite link with the operators. Following the link will show you a screen waiting for other operators to accept the configuration you created.
 
     <figure><img src="../../.gitbook/assets/image (77).png" alt=""><figcaption></figcaption></figure>
 9. You can use the link to monitor how many of the operators have already signed their approval of the cluster configuration and submitted their ENR.
 
-Once every participating operator is ready, the next step is the distributed key generation amongst the operators.
+Once every participating operator is ready, the next step is the distributed key generation among the operators.
 
 * If you are not planning on operating a node, and were only configuring the cluster for the operators, your journey ends here. Well done!
 * If you are one of the cluster operators, continue to the next step.
@@ -290,7 +290,7 @@ You will use the CLI to create the cluster definition file, which you will distr
 
     * The `.charon` folder is hidden by default. To view it, run `ls -al .charon` in your terminal. Else, if you are on `macOS`, press `Cmd + Shift + .` to view all hidden files in the Finder application.
 
-Once every participating operator is ready, the next step is the distributed key generation amongst the operators.
+Once every participating operator is ready, the next step is the distributed key generation among the operators.
 
 * If you are not planning on operating a node, and were only configuring the cluster for the operators, your journey ends here. Well done!
 * If you are one of the cluster operators, continue to the next step.
@@ -309,7 +309,7 @@ Your cluster creator needs to configure the cluster, and send you an invite URL 
 
 {% embed url="https://www.youtube.com/watch?v=6pXASqjAQbs" %}
 
-1. Click on the DV launchpad link provided by the leader or creator. Make sure you recognise the domain and the person sending you the link, to ensure you are not being phished.
+1. Click on the DV launchpad link provided by the leader or creator. Make sure you recognize the domain and the person sending you the link, to ensure you are not being phished.
 2. Connect your wallet using the Ethereum address the leader was provided.
 
     <figure><img src="../../.gitbook/assets/image (81).png" alt=""><figcaption></figcaption></figure>
@@ -338,10 +338,10 @@ Your cluster creator needs to configure the cluster, and send you an invite URL 
     <figure><img src="../../.gitbook/assets/image (83).png" alt=""><figcaption></figcaption></figure>
 7. Sign the two transactions with your wallet, these are:
    * The config hash. This is a hashed representation of all of the details for this cluster.
-   * Your own `ENR` This signature authorises the key represented by this ENR to act on your behalf in the cluster.
+   * Your own `ENR` This signature authorizes the key represented by this ENR to act on your behalf in the cluster.
 8. Wait for all the other operators in your cluster to also finish these steps.
 
-Once every participating operator is ready, the next step is the distributed key generation amongst the operators.
+Once every participating operator is ready, the next step is the distributed key generation among the operators.
 
 * If you are not planning on operating a node, and were only configuring the cluster for the operators, your journey ends here. Well done!
 * If you are one of the cluster operators, continue to the next step.
@@ -350,7 +350,7 @@ Once every participating operator is ready, the next step is the distributed key
 {% tab title="CDVN" %}
 You'll receive the `cluster-definition.json` file created by the leader/creator. You should save it in the `.charon/` folder that was created initially. (Alternatively, you can use the `--definition-file` flag to override the default expected location for this file.)
 
-Once every participating operator is ready, the next step is the distributed key generation amongst the operators.
+Once every participating operator is ready, the next step is the distributed key generation among the operators.
 
 * If you are not planning on operating a node, and were only configuring the cluster for the operators, your journey ends here. Well done!
 * If you are one of the cluster operators, continue to the next step.
@@ -737,7 +737,7 @@ kubectl logs my-dv-pod-0 -c charon -f
 
 **Key configuration options:**
 
-You can customise your deployment by upgrading the release with additional parameters:
+You can customize your deployment by upgrading the release with additional parameters:
 
 ```sh
 helm upgrade my-dv-pod obol/dv-pod \

@@ -45,7 +45,7 @@ These files are:
 * **A distributed validator cluster lock file:** This `cluster-lock.json` file contains the configuration a distributed validator client like Charon needs to join a cluster capable of operating a number of distributed validators.
 * **Validator deposit data:** This file is used to activate one or more distributed validators on the Ethereum network.
 
-Once the ceremony is complete, all participants should take a backup of the created files. In future versions of Charon, if a participant loses access to these key shares, it will be possible to use a key re-sharing protocol to swap the participant's old keys out of a distributed validator in favour of new keys, allowing the rest of a cluster to recover from a set of lost key shares. However for now, without a backup, the safest thing to do would be to exit the validator.
+Once the ceremony is complete, all participants should take a backup of the created files. In future versions of Charon, if a participant loses access to these key shares, it will be possible to use a key re-sharing protocol to swap the participant's old keys out of a distributed validator in favor of new keys, allowing the rest of a cluster to recover from a set of lost key shares. However for now, without a backup, the safest thing to do would be to exit the validator.
 
 ## DKG Verification
 

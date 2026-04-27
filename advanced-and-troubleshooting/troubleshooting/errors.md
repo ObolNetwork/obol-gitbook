@@ -321,7 +321,7 @@ Can be linked to a Teku keystore issue.
 
 ### `Unauthorized: authentication error: invalid token`
     You can ignore this error unless you have been contacted by the Obol Team
-    with monitoring credentials. In that case, follow [Monitoring your Node](../../run/running/monitoring.md) in our guides. It does not affect cluster performance or prevent the cluster from running.
+    with monitoring credentials. In that case, follow [Monitoring your Node](../../run-a-dv/running/monitoring.md) in our guides. It does not affect cluster performance or prevent the cluster from running.
 
 
 ## Docker

@@ -1,5 +1,5 @@
 ---
-description: A framework for AI agents to run decentralised infrastructure locally
+description: A framework for AI agents to run decentralized infrastructure locally
 ---
 
 # Introduction to the Obol Stack

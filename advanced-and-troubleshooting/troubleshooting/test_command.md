@@ -187,27 +187,27 @@ Same causes as CreateBlock test apply here.
 
 #### DiskWriteSpeed
 
-* Read more in our [Deployment Best Practices](../../run/prepare/deployment-best-practices/#hardware-specifications).
+* Read more in our [Deployment Best Practices](../../run-a-dv/prepare/deployment-best-practices.md#hardware-specifications).
 
 #### DiskWriteIOPS
 
-* Read more in our [Deployment Best Practices](../../run/prepare/deployment-best-practices/#hardware-specifications).
+* Read more in our [Deployment Best Practices](../../run-a-dv/prepare/deployment-best-practices.md#hardware-specifications).
 
 #### DiskReadSpeed
 
-* Read more in our [Deployment Best Practices](../../run/prepare/deployment-best-practices/#hardware-specifications).
+* Read more in our [Deployment Best Practices](../../run-a-dv/prepare/deployment-best-practices.md#hardware-specifications).
 
 #### DiskReadIOPS
 
-* Read more in our [Deployment Best Practices](../../run/prepare/deployment-best-practices/#hardware-specifications).
+* Read more in our [Deployment Best Practices](../../run-a-dv/prepare/deployment-best-practices.md#hardware-specifications).
 
 #### AvailableMemory
 
-* Your available memory (RAM) is not enough to run Charon. The minimum available memory should be 2GB, the recommended available memory is 4GB. Note that this test is a best estimate, as memory availability can be hard to predict, particularly if the command is run in a virtualised environment (i.e.: a Docker container).
+* Your available memory (RAM) is not enough to run Charon. The minimum available memory should be 2GB, the recommended available memory is 4GB. Note that this test is a best estimate, as memory availability can be hard to predict, particularly if the command is run in a virtualized environment (i.e.: a Docker container).
 
 #### TotalMemory
 
-* Your total memory (RAM) may not be enough to run a full validating node. The recommended minimum total memory is 16GB. Specialised, or optimised deployments can use less RAM than the recommended minimum, but may require some monitoring to assert sufficient stability and performance. Read more in our [Deployment Best Practices](../../run/prepare/deployment-best-practices/#hardware-specifications)
+* Your total memory (RAM) may not be enough to run a full validating node. The recommended minimum total memory is 16GB. Specialized, or optimized deployments can use less RAM than the recommended minimum, but may require some monitoring to assert sufficient stability and performance. Read more in our [Deployment Best Practices](../../run-a-dv/prepare/deployment-best-practices.md#hardware-specifications)
 
 #### InternetLatency
 

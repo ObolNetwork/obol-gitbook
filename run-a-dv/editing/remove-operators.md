@@ -9,7 +9,7 @@ description: >-
 This is an alpha feature and is not yet recommended for production use.
 {% endhint %}
 
-You can remove operators from your cluster using the `charon alpha edit remove-operators` command. This operation leaves all validators intact whilst removing specified operators from the cluster.
+You can remove operators from your cluster using the `charon alpha edit remove-operators` command. This operation leaves all validators intact while removing specified operators from the cluster.
 
 ## Prerequisites
 
@@ -73,7 +73,7 @@ Operators being removed have two options:
 charon alpha edit remove-operators --operator-enrs-to-remove=enr:-JG4QH... --participating-operator-enrs=enr:-JG4QH...,enr:-JG4QK...,enr:-JG4QL... --private-key-file=.charon/charon-enr-private-key --lock-file=.charon/cluster-lock.json --validator-keys-dir=.charon/validator_keys --output-dir=output
 ```
 
-## Customising the Threshold
+## Customizing the Threshold
 
 By default, the new threshold is calculated as `ceil(n * 2 / 3)`, where `n` is the new number of operators. You can override this with the `--new-threshold` flag:
 
