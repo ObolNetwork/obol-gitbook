@@ -68,6 +68,7 @@
   * [Combine DV Private Key Shares](advanced-and-troubleshooting/advanced/quickstart-combine.md)
   * [Beacon node authentication](advanced-and-troubleshooting/advanced/beacon-node-authentication.md)
   * [Alter Withdrawal Addresses](advanced-and-troubleshooting/advanced/alter-withdrawal-addresses.md)
+  * [Partial Deposits](advanced-and-troubleshooting/advanced/partial-deposit.md)
   * [Custom Graffiti](advanced-and-troubleshooting/advanced/custom-graffiti.md)
   * [Enable TLS Protocol](advanced-and-troubleshooting/advanced/enable-tls-protocol.md)
   * [Fallback Beacon Nodes](advanced-and-troubleshooting/advanced/fallback-beacon-nodes.md)

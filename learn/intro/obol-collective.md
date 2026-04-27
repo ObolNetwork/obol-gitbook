@@ -14,11 +14,11 @@ Obol is the largest Decentralised Operator Ecosystem. We provide the technology,
 
 Obol is focused on scaling consensus by providing permissionless access to Distributed Validators (DVs), which offer not only protection against client issues and key mismanagement, but also Byzantine fault tolerance. We believe that distributed validators should and will make up a large portion of mainnet validator configurations, with the transition of the Ethereum community to DVs enabling a new trust paradigm.
 
-The Distributed Validator middleware client, Charon, boosts the security, resilience, and decentralisation of the Ethereum validator network by enabling “squad staking”. The Collective is fueled by Obol’s economic model, which directs funding to ecosystem projects via retroactive funding - a positive flywheel to accelerate adoption of DVs and scale infrastructure networks like Ethereum.
+The Distributed Validator middleware client, Charon, boosts the security, resilience, and decentralization of the Ethereum validator network by enabling “squad staking”. The Collective is fueled by Obol’s economic model, which directs funding to ecosystem projects via retroactive funding - a positive flywheel to accelerate adoption of DVs and scale infrastructure networks like Ethereum.
 
 ## What is DV Labs?​
 
-DV Labs (originally “Obol Labs”) is one of the core research and software development teams building DVT. DV Labs’ mission is to build shared web3 technologies for node operators, to establish a credibly neutral and trust-minimised infrastructure layer. DV Labs’ Distributed Validator middleware client, Charon, boosts security, resilience, and decentralisation by enabling “squad staking”. Learn more at [DVLabs.tech](https://dvlabs.tech).
+DV Labs (originally “Obol Labs”) is one of the core research and software development teams building DVT. DV Labs’ mission is to build shared web3 technologies for node operators, to establish a credibly neutral and trust-minimized infrastructure layer. DV Labs’ Distributed Validator middleware client, Charon, boosts security, resilience, and decentralization by enabling “squad staking”. Learn more at [DVLabs.tech](https://dvlabs.tech).
 
 ### The Obol Product Suite
 
@@ -26,5 +26,5 @@ The [Obol Product Suite](https://obol.org/product-suite) empowers any node opera
 
 * Foundation: [Charon](../charon/intro.md), a middleware client that enables validators to run in a fault-tolerant, distributed manner;
 * Configuration: The [Distributed Validator Launchpad](launchpad.md), a user interface for configuring Distributed Validators. The Obol [SDK](../../sdk/index.md) & [API](../../api/what-is-this-api.md), allowing Distributed Validator clusters to be configured and run at scale, for example within staking protocols.
-* Launchers: Obol's [Charon Distributed Validator Node (CDVN)](../../run/start/quickstart_group.mdx), Obol's Distributed Validator Pod.
-* Rewards: [Obol Splits](obol-splits.mdx), a set of solidity smart contracts for the distribution of rewards from Distributed Validators, amongst multiple node operations.
+* Launchers: Obol's [Charon Distributed Validator Node (CDVN)](../../run-a-dv/start/create-a-dv-with-a-group.md), Obol's Distributed Validator Pod.
+* Rewards: [Obol Splits](obol-splits.mdx), a set of solidity smart contracts for the distribution of rewards from Distributed Validators, among multiple node operations.

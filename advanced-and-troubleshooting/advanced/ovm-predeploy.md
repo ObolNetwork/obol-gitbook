@@ -695,7 +695,7 @@ The validator(s) will enter the activation queue and the `amountOfPrincipalStake
 Compounding validators (0x02 type) can have part of their principal withdrawn from active stake, or be fully exited, via the same `withdraw()` call. Specifying a nonzero value for `amounts` will initiate a partial withdrawal, while 0 will fully exit the validator. You cannot specify an amount that will leave the validator with less than 32 ether in active stake remaining.
 
 {% hint style="warning" %}
-There is an important nuance when it comes to partial withdrawals. With an OVM (on the default settings), it will treat a withdrawal of less than 16 ether as rewards rather than principal. **A customer should not withdraw less than this amount of principal or they may be charged fees on it**. Similarly, care must be taken with the `WITHDRAWAL_ROLE`; although it does not allow the changing of who gets rewards, it can cause this 'over-charging' behaviour by doing repeated small withdrawals.
+There is an important nuance when it comes to partial withdrawals. With an OVM (on the default settings), it will treat a withdrawal of less than 16 ether as rewards rather than principal. **A customer should not withdraw less than this amount of principal or they may be charged fees on it**. Similarly, care must be taken with the `WITHDRAWAL_ROLE`; although it does not allow the changing of who gets rewards, it can cause this 'over-charging' behavior by doing repeated small withdrawals.
 {% endhint %}
 
 

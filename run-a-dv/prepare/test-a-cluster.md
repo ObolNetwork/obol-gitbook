@@ -1047,7 +1047,7 @@ https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72d
 
 ### Test machine and network performance
 
-Run tests of your machine and network, to evaluate their effectiveness for a Distributed Validator cluster. Distributed Validators need stable, low-latency, internet, a reasonable amount of RAM, and a highly performant disk drive for storage. This test aims to analyse these requirements to give an overview of the systems suitability.
+Run tests of your machine and network, to evaluate their effectiveness for a Distributed Validator cluster. Distributed Validators need stable, low-latency, internet, a reasonable amount of RAM, and a highly performant disk drive for storage. This test aims to analyze these requirements to give an overview of the systems suitability.
 
 {% tabs %}
 {% tab title="Executable" %}

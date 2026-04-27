@@ -80,7 +80,7 @@ nimbus_beacon_node \
       --payload-builder-url="https://0xac6e77dfe25ecd6110b8e780608cce0dab71fdd5ebea22a16c0205200f2f8e2e3ad3b71d3499c54ad14d6c21b41a37ae@boost-relay.flashbots.net"
 ```
 
-You should also consider adding `--local-block-value-boost=3` as a flag, to favour locally built blocks if they are withing 3% in value of the relay block, to improve the chances of a successful proposal.
+You should also consider adding `--local-block-value-boost=3` as a flag, to favor locally built blocks if they are withing 3% in value of the relay block, to improve the chances of a successful proposal.
 {% endtab %}
 
 {% tab title="Lodestar" %}

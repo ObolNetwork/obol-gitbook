@@ -16,7 +16,7 @@ There are two methods for changing the operators in a distributed validator clus
 This is an alpha feature and is not yet recommended for production use.
 {% endhint %}
 
-You can replace an operator in your cluster using the `charon alpha edit replace-operator` command. This operation keeps all validators intact whilst swapping one operator for another in the cluster.
+You can replace an operator in your cluster using the `charon alpha edit replace-operator` command. This operation keeps all validators intact while swapping one operator for another in the cluster.
 
 ### Prerequisites
 
@@ -135,7 +135,7 @@ This method is best suited when:
 ### How Consolidation Works
 
 - Consolidations can only be performed when the source validator has `0x01` or `0x02` withdrawal credentials and the target validator must be `0x02`. The consolidation transaction must be sent from the withdrawal address defined in the source credentials. The target withdrawal credentials can be any address of choice.
-- This process transfers the staked ETH from the old validators to the new one whilst the stake never leaves the beacon chain. The only partial downtime for the source validator is the standard 27-hour waiting period on the beacon chain before the withdrawal. When compared to fully exiting and re-depositing, consolidation avoids the sweep delay required in that option.
+- This process transfers the staked ETH from the old validators to the new one while the stake never leaves the beacon chain. The only partial downtime for the source validator is the standard 27-hour waiting period on the beacon chain before the withdrawal. When compared to fully exiting and re-depositing, consolidation avoids the sweep delay required in that option.
 
 In this guide, we focus on source and target validators that have the same withdrawal address (EOA or contract). Other scenarios supporting differing withdrawal addresses are in development.
 

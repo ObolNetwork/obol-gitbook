@@ -12,7 +12,7 @@ This is **optional but encouraged**, and does not confer any special privileges 
 {% endhint %}
 
 ## Metrics
-Metrics are statistics that are gathered on a periodic basis and used to visualise the health and performance of your Charon node and DV cluster. These metrics power your local Grafana dashboard, as well as the hosted dashboards. Submitting metrics to the Obol Core team will allow you to see advanced performance analytics on Obol's hosted platform, as well as to opt into automated alerting whenever something goes wrong with your node.
+Metrics are statistics that are gathered on a periodic basis and used to visualize the health and performance of your Charon node and DV cluster. These metrics power your local Grafana dashboard, as well as the hosted dashboards. Submitting metrics to the Obol Core team will allow you to see advanced performance analytics on Obol's hosted platform, as well as to opt into automated alerting whenever something goes wrong with your node.
 
 {% tabs %}
 {% tab title="(L)CDVN Quickstart" %}
@@ -91,7 +91,7 @@ If you are using one of our [Quickstart](https://github.com/ObolNetwork/charon-d
 # Uncomment and set the log URL
 CHARON_LOKI_ADDRESSES="URL here"
 
-# Uncomment both and set to the details of your node, otherwise the core team won't be able to isolate your logs amongst all the others
+# Uncomment both and set to the details of your node, otherwise the core team won't be able to isolate your logs among all the others
 CLUSTER_NAME="The name of your cluster"
 CLUSTER_PEER="The name of your peer. e.g. approachable-chair, unsightly-couch"
 

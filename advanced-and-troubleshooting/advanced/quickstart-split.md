@@ -79,7 +79,7 @@ Command output:
 ```shell
 ***************** WARNING: Splitting keys **********************
  Please make sure any existing validator has been shut down for
- at least 2 finalised epochs before starting the Charon cluster,
+ at least 2 finalized epochs before starting the Charon cluster,
  otherwise slashing could occur.                               
 ****************************************************************
 
