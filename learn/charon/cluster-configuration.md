@@ -39,7 +39,7 @@ The schema of the `cluster-definition.json` is defined as:
   "num_validators": 1, // Number of distributed validators to be created in cluster-lock.json
   "threshold": 3, // Optional threshold required for signature reconstruction
   "dkg_algorithm": "default", // Optional DKG algorithm for key generation
-  "fork_version": "0x01017000", // Chain/Network identifier
+  "fork_version": "0x10000910", // Chain/Network identifier
   "config_hash": "0xabcfde...acbfed", // Hash of the static (non-changing) fields
   "timestamp": "2025-01-01T12:00:00+00:00", // Creation timestamp
     "operators": [

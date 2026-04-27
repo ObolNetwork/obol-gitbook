@@ -104,7 +104,7 @@ Flags:
       --keymanager-addresses strings           Comma separated list of keymanager URLs to import validator key shares to. Note that multiple addresses are required, one for each node in the cluster, with node0's keyshares being imported to the first address, node1's keyshares to the second, and so on.
       --keymanager-auth-tokens strings         Authentication bearer tokens to interact with the keymanager URLs. Don't include the "Bearer" symbol, only include the api-token.
       --name string                            The cluster name
-      --network string                         Ethereum network to create validators for. Options: mainnet, goerli, sepolia, hoodi, holesky, gnosis, chiado. (default "mainnet")
+      --network string                         Ethereum network to create validators for. Options: mainnet, goerli, sepolia, hoodi, gnosis, chiado. (default "mainnet")
       --nodes int                              The number of charon nodes in the cluster. Minimum is 3.
       --num-validators int                     The number of distributed validators needed in the cluster.
       --publish                                Publish lock file to obol-api.
@@ -141,7 +141,7 @@ Flags:
       --fee-recipient-addresses strings        Comma separated list of Ethereum addresses of the fee recipient for each validator. Either provide a single fee recipient address or fee recipient addresses for each validator.
   -h, --help                                   Help for dkg
       --name string                            Optional cosmetic cluster name
-      --network string                         Ethereum network to create validators for. Options: mainnet, goerli, sepolia, hoodi, holesky, gnosis, chiado. (default "mainnet")
+      --network string                         Ethereum network to create validators for. Options: mainnet, goerli, sepolia, hoodi, gnosis, chiado. (default "mainnet")
       --num-validators int                     The number of distributed validators the cluster will manage (32ETH+ staked for each). (default 1)
       --operator-addresses strings             Comma-separated list of each operator's Ethereum address.
       --operator-enrs strings                  Comma-separated list of each operator's Charon ENR address.
@@ -733,11 +733,11 @@ Flags:
 
 ### List current fee recipient details
 
-The `charon feerecipient list` command displays the most recent builder registration for each validator, selecting the entry with the highest timestamp from either the cluster lock file or the overrides file.
+The `charon feerecipient list` command displays the most recent builder registration for each validator, selecting the entry with the highest timestamp from the cluster lock file, the overrides file, or the remote API.
 
 ```markdown
 charon feerecipient list --help
-Displays the most recent builder registration for each validator, selecting the entry with the highest timestamp from either the cluster lock file or the overrides file.
+Displays the most recent builder registration for each validator, selecting the entry with the highest timestamp from the cluster lock file, the overrides file, or the remote API.
 
 Usage:
   charon feerecipient list [flags]
@@ -746,6 +746,8 @@ Flags:
   -h, --help                            Help for list
       --lock-file string                Path to the cluster lock file defining the distributed validator cluster. (default ".charon/cluster-lock.json")
       --overrides-file string           Path to the builder registrations overrides file. (default ".charon/builder_registrations_overrides.json")
+      --publish-address string          The URL of the remote API. (default "https://api.obol.tech/v1")
+      --publish-timeout duration        Timeout for accessing the remote API. (default 5m0s)
       --validator-public-keys strings   Optional comma-separated list of validator public keys to list builder registrations for.
 ```
 
