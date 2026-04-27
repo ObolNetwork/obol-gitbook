@@ -39,7 +39,7 @@ docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon
   --validator-public-keys="0xYOUR_VALIDATOR_PUBKEY"
 ```
 
-This displays the most recent builder registration for each validator, selecting the entry with the highest timestamp from either the cluster lock file or the overrides file.
+This displays the most recent builder registration for each validator, selecting the entry with the highest timestamp from the cluster lock file, the overrides file, or the remote API.
 
 ## 2. Sign new fee recipient registrations
 
