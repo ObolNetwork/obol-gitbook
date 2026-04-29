@@ -22,6 +22,25 @@ The Hoodi testnet will be used for all examples.
 The following code snippets are minimal examples for the purpose of achieving the desired functionality. These should not be run in production without thorough testing and review.
 {% endhint %}
 
+#### OVM roles at a glance
+
+The OVM uses a [bitwise role system](./assign-ovm-roles.md) for permissioned actions. The `owner` (set in the constructor) holds all powers and can `grantRoles()` to other addresses. The table is an operational summary; see [Obol Validator Manager](../../learn/intro/obol-splits.md#obol-validator-managers) for the full conceptual reference.
+
+| Role | Hex | Authorizes |
+| --- | --- | --- |
+| `owner` | — | Every gated method below, plus `grantRoles`, `revokeRoles`, `transferOwnership`, `renounceOwnership`, and the combined `transfer(newBeneficiary, newOwner)` shortcut. |
+| `WITHDRAWAL_ROLE` | `0x01` | `withdraw()` — initiate partial or full validator withdrawals (EIP-7002). |
+| `CONSOLIDATION_ROLE` | `0x02` | `consolidate()` — merge validators or upgrade a `0x01` validator to `0x02` via self-consolidation. |
+| `SET_BENEFICIARY_ROLE` | `0x04` | `setBeneficiary()` (change principal recipient) and `setAmountOfPrincipalStake()` (correct principal accounting). |
+| `RECOVER_FUNDS_ROLE` | `0x08` | `recoverFunds()` — sweep stuck **ERC20** balances. ETH cannot be recovered through this method. |
+| `SET_REWARD_ROLE` | `0x10` | `setRewardRecipient()` — change the reward destination. |
+| `DEPOSIT_ROLE` | `0x20` | `deposit()` — fund a validator through the OVM so principal accounting updates. |
+
+`distributeFunds()`, `distributeFundsPull()`, and `withdrawPullBalance()` are permissionless. `principalThreshold` is set at deployment and is **immutable** — if a different threshold is needed, deploy a fresh OVM.
+
+{% hint style="warning" %}
+`DEPOSIT_ROLE` only gates `OVM.deposit()`. The canonical Ethereum deposit contract (`0x00000000219ab540356cBB839Cbe05303d7705Fa`) is permissionless — anyone holding the validator pubkey can submit a deposit directly to it with the OVM as withdrawal credentials, bypassing the OVM's principal accounting. Use `setAmountOfPrincipalStake()` to correct the recorded principal in that case.
+{% endhint %}
 
 #### Pre-requisites
 
@@ -68,7 +87,7 @@ A safe and convenient way to deploy an OVM contract is through the [existing con
 # Create a PullSplit owned by the backend API
 cast send $PULL_SPLIT_FACTORY_ADDRESS \
   "createSplit((address[],uint256[],uint256,uint16),address,address)" \
-  (($BACKEND_API_ADDRESS) (1000000) 1000000, 0) $BACKEND_API_ADDRESS $BACKEND_API_ADDRESS \
+  "([$BACKEND_API_ADDRESS],[1000000],1000000,0)" $BACKEND_API_ADDRESS $BACKEND_API_ADDRESS \
   --rpc-url $RPC_URL \
   --private-key $BACKEND_API_PRIVATE_KEY
 
@@ -291,7 +310,7 @@ cast send $EXAMPLE_OVM_ADDRESS \
 # Modify the splitter to include the customer and service providers (example is 90/10 split customer/admin address)
 cast send $EXAMPLE_PULL_SPLIT_ADDRESS \
   "updateSplit(address[],uint256[],uint256,uint16)" \
-  ($EXAMPLE_CUSTOMER_ADDRESS,$ADMIN_SAFE_ADDRESS) (900000,100000) 1000000 0 \
+  "[$EXAMPLE_CUSTOMER_ADDRESS,$ADMIN_SAFE_ADDRESS]" "[900000,100000]" 1000000 0 \
   --rpc-url $RPC_URL \
   --private-key $BACKEND_API_PRIVATE_KEY
 
@@ -688,6 +707,147 @@ console.log("Deposit complete - validator activation pending");
 {% endtab %}
 {% endtabs %}
 The validator(s) will enter the activation queue and the `amountOfPrincipalStake` value on the contract will track how much of the balance is considered the principal (owed to the beneficiary). The EL and CL rewards from any targeting validators will be sent to the OVM contract and Pull Split.
+
+
+### Upgrading a 0x01 validator to 0x02 (self-consolidation)
+
+If a validator pointing at the OVM was deposited with `0x01` withdrawal credentials, its effective-balance ceiling is 32 ETH. Calling `consolidate()` with the validator's pubkey as both the source and the target upgrades it to `0x02` in place, raising the effective-balance ceiling to 2048 ETH and enabling reward compounding. The validator continues attesting through the upgrade — it is not exited.
+
+{% hint style="info" %}
+The validator must be active with a balance greater than 32 ETH for the consolidation to succeed. The call must come from the OVM `owner` or an address holding `CONSOLIDATION_ROLE` (`0x02`). Self-consolidation is the only path that converts an existing `0x01` validator to `0x02` — a fresh deposit cannot do it.
+{% endhint %}
+
+EIP-7251 consolidation requests carry a small fee that scales with mempool pressure. Send enough ETH as `msg.value` to cover the fee; any excess is refunded to the `excessFeeRecipient` address.
+
+{% tabs %}
+{% tab title="Cast" %}
+
+```sh
+cast send $EXAMPLE_OVM_ADDRESS \
+  "consolidate((bytes[],bytes)[],uint256,address)" \
+  "[([0x<validator_pubkey_48_bytes>],0x<validator_pubkey_48_bytes>)]" \
+  1000000000000000 \
+  $BACKEND_API_ADDRESS \
+  --value 0.001ether \
+  --rpc-url $RPC_URL \
+  --private-key $BACKEND_API_PRIVATE_KEY
+```
+
+{% endtab %}
+{% tab title="Forge" %}
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+
+import {Script, console} from "forge-std/Script.sol";
+
+interface IObolValidatorManager {
+    struct ConsolidationRequest {
+        bytes[] srcPubKeys;
+        bytes targetPubKey;
+    }
+
+    function consolidate(
+        ConsolidationRequest[] calldata requests,
+        uint256 maxFeePerConsolidation,
+        address excessFeeRecipient
+    ) external payable;
+}
+
+contract SelfConsolidate is Script {
+    address constant OVM_ADDRESS = 0xYourOVMAddress;
+
+    // Validator public key (48 bytes) of the 0x01 validator to upgrade
+    bytes constant VALIDATOR_PUBKEY = hex"abc123YourValidatorPubkey";
+
+    // Maximum fee willing to pay per consolidation request
+    uint256 constant MAX_FEE_PER_CONSOLIDATION = 0.001 ether;
+
+    function run() external {
+        vm.startBroadcast();
+
+        bytes[] memory srcPubKeys = new bytes[](1);
+        srcPubKeys[0] = VALIDATOR_PUBKEY;
+
+        IObolValidatorManager.ConsolidationRequest[] memory requests =
+            new IObolValidatorManager.ConsolidationRequest[](1);
+        requests[0] = IObolValidatorManager.ConsolidationRequest({
+            srcPubKeys: srcPubKeys,
+            targetPubKey: VALIDATOR_PUBKEY
+        });
+
+        IObolValidatorManager(OVM_ADDRESS).consolidate{value: MAX_FEE_PER_CONSOLIDATION}(
+            requests,
+            MAX_FEE_PER_CONSOLIDATION,
+            msg.sender // Excess fee refunded here
+        );
+
+        console.log("Self-consolidation requested - validator upgrading from 0x01 to 0x02");
+
+        vm.stopBroadcast();
+    }
+}
+```
+
+{% endtab %}
+{% tab title="TypeScript" %}
+
+```ts
+import { createWalletClient, createPublicClient, http, parseAbi } from "viem";
+import { privateKeyToAccount } from "viem/accounts";
+import { hoodi } from "viem/chains";
+
+// The deployed OVM address
+const OVM_ADDRESS = "0xYourOVMAddress";
+
+// Validator public key (48 bytes) of the 0x01 validator to upgrade
+const VALIDATOR_PUBKEY = "0xabc123YourValidatorPubkey";
+
+// Maximum fee willing to pay per consolidation request
+const MAX_FEE_PER_CONSOLIDATION = 1_000_000_000_000_000n; // 0.001 ETH
+
+const ovmAbi = parseAbi([
+  "struct ConsolidationRequest { bytes[] srcPubKeys; bytes targetPubKey; }",
+  "function consolidate(ConsolidationRequest[] requests, uint256 maxFeePerConsolidation, address excessFeeRecipient) external payable",
+]);
+
+// Use a key with CONSOLIDATION_ROLE (or the owner)
+const account = privateKeyToAccount("0xBackendAPIPrivateKey...");
+
+const walletClient = createWalletClient({
+  account,
+  chain: hoodi,
+  transport: http("https://ethereum-hoodi-rpc.publicnode.com"),
+});
+
+const publicClient = createPublicClient({
+  chain: hoodi,
+  transport: http("https://ethereum-hoodi-rpc.publicnode.com"),
+});
+
+// Self-consolidation: source and target are the same pubkey
+const hash = await walletClient.writeContract({
+  address: OVM_ADDRESS,
+  abi: ovmAbi,
+  functionName: "consolidate",
+  args: [
+    [{ srcPubKeys: [VALIDATOR_PUBKEY], targetPubKey: VALIDATOR_PUBKEY }],
+    MAX_FEE_PER_CONSOLIDATION,
+    account.address, // Excess fee refunded here
+  ],
+  value: MAX_FEE_PER_CONSOLIDATION,
+});
+
+console.log("Self-consolidation tx:", hash);
+await publicClient.waitForTransactionReceipt({ hash: hash });
+console.log("Self-consolidation requested - validator upgrading from 0x01 to 0x02");
+```
+
+{% endtab %}
+{% endtabs %}
+
+Once the beacon chain processes the request, the validator's withdrawal type flips to `0x02` and its effective-balance ceiling rises. Subsequent top-up deposits up to 2048 ETH are then retained on the validator rather than being swept as partial withdrawals.
 
 
 ### Withdrawing Validator Balance
