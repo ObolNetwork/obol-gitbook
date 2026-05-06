@@ -112,12 +112,14 @@ The following services are deployed automatically when the stack starts (you do 
 
 | Service | Namespace | Purpose |
 | --- | --- | --- |
-| **ERPC** | `erpc` | Unified RPC load balancer for Ethereum endpoints |
-| **Obol Frontend** | `obol-frontend` | Web management dashboard |
+| **Hermes (default agent)** | `hermes-obol-agent` | AI agent + dashboard |
+| **eRPC** | `erpc` | Unified RPC load balancer for Ethereum endpoints |
+| **Obol Frontend** | `obol-frontend` | Web management dashboard (local-only) |
 | **Monitoring** | `monitoring` | Prometheus + kube-prometheus-stack |
 | **Traefik** | `traefik` | Gateway API ingress controller |
 | **Cloudflared** | `traefik` | Cloudflare tunnel connector |
-| **llmspy** | `llm` | LLM proxy/router |
+| **LiteLLM** | `llm` | OpenAI-compatible LLM gateway |
+| **x402 verifier + ServiceOffer controller** | `x402` | Payment gating for `obol sell` |
 
 View all running services:
 
