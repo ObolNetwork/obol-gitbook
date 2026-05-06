@@ -4,54 +4,71 @@ description: A framework for AI agents to run decentralized infrastructure local
 
 # Introduction to the Obol Stack
 
-The Obol Stack is a local development environment for running AI agents alongside blockchain infrastructure. It provides a simplified CLI for managing a Kubernetes cluster with an AI agent ([OpenClaw](https://openclaw.ai)), dynamically deployable blockchain networks, and public access via Cloudflare tunnels.
+The Obol Stack is a local-first agent harness: a Kubernetes cluster on your laptop, a default AI agent ([Hermes](https://github.com/NousResearch/hermes)) with its own Ethereum wallet, dynamically-deployable blockchain networks, a Cloudflare tunnel for public exposure, and an [x402](https://www.x402.org/) payment gateway so agents can charge for what they serve.
+
+The thesis is simple: **agents should be able to run real infrastructure, build something valuable on top of it, and sell access to it for micropayments — without asking permission and without standing up cloud accounts.**
 
 {% hint style="info" %}
-The Obol Stack is alpha software. For production deployments, refer to the respective network documentation and use appropriate infrastructure.
+The Obol Stack is alpha software. For production validator deployments, use the [Run a DV](../run-a-dv/start/) docs and dedicated infrastructure.
 {% endhint %}
 
-## What is the Obol Stack?
+## What's in the box
 
 Obol Stack is a two-part system:
 
-1. **obolup.sh** - A bootstrap installer that sets up your environment
-2. **obol CLI** - A Go-based binary for stack, agent, and network management
+1. **`obolup.sh`** — bootstrap installer that lays down pinned dependencies (`kubectl`, `helm`, `k3d`, `helmfile`, `k9s`) and the `obol` CLI.
+2. **`obol` CLI** — Go binary that drives everything: cluster lifecycle, the agent, networks, payment-gated services, and the tunnel.
 
-The stack runs entirely on your local machine using [k3d](https://k3d.io/) (Kubernetes in Docker), providing a lightweight yet fully-featured Kubernetes environment.
+The cluster runs entirely on your machine via [k3d](https://k3d.io/) (Kubernetes in Docker).
 
 ## Key features
 
-* **Agent-first** - Deploy an AI agent (OpenClaw) that can interact with blockchain networks and expose services.
-* **Multiple network support** - Deploy Ethereum nodes, Aztec sequencers, and more.
-* **Unique deployments** - Each installation creates a uniquely-namespaced deployment, allowing multiple instances to run simultaneously.
-* **Public access** - Expose services to the internet via Cloudflare tunnels and x402 payment gateways.
-* **Simplified tooling** - Wraps kubectl, helm, and other Kubernetes tools with automatic configuration.
+* **Agent-first** — `obol stack up` brings up a default Hermes agent with its own Ethereum signing wallet (backed by a remote-signer), a chat TUI, and a growing skill set. Talk to it with `obol hermes chat`.
+* **Sell what your agent builds** — `obol sell demo` deploys a payment-gated HTTP service in one command. Use it as the starting point for selling inference, indexed data, or any HTTP API for $OBOL or USDC micropayments.
+* **Native $OBOL micropayments with sponsored gas on mainnet** — when buyers pay in $OBOL on Ethereum mainnet, the Obol facilitator sponsors the on-chain settlement gas. Buyers sign an [EIP-2612](https://eips.ethereum.org/EIPS/eip-2612) permit off-chain and never need ETH. Sellers receive $OBOL directly to their agent wallet.
+* **Multiple network support** — sync local Ethereum nodes (mainnet, sepolia, hoodi), Aztec sequencers, and more. Built-in eRPC routes to public RPCs when no local node is present.
+* **Public access** — expose only the routes you choose (`/services/<name>/*` and discovery metadata) via a Cloudflare quick tunnel. Internal routes (frontend, eRPC) stay locked to `obol.stack`.
+* **Unique deployments** — every install gets a uniquely-namespaced deployment, so multiple stacks coexist on one machine.
 
 ## CLI overview
 
 | Command | Description |
 | --- | --- |
-| `obol stack init / up / down / purge` | Cluster lifecycle management |
-| `obol agent init` | Set up the AI agent (OpenClaw) |
-| `obol openclaw dashboard / setup / ...` | Manage OpenClaw instances |
-| `obol model setup / status` | Configure LLM providers |
+| `obol stack init / up / down / purge` | Cluster lifecycle |
+| `obol agent init / new / setup / sync / list / delete` | Manage agent instances (default runtime: Hermes) |
+| `obol hermes chat / skills / config / ...` | Pass-through to the in-cluster Hermes CLI |
+| `obol model setup / status` | Configure LLM providers (Ollama, Anthropic, OpenAI, custom) |
 | `obol network list / install / sync / delete` | Manage blockchain networks |
+| `obol sell demo / inference / http / list / status / register` | Create payment-gated services and register on ERC-8004 |
 | `obol app install / sync / list / delete` | Install arbitrary Helm charts |
 | `obol tunnel status / login / provision` | Manage Cloudflare tunnels |
-| `obol kubectl / helm / k9s` | Kubernetes tool passthroughs |
+| `obol kubectl / helm / helmfile / k9s` | Kubernetes tool passthroughs (auto-configured `KUBECONFIG`) |
 
 ## Default infrastructure
 
-When you start the stack, the following services are deployed automatically:
+When you run `obol stack up`, the following services are deployed automatically:
 
-| Service | Namespace | Description |
+| Service | Namespace | Purpose |
 | --- | --- | --- |
+| **Hermes (default agent)** | `hermes-obol-agent` | AI agent + dashboard, with its own Ethereum signing wallet |
 | **Traefik** | `traefik` | Gateway API ingress controller |
-| **Cloudflared** | `traefik` | Cloudflare tunnel connector |
-| **ERPC** | `erpc` | Unified RPC load balancer for Ethereum endpoints |
-| **Obol Frontend** | `obol-frontend` | Web management dashboard |
+| **Cloudflared** | `traefik` | Cloudflare tunnel connector for public routes |
+| **eRPC** | `erpc` | Unified RPC load balancer (local nodes + public fallbacks) |
+| **Obol Frontend** | `obol-frontend` | Web management dashboard (local-only) |
 | **Monitoring** | `monitoring` | Prometheus + kube-prometheus-stack |
-| **llmspy** | `llm` | LLM proxy/router for AI agent traffic |
+| **LiteLLM** | `llm` | OpenAI-compatible LLM gateway (Ollama, Anthropic, OpenAI, custom endpoints) |
+| **x402 verifier + ServiceOffer controller** | `x402` | Payment gating + reconciliation of payment-gated services |
+
+## Use it from Claude Code
+
+The Obol team publishes a Claude Code plugin with skills for installing, operating, and selling on the Obol Stack.
+
+```
+/plugin marketplace add ObolNetwork/skills
+/plugin install obol@obol
+```
+
+Once installed, Claude Code can drive `obol stack up`, set up the agent, troubleshoot pods, and walk you through `obol sell demo`. Source: [github.com/ObolNetwork/skills](https://github.com/ObolNetwork/skills).
 
 ## System requirements
 
@@ -81,30 +98,32 @@ Running full Ethereum nodes requires significant disk space. Mainnet execution c
 +---------------------------------------------------------+
 |  obol CLI                                               |
 |  +-- stack     (init, up, down, purge)                  |
-|  +-- agent     (init)                                   |
-|  +-- openclaw  (dashboard, setup, sync, skills, ...)     |
-|  +-- model     (configure, status)                      |
+|  +-- agent     (init, new, setup, sync, list, delete)   |
+|  +-- hermes    (passthrough — chat, skills, config)     |
+|  +-- model     (setup, status)                          |
 |  +-- network   (list, install, sync, delete)            |
+|  +-- sell      (demo, inference, http, register, ...)   |
 |  +-- app       (install, sync, list, delete)            |
 |  +-- tunnel    (status, login, provision)               |
 |  +-- kubectl / helm / helmfile / k9s                    |
 +---------------------------------------------------------+
 |  k3d Cluster                                            |
-|  +-- Traefik Gateway (ports 80, 8080, 443, 8443)       |
+|  +-- Traefik Gateway (ports 80, 8080, 443, 8443)        |
 |  +-- Cloudflared (public tunnel)                        |
-|  +-- llmspy (LLM gateway)                               |
-|  +-- ERPC (RPC load balancer)                           |
-|  +-- Obol Frontend (web dashboard)                      |
+|  +-- LiteLLM (LLM gateway)                              |
+|  +-- eRPC (RPC load balancer)                           |
+|  +-- Obol Frontend (web dashboard, local-only)          |
+|  +-- x402 verifier + ServiceOffer controller            |
 |  +-- Monitoring (Prometheus)                            |
 +---------------------------------------------------------+
 |  Deployments                                            |
-|  +-- openclaw-<id>        (AI agent + remote-signer)    |
-|  +-- ethereum-<id>        (blockchain network)          |
-|  +-- aztec-<id>           (blockchain network)          |
-|  +-- redis-<id>           (installed app)               |
+|  +-- hermes-obol-agent     (default agent + signer)     |
+|  +-- ethereum-<id>         (blockchain network)         |
+|  +-- aztec-<id>            (blockchain network)         |
+|  +-- demo                  (services from `obol sell`)  |
 +---------------------------------------------------------+
 ```
 
 ## Need assistance?
 
-If you have questions or encounter issues with Obol Stack, head over to our [Discord](https://discord.gg/n6ebKsX46w) where a member of our team or the community will be happy to assist you.
+If you have questions or encounter issues with the Obol Stack, head over to our [Discord](https://discord.gg/n6ebKsX46w) where a member of our team or the community will be happy to assist.

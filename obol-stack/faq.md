@@ -1,25 +1,25 @@
 ---
-description: Frequently asked questions about Obol Stack
+description: Frequently asked questions about the Obol Stack
 ---
 
 # Frequently Asked Questions
 
 ## General
 
-### What is Obol Stack?
+### What is the Obol Stack?
 
-The Obol Stack is a local Kubernetes-based environment for running AI agents alongside blockchain infrastructure. It uses k3d (Kubernetes in Docker) to provide a lightweight cluster where you can deploy an AI agent (OpenClaw), Ethereum nodes, Layer 2 networks, and other applications.
+The Obol Stack is a local Kubernetes-based environment for running AI agents alongside blockchain infrastructure. It uses k3d (Kubernetes in Docker) to provide a lightweight cluster where you can deploy a default AI agent (Hermes), Ethereum nodes, Layer 2 networks, payment-gated services, and other applications.
 
-### Is Obol Stack suitable for production?
+### Is the Obol Stack suitable for production?
 
-No. Obol Stack is designed for local development, testing, and experimentation. For production deployments, use dedicated infrastructure with proper security, redundancy, and monitoring.
+No. The Obol Stack is designed for local development, testing, and experimentation with AI agents and agent commerce. For production validator deployments, see the [Run a DV](../run-a-dv/start/) docs.
 
 ### What operating systems are supported?
 
-* **macOS** (Darwin) - Intel and Apple Silicon
-* **Linux** - amd64 and arm64 architectures
+* **macOS** (Darwin) — Intel and Apple Silicon
+* **Linux** — amd64 and arm64 architectures
 
-Windows is not currently supported. Windows users can use WSL2 to run the Obol Stack.
+Windows is not currently supported. Windows users can use WSL2.
 
 ### What are the hardware requirements?
 
@@ -27,7 +27,7 @@ Windows is not currently supported. Windows users can use WSL2 to run the Obol S
 | --- | --- | --- |
 | **CPU** | 4 cores | 8+ cores |
 | **RAM** | 8 GB | 16+ GB |
-| **Storage** | 50 GB | 500 GB - 2 TB (depends on networks) |
+| **Storage** | 50 GB | 500 GB – 2 TB (depends on networks) |
 
 {% hint style="info" %}
 Running multiple networks or full Ethereum mainnet nodes significantly increases resource requirements.
@@ -58,9 +58,9 @@ Re-run the installer:
 bash <(curl -s https://stack.obol.org)
 ```
 
-The installer will update the CLI binary while preserving your configuration and data.
+The installer will update the CLI binary while preserving your configuration and data. Apply chart updates inside the running cluster with `obol upgrade`.
 
-### How do I uninstall Obol Stack?
+### How do I uninstall the Obol Stack?
 
 ```shell
 obol stack purge -f
@@ -76,45 +76,97 @@ Manually add the entry:
 echo "127.0.0.1 obol.stack" | sudo tee -a /etc/hosts
 ```
 
-## AI Agent (OpenClaw)
+## The Obol Agent
 
-### How do I set up the agent?
+### What's the default agent?
+
+[Hermes](https://github.com/NousResearch/hermes) is the default Obol Agent runtime as of v0.9.0. `obol stack up` provisions a default Hermes instance in the `hermes-obol-agent` namespace, with its own Ethereum signing wallet and a built-in skill library.
+
+OpenClaw remains supported as an optional alternate runtime — `obol agent new --runtime openclaw` if you want one.
+
+### How do I chat with the agent?
 
 ```shell
-obol agent init
+obol hermes chat
 ```
 
-This runs the interactive OpenClaw onboard flow, which prompts you to choose a model provider (Ollama, Anthropic, or OpenAI).
+That command passes through to the in-cluster Hermes CLI and gives you an interactive chat TUI. Other useful pass-throughs:
+
+```shell
+obol hermes skills list           # see installed skills
+obol hermes config show           # inspect config
+obol hermes --help                # full Hermes CLI surface
+```
+
+### How do I get my agent to message me on Telegram / Discord / Slack?
+
+```shell
+obol hermes setup
+```
+
+This walks through Hermes' messaging integrations. Once configured, the agent can ping you when long-running work finishes, when a paid service settles a transaction, or any time it decides it needs your attention.
 
 ### How do I change the model provider?
-
-```shell
-obol openclaw setup
-```
-
-Or configure the global model gateway directly:
 
 ```shell
 obol model setup
 ```
 
-### How do I open the agent dashboard?
+Or set up a specific provider:
 
 ```shell
-obol openclaw dashboard
+obol model setup ollama
+obol model setup anthropic
+obol model setup openai
+obol model setup custom --name my-vllm --endpoint http://192.168.1.10:8000/v1 --model qwen36
 ```
 
-This starts a port-forward and opens the web UI in your browser.
+Custom endpoints work with any OpenAI-compatible server (vLLM, sglang, mlx-lm, etc.).
 
-### How do I get the gateway token?
+### Where's the agent's Ethereum wallet?
+
+Each agent instance gets a unique Ethereum signing wallet, backed by a remote-signer service. To inspect:
 
 ```shell
-obol openclaw token
+obol agent wallet address          # print the address
+obol agent wallet list             # list wallets across all instances
 ```
 
-{% hint style="info" %}
-When only one OpenClaw instance is installed, the instance ID is auto-selected. With multiple instances, specify the name: `obol openclaw dashboard my-agent`.
-{% endhint %}
+Back it up — losing it means losing the agent's on-chain identity:
+
+```shell
+obol agent wallet backup -o ~/obol-wallet-backup.json --passphrase "..."
+```
+
+## Selling services
+
+### What is `obol sell demo`?
+
+`obol sell demo` deploys a small HTTP service behind an x402 payment gate and prints copy-paste instructions for paying it. It's the canonical "first paid endpoint" experience on the Obol Stack.
+
+```shell
+obol sell demo                    # 1 OBOL/req on Ethereum mainnet
+obol sell demo blocks             # 0.0001 USDC/req on base-sepolia
+obol sell demo quant              # 0.01 USDC/req on base-sepolia
+```
+
+Use it to see the full sell → discover → pay → receive loop end-to-end before you wrap your own services with `obol sell http` or `obol sell inference`.
+
+### Why pay in $OBOL on mainnet?
+
+Buyers paying in `$OBOL` on Ethereum mainnet sign an EIP-2612 permit off-chain. The Obol-operated x402 facilitator batches that permit with the transfer at settlement time, **so buyers never spend ETH on gas** and never need to do a one-time `approve`. They just sign a message, the seller gets paid in OBOL, the facilitator covers the on-chain cost.
+
+USDC and other tokens settle on the rail their issuer supports (EIP-3009 for USDC).
+
+### How do I list my service on a public agent registry?
+
+```shell
+obol sell register --chain mainnet --name my-service --private-key-file <path>
+```
+
+This publishes the agent's wallet + service catalogue to the [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) Identity Registry on the chain you specify. Note that this requires ETH on the registering wallet for gas.
+
+`obol sell demo` deliberately skips registration by default — run `obol sell register` later when you want on-chain discovery.
 
 ## Stack operations
 
@@ -122,14 +174,14 @@ When only one OpenClaw instance is installed, the instance ID is auto-selected. 
 
 **Port conflicts:**
 
-Obol Stack uses ports 80, 443, 8080, and 8443. Check for conflicts:
+The Obol Stack uses ports 80, 443, 8080, and 8443. Check for conflicts:
 
 ```shell
 lsof -i :8080
 lsof -i :8443
 ```
 
-If ports 80/443 conflict, edit `~/.config/obol/k3d.yaml` and remove the `80:80` and `443:443` entries (keep `8080:80` and `8443:443`). Access at `http://obol.stack:8080` instead.
+If ports 80/443 are taken (common on macOS where they require root), edit `~/.config/obol/k3d.yaml` and remove the `80:80` and `443:443` entries (keep `8080:80` and `8443:443`). Access at `http://obol.stack:8080` instead.
 
 **Previous cluster not cleaned up:**
 
@@ -141,12 +193,14 @@ obol stack up
 
 ### Can I use my existing kubectl configuration?
 
-Obol Stack uses an isolated kubeconfig at `~/.config/obol/kubeconfig.yaml`. To use it with standard kubectl:
+The Obol Stack uses an isolated kubeconfig at `~/.config/obol/kubeconfig.yaml`. To use it with your standard `kubectl`:
 
 ```shell
 export KUBECONFIG=~/.config/obol/kubeconfig.yaml
 kubectl get nodes
 ```
+
+Or use the bundled passthrough: `obol kubectl get nodes`.
 
 ### How do I persist data across cluster restarts?
 
@@ -175,10 +229,10 @@ obol network install ethereum --id=hoodi --network=hoodi
 
 | Network | Client | Approximate Time |
 | --- | --- | --- |
-| Hoodi | Reth | 2-6 hours |
-| Hoodi | Geth | 4-12 hours |
-| Mainnet | Reth | 1-3 days |
-| Mainnet | Geth | 3-7 days |
+| Hoodi | Reth | 2–6 hours |
+| Hoodi | Geth | 4–12 hours |
+| Mainnet | Reth | 1–3 days |
+| Mainnet | Geth | 3–7 days |
 
 {% hint style="info" %}
 Sync times depend on hardware, network connection, and chain state.
@@ -193,6 +247,17 @@ obol kubectl get pvc -n <namespace>
 ```
 
 Common causes: insufficient Docker resources, PVC not bound, image pull errors.
+
+## Claude Code plugin
+
+### How do I use the Obol skills with Claude Code?
+
+```
+/plugin marketplace add ObolNetwork/skills
+/plugin install obol@obol
+```
+
+The `run-obol-stack` skill teaches Claude how to drive the CLI: bring-up, agent setup, debugging, deploying networks, and walking through `obol sell demo`. Source: [github.com/ObolNetwork/skills](https://github.com/ObolNetwork/skills).
 
 ## Troubleshooting
 
@@ -223,7 +288,7 @@ Include:
 * Operating system and architecture
 * Docker version (`docker version`)
 * Steps to reproduce
-* Relevant logs
+* Relevant logs (`obol kubectl logs -n <ns> <pod>`)
 
 ## Need more help?
 
