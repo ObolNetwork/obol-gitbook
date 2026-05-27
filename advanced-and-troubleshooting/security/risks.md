@@ -15,8 +15,11 @@ The following non-Obol entities run relays that you can consider adding to your 
 
 | Entity                                      | Relay URL                            |
 | ------------------------------------------- | ------------------------------------ |
-| [DSRV](https://www.dsrvlabs.com/)           | https://charon-relay.dsrvlabs.dev    |
-| [Hashquark](https://www.hashquark.io/)      | https://relay-2.prod-relay.721.land/ |
+| [DSRV](https://www.dsrvlabs.com/)           | https://charon-relay.dsrvlabs.dev                |
+| [Hashquark](https://www.hashquark.io/)      | https://relay-2.prod-relay.721.land/             |
+| [Hashquark](https://www.hashquark.io/)      | https://secondary.prod-relay.721.land/           |
+| [Nethermind](https://nethermind.io/)        | https://pluto-relay-0.ovh.dev-nethermind.xyz/    |
+| [Nethermind](https://nethermind.io/)        | https://pluto-relay-1.ovh.dev-nethermind.xyz/    |
 
 ## Risk: Obol being able to update Charon code
 
