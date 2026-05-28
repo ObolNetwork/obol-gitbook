@@ -110,6 +110,10 @@ Remote signers can be included as well, such as Web3signer or Dirk. A diversity 
 
 Tested client combinations can be found in the [release notes](https://github.com/ObolNetwork/charon/releases) for each Charon version.
 
+As an additional safeguard against client bugs that could produce a chain split, Charon's `chain_split_halt` feature has peers compare the leader's source and target votes against attester data from their own beacon node before participating in QBFT consensus. If the votes disagree, the peer refuses to participate, preventing the cluster from signing an attestation on the wrong fork. This trades some liveness (peers may need to wait for their local beacon node, and contentious forks can result in no attestation) for stronger safety against signing through a chain split.
+
+The feature is currently in alpha and is not enabled by default. To enable it, add `--feature-set-enable=chain_split_halt` to your `charon run` command.
+
 ## Execution Layer Configuration
 
 When available on the EL client (e.g [Nethermind](../../advanced-and-troubleshooting/troubleshooting/client_configurations.md#nethermind)), blob inclusion for locally-built blocks should be set to 0. Setting blob count to 0 for locally-built blocks avoids the additional latency of gathering blob transactions, which matters when falling back from MEV relay blocks under time pressure.
