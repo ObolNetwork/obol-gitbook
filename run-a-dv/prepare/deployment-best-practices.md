@@ -81,6 +81,20 @@ MEV relays are configured at the Consensus Layer or MEV-boost client level. Refe
 
 Use Charon's [`test mev` command](./test-a-cluster.md#test-mev-relay) to test a number of your preferred relays, and select the two or three relays with the lowest latency to your node(s), you do not need to have the same relays on each node in a cluster.
 
+## Builder Block Selection
+
+By default, most consensus clients apply a comparison factor or value boost when evaluating builder bids against locally-built blocks, which can cause a local block to be selected even when a builder bid is available. For at-scale deployments aiming to maximize MEV capture and consistent proposal behavior, configure your consensus client to never prefer locally-built blocks over builder bids.
+
+The relevant flags vary by consensus client:
+
+- **Teku**: `--validators-builder-bid-compare-factor=0`.
+- **Prysm**: `--local-block-value-boost=0`.
+- **Nimbus**: `--local-block-value-boost=0`.
+- **Lighthouse**: `--prefer-builder-proposals`.
+- **Lodestar**: `--builder.selection=builderalways` (set on the validator client).
+
+With these settings the consensus client uses a builder block whenever one is available, only falling back to a locally-built block if no valid bid is returned from any configured relay in time.
+
 ## Client Diversity
 
 Obol clusters should consist of a mix of different consensus, execution, and validator clients. Charon can't [detect client failures](../../learn/further-reading/ethereum_and_dvt.md#deep-dive-into-dvt-and-charons-architecture) if all nodes are using the same client. At a minimum, no single client should comprise the [threshold](../../learn/charon/cluster-configuration.md#cluster-size-and-resilience) of nodes in the cluster.
