@@ -81,6 +81,20 @@ MEV relays are configured at the Consensus Layer or MEV-boost client level. Refe
 
 Use Charon's [`test mev` command](./test-a-cluster.md#test-mev-relay) to test a number of your preferred relays, and select the two or three relays with the lowest latency to your node(s), you do not need to have the same relays on each node in a cluster.
 
+## Builder Block Selection
+
+By default, most consensus clients apply a comparison factor or value boost when evaluating builder bids against locally-built blocks, which can cause a local block to be selected even when a builder bid is available. For at-scale deployments aiming to maximize MEV capture and consistent proposal behavior, configure your consensus client to never prefer locally-built blocks over builder bids.
+
+The relevant flags vary by consensus client. The flags below either force builder-always selection or remove the default local-block bias, depending on what the client supports:
+
+- **Teku**: `--builder-bid-compare-factor=BUILDER_ALWAYS` (set on the beacon node). Forces builder-always selection.
+- **Lighthouse**: `--prefer-builder-proposals` (set on the validator client). Forces builder-always selection.
+- **Lodestar**: `--builder.selection=builderalways` (set on the validator client). Forces builder-always selection.
+- **Prysm**: `--local-block-value-boost=0` (set on the beacon node). Removes the default 10% local-block bias so builder and local bids compete on equal value, but a higher-value local block can still be selected. Prysm has no builder-always mode.
+- **Nimbus**: `--local-block-value-boost=0` (set on the beacon node). Same caveat as Prysm. Note that the Nimbus team recommends a non-zero value to mitigate the risk of a relay failing to publish the advertised block.
+
+Always preferring the builder maximizes MEV capture but increases the risk of a missed proposal if a relay is slow, returns a bad bid, or fails to publish the block. Operators that prioritize proposal reliability over MEV capture may instead keep a small local-block boost (e.g. `--local-block-value-boost=3` on Prysm/Nimbus, or a comparable percentage factor on Teku) as a liveness safety margin.
+
 ## Client Diversity
 
 Obol clusters should consist of a mix of different consensus, execution, and validator clients. Charon can't [detect client failures](../../learn/further-reading/ethereum_and_dvt.md#deep-dive-into-dvt-and-charons-architecture) if all nodes are using the same client. At a minimum, no single client should comprise the [threshold](../../learn/charon/cluster-configuration.md#cluster-size-and-resilience) of nodes in the cluster.
@@ -95,6 +109,10 @@ Keep in mind that client diversity includes EL, CL and VC clients and each layer
 Remote signers can be included as well, such as Web3signer or Dirk. A diversity of private key infrastructure setups further reduces the risk of total key compromise.
 
 Tested client combinations can be found in the [release notes](https://github.com/ObolNetwork/charon/releases) for each Charon version.
+
+As an additional safeguard against client bugs that could produce a chain split, Charon's `chain_split_halt` feature has peers compare the leader's source and target votes against attester data from their own beacon node before participating in QBFT consensus. If the votes disagree, the peer refuses to participate, preventing the cluster from signing an attestation on the wrong fork. This trades some liveness (peers may need to wait for their local beacon node, and contentious forks can result in no attestation) for stronger safety against signing through a chain split.
+
+The feature is currently in alpha and is not enabled by default. To enable it, add `--feature-set-enable=chain_split_halt` to your `charon run` command.
 
 ## Execution Layer Configuration
 
