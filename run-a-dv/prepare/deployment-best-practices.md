@@ -85,15 +85,15 @@ Use Charon's [`test mev` command](./test-a-cluster.md#test-mev-relay) to test a 
 
 By default, most consensus clients apply a comparison factor or value boost when evaluating builder bids against locally-built blocks, which can cause a local block to be selected even when a builder bid is available. For at-scale deployments aiming to maximize MEV capture and consistent proposal behavior, configure your consensus client to never prefer locally-built blocks over builder bids.
 
-The relevant flags vary by consensus client:
+The relevant flags vary by consensus client. The flags below either force builder-always selection or remove the default local-block bias, depending on what the client supports:
 
-- **Teku**: `--validators-builder-bid-compare-factor=0`.
-- **Prysm**: `--local-block-value-boost=0`.
-- **Nimbus**: `--local-block-value-boost=0`.
-- **Lighthouse**: `--prefer-builder-proposals`.
-- **Lodestar**: `--builder.selection=builderalways` (set on the validator client).
+- **Teku**: `--builder-bid-compare-factor=BUILDER_ALWAYS` (set on the beacon node). Forces builder-always selection.
+- **Lighthouse**: `--prefer-builder-proposals` (set on the validator client). Forces builder-always selection.
+- **Lodestar**: `--builder.selection=builderalways` (set on the validator client). Forces builder-always selection.
+- **Prysm**: `--local-block-value-boost=0` (set on the beacon node). Removes the default 10% local-block bias so builder and local bids compete on equal value, but a higher-value local block can still be selected. Prysm has no builder-always mode.
+- **Nimbus**: `--local-block-value-boost=0` (set on the beacon node). Same caveat as Prysm. Note that the Nimbus team recommends a non-zero value to mitigate the risk of a relay failing to publish the advertised block.
 
-With these settings the consensus client uses a builder block whenever one is available, only falling back to a locally-built block if no valid bid is returned from any configured relay in time.
+Always preferring the builder maximizes MEV capture but increases the risk of a missed proposal if a relay is slow, returns a bad bid, or fails to publish the block. Operators that prioritize proposal reliability over MEV capture may instead keep a small local-block boost (e.g. `--local-block-value-boost=3` on Prysm/Nimbus, or a comparable percentage factor on Teku) as a liveness safety margin.
 
 ## Client Diversity
 
