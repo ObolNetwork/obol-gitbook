@@ -1,17 +1,19 @@
 ---
 sidebar_position: 3
-description: Bug Bounty Policy
+description: Obol's bug bounty program, scope, and reward structure for security researchers reporting vulnerabilities in our distributed validator software.
 ---
 
 # Obol Bug Bounty Program
 
 ## Overview
 
-At Obol Labs, we prioritize the security of our distributed validator software and related services. Our Bug Bounty Program is designed to encourage and reward security researchers for identifying and reporting potential vulnerabilities. This initiative supports our commitment to the security and integrity of our products.
+At Obol, we prioritize the security of our distributed validator software and the staking capital that depends on it. Our Bug Bounty Program rewards security researchers who find and responsibly disclose vulnerabilities in the software, smart contracts, and supporting services that operators and delegators rely on.
+
+Because an Obol Distributed Validator (DV) is an independent BFT cluster — not a shared network with global liveness or a pooled balance sheet — our threat model and reward structure are different from those of an L1 chain or a defi protocol. We reward findings that map to the way DVs actually fail.
 
 ## Participant Eligibility
 
-Participants must meet the following criteria to be eligible for the Bug Bounty Program:
+Participants must:
 
 - Not reside in countries where participation in such programs is prohibited.
 - Be at least 14 years of age and possess the legal capacity to participate.
@@ -20,28 +22,40 @@ Participants must meet the following criteria to be eligible for the Bug Bounty 
 
 ## Scope of the Program
 
-Eligible submissions must involve software and services developed by Obol, specifically under the domains of:
+Eligible submissions must concern software and services developed by Obol, specifically:
 
-- Charon the DV Middleware Client
-- Obol DV Launchpad and Public API
-- Obol Splits Contracts
-- Obol Labs hosted Public Relay Infrastructure
+- [Charon](https://github.com/ObolNetwork/charon), the DV middleware client.
+- The [Obol DV Launchpad](https://launchpad.obol.org) and the [Obol public API](https://api.obol.tech).
+- The [Obol Splits](https://github.com/ObolNetwork/obol-splits) contracts (including the Obol Validator Manager).
+- Obol-operated public relay infrastructure.
+- Charon's cluster lifecycle commands, including the experimental `charon alpha edit` family.
 
 Submissions related to the following are considered out of scope:
 
-- Social engineering
-- Rate Limiting (Non-critical issues)
-- Physical security breaches
-- Non-security related UX/UI issues
-- Third-party application vulnerabilities
-- The [Obol](https://obol.org) static website or the Obol infrastructure
-- The operational security of node operators running or using Obol software
+- Social engineering of Obol staff or community members.
+- Rate limiting and similar non-security UX issues.
+- Physical security breaches.
+- Non-security UX/UI issues.
+- Third-party application or library vulnerabilities (please report upstream).
+- The [obol.org](https://obol.org) static website and Obol's internal corporate infrastructure.
+- The operational security of node operators running Obol software (operators are responsible for their own host security).
+- The Obol Stack and its in-cluster components (Hermes, OpenClaw, x402 facilitator, Cloudflared, eRPC, etc.). The Obol Stack is alpha software and is not yet in scope for this bounty.
+
+## How we prioritize
+
+The Obol threat model treats **external attackers harming live DV clusters** as the highest priority — these are the failures that destroy delegator capital or take validators offline at scale. A cluster member acting irrationally against the cluster they themselves operate is a real but lower-priority risk: the cluster's BFT thresholds and slashing economics already make this self-defeating, and we deliberately don't over-reward findings that depend on a member being maliciously incompetent against their own stake.
+
+In practice, this means:
+
+- A vulnerability that lets an **outside attacker** slash, partition, or destabilize a DV is rewarded above a comparable-impact finding that requires a **threshold of operators to collude** against themselves.
+- Direct vulnerabilities in Obol smart contracts (where capital lives) are rewarded above operational vulnerabilities of equivalent impact severity.
+- Findings that survive careful review by a security-aware operator (e.g. a malicious cluster invite that passes inspection) are rewarded above findings that require the victim to opt into known-unsafe behavior (e.g. running with `--no-verify`).
 
 ## Program Rules
 
 - Submitted bugs must not have been previously disclosed publicly.
 - Only first reports of vulnerabilities will be considered for rewards; previously reported or known vulnerabilities are ineligible.
-- The severity of the vulnerability, as assessed by our team, will determine the reward amount. See the "Rewards" section for details.
+- The severity of the vulnerability, as assessed by our team, determines the reward amount.
 - Submissions must include a reproducible proof of concept.
 - The Obol security team reserves the right to determine the eligibility and reward for each submission.
 - Program terms may be updated at Obol's discretion.
@@ -49,120 +63,84 @@ Submissions related to the following are considered out of scope:
 
 ## Rewards Structure
 
-Rewards are issued based on the severity and impact of the disclosed vulnerability, determined at the discretion of Obol Labs.
+Rewards are issued based on the severity and impact of the disclosed vulnerability, determined at the discretion of Obol Labs. Reward ceilings are guidelines; the exact payout reflects exploitability, blast radius, and the quality of the report.
 
-### Critical Vulnerabilities: Up to $100,000
+### Critical Vulnerabilities: Up to $50,000
 
-A Critical-level vulnerability is one that has a severe impact on the security of the in-production system from an unauthenticated external attacker, and requires immediate attention to fix. Highly likely to have a material impact on validator private key security, and/or loss of funds.
+A Critical finding gives an **external attacker** a path to large-scale loss of delegator funds or systemic harm across many clusters. High impact, high likelihood.
 
-- High impact, high likelihood
+Eligible impacts:
 
-Impacts:
+- An external attacker (not a cluster member) can cause a Charon cluster to produce a slashable signature, or otherwise trigger a slashing event, without colluding with cluster operators.
+- An external attacker can exfiltrate enough BLS validator key shares from a threshold of operators in a cluster to reconstruct a validator's full private key.
+- A vulnerability in Obol Splits or the Obol Validator Manager allows direct theft of delegator or operator funds at rest or in flight.
+- A vulnerability in the DV Launchpad or its dependencies allows an attacker to craft a cluster invite that passes careful operator review while diverting deposits or substituting withdrawal credentials.
+- Remote code execution in Charon, exploitable from a peer or relay connection, without prior compromise of the host.
 
-- Attacker that is not a member of the cluster can successfully exfiltrate BLS (not K1) private key material from a threshold number of operators in the cluster.
-- Attacker that is not a member of the cluster can achieve the production of arbitrary BLS signatures from a threshold number of operators in the cluster.
-- Attacker can craft a malicious cluster invite capable of subverting even careful review of all data to steal funds during a deposit.
-- Direct theft of any user funds, whether at-rest or in-motion, other than unclaimed yield
-- Direct loss of funds
-- Permanent freezing of funds (fix requires hard fork)
-- Network not being able to confirm new transactions (Total network shutdown)
-- Protocol insolvency
+### High Vulnerabilities: Up to $5,000
 
-### High Vulnerabilities: Up to $10,000
+A High finding lets an **external attacker** take down a cluster's liveness, exfiltrate operator key material, or compromise infrastructure that many clusters share. High impact, medium likelihood; or medium impact, high likelihood.
 
-For significant security risks that impact the system from a position of low-trust and require a significant effort to fix.
+Eligible impacts:
 
-- High impact, medium likelihood
-- Medium impact, high likelihood
+- An external attacker can partition a cluster and keep it offline indefinitely, even after operators take reasonable recovery steps.
+- An external attacker can exfiltrate Charon ENR (SECP256K1 identity) private keys from a node without compromising the host operating system.
+- An external attacker can destroy validator funds (e.g. force exit-with-loss) but cannot steal them.
+- An external attacker compromises Obol-operated public relay infrastructure in a way that reveals cluster topologies, disrupts peer discovery across many clusters, or facilitates partitioning attacks against the clusters relying on it.
+- An attacker exfiltrates pre-signed exit messages held by the Obol API and uses them to forcibly exit validators against the delegator's wishes (see [Centralization Risks](risks.md)).
+- An attacker subverts a `charon alpha edit` ceremony (add/remove operators, add validators, recreate keys) such that the post-ceremony cluster is no longer controlled by its legitimate operators.
+- Retrieval of sensitive operational secrets from a running Obol-operated service: BLS or ENR keys, database credentials, signing keys for the public API, etc.
+- Authenticated, state-modifying actions on the DV Launchpad performed on behalf of another user without their interaction (changing cluster definitions, redirecting withdrawals, etc.).
 
-Impacts:
+### Medium Vulnerabilities: Up to $1,000
 
-- Attacker that is not a member of the cluster can successfully partition the cluster and keep the cluster offline indefinitely.
-- Attacker that is not a member of the cluster can exfiltrate Charon ENR private keys.
-- Attacker that is not a member of the cluster can destroy funds but cannot steal them.
-- Unintended chain split (Network partition)
-- Temporary freezing of network transactions by delaying one block by 500% or more of the average block time of the preceding 24 hours beyond standard difficulty adjustments
-- RPC API crash affecting projects with greater than or equal to 25% of the market capitalization on top of the respective layer
-- Theft of unclaimed yield
-- Theft of unclaimed royalties
-- Permanent freezing of unclaimed yield
-- Permanent freezing of unclaimed royalties
-- Temporary freezing of funds
-- Retrieve sensitive data/files from a running server:
-  - blockchain keys
-  - database passwords
-  - (this does not include non-sensitive environment variables, open source code, or usernames)
-- Taking state-modifying authenticated actions (with or without blockchain state interaction) on behalf of other users without any interaction by that user, such as:
-  - Changing cluster information
-  - Withdrawals
-  - Making trades
+A Medium finding requires either an **insider** (a malicious cluster member) or a constrained external position to cause cluster-level damage. These are real, but the BFT and slashing economics of a DV mean the attacker is usually harming themselves alongside their victims. High impact, low likelihood; medium impact, medium likelihood; low impact, high likelihood.
 
-### Medium Vulnerabilities: Up to $2,500
+Eligible impacts:
 
-For vulnerabilities with a moderate impact, affecting system availability or integrity.
+- A cluster member can exfiltrate K1 (identity) or BLS key material from another member of the same cluster.
+- A cluster member can DoS enough peers in their own cluster to take the validator offline, beyond what is possible by simply going offline themselves.
+- A cluster member can bias the protocol to control a disproportionate share of block proposal opportunities or other duty assignment.
+- A DV Launchpad user can be steered into interacting with a smart contract that is not part of the normal launchpad flow.
+- A vulnerability in Obol Splits or the Obol Validator Manager prevents the contract from operating normally without permanent loss of funds (e.g. temporary freeze, denial of withdrawal under specific state).
+- Block-stuffing-style or unbounded-gas vulnerabilities in Obol Splits.
+- Charon cluster lock-file tampering accepted by a victim operator who is *not* running with `--no-verify`.
+- An open-redirect or similar phishing aid on Obol-operated domains.
 
-- High impact, low likelihood
-- Medium impact, medium likelihood
-- Low impact, high likelihood
+### Low Vulnerabilities: Up to $250
 
-Impacts:
+Low-severity findings have minimal impact on the integrity of a DV cluster or the security of Obol's smart contracts. Low impact, medium likelihood; medium impact, low likelihood.
 
-- Attacker that is a member of a cluster can exfiltrate K1 key material from another member.
-- Attacker that is a member of the cluster can denial of service attack enough peers in the cluster to prevent operation of the validator(s)
-- Attacker that is a member of the cluster can bias the protocol in a manner to control the majority of block proposal opportunities.
-- Attacker can get a DV Launchpad user to inadvertently interact with a smart contract that is not a part of normal operation of the launchpad.
-- Increasing network processing node resource consumption by at least 30% without brute force actions, compared to the preceding 24 hours
-- Shutdown of greater than or equal to 30% of network processing nodes without brute force actions, but does not shut down the network
-- Charon cluster identity private key theft
-- Rogue node operator to penetrate and compromise other nodes to disturb the cluster’s lifecycle
-- Charon public relay node is compromised and leads to cluster topologies getting discovered and disrupted
-- Smart contract unable to operate due to lack of token funds
-- Block stuffing
-- Griefing (e.g. no profit motive for an attacker, but damage to the users or the protocol)
-- Theft of gas
-- Unbounded gas consumption
-- Redirecting users to malicious websites (Open Redirect)
+Eligible impacts:
 
-### Low Vulnerabilities: Up to $500
-
-For vulnerabilities with minimal impact, unlikely to significantly affect system operations.
-
-- Low impact, medium likelihood
-- Medium impact, low likelihood
-
-Impacts:
-
-- Attacker can sometimes put a Charon node in a state that causes it to drop one out of every one hundred attestations made by a validator
-- Attacker can display bad data on a non-interactive part of the launchpad.
-- Contract fails to deliver promised returns, but doesn't lose value
-- Shutdown of greater than 10% or equal to but less than 30% of network processing nodes without brute force actions, but does not shut down the network
-- Changing details of other users (including modifying browser local storage) without already-connected wallet interaction and with significant user interaction such as:
-  - Iframing leading to modifying the backend/browser state (must demonstrate impact with PoC)
-- Taking over broken or expired outgoing links such as:
-  - Social media handles, etc.
-- Temporarily disabling user to access target site, such as:
-  - Locking up the victim from login
-  - Cookie bombing, etc.
+- An attacker can occasionally put a Charon node into a state that causes it to drop a small fraction of attestations (e.g. one in a hundred).
+- An attacker can display incorrect data on a non-interactive part of the DV Launchpad.
+- An Obol Splits contract behaves suboptimally but does not lose value or block legitimate operations.
+- Temporary lockout from a wallet-connected session on Obol-operated services that does not persist past a normal session refresh.
+- Takeover of broken or expired outgoing links from Obol-operated content (e.g. abandoned social handles linked from official channels).
+- Minor griefing or local-storage tampering that requires significant social interaction to land and does not modify server-side state.
 
 Rewards may be issued as cash, merchandise, or other forms of recognition, at Obol's discretion. Only one reward will be granted per unique vulnerability.
 
-## The following activities are prohibited by this bug bounty program
+## Prohibited testing
 
-- Any testing on mainnet or public testnet deployed code; all testing should be done on local-forks of either public testnet or mainnet
-- Any testing with pricing oracles or third-party smart contracts
-- Attempting phishing or other social engineering attacks against our employees and/or customers
-- Any testing with third-party systems and applications (e.g. browser extensions) as well as websites (e.g. SSO providers, advertising networks)
-- Any denial of service attacks that are executed against project assets
-- Automated testing of services that generate significant amounts of traffic
-- Public disclosure of an unpatched vulnerability in an embargoed bounty
+The following activities are not authorized under this program:
+
+- Any testing on mainnet or public testnet deployed code; all testing should be done on local forks.
+- Any testing involving pricing oracles or third-party smart contracts.
+- Phishing or other social engineering attacks against Obol employees, contractors, partners, or community members.
+- Any testing against third-party systems, applications, browser extensions, or websites (including SSO providers and advertising networks).
+- Denial-of-service attacks executed against Obol-operated infrastructure or the deployed contracts.
+- Automated testing of services that generates significant traffic.
+- Public disclosure of an unpatched vulnerability under an embargoed bounty.
 
 ## Submission process
 
-To report a vulnerability, please contact us at security@obol.tech with:
+To report a vulnerability, please contact us at [security@obol.tech](mailto:security@obol.tech) with:
 
 - A detailed description of the vulnerability and its potential impact.
 - Steps to reproduce the issue.
-- Any relevant proof of concept code, screenshots, or documentation.
+- Any relevant proof-of-concept code, screenshots, or documentation.
 - Your contact information.
 
 Incomplete reports may not be eligible for rewards.

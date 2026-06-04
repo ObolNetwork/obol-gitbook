@@ -1,3 +1,7 @@
+---
+description: Public audit reports for the Obol Splits and Obol Validator Manager smart contracts.
+---
+
 # Smart Contract Audit
 
 The Obol Splits smart contracts have undergone multiple security audits to ensure the safety and reliability of the protocol. All audit reports are available in the [obol-splits audit directory](https://github.com/ObolNetwork/obol-splits/tree/main/audit).
