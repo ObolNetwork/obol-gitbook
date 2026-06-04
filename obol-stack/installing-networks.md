@@ -86,6 +86,8 @@ Deploy a full Ethereum node with configurable execution and consensus clients.
 | `--network` | Ethereum network | mainnet, sepolia, hoodi | mainnet |
 | `--execution-client` | Execution layer client | reth, geth, nethermind, besu, erigon, ethereumjs | reth |
 | `--consensus-client` | Consensus layer client | lighthouse, prysm, teku, nimbus, lodestar, grandine | lighthouse |
+| `--mode` | Pruning mode | full, archive | full |
+| `--since` | Lower bound for archive history (requires `--mode=archive`) | fork name, duration, block number, `genesis`/`all` | (interactive picker on TTY; `all` on non-TTY) |
 
 ### Examples
 
@@ -132,6 +134,43 @@ obol network sync ethereum/hoodi
 {% hint style="warning" %}
 Full Ethereum nodes require significant resources. Mainnet execution clients need 1+ TB of storage and can take days to sync. Consider using testnets for development.
 {% endhint %}
+
+### Archive nodes and bounded history (`--since`)
+
+Pruned full nodes are sufficient for everyday RPC use, but they cannot serve historical state. If you plan to **index events, run historical `eth_call`, build a block explorer, or back a query service with a specific app's history**, you need an archive node — and you almost certainly do not need it all the way back to genesis.
+
+`--mode=archive` switches reth to archive mode. `--since` bounds the archive at a known starting point, so you only carry the history you actually need.
+
+```shell
+# Archive back to the Cancun hardfork (~800 GB on mainnet)
+obol network install ethereum --network=mainnet --mode=archive --since=cancun
+
+# Archive of the last 365 days (~600 GB)
+obol network install ethereum --network=mainnet --mode=archive --since=365d
+
+# Archive from a specific block forward (e.g. the block your DeFi app was deployed)
+obol network install ethereum --network=mainnet --mode=archive --since=22500000
+
+# Full archive from genesis (~4 TB+ on mainnet)
+obol network install ethereum --network=mainnet --mode=archive --since=all
+```
+
+Accepted `--since` values:
+
+| Form | Example | Meaning |
+| --- | --- | --- |
+| EL fork name | `merge`, `shanghai`, `cancun`, `prague`, `osaka` | Prune state before that mainnet hardfork. |
+| Duration | `365d`, `1y`, `6mo` | Keep approximately the last N blocks (~12s slot rate). |
+| Block number | `22500000` | Prune state before that block. |
+| `genesis` / `all` | `all` | Full archive from genesis. |
+
+{% hint style="info" %}
+Fork-name presets reference **mainnet** block numbers. On testnets, use a raw block number or a duration.
+{% endhint %}
+
+When `--mode=archive` is set without `--since` on a TTY, the installer shows an interactive picker. On non-TTY (scripts, CI), the default is `all`. `--since` is currently fine-tuned for **reth**; other execution clients fall back to their chart-default pruning behavior with a warning.
+
+This pairs naturally with [Selling agent services](selling-services.md) — once your archive node has synced from the block your target application was deployed, you have a defensible data set that no public RPC will serve, and you can wrap it as a paid endpoint or a specialized agent.
 
 ### Check sync status
 
