@@ -27,7 +27,7 @@ Add the following to your Charon startup command:
 
 Without those, hole punching falls back to TCP only, which has a lower success rate on most home routers.
 
-## Step 2 — advertise your public address (required)
+## Step 2 — advertise your public address (advisable)
 
 ```sh
 --p2p-external-ip=<your-public-ip>
