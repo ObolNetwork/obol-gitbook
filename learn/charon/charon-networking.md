@@ -8,7 +8,7 @@ This document describes Charon's networking model which can be divided into two 
 
 ### Internal Validator Stack[​](#internal-validator-stack) <a href="#internal-validator-stack" id="internal-validator-stack"></a>
 
-<figure><img src="../../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (22).png" alt="Diagram of Charon&#x27;s internal validator stack networking — local connections between Charon, the execution client, consensus client, and validator client."><figcaption></figcaption></figure>
 
 Charon is a middleware DVT client and is therefore connected to an upstream beacon node and a downstream validator client is connected to it. Each operator should run the whole validator stack (all 4 client software types), either on the same machine or on different machines. The networking between the nodes should be private and not exposed to the public internet.
 
@@ -19,7 +19,7 @@ Related Charon configuration flags:
 
 ### External P2P Network[​](#external-p2p-network) <a href="#external-p2p-network" id="external-p2p-network"></a>
 
-<figure><img src="../../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (23).png" alt="Diagram of Charon&#x27;s external peer-to-peer network — relay-assisted peer discovery and direct TCP connections between cluster nodes."><figcaption></figcaption></figure>
 
 The Charon clients in a DV cluster are connected to each other via a small p2p network consisting of only the clients in the cluster. Peer IP addresses are discovered via an external "relay" server. The p2p connections are over the public internet so the Charon p2p port must be publicly accessible. Charon leverages the popular [libp2p](https://libp2p.io/) protocol over TCP port 3610 by default.
 
@@ -47,7 +47,7 @@ Charon currently only supports libp2p tcp connections with [noise](https://noise
 
 Relays are simple libp2p servers that are publicly accessible supporting the [circuit-relay](https://docs.libp2p.io/concepts/nat/circuit-relay/) protocol. Circuit-relay is a libp2p transport protocol that routes traffic between two peers over a third-party “relay” peer.
 
-Obol hosts a publicly accessible relay at [https://0.relay.obol.tech](https://0.relay.obol.tech/) and will work with other organisations in the community to host alternatives. Anyone can host their own relay server for their DV cluster.
+Obol hosts a publicly accessible relay at [https://0.relay.obol.tech](https://0.relay.obol.tech/) and will work with other organizations in the community to host alternatives. Anyone can host their own relay server for their DV cluster.
 
 Each Charon node knows which peers are in the cluster from the ENRs in the cluster lock file, but their IP addresses are unknown. By connecting to the same relay, nodes establish “relay connections” to each other. Once connected via relay they exchange their known public addresses via libp2p’s [identify](https://docs.libp2p.io/concepts/fundamentals/protocols/#identify) protocol. The relay connection is then upgraded to a direct connection. If a node’s public IP changes, nodes once again connect via relay, exchange the new IP, and then connect directly once again.
 

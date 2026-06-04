@@ -62,3 +62,5 @@ Whether you’re here to learn about DVT, integrate it into your staking stack, 
     </tr>
   </tbody>
 </table>
+
+> **Browsing as an AI agent?** Start with [obol.org/llms.txt](https://obol.org/llms.txt) for a terse index of the ecosystem, or [obol.org/llms-full.txt](https://obol.org/llms-full.txt) for a self-contained briefing. The [`ObolNetwork/skills`](https://github.com/ObolNetwork/skills) repo publishes Claude Code skills for running DVs and the Obol Stack.

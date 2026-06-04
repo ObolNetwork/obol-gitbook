@@ -12,7 +12,7 @@ import TabItem from "@theme/TabItem";
 
 ### Does Obol have a token?
 
-Yes, please see the [token page](../../gov/governance/obol-token.md) for details about the OBOL Token and our [announcement](https://blog.obol.org/airdrop/) for details about the community airdrop that took place in January 2025. The official token contract address is 0x0B010000b7624eb9B3DfBC279673C76E9D29D5F7. 
+Yes, please see the [token page](../../community-and-governance/obol-token/README.md) for details about the OBOL Token and our [announcement](https://blog.obol.org/airdrop/) for details about the community airdrop that took place in January 2025. The official token contract address is 0x0B010000b7624eb9B3DfBC279673C76E9D29D5F7. 
 
 ### Where can I learn more about Distributed Validators?
 
@@ -168,7 +168,7 @@ Generally Obol Splits are deployed in an immutable fashion, meaning you cannot e
 
 ### How do Obol Splits work?
 
-You can read more about how Obol Splits work [here](../../learn/intro/obol-splits.mdx).
+You can read more about how Obol Splits work [here](../../learn/intro/obol-splits.md).
 
 ### Are Obol Splits open source?
 
@@ -176,7 +176,7 @@ Yes, Obol Splits are licensed under GPLv3 and the source code is available [here
 
 ### Are Obol Splits audited?
 
-The Obol Splits contracts have been audited, though further development has continued on the contracts since. Consult the audit results [here](../../adv/security/smart_contract_audit.mdx).
+The Obol Splits contracts have been audited, though further development has continued on the contracts since. Consult the audit results [here](../../advanced-and-troubleshooting/security/smart-contract-audit.md).
 
 ### Are the Obol Splits contracts verified on Etherscan?
 
@@ -190,7 +190,7 @@ No. Any address can trigger the contracts to move the funds, they do not need to
 
 The most important decision is to be aware of whether or not the Split contract you are using has been set up with editability. If a splitter is editable, you should understand what the address that can edit the split does. Is the editor an EOA? Who controls that address? How secure is their seed phrase? Is it a smart contract? What can that contract do? Can the controller contract be upgraded? etc. Generally, the safest thing in Obol's perspective is not to have an editable splitter, and if in future you are unhappy with the configuration, that you exit the validator and create a fresh cluster with new settings that fit your needs.
 
-Another aspect to be aware of is how the splitting of principal from rewards works using the Optimistic Withdrawal Recipient contract. There are edge cases relating to not calling the contracts periodically or ahead of a withdrawal, activating more validators than the contract was configured for, and a worst case mass slashing on the network. Consult the documentation on the contract [here](../../learn/intro/obol-splits.mdx#optimistic-withdrawal-recipient), its audit [here](../../adv/security/smart_contract_audit.mdx), and follow up with the core team if you have further questions.
+Another aspect to be aware of is how the splitting of principal from rewards works using the Optimistic Withdrawal Recipient contract. There are edge cases relating to not calling the contracts periodically or ahead of a withdrawal, activating more validators than the contract was configured for, and a worst case mass slashing on the network. Consult the documentation on the contract [here](../../learn/intro/obol-splits.md#optimistic-withdrawal-recipient), its audit [here](../../advanced-and-troubleshooting/security/smart-contract-audit.md), and follow up with the core team if you have further questions.
 
 ## Debugging Errors in Logs
 

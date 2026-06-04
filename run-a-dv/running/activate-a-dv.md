@@ -35,7 +35,7 @@ This new flow supports deposits to validators with any standard withdrawal addre
 🚨 In OVMs, only addresses with `DEPOSIT_ROLE` can perform deposits for activation and top-ups. Read more about how to assign roles [here](../../advanced-and-troubleshooting/advanced/assign-ovm-roles.md).
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/OVMDeposit1.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/OVMDeposit1.png" alt="Screenshot of the DV activation flow indicating that OVM users must use the DEPOSIT_ROLE wallet to perform deposits."><figcaption></figcaption></figure>
 
 ### B. Initial Deposit Options
 
@@ -58,9 +58,9 @@ After choosing a deposit option, the user specifies the total amount. Pressing c
 
 Once the allocation is solidified, users review and send transactions. The amount is sent to the deposit queue for activation or top-up based on the chosen strategy.
 
-<figure><img src="../../.gitbook/assets/OVMDeposit3.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/OVMDeposit3.png" alt="Screenshot of the OVM allocation and submission step in the activation flow."><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/OVMDeposit4.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/OVMDeposit4.png" alt="Screenshot of the OVM allocation summary in the activation flow."><figcaption></figcaption></figure>
 
 ## 3. Technical Details
 
@@ -88,7 +88,7 @@ If a top-up fails, check the following reasons:
 
 When a user bypasses deposits via OVM and deposits directly, the amount of principal stake will not be accrued inside the OVM. This can create problems in the distribute flow which needs principal and rewards to be correctly accounted. OVM allows the Owner to set the correct principal using `setAmountOfPrincipalStake`. Finding the correct amount to set is a manual process. For example, a user deposited 1782 ETH into 3 validators and forgot the amount deposited. If the validators are active or deposits are successful, the user can check on the beacon chain to find deposits into each validator. The total should sum up to 1782 ETH.
 
-<figure><img src="../../.gitbook/assets/OVMDeposit5.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/OVMDeposit5.png" alt="Screenshot of the OVM principal adjustment interface in the activation flow."><figcaption></figcaption></figure>
 
 ## 4. Legacy Deposit Flow (To be Deprecated)
 
