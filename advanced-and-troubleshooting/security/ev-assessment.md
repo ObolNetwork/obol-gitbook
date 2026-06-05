@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-description: Software Development Security Assessment
+description: Ethereal Ventures' assessment of Obol's software development lifecycle and operational security practices, with the team's responses to each recommendation.
 ---
 
 # Software Development at Obol
@@ -65,7 +65,7 @@ Obol’s product consists of three main components, each run by its own team: a 
 
 * [DV Launchpad](../../learn/intro/launchpad.md): A webapp to create and manage distributed validators.
 * [Charon](../../learn/charon/intro.md): A middleware client that enables operators to run distributed validators.
-* [Solidity](../../learn/intro/obol-splits.mdx): Withdrawal and fee recipient contracts for use with distributed validators.
+* [Solidity](../../learn/intro/obol-splits.md): Withdrawal and fee recipient contracts for use with distributed validators.
 
 ## Analysis - Cluster Setup and DKG
 

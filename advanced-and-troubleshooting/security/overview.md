@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-description: Security Overview
+description: An overview of Obol's security posture — official domains, completed audits, threat model references, and the bug bounty program.
 ---
 
 # Overview
