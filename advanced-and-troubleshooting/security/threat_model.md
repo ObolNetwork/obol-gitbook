@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-description: Threat model for a Distributed Validator
+description: A threat model for Charon as a distributed validator middleware — actors, attack surfaces, and the cryptographic and BFT properties that bound each risk.
 ---
 
 # Charon Threat Model

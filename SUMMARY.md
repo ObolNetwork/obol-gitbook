@@ -109,9 +109,10 @@
 
 * [Introduction](obol-stack/README.md)
 * [Quickstart](obol-stack/quickstart.md)
+* [Build a Profitable Obol Stack](obol-stack/build-a-profitable-stack.md)
+* [Selling Agent Services](obol-stack/selling-services.md)
 * [Installing Networks](obol-stack/installing-networks.md)
 * [Installing Apps](obol-stack/installing-apps.md)
-* [Selling training from Google Colab](obol-stack/selling-training-from-google-colab.md)
 * [FAQ](obol-stack/faq.md)
 
 ## Walkthrough Guides

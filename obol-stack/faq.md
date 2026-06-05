@@ -164,7 +164,7 @@ USDC and other tokens settle on the rail their issuer supports (EIP-3009 for USD
 obol sell register --chain mainnet --name my-service --private-key-file <path>
 ```
 
-This publishes the agent's wallet + service catalogue to the [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) Identity Registry on the chain you specify. Note that this requires ETH on the registering wallet for gas.
+This publishes the agent's wallet + service catalog to the [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) Identity Registry on the chain you specify. Note that this requires ETH on the registering wallet for gas.
 
 `obol sell demo` deliberately skips registration by default — run `obol sell register` later when you want on-chain discovery.
 

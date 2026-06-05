@@ -101,7 +101,7 @@ obol hermes --help                # full Hermes CLI surface
 ```
 
 {% hint style="success" %}
-Want the agent to message you on Telegram, Discord, or Slack? Run `obol hermes setup` and follow the prompts to wire up a chat-app integration. Hermes will then notify you when long-running work finishes.
+Want the agent to message you on Telegram, Discord, or Slack? Run `obol hermes setup` and follow the prompts to wire up a chat-app integration. Hermes will then notify you when long-running work finishes. The full Telegram bot flow (which involves talking to `@BotFather` and `@userinfobot` first) is covered in [Build a profitable Obol Stack](build-a-profitable-stack.md#step-6-tell-your-agent-to-ping-you-on-telegram).
 {% endhint %}
 
 The agent has its own Ethereum wallet — back it up before you put anything on it:
@@ -142,6 +142,8 @@ obol sell http my-api --upstream my-svc --port 8080 --namespace my-ns \
 
 The mental model is: **anything in your cluster that exposes a Service can be wrapped in a `ServiceOffer` and gated behind x402**. The goal of v0.9 is to make that loop short enough that you can actually iterate on what's worth selling.
 
+See [Selling agent services](selling-services.md) for the full orientation on the three `sell` shapes (`http`, `inference`, `agent`), x402 economics, ERC-8004 registration, and marketplaces.
+
 ### Why $OBOL on mainnet?
 
 Buyers paying in `$OBOL` on Ethereum mainnet sign an [EIP-2612](https://eips.ethereum.org/EIPS/eip-2612) permit off-chain, and the Obol-operated facilitator batches that permit with the on-chain transfer at settlement time. **Buyers never need ETH for gas**, and they skip the one-time `approve` step that most ERC-20 payment flows require.
@@ -156,7 +158,7 @@ Sellers receive `$OBOL` directly into their agent wallet. Read more about the [O
 obol sell register --chain mainnet --name my-service --private-key-file <path>
 ```
 
-This publishes the agent's wallet + service catalogue to the [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) Identity Registry on the chain you specify.
+This publishes the agent's wallet + service catalog to the [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) Identity Registry on the chain you specify.
 
 ## Step 5: Drive the stack from Claude Code (optional)
 
@@ -207,6 +209,8 @@ obol stack purge -f               # remove everything, including data
 
 ## Next steps
 
-* [Installing Networks](installing-networks.md) — sync local Ethereum / Aztec nodes.
+* [Build a profitable Obol Stack](build-a-profitable-stack.md) — the end-to-end narrative: sync a bounded archive node, build an index, wrap it as a paid service, and turn it into a specialized agent business.
+* [Selling agent services](selling-services.md) — depth on the three `sell` shapes, x402 economics, and getting listed on marketplaces.
+* [Installing Networks](installing-networks.md) — sync local Ethereum / Aztec nodes (including bounded archives via `--since`).
 * [Installing Apps](installing-apps.md) — deploy any Helm chart.
 * [FAQ](faq.md) — common questions and troubleshooting.
