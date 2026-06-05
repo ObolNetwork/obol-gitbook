@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-description: Security details for the Obol Network
+description: How to report a security incident or vulnerability to Obol, and where to find Obol's public security disclosures.
 ---
 
 # Contacts
