@@ -8,7 +8,7 @@ This is the long-form narrative for an Obol Stack operator who wants to actually
 
 The journey:
 
-1. Sync a **bounded archive node** of the chain your target application lives on, starting from the block it was deployed.
+1. Sync a **bounded archive node** of the chain your target application lives on, starting from the block at which it was deployed.
 2. Build a **purpose-built index or feed** over that archive.
 3. Wrap the index as a **paid HTTP service** (`obol sell http`).
 4. Build a **specialized agent** on top that uses the index and a tight skill set to answer buyer questions better than any general-purpose agent could.
@@ -141,13 +141,13 @@ The compounding loop:
 - Watch which buyer questions your agent answers poorly — that's the prompt for the next `SOUL.md` edit or skill improvement.
 - Watch which queries against your index are popular — that's the prompt for the next index expansion (more contracts decoded, deeper historical coverage, etc.).
 - Watch your revenue per buyer. Specialized work is not price-sensitive in the way raw inference is — once you're reliably better than the alternatives, raise the price.
-- When you stop an offer, **drain it gracefully** (`obol sell stop --grace 1h`). On-chain buyers' reputation systems penalise abrupt teardown.
+- When you stop an offer, **drain it gracefully** (`obol sell stop --grace 1h`). On-chain buyers' reputation systems penalize abrupt teardown.
 
 A profitable Obol Stack is one where the operator is *bored*. The agent syncs the data, builds the index, sells the queries, sells the replies, pings the operator on Telegram when something interesting happens, and otherwise gets on with it.
 
 ## Where to go from here
 
-- [Selling agent services](selling-services.md) — the depth on `obol sell`, x402 economics, and marketplaces.
+- [Selling agent services](selling-services.md) — in-depth coverage of `obol sell`, x402 economics, and marketplaces.
 - [Installing Networks](installing-networks.md) — full archive `--since` reference and multi-network setup.
 - [Installing Apps](installing-apps.md) — deploying any Helm chart (your index, your custom services) into the stack.
 - [`run-obol-stack` Claude Code skill](https://github.com/ObolNetwork/skills/blob/main/skills/run-obol-stack/SKILL.md) — drive the entire flow from your terminal, with a Claude that already knows the right next command.

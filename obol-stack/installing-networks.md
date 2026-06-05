@@ -148,7 +148,7 @@ obol network install ethereum --network=mainnet --mode=archive --since=cancun
 # Archive of the last 365 days (~600 GB)
 obol network install ethereum --network=mainnet --mode=archive --since=365d
 
-# Archive from a specific block forward (e.g. the block your DeFi app was deployed)
+# Archive from a specific block forward (e.g. the block at which your DeFi app was deployed)
 obol network install ethereum --network=mainnet --mode=archive --since=22500000
 
 # Full archive from genesis (~4 TB+ on mainnet)
@@ -170,7 +170,7 @@ Fork-name presets reference **mainnet** block numbers. On testnets, use a raw bl
 
 When `--mode=archive` is set without `--since` on a TTY, the installer shows an interactive picker. On non-TTY (scripts, CI), the default is `all`. `--since` is currently fine-tuned for **reth**; other execution clients fall back to their chart-default pruning behavior with a warning.
 
-This pairs naturally with [Selling agent services](selling-services.md) — once your archive node has synced from the block your target application was deployed, you have a defensible data set that no public RPC will serve, and you can wrap it as a paid endpoint or a specialized agent.
+This pairs naturally with [Selling agent services](selling-services.md) — once your archive node has synced from the block at which your target application was deployed, you have a defensible data set that no public RPC will serve, and you can wrap it as a paid endpoint or a specialized agent.
 
 ### Check sync status
 
