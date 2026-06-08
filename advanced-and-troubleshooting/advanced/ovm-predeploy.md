@@ -16,7 +16,7 @@ This guide will demonstrate the key steps in preparing a DV cluster for this typ
 
 The Hoodi testnet will be used for all examples.
 
-<figure><img src="../../.gitbook/assets/OVMs-on-demand.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/OVMs-on-demand.png" alt="Diagram of the on-demand Obol Validator Manager pre-deploy workflow."><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
 The following code snippets are minimal examples for the purpose of achieving the desired functionality. These should not be run in production without thorough testing and review.
@@ -1075,7 +1075,7 @@ console.log("Funds distributed to beneficiary and reward recipient");
 
 <!-- When EL/CL rewards are to be split among multiple parties, a [splitter contract](https://docs.splits.org/) can be deployed as the target of OVM's `rewardRecipient` to chain the functionality of both contracts. In the case where not all the earning parties are known before OVM deloyment, multiple splitter contracts can be chained to separate mutable vs immutable reward flows.
 
-<figure><img src="../../.gitbook/assets/SimpleRewardFlow.svg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/SimpleRewardFlow.svg" alt="Screenshot: console.log(&quot;Funds distributed to beneficiary and reward recipient&quot;);."><figcaption></figcaption></figure>
 <!-- 
 Staking Rewards [3] OVM
 Stake [32] OVM

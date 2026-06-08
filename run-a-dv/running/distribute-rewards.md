@@ -19,13 +19,13 @@ The distribution action allows the user to distribute funds from their OVM and s
       2. **Total Validator Balance:** Total Validator Balance of all the validators associated to this OVM - principal + rewards
       3. **Principal Threshold:** Amount of ETH required in your OVM balance to be classified as Principal in order for it to be sent to the Principal Recipient. To cross the threshold, withdraw more ETH using the withdrawal flow or exit the validators.
 
-<figure><img src="../../.gitbook/assets/OVMDistribute1.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/OVMDistribute1.png" alt="Screenshot of the OVM reward distribution flow showing the principal-threshold control."><figcaption></figcaption></figure>
 
    2. The table shows where the principal or rewards flow to after distribution. When the reward recipient is a splitter, rewards are not sent directly to the addresses in the splitter configuration. Instead, they become available to claim from the operator distributions page. If a user is part of multiple splitter configurations, it is recommended to distribute across all of them and claim all at once to optimize for gas fees paid. To learn more about the logic of distribution, read the [Understanding Distribution in Detail](#understanding-distribution-in-detail) section.
 
    3. After the distribute transaction is successfully sent, the success page shows a summary of the amount distributed and the new principal + rewards. If rewards were distributed, they will be ready to claim on the dashboard page.
 
-<figure><img src="../../.gitbook/assets/OVMDistribute2.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/OVMDistribute2.png" alt="Screenshot of the OVM reward distribution success page."><figcaption></figcaption></figure>
 
 ## Understanding Distribution in Detail
 

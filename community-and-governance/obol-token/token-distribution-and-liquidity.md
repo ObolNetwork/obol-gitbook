@@ -4,11 +4,11 @@
 
 The total supply is capped at 500 million tokens. The full supply is not immediately circulating and tokens will unlock over the coming months and years.
 
-<figure><img src="../../.gitbook/assets/12_Supply.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/12_Supply.png" alt="Chart of OBOL token supply distribution across categories."><figcaption></figcaption></figure>
 
 ### **Ecosystem Treasury & Retroactive Funding (RAF) | 38.8%**
 
-A significant portion of OBOL Tokens are allocated to the ecosystem treasury to drive innovation and decentralization. These funds support different initiatives, for example, [**SQUAD Goals**](https://community.obol.org/t/oip-3-obol-collective-2025-goals-proposal/)**, Grants & Incentives Funding** contributors who help to the growth of the protocol and the broader Collective and [**Retroactive Funding (RAF)**](/broken/pages/uXYBwCAdoQC08JRoQZtU)**,** rewarding contributions that have positively impacted the Obol Collective. Over time, the Obol Association plans to give additional control over these tokens to the community.
+A significant portion of OBOL Tokens are allocated to the ecosystem treasury to drive innovation and decentralization. These funds support different initiatives, for example, [**SQUAD Goals**](https://community.obol.org/t/oip-3-obol-collective-2025-goals-proposal/)**, Grants & Incentives Funding** contributors who help to the growth of the protocol and the broader Collective and [**Retroactive Funding (RAF)**](https://blog.obol.org/raf1-results/)**,** rewarding contributions that have positively impacted the Obol Collective. Over time, the Obol Association plans to give additional control over these tokens to the community.
 
 ### **Investors | 23.7%**
 
@@ -34,4 +34,4 @@ To ensure broad and fair token distribution, a portion of OBOL Tokens have been 
 
 Once the token becomes transferable, the community will be able to track the distribution schedule and observe how the circulating supply increases over time according to the structured unlock plan.
 
-<figure><img src="../../.gitbook/assets/13_UnlockSchedule.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/13_UnlockSchedule.png" alt="Chart of the OBOL token unlock schedule over time."><figcaption></figcaption></figure>

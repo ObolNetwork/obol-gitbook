@@ -17,7 +17,7 @@ The following steps guide you through how to request a withdrawal from your vali
 
 1. On the cluster details page, go to the validators table. In the actions column, click on the withdraw icon. If the withdrawal address is an OVM, the connected address must have the `WITHDRAWAL_ROLE` to request a withdrawal. If the withdrawal address is an EOA, make sure you are connected with the correct EOA. **Read more about how to assign roles** [**here**](../../advanced-and-troubleshooting/advanced/assign-ovm-roles.md)**.**
 
-<figure><img src="../../.gitbook/assets/OVMWithdrawalButton.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/OVMWithdrawalButton.png" alt="Screenshot of the withdrawal button in the cluster validators table on the DV Launchpad."><figcaption></figcaption></figure>
 
 1. If the user has sufficient permissions, the withdrawal address is an EOA or an OVM, and the validator is with `0x02` withdrawal credentials, a modal opens allowing the user to specify the total withdrawal amount. The fields in this modal mean the following:
    1. **Validator Balance:** Total balance of all validators under this OVM or EOA
@@ -27,15 +27,15 @@ The following steps guide you through how to request a withdrawal from your vali
 💡 When deciding the amount to withdraw, users must pay attention to the amount of ETH in their OVM's balance, pending withdrawals and OVM's principal threshold. These fields together help decide how much to withdraw to reach the principal threshold. Read more about this in the [FAQ section](request-withdrawal.md#3-how-to-decide-initial-withdrawal-amount).
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/WithdrawalAmountEntered.png" alt="" width="237"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/WithdrawalAmountEntered.png" alt="Screenshot of the withdrawal amount entry form on the DV Launchpad." width="237"><figcaption></figcaption></figure>
 
 3. Once an amount has been selected, the UI recommends how the withdrawal amount should be split across validators. Read more in the [FAQ section](request-withdrawal.md#2-how-recommendation-for-requesting-withdrawal-works). If you would prefer to allocate specific amounts manually, click on `Allocate Manually`.
 
-<figure><img src="../../.gitbook/assets/OVMWithdrawal3.png" alt="" width="260"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/OVMWithdrawal3.png" alt="Screenshot of the DV Launchpad&#x27;s recommended withdrawal allocation." width="260"><figcaption></figcaption></figure>
 
 4. For manually allocating, users must stay below the withdrawal limit. Users can also choose to exit a validator by withdrawing its entire available balance.
 
-<figure><img src="../../.gitbook/assets/OVMWithdrawal4.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/OVMWithdrawal4.png" alt="Screenshot of the manual withdrawal allocation interface on the DV Launchpad."><figcaption></figcaption></figure>
 
 5. Before you confirm, review the post-withdrawal balances of the validators and whether any validators will exit. Upon confirmation, withdrawal request transactions are sent. Once the transaction is accepted, the validator enters the queue awaiting a withdrawal sweep. The waiting period depends on the validator’s position in the current withdrawal queue.
 

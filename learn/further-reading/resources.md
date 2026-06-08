@@ -6,7 +6,7 @@ description: >-
 
 # Useful Links
 
-The following is a curated list of the best internal and external resources for using, creating, running, building, and researching Distributed Validators. To add to this list, please open a [pull request](https://github.com/ObolNetwork/obol-docs/pulls/).
+The following is a curated list of the best internal and external resources for using, creating, running, building, and researching Distributed Validators. To add to this list, please open a [pull request](https://github.com/ObolNetwork/obol-gitbook/pulls/).
 
 ## Deposit Interfaces
 

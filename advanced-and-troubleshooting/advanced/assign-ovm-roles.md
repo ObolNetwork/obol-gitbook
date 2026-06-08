@@ -50,17 +50,17 @@ Roles are assigned using the **`grantRoles`** function on the OVM smart contract
     - **`roles (uint256)`:** Input the **Decimal Value** (e.g., `17`) or **Hex Value** (e.g., `0x11`) copied from the calculator.
     - Click **"Write"** and approve the transaction.
 
-<figure><img src="../../.gitbook/assets/AssignOVMRoles1.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/AssignOVMRoles1.png" alt="Screenshot of the OVM contract on a block explorer with the role-assignment transaction prepared."><figcaption></figcaption></figure>
 
 ## 3. Review the Roles
 
 1. Assigned roles will show up in the Launchpad to the designated address.
 
-<figure><img src="../../.gitbook/assets/AssignOVMRoles2.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/AssignOVMRoles2.png" alt="Screenshot of the DV Launchpad showing newly assigned OVM roles."><figcaption></figcaption></figure>
 
 2. Sometimes the Launchpad may take a short time to reflect role updates due to RPC issues.. Try refreshing if this occurs. You can also use Etherscan directly to confirm roles.
 
-<figure><img src="../../.gitbook/assets/AssignOVMRoles3.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/AssignOVMRoles3.png" alt="Screenshot of the DV Launchpad reflecting updated OVM role assignments."><figcaption></figcaption></figure>
 
 ## 4. Security and Recommendations 🔒
 
@@ -79,7 +79,7 @@ The security of the cluster relies entirely on the assignment and control of the
 - **Cluster Creation Timing:** It is recommended to **grant final roles before sharing cluster invites** with external invitees. This ensures the security model is locked down before the cluster scales.
 - **Renounce Ownership (Conditional):** If the cluster's roles are intended to be fixed forever (e.g., in a fully immutable system), you can **renounce ownership** after setting the final roles. However, if any role needs to be modifiable later (like changing the fee recipient), the owner must retain the ability to execute `grantRoles`.
 
-<figure><img src="../../.gitbook/assets/AssignOVMRoles4.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/AssignOVMRoles4.png" alt="Screenshot of the DV Launchpad showing the OVM ownership and role-renouncement options."><figcaption></figcaption></figure>
 
 ## 5. Miscellaneous: How does Bitwise Logic Work?
 

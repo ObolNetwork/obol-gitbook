@@ -142,7 +142,7 @@ On **Hoodi**, Splits may not be available or may not support that network:
 
 The image below shows using the splits UI to create a split contract where 5% of validator rewards will be distributed equally across the 4 node operators and Obol.
 
-<figure><img src="../../.gitbook/assets/SPLITS-UI-RECIPIENTS.png" alt=""><figcaption>Example split contract configuration</figcaption></figure>
+<figure><img src="../../.gitbook/assets/SPLITS-UI-RECIPIENTS.png" alt="Screenshot of the Splits.org UI configuring split recipients — 5% of stVault fees routed to a chosen address."><figcaption>Example split contract configuration</figcaption></figure>
 
 {% hint style="info" %}
 Consider setting the controller for this split contract to `NODE_OPERATOR_SAFE` or `GOVERNANCE_SAFE` to retain the ability to modify it at a later date.
@@ -222,9 +222,9 @@ When generating the cluster lock, use the --publish flag so the cluster lock is 
 - Better support by the Obol Team in troubleshooting cluster issues.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/LIDO-STVAULT-OVERVIEW.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/LIDO-STVAULT-OVERVIEW.png" alt="Diagram of the Lido stVault setup overview, showing the relationship between vault, operators, and capital allocator."><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/CUSTOM-WITHDRAWAL-CONFIG.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/CUSTOM-WITHDRAWAL-CONFIG.png" alt="Screenshot of the DV Launchpad&#x27;s custom withdrawal configuration form for a Lido stVault deployment."><figcaption></figcaption></figure>
 
 ### 5.1 DV Cluster Identification Process
 

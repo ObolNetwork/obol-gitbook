@@ -76,7 +76,8 @@ Two distinct content types used throughout the documentation:
 - **Conceptual articles** - Explain _why_ something exists or works. No steps. Confident and friendly tone. Structure: (1) intro, (2) what it is, (3) why it's essential, (4) related topics, (5) summary.
 
 ### Formatting Rules
-- **Titles** follow sentence structure — only names and places are capitalized, e.g., `## Distributed key generation` not `## Distributed Key Generation`
+- **Headings** use title case (including entries in `SUMMARY.md`), e.g., `## Distributed Key Generation`. Lowercase short function words inside multi-word headings (a, an, the, of, to, with, in, on, for, at, by, vs, and, or, but) unless they are the first word. Proper nouns and product names (e.g. *Obol*, *Charon*, *OBOL Token*, *DV Launchpad*) are capitalized everywhere.
+- **Inline prose** uses sentence case — don't capitalize concept nouns mid-sentence ("distributed validator", "key share", "cluster lock file"); only proper nouns and product names.
 - **Bold** (`**text**`) for UI elements the reader interacts with (buttons, fields, window names)
 - **Italics** (`_text_`) for names of things (products, documents, concepts)
 - **Lists** use `-` for unordered items; each item ends with a period `.`

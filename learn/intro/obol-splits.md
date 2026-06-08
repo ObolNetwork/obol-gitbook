@@ -144,7 +144,7 @@ Be cautious when interacting with unknown ERC20 addresses, they may not behave a
 
 ## Optimistic Withdrawal Recipient[​](#optimistic-withdrawal-recipient) <a href="#optimistic-withdrawal-recipient" id="optimistic-withdrawal-recipient"></a>
 
-<figure><img src="../../.gitbook/assets/image (15) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (15) (1) (1).png" alt="Diagram of the Optimistic Withdrawal Recipient contract separating validator principal from rewards."><figcaption></figcaption></figure>
 
 Optimistic Withdrawal Recipients (OWRs) **are the predecessor to Obol Validator Managers**. The primary addition with Validator Managers is the role-based control over validator withdrawals, exits and consolidations.
 
