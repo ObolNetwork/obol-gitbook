@@ -26,7 +26,7 @@ If you haven’t yet heard, Distributed Validator Technology, or DVT, is the nex
 \
 \&#xNAN;_**Vitalik's Ethereum Roadmap:**_
 
-<figure><img src="../../.gitbook/assets/image (84).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (84).png" alt="Diagram from Vitalik Buterin&#x27;s Ethereum roadmap highlighting the role of distributed validator technology."><figcaption></figcaption></figure>
 
 ### Deep Dive Into DVT and Charon’s Architecture
 
@@ -36,11 +36,11 @@ Minimizing correlation is vital when designing DVT as Ethereum Proof of Stake is
 
 ### Performance Testing Distributed Validators
 
-In our mission to help make Ethereum consensus more resilient and decentralised with distributed validators (DVs), it’s critical that we do not compromise on the performance and effectiveness of validators. Earlier this year, we worked with MigaLabs, the blockchain ecosystem observatory located in Barcelona, to perform an independent test to validate the performance of Obol DVs under different configurations and conditions. After taking a few weeks to fully analyze the results together with MigaLabs, we’re happy to share the results of these performance tests.
+In our mission to help make Ethereum consensus more resilient and decentralized with distributed validators (DVs), it’s critical that we do not compromise on the performance and effectiveness of validators. Earlier this year, we worked with MigaLabs, the blockchain ecosystem observatory located in Barcelona, to perform an independent test to validate the performance of Obol DVs under different configurations and conditions. After taking a few weeks to fully analyze the results together with MigaLabs, we’re happy to share the results of these performance tests.
 
 [**Read More About The Performance Test Results Here**](https://blog.obol.tech/performance-testing-distributed-validators/)
 
-<figure><img src="../../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (24).png" alt="Chart showing performance test results for Obol distributed validators."><figcaption></figcaption></figure>
 
 ### More Resources
 

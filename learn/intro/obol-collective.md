@@ -6,9 +6,9 @@ description: The Obol Collective
 
 ## What is the Obol Collective?
 
-Obol is the largest Decentralised Operator Ecosystem. We provide the technology, opportunities, and community to scale decentralised infrastructure networks. The list of Obol Collective participants includes 50+ staking protocols, client teams, software tools, education & community projects, professional node operators, home operators, and stakers, including names like EigenLayer, Lido, EtherFi, Figment, Bitcoin Suisse, Stakewise, Nethermind, Blockdaemon, Chorus One, DappNode, and many more. Learn more at [Obol.org](https://obol.org).
+Obol is the largest Decentralized Operator Ecosystem. We provide the technology, opportunities, and community to scale decentralized infrastructure networks. The list of Obol Collective participants includes 50+ staking protocols, client teams, software tools, education & community projects, professional node operators, home operators, and stakers, including names like EigenLayer, Lido, EtherFi, Figment, Bitcoin Suisse, Stakewise, Nethermind, Blockdaemon, Chorus One, DappNode, and many more. Learn more at [Obol.org](https://obol.org).
 
-<figure><img src="../../.gitbook/assets/DecentralizedOperatorEcosystem.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/DecentralizedOperatorEcosystem.png" alt="Diagram of the Obol Collective — Obol&#x27;s Decentralized Operator Ecosystem."><figcaption></figcaption></figure>
 
 ## Scaling Infrastructure Networks
 
@@ -27,4 +27,4 @@ The [Obol Product Suite](https://obol.org/product-suite) empowers any node opera
 * Foundation: [Charon](../charon/intro.md), a middleware client that enables validators to run in a fault-tolerant, distributed manner;
 * Configuration: The [Distributed Validator Launchpad](launchpad.md), a user interface for configuring Distributed Validators. The Obol [SDK](../../sdk/index.md) & [API](../../api/what-is-this-api.md), allowing Distributed Validator clusters to be configured and run at scale, for example within staking protocols.
 * Launchers: Obol's [Charon Distributed Validator Node (CDVN)](../../run-a-dv/start/create-a-dv-with-a-group.md), Obol's Distributed Validator Pod.
-* Rewards: [Obol Splits](obol-splits.mdx), a set of solidity smart contracts for the distribution of rewards from Distributed Validators, among multiple node operations.
+* Rewards: [Obol Splits](obol-splits.md), a set of solidity smart contracts for the distribution of rewards from Distributed Validators, among multiple node operations.

@@ -15,7 +15,7 @@ The following specifications are recommended for bare metal machines for cluster
 
 ### Minimum Specs
 
-* A CPU with 4+ cores, favouring high clock speed over more cores. ( >3.0GHz and higher or a cpubenchmark [single thread](https://www.cpubenchmark.net/singleThread.html) score of >2,500)
+* A CPU with 4+ cores, favoring high clock speed over more cores. ( >3.0GHz and higher or a cpubenchmark [single thread](https://www.cpubenchmark.net/singleThread.html) score of >2,500)
 * 16GB of RAM
 * 2TB+ free SSD disk space (for mainnet)
 * 1000 read/write SSD IOPS

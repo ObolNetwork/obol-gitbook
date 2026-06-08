@@ -39,17 +39,17 @@ In the Launchpad, you can initiate an EL exit using the Exit validator button in
 * **Connected with the withdrawal address:** If the withdrawal address is an EOA (Externally Owned Account), you must be connected with that EOA wallet.
 * **Have WITHDRAWAL\_ROLE:** If the withdrawal address of the validator is an OVM, you must have `WITHDRAWAL_ROLE` in that OVM. Read more about how to assign roles [here](../../advanced-and-troubleshooting/advanced/assign-ovm-roles.md).
 
-<figure><img src="../../.gitbook/assets/Screenshot 2026-02-11 at 16.46.19.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2026-02-11 at 16.46.19.png" alt="Screenshot of the EL-triggered exit interface on the DV Launchpad."><figcaption></figcaption></figure>
 
 ### Step-by-Step Process
 
 1. **Initiate Exit:** Upon clicking the Exit validator button, you can multi-select the active validators you would like to exit. In the example below, there is only one active validator, so only one can be selected for the exit.
 
-<figure><img src="../../.gitbook/assets/Screenshot 2026-02-11 at 16.59.40.png" alt="" width="347"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2026-02-11 at 16.59.40.png" alt="Screenshot of the multi-select validator exit interface on the DV Launchpad." width="347"><figcaption></figcaption></figure>
 
 1. **Review and Confirm:** You will see a confirmation page showing the validators that will be exited. If you are sending exits via EOA, it will require exiting validators one by one. In the future, we will use EIP-7702 to perform a single-click exit for all validators.
 
-<figure><img src="../../.gitbook/assets/Screenshot 2026-02-11 at 17.01.17.png" alt="" width="347"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2026-02-11 at 17.01.17.png" alt="Screenshot of the EL exit confirmation page on the DV Launchpad." width="347"><figcaption></figcaption></figure>
 
 1. **Transaction Submission:** Once the exit is submitted, a transaction will be sent with `0` as the withdrawal amount. This signals the beacon chain to exit the validator. Once the transaction is processed, validators will enter the `Active Exiting` stage.
 
@@ -59,11 +59,11 @@ In the Launchpad, you can initiate an EL exit using the Exit validator button in
 
 4. **Exit Completion:** After the exit is complete, the total balance will be sent to the OVM after the required on-chain withdrawal sweep has finished. At this point, you can distribute the principal and rewards, which are then claimed via the operator page.
 
-<figure><img src="../../.gitbook/assets/ElExit4.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/ElExit4.png" alt="Screenshot of the EL exit completion page showing the validator&#x27;s final balance."><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/ElExit5.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/ElExit5.png" alt="Screenshot of the EL exit confirmation displaying the validator&#x27;s exit transaction."><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/ElExit6.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/ElExit6.png" alt="Screenshot of the EL exit completion summary on the DV Launchpad."><figcaption></figcaption></figure>
 
 {% hint style="danger" %}
 🚨 **Crucial Warning:** You **must** distribute any existing undistributed rewards _before_ the exit process finishes. If you do not perform this distribution beforehand, the exiting principal amount will be combined with the remaining rewards upon completion. This combined value will then incorrectly exceed the principal distribution threshold, which will cause the rewards to be mistakenly sent to the principal recipient when you initiate the final distribution.
@@ -121,7 +121,7 @@ docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon ex
 
 After a threshold of signed partial exits from node operators in the cluster is accumulated, a full (complete) exit can be created. For example, in the cluster below, only 2 out of 4 clusters have reached the threshold. Operators will have to wait for one more partial exit signature, either from operator 1 or 3 to create a full exit message.
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt="Screenshot: After a threshold of signed partial exits from node operators in the cluster is accumulated, a full (complete) exit can be created. For example, in the cluster below, only 2 out…"><figcaption></figcaption></figure>
 
 **Step 3: Broadcast the full exit**
 
@@ -253,23 +253,23 @@ Consult the examples below and compare them to your validator's monitoring to ve
 
 1.  Operator 1 broadcasts an exit on validator client 1.
 
-    <figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (1) (1).png" alt="Screenshot: Operator 1 broadcasts an exit on validator client 1."><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (2).png" alt="Screenshot: Operator 1 broadcasts an exit on validator client 1."><figcaption></figcaption></figure>
 2.  Operator 2 broadcasts an exit on validator client 2.
 
-    <figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (4).png" alt="Screenshot: Operator 2 broadcasts an exit on validator client 2."><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (5).png" alt="Screenshot: Operator 2 broadcasts an exit on validator client 2."><figcaption></figcaption></figure>
 3.  Operator 3 broadcasts an exit on validator client 3.
 
-    <figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (6).png" alt="Screenshot: Operator 3 broadcasts an exit on validator client 3."><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (7).png" alt="Screenshot: Operator 3 broadcasts an exit on validator client 3."><figcaption></figcaption></figure>
 
 At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
-<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8).png" alt="Screenshot: At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following."><figcaption></figcaption></figure>
 
 {% hint style="success" %}
 Once a validator has broadcasted an exit message, it must continue to validate for at least 27 hours or longer. Do not shut off your distributed validator nodes until your validator is fully exited.
@@ -317,23 +317,23 @@ Consult the examples below and compare them to your validator's monitoring to ve
 
 1.  Operator 1 broadcasts an exit on validator client 1.
 
-    <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-01-7266f9324d942a47c7966bf2f036f167.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/ExitPromQuery-01.png" alt="Prometheus query graph showing operator 1 broadcasting an exit on its validator client."><figcaption></figcaption></figure>
 
-    <figure><img src="https://docs.obol.org/assets/images/DutyExit-01-cc29cb51c323e290f8ceec9c0256f574.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/DutyExit-01.png" alt="Charon log showing operator 1&#x27;s partial exit signature."><figcaption></figcaption></figure>
 2.  Operator 2 broadcasts an exit on validator client 2.
 
-    <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-02-9592e27d4d27ab70911856badffa662a.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/ExitPromQuery-02.png" alt="Prometheus query graph showing operator 2 broadcasting an exit on its validator client."><figcaption></figcaption></figure>
 
-    <figure><img src="https://docs.obol.org/assets/images/DutyExit-02-560e45e9e4064f1ca26a0386f8d7ec16.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/DutyExit-02.png" alt="Charon log showing operator 2&#x27;s partial exit signature."><figcaption></figcaption></figure>
 3.  Operator 3 broadcasts an exit on validator client 3.
 
-    <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-03-d2adbd3dec918750799fe3f07309bed3.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/ExitPromQuery-03.png" alt="Prometheus query graph showing operator 3 broadcasting an exit on its validator client."><figcaption></figcaption></figure>
 
-    <figure><img src="https://docs.obol.org/assets/images/DutyExit-03-12edb85f9744e0ff91264177f37fb753.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/DutyExit-03.png" alt="Charon log showing operator 3&#x27;s partial exit signature."><figcaption></figcaption></figure>
 
 At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
-<figure><img src="https://docs.obol.org/assets/images/ExitLogs-04a7bf322d265372eac30d3671bd916b.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/ExitLogs.png" alt="Charon log showing the cluster reaching the exit-signature threshold and broadcasting the aggregated exit."><figcaption></figcaption></figure>
 
 {% hint style="success" %}
 Once a validator has broadcasted an exit message, it must continue to validate for at least 27 hours or longer. Do not shut off your distributed validator nodes until your validator is fully exited.
@@ -347,23 +347,23 @@ Consult the examples below and compare them to your validator's monitoring to ve
 
 1.  Operator 1 broadcasts an exit on validator client 1.
 
-    <figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (9).png" alt="Screenshot: Operator 1 broadcasts an exit on validator client 1."><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (10).png" alt="Screenshot: Operator 1 broadcasts an exit on validator client 1."><figcaption></figcaption></figure>
 2.  Operator 2 broadcasts an exit on validator client 2.
 
-    <figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (11).png" alt="Screenshot: Operator 2 broadcasts an exit on validator client 2."><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (12).png" alt="Screenshot: Operator 2 broadcasts an exit on validator client 2."><figcaption></figcaption></figure>
 3.  Operator 3 broadcasts an exit on validator client 3.
 
-    <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (13).png" alt="Screenshot: Operator 3 broadcasts an exit on validator client 3."><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (14).png" alt="Screenshot: Operator 3 broadcasts an exit on validator client 3."><figcaption></figcaption></figure>
 
 At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
-<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (15).png" alt="Screenshot: At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following."><figcaption></figcaption></figure>
 
 {% hint style="success" %}
 Once a validator has broadcasted an exit message, it must continue to validate for at least 27 hours or longer. Do not shut off your distributed validator nodes until your validator is fully exited.
@@ -410,23 +410,23 @@ Consult the examples below and compare them to your validator's monitoring to ve
 
 1.  Operator 1 broadcasts an exit on validator client 1.
 
-    <figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (9).png" alt="Screenshot: Operator 1 broadcasts an exit on validator client 1."><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (10).png" alt="Screenshot: Operator 1 broadcasts an exit on validator client 1."><figcaption></figcaption></figure>
 2.  Operator 2 broadcasts an exit on validator client 2.
 
-    <figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (11).png" alt="Screenshot: Operator 2 broadcasts an exit on validator client 2."><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (12).png" alt="Screenshot: Operator 2 broadcasts an exit on validator client 2."><figcaption></figcaption></figure>
 3.  Operator 3 broadcasts an exit on validator client 3.
 
-    <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (13).png" alt="Screenshot: Operator 3 broadcasts an exit on validator client 3."><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (14).png" alt="Screenshot: Operator 3 broadcasts an exit on validator client 3."><figcaption></figcaption></figure>
 
 At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
-<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (15).png" alt="Screenshot: At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following."><figcaption></figcaption></figure>
 
 {% hint style="success" %}
 Once a validator has broadcasted an exit message, it must continue to validate for at least 27 hours or longer. Do not shut off your distributed validator nodes until your validator is fully exited.
@@ -489,23 +489,23 @@ Consult the examples below and compare them to your validator's monitoring to ve
 
 1.  Operator 1 broadcasts an exit on validator client 1.
 
-    <figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (9).png" alt="Screenshot: Operator 1 broadcasts an exit on validator client 1."><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (10).png" alt="Screenshot: Operator 1 broadcasts an exit on validator client 1."><figcaption></figcaption></figure>
 2.  Operator 2 broadcasts an exit on validator client 2.
 
-    <figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (11).png" alt="Screenshot: Operator 2 broadcasts an exit on validator client 2."><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (12).png" alt="Screenshot: Operator 2 broadcasts an exit on validator client 2."><figcaption></figcaption></figure>
 3.  Operator 3 broadcasts an exit on validator client 3.
 
-    <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (13).png" alt="Screenshot: Operator 3 broadcasts an exit on validator client 3."><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (14).png" alt="Screenshot: Operator 3 broadcasts an exit on validator client 3."><figcaption></figcaption></figure>
 
 At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
-<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (15).png" alt="Screenshot: At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following."><figcaption></figcaption></figure>
 
 {% hint style="success" %}
 Once a validator has broadcasted an exit message, it must continue to validate for at least 27 hours or longer. Do not shut off your distributed validator nodes until your validator is fully exited.
@@ -525,13 +525,13 @@ Once a validator has broadcasted an exit message, it must continue to validate f
 
 1.  Navigate to the config tab of your Obol DappNode package. Click 'Packages', then click 'My Packages', and enter the Obol package. Go to the config tab. At the bottom right corner of the page, click on 'Show Advanced Editor'.
 
-    <figure><img src="../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (17).png" alt="Screenshot: Navigate to the config tab of your Obol DappNode package. Click &#x27;Packages&#x27;, then click &#x27;My Packages&#x27;, and enter the Obol package. Go to the config tab. At the bottom right corner…"><figcaption></figcaption></figure>
 2.  The advanced editor config page provides ENV configs for each validator. Scroll to the validator number you want to exit and type “true” in the column opposite SIGN\_EXIT.
 
-    <figure><img src="../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (18).png" alt="Screenshot: The advanced editor config page provides ENV configs for each validator. Scroll to the validator number you want to exit and type “true” in the column opposite SIGNEXIT."><figcaption></figcaption></figure>
 3.  Scroll to the bottom of the page and click the 'update' button for the changes to take effect.
 
-    <figure><img src="../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (19).png" alt="Screenshot: Scroll to the bottom of the page and click the &#x27;update&#x27; button for the changes to take effect."><figcaption></figcaption></figure>
 4. Check your logs to confirm the exit process has started.
 
 {% hint style="success" %}
@@ -578,7 +578,7 @@ docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon ex
 
 After a threshold of signed partial exits from node operators in the cluster is accumulated, a full (complete) exit can be created. For example, in the cluster below, only 2 out of 4 clusters have reached the threshold. Operators will have to wait for one more partial exit signature, either from operator 1 or 3 to create a full exit message.
 
-<figure><img src="https://docs.obol.org/img/PartialExitsStatus.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/PartialExitsStatus.png" alt="Screenshot of the DV Launchpad showing partial exit signatures collected from a threshold of operators."><figcaption></figcaption></figure>
 
 **Step 3: Broadcast the full exit**
 
@@ -710,23 +710,23 @@ Consult the examples below and compare them to your validator's monitoring to ve
 
 1.  Operator 1 broadcasts an exit on validator client 1.
 
-    <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-01-7266f9324d942a47c7966bf2f036f167.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/ExitPromQuery-01.png" alt="Prometheus query graph showing operator 1 broadcasting an exit on its validator client."><figcaption></figcaption></figure>
 
-    <figure><img src="https://docs.obol.org/assets/images/DutyExit-01-cc29cb51c323e290f8ceec9c0256f574.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/DutyExit-01.png" alt="Charon log showing operator 1&#x27;s partial exit signature."><figcaption></figcaption></figure>
 2.  Operator 2 broadcasts an exit on validator client 2.
 
-    <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-02-9592e27d4d27ab70911856badffa662a.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/ExitPromQuery-02.png" alt="Prometheus query graph showing operator 2 broadcasting an exit on its validator client."><figcaption></figcaption></figure>
 
-    <figure><img src="https://docs.obol.org/assets/images/DutyExit-02-560e45e9e4064f1ca26a0386f8d7ec16.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/DutyExit-02.png" alt="Charon log showing operator 2&#x27;s partial exit signature."><figcaption></figcaption></figure>
 3.  Operator 3 broadcasts an exit on validator client 3.
 
-    <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-03-d2adbd3dec918750799fe3f07309bed3.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/ExitPromQuery-03.png" alt="Prometheus query graph showing operator 3 broadcasting an exit on its validator client."><figcaption></figcaption></figure>
 
-    <figure><img src="https://docs.obol.org/assets/images/DutyExit-03-12edb85f9744e0ff91264177f37fb753.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/DutyExit-03.png" alt="Charon log showing operator 3&#x27;s partial exit signature."><figcaption></figcaption></figure>
 
 At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
-<figure><img src="https://docs.obol.org/assets/images/ExitLogs-04a7bf322d265372eac30d3671bd916b.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/ExitLogs.png" alt="Charon log showing the cluster reaching the exit-signature threshold and broadcasting the aggregated exit."><figcaption></figcaption></figure>
 
 {% hint style="success" %}
 Once a validator has broadcasted an exit message, it must continue to validate for at least 27 hours or longer. Do not shut off your distributed validator nodes until your validator is fully exited.
@@ -776,23 +776,23 @@ Consult the examples below and compare them to your validator's monitoring to ve
 
 1.  Operator 1 broadcasts an exit on validator client 1.
 
-    <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-01-7266f9324d942a47c7966bf2f036f167.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/ExitPromQuery-01.png" alt="Prometheus query graph showing operator 1 broadcasting an exit on its validator client."><figcaption></figcaption></figure>
 
-    <figure><img src="https://docs.obol.org/assets/images/DutyExit-01-cc29cb51c323e290f8ceec9c0256f574.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/DutyExit-01.png" alt="Charon log showing operator 1&#x27;s partial exit signature."><figcaption></figcaption></figure>
 2.  Operator 2 broadcasts an exit on validator client 2.
 
-    <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-02-9592e27d4d27ab70911856badffa662a.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/ExitPromQuery-02.png" alt="Prometheus query graph showing operator 2 broadcasting an exit on its validator client."><figcaption></figcaption></figure>
 
-    <figure><img src="https://docs.obol.org/assets/images/DutyExit-02-560e45e9e4064f1ca26a0386f8d7ec16.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/DutyExit-02.png" alt="Charon log showing operator 2&#x27;s partial exit signature."><figcaption></figcaption></figure>
 3.  Operator 3 broadcasts an exit on validator client 3.
 
-    <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-03-d2adbd3dec918750799fe3f07309bed3.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/ExitPromQuery-03.png" alt="Prometheus query graph showing operator 3 broadcasting an exit on its validator client."><figcaption></figcaption></figure>
 
-    <figure><img src="https://docs.obol.org/assets/images/DutyExit-03-12edb85f9744e0ff91264177f37fb753.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/DutyExit-03.png" alt="Charon log showing operator 3&#x27;s partial exit signature."><figcaption></figcaption></figure>
 
 At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
-<figure><img src="https://docs.obol.org/assets/images/ExitLogs-04a7bf322d265372eac30d3671bd916b.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/ExitLogs.png" alt="Charon log showing the cluster reaching the exit-signature threshold and broadcasting the aggregated exit."><figcaption></figcaption></figure>
 
 {% hint style="success" %}
 Once a validator has broadcasted an exit message, it must continue to validate for at least 27 hours or longer. Do not shut off your distributed validator nodes until your validator is fully exited.
@@ -839,23 +839,23 @@ Consult the examples below and compare them to your validator's monitoring to ve
 
 1.  Operator 1 broadcasts an exit on validator client 1.
 
-    <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-01-7266f9324d942a47c7966bf2f036f167.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/ExitPromQuery-01.png" alt="Prometheus query graph showing operator 1 broadcasting an exit on its validator client."><figcaption></figcaption></figure>
 
-    <figure><img src="https://docs.obol.org/assets/images/DutyExit-01-cc29cb51c323e290f8ceec9c0256f574.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/DutyExit-01.png" alt="Charon log showing operator 1&#x27;s partial exit signature."><figcaption></figcaption></figure>
 2.  Operator 2 broadcasts an exit on validator client 2.
 
-    <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-02-9592e27d4d27ab70911856badffa662a.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/ExitPromQuery-02.png" alt="Prometheus query graph showing operator 2 broadcasting an exit on its validator client."><figcaption></figcaption></figure>
 
-    <figure><img src="https://docs.obol.org/assets/images/DutyExit-02-560e45e9e4064f1ca26a0386f8d7ec16.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/DutyExit-02.png" alt="Charon log showing operator 2&#x27;s partial exit signature."><figcaption></figcaption></figure>
 3.  Operator 3 broadcasts an exit on validator client 3.
 
-    <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-03-d2adbd3dec918750799fe3f07309bed3.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/ExitPromQuery-03.png" alt="Prometheus query graph showing operator 3 broadcasting an exit on its validator client."><figcaption></figcaption></figure>
 
-    <figure><img src="https://docs.obol.org/assets/images/DutyExit-03-12edb85f9744e0ff91264177f37fb753.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/DutyExit-03.png" alt="Charon log showing operator 3&#x27;s partial exit signature."><figcaption></figcaption></figure>
 
 At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
-<figure><img src="https://docs.obol.org/assets/images/ExitLogs-04a7bf322d265372eac30d3671bd916b.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/ExitLogs.png" alt="Charon log showing the cluster reaching the exit-signature threshold and broadcasting the aggregated exit."><figcaption></figcaption></figure>
 
 {% hint style="success" %}
 Once a validator has broadcasted an exit message, it must continue to validate for at least 27 hours or longer. Do not shut off your distributed validator nodes until your validator is fully exited.
@@ -918,23 +918,23 @@ Consult the examples below and compare them to your validator's monitoring to ve
 
 1.  Operator 1 broadcasts an exit on validator client 1.
 
-    <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-01-7266f9324d942a47c7966bf2f036f167.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/ExitPromQuery-01.png" alt="Prometheus query graph showing operator 1 broadcasting an exit on its validator client."><figcaption></figcaption></figure>
 
-    <figure><img src="https://docs.obol.org/assets/images/DutyExit-01-cc29cb51c323e290f8ceec9c0256f574.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/DutyExit-01.png" alt="Charon log showing operator 1&#x27;s partial exit signature."><figcaption></figcaption></figure>
 2.  Operator 2 broadcasts an exit on validator client 2.
 
-    <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-02-9592e27d4d27ab70911856badffa662a.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/ExitPromQuery-02.png" alt="Prometheus query graph showing operator 2 broadcasting an exit on its validator client."><figcaption></figcaption></figure>
 
-    <figure><img src="https://docs.obol.org/assets/images/DutyExit-02-560e45e9e4064f1ca26a0386f8d7ec16.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/DutyExit-02.png" alt="Charon log showing operator 2&#x27;s partial exit signature."><figcaption></figcaption></figure>
 3.  Operator 3 broadcasts an exit on validator client 3.
 
-    <figure><img src="https://docs.obol.org/assets/images/ExitPromQuery-03-d2adbd3dec918750799fe3f07309bed3.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/ExitPromQuery-03.png" alt="Prometheus query graph showing operator 3 broadcasting an exit on its validator client."><figcaption></figcaption></figure>
 
-    <figure><img src="https://docs.obol.org/assets/images/DutyExit-03-12edb85f9744e0ff91264177f37fb753.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/DutyExit-03.png" alt="Charon log showing operator 3&#x27;s partial exit signature."><figcaption></figcaption></figure>
 
 At this point, the threshold of 3 has been reached and the validator exit process will start. The logs will show the following:
 
-<figure><img src="https://docs.obol.org/assets/images/ExitLogs-04a7bf322d265372eac30d3671bd916b.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/ExitLogs.png" alt="Charon log showing the cluster reaching the exit-signature threshold and broadcasting the aggregated exit."><figcaption></figcaption></figure>
 
 {% hint style="success" %}
 Once a validator has broadcasted an exit message, it must continue to validate for at least 27 hours or longer. Do not shut off your distributed validator nodes until your validator is fully exited.
@@ -950,13 +950,13 @@ Currently voluntary exits through Prysm are not supported. This is because [Prys
 
 1.  Navigate to the config tab of your Obol DappNode package. Click 'Packages', then click 'My Packages', and enter the Obol package. Go to the config tab. At the bottom right corner of the page, click on 'Show Advanced Editor'.
 
-    <figure><img src="https://docs.obol.org/img/ConfigTabExit.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/ConfigTabExit.png" alt="Screenshot of the DappNode config tab for the Obol package."><figcaption></figcaption></figure>
 2.  The advanced editor config page provides ENV configs for each validator. Scroll to the validator number you want to exit and type “true” in the column opposite SIGN\_EXIT.
 
-    <figure><img src="https://docs.obol.org/img/TypeTrue.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/TypeTrue.png" alt="Screenshot of the DappNode advanced editor with EXIT_VALIDATOR set to true."><figcaption></figcaption></figure>
 3.  Scroll to the bottom of the page and click the 'update' button for the changes to take effect.
 
-    <figure><img src="https://docs.obol.org/img/ExitUpdate.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/ExitUpdate.png" alt="Screenshot of the DappNode &#x27;update&#x27; button used to apply the validator-exit config change."><figcaption></figcaption></figure>
 4. Check your logs to confirm the exit process has started.
 
 {% hint style="success" %}

@@ -64,13 +64,13 @@ Before preparing the DappNode to take part in a Distributed Validator Cluster, y
 
 1.  Login to the DappNode Interface:
 
-    <figure><img src="../../.gitbook/assets/image (58).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (58).png" alt="Screenshot: Login to the DappNode Interface."><figcaption></figcaption></figure>
 2.  Click on the 'Stakers' tab on the left side, select an execution client (e.g. Geth) & consensus client (e.g. Lodestar) & click 'Apply changes'. This will start the syncing process which can take a number of hours.
 
-    <figure><img src="../../.gitbook/assets/image (64).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (64).png" alt="Screenshot: Click on the &#x27;Stakers&#x27; tab on the left side, select an execution client (e.g. Geth) &amp; consensus client (e.g. Lodestar) &amp; click &#x27;Apply changes&#x27;. This will start the syncing process…"><figcaption></figcaption></figure>
 3.  Once the clients are finished syncing, it should reflect on your 'Dashboard' as shown below.
 
-    <figure><img src="../../.gitbook/assets/image (65).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (65).png" alt="Screenshot: Once the clients are finished syncing, it should reflect on your &#x27;Dashboard&#x27; as shown below."><figcaption></figcaption></figure>
 
 **Install the Obol DappNode package**
 
@@ -80,27 +80,27 @@ With a fully synced Ethereum node now running on the DappNode, the below steps w
    * [Mainnet Repo](http://my.dappnode/installer/dnp/obol.dnp.dappnode.eth)
 2.  Copy the latest IPFS hash from the release details dropdown.
 
-    <figure><img src="../../.gitbook/assets/image (66).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (66).png" alt="Screenshot: Copy the latest IPFS hash from the release details dropdown."><figcaption></figcaption></figure>
 3.  Go back to DappNode Dashboard > Dappstore, select the 'Public' tab, and accept the terms & conditions before proceeding.
 
-    <figure><img src="../../.gitbook/assets/image (68).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (68).png" alt="Screenshot: Go back to DappNode Dashboard &gt; Dappstore, select the &#x27;Public&#x27; tab, and accept the terms &amp; conditions before proceeding."><figcaption></figcaption></figure>
 4.  Paste the IPFS hash you copied from Github and click 'Search' (It may take a minute for the package to be found.) You will then be presented with the package installation page. Under the blue 'Install' button, click on 'Advanced Options' & toggle the button to 'Bypass only signed safe restriction'.
 
-    <figure><img src="../../.gitbook/assets/image (69).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (69).png" alt="Screenshot: Paste the IPFS hash you copied from Github and click &#x27;Search&#x27; (It may take a minute for the package to be found.) You will then be presented with the package installation page.…"><figcaption></figcaption></figure>
 5.  Click 'Install' & in the config mode page > select new cluster & submit. (if you already have the config URL, you can select URL option.)
 
-    <figure><img src="../../.gitbook/assets/image (70).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (70).png" alt="Screenshot: Click &#x27;Install&#x27; &amp; in the config mode page &gt; select new cluster &amp; submit. (if you already have the config URL, you can select URL option.)."><figcaption></figcaption></figure>
 6.  Accept the terms & conditions and the install process will begin.
 
-    <figure><img src="../../.gitbook/assets/image (71).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (71).png" alt="Screenshot: Accept the terms &amp; conditions and the install process will begin."><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (72).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (72).png" alt="Screenshot: Accept the terms &amp; conditions and the install process will begin."><figcaption></figcaption></figure>
 7.  You should now be able to see the Obol package under the 'Packages' tab. Click on the package to see important details.
 
-    <figure><img src="../../.gitbook/assets/image (73).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (73).png" alt="Screenshot: You should now be able to see the Obol package under the &#x27;Packages&#x27; tab. Click on the package to see important details."><figcaption></figcaption></figure>
 8.  Under the 'Info' tab, you will see pre-generated ENRs, along with information such as the status of all five distributed validator clusters, their docker volumes & other menu options.
 
-    <figure><img src="../../.gitbook/assets/image (74).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (74).png" alt="Screenshot: Under the &#x27;Info&#x27; tab, you will see pre-generated ENRs, along with information such as the status of all five distributed validator clusters, their docker volumes &amp; other menu…"><figcaption></figcaption></figure>
 9. Select any of the ENRs listed that are not already in use. This ENR will be used in the next step.
 
 For Step 2 of the quickstart:
@@ -230,10 +230,10 @@ The following are the steps for creating a cluster.
 1. Go to the [DV Launchpad](../../learn/intro/launchpad.md#dv-launchpad-links)
 2.  Connect your wallet
 
-    <figure><img src="../../.gitbook/assets/image (75).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (75).png" alt="Screenshot: Connect your wallet."><figcaption></figcaption></figure>
 3.  Select `Create a Cluster with a group` then `Get Started`.
 
-    <figure><img src="../../.gitbook/assets/image (76).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (76).png" alt="Screenshot: Select Create a Cluster with a group then Get Started."><figcaption></figcaption></figure>
 4. Follow the flow and accept the advisories.
 5. Configure the Cluster
    1. Input the `Cluster Name` & `Cluster Size` (i.e. number of operators in the cluster). The threshold will update automatically, it shows the number of nodes that need to be functioning for the validator(s) to stay active.
@@ -242,7 +242,7 @@ The following are the steps for creating a cluster.
    2. If you are taking part in the cluster, enter the ENR you generated in [step one](#step-1-get-your-enr) in the "What is your charon client's ENR?" field.
    3. Choose the suitable withdrawal configuration:
 
-    <figure><img src="../../.gitbook/assets/WithdrawalConfigurations.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/WithdrawalConfigurations.png" alt="Diagram of withdrawal-configuration options for a DV cluster — standard withdrawal address, Obol Splits, or Obol Validator Manager."><figcaption></figcaption></figure>
 
       - **Split only rewards**: Deploys an OVM contract as withdrawal address to a principal address of your choice, and a splitter as fee recipient. OVM is used to distribute amounts to principal and fee recipient. It requires two inputs:
         - **Owner address**: The Owner address is the super-admin of the OVM. It has access to all the roles - deposit, withdraw, distribute etc and it can also give roles to other addresses. For security purposes, it is recommended to either use a trusted address or a multi-sig wallet like [SAFE](https://app.safe.global/welcome/accounts) so all the transactions are approved by a quorum of addresses inside the SAFE. For testing purposes on Hoodi, [protofire](https://app.safe.protofire.io/home) can be used.
@@ -256,7 +256,7 @@ The following are the steps for creating a cluster.
    3. Your `ENR`. Signing your ENR authorizes the corresponding private key to act on your behalf in the cluster.
 8.  Share your cluster invite link with the operators. Following the link will show you a screen waiting for other operators to accept the configuration you created.
 
-    <figure><img src="../../.gitbook/assets/image (77).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (77).png" alt="Screenshot: Share your cluster invite link with the operators. Following the link will show you a screen waiting for other operators to accept the configuration you created."><figcaption></figcaption></figure>
 9. You can use the link to monitor how many of the operators have already signed their approval of the cluster configuration and submitted their ENR.
 
 Once every participating operator is ready, the next step is the distributed key generation among the operators.
@@ -312,10 +312,10 @@ Your cluster creator needs to configure the cluster, and send you an invite URL 
 1. Click on the DV launchpad link provided by the leader or creator. Make sure you recognize the domain and the person sending you the link, to ensure you are not being phished.
 2. Connect your wallet using the Ethereum address the leader was provided.
 
-    <figure><img src="../../.gitbook/assets/image (81).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (81).png" alt="Screenshot: Connect your wallet using the Ethereum address the leader was provided."><figcaption></figcaption></figure>
 3. Review the operators addresses submitted and click `Get Started` to continue.
 
-    <figure><img src="../../.gitbook/assets/image (82).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (82).png" alt="Screenshot: Review the operators addresses submitted and click Get Started to continue."><figcaption></figcaption></figure>
 4. Review and accept the DV Launchpad terms & conditions and advisories.
 5. Before accepting the invite and adding your ENR, ensure the following:
 
@@ -335,7 +335,7 @@ Your cluster creator needs to configure the cluster, and send you an invite URL 
 
 6.  Review the cluster configuration set by the creator and add your `ENR` that you generated in [step 1](#step-1-get-your-enr).\
 
-    <figure><img src="../../.gitbook/assets/image (83).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (83).png" alt="Screenshot: Review the cluster configuration set by the creator and add your ENR that you generated in step 1.\."><figcaption></figcaption></figure>
 7. Sign the two transactions with your wallet, these are:
    * The config hash. This is a hashed representation of all of the details for this cluster.
    * Your own `ENR` This signature authorizes the key represented by this ENR to act on your behalf in the cluster.
@@ -371,10 +371,10 @@ For the [DKG](../../learn/charon/dkg.md) to complete, all operators need to be r
 
 1.  Once all operators successfully signed, your screen will automatically advance to the next step and look like this. Click `Continue`. (If you closed the tab, you can always go back to the invite link shared by the leader and connect your wallet.)
 
-    <figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt="Screenshot: Once all operators successfully signed, your screen will automatically advance to the next step and look like this. Click Continue. (If you closed the tab, you can always go back…"><figcaption></figcaption></figure>
 2.  Copy and run the `docker` command on the screen into your terminal. It will retrieve the remote cluster details and begin the DKG process.
 
-    <figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (2) (1).png" alt="Screenshot: Copy and run the docker command on the screen into your terminal. It will retrieve the remote cluster details and begin the DKG process."><figcaption></figcaption></figure>
 3. Assuming the DKG is successful, a number of artefacts will be created in the `.charon` folder of the node. These include:
    * A `deposit-data.json` file. This contains the information needed to activate the validator on the Ethereum network.
    * A `cluster-lock.json` file. This contains the information needed by Charon to operate the distributed validator cluster with its peers.
@@ -394,27 +394,27 @@ and the DKG process should begin.
 {% tab title="DappNode" %}
 Follow this step if you are signing through the DV Launchpad, importing the cluster definition URL into the DappNode package's config & then running the DKG inside the DappNode, followed by cluster run.
 
-<figure><img src="../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1).png" alt="Screenshot: Follow this step if you are signing through the DV Launchpad, importing the cluster definition URL into the DappNode package&#x27;s config &amp; then running the DKG inside the DappNode,…"><figcaption></figcaption></figure>
 
 1.  After all operators have signed with their wallet and has provided an ENR from the DappNode info tab, the Launchpad will instruct operators to begin the DKG ceremony. Click continue & navigate to the 'Dappnode/Avado' tab where the cluster definition URL is presented.
 
-    <figure><img src="../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (4) (1).png" alt="Screenshot: After all operators have signed with their wallet and has provided an ENR from the DappNode info tab, the Launchpad will instruct operators to begin the DKG ceremony. Click…"><figcaption></figcaption></figure>
 2.  To run the Distributed Key Generation ceremony using a DappNode, you must paste the cluster definition URL into the Obol Package interface. Go to the 'Config' tab, select 'URL' from the dropdown menu, paste the cluster definition URL you retrieved from the launchpad, into the validator `cluster-*`field which matches the cluster you took the ENR from. Example: If you picked ENR1 for signing, then you should paste the URL into Cluster-1. Finally, click the 'Update' button at the bottom of the page.
 
-    <figure><img src="../../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (6) (1).png" alt="Screenshot: To run the Distributed Key Generation ceremony using a DappNode, you must paste the cluster definition URL into the Obol Package interface. Go to the &#x27;Config&#x27; tab, select &#x27;URL&#x27;…"><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (7) (1).png" alt="Screenshot: To run the Distributed Key Generation ceremony using a DappNode, you must paste the cluster definition URL into the Obol Package interface. Go to the &#x27;Config&#x27; tab, select &#x27;URL&#x27;…"><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (8) (1).png" alt="Screenshot: To run the Distributed Key Generation ceremony using a DappNode, you must paste the cluster definition URL into the Obol Package interface. Go to the &#x27;Config&#x27; tab, select &#x27;URL&#x27;…"><figcaption></figcaption></figure>
 3.  After DappNode records the cluster definition URL, go back to the 'Info' tab and restart the Charon container.
 
-    <figure><img src="../../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (9) (1).png" alt="Screenshot: After DappNode records the cluster definition URL, go back to the &#x27;Info&#x27; tab and restart the Charon container."><figcaption></figcaption></figure>
 4.  The node is now ready and will attempt to complete the DKG. You can monitor the DKG progress via the 'Logs' tab of the package. Once all clients in the cluster can establish a connection with one another and they each complete a handshake (confirm everyone has a matching `cluster_definition_hash`), the key generation ceremony begins.
 
-    <figure><img src="../../.gitbook/assets/image (10) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (10) (1).png" alt="Screenshot: The node is now ready and will attempt to complete the DKG. You can monitor the DKG progress via the &#x27;Logs&#x27; tab of the package. Once all clients in the cluster can establish a…"><figcaption></figcaption></figure>
 5.  Example of DKG ceremony competed log.
 
-    <figure><img src="../../.gitbook/assets/image (11) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (11) (1).png" alt="Screenshot: Example of DKG ceremony competed log."><figcaption></figcaption></figure>
 
 **Create a DV Node Backup**
 
@@ -422,15 +422,15 @@ It is important to back up all artefacts generated by the DKG ceremony, and your
 
 1.  Navigate to the backup tab inside the Obol package.
 
-    <figure><img src="../../.gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (12) (1).png" alt="Screenshot: Navigate to the backup tab inside the Obol package."><figcaption></figcaption></figure>
 2.  Click on the 'Backup now' button and it will open a new chrome window with a 'file save' option. Select the path where you want to save the Backup tar file.
 
-    <figure><img src="../../.gitbook/assets/image (13) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (13) (1).png" alt="Screenshot: Click on the &#x27;Backup now&#x27; button and it will open a new chrome window with a &#x27;file save&#x27; option. Select the path where you want to save the Backup tar file."><figcaption></figcaption></figure>
 3.  Double click to extract the tar file. There will be folders for each charon node (max 5). Navigate to each node folder, and all artefacts related to each node will be present.
 
-    <figure><img src="../../.gitbook/assets/image (14) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (14) (1).png" alt="Screenshot: Double click to extract the tar file. There will be folders for each charon node (max 5). Navigate to each node folder, and all artefacts related to each node will be present."><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (15) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (15) (1).png" alt="Screenshot: Double click to extract the tar file. There will be folders for each charon node (max 5). Navigate to each node folder, and all artefacts related to each node will be present."><figcaption></figcaption></figure>
 {% endtab %}
 
 {% tab title="Sedge" %}
@@ -862,7 +862,7 @@ Unlike a standard bank account where interest compounds daily, validator rewards
 
 To maximize compounding efficiency, avoid depositing the full 2048 ETH cap immediately. Leaving ~128 ETH of "headroom" allows your validators to compound rewards autonomously for approximately 2 years (at 3% APR) before hitting the 2048 ETH effective balance cap.
 
-<figure><img src="../../.gitbook/assets/CompoundingRewardsCurve.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/CompoundingRewardsCurve.png" alt="Chart showing the compounding rewards curve for distributed validators with effective balances above 32 ETH."><figcaption></figcaption></figure>
 
 </details>
 

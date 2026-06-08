@@ -8,7 +8,7 @@ This page outlines a number of the key concepts behind the various technologies 
 
 ## Distributed validator
 
-<figure><img src="../../.gitbook/assets/image (16) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (16) (1).png" alt="Diagram of a distributed validator running across multiple operator nodes."><figcaption></figcaption></figure>
 
 A distributed validator is an Ethereum proof-of-stake validator that runs on more than one node/machine. This functionality is possible with the use of **Distributed Validator Technology** (DVT).
 
@@ -16,7 +16,7 @@ Distributed validator technology removes some of the single points of failure in
 
 ## Distributed Validator Node
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt="Diagram of the software stack on a distributed validator node — execution client, consensus client, Charon, and validator client."><figcaption></figcaption></figure>
 
 A distributed validator node is the set of clients an operator needs to configure and run to fulfil the duties of a Distributed Validator Operator. An operator may also run redundant execution and consensus clients, an execution payload relayer like [mev-boost](https://github.com/flashbots/mev-boost), or other monitoring or telemetry services on the same hardware to ensure optimal performance.
 
@@ -24,7 +24,7 @@ In the above example, the stack includes Geth, Lighthouse, Charon and Teku.
 
 ### Execution Client
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt="Diagram highlighting the execution client in the validator stack."><figcaption></figcaption></figure>
 
 An execution client (formerly known as an Eth1 client) specializes in running the EVM and managing the transaction pool for the Ethereum network. These clients provide execution payloads to consensus clients for inclusion into blocks.
 
@@ -36,7 +36,7 @@ Examples of execution clients include:
 
 ### Consensus Client
 
-<figure><img src="../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1).png" alt="Diagram highlighting the consensus client in the validator stack."><figcaption></figcaption></figure>
 
 A consensus client's duty is to run the proof-of-stake consensus layer of Ethereum, often referred to as the beacon chain.
 
@@ -50,7 +50,7 @@ Examples of Consensus clients include:
 
 ### Distributed Validator Client
 
-<figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt="Diagram highlighting Charon, the distributed validator client, in the validator stack."><figcaption></figcaption></figure>
 
 A distributed validator client intercepts the validator client ↔ consensus client communication flow over the [standardized REST API](https://ethereum.github.io/beacon-APIs/#/ValidatorRequiredApi), and focuses on two core duties:
 
@@ -61,7 +61,7 @@ The only example of a distributed validator client built with a non-custodial mi
 
 ### Validator Client
 
-<figure><img src="../../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (1) (1).png" alt="Diagram highlighting the validator client in the validator stack."><figcaption></figcaption></figure>
 
 A validator client is a piece of code that operates one or more Ethereum validators.
 
@@ -75,13 +75,13 @@ Examples of validator clients include:
 
 ## Distributed Validator Cluster
 
-<figure><img src="../../.gitbook/assets/image (6) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6) (1) (1).png" alt="Diagram of a distributed validator cluster — multiple distributed validator nodes operating one or more validators together."><figcaption></figcaption></figure>
 
 A distributed validator cluster is a collection of distributed validator nodes connected together to service a set of distributed validators generated during a DVK ceremony.
 
 ### Distributed Validator Key
 
-<figure><img src="../../.gitbook/assets/image (7) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7) (1) (1).png" alt="Diagram of a validator private key split into key shares distributed across operators."><figcaption></figcaption></figure>
 
 A distributed validator key is a group of BLS private keys which together operate as a threshold key for participating in proof-of-stake consensus.
 
