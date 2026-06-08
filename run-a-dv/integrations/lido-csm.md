@@ -46,7 +46,7 @@ Add all the signer addresses of the cluster members, select a threshold, and pro
 Don't require 100% of signers to approve transactions, in case someone loses access to their address. Using the same [threshold](../../learn/intro/key-concepts.md#distributed-validator-threshold) as your cluster will use is a reasonable starting point.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (30).png" alt="Screenshot: Don&#x27;t require 100% of signers to approve transactions, in case someone loses access to their address. Using the same threshold as your cluster will use is a reasonable starting…."><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (30).png" alt="Screenshot: Don&#x27;t require 100% of signers to approve transactions, in case someone loses access to their address. Using the same threshold as your cluster will use is a reasonable starting…"><figcaption></figcaption></figure>
 
 Finally, submit the transaction to create the Safe by clicking on the **Create** button.
 
@@ -56,7 +56,7 @@ Finally, submit the transaction to create the Safe by clicking on the **Create**
 
 The squad leader should obtain the reward addresses from all the cluster members (this can be the same address used in the SAFE contract). Open https://app.splits.org and create a `New contract`. Make sure to select the appropriate network.
 
-<figure><img src="../../.gitbook/assets/image (32).png" alt="Screenshot: The squad leader should obtain the reward addresses from all the cluster members (this can be the same address used in the SAFE contract). Open https://app.splits.org and create a…."><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (32).png" alt="Screenshot: The squad leader should obtain the reward addresses from all the cluster members (this can be the same address used in the SAFE contract). Open https://app.splits.org and create a…"><figcaption></figcaption></figure>
 
 Select `Split` for the contract type.
 
@@ -68,7 +68,7 @@ Add the reward addresses of all cluster members. Choose whether the contract is 
 If your cluster would like to contribute a portion of its rewards to Obol protocol development, thereby earning [Obol Incentives](https://obol.org/incentives) as part of Lido's [integration of CSM](https://research.lido.fi/t/integrate-csm-into-the-decentralized-validator-vault/8621) into the DV Vault, you must add [protocoldevelopmentfee.obol.eth](https://etherscan.io/address/0xDe5aE4De36c966747Ea7DF13BD9589642e2B1D0d) as a recipient of 0.1% of the splitter contract. This will contribute 0.1% of rewards **and your CSM bond** to Obol protocol development. Future versions of CSM integrations will enable contributing exactly 1% of accruing CSM rewards
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (34).png" alt="Screenshot: If your cluster would like to contribute a portion of its rewards to Obol protocol development, thereby earning Obol Incentives as part of Lido&#x27;s integration of CSM into the DV…."><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (34).png" alt="Screenshot: If your cluster would like to contribute a portion of its rewards to Obol protocol development, thereby earning Obol Incentives as part of Lido&#x27;s integration of CSM into the DV…"><figcaption></figcaption></figure>
 
 Finally, click the **Create Split** button, execute the transaction and share the created split contract with all cluster members for review.
 
@@ -139,7 +139,7 @@ Lastly, share the cluster invite link with the other cluster members.
 
 All squad members need to open the cluster invitation link, connect their wallet, accept all necessary advisories, and to verify the cluster configuration is correct with a signature. Each squad member will also need to upload and sign an ENR to represent their charon client, so see [steps 1](lido-csm.md#step-1-clone-the-repo) and [2](lido-csm.md#step-2-create-enr-and-backup-your-private-key) above.
 
-<figure><img src="../../.gitbook/assets/image (42).png" alt="Screenshot: All squad members need to open the cluster invitation link, connect their wallet, accept all necessary advisories, and to verify the cluster configuration is correct with a…."><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (42).png" alt="Screenshot: All squad members need to open the cluster invitation link, connect their wallet, accept all necessary advisories, and to verify the cluster configuration is correct with a…"><figcaption></figcaption></figure>
 
 Once all members confirm the configuration they will see the **Continue** button.
 

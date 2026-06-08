@@ -121,7 +121,7 @@ docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon ex
 
 After a threshold of signed partial exits from node operators in the cluster is accumulated, a full (complete) exit can be created. For example, in the cluster below, only 2 out of 4 clusters have reached the threshold. Operators will have to wait for one more partial exit signature, either from operator 1 or 3 to create a full exit message.
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt="Screenshot: After a threshold of signed partial exits from node operators in the cluster is accumulated, a full (complete) exit can be created. For example, in the cluster below, only 2 out…."><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt="Screenshot: After a threshold of signed partial exits from node operators in the cluster is accumulated, a full (complete) exit can be created. For example, in the cluster below, only 2 out…"><figcaption></figcaption></figure>
 
 **Step 3: Broadcast the full exit**
 
@@ -525,7 +525,7 @@ Once a validator has broadcasted an exit message, it must continue to validate f
 
 1.  Navigate to the config tab of your Obol DappNode package. Click 'Packages', then click 'My Packages', and enter the Obol package. Go to the config tab. At the bottom right corner of the page, click on 'Show Advanced Editor'.
 
-    <figure><img src="../../.gitbook/assets/image (17).png" alt="Screenshot: Navigate to the config tab of your Obol DappNode package. Click &#x27;Packages&#x27;, then click &#x27;My Packages&#x27;, and enter the Obol package. Go to the config tab. At the bottom right corner…."><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (17).png" alt="Screenshot: Navigate to the config tab of your Obol DappNode package. Click &#x27;Packages&#x27;, then click &#x27;My Packages&#x27;, and enter the Obol package. Go to the config tab. At the bottom right corner…"><figcaption></figcaption></figure>
 2.  The advanced editor config page provides ENV configs for each validator. Scroll to the validator number you want to exit and type “true” in the column opposite SIGN\_EXIT.
 
     <figure><img src="../../.gitbook/assets/image (18).png" alt="Screenshot: The advanced editor config page provides ENV configs for each validator. Scroll to the validator number you want to exit and type “true” in the column opposite SIGNEXIT."><figcaption></figcaption></figure>

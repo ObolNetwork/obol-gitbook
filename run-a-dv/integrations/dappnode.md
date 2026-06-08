@@ -13,7 +13,7 @@ Yes, they need to clean up the Charon and validator volumes. However, instead of
 1. Download a backup (keep a copy just in case).
 2. Edit the backup, keeping only the necessary files from the specific cluster (see image below)
 
-<figure><img src="../../.gitbook/assets/image.png" alt="Screenshot: Edit the backup, keeping only the necessary files from the specific cluster (see image below)."><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image.png" alt="Screenshot of the DappNode backup editor with only the relevant cluster files retained."><figcaption></figcaption></figure>
 
 3. Recompress the edited backup and upload it again after removing the Charon and validator volumes.
 

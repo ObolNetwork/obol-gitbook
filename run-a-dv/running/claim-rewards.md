@@ -71,7 +71,7 @@ The method for claiming rewards depends on the cluster's withdrawal configuratio
 
 To understand how claims via Launchpad work, it is highly recommended to first understand how splits work. More details are available [**here**](../../learn/intro/obol-splits.md). The flowchart below summarizes how an operator and a non-operator can interact with split contracts to facilitate claims:
 
-<figure><img src="../../.gitbook/assets/image (56).png" alt="Screenshot: To understand how claims via Launchpad work, it is highly recommended to first understand how splits work. More details are available here. The flowchart below summarizes how an…."><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (56).png" alt="Screenshot: To understand how claims via Launchpad work, it is highly recommended to first understand how splits work. More details are available here. The flowchart below summarizes how an…"><figcaption></figcaption></figure>
 
 **Updated OWR Process:**
 
@@ -98,6 +98,6 @@ If your cluster has multiple OWRs (one per validator), you will see a separate *
 
 #### Case 3: You just created a new cluster with no active validators or rewards, but it shows claimable amounts
 
-<figure><img src="../../.gitbook/assets/image (89).png" alt="Screenshot: If your cluster has multiple OWRs (one per validator), you will see a separate Distribute button for each OWR. You need to distribute from each OWR individually before claiming…."><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (89).png" alt="Screenshot: If your cluster has multiple OWRs (one per validator), you will see a separate Distribute button for each OWR. You need to distribute from each OWR individually before claiming…"><figcaption></figcaption></figure>
 
 The amount shown here is from a previous case and is now sitting in the Split Main, ready to be claimed. Unfortunately, it is not possible to associate the Split Main balance of an address with a specific cluster. If you are part of multiple clusters, your Split Main balance will appear next to all claim buttons, regardless of the cluster. We are working on a fix to avoid this confusion.

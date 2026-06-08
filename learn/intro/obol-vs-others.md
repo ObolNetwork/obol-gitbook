@@ -4,7 +4,7 @@ description: Some of the key terms in the field of Distributed Validator Technol
 
 # Obol vs Other DV Implementations
 
-This page outlines the unique features of Obol's DV implemenation, constrasting with other DV implementations. We built Obol’s DVT as a middleware to keep Ethereum secure, resilient, and composable. See also the blog article [Why We Built Charon as a Middleware](https://blog.obol.org/why-we-built-charon-as-a-middleware/).
+This page outlines the unique features of Obol's DV implementation, contrasting with other DV implementations. We built Obol’s DVT as a middleware to keep Ethereum secure, resilient, and composable. See also the blog article [Why We Built Charon as a Middleware](https://blog.obol.org/why-we-built-charon-as-a-middleware/).
 
 <figure><img src="../../.gitbook/assets/image (8) (1) (1).png" alt="Diagram contrasting Obol&#x27;s distributed validator architecture with alternative DV approaches."><figcaption></figcaption></figure>
 

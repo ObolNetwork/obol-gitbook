@@ -67,7 +67,7 @@ Before preparing the DappNode to take part in a Distributed Validator Cluster, y
     <figure><img src="../../.gitbook/assets/image (58).png" alt="Screenshot: Login to the DappNode Interface."><figcaption></figcaption></figure>
 2.  Click on the 'Stakers' tab on the left side, select an execution client (e.g. Geth) & consensus client (e.g. Lodestar) & click 'Apply changes'. This will start the syncing process which can take a number of hours.
 
-    <figure><img src="../../.gitbook/assets/image (64).png" alt="Screenshot: Click on the &#x27;Stakers&#x27; tab on the left side, select an execution client (e.g. Geth) &amp; consensus client (e.g. Lodestar) &amp; click &#x27;Apply changes&#x27;. This will start the syncing process…."><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (64).png" alt="Screenshot: Click on the &#x27;Stakers&#x27; tab on the left side, select an execution client (e.g. Geth) &amp; consensus client (e.g. Lodestar) &amp; click &#x27;Apply changes&#x27;. This will start the syncing process…"><figcaption></figcaption></figure>
 3.  Once the clients are finished syncing, it should reflect on your 'Dashboard' as shown below.
 
     <figure><img src="../../.gitbook/assets/image (65).png" alt="Screenshot: Once the clients are finished syncing, it should reflect on your &#x27;Dashboard&#x27; as shown below."><figcaption></figcaption></figure>
@@ -86,7 +86,7 @@ With a fully synced Ethereum node now running on the DappNode, the below steps w
     <figure><img src="../../.gitbook/assets/image (68).png" alt="Screenshot: Go back to DappNode Dashboard &gt; Dappstore, select the &#x27;Public&#x27; tab, and accept the terms &amp; conditions before proceeding."><figcaption></figcaption></figure>
 4.  Paste the IPFS hash you copied from Github and click 'Search' (It may take a minute for the package to be found.) You will then be presented with the package installation page. Under the blue 'Install' button, click on 'Advanced Options' & toggle the button to 'Bypass only signed safe restriction'.
 
-    <figure><img src="../../.gitbook/assets/image (69).png" alt="Screenshot: Paste the IPFS hash you copied from Github and click &#x27;Search&#x27; (It may take a minute for the package to be found.) You will then be presented with the package installation page.…."><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (69).png" alt="Screenshot: Paste the IPFS hash you copied from Github and click &#x27;Search&#x27; (It may take a minute for the package to be found.) You will then be presented with the package installation page.…"><figcaption></figcaption></figure>
 5.  Click 'Install' & in the config mode page > select new cluster & submit. (if you already have the config URL, you can select URL option.)
 
     <figure><img src="../../.gitbook/assets/image (70).png" alt="Screenshot: Click &#x27;Install&#x27; &amp; in the config mode page &gt; select new cluster &amp; submit. (if you already have the config URL, you can select URL option.)."><figcaption></figcaption></figure>
@@ -100,7 +100,7 @@ With a fully synced Ethereum node now running on the DappNode, the below steps w
     <figure><img src="../../.gitbook/assets/image (73).png" alt="Screenshot: You should now be able to see the Obol package under the &#x27;Packages&#x27; tab. Click on the package to see important details."><figcaption></figcaption></figure>
 8.  Under the 'Info' tab, you will see pre-generated ENRs, along with information such as the status of all five distributed validator clusters, their docker volumes & other menu options.
 
-    <figure><img src="../../.gitbook/assets/image (74).png" alt="Screenshot: Under the &#x27;Info&#x27; tab, you will see pre-generated ENRs, along with information such as the status of all five distributed validator clusters, their docker volumes &amp; other menu…."><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (74).png" alt="Screenshot: Under the &#x27;Info&#x27; tab, you will see pre-generated ENRs, along with information such as the status of all five distributed validator clusters, their docker volumes &amp; other menu…"><figcaption></figcaption></figure>
 9. Select any of the ENRs listed that are not already in use. This ENR will be used in the next step.
 
 For Step 2 of the quickstart:
@@ -371,7 +371,7 @@ For the [DKG](../../learn/charon/dkg.md) to complete, all operators need to be r
 
 1.  Once all operators successfully signed, your screen will automatically advance to the next step and look like this. Click `Continue`. (If you closed the tab, you can always go back to the invite link shared by the leader and connect your wallet.)
 
-    <figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt="Screenshot: Once all operators successfully signed, your screen will automatically advance to the next step and look like this. Click Continue. (If you closed the tab, you can always go back…."><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt="Screenshot: Once all operators successfully signed, your screen will automatically advance to the next step and look like this. Click Continue. (If you closed the tab, you can always go back…"><figcaption></figcaption></figure>
 2.  Copy and run the `docker` command on the screen into your terminal. It will retrieve the remote cluster details and begin the DKG process.
 
     <figure><img src="../../.gitbook/assets/image (2) (1).png" alt="Screenshot: Copy and run the docker command on the screen into your terminal. It will retrieve the remote cluster details and begin the DKG process."><figcaption></figcaption></figure>
@@ -394,24 +394,24 @@ and the DKG process should begin.
 {% tab title="DappNode" %}
 Follow this step if you are signing through the DV Launchpad, importing the cluster definition URL into the DappNode package's config & then running the DKG inside the DappNode, followed by cluster run.
 
-<figure><img src="../../.gitbook/assets/image (3) (1).png" alt="Screenshot: Follow this step if you are signing through the DV Launchpad, importing the cluster definition URL into the DappNode package&#x27;s config &amp; then running the DKG inside the DappNode,…."><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1).png" alt="Screenshot: Follow this step if you are signing through the DV Launchpad, importing the cluster definition URL into the DappNode package&#x27;s config &amp; then running the DKG inside the DappNode,…"><figcaption></figcaption></figure>
 
 1.  After all operators have signed with their wallet and has provided an ENR from the DappNode info tab, the Launchpad will instruct operators to begin the DKG ceremony. Click continue & navigate to the 'Dappnode/Avado' tab where the cluster definition URL is presented.
 
-    <figure><img src="../../.gitbook/assets/image (4) (1).png" alt="Screenshot: After all operators have signed with their wallet and has provided an ENR from the DappNode info tab, the Launchpad will instruct operators to begin the DKG ceremony. Click…."><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (4) (1).png" alt="Screenshot: After all operators have signed with their wallet and has provided an ENR from the DappNode info tab, the Launchpad will instruct operators to begin the DKG ceremony. Click…"><figcaption></figcaption></figure>
 2.  To run the Distributed Key Generation ceremony using a DappNode, you must paste the cluster definition URL into the Obol Package interface. Go to the 'Config' tab, select 'URL' from the dropdown menu, paste the cluster definition URL you retrieved from the launchpad, into the validator `cluster-*`field which matches the cluster you took the ENR from. Example: If you picked ENR1 for signing, then you should paste the URL into Cluster-1. Finally, click the 'Update' button at the bottom of the page.
 
-    <figure><img src="../../.gitbook/assets/image (6) (1).png" alt="Screenshot: To run the Distributed Key Generation ceremony using a DappNode, you must paste the cluster definition URL into the Obol Package interface. Go to the &#x27;Config&#x27; tab, select &#x27;URL&#x27;…."><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (6) (1).png" alt="Screenshot: To run the Distributed Key Generation ceremony using a DappNode, you must paste the cluster definition URL into the Obol Package interface. Go to the &#x27;Config&#x27; tab, select &#x27;URL&#x27;…"><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (7) (1).png" alt="Screenshot: To run the Distributed Key Generation ceremony using a DappNode, you must paste the cluster definition URL into the Obol Package interface. Go to the &#x27;Config&#x27; tab, select &#x27;URL&#x27;…."><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (7) (1).png" alt="Screenshot: To run the Distributed Key Generation ceremony using a DappNode, you must paste the cluster definition URL into the Obol Package interface. Go to the &#x27;Config&#x27; tab, select &#x27;URL&#x27;…"><figcaption></figcaption></figure>
 
-    <figure><img src="../../.gitbook/assets/image (8) (1).png" alt="Screenshot: To run the Distributed Key Generation ceremony using a DappNode, you must paste the cluster definition URL into the Obol Package interface. Go to the &#x27;Config&#x27; tab, select &#x27;URL&#x27;…."><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (8) (1).png" alt="Screenshot: To run the Distributed Key Generation ceremony using a DappNode, you must paste the cluster definition URL into the Obol Package interface. Go to the &#x27;Config&#x27; tab, select &#x27;URL&#x27;…"><figcaption></figcaption></figure>
 3.  After DappNode records the cluster definition URL, go back to the 'Info' tab and restart the Charon container.
 
     <figure><img src="../../.gitbook/assets/image (9) (1).png" alt="Screenshot: After DappNode records the cluster definition URL, go back to the &#x27;Info&#x27; tab and restart the Charon container."><figcaption></figcaption></figure>
 4.  The node is now ready and will attempt to complete the DKG. You can monitor the DKG progress via the 'Logs' tab of the package. Once all clients in the cluster can establish a connection with one another and they each complete a handshake (confirm everyone has a matching `cluster_definition_hash`), the key generation ceremony begins.
 
-    <figure><img src="../../.gitbook/assets/image (10) (1).png" alt="Screenshot: The node is now ready and will attempt to complete the DKG. You can monitor the DKG progress via the &#x27;Logs&#x27; tab of the package. Once all clients in the cluster can establish a…."><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (10) (1).png" alt="Screenshot: The node is now ready and will attempt to complete the DKG. You can monitor the DKG progress via the &#x27;Logs&#x27; tab of the package. Once all clients in the cluster can establish a…"><figcaption></figcaption></figure>
 5.  Example of DKG ceremony competed log.
 
     <figure><img src="../../.gitbook/assets/image (11) (1).png" alt="Screenshot: Example of DKG ceremony competed log."><figcaption></figcaption></figure>
