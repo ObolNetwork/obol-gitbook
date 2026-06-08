@@ -315,9 +315,10 @@ cast send $EXAMPLE_PULL_SPLIT_ADDRESS \
   --private-key $BACKEND_API_PRIVATE_KEY
 
 # Grant the customer the DEPOSIT_ROLE and WITHDRAWAL_ROLE
+# 0x21 = DEPOSIT_ROLE (0x20) | WITHDRAWAL_ROLE (0x01) = 33 in decimal
 cast send $EXAMPLE_OVM_ADDRESS \
   "grantRoles(address,uint256)" \
-  $EXAMPLE_CUSTOMER_ADDRESS 21 \
+  $EXAMPLE_CUSTOMER_ADDRESS 0x21 \
   --rpc-url $RPC_URL \
   --private-key $BACKEND_API_PRIVATE_KEY
 
