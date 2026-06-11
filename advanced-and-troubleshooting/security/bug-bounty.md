@@ -26,9 +26,12 @@ Eligible submissions must concern software and services developed by Obol, speci
 
 - [Charon](https://github.com/ObolNetwork/charon), the DV middleware client.
 - The [Obol DV Launchpad](https://launchpad.obol.org) and the [Obol public API](https://api.obol.tech).
-- The [Obol Splits](https://github.com/ObolNetwork/obol-splits) contracts (including the Obol Validator Manager).
+- The [Obol SDK](https://www.npmjs.com/package/@obolnetwork/obol-sdk) (`@obolnetwork/obol-sdk`).
+- The **Obol Validator Manager (OVM)** smart contracts — the current-generation withdrawal address contract that manages validator deposits, EIP-7002 triggered exits, EIP-7251 consolidations, and reward/principal splitting. Deployed on mainnet (`0x2c26B5A373294CaccBd3DE817D9B7C6aea7De584`), Sepolia, and Hoodi.
+- The **OBOL token** contract (`0x0B010000b7624eb9B3DfBC279673C76E9D29D5F7`) governing the Obol Collective.
+- Legacy **Obol Splits** contracts (OWR — Optimistic Withdrawal Recipient — and 0xSplits-based contracts deployed before the OVM). These remain in scope for live deployments but findings against deprecated code paths only are lower priority.
 - Obol-operated public relay infrastructure.
-- Charon's cluster lifecycle commands, including the experimental `charon alpha edit` family.
+- Charon's cluster lifecycle commands, including the DKG ceremony and the experimental `charon alpha edit` family.
 
 Submissions related to the following are considered out of scope:
 
@@ -39,7 +42,7 @@ Submissions related to the following are considered out of scope:
 - Third-party application or library vulnerabilities (please report upstream).
 - The [obol.org](https://obol.org) static website and Obol's internal corporate infrastructure.
 - The operational security of node operators running Obol software (operators are responsible for their own host security).
-- The Obol Stack and its in-cluster components (Hermes, OpenClaw, x402 facilitator, Cloudflared, eRPC, etc.). The Obol Stack is alpha software and is not yet in scope for this bounty.
+- The Obol Stack and its in-cluster components (Hermes, OpenClaw, x402 facilitator, Cloudflared, eRPC, etc.). The Obol Stack is pre-release software and is currently out of scope. It will be added to the program when it reaches a stable, publicly supported release.
 
 ## How we prioritize
 
@@ -73,9 +76,11 @@ Eligible impacts:
 
 - An external attacker (not a cluster member) can cause a Charon cluster to produce a slashable signature, or otherwise trigger a slashing event, without colluding with cluster operators.
 - An external attacker can exfiltrate enough BLS validator key shares from a threshold of operators in a cluster to reconstruct a validator's full private key.
-- A vulnerability in Obol Splits or the Obol Validator Manager allows direct theft of delegator or operator funds at rest or in flight.
+- A vulnerability in the OVM allows an attacker to bypass role-based access controls (WITHDRAWAL_ROLE, CONSOLIDATION_ROLE, DEPOSIT_ROLE) to trigger unauthorized EIP-7002 voluntary exits or EIP-7251 consolidations, or to redirect principal or rewards to an address they control.
+- A vulnerability in Obol Splits, the OVM, or legacy OWR contracts allows direct theft of delegator or operator funds at rest or in flight.
 - A vulnerability in the DV Launchpad or its dependencies allows an attacker to craft a cluster invite that passes careful operator review while diverting deposits or substituting withdrawal credentials.
 - Remote code execution in Charon, exploitable from a peer or relay connection, without prior compromise of the host.
+- A vulnerability in the OBOL token contract that allows unauthorized minting, burning, or transfer of tokens at scale.
 
 ### High Vulnerabilities: Up to $5,000
 
@@ -88,9 +93,11 @@ Eligible impacts:
 - An external attacker can destroy validator funds (e.g. force exit-with-loss) but cannot steal them.
 - An external attacker compromises Obol-operated public relay infrastructure in a way that reveals cluster topologies, disrupts peer discovery across many clusters, or facilitates partitioning attacks against the clusters relying on it.
 - An attacker exfiltrates pre-signed exit messages held by the Obol API and uses them to forcibly exit validators against the delegator's wishes (see [Centralization Risks](risks.md)).
-- An attacker subverts a `charon alpha edit` ceremony (add/remove operators, add validators, recreate keys) such that the post-ceremony cluster is no longer controlled by its legitimate operators.
+- An attacker subverts a `charon alpha edit` ceremony (add/remove operators, add validators, recreate keys) or the DKG ceremony such that the post-ceremony cluster is no longer controlled by its legitimate operators.
 - Retrieval of sensitive operational secrets from a running Obol-operated service: BLS or ENR keys, database credentials, signing keys for the public API, etc.
-- Authenticated, state-modifying actions on the DV Launchpad performed on behalf of another user without their interaction (changing cluster definitions, redirecting withdrawals, etc.).
+- Authenticated, state-modifying actions on the DV Launchpad or the Obol API performed on behalf of another user without their interaction (changing cluster definitions, redirecting withdrawals, manipulating pre-signed exits, etc.).
+- A vulnerability in the OVM role assignment (bitwise permission system) that allows escalation to a higher-privileged role without the owner's consent, without enabling immediate fund theft.
+- A supply chain or injection vulnerability in the published Obol SDK (`@obolnetwork/obol-sdk`) that could cause downstream integrators to generate malformed or attacker-controlled cluster definitions or deposit data.
 
 ### Medium Vulnerabilities: Up to $1,000
 
@@ -102,10 +109,11 @@ Eligible impacts:
 - A cluster member can DoS enough peers in their own cluster to take the validator offline, beyond what is possible by simply going offline themselves.
 - A cluster member can bias the protocol to control a disproportionate share of block proposal opportunities or other duty assignment.
 - A DV Launchpad user can be steered into interacting with a smart contract that is not part of the normal launchpad flow.
-- A vulnerability in Obol Splits or the Obol Validator Manager prevents the contract from operating normally without permanent loss of funds (e.g. temporary freeze, denial of withdrawal under specific state).
-- Block-stuffing-style or unbounded-gas vulnerabilities in Obol Splits.
+- A vulnerability in the OVM or legacy Obol Splits contracts prevents normal operation without permanent loss of funds (e.g. temporary freeze, denial of withdrawal or consolidation under specific state).
+- Block-stuffing-style or unbounded-gas vulnerabilities in any Obol smart contract.
 - Charon cluster lock-file tampering accepted by a victim operator who is *not* running with `--no-verify`.
 - An open-redirect or similar phishing aid on Obol-operated domains.
+- Manipulation of OBOL token governance (e.g. vote inflation, delegation hijacking) that does not directly steal tokens.
 
 ### Low Vulnerabilities: Up to $250
 
@@ -115,7 +123,7 @@ Eligible impacts:
 
 - An attacker can occasionally put a Charon node into a state that causes it to drop a small fraction of attestations (e.g. one in a hundred).
 - An attacker can display incorrect data on a non-interactive part of the DV Launchpad.
-- An Obol Splits contract behaves suboptimally but does not lose value or block legitimate operations.
+- An Obol smart contract behaves suboptimally but does not lose value or block legitimate operations.
 - Temporary lockout from a wallet-connected session on Obol-operated services that does not persist past a normal session refresh.
 - Takeover of broken or expired outgoing links from Obol-operated content (e.g. abandoned social handles linked from official channels).
 - Minor griefing or local-storage tampering that requires significant social interaction to land and does not modify server-side state.
@@ -126,7 +134,7 @@ Rewards may be issued as cash, merchandise, or other forms of recognition, at Ob
 
 The following activities are not authorized under this program:
 
-- Any testing on mainnet or public testnet deployed code; all testing should be done on local forks.
+- Any testing on mainnet or public testnet deployed code; all testing must be done on local forks. For network-specific testing, Hoodi is the preferred testnet.
 - Any testing involving pricing oracles or third-party smart contracts.
 - Phishing or other social engineering attacks against Obol employees, contractors, partners, or community members.
 - Any testing against third-party systems, applications, browser extensions, or websites (including SSO providers and advertising networks).
@@ -135,6 +143,8 @@ The following activities are not authorized under this program:
 - Public disclosure of an unpatched vulnerability under an embargoed bounty.
 
 ## Submission process
+
+Before investing significant time in a proof of concept, you may email [security@obol.tech](mailto:security@obol.tech) with a brief, non-detailed description of the affected component and the class of vulnerability (e.g. "potential role escalation in OVM" or "Charon peer message handling"). We will confirm within 48 hours whether the issue is already known or under active remediation. This check does not establish submission priority — it only avoids duplicate effort.
 
 To report a vulnerability, please contact us at [security@obol.tech](mailto:security@obol.tech) with:
 
