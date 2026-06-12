@@ -142,6 +142,17 @@ Be cautious when interacting with unknown ERC20 addresses, they may not behave a
 ```
 {% endcode %}
 
+### Ownership Transfer
+
+The `owner` address can call the `transfer()` method to hand over control of an Obol Validator Manager in a single transaction. It sets a new beneficiary (the address receiving returned principal) and transfers contract ownership to a new owner. This is useful when transferring or selling a validator position without exiting the underlying validators.
+
+{% hint style="danger" %}
+`transfer()` updates **only** the beneficiary and the owner. The contract does not enforce a reset of any other state, in particular:
+
+* **Previously granted roles are not revoked.** Any addresses granted roles (such as `WITHDRAWAL_ROLE` or `SET_REWARD_ROLE`) by the previous owner keep those roles after the transfer. The new owner should audit role assignments — using `rolesOf()` for known addresses, or by reviewing the contract's `RolesUpdated` event history — and call `revokeRoles()` for any address that should no longer have access.
+* **The reward recipient is not changed.** Accrued rewards will continue to be sent to the existing `rewardRecipient` address when `distributeFunds()` is called. The new owner (or an address with the `SET_REWARD_ROLE`) should call `setRewardRecipient()` if rewards should flow to a different address.
+{% endhint %}
+
 ## Optimistic Withdrawal Recipient[​](#optimistic-withdrawal-recipient) <a href="#optimistic-withdrawal-recipient" id="optimistic-withdrawal-recipient"></a>
 
 <figure><img src="../../.gitbook/assets/image (15) (1) (1).png" alt="Diagram of the Optimistic Withdrawal Recipient contract separating validator principal from rewards."><figcaption></figcaption></figure>
@@ -235,6 +246,10 @@ In this case, the OVM contract will not have recorded the deposit as principal t
 #### What is the principal threshold for?
 
 Determining if Ether returned from a validator is principal deposited or rewards accrued is difficult. Rather than introducing an off-chain proof system, or trusted oracle, Obol Splits adopt an assumption that a mass slashing so severe that the principal returned is less than 16 eth is very rare, and the outcome that would happen in that case is the rewards would be sent to the reward rather than principal address, an accepted risk. This however does impact reward claiming on very large 0x02 validators. A validator could have earned 20 ether in rewards, and if a request for withdrawal of 20 ether is processed, it would be subtracted from principal and disbursed to the principal recipient, and upon a full exit, the remaining eth beyond the principal would be sent to the rewards address. To avoid this, entities with the `WITHDRAWAL_ROLE` should withdraw increments less than the `principalThreshold` if they want it treated as reward, and more than `principalThreshold` if they want to process it as a direct exit.
+
+#### What should I check after receiving an OVM through the transfer() method?
+
+The `transfer()` method changes only the owner and the beneficiary, so the contract may still carry configuration from the previous owner. Before relying on the contract, verify that no unexpected addresses hold roles (check `rolesOf()` for known addresses, or review the contract's `RolesUpdated` event history) and revoke any with `revokeRoles()`. Also check the `rewardRecipient` address, as it is not changed by the transfer, and update it with `setRewardRecipient()` if needed. See [Ownership Transfer](obol-splits.md#ownership-transfer) for details.
 
 ### Can I change the percentages in a split?
 
