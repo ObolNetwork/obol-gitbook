@@ -195,6 +195,10 @@ obol sell list                    # services you're selling
 obol sell status <name>           # ServiceOffer reconciliation state
 ```
 
+{% hint style="info" %}
+`obol stack up` gives you a **temporary** tunnel URL that changes on every restart. When you're ready to sell, give your stack a stable hostname — see [Set up a permanent URL](permanent-url.md).
+{% endhint %}
+
 ## Stopping and cleaning up
 
 ```shell

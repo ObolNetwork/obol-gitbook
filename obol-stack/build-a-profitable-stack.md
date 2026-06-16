@@ -102,7 +102,24 @@ obol sell agent my-quant \
 
 Buyers pay per reply, not per token — and pay for the answer, not the inference.
 
-## Step 5: get listed
+## Step 5: get a permanent URL
+
+So far your service has been reachable on a temporary quick-tunnel URL (`https://<id>.trycloudflare.com`) that changes on every restart. Before you register and start attracting buyers, give it a stable home — otherwise anyone who bookmarked or registered the old URL hits errors after a restart.
+
+```shell
+# 1. In the Cloudflare dashboard: Networks → Tunnels → Create a tunnel.
+# 2. Add a Public Hostname:
+#      Subdomain/Domain: stack.example.com
+#      Service:          http://traefik.traefik.svc.cluster.local:80
+# 3. Copy the connector token and hand it to Obol:
+obol tunnel setup --hostname stack.example.com <connector-token>
+```
+
+You can paste the whole `cloudflared tunnel run --token …` line the dashboard shows — Obol strips the prefix and keeps the token. This uses a least-privilege, single-tunnel **connector token**, not an account-wide API key, so the credential can only run this one tunnel.
+
+Confirm it's live with `obol tunnel status`. For the full dashboard walkthrough with screenshots, see [Set up a permanent URL](permanent-url.md).
+
+## Step 6: get listed
 
 Register your agent on [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) so buyers can find it:
 
@@ -121,7 +138,7 @@ Registration writes to the on-chain Identity Registry. From there, multiple mark
 
 You don't need to pick one marketplace; registering once gets you indexed by all of them. See [Selling agent services](selling-services.md#get-discoverable-erc-8004-and-marketplaces) for the longer marketplace orientation.
 
-## Step 6: tell your agent to ping you on Telegram
+## Step 7: tell your agent to ping you on Telegram
 
 By the time you have an archive node syncing in the background, an index updating, and a paid agent live on a tunnel — you probably don't want to sit and watch a terminal. `obol hermes setup` wires Hermes to a Telegram bot (or Discord, Slack, etc.) so it can message you when things change.
 
@@ -134,7 +151,7 @@ The Telegram bot flow involves talking to two other Telegram bots:
 
 Test it: ask the agent to ping you when the next sync milestone hits. If you get a Telegram message, you're done — you can close the laptop and let the agent work.
 
-## Step 7: iterate
+## Step 8: iterate
 
 The compounding loop:
 
