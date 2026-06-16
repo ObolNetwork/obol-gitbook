@@ -112,6 +112,7 @@
 * [Quickstart](obol-stack/quickstart.md)
 * [Build a Profitable Obol Stack](obol-stack/build-a-profitable-stack.md)
 * [Selling Agent Services](obol-stack/selling-services.md)
+* [Set up a Permanent URL](obol-stack/permanent-url.md)
 * [Installing Networks](obol-stack/installing-networks.md)
 * [Installing Apps](obol-stack/installing-apps.md)
 * [FAQ](obol-stack/faq.md)
