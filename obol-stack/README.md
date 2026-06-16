@@ -41,7 +41,7 @@ The cluster runs entirely on your machine via [k3d](https://k3d.io/) (Kubernetes
 | `obol network list / install / sync / delete` | Manage blockchain networks |
 | `obol sell demo / inference / http / list / status / register` | Create payment-gated services and register on ERC-8004 |
 | `obol app install / sync / list / delete` | Install arbitrary Helm charts |
-| `obol tunnel status / login / provision` | Manage Cloudflare tunnels |
+| `obol tunnel status / setup / restart` | Manage the Cloudflare tunnel (`setup` creates a permanent URL) |
 | `obol kubectl / helm / helmfile / k9s` | Kubernetes tool passthroughs (auto-configured `KUBECONFIG`) |
 
 ## Default infrastructure
