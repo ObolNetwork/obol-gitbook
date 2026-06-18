@@ -199,17 +199,85 @@ At this point, execution and consensus clients should start syncing. Charon and 
 
 ## Part 3: Upload the public keys and deposit to Lido CSM
 
-CSM V2 enables a new Operator Type called Identified Community Staker ("ICS"). The squad member who is an ICS should be the one to create the node through the CSM widget. Doing so ensures the clusters validators receive [ICS benefits](https://blog.lido.fi/unlock-exclusive-benefits-as-an-identified-community-staker/).&#x20;
+CSM V3 introduces a new operator type, **Identified DVT Cluster (IDVTC)**, that is purpose-built for distributed validator clusters. An IDVTC cluster must have exactly four operators (no more, no less), and every operator must already hold the [Identified Community Staker (ICS)](https://blog.lido.fi/unlock-exclusive-benefits-as-an-identified-community-staker/) operator type. See [Lido's IDVTC description page](https://csm.lido.fi/type/idvtc-description) for full eligibility and rules.
 
-ICS member heads to [csm.lido.fi](https://csm.lido.fi/) and connects their wallet.
+Choose the tab below that matches how your cluster will deposit. Both flows continue with the shared [Create the Node Operator](#create-the-node-operator) section once any pre-deposit steps are complete.
 
-<figure><img src="../../.gitbook/assets/image (47).png" alt="Screenshot: ICS member heads to csm.lido.fi and connects their wallet."><figcaption></figcaption></figure>
+{% tabs %}
+{% tab title="ICS" %}
+A single squad member who holds ICS should be the one to create the node through the CSM widget. Doing so ensures the cluster's validators receive [ICS benefits](https://blog.lido.fi/unlock-exclusive-benefits-as-an-identified-community-staker/).
 
-The ICS member clicks on the **Create Node Operator** button.
+There are no additional pre-deposit steps for ICS clusters. Proceed to [Create the Node Operator](#create-the-node-operator) below.
+{% endtab %}
+
+{% tab title="IDVTC" %}
+Before depositing, your cluster must be approved as an Identified DVT Cluster. The squad leader submits a single application on behalf of all four operators.
+
+{% hint style="info" %}
+The squad leader connects to the Lido CSM UI using the **SAFE multisig** wallet (created in [Part 1](#deploy-the-safe)) via WalletConnect. WalletConnect sessions can drop if the initiator disconnects, so **keep the browser tab and WalletConnect session open** while you collect the threshold of SAFE signatures needed to connect.
+{% endhint %}
+
+### Step 1: Open the IDVTC Application Form
+
+The squad leader navigates to [csm.lido.fi](https://csm.lido.fi/), connects the SAFE multisig via WalletConnect, then in the left sidebar clicks **Operator Type** followed by **Apply for IDVTC**. You can also navigate directly to [csm.lido.fi/type/idvtc-apply](https://csm.lido.fi/type/idvtc-apply).
+
+<figure><img src="../../.gitbook/assets/lido-csm-idvtc-apply-form.png" alt="Screenshot: The Apply for Identified DVT Cluster form in the Lido CSM UI, showing the verified Main address and the Discord and Telegram social verification sections."><figcaption></figcaption></figure>
+
+The **Main address** shown on the form will be the connected SAFE multisig.
+
+### Step 2: Prove Discord Ownership
+
+1. In the **Discord** section, click **Copy** to copy the generated proof message.
+2. Post the message in the [Lido CSM Discord channel](https://discord.gg/lido). The application form links directly to the correct channel.
+3. Copy the link to your posted message and paste it into the **Discord message link** field.
+
+Optionally, add a Telegram username in the **Telegram** field for follow-up communication from the Lido team.
+
+### Step 3: Verify the Four Cluster Member Addresses
+
+This section requires coordination with your three teammates. Each cluster member must prove ownership of their ICS-verified Ethereum address by signing a message on Etherscan.
+
+<figure><img src="../../.gitbook/assets/lido-csm-idvtc-cluster-members.png" alt="Screenshot: The Cluster member addresses section of the IDVTC application form, showing the address input, generated message to sign, and signature verification field for each of the four cluster members."><figcaption></figcaption></figure>
+
+Starting with **Cluster member #1** (typically the squad leader), and then for each remaining member:
+
+1. Enter the member's ICS-verified Ethereum address into the **Cluster member #N** field. The form generates a unique **Message to sign** for that address.
+2. Click **Sign** next to the message. This opens Etherscan's [Verified Signatures](https://etherscan.io/verifiedsignatures) tool in a new tab.
+3. The member whose address is being verified connects their wallet to Etherscan, pastes the generated message into the **Message** field, clicks **Sign Message**, and then **Publish**.
+4. Etherscan returns a signature. Paste the signature into the **Signature** field in the application form and click **Verify**.
+5. When the signature is valid, the member's status flips from **Unverified** to **Verified**.
+
+Repeat for cluster members #2, #3, and #4.
+
+{% hint style="info" %}
+The squad leader does not need to be physically co-located with the other members. Send each teammate the generated message and the Etherscan signing link, then collect the resulting signature from them to paste into the form on their behalf.
+{% endhint %}
+
+### Step 4: Submit the Application
+
+Once all four cluster members show as **Verified**, tick the confirmation checkbox at the bottom of the form, then click **Submit application**.
+
+<figure><img src="../../.gitbook/assets/lido-csm-idvtc-submit.png" alt="Screenshot: The bottom of the IDVTC application form showing Cluster member #4 verification, the I confirm that checkbox listing eligibility and monitoring criteria, and the Submit application button."><figcaption></figcaption></figure>
+
+{% hint style="warning" %}
+At time of writing, the Lido IDVTC application review and approval flow has not yet been finalized publicly. Once Lido publishes the post-submission process (including how applicants are notified of approval and how to proceed with depositing as an IDVTC), this section will be updated.
+{% endhint %}
+
+Once your IDVTC application is approved, proceed to [Create the Node Operator](#create-the-node-operator) below.
+{% endtab %}
+{% endtabs %}
+
+### Create the Node Operator
+
+An ICS member of the cluster heads to [csm.lido.fi](https://csm.lido.fi/) and connects their wallet.
+
+<figure><img src="../../.gitbook/assets/image (47).png" alt="Screenshot: An ICS member heads to csm.lido.fi and connects their wallet."><figcaption></figcaption></figure>
+
+Click the **Create Node Operator** button.
 
 <figure><img src="../../.gitbook/assets/image (48).png" alt="Screenshot: The ICS member clicks on the Create Node Operator button."><figcaption></figcaption></figure>
 
-* The ICS member pastes the contents of the `deposit-data.json` file into the `Upload deposit data` field. The ICS member should have enough ETH/stETH/wstETH to cover the bond.
+* Paste the contents of the `deposit-data.json` file into the **Upload deposit data** field. The member submitting the transaction should have enough ETH/stETH/wstETH to cover the bond.
 * Expand the **Specify custom addresses** section.
   * Set the **Reward Address** field to the `Split` contract address and the **Manager Address** field to the `Safe` wallet address. (These were created previously in [part 1](lido-csm.md#part-1-creating-the-cluster-safe--splitter-contract))
   * Verify that the **Extended** box is outlined. This ensures that the `Safe` address has the ability to change the reward address if necessary.
