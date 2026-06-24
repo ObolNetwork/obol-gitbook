@@ -12,7 +12,7 @@ The updated fee recipient address applies to both MEV (builder API) and non-MEV 
 
 ## Prerequisites
 
-- A running distributed validator cluster with Charon `v1.10.2` or later.
+- A running distributed validator cluster with Charon `v1.10.3` or later.
 - Access to validator private key shares on each operator's node.
 - Agreement among a threshold of operators on the new fee recipient address and which validator public keys to update.
 
@@ -29,13 +29,13 @@ The workflow involves three steps:
 Before making changes, list the current fee recipient details for your validators:
 
 ```sh
-docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon:v1.10.2 feerecipient list
+docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon:v1.10.3 feerecipient list
 ```
 
 To check specific validators only:
 
 ```sh
-docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon:v1.10.2 feerecipient list \
+docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon:v1.10.3 feerecipient list \
   --validator-public-keys="0xYOUR_VALIDATOR_PUBKEY"
 ```
 
@@ -48,7 +48,7 @@ A threshold of operators must each run the `feerecipient sign` command with matc
 Each participating operator runs:
 
 ```sh
-docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon:v1.10.2 feerecipient sign \
+docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon:v1.10.3 feerecipient sign \
   --fee-recipient="0xNEW_FEE_RECIPIENT_ADDRESS" \
   --validator-public-keys="0xVALIDATOR_PUBKEY_1,0xVALIDATOR_PUBKEY_2"
 ```
@@ -66,7 +66,7 @@ Operators do not need to sign simultaneously. The first operator to sign sets th
 Besides the fee recipient address, the `sign` command also allows you to modify the gas limit for builder registrations by passing the `--gas-limit` flag. If not set, the existing gas limit from the cluster lock or overrides file is used.
 
 ```sh
-docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon:v1.10.2 feerecipient sign \
+docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon:v1.10.3 feerecipient sign \
   --fee-recipient="0xNEW_FEE_RECIPIENT_ADDRESS" \
   --gas-limit=36000000 \
   --validator-public-keys="0xVALIDATOR_PUBKEY_1"
@@ -77,7 +77,7 @@ docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon
 Once a threshold of operators have submitted their partial signatures, any operator can fetch the fully aggregated builder registrations:
 
 ```sh
-docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon:v1.10.2 feerecipient fetch \
+docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon:v1.10.3 feerecipient fetch \
   --validator-public-keys="0xVALIDATOR_PUBKEY_1,0xVALIDATOR_PUBKEY_2"
 ```
 
@@ -96,7 +96,7 @@ The `--validator-public-keys` flag is optional for the `fetch` command. If omitt
 After fetching, confirm the updated fee recipients are in place:
 
 ```sh
-docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon:v1.10.2 feerecipient list
+docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon:v1.10.3 feerecipient list
 ```
 
 You should see the new fee recipient address reflected for the updated validators.
