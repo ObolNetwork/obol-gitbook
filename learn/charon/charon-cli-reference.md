@@ -821,10 +821,6 @@ Use "charon alpha edit [command] --help" for more information about a command.
 
 The `charon alpha edit add-validators` command allows you to generate new validators and add them to an existing cluster. This process is very similar to the `charon dkg` ceremony, which requires all node operators to participate, because under the hood it runs the same DKG protocol with additional actions and verifications.
 
-{% hint style="warning" %}
-This is an alpha feature and is not yet recommended for production use.
-{% endhint %}
-
 ```markdown
 charon alpha edit add-validators --help
 Generates and appends new validator keys to an existing distributed validator cluster.
@@ -867,10 +863,6 @@ Flags:
 
 The `charon alpha edit add-operators` command adds new operators to an existing distributed validator cluster while keeping all validator public keys unchanged. All existing operators and new operators must participate in this ceremony.
 
-{% hint style="warning" %}
-This is an alpha feature and is not yet recommended for production use.
-{% endhint %}
-
 ```markdown
 charon alpha edit add-operators --help
 Adds new operators to an existing distributed validator cluster, keeping validator public keys unchanged.
@@ -907,10 +899,6 @@ Flags:
 #### Remove operators from a cluster
 
 The `charon alpha edit remove-operators` command removes operators from an existing distributed validator cluster while leaving all validators intact. Remaining operators must participate in this ceremony.
-
-{% hint style="warning" %}
-This is an alpha feature and is not yet recommended for production use.
-{% endhint %}
 
 ```markdown
 charon alpha edit remove-operators --help
@@ -951,10 +939,6 @@ Flags:
 
 The `charon alpha edit replace-operator` command replaces an operator in an existing distributed validator cluster, keeping validator public keys unchanged.
 
-{% hint style="warning" %}
-This is an alpha feature and is not yet recommended for production use.
-{% endhint %}
-
 ```markdown
 charon alpha edit replace-operator --help
 Replaces an operator in an existing distributed validator cluster, keeping validator public keys unchanged.
@@ -992,10 +976,6 @@ Flags:
 #### Recreate private key shares
 
 The `charon alpha edit recreate-private-keys` command creates new private key shares to replace the existing validator private keys while retaining the same operator identities and validator public keys. All operators must participate in this ceremony.
-
-{% hint style="warning" %}
-This is an alpha feature and is not yet recommended for production use.
-{% endhint %}
 
 ```markdown
 charon alpha edit recreate-private-keys --help
