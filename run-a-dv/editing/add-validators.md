@@ -5,10 +5,6 @@ description: >-
 
 # Adding Validators
 
-{% hint style="warning" %}
-This is an alpha feature and is not yet recommended for production use.
-{% endhint %}
-
 You can add validators to your cluster using the `charon alpha edit add-validators` command. The example below is designed for the [CDVN repository](https://github.com/ObolNetwork/charon-distributed-validator-node) and assumes a Lodestar validator, but the process is similar for other setups.
 
 ## Prerequisites

@@ -5,10 +5,6 @@ description: >-
 
 # Adding Operators
 
-{% hint style="warning" %}
-This is an alpha feature and is not yet recommended for production use.
-{% endhint %}
-
 You can add operators to your cluster using the `charon alpha edit add-operators` command. This operation keeps all distributed validator public keys unchanged while adding new operators to the cluster.
 
 ## Prerequisites
