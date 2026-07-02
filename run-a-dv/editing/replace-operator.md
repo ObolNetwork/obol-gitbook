@@ -12,10 +12,6 @@ There are two methods for changing the operators in a distributed validator clus
 
 ## Method 1: Edit Command (Replace Operator)
 
-{% hint style="warning" %}
-This is an alpha feature and is not yet recommended for production use.
-{% endhint %}
-
 You can replace an operator in your cluster using the `charon alpha edit replace-operator` command. This operation keeps all validators intact while swapping one operator for another in the cluster.
 
 ### Prerequisites
