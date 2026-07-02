@@ -61,6 +61,10 @@ docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon
 Operators do not need to sign simultaneously. The first operator to sign sets the timestamp to the current time. Subsequent operators automatically adopt the first signer's timestamp and registration data from the remote API, ensuring all partial signatures are compatible. If operators prefer to coordinate explicitly, they can agree on a Unix timestamp beforehand and pass it with the `--timestamp` flag.
 {% endhint %}
 
+{% hint style="warning" %}
+Builder registrations are applied by timestamp. If you set `--timestamp` manually, choose a timestamp later than the current latest registration for the validators being updated. You can check the latest timestamp with `charon feerecipient list`. A registration with an older timestamp may be signed and submitted, but it will not replace a newer registration.
+{% endhint %}
+
 ### Updating the gas limit
 
 Besides the fee recipient address, the `sign` command also allows you to modify the gas limit for builder registrations by passing the `--gas-limit` flag. If not set, the existing gas limit from the cluster lock or overrides file is used.
@@ -81,14 +85,18 @@ docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon
   --validator-public-keys="0xVALIDATOR_PUBKEY_1,0xVALIDATOR_PUBKEY_2"
 ```
 
-This writes the aggregated registrations to the overrides file at `.charon/builder_registrations_overrides.json`.
+This merges the aggregated registrations into the overrides file at `.charon/builder_registrations_overrides.json`. Existing overrides for validators that are not included in the fetch are preserved. If the file already contains an override for a fetched validator, Charon keeps the registration with the latest timestamp.
 
 {% hint style="info" %}
-If not enough operators have signed yet, the command will return an error. Coordinate with your cluster peers to ensure the threshold is met.
+If not enough operators have signed yet, the command logs that no fully signed builder registrations are available and does not write or update the overrides file. Coordinate with your cluster peers to ensure the threshold is met, then run `fetch` again.
 {% endhint %}
 
 {% hint style="info" %}
 The `--validator-public-keys` flag is optional for the `fetch` command. If omitted, it fetches registrations for all validators in the cluster.
+{% endhint %}
+
+{% hint style="info" %}
+Fetched builder registrations are signature-verified before they are written or applied. A registration that fails verification is skipped and logged as a warning; registrations for other validators in the same fetch are still merged and written.
 {% endhint %}
 
 ## 4. Verify the change
@@ -99,7 +107,7 @@ After fetching, confirm the updated fee recipients are in place:
 docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon:v1.10.3 feerecipient list
 ```
 
-You should see the new fee recipient address reflected for the updated validators.
+You should see the new fee recipient address reflected for the updated validators. If a validator still shows the previous fee recipient, check whether enough operators signed the same fee recipient, gas limit, and timestamp, and whether a newer registration already exists for that validator.
 
 ## Automatic application by Charon
 
