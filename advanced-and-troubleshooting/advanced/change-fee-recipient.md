@@ -54,7 +54,7 @@ docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon
 ```
 
 {% hint style="info" %}
-`validator-public-keys` are the distributed validator public keys for which the fee recipient should be updated (find them in your `cluster-lock.json` file or on the DV Launchpad). `fee-recipient` is the new Ethereum address that will receive transaction tips and MEV rewards for the specified validators.
+`validator-public-keys` are the distributed validator public keys for which the fee recipient should be updated (find them in your `cluster-lock.json` file or on the DV Launchpad). `fee-recipient` is the new Ethereum address that will receive transaction tips and MEV rewards for the specified validators. The address must not be the zero address, and if supplied in mixed case it must match its EIP-55 checksum — both protect against typos that would irrecoverably send rewards to the wrong address.
 {% endhint %}
 
 {% hint style="info" %}
@@ -62,12 +62,12 @@ Operators do not need to sign simultaneously. The first operator to sign sets th
 {% endhint %}
 
 {% hint style="warning" %}
-Builder registrations are applied by timestamp. If you set `--timestamp` manually, choose a timestamp later than the current latest registration for the validators being updated. You can check the latest timestamp with `charon feerecipient list`. A registration with an older timestamp may be signed and submitted, but it will not replace a newer registration.
+Builder registrations are applied by timestamp. If you set `--timestamp` manually, choose a timestamp later than the current latest registration for the validators being updated. You can check the latest timestamp with `charon feerecipient list`. The `sign` command rejects a timestamp that is not later than the registration that currently has quorum on the remote API, since the resulting registration would never be applied. When joining an in-progress registration started by another operator, the in-progress timestamp and gas limit are adopted even if you pass different values, so all partial signatures aggregate — a warning is logged when your explicit flags are overridden.
 {% endhint %}
 
 ### Updating the gas limit
 
-Besides the fee recipient address, the `sign` command also allows you to modify the gas limit for builder registrations by passing the `--gas-limit` flag. If not set, the existing gas limit from the cluster lock or overrides file is used.
+Besides the fee recipient address, the `sign` command also allows you to modify the gas limit for builder registrations by passing the `--gas-limit` flag. If not set, the gas limit is taken from whichever source is most recent for the validator: the cluster lock, the local overrides file, or the registration that currently has quorum on the remote API. Consulting the remote API keeps operators with divergent local files signing the same gas limit.
 
 ```sh
 docker run -u $(id -u):$(id -g) --rm -v "$(pwd)/:/opt/charon" obolnetwork/charon:v1.10.0 feerecipient sign \
@@ -96,7 +96,11 @@ The `--validator-public-keys` flag is optional for the `fetch` command. If omitt
 {% endhint %}
 
 {% hint style="info" %}
-Fetched builder registrations are signature-verified before they are written or applied. A registration that fails verification is skipped and logged as a warning; registrations for other validators in the same fetch are still merged and written.
+Fetched builder registrations are signature-verified before they are written or applied. A registration that fails verification is skipped and logged as a warning; registrations for other validators in the same fetch are still merged and written. A fetched registration that is not newer than the existing override for the same validator is discarded with a warning.
+{% endhint %}
+
+{% hint style="info" %}
+A corrupt or invalid overrides file does not block fetching: `fetch` logs a warning, discards the unreadable content, and rebuilds the file from the valid existing entries and the fetched registrations. The file is written atomically, so an interrupted fetch cannot leave a truncated file behind.
 {% endhint %}
 
 ## 4. Verify the change
