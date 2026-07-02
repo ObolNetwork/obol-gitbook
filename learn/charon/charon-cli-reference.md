@@ -688,7 +688,7 @@ Use "charon feerecipient [command] --help" for more information about a command.
 
 ### Sign new fee recipient builder registrations
 
-The `charon feerecipient sign` command signs new builder registration messages to update the preferred fee recipient and publishes them to a remote API. A threshold of operators must run this command with matching parameters for the new fee recipient to take effect.
+The `charon feerecipient sign` command signs new builder registration messages to update the preferred fee recipient and publishes them to a remote API. A threshold of operators must run this command with matching parameters for the new fee recipient to take effect. Builder registrations are applied by timestamp, so a manually supplied `--timestamp` should be later than the current latest registration for the validator.
 
 ```markdown
 charon feerecipient sign --help
@@ -713,7 +713,9 @@ Flags:
 
 ### Fetch aggregated fee recipient builder registrations
 
-Once enough operators have signed their partial builder registrations, the `charon feerecipient fetch` command fetches and aggregates those with quorum from the remote API, writing them to a local JSON overrides file. The `charon run` command will then use this overrides file to apply the updated fee recipients.
+Once enough operators have signed their partial builder registrations, the `charon feerecipient fetch` command fetches and aggregates those with quorum from the remote API, then merges them into the local JSON overrides file. Existing overrides for validators outside the fetch are preserved, and the latest timestamp wins if an override already exists for a fetched validator. The `charon run` command will then use this overrides file to apply the updated fee recipients.
+
+If no fetched validator has enough partial signatures to reach quorum, the command logs that no fully signed builder registrations are available and does not write or update the overrides file. Fetched registrations are signature-verified before they are written or applied. A registration that fails verification is skipped and logged as a warning; registrations for other validators in the same fetch are still merged and written.
 
 ```markdown
 charon feerecipient fetch --help
