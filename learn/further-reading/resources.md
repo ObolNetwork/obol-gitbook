@@ -47,7 +47,7 @@ The following is a curated list of the best internal and external resources for 
 * A [solidity audit](../../adv/security/smart_contract_audit.mdx) of the Obol Splits contracts by [Zach Obront](https://zachobront.com/).
 * [Charon Threat model](../../advanced-and-troubleshooting/security/threat_model.md)
 * [QuantStamp Charon audit Q4 2023](https://obol.tech/charon_quantstamp_assessment.pdf)
-* A [security audit of Charon V2](https://github.com/ObolNetwork/charon/blob/main/docs/audit/2026%20-%20Charon%20V2%20Audit%20-%20TrailOfBits.pdf) by [Trail of Bits](https://www.trailofbits.com/).
+* A [security assessment of Charon's editability features](https://github.com/ObolNetwork/charon/blob/main/docs/audit/2026%20-%20Charon%20V2%20Audit%20-%20TrailOfBits.pdf) by [Trail of Bits](https://www.trailofbits.com/).
 
 ## Research and Development
 
