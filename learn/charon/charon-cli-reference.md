@@ -688,7 +688,7 @@ Use "charon feerecipient [command] --help" for more information about a command.
 
 ### Sign new fee recipient builder registrations
 
-The `charon feerecipient sign` command signs new builder registration messages to update the preferred fee recipient and publishes them to a remote API. A threshold of operators must run this command with matching parameters for the new fee recipient to take effect. Builder registrations are applied by timestamp, so a manually supplied `--timestamp` should be later than the current latest registration for the validator.
+The `charon feerecipient sign` command signs new builder registration messages to update the preferred fee recipient and publishes them to a remote API. A threshold of operators must run this command with matching parameters for the new fee recipient to take effect. Builder registrations are applied by timestamp, so a manually supplied `--timestamp` must be later than the current latest registration for the validator — the command rejects a timestamp that is not later than the registration that currently has quorum on the remote API. The fee recipient address must not be the zero address, and a mixed-case address must match its EIP-55 checksum.
 
 ```markdown
 charon feerecipient sign --help
@@ -699,7 +699,7 @@ Usage:
 
 Flags:
       --fee-recipient string            [REQUIRED] New fee recipient address to be applied to all specified validators.
-      --gas-limit uint                  Optional gas limit override for builder registrations. If not set, the existing gas limit from the cluster lock or overrides file is used.
+      --gas-limit uint                  Optional gas limit override for builder registrations. If not set, the most recent gas limit from the cluster lock, overrides file or remote API is used.
   -h, --help                            Help for sign
       --lock-file string                Path to the cluster lock file defining the distributed validator cluster. (default ".charon/cluster-lock.json")
       --overrides-file string           Path to the builder registrations overrides file. (default ".charon/builder_registrations_overrides.json")
@@ -715,7 +715,7 @@ Flags:
 
 Once enough operators have signed their partial builder registrations, the `charon feerecipient fetch` command fetches and aggregates those with quorum from the remote API, then merges them into the local JSON overrides file. Existing overrides for validators outside the fetch are preserved, and the latest timestamp wins if an override already exists for a fetched validator. The `charon run` command will then use this overrides file to apply the updated fee recipients.
 
-If no fetched validator has enough partial signatures to reach quorum, the command logs that no fully signed builder registrations are available and does not write or update the overrides file. Fetched registrations are signature-verified before they are written or applied. A registration that fails verification is skipped and logged as a warning; registrations for other validators in the same fetch are still merged and written.
+If no fetched validator has enough partial signatures to reach quorum, the command logs that no fully signed builder registrations are available and does not write or update the overrides file. Fetched registrations are signature-verified before they are written or applied. A registration that fails verification is skipped and logged as a warning; registrations for other validators in the same fetch are still merged and written. A fetched registration that is not newer than the existing override for the same validator is discarded with a warning. A corrupt or invalid existing overrides file does not block fetching — it is rebuilt from the valid entries and the fetched registrations, and the file is written atomically so an interrupted fetch cannot leave a truncated file behind.
 
 ```markdown
 charon feerecipient fetch --help
