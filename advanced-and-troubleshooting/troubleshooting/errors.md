@@ -18,6 +18,8 @@ You can check your logs using
 docker compose logs
 ```
 
+If your logs show a failed duty with a specific reason code, see [Duty Failure Reasons](duty-failure-reasons.md) for an explanation of every reason Charon's tracker component can report.
+
 ## ENRs & Keys
 
 ### How do I get my ENR if I want to generate it again?

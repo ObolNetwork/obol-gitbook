@@ -81,7 +81,7 @@ charon alpha test <COMMAND> \
 * Peer might be too far away (geographically) from you.
 * If the connection to the peer is indirect, the route is from your node, to the relay, to the peer. Meaning you are measuring the travel time from you to the relay, and from the relay to the peer: (your node -> relay -> peer). This means, even if your peer's node is right next to yours, if the connection is being transmitted through a relay far away, the latency between your nodes might be too high to be effective.
 * Your general network latency to the public internet might be high. Verify with the [`charon test infra`](../../run-a-dv/prepare/test-a-cluster.md#test-machine-and-network-performance) tests.
-* If the connection to the peer is indirect, there is a potential that the relay might be overloaded or under-resourced, consider adding [alternative relays](../security/risks.md#risk-obol-hosting-the-relay-infrastructure), or preferably [opening charon's p2p port](../../learn/charon/networking.mdx#libp2p-relays-and-peer-discovery) to the internet to establish direct peer to peer connections.
+* If the connection to the peer is indirect, there is a potential that the relay might be overloaded or under-resourced, consider adding [alternative relays](../security/risks.md#risk-obol-hosting-the-relay-infrastructure), or preferably [opening charon's p2p port](../../learn/charon/charon-networking.md#libp2p-relays-and-peer-discovery) to the internet to establish direct peer to peer connections.
 
 #### PingLoad
 
@@ -156,7 +156,7 @@ Same causes as PingMeasure test apply here and additionally:
 
 #### PingMeasure
 
-* Validator client might be too far away (geographically) from the charon client. Generally a low latency between a validator client and its charon client is important for timely signing.
+* Validator client might be too far away (geographically) from the Charon client. Generally a low latency between a validator client and its Charon client is important for timely signing.
 
 #### PingLoad
 

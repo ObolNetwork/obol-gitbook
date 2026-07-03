@@ -18,14 +18,11 @@ This is the Obol Network GitBook documentation repository containing comprehensi
 - **`sdk/`** - Auto-generated SDK documentation
 - **`walkthrough-guides/`** - Step-by-step tutorials
 
-### Duplicate Structure Pattern
-The repository contains two parallel directory structures:
-- **Long-form paths** (e.g., `run-a-dv/`, `advanced-and-troubleshooting/`) - Main content
-- **Short-form paths** (`adv/`, `gov/`, `guides/`, `learn/`, `sdk/`) - Contains `_category_.json` files and `.mdx` versions
+### Navigation
+- `SUMMARY.md` is the single source of truth for navigation; it lists every page in a nested bullet structure.
+- A handful of `_category_.json` files survive under `learn/` and `sdk/` from an old Docusaurus setup. They are inert leftovers, ignored by GitBook, and should not be used or extended.
 
 ### GitBook Configuration
-- Uses `_category_.json` files for navigation structure with properties: `label`, `position`, `collapsed`, `collapsible`, `className`
-- Supports both `.md` and `.mdx` file formats
 - Front matter with `description`, `sidebar_position`, and other metadata
 - Image assets stored in `.gitbook/assets/` directory
 
@@ -88,7 +85,6 @@ Two distinct content types used throughout the documentation:
 ### File Organization
 - Keep related content together (e.g., all quickstart guides in `run-a-dv/start/`)
 - Use descriptive filenames that match content purpose
-- Maintain parallel structure between long-form and short-form directories
 - Update `SUMMARY.md` table of contents when adding new content
 
 ### Cross-References
@@ -101,7 +97,6 @@ Two distinct content types used throughout the documentation:
 
 ### Content Updates
 - Edit markdown files directly in appropriate directory structure
-- Update both `.md` and `.mdx` versions if both exist
 - Refresh `SUMMARY.md` when adding new pages
 - Update version references (e.g., Charon version in CLI reference)
 

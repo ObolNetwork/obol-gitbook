@@ -80,7 +80,7 @@ echo "127.0.0.1 obol.stack" | sudo tee -a /etc/hosts
 
 ### What's the default agent?
 
-[Hermes](https://github.com/NousResearch/hermes) is the default Obol Agent runtime as of v0.9.0. `obol stack up` provisions a default Hermes instance in the `hermes-obol-agent` namespace, with its own Ethereum signing wallet and a built-in skill library.
+[Hermes](https://github.com/NousResearch/hermes-agent) is the default Obol Agent runtime as of v0.9.0. `obol stack up` provisions a default Hermes instance in the `hermes-obol-agent` namespace, with its own Ethereum signing wallet and a built-in skill library.
 
 OpenClaw remains supported as an optional alternate runtime — `obol agent new --runtime openclaw` if you want one.
 
