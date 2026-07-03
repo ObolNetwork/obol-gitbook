@@ -25,7 +25,7 @@ Split an existing Ethereum validator key into multiple key shares for use in an 
 ## Step 1. Prepare the existing keystore files
 
 {% hint style="info" %}
-Starting with Charon v1.8.0, you may not need to manually prepare the keystore files as described below. Charon can recursively search for keystore files in the specified directory and attempt to match the corresponding password files. The only case where this does not work is when you specify an exact list of withdrawal addresses; in that case, you must prepare the files manually and ensure the keystore indices match the order of the specified withdrawal addresses.
+Starting with Charon v1.8.0, you may not need to manually prepare the keystore files as described below. Charon can recursively search for keystore files in the specified directory and attempt to match the corresponding password files. The only case where this does not work is when you specify an exact list of withdrawal or fee recipient addresses; in that case, you must prepare the files manually and ensure the keystore indices match the order of the specified addresses.
 {% endhint %}
 
 Create a folder to hold the encrypted keystores, along with the passwords to decrypt them.
@@ -63,6 +63,7 @@ NODES=                         # The number of nodes in the cluster.
 
 docker run --rm -v $(pwd):/opt/charon obolnetwork/charon:${CHARON_VERSION} create cluster \
    --name="${CLUSTER_NAME}" \
+   --cluster-dir=/opt/charon/cluster \
    --withdrawal-addresses="${WITHDRAWAL_ADDRESS}" \
    --fee-recipient-addresses="${FEE_RECIPIENT_ADDRESS}" \
    --split-existing-keys \
@@ -72,21 +73,21 @@ docker run --rm -v $(pwd):/opt/charon obolnetwork/charon:${CHARON_VERSION} creat
    --publish
 ```
 
-The above command will create `validator_keys` along with `cluster-lock.json` in `./cluster` for each node.
+The above command will create `validator_keys` along with `cluster-lock.json` in `./cluster` for each node. Deposit data is not re-created, as the existing validator is assumed to be deposited already.
 
 Command output:
 
 ```shell
 ***************** WARNING: Splitting keys **********************
  Please make sure any existing validator has been shut down for
- at least 2 finalized epochs before starting the Charon cluster,
+ at least 2 finalized epochs before starting the charon cluster,
  otherwise slashing could occur.                               
 ****************************************************************
 
-Created Charon cluster:
+Created charon cluster:
  --split-existing-keys=true
 
-./cluster/
+/opt/charon/cluster/
 ├─ node[0-*]/                   # Directory for each node
 │  ├─ charon-enr-private-key    # Charon networking private key for node authentication
 │  ├─ cluster-lock.json         # Cluster lock defines the cluster lock file which is signed by all nodes
