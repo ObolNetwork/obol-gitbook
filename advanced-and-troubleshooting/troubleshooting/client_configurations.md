@@ -18,7 +18,7 @@ Nethermind should be configured to not include blobs in locally-built blocks whi
 
 ### Consensus Client
 
-Nothing specific for distributed validators is required. If you are configuring MEV-boost, consult the settings you need [here](../../adv/advanced/quickstart-builder-api.mdx#consensus-clients).
+Nothing specific for distributed validators is required. If you are configuring MEV-boost, consult the settings you need [here](../advanced/enable-mev.md#consensus-clients).
 
 ### Validator Client
 
@@ -32,7 +32,7 @@ Required flags:
 
 ### Consensus Client
 
-Nothing specific for distributed validators is required. If you are configuring MEV-boost, consult the settings you need [here](../../adv/advanced/quickstart-builder-api.mdx#consensus-clients).
+Nothing specific for distributed validators is required. If you are configuring MEV-boost, consult the settings you need [here](../advanced/enable-mev.md#consensus-clients).
 
 ### Validator Client
 
@@ -56,7 +56,7 @@ Required flags:
 
 ### Consensus Client
 
-Nothing specific for distributed validators is required. If you are configuring MEV-boost, consult the settings you need [here](../../adv/advanced/quickstart-builder-api.mdx#consensus-clients).
+Nothing specific for distributed validators is required. If you are configuring MEV-boost, consult the settings you need [here](../advanced/enable-mev.md#consensus-clients).
 
 ### Validator Client
 
