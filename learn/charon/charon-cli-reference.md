@@ -109,7 +109,7 @@ Flags:
       --num-validators int                     The number of distributed validators needed in the cluster.
       --publish                                Publish lock file to obol-api.
       --publish-address string                 The URL to publish the lock file to. (default "https://api.obol.tech/v1")
-      --split-existing-keys                    Split an existing validator's private key into a set of distributed validator private key shares. Does not re-create deposit data for this key.
+      --split-existing-keys                    Split an existing validator's private key into a set of distributed validator private key shares. Deposit data files are re-created using the provided withdrawal addresses; do not submit deposits for validators that are already active.
       --split-keys-dir string                  Directory containing keys to split. Expects keys in keystore-*.json and passwords in keystore-*.txt. Requires --split-existing-keys.
       --target-gas-limit uint                  Preferred target gas limit for transactions. (default 60000000)
       --testnet-chain-id uint                  Chain ID of the custom test network.
