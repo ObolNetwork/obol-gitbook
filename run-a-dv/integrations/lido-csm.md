@@ -137,7 +137,7 @@ Lastly, share the cluster invite link with the other cluster members.
 
 ### Step 4: Distributed Key Generation (DKG)
 
-All squad members need to open the cluster invitation link, connect their wallet, accept all necessary advisories, and to verify the cluster configuration is correct with a signature. Each squad member will also need to upload and sign an ENR to represent their charon client, so see [steps 1](lido-csm.md#step-1-clone-the-repo) and [2](lido-csm.md#step-2-create-enr-and-backup-your-private-key) above.
+All squad members need to open the cluster invitation link, connect their wallet, accept all necessary advisories, and to verify the cluster configuration is correct with a signature. Each squad member will also need to upload and sign an ENR to represent their Charon client, so see [steps 1](lido-csm.md#step-1-clone-the-repo) and [2](lido-csm.md#step-2-create-enr-and-backup-your-private-key) above.
 
 <figure><img src="../../.gitbook/assets/image (42).png" alt="Screenshot: All squad members need to open the cluster invitation link, connect their wallet, accept all necessary advisories, and to verify the cluster configuration is correct with a…"><figcaption></figcaption></figure>
 

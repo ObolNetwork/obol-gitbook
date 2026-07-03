@@ -4,7 +4,7 @@ description: A framework for AI agents to run decentralized infrastructure local
 
 # Introduction to the Obol Stack
 
-The Obol Stack is a local-first agent harness: a Kubernetes cluster on your laptop, a default AI agent ([Hermes](https://github.com/NousResearch/hermes)) with its own Ethereum wallet, dynamically-deployable blockchain networks, a Cloudflare tunnel for public exposure, and an [x402](https://www.x402.org/) payment gateway so agents can charge for what they serve.
+The Obol Stack is a local-first agent harness: a Kubernetes cluster on your laptop, a default AI agent ([Hermes](https://github.com/NousResearch/hermes-agent)) with its own Ethereum wallet, dynamically-deployable blockchain networks, a Cloudflare tunnel for public exposure, and an [x402](https://www.x402.org/) payment gateway so agents can charge for what they serve.
 
 The thesis is simple: **agents should be able to run real infrastructure, build something valuable on top of it, and sell access to it for micropayments — without asking permission and without standing up cloud accounts.**
 
