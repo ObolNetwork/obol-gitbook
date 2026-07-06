@@ -854,7 +854,7 @@ Flags:
       --publish-timeout duration               Timeout for publishing a cluster, consider increasing if the cluster contains more than 200 validators. (default 1m0s)
       --shutdown-delay duration                Graceful shutdown delay. (default 5s)
       --timeout duration                       Timeout for the command, should be increased if the command times out. (default 1m0s)
-      --unverified                             If charon has no access to the existing validator keys, this flag allows the addition to proceed, but skips hashing and signing the new cluster lock data. charon run must be started with --no-verify flag.
+      --unverified                             If charon has no access to the existing validator keys, this flag allows the addition to proceed, but skips hashing and signing the new cluster lock data. Requires the --keymanager-address flag to import the new validator key shares. charon run must be started with --no-verify flag.
       --validator-keys-dir string              Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
       --withdrawal-addresses strings           Comma separated list of Ethereum addresses to receive the returned stake and accrued rewards for each validator. Either provide a single withdrawal address or withdrawal addresses for each validator.
 ```
