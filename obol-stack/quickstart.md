@@ -29,7 +29,7 @@ If you'd rather route through Anthropic or OpenAI, you can configure that with `
 Run the bootstrap installer:
 
 ```shell
-bash <(curl -s https://stack.obol.org)
+bash <(curl -fsSL https://stack.obol.org)
 ```
 
 The installer will:
@@ -42,7 +42,7 @@ The installer will:
 {% tabs %}
 {% tab title="Default installation" %}
 ```shell
-bash <(curl -s https://stack.obol.org)
+bash <(curl -fsSL https://stack.obol.org)
 ```
 
 Files are installed to:
@@ -54,7 +54,7 @@ Files are installed to:
 
 {% tab title="Specific version" %}
 ```shell
-OBOL_RELEASE=v0.9.0 bash <(curl -s https://stack.obol.org)
+OBOL_RELEASE=v0.9.0 bash <(curl -fsSL https://stack.obol.org)
 ```
 {% endtab %}
 
@@ -137,8 +137,11 @@ Once you've watched a demo settle end-to-end, the same machinery lets you sell a
 ```shell
 obol sell inference my-model --model qwen3.5:9b --per-mtok 0.01 --token USDC --chain base
 obol sell http my-api --upstream my-svc --port 8080 --namespace my-ns \
-  --per-request 0.001 --chain base --wallet <your-wallet>
+  --per-request 0.001 --chain base --pay-to <your-wallet>
+obol sell agent my-analyst --price 0.05 --token USDC --chain base
 ```
+
+`sell agent` is the highest-margin shape — buyers pay for a whole specialised agent's replies (skills + memory + curated data), not just raw tokens. See [Agents & Skills](agents-and-skills.md) for building one worth paying for.
 
 The mental model is: **anything in your cluster that exposes a Service can be wrapped in a `ServiceOffer` and gated behind x402**. The goal of v0.9 is to make that loop short enough that you can actually iterate on what's worth selling.
 
@@ -155,7 +158,7 @@ Sellers receive `$OBOL` directly into their agent wallet. Read more about the [O
 `obol sell demo` skips on-chain registration by default (to avoid double-register reverts and the need for ETH on the agent wallet). When you're ready to be discoverable on a public agent registry:
 
 ```shell
-obol sell register --chain mainnet --name my-service --private-key-file <path>
+obol sell register --chain mainnet --name my-service
 ```
 
 This publishes the agent's wallet + service catalog to the [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) Identity Registry on the chain you specify.
@@ -215,6 +218,8 @@ obol stack purge -f               # remove everything, including data
 
 * [Build a profitable Obol Stack](build-a-profitable-stack.md) — the end-to-end narrative: sync a bounded archive node, build an index, wrap it as a paid service, and turn it into a specialized agent business.
 * [Selling agent services](selling-services.md) — depth on the three `sell` shapes, x402 economics, and getting listed on marketplaces.
+* [Buying services](buying-services.md) — rent a remote model with `obol buy inference`, or pay any x402 endpoint from your agent.
+* [Agents & Skills](agents-and-skills.md) — create specialised sub-agents and see everything your agent can already do.
 * [Installing Networks](installing-networks.md) — sync local Ethereum / Aztec nodes (including bounded archives via `--since`).
 * [Installing Apps](installing-apps.md) — deploy any Helm chart.
 * [FAQ](faq.md) — common questions and troubleshooting.

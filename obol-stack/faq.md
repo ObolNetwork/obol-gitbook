@@ -161,12 +161,20 @@ USDC and other tokens settle on the rail their issuer supports (EIP-3009 for USD
 ### How do I list my service on a public agent registry?
 
 ```shell
-obol sell register --chain mainnet --name my-service --private-key-file <path>
+obol sell register --chain mainnet --name my-service
 ```
 
 This publishes the agent's wallet + service catalog to the [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) Identity Registry on the chain you specify. Note that this requires ETH on the registering wallet for gas.
 
 `obol sell demo` deliberately skips registration by default — run `obol sell register` later when you want on-chain discovery.
+
+### How do I buy inference from another stack?
+
+```shell
+obol buy inference https://seller.example/
+```
+
+The command walks the seller's catalog, previews the cost, pre-signs payment authorizations from your agent's wallet, and publishes the remote model as `paid/<model>` through your LiteLLM — your agents can then use it like any local model, with spend bounded by what you pre-authorized. See [Buying Services](buying-services.md).
 
 ## Stack operations
 
