@@ -170,16 +170,18 @@ Once a validator has broadcasted an exit message, it must continue to validate f
 
 ```
 docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon exit fetch \
+--beacon-node-endpoints="http://lighthouse:5052" \
 --validator-public-key="<VALIDATOR_PUBLIC_KEY>" \
 --fetched-exit-path="/opt/charon/.charon"'
 ```
 
-**Broadcast Exits** : The following command uses the full exit signature for a specific public key from the file and broadcasts it to the network.
+**Broadcast Exits** : The following command uses the full exit signature for a specific public key from the file and broadcasts it to the network. The `<FILENAME>` is `exit-<VALIDATOR_PUBLIC_KEY>.json`, as written by the fetch command. Do not rename the file: the validator public key is read from the file name.
 
 ```
 docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon exit broadcast \
 --beacon-node-endpoints="http://lighthouse:5052" \
---exit-from-file="/opt/charon/.charon/<FILENAME>"''
+--validator-public-key="<VALIDATOR_PUBLIC_KEY>" \
+--exit-from-file="/opt/charon/.charon/<FILENAME>"'
 ```
 
 {% hint style="success" %}
@@ -192,6 +194,7 @@ Once a validator has broadcasted an exit message, it must continue to validate f
 
 ```sh
 docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon exit fetch \
+--beacon-node-endpoints="http://lighthouse:5052" \
 --all \
 --fetched-exit-path="/opt/charon/.charon"'
 ```
@@ -627,16 +630,18 @@ Once a validator has broadcasted an exit message, it must continue to validate f
 
 ```
 docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon exit fetch \
+--beacon-node-endpoints="http://lighthouse:5052" \
 --validator-public-key="<VALIDATOR_PUBLIC_KEY>" \
 --fetched-exit-path="/opt/charon/.charon"'
 ```
 
-**Broadcast Exits** : The following command uses the full exit signature for a specific public key from the file and broadcasts it to the network.
+**Broadcast Exits** : The following command uses the full exit signature for a specific public key from the file and broadcasts it to the network. The `<FILENAME>` is `exit-<VALIDATOR_PUBLIC_KEY>.json`, as written by the fetch command. Do not rename the file: the validator public key is read from the file name.
 
 ```
 docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon exit broadcast \
 --beacon-node-endpoints="http://lighthouse:5052" \
---exit-from-file="/opt/charon/.charon/<FILENAME>"''
+--validator-public-key="<VALIDATOR_PUBLIC_KEY>" \
+--exit-from-file="/opt/charon/.charon/<FILENAME>"'
 ```
 
 {% hint style="success" %}
@@ -649,6 +654,7 @@ Once a validator has broadcasted an exit message, it must continue to validate f
 
 ```
 docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon exit fetch \
+--beacon-node-endpoints="http://lighthouse:5052" \
 --all \
 --fetched-exit-path="/opt/charon/.charon"'
 ```
@@ -966,6 +972,22 @@ Once a validator has broadcasted an exit message, it must continue to validate f
 {% endtabs %}
 {% endtab %}
 {% endtabs %}
+
+### Other Charon exit commands <a href="#other-charon-exit-commands" id="other-charon-exit-commands"></a>
+
+**List exitable validators** : The following command lists all validators in the cluster whose status is `ACTIVE_ONGOING`, i.e. those that can be exited. Add `--plaintext` to print one public key per line for scripting.
+
+```sh
+docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon exit active-validator-list \
+--beacon-node-endpoints="http://lighthouse:5052"'
+```
+
+**Delete a submitted partial exit** : The following command deletes your partial exit message for a specific validator from the Obol API (use `--all` instead of `--validator-public-key` to delete partial exits for all validators). This only applies to the hosted (Charon) solution. It is useful if you signed with a different `--exit-epoch` than the other operators: since all partial exits must use the same epoch to be aggregated, delete the incorrect partial exit and run `charon exit sign` again with the correct epoch.
+
+```sh
+docker exec -it charon-distributed-validator-node-charon-1 /bin/sh -c 'charon exit delete \
+--validator-public-key="<VALIDATOR_PUBLIC_KEY>"'
+```
 
 ### Exit epoch and withdrawable epoch <a href="#exit-epoch-and-withdrawable-epoch" id="exit-epoch-and-withdrawable-epoch"></a>
 
