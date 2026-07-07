@@ -1,6 +1,6 @@
 # Test a Cluster
 
-Charon test commands are designed to help you evaluate the performance and readiness of your candidate cluster. It allows you to test your connection to other Charon peers, the performance of your beacon node(s), the readiness of your validator client, the performance of the MEV relays you will be using and the infrastructure on which you will run the cluster. It prints a performance report to the standard output (which can be omitted with the `--quiet` flag) and a machine-readable JSON format of the report if the `--output-json` flag is set.
+Charon test commands are designed to help you evaluate the performance and readiness of your candidate cluster. It allows you to test your connection to other Charon peers, the performance of your beacon node(s), the readiness of your validator client, the performance of the MEV relays you will be using and the infrastructure on which you will run the cluster. It prints a performance report to the standard output (which can be omitted with the `--quiet` flag). Pass `--output-json <path>` to also save the report as machine-readable JSON at that path. Because `--quiet` suppresses the stdout report, it must be combined with `--output-json` — using `--quiet` alone is rejected.
 
 
 {% hint style="success" %}
@@ -309,7 +309,7 @@ docker run --network="charon-distributed-validator-node_dvnode" -u $(id -u):$(id
   --beacon-endpoints="http://lighthouse:5052/" \
   --beacon-simulation-file-dir="/opt/charon/test" \
   --beacon-load-test \
-  --validator-api-address="lodestar:5064" \
+  --validator-validator-api-address="lodestar:5064" \
   --mev-endpoints="\
 https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,\
 https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,\
@@ -343,7 +343,7 @@ docker run --network="charon-distributed-validator-node_dvnode" -u $(id -u):$(id
   --beacon-endpoints="http://lighthouse:5052/" \
   --beacon-simulation-file-dir="/opt/charon/test" \
   --beacon-load-test \
-  --validator-api-address="lodestar:5064" \
+  --validator-validator-api-address="lodestar:5064" \
   --mev-endpoints="\
 https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,\
 https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,\
@@ -376,7 +376,7 @@ docker run --network="charon-distributed-validator-node_dvnode" -u $(id -u):$(id
   --beacon-endpoints="http://lighthouse:5052/" \
   --beacon-simulation-file-dir="/opt/charon/test" \
   --beacon-load-test \
-  --validator-api-address="lodestar:5064" \
+  --validator-validator-api-address="lodestar:5064" \
   --mev-endpoints="\
 https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,\
 https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,\
@@ -508,7 +508,7 @@ kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test all \
   --peers-enrs="enr:-HW4QMno_MB_ID6GFVxoIQAHHVHZZZjzFctxtX2tm9D95tvaPbHathi8YUP8jh8v2YUAVu2fYWEOB_BT14pt8QgiGg2AgmlkgnY0iXNlY3AyNTZrMaECdpnK83s0dbBwCaEfDIkQ-3nJkkC93STvv6Vmi0bYlzg,enr:-HW4QO2vefLueTBEUGly5hkcpL7NWdMKWx7Nuy9f7z6XZInCbFAc0IZj6bsnmj-Wi4ElS6jNa0Mge5Rkc2WGTVemas2AgmlkgnY0iXNlY3AyNTZrMaECR9SmYQ_1HRgJmNxvh_ER2Sxx78HgKKgKaOkCROYwaDY" \
   --beacon-endpoints="http://lighthouse:5052/" \
   --beacon-load-test \
-  --validator-api-address="lodestar:5064" \
+  --validator-validator-api-address="lodestar:5064" \
   --mev-endpoints="\
 https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,\
 https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,\
@@ -538,7 +538,7 @@ kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test all \
   --peers-definition-file="./.charon/cluster-definition.json" \
   --beacon-endpoints="http://lighthouse:5052/" \
   --beacon-load-test \
-  --validator-api-address="lodestar:5064" \
+  --validator-validator-api-address="lodestar:5064" \
   --mev-endpoints="\
 https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,\
 https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,\
@@ -568,7 +568,7 @@ kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test all \
   --peers-lock-file="./.charon/cluster-lock.json" \
   --beacon-endpoints="http://lighthouse:5052/" \
   --beacon-load-test \
-  --validator-api-address="lodestar:5064" \
+  --validator-validator-api-address="lodestar:5064" \
   --mev-endpoints="\
 https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,\
 https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,\
