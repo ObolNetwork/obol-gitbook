@@ -1,19 +1,21 @@
 # Test a Cluster
 
-Charon test commands are designed to help you evaluate the performance and readiness of your candidate cluster. It allows you to test your connection to other Charon peers, the performance of your beacon node(s), the readiness of your validator client, the performance of the MEV relays you will be using and the infrastructure on which you will run the cluster. It prints a performance report to the standard output (which can be omitted with the `--quiet` flag) and a machine-readable JSON format of the report if the `--output-json` flag is set.
-
+Charon test commands are designed to help you evaluate the performance and readiness of your candidate cluster. It allows you to test your connection to other Charon peers, the performance of your beacon node(s), the readiness of your validator client, the performance of the MEV relays you will be using and the infrastructure on which you will run the cluster. It prints a performance report to the standard output (which can be omitted with the `--quiet` flag). Pass `--output-json <path>` to also save the report as machine-readable JSON at that path. Because `--quiet` suppresses the stdout report, it must be combined with `--output-json` — using `--quiet` alone is rejected.
 
 {% hint style="success" %}
-
 Adding the `--publish` flag to the below commands, and running the command from the directory containing your `.charon` folder, will submit the test results to the [Obol API](../../api/what-is-this-api.md). Publishing your performance reports grows the staking node dataset, and allows Obol and Ethereum development teams to make data-driven choices regarding the required specs for validating Ethereum. We hope you will consider opting in.
-
 {% endhint %}
 
 {% tabs %}
 {% tab title="Executable" %}
+
 #### Test all
 
 Intended for running tests across all categories. Each flag should have a prefix for its category (i.e.: the flag `--endpoints` from the beacon tests becomes `--beacon-endpoints`). For details about each category refer to their respective sections.
+
+{% hint style="warning" %}
+Test all includes test peers command which is expected to be run **before starting a cluster**, otherwise connections might be clashing between the test command libp2p node and the running Charon node. The same data points obtained by running the test can be obtained from the metrics of a running cluster, so running the test on an already running Charon cluster is nonessential.
+{% endhint %}
 
 {% tabs %}
 {% tab title="Regular Test" %}
@@ -309,7 +311,7 @@ docker run --network="charon-distributed-validator-node_dvnode" -u $(id -u):$(id
   --beacon-endpoints="http://lighthouse:5052/" \
   --beacon-simulation-file-dir="/opt/charon/test" \
   --beacon-load-test \
-  --validator-api-address="lodestar:5064" \
+  --validator-validator-api-address="lodestar:5064" \
   --mev-endpoints="\
 https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,\
 https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,\
@@ -343,7 +345,7 @@ docker run --network="charon-distributed-validator-node_dvnode" -u $(id -u):$(id
   --beacon-endpoints="http://lighthouse:5052/" \
   --beacon-simulation-file-dir="/opt/charon/test" \
   --beacon-load-test \
-  --validator-api-address="lodestar:5064" \
+  --validator-validator-api-address="lodestar:5064" \
   --mev-endpoints="\
 https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,\
 https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,\
@@ -376,7 +378,7 @@ docker run --network="charon-distributed-validator-node_dvnode" -u $(id -u):$(id
   --beacon-endpoints="http://lighthouse:5052/" \
   --beacon-simulation-file-dir="/opt/charon/test" \
   --beacon-load-test \
-  --validator-api-address="lodestar:5064" \
+  --validator-validator-api-address="lodestar:5064" \
   --mev-endpoints="\
 https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,\
 https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,\
@@ -508,7 +510,7 @@ kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test all \
   --peers-enrs="enr:-HW4QMno_MB_ID6GFVxoIQAHHVHZZZjzFctxtX2tm9D95tvaPbHathi8YUP8jh8v2YUAVu2fYWEOB_BT14pt8QgiGg2AgmlkgnY0iXNlY3AyNTZrMaECdpnK83s0dbBwCaEfDIkQ-3nJkkC93STvv6Vmi0bYlzg,enr:-HW4QO2vefLueTBEUGly5hkcpL7NWdMKWx7Nuy9f7z6XZInCbFAc0IZj6bsnmj-Wi4ElS6jNa0Mge5Rkc2WGTVemas2AgmlkgnY0iXNlY3AyNTZrMaECR9SmYQ_1HRgJmNxvh_ER2Sxx78HgKKgKaOkCROYwaDY" \
   --beacon-endpoints="http://lighthouse:5052/" \
   --beacon-load-test \
-  --validator-api-address="lodestar:5064" \
+  --validator-validator-api-address="lodestar:5064" \
   --mev-endpoints="\
 https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,\
 https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,\
@@ -538,7 +540,7 @@ kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test all \
   --peers-definition-file="./.charon/cluster-definition.json" \
   --beacon-endpoints="http://lighthouse:5052/" \
   --beacon-load-test \
-  --validator-api-address="lodestar:5064" \
+  --validator-validator-api-address="lodestar:5064" \
   --mev-endpoints="\
 https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,\
 https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,\
@@ -568,7 +570,7 @@ kubectl exec -it -n dv-pod my-dv-pod-0 -- charon alpha test all \
   --peers-lock-file="./.charon/cluster-lock.json" \
   --beacon-endpoints="http://lighthouse:5052/" \
   --beacon-load-test \
-  --validator-api-address="lodestar:5064" \
+  --validator-validator-api-address="lodestar:5064" \
   --mev-endpoints="\
 https://0xa15b52576bcbf1072f4a011c0f99f9fb6c66f3e1ff321f11f461d15e31b1cb359caa092c71bbded0bae5b5ea401aab7e@aestus.live,\
 https://0xa7ab7a996c8584251c8f925da3170bdfd6ebc75d50f5ddc4050a6fdc77f2a3b5fce2cc750d0865e05d7228af97d69561@agnostic-relay.net,\
@@ -590,6 +592,10 @@ https://0x8c4ed5e24fe5c6ae21018437bde147693f68cda427cd1122cf20819c30eda7ed74f72d
 ### Test connection to peers
 
 Run tests towards other Charon peers to evaluate the effectiveness of a potential cluster setup. The command sets up a libp2p node, similarly to what Charon normally does. This test command **has to be run simultaneously with the other peers**. After the node is up it waits for other peers to get their nodes up and running, retrying the connection every 3 seconds. The libp2p node connects to relays (configurable with `p2p-relays` flag) and to other libp2p nodes via TCP. Other peer nodes are discoverable by using their ENRs. Note that for a peer to be successfully discovered, it needs to be connected to the same relay. After completion of the test suite the libp2p node stays alive (duration configurable with `keep-alive` flag) for other peers to continue testing against it. The node can be forcefully stopped as well.
+
+{% hint style="warning" %}
+Test peers is expected to be run **before starting a cluster**, otherwise connections might be clashing between the test command libp2p node and the running Charon node. The same data points obtained by running the test can be obtained from the metrics of a running cluster, so running the test on an already running Charon cluster is nonessential.
+{% endhint %}
 
 To be able to establish direct connection, you have to ensure:
 
