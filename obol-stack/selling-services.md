@@ -135,9 +135,28 @@ Your tunnel hostname serves a public storefront landing page and a machine-reada
 ```shell
 obol sell info                     # buyer's-eye view: branding + every on-sale service
 obol sell info my-quant            # focus one service + how-to-buy
-obol sell info set --display-name "Acme Labs" --tagline "Paid onchain analysis." --logo-url "https://…"
+obol sell info set \
+  --display-name "One Dollar Audit" \
+  --tagline "A serious security audit. One dollar." \
+  --logo-file ./logo.png \
+  --theme obol \
+  --description 'Every audit ships as a **signed report** — findings ranked by severity.'
 obol sell info reset               # back to defaults
 ```
+
+Branding applies to *every* buyer-facing surface — the storefront, the 402 paywall pages buyers hit in a browser, the wallet sign-in page, the `/api` docs, and per-offer landing pages:
+
+<div><figure><img src="../.gitbook/assets/obol-stack-storefront-light.png" alt="Default light storefront"><figcaption>Default storefront (light theme)</figcaption></figure> <figure><img src="../.gitbook/assets/obol-stack-storefront-branded.png" alt="Branded storefront"><figcaption>Branded seller (obol theme, custom logo + description)</figcaption></figure></div>
+
+<div><figure><img src="../.gitbook/assets/obol-stack-402-light.png" alt="Default 402 checkout page"><figcaption>Default 402 checkout page</figcaption></figure> <figure><img src="../.gitbook/assets/obol-stack-402-branded.png" alt="Branded 402 checkout page"><figcaption>The same page under seller branding</figcaption></figure></div>
+
+The knobs, all optional and all agent-editable:
+
+* `--theme light|dark|obol` — three built-in presets (`light` is the default), plus `--accent '#hex'` to recolor any of them.
+* `--logo-file` / `--favicon-file` / `--og-image-file` — inline local images (no hosting needed); link previews use your OG image or a generated card.
+* `--description '<markdown>'` — longer seller copy; a safe markdown subset (bold, lists, links, headings) renders on the storefront and paywall pages.
+* `--css-file custom.css` — a capped custom stylesheet injected after the theme; every element carries stable `data-obol="…"` attributes to target (e.g. `[data-obol="price"]`).
+* `--hostname audit.acme.io …` — offers bound to their own hostname can override any of the above per origin, so each product can carry its own identity.
 
 `obol sell info` shows exactly what buyers see — only operationally-ready offers appear. Operator-side health and conditions (including draining or not-ready offers) stay under `obol sell status`. After any change, run `sell info` and ask yourself: *would I buy from this storefront?*
 
