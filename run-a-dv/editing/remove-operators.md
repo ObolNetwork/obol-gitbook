@@ -11,7 +11,7 @@ You can remove operators from your cluster using the `charon alpha edit remove-o
 
 1. Review the `edit remove-operators` command [CLI reference](../../learn/charon/charon-cli-reference.md#remove-operators-from-a-cluster).
 2. **For remaining operators**: Keep the DV node running during the process and ensure you have a copy of the current cluster lock file and validator private key shares.
-3. **For operators being removed**: A copy of the cluster lock file is required to participate in the ceremony (if participating).
+3. **For operators being removed**: If participating in the ceremony, a copy of the cluster lock file, your Charon ENR private key, and your current validator private key shares are all required (removed operators contribute their existing key shares to the resharing).
 4. Identify the Charon ENR addresses of the operators you wish to remove from the cluster.
 
 {% hint style="info" %}

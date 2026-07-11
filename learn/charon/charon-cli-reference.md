@@ -109,7 +109,7 @@ Flags:
       --num-validators int                     The number of distributed validators needed in the cluster.
       --publish                                Publish lock file to obol-api.
       --publish-address string                 The URL to publish the lock file to. (default "https://api.obol.tech/v1")
-      --split-existing-keys                    Split an existing validator's private key into a set of distributed validator private key shares. Does not re-create deposit data for this key.
+      --split-existing-keys                    Split an existing validator's private key into a set of distributed validator private key shares. Deposit data files are re-created using the provided withdrawal addresses; do not submit deposits for validators that are already active.
       --split-keys-dir string                  Directory containing keys to split. Expects keys in keystore-*.json and passwords in keystore-*.txt. Requires --split-existing-keys.
       --target-gas-limit uint                  Preferred target gas limit for transactions. (default 60000000)
       --testnet-chain-id uint                  Chain ID of the custom test network.
@@ -854,7 +854,7 @@ Flags:
       --publish-timeout duration               Timeout for publishing a cluster, consider increasing if the cluster contains more than 200 validators. (default 1m0s)
       --shutdown-delay duration                Graceful shutdown delay. (default 5s)
       --timeout duration                       Timeout for the command, should be increased if the command times out. (default 1m0s)
-      --unverified                             If charon has no access to the existing validator keys, this flag allows the addition to proceed, but skips hashing and signing the new cluster lock data. charon run must be started with --no-verify flag.
+      --unverified                             If charon has no access to the existing validator keys, this flag allows the addition to proceed, but skips hashing and signing the new cluster lock data. Requires the --keymanager-address flag to import the new validator key shares. charon run must be started with --no-verify flag.
       --validator-keys-dir string              Path to the directory containing the validator private key share files and passwords. (default ".charon/validator_keys")
       --withdrawal-addresses strings           Comma separated list of Ethereum addresses to receive the returned stake and accrued rewards for each validator. Either provide a single withdrawal address or withdrawal addresses for each validator.
 ```
