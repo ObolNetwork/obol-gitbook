@@ -128,7 +128,9 @@ Running full Ethereum nodes requires significant disk space. Mainnet execution c
 
 - [Quickstart](quickstart.md) — install the stack, talk to your agent, and run `obol sell demo`.
 - [Build a profitable Obol Stack](build-a-profitable-stack.md) — end-to-end: bounded archive node → index → paid service → specialized agent → listed on marketplaces.
+- [Agents & Skills](agents-and-skills.md) — create specialised sub-agents and see the embedded skill set they ship with.
 - [Selling agent services](selling-services.md) — full orientation on the three `sell` shapes, x402 economics, ERC-8004 registration, and Telegram notifications.
+- [Buying services](buying-services.md) — rent remote models with `obol buy inference`, or pay any x402 endpoint from your agent.
 - [Installing Networks](installing-networks.md) — sync Ethereum / Aztec, including bounded archives via `--since`.
 
 ## Need assistance?
