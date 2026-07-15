@@ -70,17 +70,52 @@ rm -rf ~/.config/obol ~/.local/share/obol
 
 ### The installer cannot modify /etc/hosts
 
-Manually add the entry:
+Manually add the entry, then start (or re-start) the stack:
 
 ```shell
 echo "127.0.0.1 obol.stack" | sudo tee -a /etc/hosts
+obol stack init
+obol stack up
+# If no LLM was configured, Hermes was skipped:
+obol model setup
+obol agent init
 ```
+
+A failed hosts write during install or `obol stack up` is a **warning**, not a hard failure — the CLI and cluster can still be installed. `stack up` will also try to register agent hostnames (`obol-agent.obol.stack`, …).
+
+### How do I skip sudo password prompts (CI / automation)?
+
+Set:
+
+```shell
+export OBOL_NONINTERACTIVE=true
+```
+
+Hosts updates then fail fast if sudo is not already cached (or NOPASSWD). Pre-write `/etc/hosts`, or run `sudo -v` once in the same TTY before non-interactive commands.
+
+### Why is there no Hermes agent after install?
+
+Usually there is **no model in LiteLLM**: Ollama was skipped at install and no cloud provider was configured. Configure a model, then create the agent:
+
+```shell
+obol model setup
+obol agent init
+obol hermes chat
+```
+
+### Why does `http://localhost:8080` return 404?
+
+Traefik serves the frontend only for **`Host: obol.stack`**. Open **`http://obol.stack:8080`** (or `http://obol.stack/` if port 80 is mapped). Ensure `/etc/hosts` contains `127.0.0.1 obol.stack`.
+
+### Is the Cloudflare tunnel always on?
+
+No. After a plain `obol stack up`, the tunnel is **dormant**. It activates on the first selling workflow (e.g. `obol sell demo`) or with `obol tunnel restart`. For a permanent hostname, use `obol tunnel setup` — see [Set up a permanent URL](permanent-url.md).
 
 ## The Obol Agent
 
 ### What's the default agent?
 
-[Hermes](https://github.com/NousResearch/hermes-agent) is the default Obol Agent runtime as of v0.9.0. `obol stack up` provisions a default Hermes instance in the `hermes-obol-agent` namespace, with its own Ethereum signing wallet and a built-in skill library.
+[Hermes](https://github.com/NousResearch/hermes-agent) is the default Obol Agent runtime. `obol stack up` provisions a default Hermes instance in the `hermes-obol-agent` namespace (when a model is available), with its own Ethereum signing wallet and a built-in skill library.
 
 OpenClaw remains supported as an optional alternate runtime — `obol agent new --runtime openclaw` if you want one.
 

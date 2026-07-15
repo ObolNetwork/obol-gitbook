@@ -22,7 +22,14 @@ Verify Docker is running with `docker info` before proceeding.
 ollama pull qwen3.5:4b   # or qwen3.5:9b on a 16 GB+ machine
 ```
 
-If you'd rather route through Anthropic or OpenAI, you can configure that with `obol model setup` after the cluster is up.
+The installer may offer to install Ollama. **If you decline and do not configure a cloud/custom model**, `obol stack up` has nothing to put in LiteLLM and **skips the default Hermes agent**. Fix after install with:
+
+```shell
+obol model setup          # interactive; or e.g. --provider openrouter
+obol agent init
+```
+
+You can also use Anthropic, OpenAI, OpenRouter, Venice, or any OpenAI-compatible endpoint via `obol model setup` after the cluster is up.
 
 ## Step 1: Install the Obol Stack
 
@@ -36,7 +43,7 @@ The installer will:
 
 1. Validate that Docker is running.
 2. Install the `obol` CLI binary and dependencies (kubectl, helm, k3d, helmfile, k9s).
-3. Configure your PATH and add `obol.stack` to `/etc/hosts`.
+3. Configure your PATH and try to add `obol.stack` to `/etc/hosts`.
 4. Offer to start the cluster immediately.
 
 {% tabs %}
@@ -54,8 +61,10 @@ Files are installed to:
 
 {% tab title="Specific version" %}
 ```shell
-OBOL_RELEASE=v0.9.0 bash <(curl -fsSL https://stack.obol.org)
+OBOL_RELEASE=v0.13.0 bash <(curl -fsSL https://stack.obol.org)
 ```
+
+Use the current tag from the [GitHub releases](https://github.com/ObolNetwork/obol-stack/releases) page when newer than v0.13.0.
 {% endtab %}
 
 {% tab title="Development mode" %}
@@ -69,6 +78,21 @@ Development mode uses a local `.workspace/` directory and runs `go run` instead 
 {% endtab %}
 {% endtabs %}
 
+{% hint style="warning" %}
+**If `/etc/hosts` cannot be updated** (no sudo, or you cancel the password prompt), the installer still finishes — it does not hard-fail. Add the host, then start the stack yourself:
+
+```shell
+echo "127.0.0.1 obol.stack" | sudo tee -a /etc/hosts
+obol stack init
+obol stack up
+obol agent init   # if Hermes was skipped (no model yet)
+```
+
+`obol stack up` will try hosts again (including agent hostnames such as `obol-agent.obol.stack`). A failed write is a **warning**, not a stop.
+
+For CI/automation without a sudo password prompt, set `OBOL_NONINTERACTIVE=true` (hosts update fails fast unless sudo is already cached or NOPASSWD is configured).
+{% endhint %}
+
 ## Step 2: Start the stack
 
 ```shell
@@ -76,11 +100,23 @@ obol stack init
 obol stack up
 ```
 
-`obol stack up` does a lot on first run — 2–5 minutes is normal — and ends with a default Hermes agent running in the `hermes-obol-agent` namespace, with its own Ethereum signing wallet.
+`obol stack up` does a lot on first run — 2–5 minutes is normal. When a model is available it deploys a default Hermes agent in the `hermes-obol-agent` namespace with its own Ethereum signing wallet. The **Cloudflare tunnel stays dormant** until the first selling workflow or an explicit `obol tunnel restart` / `obol tunnel setup`.
 
 {% hint style="info" %}
 First startup pulls several Docker images. If it stalls, check `obol kubectl get pods -A` to see what's still pending.
 {% endhint %}
+
+### Open the local UI
+
+```text
+http://obol.stack
+```
+
+Use the **`obol.stack` hostname**, not `localhost`. Traefik routes the frontend (and eRPC) only for `Host: obol.stack`. **`http://localhost:8080` returns 404** even when the stack is healthy.
+
+* Prefer **`:8080`** on macOS when port 80 is unavailable (or after editing `~/.config/obol/k3d.yaml` to drop privileged 80/443 binds).
+* If port 80 is mapped, `http://obol.stack/` works too.
+* Hermes dashboard (separate host): `http://obol-agent.obol.stack` (add `:8080` if that is your ingress).
 
 ## Step 3: Chat with your agent
 
@@ -199,7 +235,7 @@ obol sell status <name>           # ServiceOffer reconciliation state
 ```
 
 {% hint style="info" %}
-`obol stack up` gives you a **temporary** tunnel URL that changes on every restart. When you're ready to sell, give your stack a stable hostname — see [Set up a permanent URL](permanent-url.md).
+A plain `obol stack up` leaves the tunnel **dormant**. Selling (`obol sell demo`, `obol sell http`, …) or `obol tunnel restart` activates a temporary quick-tunnel URL (it can change on restart). For a stable public hostname, use [Set up a permanent URL](permanent-url.md) (`obol tunnel setup --hostname …`).
 {% endhint %}
 
 ## Stopping and cleaning up
