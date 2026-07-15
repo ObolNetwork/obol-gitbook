@@ -109,7 +109,7 @@ First startup pulls several Docker images. If it stalls, check `obol kubectl get
 ### Open the local UI
 
 ```text
-http://obol.stack:8080
+http://obol.stack
 ```
 
 Use the **`obol.stack` hostname**, not `localhost`. Traefik routes the frontend (and eRPC) only for `Host: obol.stack`. **`http://localhost:8080` returns 404** even when the stack is healthy.
